@@ -18,7 +18,7 @@ export class TagPillComponent {
 
   @Input()
   set icon(value: string | undefined) {
-    this._icon = value ? this.sanitizer.sanitize(1, value) as SafeHtml : undefined;
+    this._icon = value ? this.sanitizer.bypassSecurityTrustHtml(value) : undefined;
   }
 
   _icon?: SafeHtml;
