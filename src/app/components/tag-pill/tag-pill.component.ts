@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tag-pill',
@@ -16,10 +17,16 @@ export class TagPillComponent {
   color: 'green' | 'orange' | 'red' | 'blue' | 'teal' | 'purple' = 'green';
 
   @Input()
-  icon?: string;
+  set icon(value: string | undefined) {
+    this._icon = value ? this.sanitizer.sanitize(1, value) as SafeHtml : undefined;
+  }
+
+  _icon?: SafeHtml;
 
   @Input()
   size: 'sm' | 'md' = 'sm';
+
+  constructor(private sanitizer: DomSanitizer) {}
 
   public get classes(): string[] {
     return ['tag-pill', `tag-pill-${this.color}`, `tag-pill-${this.size}`];
