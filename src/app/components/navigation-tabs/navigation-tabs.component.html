@@ -1,0 +1,12 @@
+<button
+  type="button"
+  [ngClass]="classes"
+  (click)="handleClick()"
+  [disabled]="disabled"
+  [attr.aria-disabled]="disabled"
+>
+  <span class="label">{{ label }}</span>
+  <span [ngClass]="badgeClasses">
+    <span [ngClass]="countClasses">{{ count }}</span>
+  </span>
+</button>
