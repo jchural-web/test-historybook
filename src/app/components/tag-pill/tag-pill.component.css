@@ -1,0 +1,103 @@
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.22px;
+  white-space: nowrap;
+}
+
+.tag-pill-sm {
+  height: 20px;
+  padding: 0 10px;
+}
+
+.tag-pill-md {
+  height: 20px;
+  padding: 0 10px;
+}
+
+.tag-label {
+  line-height: 1;
+}
+
+.tag-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+}
+
+/* Green - Alta */
+.tag-pill-green {
+  border-color: #00ce3e;
+  background: #f0fdf4;
+  color: #24a34a;
+}
+
+.tag-icon-green {
+  color: #24a34a;
+}
+
+/* Orange - Media, Prb */
+.tag-pill-orange {
+  border-color: #eb5c11;
+  background: #ffedd5;
+  color: #eb5c11;
+}
+
+.tag-icon-orange {
+  color: #eb5c11;
+}
+
+/* Red - Baja */
+.tag-pill-red {
+  border-color: #e32626;
+  background: #fef2f2;
+  color: #e32626;
+}
+
+.tag-icon-red {
+  color: #e32626;
+}
+
+/* Blue - Correos */
+.tag-pill-blue {
+  border-color: #2563eb;
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.tag-icon-blue {
+  color: #2563eb;
+}
+
+/* Teal - Wavix */
+.tag-pill-teal {
+  border-color: #2b88a0;
+  background: #cffafe;
+  color: #2b88a0;
+}
+
+.tag-icon-teal {
+  color: #2b88a0;
+}
+
+/* Purple - Seguimiento de WhatsApp */
+.tag-pill-purple {
+  border-color: #9336eb;
+  background: #faf5ff;
+  color: #9336eb;
+}
+
+.tag-icon-purple {
+  color: #9336eb;
+}
