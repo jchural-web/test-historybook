@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export interface HeaderAction {
   label: string;
@@ -24,10 +24,17 @@ export class HeaderBarComponent {
   @Input()
   appName: string = 'Integra CRM';
 
+  @Output()
+  menuClick = new EventEmitter<void>();
+
   handleActionClick(action: HeaderAction, event: Event): void {
     event.preventDefault();
     if (action.onClick) {
       action.onClick();
     }
+  }
+
+  onMenuClick(): void {
+    this.menuClick.emit();
   }
 }
