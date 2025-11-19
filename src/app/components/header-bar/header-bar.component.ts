@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export interface HeaderAction {
   label: string;
@@ -27,6 +28,8 @@ export class HeaderBarComponent {
   @Output()
   menuClick = new EventEmitter<void>();
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   handleActionClick(action: HeaderAction, event: Event): void {
     event.preventDefault();
     if (action.onClick) {
@@ -36,5 +39,9 @@ export class HeaderBarComponent {
 
   onMenuClick(): void {
     this.menuClick.emit();
+  }
+
+  getSafeHtml(html: string): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 }
