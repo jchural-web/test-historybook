@@ -12,6 +12,9 @@ const config: StorybookConfig = {
   "framework": {
     "name": "@storybook/angular",
     "options": {}
+  },
+  "webServer": {
+    "open": false
   }
 };
 export default config;
