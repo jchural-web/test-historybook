@@ -1,0 +1,79 @@
+.general-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.26px;
+  transition: background-color 200ms ease;
+}
+
+.label {
+  position: relative;
+  transition: text-decoration 150ms ease;
+}
+
+.general-button:hover .label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* White */
+.general-button-white {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  color: #161616;
+}
+
+.general-button-white:hover {
+  background: #00cd1f;
+  color: #fff;
+  border-color: #00cd1f;
+}
+
+/* Green */
+.general-button-green {
+  background: #00cd1f;
+  color: #fff;
+}
+
+.general-button-green:hover {
+  background: #00b01b;
+}
+
+/* Purple */
+.general-button-purple {
+  background: #6419e6;
+  color: #fff;
+}
+
+.general-button-purple:hover {
+  background: #5011bf;
+}
+
+/* Orange */
+.general-button-orange {
+  background: #ff8121;
+  color: #fff;
+}
+
+.general-button-orange:hover {
+  background: #e07e0d;
+}
+
+/* Blue */
+.general-button-blue {
+  background: #2563eb;
+  color: #fff;
+}
+
+.general-button-blue:hover {
+  background: #1d4ed8;
+}
