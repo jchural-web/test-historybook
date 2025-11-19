@@ -25,7 +25,12 @@
 }
 
 .activity-text {
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.26px;
