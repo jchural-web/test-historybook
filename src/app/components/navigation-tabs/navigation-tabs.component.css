@@ -92,7 +92,7 @@
 /* Green Soft */
 .tab-soft-green {
   background: #dcfce7;
-  color: #16a34a;
+  color: #16a34f;
 }
 
 .tab-soft-green .badge {
@@ -100,7 +100,7 @@
 }
 
 .tab-soft-green .count {
-  color: #16a34a;
+  color: #16a34f;
 }
 
 /* Orange Solid */
@@ -120,7 +120,7 @@
 /* Orange Soft */
 .tab-soft-orange {
   background: #fef3c7;
-  color: #f59e0b;
+  color: #e17f06;
 }
 
 .tab-soft-orange .badge {
@@ -128,7 +128,7 @@
 }
 
 .tab-soft-orange .count {
-  color: #f59e0b;
+  color: #e17f06;
 }
 
 /* Gray Solid (not typically used but included for completeness) */
@@ -148,7 +148,7 @@
 /* Gray Soft (not typically used but included for completeness) */
 .tab-soft-gray {
   background: #f3f4f6;
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .tab-soft-gray .badge {
