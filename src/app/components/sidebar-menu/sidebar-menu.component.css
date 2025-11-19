@@ -19,6 +19,7 @@
   flex-direction: column;
   width: 64px;
   min-width: 64px;
+  flex-shrink: 0;
   background: #fff;
   border-right: 1px solid #E5E7EB;
   padding: 10px 8px;
