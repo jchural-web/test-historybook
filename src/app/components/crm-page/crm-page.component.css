@@ -1,0 +1,128 @@
+.crm-layout {
+  min-height: 100vh;
+  background: #F8FAFF;
+  display: flex;
+  flex-direction: column;
+}
+
+.crm-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.crm-sidebar {
+  position: fixed;
+  left: 0;
+  top: 57px;
+  height: calc(100vh - 57px);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.crm-main-content {
+  flex: 1;
+  padding: 50px 30px;
+  margin-left: 60px;
+  transition: margin-left 0.3s ease;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.crm-container.sidebar-expanded .crm-main-content {
+  margin-left: 280px;
+}
+
+.performance-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 23px;
+  margin-bottom: 50px;
+}
+
+.navigation-section {
+  margin-bottom: 40px;
+}
+
+.tabs-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.page-title {
+  color: #1F2937;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.54px;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.table-section {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+  .performance-cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+  
+  .crm-main-content {
+    padding: 30px 20px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .performance-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  
+  .crm-main-content {
+    margin-left: 0;
+    padding: 20px 15px;
+  }
+  
+  .crm-container.sidebar-expanded .crm-main-content {
+    margin-left: 0;
+  }
+  
+  .crm-sidebar {
+    width: 60px;
+  }
+}
