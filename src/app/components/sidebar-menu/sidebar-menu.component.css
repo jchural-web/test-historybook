@@ -2,8 +2,8 @@
   display: flex;
   height: 100%;
   background: #fff;
-  border: none;
-  border-right: 1px solid #e5e7eb;
+  border: 1px solid #E5E7EB;
+  border-top: none;
   transition: width 0.3s ease;
   flex-shrink: 0;
   width: 64px;
@@ -21,15 +21,16 @@
   min-width: 64px;
   flex-shrink: 0;
   background: #fff;
-  border-right: 1px solid #e5e7eb;
-  padding: 10px 8px;
-  gap: 10px;
+  padding: 21px 8px 10px 8px;
+  gap: 34px;
 }
 
 .module-icons {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 34px;
+  padding-top: 38px;
+  border-top: 1px solid #E4E4E7;
 }
 
 .icon-item {
