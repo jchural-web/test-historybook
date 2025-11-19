@@ -6,10 +6,10 @@
   border: 1px solid #e4e4e7;
   border-radius: 6px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-  padding: 24px 22px 25px 22px;
+  padding: 20px 22px 23px 22px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 10px;
 }
 
 .card-header {
