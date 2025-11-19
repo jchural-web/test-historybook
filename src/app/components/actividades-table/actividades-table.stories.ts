@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { CommonModule } from '@angular/common';
 import { ActividadesTableComponent, ActividadRow } from './actividades-table.component';
-import { TablePaginationFooterComponent } from '../table-pagination-footer/table-pagination-footer.component';
+import { ActividadesTableWithPaginationComponent } from './actividades-table-with-pagination.component';
 
 const meta: Meta<ActividadesTableComponent> = {
   title: 'Components/ActividadesTable',
@@ -126,38 +125,42 @@ export const TablaConHeaderPersonalizado: Story = {
   },
 };
 
-export const TablaConPaginacion: StoryObj = {
-  render: () => ({
-    imports: [CommonModule, ActividadesTableComponent, TablePaginationFooterComponent],
-    template: `
-      <div style="display: flex; flex-direction: column; gap: 0;">
-        <app-actividades-table
-          [headerColor]="'#E3F2FD'"
-          [rows]="displayedRows"
-        ></app-actividades-table>
-        <app-table-pagination-footer
-          [currentPage]="currentPage"
-          [totalPages]="totalPages"
-          [pageSize]="pageSize"
-          [pageSizeOptions]="[5, 10, 20]"
-          [totalItems]="allRows.length"
-          (pageChange)="onPageChange($event)"
-          (pageSizeChange)="onPageSizeChange($event)"
-        ></app-table-pagination-footer>
-      </div>
-    `,
-    props: {
-      allRows: exampleRows,
-      currentPage: 1,
-      totalPages: Math.ceil(exampleRows.length / 10),
-      pageSize: 10,
-      displayedRows: exampleRows,
-      onPageChange: (page: number) => {
-        console.log('Page changed to:', page);
-      },
-      onPageSizeChange: (size: number) => {
-        console.log('Page size changed to:', size);
+export const TablaConPaginacion: StoryObj<ActividadesTableWithPaginationComponent> = {
+  render: (args) => ({
+    props: args,
+  }),
+  args: {
+    headerColor: '#E3F2FD',
+    allRows: exampleRows,
+    pageSizeOptions: [5, 10, 20, 50],
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Tabla completa con componente de paginación integrado. La tabla muestra los datos paginados y el footer permite navegar entre páginas y cambiar la cantidad de elementos por página.',
       },
     },
-  }),
+  },
 };
+
+const tableWithPaginationMeta: Meta<ActividadesTableWithPaginationComponent> = {
+  title: 'Components/ActividadesTable',
+  component: ActividadesTableWithPaginationComponent,
+  tags: ['autodocs'],
+  argTypes: {
+    headerColor: {
+      control: 'color',
+      description: 'Background color for the table header',
+    },
+    allRows: {
+      control: 'object',
+      description: 'Complete array of activity data to paginate',
+    },
+    pageSizeOptions: {
+      control: 'object',
+      description: 'Available options for page size',
+    },
+  },
+};
+
+export { tableWithPaginationMeta as ActividadesTableWithPaginationMeta };
