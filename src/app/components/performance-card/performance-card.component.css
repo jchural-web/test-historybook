@@ -1,15 +1,14 @@
 .performance-card {
   width: 100%;
   max-width: 408px;
-  height: 132px;
   background: #fff;
   border: 1px solid #e4e4e7;
   border-radius: 6px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-  padding: 20px 22px 23px 22px;
+  padding: 20px 22px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
 }
 
 .card-header {
