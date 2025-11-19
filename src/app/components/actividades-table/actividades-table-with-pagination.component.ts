@@ -8,12 +8,12 @@ import { TablePaginationFooterComponent } from '../table-pagination-footer/table
   standalone: true,
   imports: [CommonModule, ActividadesTableComponent, TablePaginationFooterComponent],
   template: `
-    <div class="table-with-pagination-wrapper">
-      <app-actividades-table
-        [headerColor]="headerColor"
-        [rows]="displayedRows"
-      ></app-actividades-table>
+    <app-actividades-table
+      [headerColor]="headerColor"
+      [rows]="displayedRows"
+    >
       <app-table-pagination-footer
+        tableFooter
         [currentPage]="currentPage"
         [totalPages]="totalPages"
         [pageSize]="pageSize"
@@ -22,15 +22,9 @@ import { TablePaginationFooterComponent } from '../table-pagination-footer/table
         (pageChange)="onPageChange($event)"
         (pageSizeChange)="onPageSizeChange($event)"
       ></app-table-pagination-footer>
-    </div>
+    </app-actividades-table>
   `,
-  styles: [`
-    .table-with-pagination-wrapper {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-  `],
+  styles: [],
 })
 export class ActividadesTableWithPaginationComponent implements OnInit {
   @Input()
