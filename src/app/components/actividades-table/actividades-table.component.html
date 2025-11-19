@@ -1,0 +1,64 @@
+<div class="actividades-table-container">
+  <div class="table-header" [ngStyle]="{'background-color': headerColor}">
+    <div class="header-cell header-actividad">ACTIVIDAD</div>
+    <div class="header-cell header-oportunidad">OPORTUNIDAD</div>
+    <div class="header-cell header-mensaje">MENSAJE</div>
+    <div class="header-cell header-fecha">FECHA PROGRAMADA</div>
+  </div>
+
+  <div class="table-body">
+    <div *ngFor="let row of rows" class="table-row">
+      <div class="row-indicator" [ngClass]="'indicator-' + (row.indicadorColor || 'green')"></div>
+      
+      <div class="table-cell cell-actividad">
+        {{ row.actividad }}
+      </div>
+
+      <div class="table-cell cell-oportunidad">
+        <app-oportunidad
+          *ngIf="row.oportunidad"
+          [etiqueta]="row.oportunidad.etiqueta"
+          [nombre]="row.oportunidad.nombre"
+          [programa]="row.oportunidad.programa"
+          [fase]="row.oportunidad.fase"
+          [categoria]="row.oportunidad.categoria"
+          [categoriaColor]="row.oportunidad.categoriaColor"
+        ></app-oportunidad>
+      </div>
+
+      <div class="table-cell cell-mensaje">
+        <div class="mensaje-content">
+          <app-tag-pill
+            *ngIf="row.mensajeEtiqueta"
+            [label]="row.mensajeEtiqueta"
+            [color]="getMensajeEtiquetaColor(row.mensajeEtiqueta)"
+            size="sm"
+            class="mensaje-etiqueta"
+          ></app-tag-pill>
+          <span class="mensaje-texto">{{ row.mensajeTexto }}</span>
+        </div>
+      </div>
+
+      <div class="table-cell cell-fecha">
+        <div class="fecha-content">
+          <div class="fecha-info">
+            <span class="fecha-date">{{ row.fecha }}</span>
+            <span *ngIf="row.hora" class="fecha-time">{{ row.hora }}</span>
+          </div>
+          <app-boton-ejecutar
+            *ngIf="row.botonEjecutar"
+            [label]="row.botonEjecutar.label"
+            [color]="row.botonEjecutar.color"
+          ></app-boton-ejecutar>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="rows.length === 0" class="empty-state">
+      No hay actividades para mostrar.
+    </div>
+  </div>
+
+  <div class="table-footer">
+  </div>
+</div>
