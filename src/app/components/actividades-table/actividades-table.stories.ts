@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { ActividadesTableComponent, ActividadRow } from './actividades-table.component';
-import { ActividadesTableWithPaginationComponent } from './actividades-table-with-pagination.component';
 
 const meta: Meta<ActividadesTableComponent> = {
   title: 'Components/ActividadesTable',
@@ -124,43 +123,3 @@ export const TablaConHeaderPersonalizado: Story = {
     rows: exampleRows.slice(0, 2),
   },
 };
-
-export const TablaConPaginacion: StoryObj<ActividadesTableWithPaginationComponent> = {
-  render: (args) => ({
-    props: args,
-  }),
-  args: {
-    headerColor: '#E3F2FD',
-    allRows: exampleRows,
-    pageSizeOptions: [5, 10, 20, 50],
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'Tabla completa con componente de paginación integrado. La tabla muestra los datos paginados y el footer permite navegar entre páginas y cambiar la cantidad de elementos por página.',
-      },
-    },
-  },
-};
-
-const tableWithPaginationMeta: Meta<ActividadesTableWithPaginationComponent> = {
-  title: 'Components/ActividadesTable',
-  component: ActividadesTableWithPaginationComponent,
-  tags: ['autodocs'],
-  argTypes: {
-    headerColor: {
-      control: 'color',
-      description: 'Background color for the table header',
-    },
-    allRows: {
-      control: 'object',
-      description: 'Complete array of activity data to paginate',
-    },
-    pageSizeOptions: {
-      control: 'object',
-      description: 'Available options for page size',
-    },
-  },
-};
-
-export { tableWithPaginationMeta as ActividadesTableWithPaginationMeta };
