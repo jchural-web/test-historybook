@@ -96,11 +96,12 @@
 @media (max-width: 1800px) {
   .performance-cards-grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
   }
 
   .crm-main-content {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
   }
 }
 
