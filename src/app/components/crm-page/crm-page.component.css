@@ -41,7 +41,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 23px;
-  margin-bottom: 57px;
+  margin-bottom: 24px;
 }
 
 .navigation-section {
