@@ -1,0 +1,153 @@
+.crm-layout {
+  min-height: 100vh;
+  background: #f8faff;
+  display: flex;
+  flex-direction: column;
+}
+
+.crm-container {
+  display: flex;
+  flex: 1;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.crm-sidebar {
+  position: fixed;
+  left: 0;
+  top: 57px;
+  height: calc(100vh - 57px);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.crm-main-content {
+  flex: 1;
+  padding-top: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 50px;
+  margin-left: 64px;
+  transition: margin-left 0.3s ease;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.crm-container.sidebar-expanded .crm-main-content {
+  margin-left: 318px;
+}
+
+.performance-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.navigation-section {
+  margin-bottom: 24px;
+}
+
+.tabs-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  row-gap: 13px;
+  margin-bottom: 79px;
+}
+
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.page-title {
+  color: #1f2937;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.54px;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.table-section {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 1800px) {
+  .performance-cards-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 30px;
+  }
+
+  .crm-main-content {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (max-width: 1400px) {
+  .performance-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 30px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .performance-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 30px;
+  }
+
+  .crm-main-content {
+    padding: 30px 30px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .performance-cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .crm-main-content {
+    margin-left: 64px;
+    padding: 20px 15px;
+  }
+
+  .crm-container.sidebar-expanded .crm-main-content {
+    margin-left: 64px;
+  }
+}

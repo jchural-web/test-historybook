@@ -1,0 +1,70 @@
+.oportunidad {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: fit-content;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nombre {
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.26px;
+  color: #09090b;
+}
+
+.programa {
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.13px;
+  color: #9333ea;
+  margin-top: 3px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: -0.22px;
+  color: #747b88;
+}
+
+.value {
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: #2563eb;
+}

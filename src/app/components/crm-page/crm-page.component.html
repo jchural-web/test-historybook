@@ -1,0 +1,65 @@
+<div class="crm-layout">
+  <app-header-bar
+    [username]="'Yesica Palomino'"
+    [appName]="'Integra CRM'"
+    [actions]="headerActions"
+    (menuClick)="onMenuClick()"
+  ></app-header-bar>
+
+  <div class="crm-container" [class.sidebar-expanded]="isSidebarExpanded">
+    <app-sidebar-menu
+      [isExpanded]="isSidebarExpanded"
+      [modules]="sidebarModules"
+      class="crm-sidebar"
+    ></app-sidebar-menu>
+
+    <main class="crm-main-content">
+      <div class="performance-cards-grid">
+        <app-performance-card
+          *ngFor="let card of performanceCards"
+          [title]="card.title"
+          [value]="card.value"
+          [percent]="card.percent"
+          [icon]="card.icon"
+          [iconColor]="card.iconColor"
+        ></app-performance-card>
+      </div>
+
+      <div class="navigation-section">
+        <div class="tabs-wrapper">
+          <app-navigation-tabs
+            *ngFor="let tab of navigationTabs"
+            [label]="tab.label"
+            [count]="tab.count"
+            [color]="tab.color"
+            [variant]="tab.variant"
+            [isActive]="tab.isActive"
+          ></app-navigation-tabs>
+        </div>
+      </div>
+
+      <div class="content-header">
+        <h1 class="page-title">Contacto Entrante</h1>
+
+        <div class="header-actions">
+          <app-search-bar
+            [placeholder]="'Buscar contacto...'"
+            [value]="searchValue"
+            (valueChange)="onSearch($event)"
+          ></app-search-bar>
+
+          <app-general-button [label]="'Filtrar'" [color]="'white'"></app-general-button>
+
+          <app-general-button [label]="'Buscar'" [color]="'purple'"></app-general-button>
+        </div>
+      </div>
+
+      <div class="table-section">
+        <app-actividades-table-with-pagination
+          [headerColor]="'#E3F2FD'"
+          [allRows]="actividadesData"
+        ></app-actividades-table-with-pagination>
+      </div>
+    </main>
+  </div>
+</div>

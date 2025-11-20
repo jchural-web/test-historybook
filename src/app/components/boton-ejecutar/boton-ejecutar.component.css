@@ -1,0 +1,66 @@
+.boton-ejecutar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 25px;
+  padding: 0 10px 0 10px;
+  border-radius: 12.5px;
+  border: none;
+  cursor: pointer;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.22px;
+  color: #fff;
+  transition: background-color 200ms ease;
+}
+
+.play-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.label {
+  position: relative;
+  transition: text-decoration 150ms ease;
+}
+
+.boton-ejecutar:hover .label {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+/* Green */
+.boton-ejecutar-green {
+  background: #22c55e;
+}
+
+.boton-ejecutar-green:hover {
+  background: #16a34a;
+}
+
+/* Yellow */
+.boton-ejecutar-yellow {
+  background: #eab308;
+}
+
+.boton-ejecutar-yellow:hover {
+  background: #e29106;
+}
+
+/* Red */
+.boton-ejecutar-red {
+  background: #ef4444;
+}
+
+.boton-ejecutar-red:hover {
+  background: #c31a1a;
+}
