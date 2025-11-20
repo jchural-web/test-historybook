@@ -175,12 +175,6 @@
     gap: 16px;
   }
 
-  .row-indicator {
-    left: 14px;
-    top: 30px;
-    transform: none;
-  }
-
   .cell-actividad,
   .cell-oportunidad,
   .cell-mensaje,
