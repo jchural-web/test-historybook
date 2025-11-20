@@ -1,0 +1,6 @@
+/* Este componente usa exclusivamente Tailwind CSS */
+/* Los estilos se aplican mediante clases de Tailwind en el TypeScript */
+
+:host {
+  display: contents;
+}
