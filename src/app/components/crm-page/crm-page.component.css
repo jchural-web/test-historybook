@@ -24,8 +24,8 @@
 .crm-main-content {
   flex: 1;
   padding-top: 50px;
-  padding-left: 71px;
-  padding-right: 102px;
+  padding-left: 40px;
+  padding-right: 40px;
   padding-bottom: 50px;
   margin-left: 64px;
   transition: margin-left 0.3s ease;
