@@ -6,7 +6,7 @@
   border: 1px solid #e4e4e7;
   border-radius: 6px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-  padding: 23px;
+  padding: 23px 23px 15px 23px;
   display: flex;
   flex-direction: column;
   gap: 12px;
