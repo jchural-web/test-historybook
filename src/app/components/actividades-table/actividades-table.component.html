@@ -8,10 +8,11 @@
 
   <div class="table-body">
     <div *ngFor="let row of rows" class="table-row">
-      <div class="row-indicator" [ngClass]="'indicator-' + (row.indicadorColor || 'green')"></div>
-      
       <div class="table-cell cell-actividad">
-        {{ row.actividad }}
+        <app-activity-item
+          [text]="row.actividad"
+          [color]="row.indicadorColor || 'green'"
+        ></app-activity-item>
       </div>
 
       <div class="table-cell cell-oportunidad">
