@@ -40,23 +40,17 @@
 
       <div class="content-header">
         <h1 class="page-title">Contacto Entrante</h1>
-        
+
         <div class="header-actions">
           <app-search-bar
             [placeholder]="'Buscar contacto...'"
             [value]="searchValue"
             (valueChange)="onSearch($event)"
           ></app-search-bar>
-          
-          <app-general-button
-            [label]="'Filtrar'"
-            [color]="'white'"
-          ></app-general-button>
-          
-          <app-general-button
-            [label]="'Buscar'"
-            [color]="'purple'"
-          ></app-general-button>
+
+          <app-general-button [label]="'Filtrar'" [color]="'white'"></app-general-button>
+
+          <app-general-button [label]="'Buscar'" [color]="'purple'"></app-general-button>
         </div>
       </div>
 

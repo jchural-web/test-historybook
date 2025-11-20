@@ -1,6 +1,6 @@
 .crm-layout {
   min-height: 100vh;
-  background: #F8FAFF;
+  background: #f8faff;
   display: flex;
   flex-direction: column;
 }
@@ -66,8 +66,13 @@
 }
 
 .page-title {
-  color: #1F2937;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #1f2937;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 27px;
   font-weight: 600;
   line-height: normal;
@@ -92,7 +97,7 @@
   .performance-cards-grid {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   }
-  
+
   .crm-main-content {
     padding-left: 50px;
     padding-right: 50px;
@@ -104,11 +109,11 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
   }
-  
+
   .crm-main-content {
     padding: 30px 20px;
   }
-  
+
   .page-title {
     font-size: 24px;
   }
@@ -118,22 +123,22 @@
   .performance-cards-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .content-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .header-actions {
     width: 100%;
     flex-direction: column;
   }
-  
+
   .crm-main-content {
     margin-left: 64px;
     padding: 20px 15px;
   }
-  
+
   .crm-container.sidebar-expanded .crm-main-content {
     margin-left: 64px;
   }
