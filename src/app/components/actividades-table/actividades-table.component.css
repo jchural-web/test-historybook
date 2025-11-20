@@ -56,7 +56,7 @@
 
 .table-cell {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
