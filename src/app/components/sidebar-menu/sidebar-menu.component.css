@@ -21,16 +21,33 @@
   min-width: 64px;
   flex-shrink: 0;
   background: #fff;
-  padding: 21px 8px 10px 8px;
-  gap: 34px;
+  padding: 0;
+}
+
+.home-icon-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 14.5px;
+}
+
+.home-icon-container .icon-item {
+  margin-bottom: 22px;
+}
+
+.divider-line {
+  width: 48px;
+  height: 1px;
+  background: #e4e4e7;
+  margin: 0 8px;
 }
 
 .module-icons {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding-top: 38px;
-  border-top: 1px solid #e4e4e7;
+  gap: 18px;
+  padding-top: 35px;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 .icon-item {
