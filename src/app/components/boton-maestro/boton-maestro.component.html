@@ -1,9 +1,9 @@
 <button
-  [type]="type"
-  [ngClass]="buttonClasses"
+  [class]="buttonClass"
   [disabled]="disabled"
   (click)="onClick($event)"
+  type="button"
 >
-  <span *ngIf="showIcon && icon" [innerHTML]="icon" class="flex-shrink-0"></span>
-  <span *ngIf="showText">{{ text }}</span>
+  <span *ngIf="showIcon && iconName" [innerHTML]="iconName" class="btn-icon"></span>
+  <span *ngIf="label && variant !== 'icono-circular' && variant !== 'icono-cuadrado'" class="btn-label">{{ label }}</span>
 </button>

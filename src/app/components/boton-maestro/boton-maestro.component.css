@@ -1,6 +1,164 @@
-/* Este componente usa exclusivamente Tailwind CSS */
-/* Los estilos se aplican mediante clases de Tailwind en el TypeScript */
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.26px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
 
-:host {
-  display: contents;
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-label {
+  white-space: nowrap;
+}
+
+/* Default variant */
+.btn-default {
+  background: #6419E6;
+  color: #FFFFFF;
+  border-radius: 5px;
+  padding: 8px 10px;
+}
+
+.btn-default:hover:not(:disabled) {
+  background: #5011BF;
+  text-decoration: underline;
+}
+
+/* Outline variant */
+.btn-outline {
+  background: #FFFFFF;
+  color: #161616;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  padding: 9px 9px;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: #E5E7EB;
+}
+
+/* Secondary variant */
+.btn-secondary {
+  background: #FFFFFF;
+  color: #161616;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  padding: 9px 10px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #E5E7EB;
+}
+
+/* Ghost variant */
+.btn-ghost {
+  background: transparent;
+  color: #161616;
+  border: none;
+  padding: 9px 12px;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: #8F5AF8;
+  color: #FFFFFF;
+  border: 1px solid #8F5AF8;
+  border-radius: 5px;
+}
+
+/* Destructive variant */
+.btn-destructive {
+  background: #FF0000;
+  color: #FFFFFF;
+  border-radius: 5px;
+  padding: 9px 8px;
+}
+
+.btn-destructive:hover:not(:disabled) {
+  background: #E70000;
+}
+
+/* Link variant */
+.btn-link {
+  background: transparent;
+  color: #161616;
+  border: none;
+  padding: 0;
+}
+
+.btn-link:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+/* Icono circular variant (botón redondo) */
+.btn-icono-circular {
+  background: #6419E6;
+  color: #FFFFFF;
+  border-radius: 50%;
+  width: 35px;
+  height: 34px;
+  padding: 0;
+}
+
+.btn-icono-circular:hover:not(:disabled) {
+  background: #5011BF;
+}
+
+/* Icono cuadrado variant (botón cuadrado con icono) */
+.btn-icono-cuadrado {
+  background: #6419E6;
+  color: #FFFFFF;
+  border-radius: 5px;
+  width: 35px;
+  height: 34px;
+  padding: 0;
+}
+
+.btn-icono-cuadrado:hover:not(:disabled) {
+  background: #5011BF;
+}
+
+/* Ovalado variant (pill button) */
+.btn-ovalado {
+  background: #6419E6;
+  color: #FFFFFF;
+  border-radius: 17px;
+  padding: 3px 13px;
+}
+
+.btn-ovalado:hover:not(:disabled) {
+  background: #5011BF;
+}
+
+/* Pagination variant */
+.btn-pagination {
+  background: #FFFFFF;
+  color: #161616;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  padding: 9px 14px;
+}
+
+.btn-pagination:hover:not(:disabled) {
+  background: #E5E7EB;
 }
