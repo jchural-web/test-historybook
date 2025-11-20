@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { OportunidadComponent } from '../oportunidad/oportunidad.component';
 import { TagPillComponent } from '../tag-pill/tag-pill.component';
 import { BotonEjecutarComponent } from '../boton-ejecutar/boton-ejecutar.component';
+import { ActivityItemComponent } from '../activity-item/activity-item.component';
 
 export interface ActividadRow {
   actividad: string;
