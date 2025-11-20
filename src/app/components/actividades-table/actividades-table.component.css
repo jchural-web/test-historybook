@@ -137,10 +137,8 @@
 }
 
 .table-footer {
-  display: flex;
+  display: contents;
   width: 100%;
-  border-top: 1px solid #e4e4e7;
-  min-height: 100px;
 }
 
 @media (max-width: 1200px) {
