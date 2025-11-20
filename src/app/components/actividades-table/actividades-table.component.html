@@ -1,5 +1,5 @@
 <div class="actividades-table-container">
-  <div class="table-header" [ngStyle]="{'background-color': headerColor}">
+  <div class="table-header" [ngStyle]="{ 'background-color': headerColor }">
     <div class="header-cell header-actividad">ACTIVIDAD</div>
     <div class="header-cell header-oportunidad">OPORTUNIDAD</div>
     <div class="header-cell header-mensaje">MENSAJE</div>
@@ -55,9 +55,7 @@
       </div>
     </div>
 
-    <div *ngIf="rows.length === 0" class="empty-state">
-      No hay actividades para mostrar.
-    </div>
+    <div *ngIf="rows.length === 0" class="empty-state">No hay actividades para mostrar.</div>
   </div>
 
   <div class="table-footer">

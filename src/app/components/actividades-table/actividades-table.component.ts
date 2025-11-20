@@ -23,7 +23,13 @@ export interface ActividadRow {
 @Component({
   selector: 'app-actividades-table',
   standalone: true,
-  imports: [CommonModule, OportunidadComponent, TagPillComponent, BotonEjecutarComponent, ActivityItemComponent],
+  imports: [
+    CommonModule,
+    OportunidadComponent,
+    TagPillComponent,
+    BotonEjecutarComponent,
+    ActivityItemComponent,
+  ],
   templateUrl: './actividades-table.component.html',
   styleUrls: ['./actividades-table.component.css'],
 })
@@ -34,7 +40,9 @@ export class ActividadesTableComponent {
   @Input()
   rows: ActividadRow[] = [];
 
-  getMensajeEtiquetaColor(etiqueta?: string): 'green' | 'orange' | 'red' | 'blue' | 'teal' | 'purple' {
+  getMensajeEtiquetaColor(
+    etiqueta?: string,
+  ): 'green' | 'orange' | 'red' | 'blue' | 'teal' | 'purple' {
     if (!etiqueta) return 'blue';
     const etiquetaLower = etiqueta.toLowerCase();
     if (etiquetaLower.includes('whatsapp')) return 'green';

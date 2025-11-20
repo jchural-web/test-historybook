@@ -16,7 +16,12 @@
 
 .header-cell {
   color: #545864;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
@@ -53,11 +58,15 @@
   position: relative;
 }
 
-
 .table-cell {
   display: flex;
   align-items: center;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }
 
 .cell-actividad {
@@ -131,7 +140,12 @@
   padding: 40px 20px;
   text-align: center;
   color: #9ca3af;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
