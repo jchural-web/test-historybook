@@ -28,7 +28,7 @@
 .module-icons {
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 20px;
   padding-top: 38px;
   border-top: 1px solid #e4e4e7;
 }
