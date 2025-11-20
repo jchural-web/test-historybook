@@ -96,7 +96,8 @@
               "-d",
               "."
             ],
-            "port": 6006
+            "port": 6006,
+            "open": false
           }
         },
         "build-storybook": {
