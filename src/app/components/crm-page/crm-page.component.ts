@@ -41,12 +41,36 @@ export class CrmPageComponent {
   ];
 
   sidebarModules: SidebarModule[] = [
-    { icon: 'home', label: 'Inicio', active: true },
-    { icon: 'users', label: 'Contactos', badgeCount: 24 },
-    { icon: 'briefcase', label: 'Oportunidades', badgeCount: 12 },
-    { icon: 'calendar', label: 'Calendario' },
-    { icon: 'file-text', label: 'Reportes' },
-    { icon: 'settings', label: 'Configuración' },
+    {
+      icon: 'folder',
+      label: 'Comercial',
+      hasChildren: true,
+    },
+    {
+      icon: 'award',
+      label: 'Gestión Del Desempeño',
+      hasChildren: true,
+    },
+    {
+      icon: 'headset',
+      label: 'Atención al Cliente',
+      hasChildren: true,
+    },
+    {
+      icon: 'users',
+      label: 'Clientes',
+      badgeCount: 12,
+    },
+    {
+      icon: 'book-open',
+      label: 'Cursos',
+      badgeCount: 8,
+    },
+    {
+      icon: 'settings',
+      label: 'Configuración',
+      badgeCount: 2,
+    },
   ];
 
   performanceCards = [
