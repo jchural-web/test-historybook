@@ -7,5 +7,11 @@ const config: StorybookConfig = {
     name: '@storybook/angular',
     options: {},
   },
+  core: {
+    disableTelemetry: true,
+  },
+  webpackFinal: async (config) => {
+    return config;
+  },
 };
 export default config;
