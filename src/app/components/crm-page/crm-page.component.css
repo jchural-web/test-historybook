@@ -40,8 +40,9 @@
 .performance-cards-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 23px;
-  margin-bottom: 24px;
+  column-gap: 47px;
+  row-gap: 40px;
+  margin-bottom: 40px;
 }
 
 .navigation-section {
