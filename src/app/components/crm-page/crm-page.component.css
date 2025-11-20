@@ -96,8 +96,8 @@
 
 @media (max-width: 1800px) {
   .performance-cards-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 30px;
   }
 
   .crm-main-content {
