@@ -23,7 +23,7 @@ export interface ActividadRow {
 @Component({
   selector: 'app-actividades-table',
   standalone: true,
-  imports: [CommonModule, OportunidadComponent, TagPillComponent, BotonEjecutarComponent],
+  imports: [CommonModule, OportunidadComponent, TagPillComponent, BotonEjecutarComponent, ActivityItemComponent],
   templateUrl: './actividades-table.component.html',
   styleUrls: ['./actividades-table.component.css'],
 })
