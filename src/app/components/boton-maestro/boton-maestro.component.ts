@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export type ButtonVariant =
   | 'default'
@@ -29,6 +30,8 @@ export class BotonMaestroComponent {
 
   @Output() clicked = new EventEmitter<MouseEvent>();
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   onClick(event: MouseEvent): void {
     if (!this.disabled) {
       this.clicked.emit(event);
@@ -37,5 +40,10 @@ export class BotonMaestroComponent {
 
   get buttonClass(): string {
     return `btn btn-${this.variant}`;
+  }
+
+  get sanitizedIconHtml(): SafeHtml {
+    if (!this.iconName) return '';
+    return this.sanitizer.bypassSecurityTrustHtml(this.iconName);
   }
 }
