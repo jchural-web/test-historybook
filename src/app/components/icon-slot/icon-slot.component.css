@@ -1,0 +1,33 @@
+.icon-slot {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-slot-sm {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-slot-md {
+  width: 40px;
+  height: 40px;
+}
+
+.icon-slot-lg {
+  width: 48px;
+  height: 48px;
+}
+
+.icon-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.icon-content svg {
+  display: block;
+}
