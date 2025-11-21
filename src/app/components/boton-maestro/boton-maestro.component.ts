@@ -27,6 +27,10 @@ export class BotonMaestroComponent {
   @Input() iconName?: string;
   @Input() showIcon: boolean = false;
   @Input() disabled: boolean = false;
+  @Input() bgColor?: string;
+  @Input() textColor?: string;
+  @Input() hoverBgColor?: string;
+  @Input() borderColor?: string;
 
   @Output() clicked = new EventEmitter<MouseEvent>();
 
@@ -40,6 +44,14 @@ export class BotonMaestroComponent {
 
   get buttonClass(): string {
     return `btn btn-${this.variant}`;
+  }
+
+  get buttonStyle(): { [key: string]: string } {
+    const styles: { [key: string]: string } = {};
+    if (this.bgColor) styles['background-color'] = this.bgColor;
+    if (this.textColor) styles['color'] = this.textColor;
+    if (this.borderColor) styles['border-color'] = this.borderColor;
+    return styles;
   }
 
   get sanitizedIconHtml(): SafeHtml {
