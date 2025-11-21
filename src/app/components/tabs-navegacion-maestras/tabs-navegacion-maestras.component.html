@@ -24,9 +24,13 @@
       <span class="tab-label">{{ tab.label }}</span>
     </ng-container>
 
-    <!-- Tipo barra-superior: icono + texto en línea -->
+    <!-- Tipo barra-superior: badge circular con icono arriba, texto abajo -->
     <ng-container *ngIf="tab.tipo === 'barra-superior'">
-      <span *ngIf="tab.iconName" [innerHTML]="getSanitizedIcon(tab.iconName)" class="tab-icon"></span>
+      <div class="tab-icon-badge-wrapper">
+        <div class="tab-icon-badge">
+          <span *ngIf="tab.iconName" [innerHTML]="getSanitizedIcon(tab.iconName)" class="tab-icon"></span>
+        </div>
+      </div>
       <span class="tab-label">{{ tab.label }}</span>
     </ng-container>
   </div>
