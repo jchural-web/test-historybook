@@ -4,8 +4,6 @@ const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-docs',
-    '@storybook/addon-controls',
-    '@storybook/addon-actions',
     '@storybook/addon-onboarding',
   ],
   framework: {
@@ -16,7 +14,6 @@ const config: StorybookConfig = {
   },
   core: {
     disableTelemetry: true,
-    builder: '@storybook/builder-webpack5',
   },
   webpackFinal: async (config) => {
     return config;
