@@ -794,7 +794,7 @@
         },
         {
             "name": "BotonMaestroComponent",
-            "id": "component-BotonMaestroComponent-b68ee203b70dd4c8fe6e8e36a9f7c1b5f34821af57ccefb98c07bbb887c3058c71a86b312c7cd00e2591ad049e298944d8f77383ed35fbbc17e1a5c59836ddaa",
+            "id": "component-BotonMaestroComponent-9d25c9dd7e96f49aeb53a85d9619fbfdc41bc76d668c73685bf71dec3612f36d5904c076bb7578f02ff1d32e87ae2ababc83a3a20b2c3c9b51f1651bf9b9459e",
             "file": "src/app/components/boton-maestro/boton-maestro.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -813,12 +813,36 @@
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "bgColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "borderColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
                     "name": "disabled",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 29,
                     "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "hoverBgColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -848,6 +872,14 @@
                     "decorators": []
                 },
                 {
+                    "name": "textColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
                     "name": "variant",
                     "defaultValue": "'default'",
                     "deprecated": false,
@@ -863,7 +895,7 @@
                     "defaultValue": "new EventEmitter<MouseEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 31,
+                    "line": 35,
                     "type": "EventEmitter"
                 }
             ],
@@ -882,7 +914,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 35,
+                    "line": 39,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -912,11 +944,11 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport type ButtonVariant =\n  | 'default'\n  | 'outline'\n  | 'secondary'\n  | 'ghost'\n  | 'destructive'\n  | 'link'\n  | 'icono-circular'\n  | 'icono-cuadrado'\n  | 'ovalado'\n  | 'pagination';\n\n@Component({\n  selector: 'app-boton-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './boton-maestro.component.html',\n  styleUrls: ['./boton-maestro.component.css'],\n})\nexport class BotonMaestroComponent {\n  @Input() label: string = 'Default';\n  @Input() variant: ButtonVariant = 'default';\n  @Input() iconName?: string;\n  @Input() showIcon: boolean = false;\n  @Input() disabled: boolean = false;\n\n  @Output() clicked = new EventEmitter<MouseEvent>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onClick(event: MouseEvent): void {\n    if (!this.disabled) {\n      this.clicked.emit(event);\n    }\n  }\n\n  get buttonClass(): string {\n    return `btn btn-${this.variant}`;\n  }\n\n  get sanitizedIconHtml(): SafeHtml {\n    if (!this.iconName) return '';\n    return this.sanitizer.bypassSecurityTrustHtml(this.iconName);\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport type ButtonVariant =\n  | 'default'\n  | 'outline'\n  | 'secondary'\n  | 'ghost'\n  | 'destructive'\n  | 'link'\n  | 'icono-circular'\n  | 'icono-cuadrado'\n  | 'ovalado'\n  | 'pagination';\n\n@Component({\n  selector: 'app-boton-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './boton-maestro.component.html',\n  styleUrls: ['./boton-maestro.component.css'],\n})\nexport class BotonMaestroComponent {\n  @Input() label: string = 'Default';\n  @Input() variant: ButtonVariant = 'default';\n  @Input() iconName?: string;\n  @Input() showIcon: boolean = false;\n  @Input() disabled: boolean = false;\n  @Input() bgColor?: string;\n  @Input() textColor?: string;\n  @Input() hoverBgColor?: string;\n  @Input() borderColor?: string;\n\n  @Output() clicked = new EventEmitter<MouseEvent>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onClick(event: MouseEvent): void {\n    if (!this.disabled) {\n      this.clicked.emit(event);\n    }\n  }\n\n  get buttonClass(): string {\n    return `btn btn-${this.variant}`;\n  }\n\n  get buttonStyle(): { [key: string]: string } {\n    const styles: { [key: string]: string } = {};\n    if (this.bgColor) styles['background-color'] = this.bgColor;\n    if (this.textColor) styles['color'] = this.textColor;\n    if (this.borderColor) styles['border-color'] = this.borderColor;\n    return styles;\n  }\n\n  get sanitizedIconHtml(): SafeHtml {\n    if (!this.iconName) return '';\n    return this.sanitizer.bypassSecurityTrustHtml(this.iconName);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* Base button styles */\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  line-height: normal;\n  letter-spacing: -0.26px;\n  border: none;\n  outline: none;\n  cursor: pointer;\n  transition: all 0.15s ease;\n  text-decoration: none;\n}\n\n.btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.btn-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n\n.btn-label {\n  white-space: nowrap;\n}\n\n/* Default variant */\n.btn-default {\n  background: #6419E6;\n  color: #FFFFFF;\n  border-radius: 5px;\n  padding: 8px 10px;\n}\n\n.btn-default:hover:not(:disabled) {\n  background: #5011BF;\n  text-decoration: underline;\n}\n\n/* Outline variant */\n.btn-outline {\n  background: #FFFFFF;\n  color: #161616;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  padding: 9px 9px;\n}\n\n.btn-outline:hover:not(:disabled) {\n  background: #E5E7EB;\n}\n\n/* Secondary variant */\n.btn-secondary {\n  background: #FFFFFF;\n  color: #161616;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  padding: 9px 10px;\n}\n\n.btn-secondary:hover:not(:disabled) {\n  background: #E5E7EB;\n}\n\n/* Ghost variant */\n.btn-ghost {\n  background: transparent;\n  color: #161616;\n  border: none;\n  padding: 9px 12px;\n}\n\n.btn-ghost:hover:not(:disabled) {\n  background: #8F5AF8;\n  color: #FFFFFF;\n  border: 1px solid #8F5AF8;\n  border-radius: 5px;\n}\n\n/* Destructive variant */\n.btn-destructive {\n  background: #FF0000;\n  color: #FFFFFF;\n  border-radius: 5px;\n  padding: 9px 8px;\n}\n\n.btn-destructive:hover:not(:disabled) {\n  background: #E70000;\n}\n\n/* Link variant */\n.btn-link {\n  background: transparent;\n  color: #161616;\n  border: none;\n  padding: 0;\n}\n\n.btn-link:hover:not(:disabled) {\n  text-decoration: underline;\n}\n\n/* Icono circular variant (botón redondo) */\n.btn-icono-circular {\n  background: #6419E6;\n  color: #FFFFFF;\n  border-radius: 50%;\n  width: 35px;\n  height: 34px;\n  padding: 0;\n}\n\n.btn-icono-circular:hover:not(:disabled) {\n  background: #5011BF;\n}\n\n/* Icono cuadrado variant (botón cuadrado con icono) */\n.btn-icono-cuadrado {\n  background: #6419E6;\n  color: #FFFFFF;\n  border-radius: 5px;\n  width: 35px;\n  height: 34px;\n  padding: 0;\n}\n\n.btn-icono-cuadrado:hover:not(:disabled) {\n  background: #5011BF;\n}\n\n/* Ovalado variant (pill button) */\n.btn-ovalado {\n  background: #6419E6;\n  color: #FFFFFF;\n  border-radius: 17px;\n  padding: 3px 13px;\n}\n\n.btn-ovalado:hover:not(:disabled) {\n  background: #5011BF;\n}\n\n/* Pagination variant */\n.btn-pagination {\n  background: #FFFFFF;\n  color: #161616;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  padding: 9px 14px;\n}\n\n.btn-pagination:hover:not(:disabled) {\n  background: #E5E7EB;\n}\n",
+                    "data": "/* Base button styles */\n.btn {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  line-height: normal;\n  letter-spacing: -0.26px;\n  border: none;\n  outline: none;\n  cursor: pointer;\n  transition: all 0.15s ease;\n  text-decoration: none;\n}\n\n.btn:disabled {\n  opacity: 0.5;\n  cursor: not-allowed;\n}\n\n.btn-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n\n.btn-label {\n  white-space: nowrap;\n}\n\n/* Default variant */\n.btn-default {\n  background: #6419E6;\n  color: #FFFFFF;\n  border-radius: 5px;\n  padding: 8px 10px;\n}\n\n.btn-default:hover:not(:disabled) {\n  background: #5011BF;\n  text-decoration: underline;\n}\n\n/* Outline variant */\n.btn-outline {\n  background: #FFFFFF;\n  color: #161616;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  padding: 9px 9px;\n}\n\n.btn-outline:hover:not(:disabled) {\n  background: #E5E7EB;\n}\n\n/* Secondary variant */\n.btn-secondary {\n  background: #FFFFFF;\n  color: #161616;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  padding: 9px 10px;\n}\n\n.btn-secondary:hover:not(:disabled) {\n  background: #E5E7EB;\n}\n\n/* Ghost variant */\n.btn-ghost {\n  background: transparent;\n  color: #161616;\n  border: none;\n  padding: 9px 12px;\n}\n\n.btn-ghost:hover:not(:disabled) {\n  background: #8F5AF8;\n  color: #FFFFFF;\n  border: 1px solid #8F5AF8;\n  border-radius: 5px;\n}\n\n/* Destructive variant */\n.btn-destructive {\n  background: #FF0000;\n  color: #FFFFFF;\n  border-radius: 5px;\n  padding: 9px 8px;\n}\n\n.btn-destructive:hover:not(:disabled) {\n  background: #E70000;\n}\n\n/* Link variant */\n.btn-link {\n  background: transparent;\n  color: #2563EB;\n  border: none;\n  padding: 0;\n}\n\n.btn-link:hover:not(:disabled) {\n  text-decoration: underline;\n}\n\n/* Icono circular variant (botón redondo) */\n.btn-icono-circular {\n  background: #6419E6;\n  color: #FFFFFF;\n  border-radius: 50%;\n  width: 35px;\n  height: 34px;\n  padding: 0;\n}\n\n.btn-icono-circular:hover:not(:disabled) {\n  background: #5011BF;\n}\n\n/* Icono cuadrado variant (botón cuadrado con icono) */\n.btn-icono-cuadrado {\n  background: #6419E6;\n  color: #FFFFFF;\n  border-radius: 5px;\n  width: 35px;\n  height: 34px;\n  padding: 0;\n}\n\n.btn-icono-cuadrado:hover:not(:disabled) {\n  background: #5011BF;\n}\n\n/* Ovalado variant (pill button) */\n.btn-ovalado {\n  background: #6419E6;\n  color: #FFFFFF;\n  border-radius: 17px;\n  padding: 3px 13px;\n}\n\n.btn-ovalado:hover:not(:disabled) {\n  background: #5011BF;\n}\n\n/* Pagination variant */\n.btn-pagination {\n  background: #FFFFFF;\n  color: #161616;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  padding: 9px 14px;\n}\n\n.btn-pagination:hover:not(:disabled) {\n  background: #E5E7EB;\n}\n",
                     "styleUrl": "./boton-maestro.component.css"
                 }
             ],
@@ -934,7 +966,7 @@
                         "deprecationMessage": ""
                     }
                 ],
-                "line": 31,
+                "line": 35,
                 "jsdoctags": [
                     {
                         "name": "sanitizer",
@@ -955,7 +987,16 @@
                         "name": "buttonClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 41
+                        "line": 45
+                    }
+                },
+                "buttonStyle": {
+                    "name": "buttonStyle",
+                    "getSignature": {
+                        "name": "buttonStyle",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 49
                     }
                 },
                 "sanitizedIconHtml": {
@@ -964,11 +1005,11 @@
                         "name": "sanitizedIconHtml",
                         "type": "unknown",
                         "returnType": "SafeHtml",
-                        "line": 45
+                        "line": 57
                     }
                 }
             },
-            "templateData": "<button\n  [class]=\"buttonClass\"\n  [disabled]=\"disabled\"\n  (click)=\"onClick($event)\"\n  type=\"button\"\n>\n  <span *ngIf=\"showIcon && iconName\" [innerHTML]=\"sanitizedIconHtml\" class=\"btn-icon\"></span>\n  <span *ngIf=\"label && variant !== 'icono-circular' && variant !== 'icono-cuadrado'\" class=\"btn-label\">{{ label }}</span>\n</button>\n"
+            "templateData": "<button\n  [class]=\"buttonClass\"\n  [ngStyle]=\"buttonStyle\"\n  [disabled]=\"disabled\"\n  (click)=\"onClick($event)\"\n  type=\"button\"\n>\n  <span *ngIf=\"showIcon && iconName\" [innerHTML]=\"sanitizedIconHtml\" class=\"btn-icon\"></span>\n  <span *ngIf=\"label && variant !== 'icono-circular' && variant !== 'icono-cuadrado'\" class=\"btn-label\">{{ label }}</span>\n</button>\n"
         },
         {
             "name": "CrmPageComponent",
@@ -3071,7 +3112,7 @@
                 "linktype": "component",
                 "name": "BotonMaestroComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/9",
+                "coverageCount": "0/13",
                 "status": "low"
             },
             {
