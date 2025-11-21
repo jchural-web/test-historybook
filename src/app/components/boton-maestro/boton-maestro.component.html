@@ -4,6 +4,6 @@
   (click)="onClick($event)"
   type="button"
 >
-  <span *ngIf="showIcon && iconName" [innerHTML]="iconName" class="btn-icon"></span>
+  <span *ngIf="showIcon && iconName" [innerHTML]="sanitizedIconHtml" class="btn-icon"></span>
   <span *ngIf="label && variant !== 'icono-circular' && variant !== 'icono-cuadrado'" class="btn-label">{{ label }}</span>
 </button>
