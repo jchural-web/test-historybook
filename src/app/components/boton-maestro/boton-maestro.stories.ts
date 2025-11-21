@@ -482,9 +482,9 @@ export const TodosLosBotones: Story = {
 
           <!-- Pagination Group con selección -->
           <div style="display: flex; gap: 0; align-items: center;">
-            <app-boton-maestro 
-              variant="pagination" 
-              [iconName]="arrowLeftIcon" 
+            <app-boton-maestro
+              variant="pagination"
+              [iconName]="arrowLeftIcon"
               [showIcon]="true"
               style="border-radius: 5px 0 0 5px;">
             </app-boton-maestro>
@@ -493,11 +493,106 @@ export const TodosLosBotones: Story = {
             </div>
             <app-boton-maestro variant="pagination" label="Group"></app-boton-maestro>
             <app-boton-maestro variant="pagination" label="Group"></app-boton-maestro>
-            <app-boton-maestro 
-              variant="pagination" 
-              [iconName]="ellipsisIcon" 
+            <app-boton-maestro
+              variant="pagination"
+              [iconName]="ellipsisIcon"
               [showIcon]="true">
             </app-boton-maestro>
+          </div>
+
+          <!-- Disabled States -->
+          <div style="margin-top: 32px; border-top: 2px solid #e4e4e7; padding-top: 24px;">
+            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 16px; font-family: Inter, sans-serif;">
+              Estados Deshabilitados
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <!-- Default Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="default" label="Default" [disabled]="true"></app-boton-maestro>
+              </div>
+
+              <!-- Outline Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="outline" label="Outline" [disabled]="true"></app-boton-maestro>
+              </div>
+
+              <!-- Secondary Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="secondary" label="Secondary" [disabled]="true"></app-boton-maestro>
+              </div>
+
+              <!-- Ghost Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="ghost" label="Ghost" [disabled]="true"></app-boton-maestro>
+              </div>
+
+              <!-- Destructive Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="destructive" label="Destructive" [disabled]="true"></app-boton-maestro>
+              </div>
+
+              <!-- Link Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="link" label="Link" [disabled]="true"></app-boton-maestro>
+              </div>
+
+              <!-- Icono Cuadrado Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro
+                  variant="icono-cuadrado"
+                  [iconName]="circlePlayIcon"
+                  [showIcon]="true"
+                  [disabled]="true">
+                </app-boton-maestro>
+              </div>
+
+              <!-- Icono Circular Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro
+                  variant="icono-circular"
+                  [iconName]="circlePlaySmallIcon"
+                  [showIcon]="true"
+                  [disabled]="true">
+                </app-boton-maestro>
+              </div>
+
+              <!-- Ovalado Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="ovalado" label="Ovalado" [disabled]="true"></app-boton-maestro>
+              </div>
+
+              <!-- Pagination Disabled -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="pagination" label="Group" [disabled]="true"></app-boton-maestro>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom Colors Examples -->
+          <div style="margin-top: 32px; border-top: 2px solid #e4e4e7; padding-top: 24px;">
+            <h3 style="font-size: 16px; font-weight: bold; margin-bottom: 16px; font-family: Inter, sans-serif;">
+              Botones con Colores Personalizados
+            </h3>
+
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+              <!-- Custom Color Default -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="default" label="Custom Blue" bgColor="#1e40af"></app-boton-maestro>
+                <app-boton-maestro variant="default" label="Custom Green" bgColor="#15803d"></app-boton-maestro>
+                <app-boton-maestro variant="default" label="Custom Orange" bgColor="#ea580c"></app-boton-maestro>
+              </div>
+
+              <!-- Custom Color Outline -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="outline" label="Custom Outline" borderColor="#dc2626" textColor="#dc2626"></app-boton-maestro>
+              </div>
+
+              <!-- Custom Color Link -->
+              <div style="display: flex; gap: 16px; align-items: center;">
+                <app-boton-maestro variant="link" label="Green Link" textColor="#059669"></app-boton-maestro>
+              </div>
+            </div>
           </div>
         </div>
       </div>
