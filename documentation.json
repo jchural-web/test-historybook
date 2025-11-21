@@ -794,7 +794,7 @@
         },
         {
             "name": "BotonMaestroComponent",
-            "id": "component-BotonMaestroComponent-c89e43af3f5c18f3e79b03e940dbc807e0d18e088bc9bfdb0a3d1a89a2ca18ce46ae729c82a3ef627aaf456b9c17e748bf0cc6c3da01fe1a9c29de1f09eb2002",
+            "id": "component-BotonMaestroComponent-b68ee203b70dd4c8fe6e8e36a9f7c1b5f34821af57ccefb98c07bbb887c3058c71a86b312c7cd00e2591ad049e298944d8f77383ed35fbbc17e1a5c59836ddaa",
             "file": "src/app/components/boton-maestro/boton-maestro.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -817,7 +817,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 28,
+                    "line": 29,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -825,7 +825,7 @@
                     "name": "iconName",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 26,
+                    "line": 27,
                     "type": "string",
                     "decorators": []
                 },
@@ -834,7 +834,7 @@
                     "defaultValue": "'Default'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 24,
+                    "line": 25,
                     "type": "string",
                     "decorators": []
                 },
@@ -843,7 +843,7 @@
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 27,
+                    "line": 28,
                     "type": "boolean",
                     "decorators": []
                 },
@@ -852,7 +852,7 @@
                     "defaultValue": "'default'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 25,
+                    "line": 26,
                     "type": "ButtonVariant",
                     "decorators": []
                 }
@@ -863,7 +863,7 @@
                     "defaultValue": "new EventEmitter<MouseEvent>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 30,
+                    "line": 31,
                     "type": "EventEmitter"
                 }
             ],
@@ -882,7 +882,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 32,
+                    "line": 35,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -912,7 +912,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\nexport type ButtonVariant =\n  | 'default'\n  | 'outline'\n  | 'secondary'\n  | 'ghost'\n  | 'destructive'\n  | 'link'\n  | 'icono-circular'\n  | 'icono-cuadrado'\n  | 'ovalado'\n  | 'pagination';\n\n@Component({\n  selector: 'app-boton-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './boton-maestro.component.html',\n  styleUrls: ['./boton-maestro.component.css'],\n})\nexport class BotonMaestroComponent {\n  @Input() label: string = 'Default';\n  @Input() variant: ButtonVariant = 'default';\n  @Input() iconName?: string;\n  @Input() showIcon: boolean = false;\n  @Input() disabled: boolean = false;\n\n  @Output() clicked = new EventEmitter<MouseEvent>();\n\n  onClick(event: MouseEvent): void {\n    if (!this.disabled) {\n      this.clicked.emit(event);\n    }\n  }\n\n  get buttonClass(): string {\n    return `btn btn-${this.variant}`;\n  }\n}\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport type ButtonVariant =\n  | 'default'\n  | 'outline'\n  | 'secondary'\n  | 'ghost'\n  | 'destructive'\n  | 'link'\n  | 'icono-circular'\n  | 'icono-cuadrado'\n  | 'ovalado'\n  | 'pagination';\n\n@Component({\n  selector: 'app-boton-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './boton-maestro.component.html',\n  styleUrls: ['./boton-maestro.component.css'],\n})\nexport class BotonMaestroComponent {\n  @Input() label: string = 'Default';\n  @Input() variant: ButtonVariant = 'default';\n  @Input() iconName?: string;\n  @Input() showIcon: boolean = false;\n  @Input() disabled: boolean = false;\n\n  @Output() clicked = new EventEmitter<MouseEvent>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onClick(event: MouseEvent): void {\n    if (!this.disabled) {\n      this.clicked.emit(event);\n    }\n  }\n\n  get buttonClass(): string {\n    return `btn btn-${this.variant}`;\n  }\n\n  get sanitizedIconHtml(): SafeHtml {\n    if (!this.iconName) return '';\n    return this.sanitizer.bypassSecurityTrustHtml(this.iconName);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -921,6 +921,32 @@
                 }
             ],
             "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 31,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
             "extends": [],
             "accessors": {
                 "buttonClass": {
@@ -929,11 +955,20 @@
                         "name": "buttonClass",
                         "type": "string",
                         "returnType": "string",
-                        "line": 38
+                        "line": 41
+                    }
+                },
+                "sanitizedIconHtml": {
+                    "name": "sanitizedIconHtml",
+                    "getSignature": {
+                        "name": "sanitizedIconHtml",
+                        "type": "unknown",
+                        "returnType": "SafeHtml",
+                        "line": 45
                     }
                 }
             },
-            "templateData": "<button\n  [class]=\"buttonClass\"\n  [disabled]=\"disabled\"\n  (click)=\"onClick($event)\"\n  type=\"button\"\n>\n  <span *ngIf=\"showIcon && iconName\" [innerHTML]=\"iconName\" class=\"btn-icon\"></span>\n  <span *ngIf=\"label && variant !== 'icono-circular' && variant !== 'icono-cuadrado'\" class=\"btn-label\">{{ label }}</span>\n</button>\n"
+            "templateData": "<button\n  [class]=\"buttonClass\"\n  [disabled]=\"disabled\"\n  (click)=\"onClick($event)\"\n  type=\"button\"\n>\n  <span *ngIf=\"showIcon && iconName\" [innerHTML]=\"sanitizedIconHtml\" class=\"btn-icon\"></span>\n  <span *ngIf=\"label && variant !== 'icono-circular' && variant !== 'icono-cuadrado'\" class=\"btn-label\">{{ label }}</span>\n</button>\n"
         },
         {
             "name": "CrmPageComponent",
@@ -3036,7 +3071,7 @@
                 "linktype": "component",
                 "name": "BotonMaestroComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/8",
+                "coverageCount": "0/9",
                 "status": "low"
             },
             {
