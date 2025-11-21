@@ -217,6 +217,101 @@
             "extends": []
         },
         {
+            "name": "TabMaestra",
+            "id": "interface-TabMaestra-3ba20e45fa34a1f979fb2ddf5c80e877c324ff970984d4cde88b42a4d2bbb5ba3bbac211941f7de5ebec303433b69ab753f215cea46d43a484add181157e8be6",
+            "file": "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport type TabTipo = 'rectangular' | 'cuadrada-icono' | 'barra-superior';\n\nexport interface TabMaestra {\n  id: string;\n  label: string;\n  tipo: TabTipo;\n  showCount?: boolean;\n  count?: number;\n  iconName?: string;\n  color?: 'blue' | 'green' | 'orange' | 'gray';\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-tabs-navegacion-maestras',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './tabs-navegacion-maestras.component.html',\n  styleUrls: ['./tabs-navegacion-maestras.component.css'],\n})\nexport class TabsNavegacionMaestrasComponent {\n  @Input() tabs: TabMaestra[] = [];\n  @Input() activeTabId?: string;\n\n  @Output() tabChange = new EventEmitter<string>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onTabClick(tab: TabMaestra): void {\n    if (!tab.disabled && tab.id !== this.activeTabId) {\n      this.tabChange.emit(tab.id);\n    }\n  }\n\n  isActive(tabId: string): boolean {\n    return this.activeTabId === tabId;\n  }\n\n  getTabClasses(tab: TabMaestra): string {\n    const classes = ['tab', `tab-${tab.tipo}`];\n    \n    if (this.isActive(tab.id)) {\n      classes.push('tab-selected');\n    } else {\n      classes.push('tab-unselected');\n    }\n    \n    if (tab.disabled) {\n      classes.push('tab-disabled');\n    }\n    \n    if (tab.color) {\n      classes.push(`tab-color-${tab.color}`);\n    } else {\n      classes.push('tab-color-blue');\n    }\n    \n    return classes.join(' ');\n  }\n\n  getContainerClasses(): string {\n    if (this.tabs.length === 0) return 'tabs-container';\n    \n    const firstTab = this.tabs[0];\n    return `tabs-container tabs-container-${firstTab.tipo}`;\n  }\n\n  getSanitizedIcon(iconName?: string): SafeHtml {\n    if (!iconName) return '';\n    return this.sanitizer.bypassSecurityTrustHtml(this.getIconSvg(iconName));\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      'speech': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M2.25 2.8125C2.25 2.60516 2.33231 2.40628 2.47882 2.25976C2.62534 2.11325 2.82422 2.03094 3.03156 2.03094H14.9684C15.1758 2.03094 15.3747 2.11325 15.5212 2.25976C15.6677 2.40628 15.75 2.60516 15.75 2.8125V12.4688C15.75 12.6761 15.6677 12.875 15.5212 13.0215C15.3747 13.168 15.1758 13.2503 14.9684 13.2503H10.2187L6.8625 15.2878C6.77933 15.3389 6.68396 15.3669 6.58618 15.369C6.4884 15.3711 6.39194 15.3472 6.30663 15.2997C6.22132 15.2523 6.15004 15.1829 6.1003 15.0985C6.05055 15.0141 6.02407 14.9177 6.02344 14.8194V13.2503H3.03156C2.82422 13.2503 2.62534 13.168 2.47882 13.0215C2.33231 12.875 2.25 12.6761 2.25 12.4688V2.8125ZM5.625 6.75C5.625 6.54289 5.70743 6.34434 5.85484 6.19684C6.00226 6.04933 6.20109 5.96719 6.40781 5.96719H11.5922C11.7989 5.96719 11.9977 6.04933 12.1452 6.19684C12.2926 6.34434 12.375 6.54289 12.375 6.75C12.375 6.95711 12.2926 7.15566 12.1452 7.30316C11.9977 7.45067 11.7989 7.53281 11.5922 7.53281H6.40781C6.20109 7.53281 6.00226 7.45067 5.85484 7.30316C5.70743 7.15566 5.625 6.95711 5.625 6.75ZM6.40781 9.09844C6.20109 9.09844 6.00226 9.18057 5.85484 9.32808C5.70743 9.47558 5.625 9.67413 5.625 9.88125C5.625 10.0884 5.70743 10.2869 5.85484 10.4344C6.00226 10.5819 6.20109 10.6641 6.40781 10.6641H9.75469C9.96141 10.6641 10.1602 10.5819 10.3077 10.4344C10.4551 10.2869 10.5375 10.0884 10.5375 9.88125C10.5375 9.67413 10.4551 9.47558 10.3077 9.32808C10.1602 9.18057 9.96141 9.09844 9.75469 9.09844H6.40781Z\" fill=\"currentColor\"/>\n</svg>`,\n      'edit': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M14.0625 2.4375L15.5625 3.9375L5.0625 14.4375H3.5625V12.9375L14.0625 2.4375ZM14.0625 0.5625C13.7813 0.5625 13.5 0.65625 13.2813 0.875L11.9063 2.25L15.75 6.09375L17.125 4.71875C17.5625 4.28125 17.5625 3.5625 17.125 3.125L14.875 0.875C14.6563 0.65625 14.375 0.5625 14.0625 0.5625ZM11 3.15625L0.5625 13.5938V17.4375H4.40625L14.8438 7L11 3.15625Z\" fill=\"currentColor\"/>\n</svg>`,\n      'calendar': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M14.625 2.25H13.5V1.125C13.5 0.71875 13.1563 0.375 12.75 0.375C12.3437 0.375 12 0.71875 12 1.125V2.25H6V1.125C6 0.71875 5.65625 0.375 5.25 0.375C4.84375 0.375 4.5 0.71875 4.5 1.125V2.25H3.375C2.13281 2.25 1.125 3.25781 1.125 4.5V15.375C1.125 16.6172 2.13281 17.625 3.375 17.625H14.625C15.8672 17.625 16.875 16.6172 16.875 15.375V4.5C16.875 3.25781 15.8672 2.25 14.625 2.25ZM15.375 15.375C15.375 15.7891 15.0391 16.125 14.625 16.125H3.375C2.96094 16.125 2.625 15.7891 2.625 15.375V6.75H15.375V15.375Z\" fill=\"currentColor\"/>\n</svg>`,\n      'info': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 0.5625C4.44844 0.5625 0.5625 4.44844 0.5625 9C0.5625 13.5516 4.44844 17.4375 9 17.4375C13.5516 17.4375 17.4375 13.5516 17.4375 9C17.4375 4.44844 13.5516 0.5625 9 0.5625ZM9.75 13.5H8.25V8.25H9.75V13.5ZM9.75 6.75H8.25V5.25H9.75V6.75Z\" fill=\"currentColor\"/>\n</svg>`,\n      'file': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.5 0.5625H3.375C2.54766 0.5625 1.875 1.24219 1.875 2.0625V15.9375C1.875 16.7648 2.54766 17.4375 3.375 17.4375H14.625C15.4523 17.4375 16.125 16.7648 16.125 15.9375V6.1875L10.5 0.5625ZM14.625 15.9375H3.375V2.0625H9.75V6.9375H14.625V15.9375Z\" fill=\"currentColor\"/>\n</svg>`,\n      'check-circle': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_check_circle)\">\n<path d=\"M7.71784 0.847783C9.58188 0.554112 11.4901 0.908875 13.1246 1.85193C13.4833 2.05888 13.6067 2.51713 13.4 2.87586C13.193 3.23463 12.7341 3.35753 12.3753 3.15052C11.0381 2.37896 9.47654 2.08925 7.95148 2.32947C6.42639 2.56975 5.02949 3.32573 3.9942 4.47107C2.95893 5.61647 2.34747 7.08235 2.26203 8.62391C2.17661 10.1655 2.6223 11.6902 3.52472 12.943C4.42713 14.1957 5.73205 15.1014 7.22125 15.5087C8.71046 15.9159 10.2945 15.8004 11.7088 15.1813C13.1232 14.5621 14.2827 13.4763 14.9937 12.1058C15.7047 10.7354 15.9238 9.16258 15.6155 7.64978C15.5329 7.244 15.795 6.84783 16.2007 6.76502C16.6066 6.68232 17.0028 6.94438 17.0855 7.35022C17.4623 9.19929 17.1935 11.1215 16.3245 12.7965C15.4555 14.4716 14.0388 15.7986 12.3101 16.5553C10.5816 17.312 8.64582 17.4529 6.82575 16.9552C5.00556 16.4574 3.41039 15.3508 2.30744 13.8197C1.2045 12.2886 0.659852 10.4253 0.764223 8.54114C0.86862 6.65696 1.61629 4.86542 2.88165 3.46546C4.147 2.06559 5.85383 1.14145 7.71784 0.847783ZM15.97 2.46936C16.2629 2.17681 16.7378 2.17661 17.0306 2.46936C17.3235 2.76226 17.3235 3.23775 17.0306 3.53064L9.53058 11.0306C9.2378 11.3234 8.76294 11.3232 8.47003 11.0306L6.22003 8.78064C5.92714 8.48775 5.92714 8.01226 6.22003 7.71936C6.51294 7.42681 6.98779 7.42661 7.28058 7.71936L9.00031 9.43909L15.97 2.46936Z\" fill=\"currentColor\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_check_circle\">\n<rect width=\"18\" height=\"18\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n    };\n\n    return iconMap[iconName] || iconMap['info'];\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "color",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "\"blue\" | \"green\" | \"orange\" | \"gray\"",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "count",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "disabled",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "iconName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "showCount",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "tipo",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "TabTipo",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "User",
             "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
             "file": "src/stories/user.ts",
@@ -1489,6 +1584,161 @@
             "templateData": "<header class=\"header-bar\">\n  <div class=\"header-left\">\n    <button class=\"menu-button\" aria-label=\"Menu\" (click)=\"onMenuClick()\">\n      <svg\n        width=\"19\"\n        height=\"19\"\n        viewBox=\"0 0 19 19\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path\n          d=\"M16.625 14.25C17.0622 14.25 17.4166 14.6044 17.4166 15.0416C17.4166 15.4789 17.0622 15.8333 16.625 15.8333H2.37498C1.93775 15.8333 1.58331 15.4789 1.58331 15.0416C1.58331 14.6044 1.93775 14.25 2.37498 14.25H16.625ZM16.625 8.70829C17.0622 8.70829 17.4166 9.06273 17.4166 9.49996C17.4166 9.93718 17.0622 10.2916 16.625 10.2916H2.37498C1.93775 10.2916 1.58331 9.93718 1.58331 9.49996C1.58331 9.06273 1.93775 8.70829 2.37498 8.70829H16.625ZM16.625 3.16663C17.0622 3.16663 17.4166 3.52107 17.4166 3.95829C17.4166 4.39552 17.0622 4.74996 16.625 4.74996H2.37498C1.93775 4.74996 1.58331 4.39552 1.58331 3.95829C1.58331 3.52107 1.93775 3.16663 2.37498 3.16663H16.625Z\"\n          fill=\"white\"\n        />\n      </svg>\n    </button>\n    <h1 class=\"app-name\">{{ appName }}</h1>\n  </div>\n\n  <div class=\"header-right\">\n    <button\n      *ngFor=\"let action of actions\"\n      class=\"action-button\"\n      (click)=\"handleActionClick(action, $event)\"\n    >\n      <span *ngIf=\"action.icon\" class=\"action-icon\" [innerHTML]=\"getSafeHtml(action.icon)\"></span>\n      <span class=\"action-label\">{{ action.label }}</span>\n    </button>\n\n    <div class=\"username\">{{ username }}</div>\n  </div>\n</header>\n"
         },
         {
+            "name": "IconSlotComponent",
+            "id": "component-IconSlotComponent-85d926279aa096e6f8b7adcd80d4a77e7ee582651b38e0164721372aa83a2c2c2f2cf65a2cd3062d51b830498b30276cb579d048cc3a1c4a908a6b2af30a0f49",
+            "file": "src/app/components/icon-slot/icon-slot.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-icon-slot",
+            "styleUrls": [
+                "./icon-slot.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./icon-slot.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "defaultValue": "'#E5F0FF'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "iconColor",
+                    "defaultValue": "'#1D4ED8'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "iconName",
+                    "defaultValue": "'check-circle'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'md'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "\"sm\" | \"md\" | \"lg\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getIconSvg",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 35,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\n@Component({\n  selector: 'app-icon-slot',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './icon-slot.component.html',\n  styleUrls: ['./icon-slot.component.css'],\n})\nexport class IconSlotComponent {\n  @Input() iconName: string = 'check-circle';\n  @Input() backgroundColor: string = '#E5F0FF';\n  @Input() iconColor: string = '#1D4ED8';\n  @Input() size: 'sm' | 'md' | 'lg' = 'md';\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  get containerClass(): string {\n    return `icon-slot icon-slot-${this.size}`;\n  }\n\n  get containerStyle(): { [key: string]: string } {\n    return {\n      'background-color': this.backgroundColor,\n    };\n  }\n\n  get sanitizedIconHtml(): SafeHtml {\n    const iconSvg = this.getIconSvg();\n    return this.sanitizer.bypassSecurityTrustHtml(iconSvg);\n  }\n\n  private getIconSvg(): string {\n    const iconMap: { [key: string]: string } = {\n      'check-circle': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_check)\">\n<path d=\"M6.00273 0.659404C7.45254 0.430994 8.9367 0.70692 10.208 1.44041C10.4869 1.60137 10.583 1.95778 10.4222 2.2368C10.2612 2.51584 9.90425 2.61143 9.62521 2.45042C8.58513 1.85032 7.3706 1.62499 6.18445 1.81183C4.99827 1.99871 3.91179 2.5867 3.10657 3.47752C2.30136 4.36838 1.82577 5.50851 1.75932 6.7075C1.69288 7.90652 2.03953 9.09241 2.74142 10.0668C3.44329 11.0411 4.45823 11.7455 5.6165 12.0623C6.77477 12.3791 8.0068 12.2892 9.10681 11.8077C10.2069 11.3261 11.1087 10.4816 11.6617 9.41567C12.2147 8.34976 12.3851 7.12647 12.1454 5.94985C12.0811 5.63424 12.285 5.32611 12.6005 5.2617C12.9162 5.19738 13.2244 5.4012 13.2887 5.71686C13.5817 7.15502 13.3727 8.65004 12.6968 9.95286C12.0209 11.2557 10.919 12.2878 9.57451 12.8764C8.23008 13.4649 6.72449 13.5745 5.30888 13.1874C3.89318 12.8002 2.65249 11.9396 1.79464 10.7487C0.9368 9.55778 0.513184 8.10857 0.594361 6.64313C0.675559 5.17766 1.25708 3.78423 2.24125 2.69537C3.22541 1.60659 4.55295 0.887815 6.00273 0.659404ZM12.4211 1.92063C12.6489 1.69309 13.0183 1.69294 13.246 1.92063C13.4738 2.14844 13.4738 2.51827 13.246 2.74607L7.41264 8.57941C7.18492 8.80709 6.81559 8.80694 6.58777 8.57941L4.83777 6.82941C4.60996 6.6016 4.60996 6.23177 4.83777 6.00397C5.06559 5.77642 5.43492 5.77627 5.66264 6.00397L7.00021 7.34153L12.4211 1.92063Z\" fill=\"${this.iconColor}\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_check\">\n<rect width=\"14\" height=\"14\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n      'phone': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_phone)\">\n<path d=\"M4.66665 2.33334C4.66665 2.17863 4.60514 2.0303 4.49575 1.92091C4.4 1.82516 4.27443 1.76609 4.14085 1.75286L4.08331 1.75001H2.33331C2.1786 1.75001 2.03027 1.81151 1.92088 1.92091C1.81148 2.0303 1.74998 2.17863 1.74998 2.33334C1.74998 4.96341 2.79495 7.48557 4.65468 9.34531C6.51442 11.205 9.03658 12.25 11.6666 12.25C11.8214 12.25 11.9697 12.1885 12.0791 12.0791C12.1885 11.9697 12.25 11.8214 12.25 11.6667V9.91668C12.25 9.76197 12.1885 9.61364 12.0791 9.50424C11.9697 9.39485 11.8214 9.33334 11.6666 9.33334H9.91665C9.82609 9.33334 9.73674 9.35437 9.65574 9.39487C9.57474 9.43537 9.50443 9.49446 9.45009 9.5669L9.44724 9.57089L9.23989 9.84091C9.07932 10.0518 8.85219 10.2022 8.59503 10.2664C8.33785 10.3307 8.06633 10.3053 7.82542 10.1947C7.82091 10.1926 7.8162 10.1906 7.81175 10.1884C6.07581 9.33643 4.67089 7.93334 3.81671 6.1985L3.81557 6.19622C3.69754 5.95406 3.66694 5.6785 3.72898 5.41635C3.79108 5.15415 3.94208 4.92136 4.15623 4.75782L4.16022 4.75497L4.43308 4.5499C4.50553 4.49556 4.56462 4.42525 4.60512 4.34425C4.64562 4.26325 4.66665 4.1739 4.66665 4.08334V2.33334ZM5.83331 4.08334C5.83331 4.35502 5.77024 4.62306 5.64874 4.86606C5.52724 5.10906 5.35054 5.32056 5.1332 5.48357L4.86375 5.68466C5.60183 7.18295 6.81427 8.39515 8.31191 9.13396L8.51642 8.86679L8.58022 8.78704C8.73318 8.60608 8.92137 8.45753 9.13393 8.35125C9.37693 8.22975 9.64497 8.16668 9.91665 8.16668H11.6666C12.1308 8.16668 12.5758 8.35118 12.904 8.67937C13.2321 9.00756 13.4166 9.45255 13.4166 9.91668V11.6667C13.4166 12.1308 13.2321 12.5758 12.904 12.904C12.5758 13.2322 12.1308 13.4167 11.6666 13.4167C8.72716 13.4167 5.90834 12.2487 3.82981 10.1702C1.75129 8.09165 0.583313 5.27283 0.583313 2.33334C0.583313 1.86921 0.76782 1.42423 1.09601 1.09604C1.4242 0.76785 1.86918 0.583344 2.33331 0.583344H4.08331C4.54744 0.583344 4.99243 0.76785 5.32062 1.09604C5.64881 1.42423 5.83331 1.86921 5.83331 2.33334V4.08334Z\" fill=\"${this.iconColor}\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_phone\">\n<rect width=\"14\" height=\"14\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n      'user': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.5 12.25V11.0833C10.5 10.6192 10.3155 10.1742 9.98728 9.84602C9.70017 9.5589 9.32369 9.38169 8.92316 9.34187L8.74998 9.33332H5.24998C4.78585 9.33332 4.34086 9.51783 4.01267 9.84602C3.68449 10.1742 3.49998 10.6192 3.49998 11.0833V12.25C3.49998 12.5722 3.23881 12.8333 2.91665 12.8333C2.59448 12.8333 2.33331 12.5722 2.33331 12.25V11.0833C2.33331 10.3098 2.64082 9.56813 3.18781 9.02115C3.73479 8.47417 4.47643 8.16666 5.24998 8.16666H8.74998C9.52353 8.16666 10.2652 8.47417 10.8122 9.02115C11.3591 9.56813 11.6666 10.3098 11.6666 11.0833V12.25C11.6666 12.5722 11.4055 12.8333 11.0833 12.8333C10.7611 12.8333 10.5 12.5722 10.5 12.25ZM8.74998 4.08332C8.74998 3.11682 7.96648 2.33332 6.99998 2.33332C6.03348 2.33332 5.24998 3.11682 5.24998 4.08332C5.24998 5.04982 6.03348 5.83332 6.99998 5.83332C7.96648 5.83332 8.74998 5.04982 8.74998 4.08332ZM9.91665 4.08332C9.91665 5.69415 8.61081 6.99999 6.99998 6.99999C5.38915 6.99999 4.08331 5.69415 4.08331 4.08332C4.08331 2.47249 5.38915 1.16666 6.99998 1.16666C8.61081 1.16666 9.91665 2.47249 9.91665 4.08332Z\" fill=\"${this.iconColor}\"/>\n</svg>`,\n      'map-pin': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M11.0833 5.83334C11.0833 4.75038 10.6534 3.7115 9.88761 2.94573C9.16964 2.22776 8.21157 1.80515 7.20223 1.75514L7 1.75001C5.91703 1.75001 4.87816 2.17996 4.11239 2.94573C3.34661 3.7115 2.91667 4.75038 2.91667 5.83334C2.91667 7.09295 3.62646 8.45083 4.54875 9.66261C5.43997 10.8335 6.46307 11.7812 7 12.2472C7.53693 11.7812 8.56003 10.8335 9.45125 9.66261C10.3735 8.45083 11.0833 7.09295 11.0833 5.83334ZM8.16667 5.83334C8.16667 5.18901 7.64433 4.66668 7 4.66668C6.35567 4.66668 5.83333 5.18901 5.83333 5.83334C5.83333 6.47768 6.35567 7.00001 7 7.00001C7.64433 7.00001 8.16667 6.47768 8.16667 5.83334ZM9.33333 5.83334C9.33333 7.12201 8.28866 8.16668 7 8.16668C5.71134 8.16668 4.66667 7.12201 4.66667 5.83334C4.66667 4.54468 5.71134 3.50001 7 3.50001C8.28866 3.50001 9.33333 4.54468 9.33333 5.83334ZM12.25 5.83334C12.25 7.48632 11.3443 9.10174 10.3798 10.369C9.40188 11.6539 8.28927 12.6763 7.73201 13.1575C7.72208 13.1661 7.71174 13.1747 7.70125 13.1825C7.52441 13.3155 7.31381 13.3949 7.09456 13.4127L7 13.4167C6.74709 13.4167 6.50089 13.3345 6.29875 13.1825C6.28826 13.1747 6.27792 13.1661 6.26798 13.1575C5.71073 12.6763 4.59811 11.6539 3.6202 10.369C2.6557 9.10174 1.75 7.48632 1.75 5.83334C1.75 4.44096 2.30295 3.10543 3.28752 2.12086C4.27208 1.13629 5.60761 0.583344 7 0.583344C8.39239 0.583344 9.72792 1.13629 10.7125 2.12086C11.697 3.10543 12.25 4.44096 12.25 5.83334Z\" fill=\"${this.iconColor}\"/>\n</svg>`,\n      'percent': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M11.0833 10.2083C11.0833 9.72508 10.6916 9.33333 10.2083 9.33333C9.72508 9.33333 9.33333 9.72508 9.33333 10.2083C9.33333 10.6916 9.72508 11.0833 10.2083 11.0833C10.6916 11.0833 11.0833 10.6916 11.0833 10.2083ZM10.6709 2.50423C10.8987 2.27643 11.268 2.27643 11.4958 2.50423C11.7236 2.73204 11.7236 3.1013 11.4958 3.3291L3.3291 11.4958C3.1013 11.7236 2.73204 11.7236 2.50423 11.4958C2.27643 11.268 2.27643 10.8987 2.50423 10.6709L10.6709 2.50423ZM4.66667 3.79167C4.66667 3.30842 4.27492 2.91667 3.79167 2.91667C3.30842 2.91667 2.91667 3.30842 2.91667 3.79167C2.91667 4.27492 3.30842 4.66667 3.79167 4.66667C4.27492 4.66667 4.66667 4.27492 4.66667 3.79167ZM12.25 10.2083C12.25 11.3359 11.3359 12.25 10.2083 12.25C9.08075 12.25 8.16667 11.3359 8.16667 10.2083C8.16667 9.08075 9.08075 8.16667 10.2083 8.16667C11.3359 8.16667 12.25 9.08075 12.25 10.2083ZM5.83333 3.79167C5.83333 4.91925 4.91925 5.83333 3.79167 5.83333C2.66409 5.83333 1.75 4.91925 1.75 3.79167C1.75 2.66409 2.66409 1.75 3.79167 1.75C4.91925 1.75 5.83333 2.66409 5.83333 3.79167Z\" fill=\"${this.iconColor}\"/>\n</svg>`,\n    };\n\n    return iconMap[this.iconName] || iconMap['check-circle'];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".icon-slot {\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n\n.icon-slot-sm {\n  width: 32px;\n  height: 32px;\n}\n\n.icon-slot-md {\n  width: 40px;\n  height: 40px;\n}\n\n.icon-slot-lg {\n  width: 48px;\n  height: 48px;\n}\n\n.icon-content {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  line-height: 0;\n}\n\n.icon-content svg {\n  display: block;\n}\n",
+                    "styleUrl": "./icon-slot.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 16,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "accessors": {
+                "containerClass": {
+                    "name": "containerClass",
+                    "getSignature": {
+                        "name": "containerClass",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 20
+                    }
+                },
+                "containerStyle": {
+                    "name": "containerStyle",
+                    "getSignature": {
+                        "name": "containerStyle",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 24
+                    }
+                },
+                "sanitizedIconHtml": {
+                    "name": "sanitizedIconHtml",
+                    "getSignature": {
+                        "name": "sanitizedIconHtml",
+                        "type": "unknown",
+                        "returnType": "SafeHtml",
+                        "line": 30
+                    }
+                }
+            },
+            "templateData": "<div \n  [class]=\"containerClass\" \n  [ngStyle]=\"containerStyle\">\n  <span [innerHTML]=\"sanitizedIconHtml\" class=\"icon-content\"></span>\n</div>\n"
+        },
+        {
             "name": "NavigationTabsComponent",
             "id": "component-NavigationTabsComponent-f3c9fc3c204f5e2d27d5a367ba6130d0399dc40acebf69d0ae442b8653ef398078097c061b0fd58e024ed73b9ff35b86c5f3768bb9e5eaae4d005713b5c60d0b",
             "file": "src/app/components/navigation-tabs/navigation-tabs.component.ts",
@@ -2542,6 +2792,264 @@
             "templateData": "<div class=\"pagination-footer\">\n  <!-- Left Zone: Page Input -->\n  <div class=\"pagination-left\">\n    <span class=\"label\">Página</span>\n    <input\n      type=\"number\"\n      class=\"page-input\"\n      [value]=\"currentPage\"\n      (change)=\"onPageInputChange($event)\"\n      min=\"1\"\n      [max]=\"totalPages\"\n    />\n    <span class=\"label\">de {{ totalPages }}</span>\n  </div>\n\n  <!-- Center Zone: Page Size Selector -->\n  <div class=\"pagination-center\">\n    <div class=\"page-size-selector\">\n      <button type=\"button\" class=\"page-size-button\" (click)=\"togglePageSizeDropdown()\">\n        <span>{{ pageSize }}</span>\n        <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M10.8081 5.18312C11.0522 4.93904 11.4478 4.93904 11.6919 5.18312C11.936 5.4272 11.936 5.82283 11.6919 6.06691L7.94191 9.81691C7.69783 10.061 7.3022 10.061 7.05812 9.81691L3.30812 6.06691C3.06404 5.82283 3.06404 5.4272 3.30812 5.18312C3.5522 4.93904 3.94783 4.93904 4.19191 5.18312L7.50001 8.49122L10.8081 5.18312Z\" fill=\"#848485\"/>\n        </svg>\n      </button>\n      <span class=\"label\">ítems por página</span>\n\n      <div class=\"dropdown-menu\" *ngIf=\"showPageSizeDropdown\">\n        <div\n          *ngFor=\"let option of pageSizeOptions\"\n          class=\"dropdown-item\"\n          [class.selected]=\"option === pageSize\"\n          (click)=\"selectPageSize(option)\"\n        >\n          <svg *ngIf=\"option === pageSize\" class=\"check-icon\" width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M12.0581 3.30812C12.3022 3.06404 12.6978 3.06404 12.9419 3.30812C13.186 3.5522 13.186 3.94783 12.9419 4.19191L6.06691 11.0669C5.82283 11.311 5.4272 11.311 5.18312 11.0669L2.05812 7.94191C1.81404 7.69783 1.81404 7.3022 2.05812 7.05812C2.3022 6.81404 2.69783 6.81404 2.94191 7.05812L5.62501 9.74122L12.0581 3.30812Z\" fill=\"white\"/>\n          </svg>\n          <span>{{ option }}</span>\n        </div>\n      </div>\n    </div>\n  </div>\n\n  <!-- Right Zone: Navigation Controls -->\n  <div class=\"pagination-right\">\n    <span class=\"label\">{{ startItem }} - {{ endItem }} de {{ totalItems }} ítems</span>\n    \n    <div class=\"navigation-buttons\">\n      <button\n        type=\"button\"\n        class=\"nav-button\"\n        (click)=\"goToFirstPage()\"\n        [disabled]=\"currentPage === 1\"\n      >\n        <svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M6.4331 3.93312C6.67718 3.68904 7.07282 3.68904 7.31689 3.93312C7.56097 4.1772 7.56097 4.57283 7.31689 4.81691L4.63379 7.50001L7.31689 10.1831C7.56097 10.4272 7.56097 10.8228 7.31689 11.0669C7.07282 11.311 6.67718 11.311 6.4331 11.0669L3.3081 7.94191C3.06403 7.69783 3.06403 7.3022 3.3081 7.05812L6.4331 3.93312ZM10.8081 3.93312C11.0522 3.68904 11.4478 3.68904 11.6919 3.93312C11.936 4.1772 11.936 4.57283 11.6919 4.81691L9.00879 7.50001L11.6919 10.1831C11.936 10.4272 11.936 10.8228 11.6919 11.0669C11.4478 11.311 11.0522 11.311 10.8081 11.0669L7.6831 7.94191C7.43903 7.69783 7.43903 7.3022 7.6831 7.05812L10.8081 3.93312Z\" fill=\"currentColor\"/>\n        </svg>\n      </button>\n\n      <button\n        type=\"button\"\n        class=\"nav-button\"\n        (click)=\"goToPreviousPage()\"\n        [disabled]=\"currentPage === 1\"\n      >\n        <svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M8.33756 3.08754C8.56537 2.85974 8.93463 2.85974 9.16243 3.08754C9.39024 3.31535 9.39024 3.68461 9.16243 3.91241L6.07487 6.99998L9.16243 10.0875C9.39024 10.3153 9.39024 10.6846 9.16243 10.9124C8.93463 11.1402 8.56537 11.1402 8.33756 10.9124L4.83756 7.41241C4.60976 7.18461 4.60976 6.81535 4.83756 6.58754L8.33756 3.08754Z\" fill=\"currentColor\"/>\n        </svg>\n      </button>\n\n      <button\n        type=\"button\"\n        class=\"nav-button\"\n        (click)=\"goToNextPage()\"\n        [disabled]=\"currentPage === totalPages\"\n      >\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M5.52864 3.52864C5.78899 3.26829 6.21099 3.26829 6.47134 3.52864L10.4713 7.52864C10.7317 7.78899 10.7317 8.211 10.4713 8.47134L6.47134 12.4713C6.21099 12.7317 5.78899 12.7317 5.52864 12.4713C5.26829 12.211 5.26829 11.789 5.52864 11.5286L9.05728 7.99999L5.52864 4.47134C5.26829 4.21099 5.26829 3.78899 5.52864 3.52864Z\" fill=\"currentColor\"/>\n        </svg>\n      </button>\n\n      <button\n        type=\"button\"\n        class=\"nav-button\"\n        (click)=\"goToLastPage()\"\n        [disabled]=\"currentPage === totalPages\"\n      >\n        <svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M3.52864 4.19532C3.78899 3.93497 4.21099 3.93497 4.47134 4.19532L7.80468 7.52866C8.06503 7.78901 8.06503 8.21102 7.80468 8.47136L4.47134 11.8047C4.21099 12.065 3.78899 12.065 3.52864 11.8047C3.26829 11.5443 3.26829 11.1223 3.52864 10.862L6.39062 8.00001L3.52864 5.13803C3.26829 4.87768 3.26829 4.45567 3.52864 4.19532ZM8.1953 4.19532C8.45565 3.93497 8.87766 3.93497 9.13801 4.19532L12.4713 7.52866C12.7317 7.78901 12.7317 8.21102 12.4713 8.47136L9.13801 11.8047C8.87766 12.065 8.45565 12.065 8.1953 11.8047C7.93495 11.5443 7.93495 11.1223 8.1953 10.862L11.0573 8.00001L8.1953 5.13803C7.93495 4.87768 7.93495 4.45567 8.1953 4.19532Z\" fill=\"currentColor\"/>\n        </svg>\n      </button>\n\n      <button type=\"button\" class=\"nav-button\" (click)=\"refresh()\">\n        <svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path d=\"M1.16666 12.25V9.33335C1.16666 9.01119 1.42782 8.75002 1.74999 8.75002H4.66666C4.98882 8.75002 5.24999 9.01119 5.24999 9.33335C5.24999 9.65552 4.98882 9.91669 4.66666 9.91669H3.15819L3.47379 10.2323L3.65494 10.3992C4.5787 11.2098 5.76665 11.6612 7.00113 11.6661C8.2384 11.6658 9.42514 11.175 10.3 10.3001C11.1752 9.4249 11.6667 8.2377 11.6667 7.00002C11.6667 6.67785 11.9278 6.41669 12.25 6.41669C12.5722 6.41669 12.8333 6.67785 12.8333 7.00002C12.8333 8.54712 12.2189 10.031 11.1249 11.1249C10.0309 12.2189 8.54709 12.8334 6.99999 12.8334H6.99771C5.48055 12.8276 4.02057 12.2722 2.88533 11.2759L2.65575 11.064L2.33332 10.7416V12.25C2.33332 12.5722 2.07216 12.8334 1.74999 12.8334C1.42782 12.8334 1.16666 12.5722 1.16666 12.25ZM1.16666 7.00002C1.16666 5.45292 1.78111 3.96906 2.87507 2.8751C3.96903 1.78114 5.45289 1.16669 6.99999 1.16669H7.00227L7.30476 1.17523C8.71259 1.24851 10.0551 1.79427 11.1147 2.72414L11.3442 2.93606L11.6667 3.25848V1.75002C11.6667 1.42785 11.9278 1.16669 12.25 1.16669C12.5722 1.16669 12.8333 1.42785 12.8333 1.75002V4.66669C12.8333 4.98885 12.5722 5.25002 12.25 5.25002H9.33332C9.01116 5.25002 8.74999 4.98885 8.74999 4.66669C8.74999 4.34452 9.01116 4.08335 9.33332 4.08335H10.8418L10.5262 3.76776L10.345 3.60085C9.42113 2.79011 8.23296 2.33812 6.99828 2.33335C5.76122 2.33381 4.57471 2.8252 3.69994 3.69997C2.82477 4.57514 2.33332 5.76234 2.33332 7.00002C2.33332 7.32219 2.07216 7.58335 1.74999 7.58335C1.42782 7.58335 1.16666 7.32219 1.16666 7.00002Z\" fill=\"currentColor\"/>\n        </svg>\n      </button>\n    </div>\n  </div>\n</div>\n"
         },
         {
+            "name": "TabsNavegacionMaestrasComponent",
+            "id": "component-TabsNavegacionMaestrasComponent-3ba20e45fa34a1f979fb2ddf5c80e877c324ff970984d4cde88b42a4d2bbb5ba3bbac211941f7de5ebec303433b69ab753f215cea46d43a484add181157e8be6",
+            "file": "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-tabs-navegacion-maestras",
+            "styleUrls": [
+                "./tabs-navegacion-maestras.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tabs-navegacion-maestras.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "activeTabId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "tabs",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "TabMaestra[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "tabChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getContainerClasses",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 65,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getIconSvg",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 77,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSanitizedIcon",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "SafeHtml",
+                    "typeParameters": [],
+                    "line": 72,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getTabClasses",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "TabMaestra",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "TabMaestra",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isActive",
+                    "args": [
+                        {
+                            "name": "tabId",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "tabId",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onTabClick",
+                    "args": [
+                        {
+                            "name": "tab",
+                            "type": "TabMaestra",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "tab",
+                            "type": "TabMaestra",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport type TabTipo = 'rectangular' | 'cuadrada-icono' | 'barra-superior';\n\nexport interface TabMaestra {\n  id: string;\n  label: string;\n  tipo: TabTipo;\n  showCount?: boolean;\n  count?: number;\n  iconName?: string;\n  color?: 'blue' | 'green' | 'orange' | 'gray';\n  disabled?: boolean;\n}\n\n@Component({\n  selector: 'app-tabs-navegacion-maestras',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './tabs-navegacion-maestras.component.html',\n  styleUrls: ['./tabs-navegacion-maestras.component.css'],\n})\nexport class TabsNavegacionMaestrasComponent {\n  @Input() tabs: TabMaestra[] = [];\n  @Input() activeTabId?: string;\n\n  @Output() tabChange = new EventEmitter<string>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onTabClick(tab: TabMaestra): void {\n    if (!tab.disabled && tab.id !== this.activeTabId) {\n      this.tabChange.emit(tab.id);\n    }\n  }\n\n  isActive(tabId: string): boolean {\n    return this.activeTabId === tabId;\n  }\n\n  getTabClasses(tab: TabMaestra): string {\n    const classes = ['tab', `tab-${tab.tipo}`];\n    \n    if (this.isActive(tab.id)) {\n      classes.push('tab-selected');\n    } else {\n      classes.push('tab-unselected');\n    }\n    \n    if (tab.disabled) {\n      classes.push('tab-disabled');\n    }\n    \n    if (tab.color) {\n      classes.push(`tab-color-${tab.color}`);\n    } else {\n      classes.push('tab-color-blue');\n    }\n    \n    return classes.join(' ');\n  }\n\n  getContainerClasses(): string {\n    if (this.tabs.length === 0) return 'tabs-container';\n    \n    const firstTab = this.tabs[0];\n    return `tabs-container tabs-container-${firstTab.tipo}`;\n  }\n\n  getSanitizedIcon(iconName?: string): SafeHtml {\n    if (!iconName) return '';\n    return this.sanitizer.bypassSecurityTrustHtml(this.getIconSvg(iconName));\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      'speech': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M2.25 2.8125C2.25 2.60516 2.33231 2.40628 2.47882 2.25976C2.62534 2.11325 2.82422 2.03094 3.03156 2.03094H14.9684C15.1758 2.03094 15.3747 2.11325 15.5212 2.25976C15.6677 2.40628 15.75 2.60516 15.75 2.8125V12.4688C15.75 12.6761 15.6677 12.875 15.5212 13.0215C15.3747 13.168 15.1758 13.2503 14.9684 13.2503H10.2187L6.8625 15.2878C6.77933 15.3389 6.68396 15.3669 6.58618 15.369C6.4884 15.3711 6.39194 15.3472 6.30663 15.2997C6.22132 15.2523 6.15004 15.1829 6.1003 15.0985C6.05055 15.0141 6.02407 14.9177 6.02344 14.8194V13.2503H3.03156C2.82422 13.2503 2.62534 13.168 2.47882 13.0215C2.33231 12.875 2.25 12.6761 2.25 12.4688V2.8125ZM5.625 6.75C5.625 6.54289 5.70743 6.34434 5.85484 6.19684C6.00226 6.04933 6.20109 5.96719 6.40781 5.96719H11.5922C11.7989 5.96719 11.9977 6.04933 12.1452 6.19684C12.2926 6.34434 12.375 6.54289 12.375 6.75C12.375 6.95711 12.2926 7.15566 12.1452 7.30316C11.9977 7.45067 11.7989 7.53281 11.5922 7.53281H6.40781C6.20109 7.53281 6.00226 7.45067 5.85484 7.30316C5.70743 7.15566 5.625 6.95711 5.625 6.75ZM6.40781 9.09844C6.20109 9.09844 6.00226 9.18057 5.85484 9.32808C5.70743 9.47558 5.625 9.67413 5.625 9.88125C5.625 10.0884 5.70743 10.2869 5.85484 10.4344C6.00226 10.5819 6.20109 10.6641 6.40781 10.6641H9.75469C9.96141 10.6641 10.1602 10.5819 10.3077 10.4344C10.4551 10.2869 10.5375 10.0884 10.5375 9.88125C10.5375 9.67413 10.4551 9.47558 10.3077 9.32808C10.1602 9.18057 9.96141 9.09844 9.75469 9.09844H6.40781Z\" fill=\"currentColor\"/>\n</svg>`,\n      'edit': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M14.0625 2.4375L15.5625 3.9375L5.0625 14.4375H3.5625V12.9375L14.0625 2.4375ZM14.0625 0.5625C13.7813 0.5625 13.5 0.65625 13.2813 0.875L11.9063 2.25L15.75 6.09375L17.125 4.71875C17.5625 4.28125 17.5625 3.5625 17.125 3.125L14.875 0.875C14.6563 0.65625 14.375 0.5625 14.0625 0.5625ZM11 3.15625L0.5625 13.5938V17.4375H4.40625L14.8438 7L11 3.15625Z\" fill=\"currentColor\"/>\n</svg>`,\n      'calendar': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M14.625 2.25H13.5V1.125C13.5 0.71875 13.1563 0.375 12.75 0.375C12.3437 0.375 12 0.71875 12 1.125V2.25H6V1.125C6 0.71875 5.65625 0.375 5.25 0.375C4.84375 0.375 4.5 0.71875 4.5 1.125V2.25H3.375C2.13281 2.25 1.125 3.25781 1.125 4.5V15.375C1.125 16.6172 2.13281 17.625 3.375 17.625H14.625C15.8672 17.625 16.875 16.6172 16.875 15.375V4.5C16.875 3.25781 15.8672 2.25 14.625 2.25ZM15.375 15.375C15.375 15.7891 15.0391 16.125 14.625 16.125H3.375C2.96094 16.125 2.625 15.7891 2.625 15.375V6.75H15.375V15.375Z\" fill=\"currentColor\"/>\n</svg>`,\n      'info': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M9 0.5625C4.44844 0.5625 0.5625 4.44844 0.5625 9C0.5625 13.5516 4.44844 17.4375 9 17.4375C13.5516 17.4375 17.4375 13.5516 17.4375 9C17.4375 4.44844 13.5516 0.5625 9 0.5625ZM9.75 13.5H8.25V8.25H9.75V13.5ZM9.75 6.75H8.25V5.25H9.75V6.75Z\" fill=\"currentColor\"/>\n</svg>`,\n      'file': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.5 0.5625H3.375C2.54766 0.5625 1.875 1.24219 1.875 2.0625V15.9375C1.875 16.7648 2.54766 17.4375 3.375 17.4375H14.625C15.4523 17.4375 16.125 16.7648 16.125 15.9375V6.1875L10.5 0.5625ZM14.625 15.9375H3.375V2.0625H9.75V6.9375H14.625V15.9375Z\" fill=\"currentColor\"/>\n</svg>`,\n      'check-circle': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_check_circle)\">\n<path d=\"M7.71784 0.847783C9.58188 0.554112 11.4901 0.908875 13.1246 1.85193C13.4833 2.05888 13.6067 2.51713 13.4 2.87586C13.193 3.23463 12.7341 3.35753 12.3753 3.15052C11.0381 2.37896 9.47654 2.08925 7.95148 2.32947C6.42639 2.56975 5.02949 3.32573 3.9942 4.47107C2.95893 5.61647 2.34747 7.08235 2.26203 8.62391C2.17661 10.1655 2.6223 11.6902 3.52472 12.943C4.42713 14.1957 5.73205 15.1014 7.22125 15.5087C8.71046 15.9159 10.2945 15.8004 11.7088 15.1813C13.1232 14.5621 14.2827 13.4763 14.9937 12.1058C15.7047 10.7354 15.9238 9.16258 15.6155 7.64978C15.5329 7.244 15.795 6.84783 16.2007 6.76502C16.6066 6.68232 17.0028 6.94438 17.0855 7.35022C17.4623 9.19929 17.1935 11.1215 16.3245 12.7965C15.4555 14.4716 14.0388 15.7986 12.3101 16.5553C10.5816 17.312 8.64582 17.4529 6.82575 16.9552C5.00556 16.4574 3.41039 15.3508 2.30744 13.8197C1.2045 12.2886 0.659852 10.4253 0.764223 8.54114C0.86862 6.65696 1.61629 4.86542 2.88165 3.46546C4.147 2.06559 5.85383 1.14145 7.71784 0.847783ZM15.97 2.46936C16.2629 2.17681 16.7378 2.17661 17.0306 2.46936C17.3235 2.76226 17.3235 3.23775 17.0306 3.53064L9.53058 11.0306C9.2378 11.3234 8.76294 11.3232 8.47003 11.0306L6.22003 8.78064C5.92714 8.48775 5.92714 8.01226 6.22003 7.71936C6.51294 7.42681 6.98779 7.42661 7.28058 7.71936L9.00031 9.43909L15.97 2.46936Z\" fill=\"currentColor\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_check_circle\">\n<rect width=\"18\" height=\"18\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n    };\n\n    return iconMap[iconName] || iconMap['info'];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* Contenedor general */\n.tabs-container {\n  display: flex;\n  gap: 8px;\n  align-items: flex-start;\n}\n\n.tabs-container-rectangular {\n  flex-wrap: wrap;\n}\n\n.tabs-container-cuadrada-icono {\n  gap: 12px;\n  flex-wrap: wrap;\n}\n\n.tabs-container-barra-superior {\n  gap: 0;\n  width: 100%;\n}\n\n/* Tab base */\n.tab {\n  cursor: pointer;\n  transition: all 150ms ease-in-out;\n  user-select: none;\n  outline: none;\n  position: relative;\n}\n\n.tab:focus-visible {\n  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5);\n}\n\n.tab-disabled {\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n/* Tipo rectangular */\n.tab-rectangular {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  padding: 8px 10px;\n  border-radius: 7px;\n  min-height: 33px;\n}\n\n.tab-rectangular .tab-label {\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  letter-spacing: -0.26px;\n  line-height: normal;\n  white-space: nowrap;\n}\n\n.tab-rectangular .tab-badge {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 19px;\n  height: 19px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n\n.tab-rectangular .tab-count {\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  letter-spacing: -0.26px;\n}\n\n/* Tipo cuadrada-icono */\n.tab-cuadrada-icono {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  padding: 12px 8px;\n  border-radius: 5px;\n  width: 165px;\n  height: 74px;\n}\n\n.tab-cuadrada-icono .tab-icon-wrapper {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n\n.tab-cuadrada-icono .tab-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  line-height: 0;\n}\n\n.tab-cuadrada-icono .tab-icon svg {\n  width: 18px;\n  height: 18px;\n}\n\n.tab-cuadrada-icono .tab-label {\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  letter-spacing: -0.26px;\n  text-align: center;\n  line-height: normal;\n  max-width: 150px;\n  word-break: break-word;\n}\n\n/* Tipo barra-superior */\n.tab-barra-superior {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  gap: 4px;\n  padding: 20px 16px;\n  border-radius: 5px 5px 0 0;\n  flex: 1;\n  min-height: 104px;\n}\n\n.tab-barra-superior .tab-icon-badge-wrapper {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n}\n\n.tab-barra-superior .tab-icon-badge {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  border-radius: 50%;\n  flex-shrink: 0;\n}\n\n.tab-barra-superior .tab-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  line-height: 0;\n}\n\n.tab-barra-superior .tab-icon svg {\n  width: 18px;\n  height: 18px;\n}\n\n.tab-barra-superior .tab-label {\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  letter-spacing: -0.26px;\n  text-align: center;\n  line-height: normal;\n}\n\n/* Estados: BLUE */\n/* Seleccionada */\n.tab-color-blue.tab-selected {\n  background-color: #2563EB;\n  color: #FFFFFF;\n}\n\n.tab-color-blue.tab-selected .tab-badge {\n  background-color: #FFFFFF;\n}\n\n.tab-color-blue.tab-selected .tab-count {\n  color: #2563EB;\n}\n\n.tab-color-blue.tab-selected .tab-icon-badge {\n  background-color: #3B82F6;\n}\n\n/* Sin seleccionar */\n.tab-color-blue.tab-unselected {\n  background-color: #DBEAFE;\n  color: #2563EB;\n}\n\n.tab-color-blue.tab-unselected .tab-badge {\n  background-color: #FFFFFF;\n}\n\n.tab-color-blue.tab-unselected .tab-count {\n  color: #2563EB;\n}\n\n.tab-color-blue.tab-unselected .tab-icon-badge {\n  background-color: #BFDBFE;\n}\n\n/* Hover sin seleccionar */\n.tab-color-blue.tab-unselected:hover:not(.tab-disabled) .tab-label {\n  text-decoration: underline;\n}\n\n/* Hover seleccionada */\n.tab-color-blue.tab-selected:hover:not(.tab-disabled) .tab-label {\n  text-decoration: underline;\n}\n\n/* Cuadrada-icono specific styles for blue */\n.tab-cuadrada-icono.tab-color-blue.tab-selected {\n  background-color: #2563EB;\n}\n\n.tab-cuadrada-icono.tab-color-blue.tab-selected .tab-icon-wrapper {\n  background-color: #3B82F6;\n}\n\n.tab-cuadrada-icono.tab-color-blue.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-cuadrada-icono.tab-color-blue.tab-unselected {\n  background-color: #DBEAFE;\n}\n\n.tab-cuadrada-icono.tab-color-blue.tab-unselected .tab-icon-wrapper {\n  background-color: #BFDBFE;\n}\n\n.tab-cuadrada-icono.tab-color-blue.tab-unselected .tab-icon svg {\n  color: #2563EB;\n}\n\n/* Cuadrada-icono specific styles for gray (disabled) */\n.tab-cuadrada-icono.tab-color-gray.tab-disabled {\n  background-color: #F3F4F6;\n}\n\n.tab-cuadrada-icono.tab-color-gray.tab-disabled .tab-icon-wrapper {\n  background-color: #DCDCDC;\n}\n\n.tab-cuadrada-icono.tab-color-gray.tab-disabled .tab-icon svg {\n  color: #8A8A8A;\n}\n\n/* Green color states */\n.tab-cuadrada-icono.tab-color-green.tab-selected .tab-icon-wrapper {\n  background-color: #10B981;\n}\n\n.tab-cuadrada-icono.tab-color-green.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-cuadrada-icono.tab-color-green.tab-unselected .tab-icon-wrapper {\n  background-color: #BBF7D0;\n}\n\n.tab-cuadrada-icono.tab-color-green.tab-unselected .tab-icon svg {\n  color: #06963D;\n}\n\n/* Orange color states */\n.tab-cuadrada-icono.tab-color-orange.tab-selected .tab-icon-wrapper {\n  background-color: #F59E0B;\n}\n\n.tab-cuadrada-icono.tab-color-orange.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-cuadrada-icono.tab-color-orange.tab-unselected .tab-icon-wrapper {\n  background-color: #FDE68A;\n}\n\n.tab-cuadrada-icono.tab-color-orange.tab-unselected .tab-icon svg {\n  color: #B44400;\n}\n\n/* Estados: GREEN */\n/* Seleccionada */\n.tab-color-green.tab-selected {\n  background-color: #06963D;\n  color: #FFFFFF;\n}\n\n.tab-color-green.tab-selected .tab-badge {\n  background-color: #FFFFFF;\n}\n\n.tab-color-green.tab-selected .tab-count {\n  color: #06963D;\n}\n\n.tab-color-green.tab-selected .tab-icon-badge {\n  background-color: #10B981;\n}\n\n/* Sin seleccionar */\n.tab-color-green.tab-unselected {\n  background-color: #DCFCE7;\n  color: #06963D;\n}\n\n.tab-color-green.tab-unselected .tab-badge {\n  background-color: #BBF7D0;\n}\n\n.tab-color-green.tab-unselected .tab-count {\n  color: #06963D;\n}\n\n.tab-color-green.tab-unselected .tab-icon-badge {\n  background-color: #BBF7D0;\n}\n\n/* Hover */\n.tab-color-green.tab-unselected:hover:not(.tab-disabled) .tab-label {\n  text-decoration: underline;\n}\n\n.tab-color-green.tab-selected:hover:not(.tab-disabled) .tab-label {\n  text-decoration: underline;\n}\n\n/* Estados: ORANGE */\n/* Seleccionada */\n.tab-color-orange.tab-selected {\n  background-color: #B44400;\n  color: #FFFFFF;\n}\n\n.tab-color-orange.tab-selected .tab-badge {\n  background-color: #FFFFFF;\n}\n\n.tab-color-orange.tab-selected .tab-count {\n  color: #B44400;\n}\n\n.tab-color-orange.tab-selected .tab-icon-badge {\n  background-color: #F59E0B;\n}\n\n/* Sin seleccionar */\n.tab-color-orange.tab-unselected {\n  background-color: #FEF3C7;\n  color: #B44400;\n}\n\n.tab-color-orange.tab-unselected .tab-badge {\n  background-color: #FDE68A;\n}\n\n.tab-color-orange.tab-unselected .tab-count {\n  color: #B44400;\n}\n\n.tab-color-orange.tab-unselected .tab-icon-badge {\n  background-color: #FDE68A;\n}\n\n/* Hover */\n.tab-color-orange.tab-unselected:hover:not(.tab-disabled) .tab-label {\n  text-decoration: underline;\n}\n\n.tab-color-orange.tab-selected:hover:not(.tab-disabled) .tab-label {\n  text-decoration: underline;\n}\n\n/* Estados: GRAY (desactivada) */\n.tab-color-gray,\n.tab-disabled {\n  background-color: #F3F4F6;\n  color: #9CA3AF;\n}\n\n.tab-disabled .tab-badge {\n  background-color: #E5E7EB;\n}\n\n.tab-disabled .tab-count {\n  color: #6B7280;\n}\n\n.tab-disabled .tab-label {\n  color: #9CA3AF;\n}\n\n/* Icon colors based on state */\n/* Rectangular and cuadrada-icono types */\n.tab-rectangular.tab-color-blue.tab-selected .tab-icon svg,\n.tab-cuadrada-icono.tab-color-blue.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-rectangular.tab-color-blue.tab-unselected .tab-icon svg,\n.tab-cuadrada-icono.tab-color-blue.tab-unselected .tab-icon svg {\n  color: #2563EB;\n}\n\n.tab-rectangular.tab-color-green.tab-selected .tab-icon svg,\n.tab-cuadrada-icono.tab-color-green.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-rectangular.tab-color-green.tab-unselected .tab-icon svg,\n.tab-cuadrada-icono.tab-color-green.tab-unselected .tab-icon svg {\n  color: #06963D;\n}\n\n.tab-rectangular.tab-color-orange.tab-selected .tab-icon svg,\n.tab-cuadrada-icono.tab-color-orange.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-rectangular.tab-color-orange.tab-unselected .tab-icon svg,\n.tab-cuadrada-icono.tab-color-orange.tab-unselected .tab-icon svg {\n  color: #B44400;\n}\n\n/* Barra-superior type - icons inside badges */\n.tab-barra-superior.tab-color-blue.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-barra-superior.tab-color-blue.tab-unselected .tab-icon svg {\n  color: #2563EB;\n}\n\n.tab-barra-superior.tab-color-green.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-barra-superior.tab-color-green.tab-unselected .tab-icon svg {\n  color: #06963D;\n}\n\n.tab-barra-superior.tab-color-orange.tab-selected .tab-icon svg {\n  color: #FFFFFF;\n}\n\n.tab-barra-superior.tab-color-orange.tab-unselected .tab-icon svg {\n  color: #B44400;\n}\n\n.tab-disabled .tab-icon svg {\n  color: #9CA3AF;\n}\n",
+                    "styleUrl": "./tabs-navegacion-maestras.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 29,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div [class]=\"getContainerClasses()\">\n  <div \n    *ngFor=\"let tab of tabs\" \n    [class]=\"getTabClasses(tab)\"\n    (click)=\"onTabClick(tab)\"\n    [attr.role]=\"'button'\"\n    [attr.tabindex]=\"tab.disabled ? -1 : 0\"\n    [attr.aria-selected]=\"isActive(tab.id)\"\n    [attr.aria-disabled]=\"tab.disabled\">\n    \n    <!-- Tipo rectangular: solo texto y badge opcional -->\n    <ng-container *ngIf=\"tab.tipo === 'rectangular'\">\n      <span class=\"tab-label\">{{ tab.label }}</span>\n      <div *ngIf=\"tab.showCount\" class=\"tab-badge\">\n        <span class=\"tab-count\">{{ tab.count }}</span>\n      </div>\n    </ng-container>\n\n    <!-- Tipo cuadrada-icono: icono arriba, texto abajo -->\n    <ng-container *ngIf=\"tab.tipo === 'cuadrada-icono'\">\n      <div class=\"tab-icon-wrapper\">\n        <span *ngIf=\"tab.iconName\" [innerHTML]=\"getSanitizedIcon(tab.iconName)\" class=\"tab-icon\"></span>\n      </div>\n      <span class=\"tab-label\">{{ tab.label }}</span>\n    </ng-container>\n\n    <!-- Tipo barra-superior: badge circular con icono arriba, texto abajo -->\n    <ng-container *ngIf=\"tab.tipo === 'barra-superior'\">\n      <div class=\"tab-icon-badge-wrapper\">\n        <div class=\"tab-icon-badge\">\n          <span *ngIf=\"tab.iconName\" [innerHTML]=\"getSanitizedIcon(tab.iconName)\" class=\"tab-icon\"></span>\n        </div>\n      </div>\n      <span class=\"tab-label\">{{ tab.label }}</span>\n    </ng-container>\n  </div>\n</div>\n"
+        },
+        {
             "name": "TagPillComponent",
             "id": "component-TagPillComponent-ebc3453ec0bf9a7aed51584334d043031e8b891b8e9ce1dbe1fb66d329cec45438b3ce0b2adff96de660080c33534ac8358def71fb77969230301becb8e9872d",
             "file": "src/app/components/tag-pill/tag-pill.component.ts",
@@ -2843,6 +3351,17 @@
                 "deprecationMessage": "",
                 "description": "",
                 "kind": 193
+            },
+            {
+                "name": "TabTipo",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"rectangular\" | \"cuadrada-icono\" | \"barra-superior\"",
+                "file": "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
             }
         ],
         "enumerations": [],
@@ -2990,6 +3509,19 @@
                     "description": "",
                     "kind": 193
                 }
+            ],
+            "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts": [
+                {
+                    "name": "TabTipo",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"rectangular\" | \"cuadrada-icono\" | \"barra-superior\"",
+                    "file": "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
             ]
         }
     },
@@ -2999,7 +3531,7 @@
         "children": []
     },
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -3162,6 +3694,15 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/icon-slot/icon-slot.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "IconSlotComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/navigation-tabs/navigation-tabs.component.ts",
                 "type": "component",
                 "linktype": "component",
@@ -3241,6 +3782,34 @@
                 "name": "TablePaginationFooterComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/17",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TabsNavegacionMaestrasComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "TabMaestra",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TabTipo",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
