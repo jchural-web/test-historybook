@@ -156,65 +156,89 @@ export const TabsRectangularesSinNumero: Story = {
 // Tipo 2: Tabs cuadradas con icono
 const tabsCuadradas: TabMaestra[] = [
   {
-    id: 'speech',
-    label: 'Speech',
+    id: 'tab-sel-1',
+    label: 'Tab seleccionada',
     tipo: 'cuadrada-icono',
     color: 'blue',
-    iconName: 'speech',
+    iconName: 'check-circle',
   },
   {
-    id: 'editar-datos',
-    label: 'Editar Datos Personales',
+    id: 'tab-unsel-1',
+    label: 'Tab sin seleccionar',
     tipo: 'cuadrada-icono',
     color: 'blue',
-    iconName: 'edit',
+    iconName: 'check-circle',
   },
   {
-    id: 'cronograma',
-    label: 'Cronograma de Pagos',
+    id: 'tab-disabled-1',
+    label: 'Tab desactivada',
     tipo: 'cuadrada-icono',
-    color: 'blue',
-    iconName: 'calendar',
-  },
-  {
-    id: 'informacion',
-    label: 'Información del Programa',
-    tipo: 'cuadrada-icono',
-    color: 'blue',
-    iconName: 'info',
-  },
-  {
-    id: 'documentos',
-    label: 'Documentos del Programa',
-    tipo: 'cuadrada-icono',
-    color: 'blue',
-    iconName: 'file',
+    color: 'gray',
+    iconName: 'check-circle',
+    disabled: true,
   },
 ];
 
 export const TabsCuadradasIcono: Story = {
   args: {
     tabs: tabsCuadradas,
-    activeTabId: 'speech',
+    activeTabId: 'tab-sel-1',
   },
   parameters: {
     docs: {
       description: {
-        story: 'Tabs cuadradas con iconos y texto. Típicamente usadas para navegar entre secciones de detalle como "Speech", "Editar Datos Personales", etc.',
+        story: 'Tabs cuadradas con iconos y texto. Badge circular de 30px con icono, texto debajo. Incluye estados: seleccionada, sin seleccionar y desactivada.',
       },
     },
   },
 };
 
-export const TabsCuadradasIconoHoverState: Story = {
+export const TabsCuadradasIconoVariantes: Story = {
   args: {
-    tabs: tabsCuadradas,
-    activeTabId: 'editar-datos',
+    tabs: [
+      {
+        id: 'blue-sel',
+        label: 'Tab seleccionada',
+        tipo: 'cuadrada-icono',
+        color: 'blue',
+        iconName: 'check-circle',
+      },
+      {
+        id: 'blue-unsel',
+        label: 'Tab sin seleccionar',
+        tipo: 'cuadrada-icono',
+        color: 'blue',
+        iconName: 'check-circle',
+      },
+      {
+        id: 'green-sel',
+        label: 'Tab verde',
+        tipo: 'cuadrada-icono',
+        color: 'green',
+        iconName: 'check-circle',
+      },
+      {
+        id: 'orange-sel',
+        label: 'Tab naranja',
+        tipo: 'cuadrada-icono',
+        color: 'orange',
+        iconName: 'check-circle',
+      },
+      {
+        id: 'gray-dis',
+        label: 'Tab desactivada',
+        tipo: 'cuadrada-icono',
+        color: 'gray',
+        iconName: 'check-circle',
+        disabled: true,
+      },
+    ],
+    activeTabId: 'blue-sel',
   },
   parameters: {
     docs: {
       description: {
-        story: 'Mismo ejemplo pero con una tab diferente seleccionada. Pasa el cursor sobre las tabs para ver el efecto hover (subrayado).',
+        story: 'Ejemplo con múltiples colores: azul, verde, naranja y gris (desactivada). Todas con el mismo icono check-circle.',
       },
     },
   },
