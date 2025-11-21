@@ -273,17 +273,97 @@ export const OvaladoConIcono: Story = {
   },
 };
 
-export const PaginationButton: Story = {
+export const OvaladoConIconoHover: Story = {
   args: {
-    variant: 'pagination',
-    label: 'Button',
+    variant: 'ovalado',
+    label: 'Ovalado',
+    iconName: lucideCirclePlaySmall,
+    showIcon: true,
+  },
+  parameters: {
+    pseudo: { hover: true },
   },
 };
 
-export const PaginationGroup: Story = {
+export const DefaultDisabled: Story = {
+  args: {
+    variant: 'default',
+    label: 'Default',
+    disabled: true,
+  },
+};
+
+export const OutlineDisabled: Story = {
+  args: {
+    variant: 'outline',
+    label: 'Outline',
+    disabled: true,
+  },
+};
+
+export const SecondaryDisabled: Story = {
+  args: {
+    variant: 'secondary',
+    label: 'Secondary',
+    disabled: true,
+  },
+};
+
+export const GhostDisabled: Story = {
+  args: {
+    variant: 'ghost',
+    label: 'Ghost',
+    disabled: true,
+  },
+};
+
+export const DestructiveDisabled: Story = {
+  args: {
+    variant: 'destructive',
+    label: 'Destructive',
+    disabled: true,
+  },
+};
+
+export const LinkDisabled: Story = {
+  args: {
+    variant: 'link',
+    label: 'Link',
+    disabled: true,
+  },
+};
+
+export const IconoCuadradoDisabled: Story = {
+  args: {
+    variant: 'icono-cuadrado',
+    iconName: lucideCirclePlay,
+    showIcon: true,
+    disabled: true,
+  },
+};
+
+export const IconoCircularDisabled: Story = {
+  args: {
+    variant: 'icono-circular',
+    iconName: lucideCirclePlaySmall,
+    showIcon: true,
+    disabled: true,
+  },
+};
+
+export const OvaladoDisabled: Story = {
+  args: {
+    variant: 'ovalado',
+    label: 'Ovalado',
+    disabled: true,
+  },
+};
+
+export const PaginationDisabled: Story = {
   args: {
     variant: 'pagination',
     label: 'Group',
+    disabled: true,
   },
 };
 
