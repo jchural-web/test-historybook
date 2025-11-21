@@ -92,6 +92,8 @@
   justify-content: center;
   width: 30px;
   height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .tab-cuadrada-icono .tab-icon {
@@ -221,8 +223,71 @@
   background-color: #2563EB;
 }
 
+.tab-cuadrada-icono.tab-color-blue.tab-selected .tab-icon-wrapper {
+  background-color: #3B82F6;
+}
+
+.tab-cuadrada-icono.tab-color-blue.tab-selected .tab-icon svg {
+  color: #FFFFFF;
+}
+
 .tab-cuadrada-icono.tab-color-blue.tab-unselected {
   background-color: #DBEAFE;
+}
+
+.tab-cuadrada-icono.tab-color-blue.tab-unselected .tab-icon-wrapper {
+  background-color: #BFDBFE;
+}
+
+.tab-cuadrada-icono.tab-color-blue.tab-unselected .tab-icon svg {
+  color: #2563EB;
+}
+
+/* Cuadrada-icono specific styles for gray (disabled) */
+.tab-cuadrada-icono.tab-color-gray.tab-disabled {
+  background-color: #F3F4F6;
+}
+
+.tab-cuadrada-icono.tab-color-gray.tab-disabled .tab-icon-wrapper {
+  background-color: #DCDCDC;
+}
+
+.tab-cuadrada-icono.tab-color-gray.tab-disabled .tab-icon svg {
+  color: #8A8A8A;
+}
+
+/* Green color states */
+.tab-cuadrada-icono.tab-color-green.tab-selected .tab-icon-wrapper {
+  background-color: #10B981;
+}
+
+.tab-cuadrada-icono.tab-color-green.tab-selected .tab-icon svg {
+  color: #FFFFFF;
+}
+
+.tab-cuadrada-icono.tab-color-green.tab-unselected .tab-icon-wrapper {
+  background-color: #BBF7D0;
+}
+
+.tab-cuadrada-icono.tab-color-green.tab-unselected .tab-icon svg {
+  color: #06963D;
+}
+
+/* Orange color states */
+.tab-cuadrada-icono.tab-color-orange.tab-selected .tab-icon-wrapper {
+  background-color: #F59E0B;
+}
+
+.tab-cuadrada-icono.tab-color-orange.tab-selected .tab-icon svg {
+  color: #FFFFFF;
+}
+
+.tab-cuadrada-icono.tab-color-orange.tab-unselected .tab-icon-wrapper {
+  background-color: #FDE68A;
+}
+
+.tab-cuadrada-icono.tab-color-orange.tab-unselected .tab-icon svg {
+  color: #B44400;
 }
 
 /* Estados: GREEN */
