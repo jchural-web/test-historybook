@@ -1,0 +1,33 @@
+<div [class]="getContainerClasses()">
+  <div 
+    *ngFor="let tab of tabs" 
+    [class]="getTabClasses(tab)"
+    (click)="onTabClick(tab)"
+    [attr.role]="'button'"
+    [attr.tabindex]="tab.disabled ? -1 : 0"
+    [attr.aria-selected]="isActive(tab.id)"
+    [attr.aria-disabled]="tab.disabled">
+    
+    <!-- Tipo rectangular: solo texto y badge opcional -->
+    <ng-container *ngIf="tab.tipo === 'rectangular'">
+      <span class="tab-label">{{ tab.label }}</span>
+      <div *ngIf="tab.showCount" class="tab-badge">
+        <span class="tab-count">{{ tab.count }}</span>
+      </div>
+    </ng-container>
+
+    <!-- Tipo cuadrada-icono: icono arriba, texto abajo -->
+    <ng-container *ngIf="tab.tipo === 'cuadrada-icono'">
+      <div class="tab-icon-wrapper">
+        <span *ngIf="tab.iconName" [innerHTML]="getSanitizedIcon(tab.iconName)" class="tab-icon"></span>
+      </div>
+      <span class="tab-label">{{ tab.label }}</span>
+    </ng-container>
+
+    <!-- Tipo barra-superior: icono + texto en línea -->
+    <ng-container *ngIf="tab.tipo === 'barra-superior'">
+      <span *ngIf="tab.iconName" [innerHTML]="getSanitizedIcon(tab.iconName)" class="tab-icon"></span>
+      <span class="tab-label">{{ tab.label }}</span>
+    </ng-container>
+  </div>
+</div>
