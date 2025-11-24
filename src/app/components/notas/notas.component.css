@@ -46,15 +46,20 @@
   height: 26px;
 }
 
-.header-title {
+.header-content {
   flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.header-title {
   font-size: 30px;
   font-weight: 600;
   letter-spacing: -0.6px;
   line-height: normal;
   color: #FFFFFF;
   text-align: left;
-  padding: 0 20px;
 }
 
 .header-minimize-btn {
