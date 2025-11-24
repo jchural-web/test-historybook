@@ -1,0 +1,77 @@
+<div class="input-wrapper">
+  <div class="input-container" [class]="'variant-' + variant">
+    <input
+      class="input-field"
+      [type]="type"
+      [placeholder]="placeholder"
+      [value]="value"
+      (input)="onValueChange($event.target.value)"
+    />
+
+    <!-- One Button Variant -->
+    <div *ngIf="variant === 'one-button' && button1" class="button-section">
+      <button
+        class="input-button"
+        (click)="onButton1Click()"
+        [attr.aria-label]="button1.ariaLabel"
+        type="button"
+      >
+        <span class="icon" [innerHTML]="getSanitizedIcon(button1.iconName)"></span>
+      </button>
+    </div>
+
+    <!-- Two Buttons Variant -->
+    <div *ngIf="variant === 'two-buttons' && (button1 || button2)" class="button-section">
+      <button
+        *ngIf="button1"
+        class="input-button"
+        (click)="onButton1Click()"
+        [attr.aria-label]="button1.ariaLabel"
+        type="button"
+      >
+        <span class="icon" [innerHTML]="getSanitizedIcon(button1.iconName)"></span>
+      </button>
+      <div *ngIf="button2" class="button-divider"></div>
+      <button
+        *ngIf="button2"
+        class="input-button"
+        (click)="onButton2Click()"
+        [attr.aria-label]="button2.ariaLabel"
+        type="button"
+      >
+        <span class="icon" [innerHTML]="getSanitizedIcon(button2.iconName)"></span>
+      </button>
+    </div>
+
+    <!-- Two Buttons with Checkbox Variant -->
+    <div *ngIf="variant === 'two-buttons-checkbox' && (button1 || button2)" class="button-checkbox-section">
+      <button
+        *ngIf="button1"
+        class="input-button"
+        (click)="onButton1Click()"
+        [attr.aria-label]="button1.ariaLabel"
+        type="button"
+      >
+        <span class="icon" [innerHTML]="getSanitizedIcon(button1.iconName)"></span>
+      </button>
+      <div *ngIf="button2" class="button-divider"></div>
+      <button
+        *ngIf="button2"
+        class="input-button"
+        (click)="onButton2Click()"
+        [attr.aria-label]="button2.ariaLabel"
+        type="button"
+      >
+        <span class="icon" [innerHTML]="getSanitizedIcon(button2.iconName)"></span>
+      </button>
+      <div class="checkbox-section">
+        <input
+          type="checkbox"
+          class="checkbox-input"
+          [checked]="checkboxChecked"
+          (change)="onCheckboxChange($event.target.checked)"
+        />
+      </div>
+    </div>
+  </div>
+</div>
