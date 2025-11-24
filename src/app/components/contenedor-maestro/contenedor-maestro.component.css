@@ -7,6 +7,7 @@
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.10);
   width: 100%;
   height: auto;
+  overflow: hidden;
 }
 
 .contenedor-header {
@@ -15,14 +16,13 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 12px;
-  min-height: 67px;
+  height: 67px;
 }
 
 .contenedor-header-content {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
 }
 
@@ -30,26 +30,26 @@
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 600;
-  line-height: 1;
+  line-height: 29px;
   letter-spacing: -0.48px;
   margin: 0;
+  padding: 0;
   color: inherit;
 }
 
 .contenedor-body {
   flex: 1;
-  padding: 24px;
+  padding: 0;
   background: #FFFFFF;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .contenedor-header {
     padding: 12px 16px;
-    min-height: 56px;
+    height: auto;
   }
 
   .contenedor-title {
@@ -57,15 +57,14 @@
     letter-spacing: -0.36px;
   }
 
-  .contenedor-body {
-    padding: 16px;
+  .contenedor-header-content {
+    gap: 12px;
   }
 }
 
 @media (max-width: 480px) {
   .contenedor-header {
     padding: 10px 12px;
-    min-height: 48px;
   }
 
   .contenedor-title {
@@ -73,8 +72,7 @@
     letter-spacing: -0.32px;
   }
 
-  .contenedor-body {
-    padding: 12px;
-    gap: 12px;
+  .contenedor-header-content {
+    gap: 10px;
   }
 }
