@@ -237,7 +237,7 @@ export const ConTablaItems: Story = {
  * - Leyenda (slot [leyenda]): área para chips/etiquetas explicativas
  * - Fila de encabezados (slot [tabla-header])
  * - Tabla (slot [tabla-body])
- * - Footer (slot [tabla-footer])
+ * - Footer paginación integrado
  */
 export const ConTablaItemsLeyenda: Story = {
   args: {
@@ -245,7 +245,11 @@ export const ConTablaItemsLeyenda: Story = {
     title: 'Contenedor con tabla, items y leyenda',
     iconName: 'circle-check-big',
     headerBgColor: '#E3F2FD',
-    headerTextColor: '#111827',
+    headerTextColor: '#6B26E8',
+    currentPage: 1,
+    totalPages: 3,
+    pageSize: 10,
+    totalItems: 22,
   },
   render: (args) => ({
     props: args,
@@ -256,38 +260,44 @@ export const ConTablaItemsLeyenda: Story = {
         [iconName]="iconName"
         [headerBgColor]="headerBgColor"
         [headerTextColor]="headerTextColor"
-        style="width: 700px; margin: auto;"
+        [currentPage]="currentPage"
+        [totalPages]="totalPages"
+        [pageSize]="pageSize"
+        [totalItems]="totalItems"
+        style="width: 1200px; margin: auto;"
       >
-        <div leyenda style="padding: 12px 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+        <div leyenda style="padding: 12px 24px; display: flex; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid #E4E4E7;">
           <div style="padding: 4px 12px; border-radius: 10px; border: 1px solid #EB5C11; background: #FFEDD5; font-size: 11px; font-weight: 600; color: #EB5C11;">
-            Leyenda 1
+            Prb
           </div>
-          <div style="padding: 4px 12px; border-radius: 10px; border: 1px solid #2B88A0; background: #CFFAFE; font-size: 11px; font-weight: 600; color: #2B88A0;">
-            Leyenda 2
+          <div style="padding: 4px 12px; border-radius: 10px; border: 1px solid #2B88A0; background: #CFFAFE; font-size: 11px; font-weight: 600; color: #2B88A0; display: flex; align-items: center; gap: 6px;">
+            <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0)">
+                <path d="M3.375 7.875V1.125C3.375 0.917893 3.54289 0.75 3.75 0.75C3.95711 0.75 4.125 0.917893 4.125 1.125V7.875C4.125 8.08211 3.95711 8.25 3.75 8.25C3.54289 8.25 3.375 8.08211 3.375 7.875ZM6.375 6.75V1.875C6.375 1.66789 6.54289 1.5 6.75 1.5C6.95711 1.5 7.125 1.66789 7.125 1.875V6.75C7.125 6.95711 6.95711 7.125 6.75 7.125C6.54289 7.125 6.375 6.95711 6.375 6.75ZM1.875 6.375V2.25C1.875 2.04289 2.04289 1.875 2.25 1.875C2.45711 1.875 2.625 2.04289 2.625 2.25V6.375C2.625 6.58211 2.45711 6.75 2.25 6.75C2.04289 6.75 1.875 6.58211 1.875 6.375ZM4.875 5.625V3C4.875 2.79289 5.04289 2.625 5.25 2.625C5.45711 2.625 5.625 2.79289 5.625 3V5.625C5.625 5.83211 5.45711 6 5.25 6C5.04289 6 4.875 5.83211 4.875 5.625ZM0.375 4.875V3.75C0.375 3.54289 0.542893 3.375 0.75 3.375C0.957107 3.375 1.125 3.54289 1.125 3.75V4.875C1.125 5.08211 0.957107 5.25 0.75 5.25C0.542893 5.25 0.375 5.08211 0.375 4.875ZM7.875 4.875V3.75C7.875 3.54289 8.04289 3.375 8.25 3.375C8.45711 3.375 8.625 3.54289 8.625 3.75V4.875C8.625 5.08211 8.45711 5.25 8.25 5.25C8.04289 5.25 7.875 5.08211 7.875 4.875Z" fill="#2B88A0"/>
+              </g>
+            </svg>
+            Wavix
           </div>
         </div>
-        <div tabla-header style="padding: 12px 16px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
+        <div tabla-header style="padding: 12px 24px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
           <div>ITEM 1</div>
           <div>ITEM 2</div>
           <div>ITEM 3</div>
           <div>ITEM 4</div>
         </div>
-        <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
-          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
+        <div tabla-body style="padding: 0;">
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
             <div>Dato 1.1</div>
             <div>Dato 1.2</div>
             <div>Dato 1.3</div>
             <div>Dato 1.4</div>
           </div>
-          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
             <div>Dato 2.1</div>
             <div>Dato 2.2</div>
             <div>Dato 2.3</div>
             <div>Dato 2.4</div>
           </div>
-        </div>
-        <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
-          Página 1 de 3 | 1 - 10 de 22 ítems
         </div>
       </app-contenedor-maestro>
     `,
