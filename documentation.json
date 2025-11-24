@@ -107,6 +107,96 @@
             "extends": []
         },
         {
+            "name": "ComboOption",
+            "id": "interface-ComboOption-a787ab33f446c8084ef9fea81387a693ea79b63501d5e8b1e7075fe8f4df011f125ae6af56f77a86b605a867ea19e30e77a701db80014a25171299a760dc0418",
+            "file": "src/app/components/combobox-maestro/combobox-maestro.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport interface ComboOption {\n  value: string | number;\n  label: string;\n}\n\n@Component({\n  selector: 'app-combobox-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './combobox-maestro.component.html',\n  styleUrls: ['./combobox-maestro.component.css'],\n})\nexport class ComboboxMaestroComponent {\n  @Input() placeholder: string = 'Selecciona una opción';\n  @Input() options: ComboOption[] = [];\n  @Input() selectedValue?: string | number | null;\n  @Input() width?: string;\n\n  @Output() selectedValueChange = new EventEmitter<string | number>();\n\n  isOpen: boolean = false;\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  toggleCombobox(): void {\n    this.isOpen = !this.isOpen;\n  }\n\n  selectOption(option: ComboOption): void {\n    this.selectedValue = option.value;\n    this.selectedValueChange.emit(option.value);\n    this.isOpen = false;\n  }\n\n  getSelectedLabel(): string {\n    if (!this.selectedValue) {\n      return this.placeholder;\n    }\n    const selected = this.options.find(opt => opt.value === this.selectedValue);\n    return selected ? selected.label : this.placeholder;\n  }\n\n  get containerStyle(): { [key: string]: string } {\n    const styles: { [key: string]: string } = {};\n    if (this.width) {\n      styles['width'] = this.width;\n    }\n    return styles;\n  }\n\n  getSanitizedIcon(iconName: string): SafeHtml {\n    const svg = this.getIconSvg(iconName);\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      'chevron-down': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.9697 6.21973C13.2626 5.92684 13.7374 5.92684 14.0303 6.21973C14.3232 6.51262 14.3232 6.98738 14.0303 7.28028L9.53028 11.7803C9.23739 12.0732 8.76262 12.0732 8.46973 11.7803L3.96973 7.28028C3.67684 6.98738 3.67684 6.51262 3.96973 6.21973C4.26262 5.92684 4.73738 5.92684 5.03028 6.21973L9 10.1895L12.9697 6.21973Z\" fill=\"#A8AFB9\"/>\n</svg>`,\n      'chevron-up': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M5.03027 11.7803C4.73738 12.0732 4.26262 12.0732 3.96972 11.7803C3.67683 11.4874 3.67683 11.0126 3.96972 10.7197L8.46972 6.21972C8.76262 5.92683 9.23738 5.92683 9.53027 6.21972L14.0303 10.7197C14.3232 11.0126 14.3232 11.4874 14.0303 11.7803C13.7374 12.0732 13.2626 12.0732 12.9697 11.7803L9 7.81054L5.03027 11.7803Z\" fill=\"#A8AFB9\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent): void {\n    const target = event.target as HTMLElement;\n    if (!target.closest('.combobox-container')) {\n      this.isOpen = false;\n    }\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 7
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "FabPosition",
+            "id": "interface-FabPosition-dcd03aa4ff97d55921021ce7d9980a215db0772d5df280a49ef596aff37c6e508e5fc3b2047b8fcfeb2db3e6e632113b2335857cd0e763554aa69170b7148068",
+            "file": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport type FabVariant = 'circular' | 'extendido' | 'circular-con-badge';\n\nexport type FabColor = 'primary' | 'secondary' | 'warning' | 'success';\n\nexport interface FabPosition {\n  bottom?: string;\n  right?: string;\n  top?: string;\n  left?: string;\n}\n\n@Component({\n  selector: 'app-floating-action-button-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './floating-action-button-maestro.component.html',\n  styleUrls: ['./floating-action-button-maestro.component.css'],\n})\nexport class FloatingActionButtonMaestroComponent {\n  @Input() variant: FabVariant = 'circular';\n  @Input() label: string = 'Acción';\n  @Input() iconName: string = 'file-text';\n  @Input() showLabel: boolean = false;\n  @Input() color: FabColor = 'primary';\n  @Input() floating: boolean = true;\n  @Input() position: FabPosition = { bottom: '20px', right: '20px' };\n  @Input() showBadge: boolean = false;\n  @Input() badgeCount: number = 0;\n\n  @Output() clicked = new EventEmitter<MouseEvent>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onClick(event: MouseEvent): void {\n    this.clicked.emit(event);\n  }\n\n  get fabClass(): string {\n    return `fab fab-${this.variant} fab-color-${this.color}`;\n  }\n\n  get fabContainerClass(): string {\n    return this.floating ? 'fab-container fab-floating' : 'fab-container';\n  }\n\n  get containerStyle(): { [key: string]: string } {\n    if (!this.floating) {\n      return {};\n    }\n    const styles: { [key: string]: string } = {};\n    if (this.position.bottom) styles['bottom'] = this.position.bottom;\n    if (this.position.right) styles['right'] = this.position.right;\n    if (this.position.top) styles['top'] = this.position.top;\n    if (this.position.left) styles['left'] = this.position.left;\n    return styles;\n  }\n\n  getSanitizedIcon(): SafeHtml {\n    const svg = this.getIconSvg(this.iconName);\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      'file-text': `<svg width=\"32\" height=\"32\" viewBox=\"0 0 45 45\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M5.625 37.5V7.5C5.625 6.00816 6.21806 4.57784 7.27295 3.52295C8.32784 2.46806 9.75816 1.875 11.25 1.875H26.25V1.87683C27.0898 1.87587 27.9222 2.03877 28.6981 2.36023C29.4738 2.68167 30.178 3.15372 30.7709 3.74817L37.4945 10.4718L37.7124 10.6989C38.2075 11.2422 38.6055 11.8678 38.8879 12.5482C39.2103 13.3251 39.376 14.1589 39.375 15V37.5C39.375 38.9918 38.7819 40.4222 37.7271 41.4771C36.6722 42.5319 35.2418 43.125 33.75 43.125H11.25C9.75816 43.125 8.32784 43.125 7.27295 41.4771C6.21806 40.4222 5.625 38.9918 5.625 37.5ZM30 30C31.0355 30 31.875 30.8395 31.875 31.875C31.875 32.9105 31.0355 33.75 30 33.75H15C13.9645 33.75 13.125 32.9105 13.125 31.875C13.125 30.8395 13.9645 30 15 30H30ZM30 22.5C31.0355 22.5 31.875 23.3395 31.875 24.375C31.875 25.4105 31.0355 26.25 30 26.25H15C13.9645 26.25 13.125 25.4105 13.125 24.375C13.125 23.3395 13.9645 22.5 15 22.5H30ZM18.75 15C19.7855 15 20.625 15.8395 20.625 16.875C20.625 17.9105 19.7855 18.75 18.75 18.75H15C13.9645 18.75 13.125 17.9105 13.125 16.875C13.125 15.8395 13.9645 15 15 15H18.75ZM34.845 13.125L28.125 6.40503V13.125H34.845ZM9.375 37.5C9.375 37.9973 9.57269 38.4741 9.92432 38.8257C10.2759 39.1773 10.7527 39.375 11.25 39.375H33.75C34.2473 39.375 34.7241 39.1773 35.0757 38.8257C35.4273 38.4741 35.625 37.9973 35.625 37.5V16.875H28.125C27.1304 16.875 26.1769 16.4796 25.4736 15.7764C24.7704 15.0731 24.375 14.1196 24.375 13.125V5.625H11.25C10.7527 5.625 10.2759 5.82269 9.92432 6.17432C9.57269 6.52595 9.375 7.00272 9.375 7.5V37.5Z\" fill=\"currentColor\"/>\n</svg>`,\n      'message-square': `<svg width=\"32\" height=\"32\" viewBox=\"0 0 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M30.6249 7.29166C30.6249 6.90488 30.4712 6.53406 30.1977 6.26057C29.9242 5.98708 29.5534 5.83332 29.1666 5.83332H5.83325C5.44648 5.83332 5.07565 5.98708 4.80216 6.26057C4.52867 6.53406 4.37492 6.90488 4.37492 7.29166V30.0211L6.86434 27.5317L7.18477 27.2412C7.96312 26.6032 8.94239 26.2502 9.9576 26.25H29.1666C29.5534 26.25 29.9242 26.0962 30.1977 25.8227C30.4712 25.5493 30.6249 25.1784 30.6249 24.7917V7.29166ZM33.5416 24.7917C33.5416 25.952 33.0803 27.0644 32.2598 27.8849C31.4394 28.7054 30.3269 29.1667 29.1666 29.1667H9.9576C9.57091 29.1668 9.19991 29.3204 8.92651 29.5939L5.71505 32.8054C5.36644 33.1539 4.92245 33.3913 4.43901 33.4875C3.9554 33.5837 3.45332 33.5352 2.99776 33.3465C2.54219 33.1579 2.15239 32.8379 1.87838 32.428C1.6385 32.069 1.49708 31.6544 1.46537 31.226L1.45825 31.0423V7.29166C1.45825 6.13133 1.91952 5.01887 2.73999 4.19839C3.56046 3.37792 4.67293 2.91666 5.83325 2.91666H29.1666C30.3269 2.91666 31.4394 3.37792 32.2598 4.19839C33.0803 5.01887 33.5416 6.13133 33.5416 7.29166V24.7917Z\" fill=\"currentColor\"/>\n</svg>`,\n      'plus': `<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12 5V19M5 12H19\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "bottom",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "left",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "right",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "top",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "HeaderAction",
             "id": "interface-HeaderAction-6990e856797a692d034852d4d30acc955f8511da37238842acc94e41ab0f9553f9e8a10e290ae85d5d519c54db9bc9757c3b642c0d116fe95bea5de079e5233d",
             "file": "src/app/components/header-bar/header-bar.component.ts",
@@ -144,6 +234,76 @@
                     "optional": true,
                     "description": "",
                     "line": 8
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "InputButton",
+            "id": "interface-InputButton-ba188a75d6bdca8c7ab79ef7c50c1d614d3199e27a4ec68e97ab3ea5993d10746f7b53fe93104dc72b2e2df1af39141f95691f01a2f675c319a51e132769d5b0",
+            "file": "src/app/components/input/input.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\nimport { CheckboxMaestroComponent } from '../checkbox-maestro/checkbox-maestro.component';\n\nexport type InputVariant = 'simple' | 'one-button' | 'two-buttons' | 'two-buttons-checkbox';\n\nexport interface InputButton {\n  iconName: string;\n  ariaLabel?: string;\n}\n\n@Component({\n  selector: 'app-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule, CheckboxMaestroComponent],\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.css'],\n})\nexport class InputComponent {\n  @Input() variant: InputVariant = 'simple';\n  @Input() type: 'text' | 'number' | 'password' | 'tel' | 'email' | 'search' = 'text';\n  @Input() placeholder: string = '';\n  @Input() value: string | number | null = null;\n\n  @Input() button1?: InputButton;\n  @Input() button2?: InputButton;\n\n  @Input() checkboxLabel?: string;\n  @Input() checkboxChecked: boolean = false;\n\n  @Output() valueChange = new EventEmitter<string | number>();\n  @Output() button1Click = new EventEmitter<void>();\n  @Output() button2Click = new EventEmitter<void>();\n  @Output() checkboxChange = new EventEmitter<boolean>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onValueChange(newValue: string | number): void {\n    this.value = newValue;\n    this.valueChange.emit(newValue);\n  }\n\n  onButton1Click(): void {\n    this.button1Click.emit();\n  }\n\n  onButton2Click(): void {\n    this.button2Click.emit();\n  }\n\n  onCheckboxChange(checked: boolean): void {\n    this.checkboxChecked = checked;\n    this.checkboxChange.emit(checked);\n  }\n\n  getSanitizedIcon(iconName: string): SafeHtml {\n    const svg = this.getIconSvg(iconName);\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      copy: `<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_copy)\">\n<path d=\"M14 6.66663C14 6.29844 13.7015 5.99996 13.3333 5.99996H6.66666C6.29847 5.99996 5.99999 6.29844 5.99999 6.66663V13.3333C5.99999 13.7015 6.29847 14 6.66666 14H13.3333C13.7015 14 14 13.7015 14 13.3333V6.66663ZM9.99999 2.66663C9.99999 2.30148 9.69847 1.99996 9.33332 1.99996H2.66666C2.30151 1.99996 1.99999 2.30148 1.99999 2.66663V9.33329C1.99999 9.69844 2.30151 9.99996 2.66666 9.99996C3.03485 9.99996 3.33332 10.2984 3.33332 10.6666C3.33332 11.0348 3.03485 11.3333 2.66666 11.3333C1.56513 11.3333 0.666656 10.4348 0.666656 9.33329V2.66663C0.666656 1.5651 1.56513 0.666626 2.66666 0.666626H9.33332C10.4348 0.666626 11.3333 1.5651 11.3333 2.66663C11.3333 3.03482 11.0348 3.33329 10.6667 3.33329C10.2985 3.33329 9.99999 3.03482 9.99999 2.66663ZM15.3333 13.3333C15.3333 14.4379 14.4379 15.3333 13.3333 15.3333H6.66666C5.56209 15.3333 4.66666 14.4379 4.66666 13.3333V6.66663C4.66666 5.56206 5.56209 4.66663 6.66666 4.66663H13.3333C14.4379 4.66663 15.3333 5.56206 15.3333 6.66663V13.3333Z\" fill=\"#8A8F9A\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_copy\">\n<rect width=\"16\" height=\"16\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n      phone: `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_phone)\">\n<path d=\"M4.66668 2.33337C4.66668 2.17866 4.60517 2.03034 4.49578 1.92094C4.40003 1.82519 4.27446 1.76612 4.14088 1.75289L4.08334 1.75004H2.33334C2.17863 1.75004 2.0303 1.81154 1.92091 1.92094C1.81151 2.03034 1.75001 2.17866 1.75001 2.33337C1.75001 4.96344 2.79498 7.4856 4.65471 9.34534C6.51445 11.2051 9.03661 12.25 11.6667 12.25C11.8214 12.25 11.9697 12.1885 12.0791 12.0791C12.1885 11.9697 12.25 11.8214 12.25 11.6667V9.91671C12.25 9.762 12.1885 9.61367 12.0791 9.50427C11.9697 9.39488 11.8214 9.33337 11.6667 9.33337H9.91668C9.82612 9.33337 9.73677 9.3544 9.65577 9.3949C9.57477 9.4354 9.50446 9.49449 9.45012 9.56693L9.44728 9.57092L9.23992 9.84094C9.07935 10.0519 8.85222 10.2022 8.59506 10.2665C8.33788 10.3307 8.06636 10.3053 7.82545 10.1947C7.82094 10.1926 7.81623 10.1906 7.81178 10.1884C6.07584 9.33646 4.67092 7.93337 3.81674 6.19853L3.8156 6.19625C3.69757 5.95409 3.66697 5.67853 3.72901 5.41638C3.79111 5.15418 3.94211 4.92139 4.15626 4.75785L4.16025 4.755L4.43312 4.54993C4.50556 4.49559 4.56465 4.42528 4.60515 4.34428C4.64565 4.26328 4.66668 4.17393 4.66668 4.08337V2.33337ZM5.83334 4.08337C5.83334 4.35505 5.77027 4.62309 5.64877 4.86609C5.52727 5.10909 5.35057 5.32059 5.13323 5.4836L4.86378 5.68469C5.60186 7.18298 6.8143 8.39518 8.31194 9.13399L8.51645 8.86682L8.58025 8.78707C8.73321 8.60611 8.9214 8.45756 9.13396 8.35128C9.37696 8.22978 9.645 8.16671 9.91668 8.16671H11.6667C12.1308 8.16671 12.5758 8.35121 12.904 8.6794C13.2322 9.00759 13.4167 9.45258 13.4167 9.91671V11.6667C13.4167 12.1308 13.2322 12.5758 12.904 12.904C12.5758 13.2322 12.1308 13.4167 11.6667 13.4167C8.72719 13.4167 5.90837 12.2487 3.82984 10.1702C1.75132 8.09168 0.583344 5.27286 0.583344 2.33337C0.583344 1.86925 0.76785 1.42426 1.09604 1.09607C1.42423 0.767881 1.86921 0.583374 2.33334 0.583374H4.08334C4.54747 0.583374 4.99246 0.767881 5.32065 1.09607C5.64884 1.42426 5.83334 1.86924 5.83334 2.33337V4.08337Z\" fill=\"#3B82F6\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_phone\">\n<rect width=\"14\" height=\"14\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n      square: `<svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.5 3.125C12.5 2.77982 12.2202 2.5 11.875 2.5H3.125C2.77982 2.5 2.5 2.77982 2.5 3.125V11.875C2.5 12.2202 2.77982 12.5 3.125 12.5H11.875C12.2202 12.5 12.5 12.2202 12.5 11.875V3.125ZM13.75 11.875C13.75 12.9105 12.9105 13.75 11.875 13.75H3.125C2.08947 13.75 1.25 12.9105 1.25 11.875V3.125C1.25 2.08947 2.08947 1.25 3.125 1.25H11.875C12.9105 1.25 13.75 2.08947 13.75 3.125V11.875Z\" fill=\"#8A8F9A\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "ariaLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 11
+                },
+                {
+                    "name": "iconName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "RadioOption",
+            "id": "interface-RadioOption-201a259d77479723b9f46c63a03ee7e83a4a8f4109e159ce6ba3730da5b25988e439346d3a9c671da1a743837f6117aa0ef68aa1a3972c2311774eb6a805c161",
+            "file": "src/app/components/radio-group-maestro/radio-group-maestro.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\nexport interface RadioOption {\n  value: string | number;\n  label: string;\n}\n\n@Component({\n  selector: 'app-radio-group-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './radio-group-maestro.component.html',\n  styleUrls: ['./radio-group-maestro.component.css'],\n})\nexport class RadioGroupMaestroComponent {\n  @Input() options: RadioOption[] = [];\n  @Input() selectedValue?: string | number | null;\n\n  @Output() selectedValueChange = new EventEmitter<string | number>();\n\n  selectOption(option: RadioOption): void {\n    this.selectedValue = option.value;\n    this.selectedValueChange.emit(option.value);\n  }\n\n  isSelected(value: string | number): boolean {\n    return this.selectedValue === value;\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
                 }
             ],
             "indexSignatures": [],
@@ -1107,6 +1267,633 @@
             "templateData": "<button\n  [class]=\"buttonClass\"\n  [ngStyle]=\"buttonStyle\"\n  [disabled]=\"disabled\"\n  (click)=\"onClick($event)\"\n  type=\"button\"\n>\n  <span *ngIf=\"showIcon && iconName\" [innerHTML]=\"sanitizedIconHtml\" class=\"btn-icon\"></span>\n  <span *ngIf=\"label && variant !== 'icono-circular' && variant !== 'icono-cuadrado'\" class=\"btn-label\">{{ label }}</span>\n</button>\n"
         },
         {
+            "name": "CheckboxMaestroComponent",
+            "id": "component-CheckboxMaestroComponent-57f584037d2582fdc962c50d4ae778db2ec810c853b3c173c999793ebd33c44d8538aafdf03e29d78db71be2811ffdb2d35ee1ea317e5c3d635abe7a1188b401",
+            "file": "src/app/components/checkbox-maestro/checkbox-maestro.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-checkbox-maestro",
+            "styleUrls": [
+                "./checkbox-maestro.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./checkbox-maestro.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "checked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "checkedChange",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getSanitizedCheckIcon",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "SafeHtml",
+                    "typeParameters": [],
+                    "line": 24,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleCheckbox",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 19,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\n@Component({\n  selector: 'app-checkbox-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox-maestro.component.html',\n  styleUrls: ['./checkbox-maestro.component.css'],\n})\nexport class CheckboxMaestroComponent {\n  @Input() checked: boolean = false;\n\n  @Output() checkedChange = new EventEmitter<boolean>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  toggleCheckbox(): void {\n    this.checked = !this.checked;\n    this.checkedChange.emit(this.checked);\n  }\n\n  getSanitizedCheckIcon(): SafeHtml {\n    const svg = `<svg width=\"8\" height=\"8\" viewBox=\"0 0 8 8\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M6.43096 1.76432C6.56114 1.63414 6.77214 1.63414 6.90232 1.76432C7.03249 1.89449 7.03249 2.1055 6.90232 2.23567L3.23565 5.90234C3.10548 6.03251 2.89447 6.03251 2.7643 5.90234L1.09763 4.23567C0.967456 4.1055 0.967456 3.89449 1.09763 3.76432C1.22781 3.63414 1.43881 3.63414 1.56899 3.76432L2.99997 5.19531L6.43096 1.76432Z\" fill=\"white\"/>\n</svg>`;\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".checkbox-maestro {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  border: 2px solid #8A8F9A;\n  border-radius: 4px;\n  background-color: #FFFFFF;\n  cursor: pointer;\n  padding: 0;\n  margin: 0;\n  transition: all 0.15s ease;\n  outline: none;\n  flex-shrink: 0;\n}\n\n.checkbox-maestro:focus {\n  outline: 2px solid #6419E6;\n  outline-offset: 2px;\n}\n\n.checkbox-maestro.unchecked {\n  background-color: #FFFFFF;\n  border-color: #8A8F9A;\n}\n\n.checkbox-maestro.unchecked:hover {\n  border-color: #6B7280;\n}\n\n.checkbox-maestro.checked {\n  background: linear-gradient(135deg, #16A34A 0%, #15803D 100%);\n  border-color: #64C287;\n}\n\n.checkbox-maestro.checked:hover {\n  background: linear-gradient(135deg, #15803D 0%, #166534 100%);\n}\n\n.checkbox-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n}\n\n.checkbox-icon svg {\n  width: 100%;\n  height: 100%;\n  flex-shrink: 0;\n}\n",
+                    "styleUrl": "./checkbox-maestro.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 15,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<button\n  class=\"checkbox-maestro\"\n  [class.checked]=\"checked\"\n  [class.unchecked]=\"!checked\"\n  (click)=\"toggleCheckbox()\"\n  type=\"button\"\n  role=\"checkbox\"\n  [attr.aria-checked]=\"checked\"\n>\n  <span *ngIf=\"checked\" class=\"checkbox-icon\" [innerHTML]=\"getSanitizedCheckIcon()\"></span>\n</button>\n"
+        },
+        {
+            "name": "ComboboxMaestroComponent",
+            "id": "component-ComboboxMaestroComponent-a787ab33f446c8084ef9fea81387a693ea79b63501d5e8b1e7075fe8f4df011f125ae6af56f77a86b605a867ea19e30e77a701db80014a25171299a760dc0418",
+            "file": "src/app/components/combobox-maestro/combobox-maestro.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-combobox-maestro",
+            "styleUrls": [
+                "./combobox-maestro.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./combobox-maestro.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "options",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "ComboOption[]",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "'Selecciona una opción'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "selectedValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string | number | null",
+                    "decorators": []
+                },
+                {
+                    "name": "width",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selectedValueChange",
+                    "defaultValue": "new EventEmitter<string | number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "isOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getIconSvg",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 60,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSanitizedIcon",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "SafeHtml",
+                    "typeParameters": [],
+                    "line": 55,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSelectedLabel",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onDocumentClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 74,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'document:click', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "selectOption",
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "ComboOption",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "ComboOption",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleCombobox",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "document:click",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 74
+                }
+            ],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport interface ComboOption {\n  value: string | number;\n  label: string;\n}\n\n@Component({\n  selector: 'app-combobox-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './combobox-maestro.component.html',\n  styleUrls: ['./combobox-maestro.component.css'],\n})\nexport class ComboboxMaestroComponent {\n  @Input() placeholder: string = 'Selecciona una opción';\n  @Input() options: ComboOption[] = [];\n  @Input() selectedValue?: string | number | null;\n  @Input() width?: string;\n\n  @Output() selectedValueChange = new EventEmitter<string | number>();\n\n  isOpen: boolean = false;\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  toggleCombobox(): void {\n    this.isOpen = !this.isOpen;\n  }\n\n  selectOption(option: ComboOption): void {\n    this.selectedValue = option.value;\n    this.selectedValueChange.emit(option.value);\n    this.isOpen = false;\n  }\n\n  getSelectedLabel(): string {\n    if (!this.selectedValue) {\n      return this.placeholder;\n    }\n    const selected = this.options.find(opt => opt.value === this.selectedValue);\n    return selected ? selected.label : this.placeholder;\n  }\n\n  get containerStyle(): { [key: string]: string } {\n    const styles: { [key: string]: string } = {};\n    if (this.width) {\n      styles['width'] = this.width;\n    }\n    return styles;\n  }\n\n  getSanitizedIcon(iconName: string): SafeHtml {\n    const svg = this.getIconSvg(iconName);\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      'chevron-down': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.9697 6.21973C13.2626 5.92684 13.7374 5.92684 14.0303 6.21973C14.3232 6.51262 14.3232 6.98738 14.0303 7.28028L9.53028 11.7803C9.23739 12.0732 8.76262 12.0732 8.46973 11.7803L3.96973 7.28028C3.67684 6.98738 3.67684 6.51262 3.96973 6.21973C4.26262 5.92684 4.73738 5.92684 5.03028 6.21973L9 10.1895L12.9697 6.21973Z\" fill=\"#A8AFB9\"/>\n</svg>`,\n      'chevron-up': `<svg width=\"18\" height=\"18\" viewBox=\"0 0 18 18\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M5.03027 11.7803C4.73738 12.0732 4.26262 12.0732 3.96972 11.7803C3.67683 11.4874 3.67683 11.0126 3.96972 10.7197L8.46972 6.21972C8.76262 5.92683 9.23738 5.92683 9.53027 6.21972L14.0303 10.7197C14.3232 11.0126 14.3232 11.4874 14.0303 11.7803C13.7374 12.0732 13.2626 12.0732 12.9697 11.7803L9 7.81054L5.03027 11.7803Z\" fill=\"#A8AFB9\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent): void {\n    const target = event.target as HTMLElement;\n    if (!target.closest('.combobox-container')) {\n      this.isOpen = false;\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".combobox-container {\n  position: relative;\n  display: inline-block;\n  width: 100%;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n}\n\n.combobox-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  width: 100%;\n  height: 34px;\n  padding: 8px 14px;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  background-color: #FFFFFF;\n  cursor: pointer;\n  transition: all 0.15s ease;\n  outline: none;\n  font-size: 13px;\n  font-weight: 600;\n  letter-spacing: -0.26px;\n  line-height: normal;\n}\n\n.combobox-header:hover {\n  border-color: #D1D5DB;\n  background-color: #FAFAFA;\n}\n\n.combobox-header:focus {\n  outline: 2px solid #6419E6;\n  outline-offset: 2px;\n}\n\n.combobox-label {\n  flex: 1;\n  text-align: left;\n  color: #161616;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.combobox-label.placeholder {\n  color: #9CA3AF;\n}\n\n.combobox-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 18px;\n  height: 18px;\n  flex-shrink: 0;\n  margin-left: 8px;\n}\n\n.combobox-icon svg {\n  width: 100%;\n  height: 100%;\n}\n\n.combobox-panel {\n  position: absolute;\n  top: calc(100% + 2px);\n  left: 0;\n  right: 0;\n  z-index: 1000;\n  background-color: #FFFFFF;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);\n  overflow: hidden;\n  animation: slideDown 0.15s ease;\n}\n\n@keyframes slideDown {\n  from {\n    opacity: 0;\n    transform: translateY(-8px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n.combobox-option {\n  display: block;\n  width: 100%;\n  padding: 12px 14px;\n  border: none;\n  background-color: transparent;\n  color: #161616;\n  text-align: left;\n  cursor: pointer;\n  font-size: 13px;\n  font-weight: 600;\n  letter-spacing: -0.26px;\n  line-height: normal;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  transition: background-color 0.15s ease;\n  outline: none;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.combobox-option:hover {\n  background-color: #ECEEF0;\n}\n\n.combobox-option:focus {\n  background-color: #ECEEF0;\n  outline: none;\n}\n\n.combobox-option.selected {\n  background-color: #ECEEF0;\n  font-weight: 700;\n}\n\n.combobox-option:not(:last-child) {\n  border-bottom: none;\n}\n",
+                    "styleUrl": "./combobox-maestro.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 25,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "accessors": {
+                "containerStyle": {
+                    "name": "containerStyle",
+                    "getSignature": {
+                        "name": "containerStyle",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 47
+                    }
+                }
+            },
+            "templateData": "<div class=\"combobox-container\" [ngStyle]=\"containerStyle\">\n  <button\n    class=\"combobox-header\"\n    (click)=\"toggleCombobox()\"\n    type=\"button\"\n  >\n    <span class=\"combobox-label\" [class.placeholder]=\"selectedValue === undefined || selectedValue === null\">\n      {{ getSelectedLabel() }}\n    </span>\n    <span class=\"combobox-icon\">\n      <span [innerHTML]=\"getSanitizedIcon(isOpen ? 'chevron-up' : 'chevron-down')\"></span>\n    </span>\n  </button>\n\n  <div *ngIf=\"isOpen\" class=\"combobox-panel\">\n    <button\n      *ngFor=\"let option of options\"\n      class=\"combobox-option\"\n      (click)=\"selectOption(option)\"\n      type=\"button\"\n      [class.selected]=\"option.value === selectedValue\"\n    >\n      {{ option.label }}\n    </button>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "ContextHeaderComponent",
+            "id": "component-ContextHeaderComponent-3e90df54bf970da090938ac388efdaabb120d60c5e8d1778d084ce3063e448aeb87fb825a194f216eed3214ef5f6653777f103cf33df19b3ccb546b75dc7fd89",
+            "file": "src/app/components/context-header/context-header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-context-header",
+            "styleUrls": [
+                "./context-header.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./context-header.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "defaultValue": "'#22C55E'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "iconName",
+                    "defaultValue": "'phone'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "textColor",
+                    "defaultValue": "'#FFFFFF'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Texto de contexto'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "backClick",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getChevronSvg",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 59,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "getIconSvg",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSanitizedChevron",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "SafeHtml",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getSanitizedIcon",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "SafeHtml",
+                    "typeParameters": [],
+                    "line": 33,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onBackClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\n@Component({\n  selector: 'app-context-header',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './context-header.component.html',\n  styleUrls: ['./context-header.component.css'],\n})\nexport class ContextHeaderComponent {\n  @Input() title: string = 'Texto de contexto';\n  @Input() backgroundColor: string = '#22C55E';\n  @Input() iconName: string = 'phone';\n  @Input() textColor: string = '#FFFFFF';\n\n  @Output() backClick = new EventEmitter<void>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onBackClick(): void {\n    this.backClick.emit();\n  }\n\n  get headerStyle(): { [key: string]: string } {\n    return {\n      'background-color': this.backgroundColor,\n      color: this.textColor,\n    };\n  }\n\n  getSanitizedIcon(): SafeHtml {\n    const svg = this.getIconSvg(this.iconName);\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  getSanitizedChevron(): SafeHtml {\n    const svg = this.getChevronSvg();\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      'phone': `<svg width=\"30\" height=\"30\" viewBox=\"0 0 30 30\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10 5C10 4.66848 9.86821 4.35063 9.63379 4.11621C9.42861 3.91103 9.15954 3.78447 8.87329 3.7561L8.75 3.75H5C4.66848 3.75 4.35063 3.88179 4.11621 4.11621C3.88179 4.35063 3.75 4.66848 3.75 5C3.75 10.6358 5.98922 16.0405 9.97437 20.0256C13.9595 24.0108 19.3641 26.25 25 26.25C25.3315 26.25 25.6494 26.1182 25.8838 25.8838C26.1182 25.6494 26.25 25.3315 26.25 25V21.25C26.25 20.9185 26.1182 20.6006 25.8838 20.3662C25.6494 20.1318 25.3315 20 25 20H21.25C21.0559 20 20.8645 20.0451 20.6909 20.1318C20.5173 20.2186 20.3667 20.3452 20.2502 20.5005L20.2441 20.509L19.7998 21.0876C19.4557 21.5396 18.969 21.8618 18.418 21.9995C17.8669 22.1372 17.285 22.0827 16.7688 21.8457C16.7591 21.8413 16.749 21.837 16.7395 21.8323C13.0196 20.0066 10.0091 17 8.17871 13.2825L8.17627 13.2776C7.92335 12.7587 7.85777 12.1682 7.99072 11.6064C8.12378 11.0446 8.44736 10.5458 8.90625 10.1953L8.91479 10.1892L9.49951 9.74976C9.65476 9.63332 9.78138 9.48265 9.86816 9.30908C9.95495 9.13551 10 8.94406 10 8.75V5ZM21.25 13.75C21.25 12.4239 20.7228 11.1525 19.7852 10.2148C18.8475 9.27716 17.5761 8.75 16.25 8.75C15.5596 8.75 15 8.19036 15 7.5C15 6.80964 15.5596 6.25 16.25 6.25C18.2391 6.25 20.1462 7.04074 21.5527 8.44727C22.9593 9.85379 23.75 11.7609 23.75 13.75C23.75 14.4404 23.1904 15 22.5 15C21.8096 15 21.25 14.4404 21.25 13.75ZM26.25 13.75C26.25 11.0978 25.1969 8.55383 23.3215 6.67847C21.4462 4.8031 18.9022 3.75 16.25 3.75C15.5596 3.75 15 3.19036 15 2.5C15 1.80964 15.5596 1.25 16.25 1.25C19.5652 1.25 22.7449 2.56668 25.0891 4.91089C27.4333 7.25509 28.75 10.4348 28.75 13.75C28.75 14.4404 28.1904 15 27.5 15C26.8096 15 26.25 14.4404 26.25 13.75Z\" fill=\"currentColor\"/>\n</svg>`,\n      'thumbs-down': `<svg width=\"30\" height=\"30\" viewBox=\"0 0 30 30\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M26.2501 5C26.2501 4.6685 26.1183 4.35063 25.8839 4.11621C25.6495 3.88181 25.3316 3.75003 25.0001 3.75H22.5001V16.25H25.0001C25.3316 16.25 25.6495 16.1182 25.8839 15.8838C26.1183 15.6494 26.2501 15.3315 26.2501 15V5ZM8.12509 3.75C7.85474 3.75 7.5919 3.83809 7.37558 4.00024C7.21335 4.12191 7.08366 4.28045 6.99716 4.46167L6.92514 4.64966L4.01254 14.6497C3.95822 14.8359 3.94856 15.0325 3.98325 15.2234C4.01795 15.4142 4.09639 15.5943 4.21274 15.7495C4.32917 15.9048 4.47984 16.0314 4.65341 16.1182C4.82698 16.2049 5.01844 16.25 5.21249 16.25H12.5001C12.8835 16.25 13.2458 16.4259 13.4828 16.7273C13.7197 17.0287 13.8051 17.4228 13.7147 17.7954L12.4647 22.9443L12.4635 22.9492C12.3673 23.3387 12.3611 23.7457 12.4439 24.1382C12.5268 24.5304 12.6968 24.8989 12.942 25.2161C13.1873 25.5333 13.5011 25.7915 13.86 25.9705C13.9964 26.0385 14.1396 26.0905 14.2848 26.134L18.1947 18.3276C18.5052 17.7044 18.9835 17.1797 19.5753 16.8127C19.7122 16.7279 19.8544 16.6531 20.0001 16.5869V3.75H8.12509ZM28.7501 15C28.7501 15.9945 28.3547 16.9481 27.6515 17.6514C26.9482 18.3546 25.9946 18.75 25.0001 18.75H21.5504C21.3179 18.7502 21.09 18.8155 20.8924 18.938C20.695 19.0605 20.5357 19.2354 20.4322 19.4434L20.4298 19.447L16.1183 28.0591C15.9039 28.4872 15.463 28.7559 14.9842 28.75C14.2067 28.7403 13.4414 28.5549 12.7455 28.208C12.0493 27.8609 11.4402 27.361 10.9644 26.7456C10.4887 26.1303 10.1584 25.4155 9.99765 24.6545C9.83697 23.8935 9.85027 23.105 10.0367 22.3499L10.9107 18.75H5.21249C4.63033 18.75 4.05596 18.6148 3.53525 18.3545C3.01454 18.0941 2.56131 17.7155 2.21201 17.2498C1.863 16.7843 1.6277 16.2438 1.52353 15.6714C1.4194 15.0987 1.44967 14.509 1.61264 13.9502L4.52524 3.9502L4.62167 3.66211C4.87344 3.00283 5.30748 2.4254 5.87534 1.99951C6.52436 1.5129 7.31389 1.25 8.12509 1.25H25.0001C25.9946 1.25003 26.9482 1.64539 27.6515 2.34863C28.3547 3.05189 28.7501 4.00546 28.7501 5V15Z\" fill=\"currentColor\"/>\n</svg>`,\n      'info': `<svg width=\"30\" height=\"30\" viewBox=\"0 0 30 30\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M15 1.25C7.55976 1.25 1.25 7.55976 1.25 15C1.25 22.4402 7.55976 28.75 15 28.75C22.4402 28.75 28.75 22.4402 28.75 15C28.75 7.55976 22.4402 1.25 15 1.25ZM15 3.75C21.2132 3.75 26.25 8.78679 26.25 15C26.25 21.2132 21.2132 26.25 15 26.25C8.78679 26.25 3.75 21.2132 3.75 15C3.75 8.78679 8.78679 3.75 15 3.75ZM15 11.25C15.6904 11.25 16.25 10.6904 16.25 10C16.25 9.30964 15.6904 8.75 15 8.75C14.3096 8.75 13.75 9.30964 13.75 10C13.75 10.6904 14.3096 11.25 15 11.25ZM15 13.75C14.3096 13.75 13.75 14.3096 13.75 15V20C13.75 20.6904 14.3096 21.25 15 21.25C15.6904 21.25 16.25 20.6904 16.25 20V15C16.25 14.3096 15.6904 13.75 15 13.75Z\" fill=\"currentColor\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n\n  private getChevronSvg(): string {\n    return `<svg width=\"31\" height=\"31\" viewBox=\"0 0 31 31\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M18.4618 6.83676C18.9662 6.33233 19.7838 6.33233 20.2883 6.83676C20.7927 7.34118 20.7927 8.15883 20.2883 8.66325L13.4515 15.5L20.2883 22.3368C20.7927 22.8412 20.7927 23.6588 20.2883 24.1633C19.7838 24.6677 18.9662 24.6677 18.4618 24.1633L10.7118 16.4133C10.2073 15.9088 10.2073 15.0912 10.7118 14.5868L18.4618 6.83676Z\" fill=\"currentColor\"/>\n</svg>`;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".context-header {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  height: 66px;\n  padding: 0 28px;\n  border-radius: 9px;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 27px;\n  font-weight: 600;\n  letter-spacing: -0.54px;\n  line-height: normal;\n}\n\n.header-back-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 31px;\n  height: 31px;\n  border: none;\n  background-color: transparent;\n  color: inherit;\n  cursor: pointer;\n  padding: 0;\n  margin: 0;\n  outline: none;\n  flex-shrink: 0;\n  transition: opacity 0.15s ease;\n}\n\n.header-back-btn:hover {\n  opacity: 0.8;\n}\n\n.header-back-btn:active {\n  opacity: 0.6;\n}\n\n.header-back-btn:focus {\n  outline: 2px solid rgba(255, 255, 255, 0.3);\n  outline-offset: 2px;\n}\n\n.chevron-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  color: inherit;\n}\n\n.chevron-icon svg {\n  width: 31px;\n  height: 31px;\n  color: inherit;\n}\n\n.header-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 30px;\n  height: 30px;\n  color: inherit;\n  flex-shrink: 0;\n}\n\n.header-icon svg {\n  width: 30px;\n  height: 30px;\n  color: inherit;\n}\n\n.header-title {\n  color: inherit;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n",
+                    "styleUrl": "./context-header.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "accessors": {
+                "headerStyle": {
+                    "name": "headerStyle",
+                    "getSignature": {
+                        "name": "headerStyle",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 26
+                    }
+                }
+            },
+            "templateData": "<div class=\"context-header\" [ngStyle]=\"headerStyle\">\n  <button\n    class=\"header-back-btn\"\n    (click)=\"onBackClick()\"\n    type=\"button\"\n    [attr.aria-label]=\"'Volver'\"\n  >\n    <span class=\"chevron-icon\" [innerHTML]=\"getSanitizedChevron()\"></span>\n  </button>\n\n  <span class=\"header-icon\" [innerHTML]=\"getSanitizedIcon()\"></span>\n\n  <span class=\"header-title\">{{ title }}</span>\n</div>\n"
+        },
+        {
             "name": "CrmPageComponent",
             "id": "component-CrmPageComponent-d7037f6ad9e5b565ee72f0452ca9667c68d2b51f7f2b956fb1b340492cf359c1ed5be04d74109cdb4399ebe6a14bbb819d53ec42e9daad1a75dae85b85497a50",
             "file": "src/app/components/crm-page/crm-page.component.ts",
@@ -1309,6 +2096,409 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<div class=\"crm-layout\">\n  <app-header-bar\n    [username]=\"'Yesica Palomino'\"\n    [appName]=\"'Integra CRM'\"\n    [actions]=\"headerActions\"\n    (menuClick)=\"onMenuClick()\"\n  ></app-header-bar>\n\n  <div class=\"crm-container\" [class.sidebar-expanded]=\"isSidebarExpanded\">\n    <app-sidebar-menu\n      [isExpanded]=\"isSidebarExpanded\"\n      [modules]=\"sidebarModules\"\n      class=\"crm-sidebar\"\n    ></app-sidebar-menu>\n\n    <main class=\"crm-main-content\">\n      <div class=\"performance-cards-grid\">\n        <app-performance-card\n          *ngFor=\"let card of performanceCards\"\n          [title]=\"card.title\"\n          [value]=\"card.value\"\n          [percent]=\"card.percent\"\n          [icon]=\"card.icon\"\n          [iconColor]=\"card.iconColor\"\n        ></app-performance-card>\n      </div>\n\n      <div class=\"navigation-section\">\n        <div class=\"tabs-wrapper\">\n          <app-navigation-tabs\n            *ngFor=\"let tab of navigationTabs\"\n            [label]=\"tab.label\"\n            [count]=\"tab.count\"\n            [color]=\"tab.color\"\n            [variant]=\"tab.variant\"\n            [isActive]=\"tab.isActive\"\n          ></app-navigation-tabs>\n        </div>\n      </div>\n\n      <div class=\"content-header\">\n        <h1 class=\"page-title\">Contacto Entrante</h1>\n\n        <div class=\"header-actions\">\n          <app-search-bar\n            [placeholder]=\"'Buscar contacto...'\"\n            [value]=\"searchValue\"\n            (valueChange)=\"onSearch($event)\"\n          ></app-search-bar>\n\n          <app-general-button [label]=\"'Filtrar'\" [color]=\"'white'\"></app-general-button>\n\n          <app-general-button [label]=\"'Buscar'\" [color]=\"'purple'\"></app-general-button>\n        </div>\n      </div>\n\n      <div class=\"table-section\">\n        <app-actividades-table-with-pagination\n          [headerColor]=\"'#E3F2FD'\"\n          [allRows]=\"actividadesData\"\n        ></app-actividades-table-with-pagination>\n      </div>\n    </main>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "DialogMaestroComponent",
+            "id": "component-DialogMaestroComponent-c300fbec6f7be0d0f9826f91c40d3497a2f6335c0904a1a48c4c94f09e2f3e1f87f4052b140f3a28c2d28c2c607642fb0b044fdb40807c4c653d719d6d8f4c99",
+            "file": "src/app/components/dialog-maestro/dialog-maestro.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-dialog-maestro",
+            "styleUrls": [
+                "./dialog-maestro.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./dialog-maestro.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "headerColor",
+                    "defaultValue": "'#7C3AED'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "headerVariant",
+                    "defaultValue": "'solid'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "DialogHeaderVariant",
+                    "decorators": []
+                },
+                {
+                    "name": "showBorderRadius",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getSoftColor",
+                    "args": [
+                        {
+                            "name": "hexColor",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "hexColor",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\nexport type DialogHeaderVariant = 'solid' | 'soft' | 'white';\n\n@Component({\n  selector: 'app-dialog-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './dialog-maestro.component.html',\n  styleUrls: ['./dialog-maestro.component.css'],\n})\nexport class DialogMaestroComponent {\n  @Input() headerVariant: DialogHeaderVariant = 'solid';\n  @Input() headerColor: string = '#7C3AED';\n  @Input() showBorderRadius: boolean = true;\n\n  get dialogClasses(): string {\n    const classes = ['dialog'];\n    if (this.showBorderRadius) {\n      classes.push('dialog-rounded');\n    }\n    return classes.join(' ');\n  }\n\n  get headerClasses(): string {\n    const classes = ['dialog-header', `dialog-header-${this.headerVariant}`];\n    return classes.join(' ');\n  }\n\n  get headerStyles(): { [key: string]: string } {\n    const styles: { [key: string]: string } = {};\n\n    if (this.headerVariant === 'solid') {\n      styles['background-color'] = this.headerColor;\n    } else if (this.headerVariant === 'soft') {\n      styles['background-color'] = this.getSoftColor(this.headerColor);\n    }\n\n    return styles;\n  }\n\n  private getSoftColor(hexColor: string): string {\n    // Convierte el color hex a una versión más clara (soft)\n    // Si el color es #7C3AED, devuelve una versión clara con opacidad\n    try {\n      const hex = hexColor.replace('#', '');\n      const r = parseInt(hex.substring(0, 2), 16);\n      const g = parseInt(hex.substring(2, 4), 16);\n      const b = parseInt(hex.substring(4, 6), 16);\n\n      // Crea una versión clara del color (más cerca del blanco)\n      const lightR = Math.round(r + (255 - r) * 0.85);\n      const lightG = Math.round(g + (255 - g) * 0.85);\n      const lightB = Math.round(b + (255 - b) * 0.85);\n\n      return `rgb(${lightR}, ${lightG}, ${lightB})`;\n    } catch (error) {\n      // Si hay error, retorna un gris claro\n      return '#F5F5F5';\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* Dialog container */\n.dialog {\n  display: flex;\n  flex-direction: column;\n  width: 326px;\n  background-color: #FFFFFF;\n  border: 1px solid #BEBEBE;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);\n}\n\n.dialog-rounded {\n  border-radius: 5px;\n  overflow: hidden;\n}\n\n/* Header styles */\n.dialog-header {\n  width: 100%;\n  height: 40px;\n  flex-shrink: 0;\n  border-bottom: 1px solid #BEBEBE;\n}\n\n.dialog-header-solid {\n  background-color: #7C3AED;\n  border-radius: 4px 4px 0 0;\n  border-bottom: none;\n}\n\n.dialog-header-soft {\n  background-color: #F5F5F5;\n  border-radius: 4px 4px 0 0;\n  border-bottom: 1px solid #BEBEBE;\n}\n\n.dialog-header-white {\n  background-color: #FFFFFF;\n  border-bottom: 1px solid #E5E5E5;\n}\n\n/* Body / Content area */\n.dialog-body {\n  flex: 1;\n  padding: 24px;\n  background-color: #FFFFFF;\n  min-height: 200px;\n  color: #333333;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 14px;\n  line-height: 1.6;\n}\n\n.dialog-body h1,\n.dialog-body h2,\n.dialog-body h3,\n.dialog-body h4,\n.dialog-body h5,\n.dialog-body h6 {\n  margin: 0 0 12px 0;\n  font-weight: 600;\n  color: #1F2937;\n}\n\n.dialog-body p {\n  margin: 0 0 12px 0;\n}\n\n.dialog-body p:last-child {\n  margin-bottom: 0;\n}\n",
+                    "styleUrl": "./dialog-maestro.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "dialogClasses": {
+                    "name": "dialogClasses",
+                    "getSignature": {
+                        "name": "dialogClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 18
+                    }
+                },
+                "headerClasses": {
+                    "name": "headerClasses",
+                    "getSignature": {
+                        "name": "headerClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 26
+                    }
+                },
+                "headerStyles": {
+                    "name": "headerStyles",
+                    "getSignature": {
+                        "name": "headerStyles",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 31
+                    }
+                }
+            },
+            "templateData": "<div [class]=\"dialogClasses\">\n  <div [class]=\"headerClasses\" [ngStyle]=\"headerStyles\"></div>\n  <div class=\"dialog-body\">\n    <ng-content></ng-content>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "FloatingActionButtonMaestroComponent",
+            "id": "component-FloatingActionButtonMaestroComponent-dcd03aa4ff97d55921021ce7d9980a215db0772d5df280a49ef596aff37c6e508e5fc3b2047b8fcfeb2db3e6e632113b2335857cd0e763554aa69170b7148068",
+            "file": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-floating-action-button-maestro",
+            "styleUrls": [
+                "./floating-action-button-maestro.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./floating-action-button-maestro.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "badgeCount",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 32,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "color",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "FabColor",
+                    "decorators": []
+                },
+                {
+                    "name": "floating",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "iconName",
+                    "defaultValue": "'file-text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Acción'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "position",
+                    "defaultValue": "{ bottom: '20px', right: '20px' }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "FabPosition",
+                    "decorators": []
+                },
+                {
+                    "name": "showBadge",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "showLabel",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'circular'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "FabVariant",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "clicked",
+                    "defaultValue": "new EventEmitter<MouseEvent>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getIconSvg",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 67,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSanitizedIcon",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "SafeHtml",
+                    "typeParameters": [],
+                    "line": 62,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 38,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport type FabVariant = 'circular' | 'extendido' | 'circular-con-badge';\n\nexport type FabColor = 'primary' | 'secondary' | 'warning' | 'success';\n\nexport interface FabPosition {\n  bottom?: string;\n  right?: string;\n  top?: string;\n  left?: string;\n}\n\n@Component({\n  selector: 'app-floating-action-button-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './floating-action-button-maestro.component.html',\n  styleUrls: ['./floating-action-button-maestro.component.css'],\n})\nexport class FloatingActionButtonMaestroComponent {\n  @Input() variant: FabVariant = 'circular';\n  @Input() label: string = 'Acción';\n  @Input() iconName: string = 'file-text';\n  @Input() showLabel: boolean = false;\n  @Input() color: FabColor = 'primary';\n  @Input() floating: boolean = true;\n  @Input() position: FabPosition = { bottom: '20px', right: '20px' };\n  @Input() showBadge: boolean = false;\n  @Input() badgeCount: number = 0;\n\n  @Output() clicked = new EventEmitter<MouseEvent>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onClick(event: MouseEvent): void {\n    this.clicked.emit(event);\n  }\n\n  get fabClass(): string {\n    return `fab fab-${this.variant} fab-color-${this.color}`;\n  }\n\n  get fabContainerClass(): string {\n    return this.floating ? 'fab-container fab-floating' : 'fab-container';\n  }\n\n  get containerStyle(): { [key: string]: string } {\n    if (!this.floating) {\n      return {};\n    }\n    const styles: { [key: string]: string } = {};\n    if (this.position.bottom) styles['bottom'] = this.position.bottom;\n    if (this.position.right) styles['right'] = this.position.right;\n    if (this.position.top) styles['top'] = this.position.top;\n    if (this.position.left) styles['left'] = this.position.left;\n    return styles;\n  }\n\n  getSanitizedIcon(): SafeHtml {\n    const svg = this.getIconSvg(this.iconName);\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      'file-text': `<svg width=\"32\" height=\"32\" viewBox=\"0 0 45 45\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M5.625 37.5V7.5C5.625 6.00816 6.21806 4.57784 7.27295 3.52295C8.32784 2.46806 9.75816 1.875 11.25 1.875H26.25V1.87683C27.0898 1.87587 27.9222 2.03877 28.6981 2.36023C29.4738 2.68167 30.178 3.15372 30.7709 3.74817L37.4945 10.4718L37.7124 10.6989C38.2075 11.2422 38.6055 11.8678 38.8879 12.5482C39.2103 13.3251 39.376 14.1589 39.375 15V37.5C39.375 38.9918 38.7819 40.4222 37.7271 41.4771C36.6722 42.5319 35.2418 43.125 33.75 43.125H11.25C9.75816 43.125 8.32784 43.125 7.27295 41.4771C6.21806 40.4222 5.625 38.9918 5.625 37.5ZM30 30C31.0355 30 31.875 30.8395 31.875 31.875C31.875 32.9105 31.0355 33.75 30 33.75H15C13.9645 33.75 13.125 32.9105 13.125 31.875C13.125 30.8395 13.9645 30 15 30H30ZM30 22.5C31.0355 22.5 31.875 23.3395 31.875 24.375C31.875 25.4105 31.0355 26.25 30 26.25H15C13.9645 26.25 13.125 25.4105 13.125 24.375C13.125 23.3395 13.9645 22.5 15 22.5H30ZM18.75 15C19.7855 15 20.625 15.8395 20.625 16.875C20.625 17.9105 19.7855 18.75 18.75 18.75H15C13.9645 18.75 13.125 17.9105 13.125 16.875C13.125 15.8395 13.9645 15 15 15H18.75ZM34.845 13.125L28.125 6.40503V13.125H34.845ZM9.375 37.5C9.375 37.9973 9.57269 38.4741 9.92432 38.8257C10.2759 39.1773 10.7527 39.375 11.25 39.375H33.75C34.2473 39.375 34.7241 39.1773 35.0757 38.8257C35.4273 38.4741 35.625 37.9973 35.625 37.5V16.875H28.125C27.1304 16.875 26.1769 16.4796 25.4736 15.7764C24.7704 15.0731 24.375 14.1196 24.375 13.125V5.625H11.25C10.7527 5.625 10.2759 5.82269 9.92432 6.17432C9.57269 6.52595 9.375 7.00272 9.375 7.5V37.5Z\" fill=\"currentColor\"/>\n</svg>`,\n      'message-square': `<svg width=\"32\" height=\"32\" viewBox=\"0 0 35 35\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M30.6249 7.29166C30.6249 6.90488 30.4712 6.53406 30.1977 6.26057C29.9242 5.98708 29.5534 5.83332 29.1666 5.83332H5.83325C5.44648 5.83332 5.07565 5.98708 4.80216 6.26057C4.52867 6.53406 4.37492 6.90488 4.37492 7.29166V30.0211L6.86434 27.5317L7.18477 27.2412C7.96312 26.6032 8.94239 26.2502 9.9576 26.25H29.1666C29.5534 26.25 29.9242 26.0962 30.1977 25.8227C30.4712 25.5493 30.6249 25.1784 30.6249 24.7917V7.29166ZM33.5416 24.7917C33.5416 25.952 33.0803 27.0644 32.2598 27.8849C31.4394 28.7054 30.3269 29.1667 29.1666 29.1667H9.9576C9.57091 29.1668 9.19991 29.3204 8.92651 29.5939L5.71505 32.8054C5.36644 33.1539 4.92245 33.3913 4.43901 33.4875C3.9554 33.5837 3.45332 33.5352 2.99776 33.3465C2.54219 33.1579 2.15239 32.8379 1.87838 32.428C1.6385 32.069 1.49708 31.6544 1.46537 31.226L1.45825 31.0423V7.29166C1.45825 6.13133 1.91952 5.01887 2.73999 4.19839C3.56046 3.37792 4.67293 2.91666 5.83325 2.91666H29.1666C30.3269 2.91666 31.4394 3.37792 32.2598 4.19839C33.0803 5.01887 33.5416 6.13133 33.5416 7.29166V24.7917Z\" fill=\"currentColor\"/>\n</svg>`,\n      'plus': `<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12 5V19M5 12H19\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".fab-container {\n  position: relative;\n  display: inline-block;\n}\n\n.fab-container.fab-floating {\n  position: fixed;\n  z-index: 999;\n}\n\n.fab {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 8px;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 13px;\n  font-weight: 600;\n  line-height: normal;\n  letter-spacing: -0.26px;\n  border: none;\n  outline: none;\n  cursor: pointer;\n  transition: all 0.15s ease;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n  color: #FFFFFF;\n  position: relative;\n}\n\n.fab:hover {\n  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);\n  transform: translateY(-2px);\n}\n\n.fab:active {\n  transform: translateY(0px);\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\n}\n\n.fab:focus {\n  outline: 2px solid #6419E6;\n  outline-offset: 2px;\n}\n\n/* Circular variant */\n.fab-circular {\n  width: 64px;\n  height: 64px;\n  border-radius: 50%;\n}\n\n.fab-circular .fab-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n}\n\n.fab-circular .fab-icon svg {\n  width: 32px;\n  height: 32px;\n  flex-shrink: 0;\n}\n\n/* Extended variant */\n.fab-extendido {\n  min-width: 200px;\n  height: 56px;\n  border-radius: 8px;\n  padding: 0 24px;\n}\n\n.fab-extendido .fab-icon-extended {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n}\n\n.fab-extendido .fab-icon-extended svg {\n  width: 24px;\n  height: 24px;\n  flex-shrink: 0;\n}\n\n.fab-extendido .fab-label {\n  white-space: nowrap;\n  text-align: center;\n  flex: 1;\n}\n\n/* Circular con badge variant */\n.fab-circular-con-badge {\n  width: 64px;\n  height: 64px;\n  border-radius: 50%;\n}\n\n.fab-circular-con-badge .fab-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n}\n\n.fab-circular-con-badge .fab-icon svg {\n  width: 32px;\n  height: 32px;\n  flex-shrink: 0;\n}\n\n/* Badge styles */\n.fab-badge {\n  position: absolute;\n  top: -8px;\n  right: -8px;\n  width: 32px;\n  height: 32px;\n  background-color: #EF4444;\n  border: 3px solid #FFFFFF;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 12px;\n  font-weight: 700;\n  color: #FFFFFF;\n  line-height: 1;\n  z-index: 10;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n\n/* Color variants */\n.fab-color-primary {\n  background-color: #6419E6;\n}\n\n.fab-color-primary:hover:not(:disabled) {\n  background-color: #5011BF;\n}\n\n.fab-color-secondary {\n  background-color: #FFFFFF;\n  color: #161616;\n  border: 1px solid #E5E7EB;\n}\n\n.fab-color-secondary:hover:not(:disabled) {\n  background-color: #E5E7EB;\n}\n\n.fab-color-warning {\n  background-color: #FB923C;\n}\n\n.fab-color-warning:hover:not(:disabled) {\n  background-color: #F97316;\n}\n\n.fab-color-success {\n  background-color: #16A34A;\n}\n\n.fab-color-success:hover:not(:disabled) {\n  background-color: #15803D;\n}\n",
+                    "styleUrl": "./floating-action-button-maestro.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 34,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "accessors": {
+                "fabClass": {
+                    "name": "fabClass",
+                    "getSignature": {
+                        "name": "fabClass",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 42
+                    }
+                },
+                "fabContainerClass": {
+                    "name": "fabContainerClass",
+                    "getSignature": {
+                        "name": "fabContainerClass",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 46
+                    }
+                },
+                "containerStyle": {
+                    "name": "containerStyle",
+                    "getSignature": {
+                        "name": "containerStyle",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 50
+                    }
+                }
+            },
+            "templateData": "<div [class]=\"fabContainerClass\" [ngStyle]=\"containerStyle\">\n  <button\n    [class]=\"fabClass\"\n    (click)=\"onClick($event)\"\n    type=\"button\"\n    [attr.aria-label]=\"label\"\n  >\n    <span *ngIf=\"variant !== 'extendido'\" class=\"fab-icon\">\n      <span [innerHTML]=\"getSanitizedIcon()\"></span>\n    </span>\n\n    <span *ngIf=\"variant === 'extendido'\" class=\"fab-icon-extended\">\n      <span [innerHTML]=\"getSanitizedIcon()\"></span>\n    </span>\n\n    <span *ngIf=\"variant === 'extendido' || showLabel\" class=\"fab-label\">\n      {{ label }}\n    </span>\n\n    <!-- Badge for circular-con-badge variant -->\n    <div\n      *ngIf=\"variant === 'circular-con-badge' && showBadge && badgeCount > 0\"\n      class=\"fab-badge\"\n    >\n      {{ badgeCount }}\n    </div>\n  </button>\n</div>\n"
         },
         {
             "name": "GeneralButtonComponent",
@@ -1739,6 +2929,441 @@
             "templateData": "<div \n  [class]=\"containerClass\" \n  [ngStyle]=\"containerStyle\">\n  <span [innerHTML]=\"sanitizedIconHtml\" class=\"icon-content\"></span>\n</div>\n"
         },
         {
+            "name": "InformacionTablaComponent",
+            "id": "component-InformacionTablaComponent-37908e2c17dc9bc3c90577d55a54488155d72d57f72d87a3115ebd51e946f8a5f73032872f18166129f7e01f393450f061515cb95760fe0d01085e254a93c8df",
+            "file": "src/app/components/informacion-tabla/informacion-tabla.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-informacion-tabla",
+            "styleUrls": [
+                "./informacion-tabla.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./informacion-tabla.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "accentColor",
+                    "defaultValue": "'#16A34A'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "backgroundColor",
+                    "defaultValue": "'#ECFDF3'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "height",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "text",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "width",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\n\n@Component({\n  selector: 'app-informacion-tabla',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './informacion-tabla.component.html',\n  styleUrls: ['./informacion-tabla.component.css'],\n})\nexport class InformacionTablaComponent {\n  @Input() text: string = '';\n  @Input() backgroundColor: string = '#ECFDF3';\n  @Input() accentColor: string = '#16A34A';\n  @Input() width?: string;\n  @Input() height?: string;\n\n  get containerStyle(): { [key: string]: string } {\n    const styles: { [key: string]: string } = {};\n\n    if (this.width) {\n      styles['width'] = this.width;\n    }\n\n    if (this.height) {\n      styles['height'] = this.height;\n    }\n\n    return styles;\n  }\n\n  get accentLineStyle(): { [key: string]: string } {\n    return {\n      'background-color': this.accentColor,\n    };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".informacion-tabla-wrapper {\n  display: inline-block;\n  width: 100%;\n}\n\n.informacion-tabla {\n  display: grid;\n  grid-template-columns: 17px 1fr;\n  grid-template-rows: 1fr;\n  align-items: stretch;\n  gap: 0;\n  padding: 0;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  overflow: visible;\n  width: 100%;\n}\n\n.informacion-accent-line {\n  grid-column: 1;\n  grid-row: 1;\n  width: 17px;\n  height: 100%;\n  border-radius: 6px 0 0 6px;\n}\n\n.informacion-content {\n  grid-column: 1 / -1;\n  grid-row: 1;\n  margin-left: 8px;\n  padding: 12px 23px 23px 12px;\n  display: flex;\n  align-items: center;\n  border-radius: 6px;\n  z-index: 10;\n  height: 100%;\n  box-sizing: border-box;\n}\n\n.informacion-text {\n  margin: 0;\n  padding: 0;\n  font-size: 11px;\n  font-weight: 400;\n  letter-spacing: -0.22px;\n  line-height: 1.45;\n  color: #161616;\n  text-align: left;\n  word-wrap: break-word;\n}\n",
+                    "styleUrl": "./informacion-tabla.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "containerStyle": {
+                    "name": "containerStyle",
+                    "getSignature": {
+                        "name": "containerStyle",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 18
+                    }
+                },
+                "accentLineStyle": {
+                    "name": "accentLineStyle",
+                    "getSignature": {
+                        "name": "accentLineStyle",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 32
+                    }
+                }
+            },
+            "templateData": "<div class=\"informacion-tabla-wrapper\" [ngStyle]=\"containerStyle\">\n  <div class=\"informacion-tabla\">\n    <div class=\"informacion-accent-line\" [ngStyle]=\"accentLineStyle\"></div>\n    <div class=\"informacion-content\" [ngStyle]=\"{ 'background-color': backgroundColor }\">\n      <p class=\"informacion-text\">{{ text }}</p>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
+            "name": "InputComponent",
+            "id": "component-InputComponent-ba188a75d6bdca8c7ab79ef7c50c1d614d3199e27a4ec68e97ab3ea5993d10746f7b53fe93104dc72b2e2df1af39141f95691f01a2f675c319a51e132769d5b0",
+            "file": "src/app/components/input/input.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-input",
+            "styleUrls": [
+                "./input.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./input.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "button1",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "InputButton",
+                    "decorators": []
+                },
+                {
+                    "name": "button2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "InputButton",
+                    "decorators": []
+                },
+                {
+                    "name": "checkboxChecked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "checkboxLabel",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'text'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "\"text\" | \"number\" | \"password\" | \"tel\" | \"email\" | \"search\"",
+                    "decorators": []
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "string | number | null",
+                    "decorators": []
+                },
+                {
+                    "name": "variant",
+                    "defaultValue": "'simple'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "InputVariant",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "button1Click",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 34,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "button2Click",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 35,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "checkboxChange",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 36,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<string | number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 33,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getIconSvg",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 63,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSanitizedIcon",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "SafeHtml",
+                    "typeParameters": [],
+                    "line": 58,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onButton1Click",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onButton2Click",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 49,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onCheckboxChange",
+                    "args": [
+                        {
+                            "name": "checked",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "checked",
+                            "type": "boolean",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onValueChange",
+                    "args": [
+                        {
+                            "name": "newValue",
+                            "type": "string | number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "newValue",
+                            "type": "string | number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CheckboxMaestroComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\nimport { CheckboxMaestroComponent } from '../checkbox-maestro/checkbox-maestro.component';\n\nexport type InputVariant = 'simple' | 'one-button' | 'two-buttons' | 'two-buttons-checkbox';\n\nexport interface InputButton {\n  iconName: string;\n  ariaLabel?: string;\n}\n\n@Component({\n  selector: 'app-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule, CheckboxMaestroComponent],\n  templateUrl: './input.component.html',\n  styleUrls: ['./input.component.css'],\n})\nexport class InputComponent {\n  @Input() variant: InputVariant = 'simple';\n  @Input() type: 'text' | 'number' | 'password' | 'tel' | 'email' | 'search' = 'text';\n  @Input() placeholder: string = '';\n  @Input() value: string | number | null = null;\n\n  @Input() button1?: InputButton;\n  @Input() button2?: InputButton;\n\n  @Input() checkboxLabel?: string;\n  @Input() checkboxChecked: boolean = false;\n\n  @Output() valueChange = new EventEmitter<string | number>();\n  @Output() button1Click = new EventEmitter<void>();\n  @Output() button2Click = new EventEmitter<void>();\n  @Output() checkboxChange = new EventEmitter<boolean>();\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onValueChange(newValue: string | number): void {\n    this.value = newValue;\n    this.valueChange.emit(newValue);\n  }\n\n  onButton1Click(): void {\n    this.button1Click.emit();\n  }\n\n  onButton2Click(): void {\n    this.button2Click.emit();\n  }\n\n  onCheckboxChange(checked: boolean): void {\n    this.checkboxChecked = checked;\n    this.checkboxChange.emit(checked);\n  }\n\n  getSanitizedIcon(iconName: string): SafeHtml {\n    const svg = this.getIconSvg(iconName);\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      copy: `<svg width=\"16\" height=\"16\" viewBox=\"0 0 16 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_copy)\">\n<path d=\"M14 6.66663C14 6.29844 13.7015 5.99996 13.3333 5.99996H6.66666C6.29847 5.99996 5.99999 6.29844 5.99999 6.66663V13.3333C5.99999 13.7015 6.29847 14 6.66666 14H13.3333C13.7015 14 14 13.7015 14 13.3333V6.66663ZM9.99999 2.66663C9.99999 2.30148 9.69847 1.99996 9.33332 1.99996H2.66666C2.30151 1.99996 1.99999 2.30148 1.99999 2.66663V9.33329C1.99999 9.69844 2.30151 9.99996 2.66666 9.99996C3.03485 9.99996 3.33332 10.2984 3.33332 10.6666C3.33332 11.0348 3.03485 11.3333 2.66666 11.3333C1.56513 11.3333 0.666656 10.4348 0.666656 9.33329V2.66663C0.666656 1.5651 1.56513 0.666626 2.66666 0.666626H9.33332C10.4348 0.666626 11.3333 1.5651 11.3333 2.66663C11.3333 3.03482 11.0348 3.33329 10.6667 3.33329C10.2985 3.33329 9.99999 3.03482 9.99999 2.66663ZM15.3333 13.3333C15.3333 14.4379 14.4379 15.3333 13.3333 15.3333H6.66666C5.56209 15.3333 4.66666 14.4379 4.66666 13.3333V6.66663C4.66666 5.56206 5.56209 4.66663 6.66666 4.66663H13.3333C14.4379 4.66663 15.3333 5.56206 15.3333 6.66663V13.3333Z\" fill=\"#8A8F9A\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_copy\">\n<rect width=\"16\" height=\"16\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n      phone: `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_phone)\">\n<path d=\"M4.66668 2.33337C4.66668 2.17866 4.60517 2.03034 4.49578 1.92094C4.40003 1.82519 4.27446 1.76612 4.14088 1.75289L4.08334 1.75004H2.33334C2.17863 1.75004 2.0303 1.81154 1.92091 1.92094C1.81151 2.03034 1.75001 2.17866 1.75001 2.33337C1.75001 4.96344 2.79498 7.4856 4.65471 9.34534C6.51445 11.2051 9.03661 12.25 11.6667 12.25C11.8214 12.25 11.9697 12.1885 12.0791 12.0791C12.1885 11.9697 12.25 11.8214 12.25 11.6667V9.91671C12.25 9.762 12.1885 9.61367 12.0791 9.50427C11.9697 9.39488 11.8214 9.33337 11.6667 9.33337H9.91668C9.82612 9.33337 9.73677 9.3544 9.65577 9.3949C9.57477 9.4354 9.50446 9.49449 9.45012 9.56693L9.44728 9.57092L9.23992 9.84094C9.07935 10.0519 8.85222 10.2022 8.59506 10.2665C8.33788 10.3307 8.06636 10.3053 7.82545 10.1947C7.82094 10.1926 7.81623 10.1906 7.81178 10.1884C6.07584 9.33646 4.67092 7.93337 3.81674 6.19853L3.8156 6.19625C3.69757 5.95409 3.66697 5.67853 3.72901 5.41638C3.79111 5.15418 3.94211 4.92139 4.15626 4.75785L4.16025 4.755L4.43312 4.54993C4.50556 4.49559 4.56465 4.42528 4.60515 4.34428C4.64565 4.26328 4.66668 4.17393 4.66668 4.08337V2.33337ZM5.83334 4.08337C5.83334 4.35505 5.77027 4.62309 5.64877 4.86609C5.52727 5.10909 5.35057 5.32059 5.13323 5.4836L4.86378 5.68469C5.60186 7.18298 6.8143 8.39518 8.31194 9.13399L8.51645 8.86682L8.58025 8.78707C8.73321 8.60611 8.9214 8.45756 9.13396 8.35128C9.37696 8.22978 9.645 8.16671 9.91668 8.16671H11.6667C12.1308 8.16671 12.5758 8.35121 12.904 8.6794C13.2322 9.00759 13.4167 9.45258 13.4167 9.91671V11.6667C13.4167 12.1308 13.2322 12.5758 12.904 12.904C12.5758 13.2322 12.1308 13.4167 11.6667 13.4167C8.72719 13.4167 5.90837 12.2487 3.82984 10.1702C1.75132 8.09168 0.583344 5.27286 0.583344 2.33337C0.583344 1.86925 0.76785 1.42426 1.09604 1.09607C1.42423 0.767881 1.86921 0.583374 2.33334 0.583374H4.08334C4.54747 0.583374 4.99246 0.767881 5.32065 1.09607C5.64884 1.42426 5.83334 1.86924 5.83334 2.33337V4.08337Z\" fill=\"#3B82F6\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_phone\">\n<rect width=\"14\" height=\"14\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n      square: `<svg width=\"15\" height=\"15\" viewBox=\"0 0 15 15\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.5 3.125C12.5 2.77982 12.2202 2.5 11.875 2.5H3.125C2.77982 2.5 2.5 2.77982 2.5 3.125V11.875C2.5 12.2202 2.77982 12.5 3.125 12.5H11.875C12.2202 12.5 12.5 12.2202 12.5 11.875V3.125ZM13.75 11.875C13.75 12.9105 12.9105 13.75 11.875 13.75H3.125C2.08947 13.75 1.25 12.9105 1.25 11.875V3.125C1.25 2.08947 2.08947 1.25 3.125 1.25H11.875C12.9105 1.25 13.75 2.08947 13.75 3.125V11.875Z\" fill=\"#8A8F9A\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".input-wrapper {\n  display: inline-block;\n  width: 100%;\n}\n\n.input-container {\n  display: flex;\n  align-items: center;\n  gap: 0;\n  border: 1px solid #E5E7EB;\n  border-radius: 5px;\n  background-color: #FFFFFF;\n  height: 34px;\n  overflow: hidden;\n}\n\n.input-field {\n  flex: 1;\n  border: none;\n  outline: none;\n  padding: 8px 12px;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 14px;\n  color: #1F2937;\n  background-color: transparent;\n  height: 100%;\n}\n\n.input-field::placeholder {\n  color: #9CA3AF;\n}\n\n.input-field:focus {\n  outline: none;\n}\n\n.button-section {\n  display: flex;\n  align-items: center;\n  gap: 0;\n  height: 100%;\n}\n\n.button-checkbox-section {\n  display: flex;\n  align-items: center;\n  gap: 0;\n  height: 100%;\n}\n\n.input-button {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  border: none;\n  background-color: transparent;\n  cursor: pointer;\n  padding: 0 4px;\n  margin: 0;\n  transition: all 0.15s ease;\n  flex-shrink: 0;\n}\n\n.input-button:hover {\n  opacity: 0.7;\n}\n\n.input-button:active {\n  opacity: 0.5;\n}\n\n.icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n}\n\n.icon svg {\n  width: 100%;\n  height: 100%;\n}\n\n.button-separator {\n  width: 1px;\n  height: 24px;\n  background-color: #E5E7EB;\n  flex-shrink: 0;\n}\n\n.checkbox-section {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  padding: 0 2px;\n}\n\n/* Simple variant */\n.variant-simple {\n  border: 1px solid #E5E7EB;\n}\n\n/* One button variant */\n.variant-one-button {\n  border: 1px solid #E5E7EB;\n}\n\n/* Two buttons variant */\n.variant-two-buttons {\n  border: 1px solid #E5E7EB;\n}\n\n/* Two buttons with checkbox variant */\n.variant-two-buttons-checkbox {\n  border: 1px solid #E5E7EB;\n}\n",
+                    "styleUrl": "./input.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 36,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "templateData": "<div class=\"input-wrapper\">\n  <div class=\"input-container\" [class]=\"'variant-' + variant\">\n    <input\n      class=\"input-field\"\n      [type]=\"type\"\n      [placeholder]=\"placeholder\"\n      [value]=\"value\"\n      (input)=\"onValueChange($event.target.value)\"\n    />\n\n    <!-- One Button Variant -->\n    <div *ngIf=\"variant === 'one-button' && button1\" class=\"button-section\">\n      <div class=\"button-separator\"></div>\n      <button\n        class=\"input-button\"\n        (click)=\"onButton1Click()\"\n        [attr.aria-label]=\"button1.ariaLabel\"\n        type=\"button\"\n      >\n        <span class=\"icon\" [innerHTML]=\"getSanitizedIcon(button1.iconName)\"></span>\n      </button>\n    </div>\n\n    <!-- Two Buttons Variant -->\n    <div *ngIf=\"variant === 'two-buttons' && (button1 || button2)\" class=\"button-section\">\n      <div *ngIf=\"button1\" class=\"button-separator\"></div>\n      <button\n        *ngIf=\"button1\"\n        class=\"input-button\"\n        (click)=\"onButton1Click()\"\n        [attr.aria-label]=\"button1.ariaLabel\"\n        type=\"button\"\n      >\n        <span class=\"icon\" [innerHTML]=\"getSanitizedIcon(button1.iconName)\"></span>\n      </button>\n      <div *ngIf=\"button2\" class=\"button-separator\"></div>\n      <button\n        *ngIf=\"button2\"\n        class=\"input-button\"\n        (click)=\"onButton2Click()\"\n        [attr.aria-label]=\"button2.ariaLabel\"\n        type=\"button\"\n      >\n        <span class=\"icon\" [innerHTML]=\"getSanitizedIcon(button2.iconName)\"></span>\n      </button>\n    </div>\n\n    <!-- Two Buttons with Checkbox Variant -->\n    <div *ngIf=\"variant === 'two-buttons-checkbox' && (button1 || button2)\" class=\"button-checkbox-section\">\n      <div *ngIf=\"button1\" class=\"button-separator\"></div>\n      <button\n        *ngIf=\"button1\"\n        class=\"input-button\"\n        (click)=\"onButton1Click()\"\n        [attr.aria-label]=\"button1.ariaLabel\"\n        type=\"button\"\n      >\n        <span class=\"icon\" [innerHTML]=\"getSanitizedIcon(button1.iconName)\"></span>\n      </button>\n      <div *ngIf=\"button2\" class=\"button-separator\"></div>\n      <button\n        *ngIf=\"button2\"\n        class=\"input-button\"\n        (click)=\"onButton2Click()\"\n        [attr.aria-label]=\"button2.ariaLabel\"\n        type=\"button\"\n      >\n        <span class=\"icon\" [innerHTML]=\"getSanitizedIcon(button2.iconName)\"></span>\n      </button>\n      <div class=\"button-separator\"></div>\n      <div class=\"checkbox-section\">\n        <app-checkbox-maestro\n          [checked]=\"checkboxChecked\"\n          (checkedChange)=\"onCheckboxChange($event)\"\n        ></app-checkbox-maestro>\n      </div>\n    </div>\n  </div>\n</div>\n"
+        },
+        {
             "name": "NavigationTabsComponent",
             "id": "component-NavigationTabsComponent-f3c9fc3c204f5e2d27d5a367ba6130d0399dc40acebf69d0ae442b8653ef398078097c061b0fd58e024ed73b9ff35b86c5f3768bb9e5eaae4d005713b5c60d0b",
             "file": "src/app/components/navigation-tabs/navigation-tabs.component.ts",
@@ -1893,6 +3518,447 @@
                 }
             },
             "templateData": "<button\n  type=\"button\"\n  [ngClass]=\"classes\"\n  (click)=\"handleClick()\"\n  [disabled]=\"disabled\"\n  [attr.aria-disabled]=\"disabled\"\n>\n  <span class=\"label\">{{ label }}</span>\n  <span [ngClass]=\"badgeClasses\">\n    <span [ngClass]=\"countClasses\">{{ count }}</span>\n  </span>\n</button>\n"
+        },
+        {
+            "name": "NotasComponent",
+            "id": "component-NotasComponent-ee5558c3f608f6250e9cbd37c37f535adfe58a83468af5661b2f355a4877c3bcaafc7444d12d29f852ba75d40cdbdc1c7298e1f9ce3c97db0323985b2203bf6b",
+            "file": "src/app/components/notas/notas.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-notas",
+            "styleUrls": [
+                "./notas.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./notas.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "maxLength",
+                    "defaultValue": "500",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "'Ingrese un comentario'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "title",
+                    "defaultValue": "'Comentario Actividad'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "commentChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "content",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                },
+                {
+                    "name": "dragOffsetX",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 26,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "dragOffsetY",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 27,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isDragging",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isMinimized",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 23
+                },
+                {
+                    "name": "notasContainer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'notasContainer'"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ]
+                },
+                {
+                    "name": "posX",
+                    "defaultValue": "20",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "posY",
+                    "defaultValue": "20",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "getIconSvg",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 89,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSanitizedIcon",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "SafeHtml",
+                    "typeParameters": [],
+                    "line": 84,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onContentChange",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 34,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onHeaderMouseDown",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 43,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onMouseMove",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'document:mousemove', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onMouseUp",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 73,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'document:mouseup'"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ]
+                },
+                {
+                    "name": "toggleMinimize",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "document:mousemove",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 54
+                },
+                {
+                    "name": "document:mouseup",
+                    "args": [],
+                    "argsDecorator": [],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 73
+                }
+            ],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\n@Component({\n  selector: 'app-notas',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  templateUrl: './notas.component.html',\n  styleUrls: ['./notas.component.css'],\n})\nexport class NotasComponent {\n  @Input() title: string = 'Comentario Actividad';\n  @Input() placeholder: string = 'Ingrese un comentario';\n  @Input() maxLength: number = 500;\n\n  @Output() commentChange = new EventEmitter<string>();\n\n  @ViewChild('notasContainer') notasContainer!: ElementRef;\n\n  content: string = '';\n  isMinimized: boolean = false;\n\n  private isDragging: boolean = false;\n  private dragOffsetX: number = 0;\n  private dragOffsetY: number = 0;\n\n  posX: number = 20;\n  posY: number = 20;\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  onContentChange(value: string): void {\n    this.content = value;\n    this.commentChange.emit(value);\n  }\n\n  toggleMinimize(): void {\n    this.isMinimized = !this.isMinimized;\n  }\n\n  onHeaderMouseDown(event: MouseEvent): void {\n    this.isDragging = true;\n    const container = this.notasContainer?.nativeElement;\n    if (container) {\n      this.dragOffsetX = event.clientX - container.offsetLeft;\n      this.dragOffsetY = event.clientY - container.offsetTop;\n    }\n    event.preventDefault();\n  }\n\n  @HostListener('document:mousemove', ['$event'])\n  onMouseMove(event: MouseEvent): void {\n    if (this.isDragging && this.notasContainer) {\n      const container = this.notasContainer.nativeElement;\n      this.posX = event.clientX - this.dragOffsetX;\n      this.posY = event.clientY - this.dragOffsetY;\n\n      // Constrain to viewport\n      const maxX = window.innerWidth - container.offsetWidth;\n      const maxY = window.innerHeight - container.offsetHeight;\n\n      this.posX = Math.max(0, Math.min(this.posX, maxX));\n      this.posY = Math.max(0, Math.min(this.posY, maxY));\n\n      container.style.left = this.posX + 'px';\n      container.style.top = this.posY + 'px';\n    }\n  }\n\n  @HostListener('document:mouseup')\n  onMouseUp(): void {\n    this.isDragging = false;\n  }\n\n  get containerStyle(): { [key: string]: string } {\n    return {\n      left: this.posX + 'px',\n      top: this.posY + 'px',\n    };\n  }\n\n  getSanitizedIcon(iconName: string): SafeHtml {\n    const svg = this.getIconSvg(iconName);\n    return this.sanitizer.bypassSecurityTrustHtml(svg);\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      move: `<svg width=\"26\" height=\"26\" viewBox=\"0 0 26 26\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M12.3165 1.32663C12.742 0.979584 13.3693 1.00406 13.7659 1.40069L17.0159 4.65069C17.439 5.07375 17.439 5.75952 17.0159 6.18259C16.5928 6.60566 15.9071 6.60566 15.484 6.18259L14.0833 4.78187V11.9166H21.2181L19.8173 10.5159C19.3943 10.0929 19.3943 9.40709 19.8173 8.98402C20.2404 8.56095 20.9262 8.56095 21.3492 8.98402L24.5992 12.234C25.0223 12.6571 25.0223 13.3429 24.5992 13.7659L21.3492 17.0159C20.9262 17.439 20.2404 17.439 19.8173 17.0159C19.3943 16.5929 19.3943 15.9071 19.8173 15.484L21.2181 14.0833H14.0833V21.2181L15.484 19.8174C15.9071 19.3943 16.5928 19.3943 17.0159 19.8174C17.439 20.2404 17.439 20.9262 17.0159 21.3493L13.7659 24.5993C13.3428 25.0223 12.6571 25.0223 12.234 24.5993L8.98401 21.3493C8.56094 20.9262 8.56094 20.2404 8.98401 19.8174C9.40708 19.3943 10.0928 19.3943 10.5159 19.8174L11.9166 21.2181V14.0833H4.78186L6.18258 15.484C6.60564 15.9071 6.60564 16.5929 6.18258 17.0159C5.75951 17.439 5.07374 17.439 4.65068 17.0159L1.40068 13.7659C0.977607 13.3429 0.977607 12.6571 1.40068 12.234L4.65068 8.98402C5.07374 8.56095 5.75951 8.56095 6.18258 8.98402C6.60564 9.40709 6.60564 10.0929 6.18258 10.5159L4.78186 11.9166H11.9166V4.78187L10.5159 6.18259C10.0928 6.60566 9.40708 6.60566 8.98401 6.18259C8.56094 5.75952 8.56094 5.07375 8.98401 4.65069L12.234 1.40069L12.3165 1.32663Z\" fill=\"white\"/>\n</svg>`,\n      minus: `<svg width=\"36\" height=\"36\" viewBox=\"0 0 36 36\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M28.5 16.5C29.3284 16.5 30 17.1716 30 18C30 18.8284 29.3284 19.5 28.5 19.5H7.5C6.67157 19.5 6 18.8284 6 18C6 17.1716 6.67157 16.5 7.5 16.5H28.5Z\" fill=\"white\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".notas-container {\n  position: fixed;\n  width: 570px;\n  background-color: #FFFFFF;\n  border-radius: 11px;\n  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);\n  z-index: 999;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n}\n\n.notas-header {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 12px;\n  height: 84px;\n  background-color: #FB923C;\n  padding: 0 20px;\n  cursor: move;\n  flex-shrink: 0;\n  border-radius: 11px 11px 0 0;\n  user-select: none;\n}\n\n.header-move-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 26px;\n  height: 26px;\n  border: none;\n  background-color: transparent;\n  color: #FFFFFF;\n  cursor: move;\n  padding: 0;\n  margin: 0;\n  outline: none;\n  flex-shrink: 0;\n}\n\n.header-move-icon svg {\n  width: 26px;\n  height: 26px;\n}\n\n.header-content {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  padding: 0 20px;\n}\n\n.header-title {\n  font-size: 30px;\n  font-weight: 600;\n  letter-spacing: -0.6px;\n  line-height: normal;\n  color: #FFFFFF;\n  text-align: left;\n}\n\n.header-minimize-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 36px;\n  height: 36px;\n  border: none;\n  background-color: transparent;\n  color: #FFFFFF;\n  cursor: pointer;\n  padding: 0;\n  margin: 0;\n  outline: none;\n  flex-shrink: 0;\n  transition: opacity 0.15s ease;\n}\n\n.header-minimize-btn:hover {\n  opacity: 0.8;\n}\n\n.header-minimize-btn:active {\n  opacity: 0.6;\n}\n\n.header-minimize-btn svg {\n  width: 36px;\n  height: 36px;\n  flex-shrink: 0;\n}\n\n.notas-body {\n  display: flex;\n  flex-direction: column;\n  gap: 0;\n  background-color: #FEFCE8;\n  padding: 28px;\n  flex: 1;\n  overflow: hidden;\n}\n\n.notas-textarea {\n  flex: 1;\n  padding: 16px 20px;\n  border: 1px solid #D6D9DC;\n  border-radius: 6px;\n  background-color: #FFFFFF;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 26px;\n  font-weight: 600;\n  letter-spacing: -0.52px;\n  line-height: 1.4;\n  color: #161616;\n  outline: none;\n  resize: none;\n  transition: border-color 0.15s ease;\n  min-height: 378px;\n}\n\n.notas-textarea::placeholder {\n  color: #9CA3AF;\n}\n\n.notas-textarea:focus {\n  border-color: #FB923C;\n  box-shadow: 0 0 0 3px rgba(251, 146, 60, 0.1);\n}\n\n.notas-counter {\n  padding-top: 16px;\n  font-size: 23px;\n  font-weight: 600;\n  letter-spacing: -0.46px;\n  line-height: normal;\n  color: #9CA3AF;\n  text-align: left;\n}\n",
+                    "styleUrl": "./notas.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 30,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "accessors": {
+                "containerStyle": {
+                    "name": "containerStyle",
+                    "getSignature": {
+                        "name": "containerStyle",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 77
+                    }
+                }
+            },
+            "templateData": "<div\n  #notasContainer\n  class=\"notas-container\"\n  [ngStyle]=\"containerStyle\"\n>\n  <div class=\"notas-header\" (mousedown)=\"onHeaderMouseDown($event)\">\n    <button class=\"header-move-icon\" type=\"button\" [attr.aria-label]=\"'Arrastrar'\">\n      <span [innerHTML]=\"getSanitizedIcon('move')\"></span>\n    </button>\n\n    <div class=\"header-content\">\n      <span class=\"header-title\">{{ title }}</span>\n    </div>\n\n    <button\n      class=\"header-minimize-btn\"\n      (click)=\"toggleMinimize()\"\n      type=\"button\"\n      [attr.aria-label]=\"isMinimized ? 'Restaurar' : 'Minimizar'\"\n    >\n      <span [innerHTML]=\"getSanitizedIcon('minus')\"></span>\n    </button>\n  </div>\n\n  <div *ngIf=\"!isMinimized\" class=\"notas-body\">\n    <textarea\n      class=\"notas-textarea\"\n      [placeholder]=\"placeholder\"\n      [value]=\"content\"\n      (input)=\"onContentChange($event.target.value)\"\n      [attr.maxlength]=\"maxLength\"\n    ></textarea>\n\n    <div class=\"notas-counter\">{{ content.length }}/{{ maxLength }}</div>\n  </div>\n</div>\n"
         },
         {
             "name": "OportunidadComponent",
@@ -2336,6 +4402,139 @@
                 }
             },
             "templateData": "<button\n  [class]=\"buttonClasses\"\n  [disabled]=\"disabled\"\n  (click)=\"onClick($event)\"\n  type=\"button\"\n>\n  <span *ngIf=\"showIcon && iconName\" [innerHTML]=\"iconName\" [class]=\"iconClasses\"></span>\n  <span *ngIf=\"label && variant !== 'icono-circular' && variant !== 'icono-cuadrado'\">{{ label }}</span>\n</button>\n"
+        },
+        {
+            "name": "RadioGroupMaestroComponent",
+            "id": "component-RadioGroupMaestroComponent-201a259d77479723b9f46c63a03ee7e83a4a8f4109e159ce6ba3730da5b25988e439346d3a9c671da1a743837f6117aa0ef68aa1a3972c2311774eb6a805c161",
+            "file": "src/app/components/radio-group-maestro/radio-group-maestro.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-radio-group-maestro",
+            "styleUrls": [
+                "./radio-group-maestro.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./radio-group-maestro.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "options",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "RadioOption[]",
+                    "decorators": []
+                },
+                {
+                    "name": "selectedValue",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string | number | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "selectedValueChange",
+                    "defaultValue": "new EventEmitter<string | number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "isSelected",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string | number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string | number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "selectOption",
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "RadioOption",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "RadioOption",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\nexport interface RadioOption {\n  value: string | number;\n  label: string;\n}\n\n@Component({\n  selector: 'app-radio-group-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './radio-group-maestro.component.html',\n  styleUrls: ['./radio-group-maestro.component.css'],\n})\nexport class RadioGroupMaestroComponent {\n  @Input() options: RadioOption[] = [];\n  @Input() selectedValue?: string | number | null;\n\n  @Output() selectedValueChange = new EventEmitter<string | number>();\n\n  selectOption(option: RadioOption): void {\n    this.selectedValue = option.value;\n    this.selectedValueChange.emit(option.value);\n  }\n\n  isSelected(value: string | number): boolean {\n    return this.selectedValue === value;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".radio-group-maestro {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n}\n\n.radio-option {\n  display: flex;\n  align-items: center;\n  gap: 12px;\n  padding: 0;\n  border: none;\n  background-color: transparent;\n  cursor: pointer;\n  outline: none;\n  transition: opacity 0.15s ease;\n}\n\n.radio-option:focus {\n  outline: 2px solid #6419E6;\n  outline-offset: 4px;\n}\n\n.radio-option:active {\n  opacity: 0.8;\n}\n\n.radio-button {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  width: 24px;\n  height: 24px;\n  border-radius: 50%;\n  flex-shrink: 0;\n  transition: all 0.15s ease;\n  position: relative;\n}\n\n.radio-option.unselected .radio-button {\n  border: 2px solid #8A8F9A;\n  background-color: #FFFFFF;\n}\n\n.radio-option.unselected .radio-button:hover {\n  border-color: #6B7280;\n}\n\n.radio-option.selected .radio-button {\n  border: 2px solid #0044DA;\n  background-color: #FFFFFF;\n}\n\n.radio-inner {\n  display: block;\n  width: 12px;\n  height: 12px;\n  border-radius: 50%;\n  background-color: #0044DA;\n  flex-shrink: 0;\n}\n\n.radio-label {\n  font-size: 13px;\n  font-weight: 600;\n  letter-spacing: -0.26px;\n  line-height: normal;\n  color: #161616;\n  user-select: none;\n}\n",
+                    "styleUrl": "./radio-group-maestro.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<div class=\"radio-group-maestro\">\n  <button\n    *ngFor=\"let option of options\"\n    class=\"radio-option\"\n    [class.selected]=\"isSelected(option.value)\"\n    [class.unselected]=\"!isSelected(option.value)\"\n    (click)=\"selectOption(option)\"\n    type=\"button\"\n    role=\"radio\"\n    [attr.aria-checked]=\"isSelected(option.value)\"\n  >\n    <span class=\"radio-button\">\n      <span *ngIf=\"isSelected(option.value)\" class=\"radio-inner\"></span>\n    </span>\n    <span class=\"radio-label\">{{ option.label }}</span>\n  </button>\n</div>\n"
         },
         {
             "name": "SearchBarComponent",
@@ -3220,6 +5419,211 @@
                 }
             },
             "templateData": "<span [ngClass]=\"classes\">\n  <span *ngIf=\"_icon\" [ngClass]=\"iconClasses\" [innerHTML]=\"_icon\"></span>\n  <span class=\"tag-label\">{{ label }}</span>\n</span>\n"
+        },
+        {
+            "name": "TagsMaestrasComponent",
+            "id": "component-TagsMaestrasComponent-f330517557aeed0d8a7a0a6ad0b180f1094a2cf600908dc0d992d821885702685543437e2d9cd2f43c71665e7f4ed53e821030fb5f5108e19fbddeb5ac42cb0b",
+            "file": "src/app/components/tags-maestras/tags-maestras.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-tags-maestras",
+            "styleUrls": [
+                "./tags-maestras.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./tags-maestras.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "colorVariant",
+                    "defaultValue": "'green'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "ColorVariant",
+                    "decorators": []
+                },
+                {
+                    "name": "customBackground",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "customBorder",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "customTextColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "iconName",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Etiqueta'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "showIcon",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "solid",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "getIconSvg",
+                    "args": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 65,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "iconName",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input } from '@angular/core';\nimport { DomSanitizer, SafeHtml } from '@angular/platform-browser';\n\nexport type ColorVariant = 'green' | 'orange' | 'red' | 'blue' | 'purple' | 'gray' | 'custom';\n\n@Component({\n  selector: 'app-tags-maestras',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './tags-maestras.component.html',\n  styleUrls: ['./tags-maestras.component.css'],\n})\nexport class TagsMaestrasComponent {\n  @Input() label: string = 'Etiqueta';\n  @Input() showIcon: boolean = false;\n  @Input() iconName?: string;\n  @Input() colorVariant: ColorVariant = 'green';\n  @Input() solid: boolean = false;\n  @Input() customBackground?: string;\n  @Input() customBorder?: string;\n  @Input() customTextColor?: string;\n\n  constructor(private sanitizer: DomSanitizer) {}\n\n  get tagClasses(): string {\n    const classes = ['tag'];\n    \n    if (this.solid) {\n      classes.push('tag-solid');\n    } else {\n      classes.push('tag-outline');\n    }\n\n    if (this.colorVariant !== 'custom') {\n      classes.push(`tag-${this.colorVariant}`);\n    }\n\n    return classes.join(' ');\n  }\n\n  get tagStyles(): { [key: string]: string } {\n    const styles: { [key: string]: string } = {};\n\n    if (this.customBackground) {\n      styles['background-color'] = this.customBackground;\n    }\n\n    if (this.customBorder) {\n      styles['border-color'] = this.customBorder;\n    }\n\n    if (this.customTextColor) {\n      styles['color'] = this.customTextColor;\n    }\n\n    return styles;\n  }\n\n  get sanitizedIcon(): SafeHtml {\n    if (!this.showIcon || !this.iconName) return '';\n    return this.sanitizer.bypassSecurityTrustHtml(this.getIconSvg(this.iconName));\n  }\n\n  private getIconSvg(iconName: string): string {\n    const iconMap: { [key: string]: string } = {\n      'flag': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M3.5 11.0833V1.16667C3.5 0.933333 3.6875 0.75 3.93333 0.75H11.6667C11.75 0.75 11.8333 0.833333 11.8333 0.916667V7.58333C11.8333 7.66667 11.75 7.75 11.6667 7.75H3.93333C3.6875 7.75 3.5 7.9375 3.5 8.18333V11.0833Z\" fill=\"currentColor\"/>\n</svg>`,\n      'check-circle': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_check)\">\n<path d=\"M6.00273 0.659404C7.45254 0.430994 8.9367 0.70692 10.208 1.44041C10.4869 1.60137 10.583 1.95778 10.4222 2.2368C10.2612 2.51584 9.90425 2.61143 9.62521 2.45042C8.58513 1.85032 7.3706 1.62499 6.18445 1.81183C4.99827 1.99871 3.91179 2.5867 3.10657 3.47752C2.30136 4.36838 1.82577 5.50851 1.75932 6.7075C1.69288 7.90652 2.03953 9.09241 2.74142 10.0668C3.44329 11.0411 4.45823 11.7455 5.6165 12.0623C6.77477 12.3791 8.0068 12.2892 9.10681 11.8077C10.2069 11.3261 11.1087 10.4816 11.6617 9.41567C12.2147 8.34976 12.3851 7.12647 12.1454 5.94985C12.0811 5.63424 12.285 5.32611 12.6005 5.2617C12.9162 5.19738 13.2244 5.4012 13.2887 5.71686C13.5817 7.15502 13.3727 8.65004 12.6968 9.95286C12.0209 11.2557 10.919 12.2878 9.57451 12.8764C8.23008 13.4649 6.72449 13.5745 5.30888 13.1874C3.89318 12.8002 2.65249 11.9396 1.79464 10.7487C0.9368 9.55778 0.513184 8.10857 0.594361 6.64313C0.675559 5.17766 1.25708 3.78423 2.24125 2.69537C3.22541 1.60659 4.55295 0.887815 6.00273 0.659404ZM12.4211 1.92063C12.6489 1.69309 13.0183 1.69294 13.246 1.92063C13.4738 2.14844 13.4738 2.51827 13.246 2.74607L7.41264 8.57941C7.18492 8.80709 6.81559 8.80694 6.58777 8.57941L4.83777 6.82941C4.60996 6.6016 4.60996 6.23177 4.83777 6.00397C5.06559 5.77642 5.43492 5.77627 5.66264 6.00397L7.00021 7.34153L12.4211 1.92063Z\" fill=\"currentColor\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_check\">\n<rect width=\"14\" height=\"14\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n      'phone': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<g clip-path=\"url(#clip0_phone)\">\n<path d=\"M4.66665 2.33334C4.66665 2.17863 4.60514 2.0303 4.49575 1.92091C4.4 1.82516 4.27443 1.76609 4.14085 1.75286L4.08331 1.75001H2.33331C2.1786 1.75001 2.03027 1.81151 1.92088 1.92091C1.81148 2.0303 1.74998 2.17863 1.74998 2.33334C1.74998 4.96341 2.79495 7.48557 4.65468 9.34531C6.51442 11.205 9.03658 12.25 11.6666 12.25C11.8214 12.25 11.9697 12.1885 12.0791 12.0791C12.1885 11.9697 12.25 11.8214 12.25 11.6667V9.91668C12.25 9.76197 12.1885 9.61364 12.0791 9.50424C11.9697 9.39485 11.8214 9.33334 11.6666 9.33334H9.91665C9.82609 9.33334 9.73674 9.35437 9.65574 9.39487C9.57474 9.43537 9.50443 9.49446 9.45009 9.5669L9.44724 9.57089L9.23989 9.84091C9.07932 10.0518 8.85219 10.2022 8.59503 10.2664C8.33785 10.3307 8.06633 10.3053 7.82542 10.1947C7.82091 10.1926 7.8162 10.1906 7.81175 10.1884C6.07581 9.33643 4.67089 7.93334 3.81671 6.1985L3.81557 6.19622C3.69754 5.95406 3.66694 5.6785 3.72898 5.41635C3.79108 5.15415 3.94208 4.92136 4.15623 4.75782L4.16022 4.75497L4.43308 4.5499C4.50553 4.49556 4.56462 4.42525 4.60512 4.34425C4.64562 4.26325 4.66665 4.1739 4.66665 4.08334V2.33334ZM5.83331 4.08334C5.83331 4.35502 5.77024 4.62306 5.64874 4.86606C5.52724 5.10906 5.35054 5.32056 5.1332 5.48357L4.86375 5.68466C5.60183 7.18295 6.81427 8.39515 8.31191 9.13396L8.51642 8.86679L8.58022 8.78704C8.73318 8.60608 8.92137 8.45753 9.13393 8.35125C9.37693 8.22975 9.64497 8.16668 9.91665 8.16668H11.6666C12.1308 8.16668 12.5758 8.35118 12.904 8.67937C13.2321 9.00756 13.4166 9.45255 13.4166 9.91668V11.6667C13.4166 12.1308 13.2321 12.5758 12.904 12.904C12.5758 13.2322 12.1308 13.4167 11.6666 13.4167C8.72716 13.4167 5.90834 12.2487 3.82981 10.1702C1.75129 8.09165 0.583313 5.27283 0.583313 2.33334C0.583313 1.86921 0.76782 1.42423 1.09601 1.09604C1.4242 0.76785 1.86918 0.583344 2.33331 0.583344H4.08331C4.54744 0.583344 4.99243 0.76785 5.32062 1.09604C5.64881 1.42423 5.83331 1.86921 5.83331 2.33334V4.08334Z\" fill=\"currentColor\"/>\n</g>\n<defs>\n<clipPath id=\"clip0_phone\">\n<rect width=\"14\" height=\"14\" fill=\"white\"/>\n</clipPath>\n</defs>\n</svg>`,\n      'user': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M10.5 12.25V11.0833C10.5 10.6192 10.3155 10.1742 9.98728 9.84602C9.70017 9.5589 9.32369 9.38169 8.92316 9.34187L8.74998 9.33332H5.24998C4.78585 9.33332 4.34086 9.51783 4.01267 9.84602C3.68449 10.1742 3.49998 10.6192 3.49998 11.0833V12.25C3.49998 12.5722 3.23881 12.8333 2.91665 12.8333C2.59448 12.8333 2.33331 12.5722 2.33331 12.25V11.0833C2.33331 10.3098 2.64082 9.56813 3.18781 9.02115C3.73479 8.47417 4.47643 8.16666 5.24998 8.16666H8.74998C9.52353 8.16666 10.2652 8.47417 10.8122 9.02115C11.3591 9.56813 11.6666 10.3098 11.6666 11.0833V12.25C11.6666 12.5722 11.4055 12.8333 11.0833 12.8333C10.7611 12.8333 10.5 12.5722 10.5 12.25ZM8.74998 4.08332C8.74998 3.11682 7.96648 2.33332 6.99998 2.33332C6.03348 2.33332 5.24998 3.11682 5.24998 4.08332C5.24998 5.04982 6.03348 5.83332 6.99998 5.83332C7.96648 5.83332 8.74998 5.04982 8.74998 4.08332ZM9.91665 4.08332C9.91665 5.69415 8.61081 6.99999 6.99998 6.99999C5.38915 6.99999 4.08331 5.69415 4.08331 4.08332C4.08331 2.47249 5.38915 1.16666 6.99998 1.16666C8.61081 1.16666 9.91665 2.47249 9.91665 4.08332Z\" fill=\"currentColor\"/>\n</svg>`,\n      'speaker': `<svg width=\"14\" height=\"14\" viewBox=\"0 0 14 14\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M8.59375 1.29167L11.7292 4.00313C12.0083 4.2625 12.0083 4.70521 11.7292 4.96458L8.59375 7.67604C8.375 7.875 8.05208 7.875 7.83333 7.67604V0.988281C8.05208 0.792187 8.375 0.792187 8.59375 0.988281V1.29167ZM3.9375 4.77083C3.9375 4.55208 3.76042 4.375 3.54167 4.375H1.75C1.20833 4.375 0.75 4.83333 0.75 5.375V8.625C0.75 9.16667 1.20833 9.625 1.75 9.625H3.54167C3.76042 9.625 3.9375 9.44792 3.9375 9.22917V4.77083ZM7.04167 1.29167C6.9375 1.38542 6.88542 1.5 6.88542 1.625V12.375C6.88542 12.5 6.9375 12.6146 7.04167 12.7083C7.14583 12.8021 7.27083 12.8333 7.40625 12.7917L10.4271 10.0521C10.9958 9.53542 11.3979 8.77604 11.3979 7.95833C11.3979 7.14063 10.9958 6.38125 10.4271 5.86458L7.40625 3.20833C7.27083 3.16667 7.14583 3.19792 7.04167 3.29167V1.29167Z\" fill=\"currentColor\"/>\n</svg>`,\n    };\n\n    return iconMap[iconName] || '';\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* Base tag styles */\n.tag {\n  display: inline-flex;\n  align-items: center;\n  gap: 6px;\n  padding: 4px 10px;\n  border-radius: 10px;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: -0.22px;\n  line-height: normal;\n  cursor: pointer;\n  border: 1px solid;\n  white-space: nowrap;\n}\n\n/* Icon styles */\n.tag-icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  line-height: 0;\n}\n\n.tag-icon svg {\n  width: 14px;\n  height: 14px;\n}\n\n.tag-label {\n  display: inline;\n}\n\n/* Outline variants */\n.tag-outline {\n  background-color: #F0FDF4;\n  border-color: #00CE3E;\n  color: #24A34A;\n}\n\n.tag-outline.tag-green {\n  background-color: #F0FDF4;\n  border-color: #00CE3E;\n  color: #24A34A;\n}\n\n.tag-outline.tag-orange {\n  background-color: #FFEDD5;\n  border-color: #EB5C11;\n  color: #EB5C11;\n}\n\n.tag-outline.tag-red {\n  background-color: #FEF2F2;\n  border-color: #E32626;\n  color: #E32626;\n}\n\n.tag-outline.tag-blue {\n  background-color: #EFF6FF;\n  border-color: #2563EB;\n  color: #2563EB;\n}\n\n.tag-outline.tag-purple {\n  background-color: #FAF5FF;\n  border-color: #9336EB;\n  color: #9336EB;\n}\n\n.tag-outline.tag-gray {\n  background-color: #FFF;\n  border-color: #F3EFF8;\n  color: #707782;\n}\n\n/* Solid variants */\n.tag-solid {\n  border: none;\n  color: #FFFFFF;\n}\n\n.tag-solid.tag-green {\n  background-color: #22C55E;\n  color: #FFFFFF;\n}\n\n.tag-solid.tag-orange {\n  background-color: #F59E0B;\n  color: #FFFFFF;\n}\n\n.tag-solid.tag-red {\n  background-color: #EF4444;\n  color: #FFFFFF;\n}\n\n.tag-solid.tag-blue {\n  background-color: #2979FF;\n  color: #FFFFFF;\n}\n\n.tag-solid.tag-purple {\n  background-color: #9333EA;\n  color: #FFFFFF;\n}\n\n.tag-solid.tag-gray {\n  background-color: #6B7280;\n  color: #FFFFFF;\n}\n\n/* Icon colors for outline variants */\n.tag-outline.tag-green .tag-icon svg {\n  color: #24A34A;\n}\n\n.tag-outline.tag-orange .tag-icon svg {\n  color: #EB5C11;\n}\n\n.tag-outline.tag-red .tag-icon svg {\n  color: #E32626;\n}\n\n.tag-outline.tag-blue .tag-icon svg {\n  color: #2563EB;\n}\n\n.tag-outline.tag-purple .tag-icon svg {\n  color: #9336EB;\n}\n\n.tag-outline.tag-gray .tag-icon svg {\n  color: #707782;\n}\n\n/* Icon colors for solid variants */\n.tag-solid .tag-icon svg {\n  color: #FFFFFF;\n}\n",
+                    "styleUrl": "./tags-maestras.component.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 22,
+                "jsdoctags": [
+                    {
+                        "name": "sanitizer",
+                        "type": "DomSanitizer",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "accessors": {
+                "tagClasses": {
+                    "name": "tagClasses",
+                    "getSignature": {
+                        "name": "tagClasses",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 26
+                    }
+                },
+                "tagStyles": {
+                    "name": "tagStyles",
+                    "getSignature": {
+                        "name": "tagStyles",
+                        "type": "literal type",
+                        "returnType": "literal type",
+                        "line": 42
+                    }
+                },
+                "sanitizedIcon": {
+                    "name": "sanitizedIcon",
+                    "getSignature": {
+                        "name": "sanitizedIcon",
+                        "type": "unknown",
+                        "returnType": "SafeHtml",
+                        "line": 60
+                    }
+                }
+            },
+            "templateData": "<span \n  [class]=\"tagClasses\"\n  [ngStyle]=\"tagStyles\">\n  <span *ngIf=\"showIcon && iconName\" [innerHTML]=\"sanitizedIcon\" class=\"tag-icon\"></span>\n  <span class=\"tag-label\">{{ label }}</span>\n</span>\n"
         }
     ],
     "modules": [],
@@ -3347,6 +5751,61 @@
                 "subtype": "typealias",
                 "rawtype": "\"default\" | \"outline\" | \"secondary\" | \"ghost\" | \"destructive\" | \"link\" | \"icono-circular\" | \"icono-cuadrado\" | \"ovalado\" | \"pagination\"",
                 "file": "src/app/components/prueba-de-uso/prueba-de-uso.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "ColorVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"green\" | \"orange\" | \"red\" | \"blue\" | \"purple\" | \"gray\" | \"custom\"",
+                "file": "src/app/components/tags-maestras/tags-maestras.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "DialogHeaderVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"solid\" | \"soft\" | \"white\"",
+                "file": "src/app/components/dialog-maestro/dialog-maestro.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "FabColor",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"primary\" | \"secondary\" | \"warning\" | \"success\"",
+                "file": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "FabVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"circular\" | \"extendido\" | \"circular-con-badge\"",
+                "file": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "InputVariant",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"simple\" | \"one-button\" | \"two-buttons\" | \"two-buttons-checkbox\"",
+                "file": "src/app/components/input/input.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -3510,6 +5969,69 @@
                     "kind": 193
                 }
             ],
+            "src/app/components/tags-maestras/tags-maestras.component.ts": [
+                {
+                    "name": "ColorVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"green\" | \"orange\" | \"red\" | \"blue\" | \"purple\" | \"gray\" | \"custom\"",
+                    "file": "src/app/components/tags-maestras/tags-maestras.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/app/components/dialog-maestro/dialog-maestro.component.ts": [
+                {
+                    "name": "DialogHeaderVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"solid\" | \"soft\" | \"white\"",
+                    "file": "src/app/components/dialog-maestro/dialog-maestro.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts": [
+                {
+                    "name": "FabColor",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"primary\" | \"secondary\" | \"warning\" | \"success\"",
+                    "file": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "FabVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"circular\" | \"extendido\" | \"circular-con-badge\"",
+                    "file": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/app/components/input/input.component.ts": [
+                {
+                    "name": "InputVariant",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"simple\" | \"one-button\" | \"two-buttons\" | \"two-buttons-checkbox\"",
+                    "file": "src/app/components/input/input.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
             "src/app/components/tabs-navegacion-maestras/tabs-navegacion-maestras.component.ts": [
                 {
                     "name": "TabTipo",
@@ -3531,7 +6053,7 @@
         "children": []
     },
     "coverage": {
-        "count": 2,
+        "count": 1,
         "status": "low",
         "files": [
             {
@@ -3658,12 +6180,105 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/checkbox-maestro/checkbox-maestro.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CheckboxMaestroComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/combobox-maestro/combobox-maestro.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ComboboxMaestroComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/15",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/combobox-maestro/combobox-maestro.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ComboOption",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/context-header/context-header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ContextHeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/12",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/crm-page/crm-page.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "CrmPageComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/dialog-maestro/dialog-maestro.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DialogMaestroComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/dialog-maestro/dialog-maestro.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "DialogHeaderVariant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "FloatingActionButtonMaestroComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/15",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "FabPosition",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "FabColor",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/floating-action-button-maestro/floating-action-button-maestro.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "FabVariant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -3703,12 +6318,58 @@
                 "status": "low"
             },
             {
+                "filePath": "src/app/components/informacion-tabla/informacion-tabla.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InformacionTablaComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/input/input.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "InputComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/20",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/input/input.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "InputButton",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/input/input.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "InputVariant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/app/components/navigation-tabs/navigation-tabs.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "NavigationTabsComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/notas/notas.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "NotasComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/23",
                 "status": "low"
             },
             {
@@ -3746,6 +6407,24 @@
                 "name": "ButtonVariant",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio-group-maestro/radio-group-maestro.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RadioGroupMaestroComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/radio-group-maestro/radio-group-maestro.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "RadioOption",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -3819,6 +6498,25 @@
                 "name": "TagPillComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/7",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/tags-maestras/tags-maestras.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TagsMaestrasComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/tags-maestras/tags-maestras.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ColorVariant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
