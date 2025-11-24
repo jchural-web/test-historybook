@@ -269,12 +269,14 @@ export const ConTablaItemsLeyenda: Story = {
       >
         <div leyenda>
           <app-tags-maestras
-            label="Leyenda 1"
+            label="Prb"
             colorVariant="orange"
           ></app-tags-maestras>
           <app-tags-maestras
-            label="Leyenda 2"
+            label="Wavix"
             colorVariant="blue"
+            [showIcon]="true"
+            iconName="speaker"
           ></app-tags-maestras>
         </div>
         <div tabla-header style="padding: 12px 24px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
