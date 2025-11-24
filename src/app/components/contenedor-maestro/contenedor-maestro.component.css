@@ -12,11 +12,12 @@
 
 .contenedor-header {
   border-radius: 7px 7px 0 0;
-  padding: 16px 24px;
+  padding: 12px 24px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   height: 67px;
+  box-sizing: border-box;
 }
 
 .contenedor-header-content {
