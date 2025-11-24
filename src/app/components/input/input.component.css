@@ -86,11 +86,10 @@
   height: 100%;
 }
 
-.button-divider {
+.button-separator {
   width: 1px;
   height: 24px;
   background-color: #E5E7EB;
-  margin: 0 4px;
   flex-shrink: 0;
 }
 

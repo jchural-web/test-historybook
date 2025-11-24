@@ -10,6 +10,7 @@
 
     <!-- One Button Variant -->
     <div *ngIf="variant === 'one-button' && button1" class="button-section">
+      <div class="button-separator"></div>
       <button
         class="input-button"
         (click)="onButton1Click()"
@@ -22,6 +23,7 @@
 
     <!-- Two Buttons Variant -->
     <div *ngIf="variant === 'two-buttons' && (button1 || button2)" class="button-section">
+      <div *ngIf="button1" class="button-separator"></div>
       <button
         *ngIf="button1"
         class="input-button"
@@ -31,7 +33,7 @@
       >
         <span class="icon" [innerHTML]="getSanitizedIcon(button1.iconName)"></span>
       </button>
-      <div *ngIf="button2" class="button-divider"></div>
+      <div *ngIf="button2" class="button-separator"></div>
       <button
         *ngIf="button2"
         class="input-button"
@@ -45,6 +47,7 @@
 
     <!-- Two Buttons with Checkbox Variant -->
     <div *ngIf="variant === 'two-buttons-checkbox' && (button1 || button2)" class="button-checkbox-section">
+      <div *ngIf="button1" class="button-separator"></div>
       <button
         *ngIf="button1"
         class="input-button"
@@ -54,7 +57,7 @@
       >
         <span class="icon" [innerHTML]="getSanitizedIcon(button1.iconName)"></span>
       </button>
-      <div *ngIf="button2" class="button-divider"></div>
+      <div *ngIf="button2" class="button-separator"></div>
       <button
         *ngIf="button2"
         class="input-button"
@@ -64,6 +67,7 @@
       >
         <span class="icon" [innerHTML]="getSanitizedIcon(button2.iconName)"></span>
       </button>
+      <div class="button-separator"></div>
       <div class="checkbox-section">
         <input
           type="checkbox"
