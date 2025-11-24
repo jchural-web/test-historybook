@@ -318,8 +318,12 @@ export const Personalizado: Story = {
     iconName: 'check-circle',
     headerBgColor: '#F3E8FF',
     headerTextColor: '#7C3AED',
-    width: '800px',
+    width: '1200px',
     height: 'auto',
+    currentPage: 1,
+    totalPages: 2,
+    pageSize: 10,
+    totalItems: 15,
   },
   render: (args) => ({
     props: args,
@@ -332,27 +336,28 @@ export const Personalizado: Story = {
         [headerTextColor]="headerTextColor"
         [width]="width"
         [height]="height"
+        [currentPage]="currentPage"
+        [totalPages]="totalPages"
+        [pageSize]="pageSize"
+        [totalItems]="totalItems"
         style="margin: auto;"
       >
-        <div tabla-header style="padding: 12px 16px; background: #F3E8FF; border-bottom: 1px solid #E9D5FF; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; font-weight: 600; color: #7C3AED;">
+        <div tabla-header style="padding: 12px 24px; background: #F3E8FF; border-bottom: 1px solid #E9D5FF; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; font-weight: 600; color: #7C3AED;">
           <div>Producto</div>
           <div>Cantidad</div>
           <div>Precio</div>
         </div>
-        <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
-          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
+        <div tabla-body style="padding: 0;">
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
             <div>Producto A</div>
             <div>5</div>
             <div>$100</div>
           </div>
-          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
             <div>Producto B</div>
             <div>3</div>
             <div>$150</div>
           </div>
-        </div>
-        <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
-          Total: 2 productos
         </div>
       </app-contenedor-maestro>
     `,
