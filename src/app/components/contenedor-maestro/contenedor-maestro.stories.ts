@@ -59,20 +59,23 @@ export const Simple: Story = {
     headerBgColor: '#E3F2FD',
     headerTextColor: '#111827',
   },
-  template: `
-    <app-contenedor-maestro
-      [variant]="variant"
-      [title]="title"
-      [iconName]="iconName"
-      [headerBgColor]="headerBgColor"
-      [headerTextColor]="headerTextColor"
-      style="width: 600px; margin: auto;"
-    >
-      <div contenido style="padding: 16px; color: #4B5563; line-height: 1.6;">
-        <p>Este es un contenedor simple con contenido libre. Puedes colocar texto, formularios, imágenes o cualquier otro elemento aquí.</p>
-      </div>
-    </app-contenedor-maestro>
-  `,
+  render: (args) => ({
+    props: args,
+    template: `
+      <app-contenedor-maestro
+        [variant]="variant"
+        [title]="title"
+        [iconName]="iconName"
+        [headerBgColor]="headerBgColor"
+        [headerTextColor]="headerTextColor"
+        style="width: 600px; margin: auto;"
+      >
+        <div contenido style="padding: 16px; color: #4B5563; line-height: 1.6;">
+          <p>Este es un contenedor simple con contenido libre. Puedes colocar texto, formularios, imágenes o cualquier otro elemento aquí.</p>
+        </div>
+      </app-contenedor-maestro>
+    `,
+  }),
 };
 
 /**
