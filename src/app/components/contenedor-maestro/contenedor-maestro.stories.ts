@@ -57,7 +57,7 @@ export const Simple: Story = {
     title: 'Contenedor simple',
     iconName: 'circle-check-big',
     headerBgColor: '#E3F2FD',
-    headerTextColor: '#111827',
+    headerTextColor: '#6B26E8',
   },
   render: (args) => ({
     props: args,
@@ -68,9 +68,9 @@ export const Simple: Story = {
         [iconName]="iconName"
         [headerBgColor]="headerBgColor"
         [headerTextColor]="headerTextColor"
-        style="width: 600px; margin: auto;"
+        style="width: 1200px; margin: auto;"
       >
-        <div contenido style="padding: 16px; color: #4B5563; line-height: 1.6;">
+        <div contenido style="padding: 24px; color: #4B5563; line-height: 1.6; min-height: 200px;">
           <p>Este es un contenedor simple con contenido libre. Puedes colocar texto, formularios, imágenes o cualquier otro elemento aquí.</p>
         </div>
       </app-contenedor-maestro>
