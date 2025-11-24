@@ -95,8 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 4px;
-  padding-left: 4px;
+  padding: 0 4px;
 }
 
 .checkbox-input {
