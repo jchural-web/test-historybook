@@ -173,7 +173,7 @@ export const Blanco: Story = {
  * - Cabecera con icono y título
  * - Fila de encabezados (slot [tabla-header])
  * - Tabla (slot [tabla-body])
- * - Footer (slot [tabla-footer])
+ * - Footer paginación integrado
  */
 export const ConTablaItems: Story = {
   args: {
@@ -181,7 +181,11 @@ export const ConTablaItems: Story = {
     title: 'Contenedor con tabla e items',
     iconName: 'circle-check-big',
     headerBgColor: '#E3F2FD',
-    headerTextColor: '#111827',
+    headerTextColor: '#6B26E8',
+    currentPage: 1,
+    totalPages: 3,
+    pageSize: 10,
+    totalItems: 22,
   },
   render: (args) => ({
     props: args,
@@ -192,30 +196,31 @@ export const ConTablaItems: Story = {
         [iconName]="iconName"
         [headerBgColor]="headerBgColor"
         [headerTextColor]="headerTextColor"
-        style="width: 700px; margin: auto;"
+        [currentPage]="currentPage"
+        [totalPages]="totalPages"
+        [pageSize]="pageSize"
+        [totalItems]="totalItems"
+        style="width: 1200px; margin: auto;"
       >
-        <div tabla-header style="padding: 12px 16px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
+        <div tabla-header style="padding: 12px 24px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
           <div>ITEM 1</div>
           <div>ITEM 2</div>
           <div>ITEM 3</div>
           <div>ITEM 4</div>
         </div>
-        <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
-          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
+        <div tabla-body style="padding: 0;">
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
             <div>Dato 1.1</div>
             <div>Dato 1.2</div>
             <div>Dato 1.3</div>
             <div>Dato 1.4</div>
           </div>
-          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
             <div>Dato 2.1</div>
             <div>Dato 2.2</div>
             <div>Dato 2.3</div>
             <div>Dato 2.4</div>
           </div>
-        </div>
-        <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
-          Página 1 de 3 | 1 - 10 de 22 ítems
         </div>
       </app-contenedor-maestro>
     `,
