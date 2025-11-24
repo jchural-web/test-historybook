@@ -6,9 +6,7 @@
   border-radius: 6px;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   overflow: hidden;
-  background-size: calc(100% - 17px) 100%;
-  background-position: 17px 0;
-  background-repeat: no-repeat;
+  width: 100%;
 }
 
 .informacion-accent-line {
@@ -16,13 +14,15 @@
   height: 100%;
   flex-shrink: 0;
   border-radius: 0;
+  min-height: 35px;
 }
 
 .informacion-content {
   flex: 1;
-  padding: 12px 12px 12px 17px;
+  padding: 12px 23px 23px 12px;
   display: flex;
   align-items: center;
+  border-radius: 0 6px 6px 0;
 }
 
 .informacion-text {
