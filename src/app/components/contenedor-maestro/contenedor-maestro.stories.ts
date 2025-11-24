@@ -178,40 +178,43 @@ export const ConTablaItems: Story = {
     headerBgColor: '#E3F2FD',
     headerTextColor: '#111827',
   },
-  template: `
-    <app-contenedor-maestro
-      [variant]="variant"
-      [title]="title"
-      [iconName]="iconName"
-      [headerBgColor]="headerBgColor"
-      [headerTextColor]="headerTextColor"
-      style="width: 700px; margin: auto;"
-    >
-      <div tabla-header style="padding: 12px 16px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
-        <div>ITEM 1</div>
-        <div>ITEM 2</div>
-        <div>ITEM 3</div>
-        <div>ITEM 4</div>
-      </div>
-      <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
-          <div>Dato 1.1</div>
-          <div>Dato 1.2</div>
-          <div>Dato 1.3</div>
-          <div>Dato 1.4</div>
+  render: (args) => ({
+    props: args,
+    template: `
+      <app-contenedor-maestro
+        [variant]="variant"
+        [title]="title"
+        [iconName]="iconName"
+        [headerBgColor]="headerBgColor"
+        [headerTextColor]="headerTextColor"
+        style="width: 700px; margin: auto;"
+      >
+        <div tabla-header style="padding: 12px 16px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
+          <div>ITEM 1</div>
+          <div>ITEM 2</div>
+          <div>ITEM 3</div>
+          <div>ITEM 4</div>
         </div>
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
-          <div>Dato 2.1</div>
-          <div>Dato 2.2</div>
-          <div>Dato 2.3</div>
-          <div>Dato 2.4</div>
+        <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
+            <div>Dato 1.1</div>
+            <div>Dato 1.2</div>
+            <div>Dato 1.3</div>
+            <div>Dato 1.4</div>
+          </div>
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+            <div>Dato 2.1</div>
+            <div>Dato 2.2</div>
+            <div>Dato 2.3</div>
+            <div>Dato 2.4</div>
+          </div>
         </div>
-      </div>
-      <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
-        Página 1 de 3 | 1 - 10 de 22 ítems
-      </div>
-    </app-contenedor-maestro>
-  `,
+        <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
+          Página 1 de 3 | 1 - 10 de 22 ítems
+        </div>
+      </app-contenedor-maestro>
+    `,
+  }),
 };
 
 /**
