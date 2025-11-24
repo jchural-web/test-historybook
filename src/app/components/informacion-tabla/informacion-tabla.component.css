@@ -1,40 +1,38 @@
 .informacion-tabla-wrapper {
-  display: inline-flex;
+  display: inline-block;
   width: 100%;
-  position: relative;
 }
 
 .informacion-tabla {
-  display: flex;
+  display: grid;
+  grid-template-columns: 17px 1fr;
+  grid-template-rows: auto;
   align-items: stretch;
   gap: 0;
   padding: 0;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   overflow: visible;
   width: 100%;
-  position: relative;
 }
 
 .informacion-accent-line {
+  grid-column: 1;
+  grid-row: 1;
   width: 17px;
   height: 100%;
-  flex-shrink: 0;
   border-radius: 6px 0 0 6px;
-  min-height: 38px;
 }
 
 .informacion-content {
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 0;
-  height: 100%;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  margin-left: 8px;
   padding: 12px 23px 23px 12px;
   display: flex;
   align-items: center;
   border-radius: 6px;
   z-index: 10;
+  height: 100%;
 }
 
 .informacion-text {
