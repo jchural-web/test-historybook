@@ -27,7 +27,7 @@
       class="notas-textarea"
       [placeholder]="placeholder"
       [value]="content"
-      (input)="onContentChange(($event.target as HTMLTextAreaElement).value)"
+      (input)="onContentChange($any($event).target.value)"
       [attr.maxlength]="maxLength"
     ></textarea>
 
