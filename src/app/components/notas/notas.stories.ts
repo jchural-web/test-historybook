@@ -221,7 +221,7 @@ export const Interactive: Story = {
     props: {
       lastComment: '',
       onCommentChange(comment: string) {
-        this.lastComment = comment;
+        this['lastComment'] = comment;
       },
     },
   }),
