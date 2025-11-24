@@ -143,17 +143,20 @@ export const Blanco: Story = {
   args: {
     variant: 'blanco',
   },
-  template: `
-    <app-contenedor-maestro
-      [variant]="variant"
-      style="width: 600px; margin: auto;"
-    >
-      <div contenido style="padding: 24px; color: #4B5563; text-align: center;">
-        <h3 style="margin: 0 0 12px 0; color: #111827;">Contenedor en Blanco</h3>
-        <p style="margin: 0;">Este es un contenedor sin cabecera. Úsalo como wrapper flexible para cualquier tipo de contenido.</p>
-      </div>
-    </app-contenedor-maestro>
-  `,
+  render: (args) => ({
+    props: args,
+    template: `
+      <app-contenedor-maestro
+        [variant]="variant"
+        style="width: 600px; margin: auto;"
+      >
+        <div contenido style="padding: 24px; color: #4B5563; text-align: center;">
+          <h3 style="margin: 0 0 12px 0; color: #111827;">Contenedor en Blanco</h3>
+          <p style="margin: 0;">Este es un contenedor sin cabecera. Úsalo como wrapper flexible para cualquier tipo de contenido.</p>
+        </div>
+      </app-contenedor-maestro>
+    `,
+  }),
 };
 
 /**
