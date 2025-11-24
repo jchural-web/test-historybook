@@ -19,7 +19,9 @@
     <ng-content select="[contenido]"></ng-content>
 
     <!-- Leyenda para variante 'tabla-items-leyenda' -->
-    <ng-content *ngIf="showLeyenda" select="[leyenda]"></ng-content>
+    <div *ngIf="showLeyenda" class="legend-section">
+      <ng-content select="[leyenda]"></ng-content>
+    </div>
 
     <!-- Tabla header (para variantes 'tabla-items' y 'tabla-items-leyenda') -->
     <ng-content *ngIf="showTableHeader" select="[tabla-header]"></ng-content>
@@ -27,6 +29,9 @@
     <!-- Tabla body (para variantes 'tabla' y 'tabla-items*') -->
     <ng-content select="[tabla-body]"></ng-content>
   </div>
+
+  <!-- Separator line before footer -->
+  <div *ngIf="showTableFooter" class="footer-separator"></div>
 
   <!-- Footer de paginación (usando componente TablePaginationFooter) -->
   <app-table-pagination-footer

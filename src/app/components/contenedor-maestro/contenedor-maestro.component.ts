@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconSlotComponent } from '../icon-slot/icon-slot.component';
 import { TablePaginationFooterComponent } from '../table-pagination-footer/table-pagination-footer.component';
+import { TagsMaestrasComponent } from '../tags-maestras/tags-maestras.component';
 
 export type ContenedorMaestroVariant =
   | 'simple'
@@ -13,7 +14,7 @@ export type ContenedorMaestroVariant =
 @Component({
   selector: 'app-contenedor-maestro',
   standalone: true,
-  imports: [CommonModule, IconSlotComponent, TablePaginationFooterComponent],
+  imports: [CommonModule, IconSlotComponent, TablePaginationFooterComponent, TagsMaestrasComponent],
   templateUrl: './contenedor-maestro.component.html',
   styleUrls: ['./contenedor-maestro.component.css'],
 })
