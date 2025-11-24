@@ -16,9 +16,7 @@ export class InformacionTablaComponent {
   @Input() height?: string;
 
   get containerStyle(): { [key: string]: string } {
-    const styles: { [key: string]: string } = {
-      'background-color': this.backgroundColor,
-    };
+    const styles: { [key: string]: string } = {};
 
     if (this.width) {
       styles['width'] = this.width;
