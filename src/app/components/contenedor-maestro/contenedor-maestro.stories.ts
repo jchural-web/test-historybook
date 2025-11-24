@@ -301,37 +301,40 @@ export const Personalizado: Story = {
     width: '800px',
     height: 'auto',
   },
-  template: `
-    <app-contenedor-maestro
-      [variant]="variant"
-      [title]="title"
-      [iconName]="iconName"
-      [headerBgColor]="headerBgColor"
-      [headerTextColor]="headerTextColor"
-      [width]="width"
-      [height]="height"
-      style="margin: auto;"
-    >
-      <div tabla-header style="padding: 12px 16px; background: #F3E8FF; border-bottom: 1px solid #E9D5FF; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; font-weight: 600; color: #7C3AED;">
-        <div>Producto</div>
-        <div>Cantidad</div>
-        <div>Precio</div>
-      </div>
-      <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
-          <div>Producto A</div>
-          <div>5</div>
-          <div>$100</div>
+  render: (args) => ({
+    props: args,
+    template: `
+      <app-contenedor-maestro
+        [variant]="variant"
+        [title]="title"
+        [iconName]="iconName"
+        [headerBgColor]="headerBgColor"
+        [headerTextColor]="headerTextColor"
+        [width]="width"
+        [height]="height"
+        style="margin: auto;"
+      >
+        <div tabla-header style="padding: 12px 16px; background: #F3E8FF; border-bottom: 1px solid #E9D5FF; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; font-weight: 600; color: #7C3AED;">
+          <div>Producto</div>
+          <div>Cantidad</div>
+          <div>Precio</div>
         </div>
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-          <div>Producto B</div>
-          <div>3</div>
-          <div>$150</div>
+        <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
+            <div>Producto A</div>
+            <div>5</div>
+            <div>$100</div>
+          </div>
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+            <div>Producto B</div>
+            <div>3</div>
+            <div>$150</div>
+          </div>
         </div>
-      </div>
-      <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
-        Total: 2 productos
-      </div>
-    </app-contenedor-maestro>
-  `,
+        <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
+          Total: 2 productos
+        </div>
+      </app-contenedor-maestro>
+    `,
+  }),
 };
