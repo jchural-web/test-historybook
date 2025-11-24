@@ -1,6 +1,8 @@
-<div class="informacion-tabla" [ngStyle]="containerStyle">
-  <div class="informacion-accent-line" [ngStyle]="accentLineStyle"></div>
-  <div class="informacion-content" [ngStyle]="{ 'background-color': backgroundColor }">
-    <p class="informacion-text">{{ text }}</p>
+<div class="informacion-tabla-wrapper" [ngStyle]="containerStyle">
+  <div class="informacion-tabla">
+    <div class="informacion-accent-line" [ngStyle]="accentLineStyle"></div>
+    <div class="informacion-content" [ngStyle]="{ 'background-color': backgroundColor }">
+      <p class="informacion-text">{{ text }}</p>
+    </div>
   </div>
 </div>
