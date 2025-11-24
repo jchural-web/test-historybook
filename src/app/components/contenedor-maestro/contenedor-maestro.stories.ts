@@ -96,34 +96,37 @@ export const ConTabla: Story = {
     headerBgColor: '#E3F2FD',
     headerTextColor: '#111827',
   },
-  template: `
-    <app-contenedor-maestro
-      [variant]="variant"
-      [title]="title"
-      [iconName]="iconName"
-      [headerBgColor]="headerBgColor"
-      [headerTextColor]="headerTextColor"
-      style="width: 600px; margin: auto;"
-    >
-      <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-bottom: 1px solid #E4E4E7;">
-          <div><strong>Columna 1</strong></div>
-          <div><strong>Columna 2</strong></div>
+  render: (args) => ({
+    props: args,
+    template: `
+      <app-contenedor-maestro
+        [variant]="variant"
+        [title]="title"
+        [iconName]="iconName"
+        [headerBgColor]="headerBgColor"
+        [headerTextColor]="headerTextColor"
+        style="width: 600px; margin: auto;"
+      >
+        <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-bottom: 1px solid #E4E4E7;">
+            <div><strong>Columna 1</strong></div>
+            <div><strong>Columna 2</strong></div>
+          </div>
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-bottom: 1px solid #E4E4E7;">
+            <div>Fila 1 - Dato 1</div>
+            <div>Fila 1 - Dato 2</div>
+          </div>
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>Fila 2 - Dato 1</div>
+            <div>Fila 2 - Dato 2</div>
+          </div>
         </div>
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-bottom: 1px solid #E4E4E7;">
-          <div>Fila 1 - Dato 1</div>
-          <div>Fila 1 - Dato 2</div>
+        <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
+          Página 1 de 3 | 1 - 10 de 22 ítems
         </div>
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-          <div>Fila 2 - Dato 1</div>
-          <div>Fila 2 - Dato 2</div>
-        </div>
-      </div>
-      <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
-        Página 1 de 3 | 1 - 10 de 22 ítems
-      </div>
-    </app-contenedor-maestro>
-  `,
+      </app-contenedor-maestro>
+    `,
+  }),
 };
 
 /**
