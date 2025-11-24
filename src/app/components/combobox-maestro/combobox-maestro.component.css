@@ -1,0 +1,127 @@
+.combobox-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+}
+
+.combobox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 34px;
+  padding: 8px 14px;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  outline: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.26px;
+  line-height: normal;
+}
+
+.combobox-header:hover {
+  border-color: #D1D5DB;
+  background-color: #FAFAFA;
+}
+
+.combobox-header:focus {
+  outline: 2px solid #6419E6;
+  outline-offset: 2px;
+}
+
+.combobox-label {
+  flex: 1;
+  text-align: left;
+  color: #161616;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.combobox-label.placeholder {
+  color: #9CA3AF;
+}
+
+.combobox-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-left: 8px;
+}
+
+.combobox-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.combobox-panel {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: #FFFFFF;
+  border: 1px solid #E5E7EB;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: slideDown 0.15s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.combobox-option {
+  display: block;
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  background-color: transparent;
+  color: #161616;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.26px;
+  line-height: normal;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  transition: background-color 0.15s ease;
+  outline: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.combobox-option:hover {
+  background-color: #ECEEF0;
+}
+
+.combobox-option:focus {
+  background-color: #ECEEF0;
+  outline: none;
+}
+
+.combobox-option.selected {
+  background-color: #ECEEF0;
+  font-weight: 700;
+}
+
+.combobox-option:not(:last-child) {
+  border-bottom: none;
+}

@@ -1,0 +1,26 @@
+<div class="combobox-container" [ngStyle]="containerStyle">
+  <button
+    class="combobox-header"
+    (click)="toggleCombobox()"
+    type="button"
+  >
+    <span class="combobox-label" [class.placeholder]="selectedValue === undefined || selectedValue === null">
+      {{ getSelectedLabel() }}
+    </span>
+    <span class="combobox-icon">
+      <span [innerHTML]="getSanitizedIcon(isOpen ? 'chevron-up' : 'chevron-down')"></span>
+    </span>
+  </button>
+
+  <div *ngIf="isOpen" class="combobox-panel">
+    <button
+      *ngFor="let option of options"
+      class="combobox-option"
+      (click)="selectOption(option)"
+      type="button"
+      [class.selected]="option.value === selectedValue"
+    >
+      {{ option.label }}
+    </button>
+  </div>
+</div>
