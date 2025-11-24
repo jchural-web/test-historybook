@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconSlotComponent } from '../icon-slot/icon-slot.component';
+import { TablePaginationFooterComponent } from '../table-pagination-footer/table-pagination-footer.component';
 
 export type ContenedorMaestroVariant =
   | 'simple'
@@ -12,7 +13,7 @@ export type ContenedorMaestroVariant =
 @Component({
   selector: 'app-contenedor-maestro',
   standalone: true,
-  imports: [CommonModule, IconSlotComponent],
+  imports: [CommonModule, IconSlotComponent, TablePaginationFooterComponent],
   templateUrl: './contenedor-maestro.component.html',
   styleUrls: ['./contenedor-maestro.component.css'],
 })
@@ -21,9 +22,19 @@ export class ContenedorMaestroComponent {
   @Input() title?: string;
   @Input() iconName?: string;
   @Input() headerBgColor: string = '#E3F2FD';
-  @Input() headerTextColor: string = '#111827';
+  @Input() headerTextColor: string = '#6B26E8';
   @Input() width?: string;
   @Input() height?: string;
+
+  // Pagination inputs
+  @Input() currentPage: number = 1;
+  @Input() totalPages: number = 3;
+  @Input() pageSize: number = 10;
+  @Input() pageSizeOptions: number[] = [5, 10, 20, 50];
+  @Input() totalItems: number = 22;
+
+  @Output() pageChange = new EventEmitter<number>();
+  @Output() pageSizeChange = new EventEmitter<number>();
 
   get containerStyle(): { [key: string]: string } {
     const style: { [key: string]: string } = {};
@@ -49,5 +60,19 @@ export class ContenedorMaestroComponent {
 
   get showLeyenda(): boolean {
     return this.variant === 'tabla-items-leyenda';
+  }
+
+  get showTableFooter(): boolean {
+    return this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda';
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.pageChange.emit(page);
+  }
+
+  onPageSizeChange(size: number): void {
+    this.pageSize = size;
+    this.pageSizeChange.emit(size);
   }
 }
