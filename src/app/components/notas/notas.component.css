@@ -1,6 +1,6 @@
 .notas-container {
   position: fixed;
-  width: 520px;
+  width: 570px;
   background-color: #FFFFFF;
   border-radius: 11px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
@@ -14,10 +14,11 @@
 .notas-header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
-  height: 76px;
+  height: 84px;
   background-color: #FB923C;
-  padding: 0 16px;
+  padding: 0 20px;
   cursor: move;
   flex-shrink: 0;
   border-radius: 11px 11px 0 0;
@@ -28,8 +29,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 26px;
+  height: 26px;
   border: none;
   background-color: transparent;
   color: #FFFFFF;
@@ -52,9 +53,8 @@
   letter-spacing: -0.6px;
   line-height: normal;
   color: #FFFFFF;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  text-align: left;
+  padding: 0 20px;
 }
 
 .header-minimize-btn {
@@ -85,6 +85,7 @@
 .header-minimize-btn svg {
   width: 36px;
   height: 36px;
+  flex-shrink: 0;
 }
 
 .notas-body {
@@ -92,7 +93,7 @@
   flex-direction: column;
   gap: 0;
   background-color: #FEFCE8;
-  padding: 24px;
+  padding: 28px;
   flex: 1;
   overflow: hidden;
 }
@@ -112,6 +113,7 @@
   outline: none;
   resize: none;
   transition: border-color 0.15s ease;
+  min-height: 378px;
 }
 
 .notas-textarea::placeholder {
@@ -124,7 +126,7 @@
 }
 
 .notas-counter {
-  padding-top: 12px;
+  padding-top: 16px;
   font-size: 23px;
   font-weight: 600;
   letter-spacing: -0.46px;
