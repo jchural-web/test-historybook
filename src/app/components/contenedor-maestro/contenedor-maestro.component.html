@@ -1,0 +1,33 @@
+<div class="contenedor-maestro-wrapper" [ngStyle]="containerStyle">
+  <!-- Header (except for 'blanco' variant) -->
+  <div *ngIf="showHeader" class="contenedor-header" [ngStyle]="headerStyle">
+    <div class="contenedor-header-content">
+      <app-icon-slot
+        *ngIf="iconName"
+        [iconName]="iconName"
+        [bgColor]="'#6B26E8'"
+        [iconColor]="'white'"
+        [size]="'34px'"
+      ></app-icon-slot>
+      <h2 class="contenedor-title">{{ title }}</h2>
+    </div>
+  </div>
+
+  <!-- Main container body -->
+  <div class="contenedor-body">
+    <!-- Contenido para variantes 'simple' y 'blanco' -->
+    <ng-content select="[contenido]"></ng-content>
+
+    <!-- Leyenda para variante 'tabla-items-leyenda' -->
+    <ng-content *ngIf="showLeyenda" select="[leyenda]"></ng-content>
+
+    <!-- Tabla header (para variantes 'tabla-items' y 'tabla-items-leyenda') -->
+    <ng-content *ngIf="showTableHeader" select="[tabla-header]"></ng-content>
+
+    <!-- Tabla body (para variantes 'tabla' y 'tabla-items*') -->
+    <ng-content select="[tabla-body]"></ng-content>
+  </div>
+
+  <!-- Footer de paginación -->
+  <ng-content select="[tabla-footer]"></ng-content>
+</div>
