@@ -28,6 +28,15 @@
     <ng-content select="[tabla-body]"></ng-content>
   </div>
 
-  <!-- Footer de paginación -->
-  <ng-content select="[tabla-footer]"></ng-content>
+  <!-- Footer de paginación (usando componente TablePaginationFooter) -->
+  <app-table-pagination-footer
+    *ngIf="showTableFooter"
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [totalItems]="totalItems"
+    (pageChange)="onPageChange($event)"
+    (pageSizeChange)="onPageSizeChange($event)"
+  ></app-table-pagination-footer>
 </div>
