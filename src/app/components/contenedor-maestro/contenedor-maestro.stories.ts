@@ -237,48 +237,51 @@ export const ConTablaItemsLeyenda: Story = {
     headerBgColor: '#E3F2FD',
     headerTextColor: '#111827',
   },
-  template: `
-    <app-contenedor-maestro
-      [variant]="variant"
-      [title]="title"
-      [iconName]="iconName"
-      [headerBgColor]="headerBgColor"
-      [headerTextColor]="headerTextColor"
-      style="width: 700px; margin: auto;"
-    >
-      <div leyenda style="padding: 12px 16px; display: flex; gap: 12px; flex-wrap: wrap;">
-        <div style="padding: 4px 12px; border-radius: 10px; border: 1px solid #EB5C11; background: #FFEDD5; font-size: 11px; font-weight: 600; color: #EB5C11;">
-          Leyenda 1
+  render: (args) => ({
+    props: args,
+    template: `
+      <app-contenedor-maestro
+        [variant]="variant"
+        [title]="title"
+        [iconName]="iconName"
+        [headerBgColor]="headerBgColor"
+        [headerTextColor]="headerTextColor"
+        style="width: 700px; margin: auto;"
+      >
+        <div leyenda style="padding: 12px 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <div style="padding: 4px 12px; border-radius: 10px; border: 1px solid #EB5C11; background: #FFEDD5; font-size: 11px; font-weight: 600; color: #EB5C11;">
+            Leyenda 1
+          </div>
+          <div style="padding: 4px 12px; border-radius: 10px; border: 1px solid #2B88A0; background: #CFFAFE; font-size: 11px; font-weight: 600; color: #2B88A0;">
+            Leyenda 2
+          </div>
         </div>
-        <div style="padding: 4px 12px; border-radius: 10px; border: 1px solid #2B88A0; background: #CFFAFE; font-size: 11px; font-weight: 600; color: #2B88A0;">
-          Leyenda 2
+        <div tabla-header style="padding: 12px 16px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
+          <div>ITEM 1</div>
+          <div>ITEM 2</div>
+          <div>ITEM 3</div>
+          <div>ITEM 4</div>
         </div>
-      </div>
-      <div tabla-header style="padding: 12px 16px; background: #E3F2FD; border-bottom: 1px solid #B1D3EC; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; font-weight: 600; color: #6B26E8;">
-        <div>ITEM 1</div>
-        <div>ITEM 2</div>
-        <div>ITEM 3</div>
-        <div>ITEM 4</div>
-      </div>
-      <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
-          <div>Dato 1.1</div>
-          <div>Dato 1.2</div>
-          <div>Dato 1.3</div>
-          <div>Dato 1.4</div>
+        <div tabla-body style="padding: 16px 0; border-top: 1px solid #E4E4E7;">
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
+            <div>Dato 1.1</div>
+            <div>Dato 1.2</div>
+            <div>Dato 1.3</div>
+            <div>Dato 1.4</div>
+          </div>
+          <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+            <div>Dato 2.1</div>
+            <div>Dato 2.2</div>
+            <div>Dato 2.3</div>
+            <div>Dato 2.4</div>
+          </div>
         </div>
-        <div style="padding: 12px 16px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
-          <div>Dato 2.1</div>
-          <div>Dato 2.2</div>
-          <div>Dato 2.3</div>
-          <div>Dato 2.4</div>
+        <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
+          Página 1 de 3 | 1 - 10 de 22 ítems
         </div>
-      </div>
-      <div tabla-footer style="padding: 12px 16px; border-top: 1px solid #E4E4E7; color: #4B5563; font-size: 12px;">
-        Página 1 de 3 | 1 - 10 de 22 ítems
-      </div>
-    </app-contenedor-maestro>
-  `,
+      </app-contenedor-maestro>
+    `,
+  }),
 };
 
 /**
