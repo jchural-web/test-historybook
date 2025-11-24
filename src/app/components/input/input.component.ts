@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { CheckboxMaestroComponent } from '../checkbox-maestro/checkbox-maestro.component';
 
 export type InputVariant = 'simple' | 'one-button' | 'two-buttons' | 'two-buttons-checkbox';
 
@@ -13,7 +14,7 @@ export interface InputButton {
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, CheckboxMaestroComponent],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.css'],
 })

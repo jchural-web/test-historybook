@@ -69,12 +69,10 @@
       </button>
       <div class="button-separator"></div>
       <div class="checkbox-section">
-        <input
-          type="checkbox"
-          class="checkbox-input"
+        <app-checkbox-maestro
           [checked]="checkboxChecked"
-          (change)="onCheckboxChange($event.target.checked)"
-        />
+          (checkedChange)="onCheckboxChange($event)"
+        ></app-checkbox-maestro>
       </div>
     </div>
   </div>

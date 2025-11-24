@@ -95,19 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4px;
-}
-
-.checkbox-input {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  accent-color: #6419E6;
-}
-
-.checkbox-input:focus {
-  outline: 2px solid #6419E6;
-  outline-offset: 2px;
+  padding: 0 2px;
 }
 
 /* Simple variant */
