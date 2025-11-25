@@ -315,6 +315,10 @@ export class CrmPageComponent implements OnInit {
     this.activeTabId = tabId;
   }
 
+  onSearch(): void {
+    // Search button clicked - implement search logic here
+  }
+
   onFilter(): void {
     // Filter button clicked - implement filter logic here
   }
