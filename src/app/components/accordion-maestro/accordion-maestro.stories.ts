@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { AccordionMaestroComponent } from './accordion-maestro.component';
+import { CheckboxMaestroComponent } from '../checkbox-maestro/checkbox-maestro.component';
 
 const meta: Meta<AccordionMaestroComponent> = {
   title: 'Components/AccordionMaestro',
@@ -110,50 +111,52 @@ export const AccordionConItemAbierto: Story = {
         [items]="items"
         [activeItemId]="activeItemId"
         (activeItemChange)="activeItemChange.emit($event)">
-        
-        <div [accordion-item-1]="true">
-          <p style="margin: 0; color: #161616;">
-            Contenido de respuesta para el item 1
-          </p>
-        </div>
-        
-        <div [accordion-item-2]="true">
-          <p style="margin: 0; color: #161616;">
-            Contenido de respuesta para el item 2
-          </p>
-        </div>
-        
-        <div [accordion-item-3]="true">
-          <p style="margin: 0; color: #161616;">
-            Contenido de respuesta para el item 3
-          </p>
-        </div>
-        
+
+        <div [accordion-item-1]="true"></div>
+
+        <div [accordion-item-2]="true"></div>
+
+        <div [accordion-item-3]="true"></div>
+
         <div [accordion-item-4]="true">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" />
-              <span style="color: #2A67EB; font-size: 15px; font-weight: 500;">Nivel de satisfacción</span>
-            </label>
-            <p style="margin: 0; color: #161616; font-size: 15px;">
-              El nivel de satisfacción de los alumnos que participaron en el programa en los últimos 5 años es de 4.5 en una escala del 1 al 5.
-            </p>
+          <div class="accordion-content-group">
+            <div class="checkbox-group">
+              <app-checkbox-maestro [checked]="false" (checkedChange)="$event"></app-checkbox-maestro>
+              <div class="checkbox-text">
+                <div class="checkbox-label">Nivel de satisfacción</div>
+                <div class="checkbox-description">El nivel de satisfacción de los alumnos que participaron en el programa en los últimos 5 años es de 4.5 en una escala del 1 al 5.</div>
+              </div>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox-maestro [checked]="false" (checkedChange)="$event"></app-checkbox-maestro>
+              <div class="checkbox-text">
+                <div class="checkbox-label">Tasa de recomendación</div>
+                <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, recomendaria el curso.</div>
+              </div>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox-maestro [checked]="false" (checkedChange)="$event"></app-checkbox-maestro>
+              <div class="checkbox-text">
+                <div class="checkbox-label">Fidelidad de los estudiantes</div>
+                <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, estan dispuestos a inscribirse nuevamente en futuros programas.</div>
+              </div>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox-maestro [checked]="false" (checkedChange)="$event"></app-checkbox-maestro>
+              <div class="checkbox-text">
+                <div class="checkbox-label">Según las reseñas de Google</div>
+                <div class="checkbox-description">En Perú: 4.8/5, Colombia 4.7/5, Chile 4.7/5, México 4.6/5, en la satisfacción de los estudiantes.</div>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div [accordion-item-5]="true">
-          <p style="margin: 0; color: #161616;">
-            Contenido de respuesta para el item 5
-          </p>
-        </div>
-        
-        <div [accordion-item-6]="true">
-          <p style="margin: 0; color: #161616;">
-            Contenido de respuesta para el item 6
-          </p>
-        </div>
+
+        <div [accordion-item-5]="true"></div>
+
+        <div [accordion-item-6]="true"></div>
       </app-accordion-maestro>
     `,
+    imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
   }),
   parameters: {
     docs: {
@@ -163,7 +166,7 @@ Acordeón con un item abierto (item 4).
 Muestra cómo se ve cuando una sección está expandida.
 El contenido se despliega con una animación suave.
 
-Contiene checkboxes y texto como ejemplo del tipo de contenido flexible que soporta.
+Contiene CheckboxMaestro componentes con su respectivas etiquetas y descripciones.
 Al hacer clic en otro título, el item 4 se cierra y el nuevo se abre.
       `,
     },
@@ -188,80 +191,52 @@ export const AccordionInteractivo: Story = {
         [items]="items"
         [activeItemId]="activeItemId"
         (activeItemChange)="onActiveChange($event)">
-        
-        <div [accordion-item-1]="true">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" />
-              <span style="color: #2A67EB; font-size: 15px; font-weight: 500;">Opción 1</span>
-            </label>
-            <p style="margin: 0; color: #161616; font-size: 15px;">
-              Descripción detallada del contenido del item 1.
-            </p>
-          </div>
-        </div>
-        
-        <div [accordion-item-2]="true">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" />
-              <span style="color: #2A67EB; font-size: 15px; font-weight: 500;">Opción 2</span>
-            </label>
-            <p style="margin: 0; color: #161616; font-size: 15px;">
-              Descripción detallada del contenido del item 2.
-            </p>
-          </div>
-        </div>
-        
-        <div [accordion-item-3]="true">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" />
-              <span style="color: #2A67EB; font-size: 15px; font-weight: 500;">Opción 3</span>
-            </label>
-            <p style="margin: 0; color: #161616; font-size: 15px;">
-              Descripción detallada del contenido del item 3.
-            </p>
-          </div>
-        </div>
-        
+
+        <div [accordion-item-1]="true"></div>
+
+        <div [accordion-item-2]="true"></div>
+
+        <div [accordion-item-3]="true"></div>
+
         <div [accordion-item-4]="true">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" />
-              <span style="color: #2A67EB; font-size: 15px; font-weight: 500;">Opción 4</span>
-            </label>
-            <p style="margin: 0; color: #161616; font-size: 15px;">
-              El nivel de satisfacción de los alumnos que participaron en el programa en los últimos 5 años es de 4.5 en una escala del 1 al 5.
-            </p>
+          <div class="accordion-content-group">
+            <div class="checkbox-group">
+              <app-checkbox-maestro [checked]="false" (checkedChange)="$event"></app-checkbox-maestro>
+              <div class="checkbox-text">
+                <div class="checkbox-label">Nivel de satisfacción</div>
+                <div class="checkbox-description">El nivel de satisfacción de los alumnos que participaron en el programa en los últimos 5 años es de 4.5 en una escala del 1 al 5.</div>
+              </div>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox-maestro [checked]="false" (checkedChange)="$event"></app-checkbox-maestro>
+              <div class="checkbox-text">
+                <div class="checkbox-label">Tasa de recomendación</div>
+                <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, recomendaria el curso.</div>
+              </div>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox-maestro [checked]="false" (checkedChange)="$event"></app-checkbox-maestro>
+              <div class="checkbox-text">
+                <div class="checkbox-label">Fidelidad de los estudiantes</div>
+                <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, estan dispuestos a inscribirse nuevamente en futuros programas.</div>
+              </div>
+            </div>
+            <div class="checkbox-group">
+              <app-checkbox-maestro [checked]="false" (checkedChange)="$event"></app-checkbox-maestro>
+              <div class="checkbox-text">
+                <div class="checkbox-label">Según las reseñas de Google</div>
+                <div class="checkbox-description">En Perú: 4.8/5, Colombia 4.7/5, Chile 4.7/5, México 4.6/5, en la satisfacción de los estudiantes.</div>
+              </div>
+            </div>
           </div>
         </div>
-        
-        <div [accordion-item-5]="true">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" />
-              <span style="color: #2A67EB; font-size: 15px; font-weight: 500;">Opción 5</span>
-            </label>
-            <p style="margin: 0; color: #161616; font-size: 15px;">
-              Descripción detallada del contenido del item 5.
-            </p>
-          </div>
-        </div>
-        
-        <div [accordion-item-6]="true">
-          <div style="display: flex; flex-direction: column; gap: 12px;">
-            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <input type="checkbox" />
-              <span style="color: #2A67EB; font-size: 15px; font-weight: 500;">Opción 6</span>
-            </label>
-            <p style="margin: 0; color: #161616; font-size: 15px;">
-              Descripción detallada del contenido del item 6.
-            </p>
-          </div>
-        </div>
+
+        <div [accordion-item-5]="true"></div>
+
+        <div [accordion-item-6]="true"></div>
       </app-accordion-maestro>
     `,
+    imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
   }),
   parameters: {
     docs: {
@@ -271,10 +246,7 @@ Acordeón totalmente interactivo.
 Puedes hacer clic en cualquier título para expandir esa sección.
 El componente garantiza que solo una sección esté abierta a la vez.
 
-El contenido de cada secci��n se inyecta mediante ng-content usando atributos
-\`[accordion-item-{id}]\`, lo que permite total flexibilidad en el contenido
-(checkboxes, texto, listas, etc.).
-
+El contenido usa CheckboxMaestro componentes con etiquetas y descripciones.
 Utiliza los controles de Storybook (activeItemId) para ver cómo el componente
 responde a cambios externos del estado activo.
       `,
