@@ -222,34 +222,6 @@ export const ModalLlamadaConEventos: Story = {
     headerColor: '#9333EA',
     descripcionLlamada: 'El sistema está realizando una llamada automática a este contacto',
   },
-  render: (args) => ({
-    props: {
-      ...args,
-      onCerrar: () => {
-        console.log('Modal cerrado');
-        alert('Modal cerrado');
-      },
-      onEjecutar: () => {
-        console.log('Botón Ejecutar clickeado');
-        alert('Botón Ejecutar clickeado');
-      },
-    },
-    template: `
-      <app-modal-llamada
-        [contactName]="contactName"
-        [oportunidadTitulo]="oportunidadTitulo"
-        [fase]="fase"
-        [categoria]="categoria"
-        [probabilidadActual]="probabilidadActual"
-        [headerTitle]="headerTitle"
-        [headerColor]="headerColor"
-        [descripcionLlamada]="descripcionLlamada"
-        (cerrar)="onCerrar()"
-        (ejecutar)="onEjecutar()"
-      ></app-modal-llamada>
-    `,
-    imports: [ModalLlamadaComponent, IconSlotComponent, BotonMaestroComponent],
-  }),
   parameters: {
     docs: {
       storyDescription: `
