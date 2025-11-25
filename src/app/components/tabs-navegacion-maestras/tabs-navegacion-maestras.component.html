@@ -11,7 +11,7 @@
     <!-- Tipo rectangular: solo texto y badge opcional -->
     <ng-container *ngIf="tab.tipo === 'rectangular'">
       <span class="tab-label">{{ tab.label }}</span>
-      <div *ngIf="tab.showCount" class="tab-badge">
+      <div *ngIf="tab.showCount && (!tab.disabled || tab.count === 0)" class="tab-badge">
         <span class="tab-count">{{ tab.count }}</span>
       </div>
     </ng-container>
