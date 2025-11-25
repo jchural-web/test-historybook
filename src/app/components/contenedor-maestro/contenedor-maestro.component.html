@@ -1,6 +1,6 @@
 <div class="contenedor-maestro-wrapper" [ngStyle]="containerStyle">
   <!-- Header (except for 'blanco' variant) -->
-  <div *ngIf="showHeader" class="contenedor-header" [ngStyle]="headerStyle">
+  <div *ngIf="showHeader" class="contenedor-header" [ngStyle]="headerStyle" [class.collapsible-header]="collapsible && variant === 'tabla-desplegable'" (click)="toggleCollapse()">
     <div class="contenedor-header-content">
       <app-icon-slot
         *ngIf="iconName"
@@ -10,10 +10,19 @@
       ></app-icon-slot>
       <h2 class="contenedor-title">{{ title }}</h2>
     </div>
+    <!-- Chevron icon for collapsible variant -->
+    <div *ngIf="showCollapseIcon && collapsible && variant === 'tabla-desplegable'" class="collapse-chevron">
+      <svg *ngIf="isCollapsed" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.30695 7.5C6.13549 7.33333 6.13549 7.06667 6.30695 6.93333C6.47841 6.76667 6.80271 6.76667 6.97418 6.93333L10 9.66667L13.0258 6.93333C13.1973 6.76667 13.5216 6.76667 13.693 6.93333C13.8645 7.06667 13.8645 7.33333 13.693 7.5L10.3345 10.5C10.166 10.6667 9.84169 10.6667 9.67022 10.5L6.30695 7.5Z" fill="currentColor"/>
+      </svg>
+      <svg *ngIf="!isCollapsed" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6.30695 12.5C6.13549 12.6667 6.13549 12.9333 6.30695 13.0667C6.47841 13.2333 6.80271 13.2333 6.97418 13.0667L10 10.3333L13.0258 13.0667C13.1973 13.2333 13.5216 13.2333 13.693 13.0667C13.8645 12.9333 13.8645 12.6667 13.693 12.5L10.3345 9.5C10.166 9.33333 9.84169 9.33333 9.67022 9.5L6.30695 12.5Z" fill="currentColor"/>
+      </svg>
+    </div>
   </div>
 
   <!-- Main container body -->
-  <div class="contenedor-body">
+  <div class="contenedor-body" *ngIf="showTableBody || variant === 'simple' || variant === 'blanco'">
     <!-- Contenido para variantes 'simple' y 'blanco' -->
     <ng-content select="[contenido]"></ng-content>
 
@@ -25,7 +34,7 @@
     <!-- Tabla header (para variantes 'tabla-items' y 'tabla-items-leyenda') -->
     <ng-content *ngIf="showTableHeader" select="[tabla-header]"></ng-content>
 
-    <!-- Tabla body (para variantes 'tabla' y 'tabla-items*') -->
+    <!-- Tabla body (para variantes 'tabla' y 'tabla-items*' y 'tabla-desplegable') -->
     <ng-content select="[tabla-body]"></ng-content>
   </div>
 
