@@ -48,10 +48,11 @@ export class ModalLlamadaComponent {
 </svg>`;
   }
 
-  get closeIconSvg(): string {
-    return `<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+  get closeIconSvg(): SafeHtml {
+    const svgString = `<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.8081 3.30812C11.0521 3.06404 11.4478 3.06404 11.6918 3.30812C11.9359 3.5522 11.9359 3.94783 11.6918 4.19191L8.38374 7.50001L11.6918 10.8081C11.9359 11.0522 11.9359 11.4478 11.6918 11.6919C11.4478 11.936 11.0521 11.936 10.8081 11.6919L7.49995 8.3838L4.19185 11.6919C3.94777 11.936 3.55214 11.936 3.30806 11.6919C3.06398 11.4478 3.06398 11.0522 3.30806 10.8081L6.61616 7.50001L3.30806 4.19191C3.06398 3.94783 3.06398 3.5522 3.30806 3.30812C3.55214 3.06404 3.94777 3.06404 4.19185 3.30812L7.49995 6.61622L10.8081 3.30812Z" fill="white"/>
 </svg>`;
+    return this.sanitizer.bypassSecurityTrustHtml(svgString);
   }
 
   get phoneCallIconSvg(): string {
