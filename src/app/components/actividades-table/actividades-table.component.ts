@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { OportunidadComponent } from '../oportunidad/oportunidad.component';
 import { TagPillComponent } from '../tag-pill/tag-pill.component';
 import { ActivityItemComponent } from '../activity-item/activity-item.component';
