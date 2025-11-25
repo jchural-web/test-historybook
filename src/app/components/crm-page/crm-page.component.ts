@@ -29,75 +29,76 @@ export class CrmPageComponent {
 
   sidebarItems: SidebarMenuItem[] = [
     {
-      id: 'dashboard',
-      label: 'Dashboard',
-      icon: 'house',
-    },
-    {
-      id: 'contactos',
-      label: 'Contactos',
-      icon: 'users',
+      id: 'comercial',
+      label: 'Comercial',
+      icon: 'folder',
       children: [
         {
-          id: 'contactos-activos',
-          label: 'Activos',
-          icon: 'users',
+          id: 'gestion-comercial',
+          label: 'Gestión Comercial',
+          icon: 'folder',
+          children: [
+            {
+              id: 'chats',
+              label: 'Chats',
+              icon: 'folder',
+              badgeCount: 3,
+            },
+            {
+              id: 'creacion-oportunidades',
+              label: 'Creación de Oportunidades',
+              icon: 'folder',
+              badgeCount: 5,
+            },
+            {
+              id: 'agenda',
+              label: 'Agenda',
+              icon: 'folder',
+              badgeCount: 8,
+            },
+          ],
         },
         {
-          id: 'contactos-inactivos',
-          label: 'Inactivos',
-          icon: 'users',
+          id: 'control-operativo',
+          label: 'Control Operativo',
+          icon: 'folder',
+        },
+        {
+          id: 'analitica-ventas',
+          label: 'Analítica de Ventas',
+          icon: 'folder',
         },
       ],
     },
     {
-      id: 'oportunidades',
-      label: 'Oportunidades',
+      id: 'desempenio',
+      label: 'Gestión Del Desempeño',
       icon: 'award',
-      children: [
-        {
-          id: 'oportunidades-prospección',
-          label: 'Prospección',
-          icon: 'folder',
-        },
-        {
-          id: 'oportunidades-calificación',
-          label: 'Calificación',
-          icon: 'folder',
-        },
-        {
-          id: 'oportunidades-negociación',
-          label: 'Negociación',
-          icon: 'folder',
-        },
-      ],
+      children: [],
     },
     {
-      id: 'actividades',
-      label: 'Actividades',
+      id: 'atencion-cliente',
+      label: 'Atención al Cliente',
       icon: 'headset',
-      children: [
-        {
-          id: 'actividades-programadas',
-          label: 'Programadas',
-          icon: 'folder',
-        },
-        {
-          id: 'actividades-completadas',
-          label: 'Completadas',
-          icon: 'folder',
-        },
-      ],
+      children: [],
     },
     {
-      id: 'reportes',
-      label: 'Reportes',
+      id: 'clientes',
+      label: 'Clientes',
+      icon: 'users',
+      badgeCount: 12,
+    },
+    {
+      id: 'cursos',
+      label: 'Cursos',
       icon: 'book-open',
+      badgeCount: 8,
     },
     {
       id: 'configuracion',
       label: 'Configuración',
       icon: 'settings',
+      badgeCount: 2,
     },
   ];
 
