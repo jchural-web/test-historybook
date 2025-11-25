@@ -72,11 +72,18 @@ export default meta;
 type Story = StoryObj<AccordionMaestroComponent>;
 
 const defaultItems = [
-  { id: 1, title: 'El programa es muy caro / No estoy seguro de que realmente valga la pena la inversión.' },
+  {
+    id: 1,
+    title: 'El programa es muy caro / No estoy seguro de que realmente valga la pena la inversión.',
+  },
   { id: 2, title: 'No estoy seguro de tener tiempo suficiente para dedicarle al programa.' },
   { id: 3, title: 'No estoy seguro de que el contenido sea lo que busco.' },
   { id: 4, title: 'No estoy seguro de la calidad/confiabilidad del programa' },
-  { id: 5, title: 'No estoy seguro de que las clases online sean tan efectivas como las clases presenciales.' },
+  {
+    id: 5,
+    title:
+      'No estoy seguro de que las clases online sean tan efectivas como las clases presenciales.',
+  },
   { id: 6, title: 'No estoy seguro de que realmente necesito este programa ahora mismo.' },
 ];
 

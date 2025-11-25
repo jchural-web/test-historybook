@@ -23,7 +23,9 @@
   <!-- Items Container -->
   <div class="sidebar-items-container">
     <ng-container *ngFor="let item of items">
-      <ng-container *ngTemplateOutlet="menuItemTemplate; context: { item: item, level: 0 }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="menuItemTemplate; context: { item: item, level: 0 }"
+      ></ng-container>
     </ng-container>
   </div>
 </div>
@@ -40,10 +42,7 @@
     (click)="onItemClick(item)"
   >
     <div class="sidebar-item-content">
-      <span
-        class="sidebar-item-icon"
-        [innerHTML]="getIconSvg(item.icon)"
-      ></span>
+      <span class="sidebar-item-icon" [innerHTML]="getIconSvg(item.icon)"></span>
 
       <span class="sidebar-item-label" *ngIf="!collapsed">{{ item.label }}</span>
 
@@ -76,7 +75,9 @@
   <!-- Nested children items (shown when expanded) -->
   <ng-container *ngIf="isExpanded(item.id) && hasChildren(item) && !collapsed">
     <ng-container *ngFor="let child of item.children">
-      <ng-container *ngTemplateOutlet="menuItemTemplate; context: { item: child, level: level + 1 }"></ng-container>
+      <ng-container
+        *ngTemplateOutlet="menuItemTemplate; context: { item: child, level: level + 1 }"
+      ></ng-container>
     </ng-container>
   </ng-container>
 </ng-template>

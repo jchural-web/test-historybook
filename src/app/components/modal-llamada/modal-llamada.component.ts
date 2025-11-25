@@ -18,7 +18,8 @@ export class ModalLlamadaComponent {
   @Input() probabilidadActual: string = '';
   @Input() headerTitle: string = 'Llamada en curso';
   @Input() headerColor: string = '#9333EA';
-  @Input() descripcionLlamada: string = 'El sistema está realizando una llamada automática a este contacto';
+  @Input() descripcionLlamada: string =
+    'El sistema está realizando una llamada automática a este contacto';
 
   @Output() cerrar = new EventEmitter<void>();
   @Output() ejecutar = new EventEmitter<void>();

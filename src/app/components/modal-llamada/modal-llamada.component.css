@@ -3,14 +3,14 @@
   align-items: center;
   justify-content: center;
   padding: 30px 22px;
-  background: #FFFFFF;
+  background: #ffffff;
   min-height: 100vh;
 }
 
 .modal-card {
   width: 331px;
-  background: #FFFFFF;
-  border: 1px solid #BEBEBE;
+  background: #ffffff;
+  border: 1px solid #bebebe;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -46,8 +46,13 @@
 }
 
 .header-title {
-  color: #FFFFFF;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #ffffff;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.24px;
@@ -96,7 +101,12 @@
 
 .info-label {
   color: #323438;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: -0.24px;
@@ -108,8 +118,13 @@
 }
 
 .contact-name {
-  color: #09090B;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #09090b;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: -0.24px;
@@ -127,8 +142,13 @@
 }
 
 .opportunity-title {
-  color: #9333EA;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #9333ea;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: -0.12px;
@@ -145,8 +165,13 @@
 }
 
 .metadata-item {
-  color: #747B88;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #747b88;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 11px;
   font-weight: 400;
   letter-spacing: -0.22px;
@@ -157,15 +182,15 @@
 }
 
 .metadata-text {
-  color: #747B88;
+  color: #747b88;
 }
 
 .categoria-text {
-  color: #2563EB;
+  color: #2563eb;
 }
 
 .probability-text {
-  color: #32AE60;
+  color: #32ae60;
 }
 
 .phone-icon-wrapper {
@@ -186,7 +211,7 @@
 
 .ring {
   position: absolute;
-  border: 1px solid #17D25C;
+  border: 1px solid #17d25c;
   border-radius: 50%;
   animation: ringing 1.5s linear infinite;
 }
@@ -221,9 +246,14 @@
 }
 
 .description-text {
-  color: #747B88;
+  color: #747b88;
   text-align: center;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: 18px;
@@ -243,8 +273,8 @@
 
 /* Override ovalado button styling for this specific use case */
 :host ::ng-deep .button-wrapper app-boton-maestro .btn-ovalado {
-  background: #22C55E !important;
-  color: #FFFFFF !important;
+  background: #22c55e !important;
+  color: #ffffff !important;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: -0.22px;

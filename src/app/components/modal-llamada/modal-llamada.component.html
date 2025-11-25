@@ -30,9 +30,16 @@
         <div class="opportunity-info">
           <div class="opportunity-title">{{ oportunidadTitulo }}</div>
           <div class="metadata-inline">
-            <span class="metadata-item" *ngIf="fase">Fase: <span class="metadata-text">{{ fase }}</span></span>
-            <span class="metadata-item" *ngIf="categoria">Categoria: <span class="metadata-text categoria-text">{{ categoria }}</span></span>
-            <span class="metadata-item" *ngIf="probabilidadActual">Prob. Actual: <span class="metadata-text probability-text">{{ probabilidadActual }}</span></span>
+            <span class="metadata-item" *ngIf="fase"
+              >Fase: <span class="metadata-text">{{ fase }}</span></span
+            >
+            <span class="metadata-item" *ngIf="categoria"
+              >Categoria: <span class="metadata-text categoria-text">{{ categoria }}</span></span
+            >
+            <span class="metadata-item" *ngIf="probabilidadActual"
+              >Prob. Actual:
+              <span class="metadata-text probability-text">{{ probabilidadActual }}</span></span
+            >
           </div>
         </div>
       </div>

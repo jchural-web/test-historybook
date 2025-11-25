@@ -34,7 +34,6 @@ export class CrmPageComponent {
     },
   ];
 
-
   performanceCards = [
     {
       title: 'Actividades Totales',
@@ -65,7 +64,6 @@ export class CrmPageComponent {
       iconColor: '#F59E0B',
     },
   ];
-
 
   actividadesData: ActividadRow[] = [
     {
