@@ -46,7 +46,7 @@ export class CrmPageComponent implements OnInit {
     },
     {
       id: 'automatizados',
-      label: 'Automatizados',
+      label: 'Intg. Automáticas',
       tipo: 'rectangular',
       showCount: true,
       count: 8,
@@ -58,7 +58,7 @@ export class CrmPageComponent implements OnInit {
       tipo: 'rectangular',
       showCount: true,
       count: 5,
-      color: 'blue',
+      color: 'green',
     },
     {
       id: 'no-prog',
@@ -66,7 +66,8 @@ export class CrmPageComponent implements OnInit {
       tipo: 'rectangular',
       showCount: true,
       count: 3,
-      color: 'blue',
+      color: 'gray',
+      disabled: true,
     },
     {
       id: 'ativas-y-modales',
@@ -74,7 +75,7 @@ export class CrmPageComponent implements OnInit {
       tipo: 'rectangular',
       showCount: true,
       count: 7,
-      color: 'blue',
+      color: 'green',
     },
     {
       id: 'vencidas-ip',
@@ -82,7 +83,7 @@ export class CrmPageComponent implements OnInit {
       tipo: 'rectangular',
       showCount: true,
       count: 2,
-      color: 'blue',
+      color: 'orange',
     },
     {
       id: 'vencidas-im',
@@ -90,7 +91,7 @@ export class CrmPageComponent implements OnInit {
       tipo: 'rectangular',
       showCount: true,
       count: 4,
-      color: 'blue',
+      color: 'green',
     },
   ];
 
