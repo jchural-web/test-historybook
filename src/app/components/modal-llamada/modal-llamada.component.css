@@ -1,59 +1,81 @@
-.modal-container {
+.modal-overlay {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 30px 22px;
+  background: #FFFFFF;
   min-height: 100vh;
-  background: rgba(0, 0, 0, 0.05);
 }
 
 .modal-card {
-  width: 100%;
-  max-width: 380px;
+  width: 331px;
+  height: 306px;
   background: #FFFFFF;
-  border-radius: 8px;
   border: 1px solid #BEBEBE;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: none;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  border-radius: 6px 6px 0 0;
-  min-height: 50px;
+  width: 100%;
+  height: 41px;
+  padding: 13px 15px;
+  border-radius: 4px 4px 0 0;
+  border: 1px solid #BEBEBE;
+  border-bottom: none;
   gap: 12px;
+  flex-shrink: 0;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex: 1;
+}
+
+.header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+}
+
+.header-icon svg {
+  width: 15px;
+  height: 15px;
 }
 
 .header-title {
   color: #FFFFFF;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: -0.28px;
+  letter-spacing: -0.24px;
+  line-height: normal;
   margin: 0;
+  white-space: nowrap;
 }
 
 .close-button {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 4px;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  width: 15px;
+  height: 15px;
 }
 
 .close-icon {
@@ -62,17 +84,36 @@
   justify-content: center;
 }
 
+.close-icon svg {
+  width: 15px;
+  height: 15px;
+}
+
 .modal-body {
   display: flex;
   flex-direction: column;
-  padding: 24px 20px;
-  gap: 16px;
+  flex: 1;
+  padding: 15px;
+  gap: 0;
+  overflow-y: auto;
+  position: relative;
+  height: calc(100% - 41px);
 }
 
-.info-section {
+.contact-info-block {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 2px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.opportunity-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .info-label {
@@ -81,80 +122,84 @@
   font-size: 12px;
   font-weight: 500;
   letter-spacing: -0.24px;
-  text-transform: uppercase;
+  line-height: normal;
   margin: 0;
+  padding: 0;
 }
 
 .contact-name {
   color: #09090B;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: -0.26px;
+  letter-spacing: -0.24px;
+  line-height: normal;
   margin: 0;
+  padding: 0;
 }
 
-.oportunidad-titulo {
+.opportunity-title {
   color: #9333EA;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: -0.13px;
+  letter-spacing: -0.12px;
+  line-height: normal;
   margin: 0;
+  padding: 0;
   word-break: break-word;
+  max-width: 200px;
 }
 
-.metadata {
+.metadata-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-top: 4px;
+  gap: 3px;
+  margin-top: 5px;
 }
 
-.metadata-item {
+.metadata-row {
   display: flex;
   gap: 8px;
+  align-items: flex-start;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 11px;
+  font-weight: 400;
+  letter-spacing: -0.22px;
+  line-height: normal;
 }
 
 .metadata-label {
   color: #747B88;
-  font-weight: 400;
-  letter-spacing: -0.22px;
+  flex-shrink: 0;
 }
 
 .metadata-value {
   color: #747B88;
-  font-weight: 400;
-  letter-spacing: -0.22px;
 }
 
-.metadata-value.category {
+.categoria-value {
   color: #2563EB;
 }
 
-.metadata-value.probability {
+.probability-value {
   color: #32AE60;
 }
 
-.phone-icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px 0;
-}
-
-.ring-wrapper {
+.phone-icon-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  height: 100px;
+  margin: 10px 0 15px 0;
+  flex-shrink: 0;
 }
 
 .ring {
   position: absolute;
-  border: 2px solid #17D25C;
+  border: 1px solid #17D25C;
   border-radius: 50%;
   animation: ringing 1.5s linear infinite;
 }
@@ -188,45 +233,92 @@
   }
 }
 
+.phone-icon-center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background-color: #DCFCE7;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.phone-icon-center svg {
+  width: 24px;
+  height: 24px;
+}
+
 .description-text {
   color: #747B88;
   text-align: center;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 12px;
   font-weight: 500;
-  line-height: 1.5;
+  line-height: 18px;
   letter-spacing: -0.24px;
   margin: 0;
   padding: 0 8px;
+  word-wrap: break-word;
+  flex-shrink: 0;
 }
 
-.button-container {
+.button-wrapper {
   display: flex;
   justify-content: center;
   margin-top: 12px;
+  flex-shrink: 0;
+}
+
+/* Override ovalado button styling for this specific use case */
+:host ::ng-deep .button-wrapper app-boton-maestro .btn-ovalado {
+  background: #22C55E !important;
+  color: #FFFFFF !important;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: -0.22px;
+  border-radius: 12.5px;
+  padding: 6px 13px;
+  height: 25px;
+  width: auto;
+  min-width: 82px;
+}
+
+:host ::ng-deep .button-wrapper app-boton-maestro .btn-ovalado:hover:not(:disabled) {
+  background: #1ea853 !important;
+}
+
+:host ::ng-deep .button-wrapper app-boton-maestro .btn-icon {
+  width: 14px;
+  height: 14px;
+}
+
+:host ::ng-deep .button-wrapper app-boton-maestro .btn-icon svg {
+  width: 14px;
+  height: 14px;
 }
 
 @media (max-width: 480px) {
+  .modal-overlay {
+    padding: 20px 16px;
+  }
+
   .modal-card {
-    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-width: 331px;
   }
 
-  .modal-body {
-    padding: 16px 16px;
-    gap: 12px;
+  .modal-header {
+    height: 41px;
+    padding: 13px 12px;
   }
 
-  .header-title {
-    font-size: 12px;
-  }
-
-  .contact-name,
-  .oportunidad-titulo {
-    font-size: 12px;
-  }
-
-  .phone-icon-container {
-    padding: 16px 0;
+  .phone-icon-wrapper {
+    height: 80px;
+    margin: 8px 0 12px 0;
   }
 
   .ring-1 {
@@ -246,5 +338,6 @@
 
   .description-text {
     font-size: 11px;
+    line-height: 16px;
   }
 }
