@@ -25,7 +25,7 @@ export class CrmPageComponent {
   isSidebarExpanded: boolean = false;
   searchValue: string = '';
   expandedSidebarIds: string[] = [];
-  activeSidebarId: string = 'dashboard';
+  activeSidebarId: string = 'comercial';
 
   sidebarItems: SidebarMenuItem[] = [
     {
