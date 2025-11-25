@@ -22,7 +22,6 @@ export class SidebarMenuMaestroComponent {
   @Input() activeItemId?: string;
   @Input() expandedIds: string[] = [];
   @Input() collapsed: boolean = false;
-  @Input() headerText: string = 'Inicio';
 
   constructor(private sanitizer: DomSanitizer) {}
 
