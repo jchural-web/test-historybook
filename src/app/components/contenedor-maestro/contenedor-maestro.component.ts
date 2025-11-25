@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IconSlotComponent } from '../icon-slot/icon-slot.component';
 import { TablePaginationFooterComponent } from '../table-pagination-footer/table-pagination-footer.component';
@@ -9,7 +9,8 @@ export type ContenedorMaestroVariant =
   | 'tabla'
   | 'blanco'
   | 'tabla-items'
-  | 'tabla-items-leyenda';
+  | 'tabla-items-leyenda'
+  | 'tabla-desplegable';
 
 @Component({
   selector: 'app-contenedor-maestro',
@@ -18,7 +19,7 @@ export type ContenedorMaestroVariant =
   templateUrl: './contenedor-maestro.component.html',
   styleUrls: ['./contenedor-maestro.component.css'],
 })
-export class ContenedorMaestroComponent {
+export class ContenedorMaestroComponent implements OnInit {
   @Input() variant: ContenedorMaestroVariant = 'simple';
   @Input() title?: string;
   @Input() iconName?: string;
@@ -34,8 +35,16 @@ export class ContenedorMaestroComponent {
   @Input() pageSizeOptions: number[] = [5, 10, 20, 50];
   @Input() totalItems: number = 22;
 
+  // Collapsible inputs
+  @Input() collapsible: boolean = false;
+  @Input() defaultCollapsed: boolean = true;
+  @Input() showCollapseIcon: boolean = true;
+
   @Output() pageChange = new EventEmitter<number>();
   @Output() pageSizeChange = new EventEmitter<number>();
+
+  // Collapsible state
+  isCollapsed: boolean = false;
 
   get containerStyle(): { [key: string]: string } {
     const style: { [key: string]: string } = {};
@@ -64,7 +73,22 @@ export class ContenedorMaestroComponent {
   }
 
   get showTableFooter(): boolean {
-    return this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda';
+    return (this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable')
+      && !this.isCollapsed;
+  }
+
+  get showTableBody(): boolean {
+    return (this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable')
+      && !this.isCollapsed;
+  }
+
+  ngOnInit(): void {
+    this.isCollapsed = this.defaultCollapsed;
+  }
+
+  toggleCollapse(): void {
+    if (!this.collapsible) return;
+    this.isCollapsed = !this.isCollapsed;
   }
 
   onPageChange(page: number): void {
