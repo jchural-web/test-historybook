@@ -187,6 +187,7 @@ export const AccordionInteractivo: Story = {
       onActiveChange: (id: any) => {
         args.activeItemId = id;
       },
+      CheckboxMaestroComponent,
     },
     template: `
       <div style="padding: 24px; background: #FFF;">
