@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IconSlotComponent } from '../icon-slot/icon-slot.component';
 import { BotonMaestroComponent } from '../boton-maestro/boton-maestro.component';
 
