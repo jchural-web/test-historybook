@@ -1,14 +1,9 @@
-<div class="modal-container">
+<div class="modal-overlay">
   <div class="modal-card">
     <!-- Header -->
     <div class="modal-header" [style.background-color]="headerColor">
       <div class="header-left">
-        <app-icon-slot
-          [iconName]="'phone'"
-          [backgroundColor]="'transparent'"
-          [iconColor]="'white'"
-          [size]="'sm'"
-        ></app-icon-slot>
+        <span [innerHTML]="phoneIconSvg" class="header-icon"></span>
         <span class="header-title">{{ headerTitle }}</span>
       </div>
       <button class="close-button" (click)="onCerrar()" type="button">
@@ -19,43 +14,38 @@
     <!-- Body -->
     <div class="modal-body">
       <!-- Contact Information -->
-      <div class="info-section">
+      <div class="contact-info-block">
         <div class="info-label">CONTACTO</div>
         <div class="contact-name">{{ contactName }}</div>
       </div>
 
       <!-- Opportunity Information -->
-      <div class="info-section">
+      <div class="opportunity-info-block">
         <div class="info-label">OPORTUNIDAD</div>
-        <div class="oportunidad-titulo">{{ oportunidadTitulo }}</div>
-        <div class="metadata">
-          <div class="metadata-item" *ngIf="fase">
+        <div class="opportunity-title">{{ oportunidadTitulo }}</div>
+        <div class="metadata-list">
+          <div class="metadata-row" *ngIf="fase">
             <span class="metadata-label">Fase:</span>
             <span class="metadata-value">{{ fase }}</span>
           </div>
-          <div class="metadata-item" *ngIf="categoria">
+          <div class="metadata-row" *ngIf="categoria">
             <span class="metadata-label">Categoria:</span>
-            <span class="metadata-value">{{ categoria }}</span>
+            <span class="metadata-value categoria-value">{{ categoria }}</span>
           </div>
-          <div class="metadata-item" *ngIf="probabilidadActual">
+          <div class="metadata-row" *ngIf="probabilidadActual">
             <span class="metadata-label">Prob. Actual:</span>
-            <span class="metadata-value">{{ probabilidadActual }}</span>
+            <span class="metadata-value probability-value">{{ probabilidadActual }}</span>
           </div>
         </div>
       </div>
 
       <!-- Central phone icon with ringing animation -->
-      <div class="phone-icon-container">
-        <div class="ring-wrapper">
-          <div class="ring ring-1"></div>
-          <div class="ring ring-2"></div>
-          <div class="ring ring-3"></div>
-          <app-icon-slot
-            [iconName]="'phone'"
-            [backgroundColor]="'#22C55E'"
-            [iconColor]="'white'"
-            [size]="'lg'"
-          ></app-icon-slot>
+      <div class="phone-icon-wrapper">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <div class="phone-icon-center">
+          <span [innerHTML]="phoneCallIconSvg"></span>
         </div>
       </div>
 
@@ -63,13 +53,13 @@
       <div class="description-text">{{ descripcionLlamada }}</div>
 
       <!-- Execute button -->
-      <div class="button-container">
+      <div class="button-wrapper">
         <app-boton-maestro
           label="Ejecutar"
-          variant="default"
+          variant="ovalado"
           bgColor="#22C55E"
           textColor="#FFFFFF"
-          [iconName]="phoneCallIconSvg"
+          [iconName]="circlePlayIconSvg"
           [showIcon]="true"
           (clicked)="onEjecutar()"
         ></app-boton-maestro>
