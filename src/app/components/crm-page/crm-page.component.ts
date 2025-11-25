@@ -33,6 +33,66 @@ export class CrmPageComponent implements OnInit {
   expandedSidebarIds: string[] = [];
   activeSidebarId: string = 'comercial';
   isLoading: boolean = true;
+  activeTabId: string = 'contacto-entrante';
+
+  navigationTabs: TabMaestra[] = [
+    {
+      id: 'contacto-entrante',
+      label: 'Contacto Entrante',
+      tipo: 'rectangular',
+      showCount: true,
+      count: 12,
+      color: 'blue',
+    },
+    {
+      id: 'automatizados',
+      label: 'Automatizados',
+      tipo: 'rectangular',
+      showCount: true,
+      count: 8,
+      color: 'blue',
+    },
+    {
+      id: 'prog-manuales',
+      label: 'Prog. Manuales',
+      tipo: 'rectangular',
+      showCount: true,
+      count: 5,
+      color: 'blue',
+    },
+    {
+      id: 'no-prog',
+      label: 'No Prog. | Solicitud',
+      tipo: 'rectangular',
+      showCount: true,
+      count: 3,
+      color: 'blue',
+    },
+    {
+      id: 'ativas-y-modales',
+      label: 'Ativas y Modales',
+      tipo: 'rectangular',
+      showCount: true,
+      count: 7,
+      color: 'blue',
+    },
+    {
+      id: 'vencidas-ip',
+      label: 'Vencidas (IP o IPs)',
+      tipo: 'rectangular',
+      showCount: true,
+      count: 2,
+      color: 'blue',
+    },
+    {
+      id: 'vencidas-im',
+      label: 'Vencidas (IM)',
+      tipo: 'rectangular',
+      showCount: true,
+      count: 4,
+      color: 'blue',
+    },
+  ];
 
   sidebarItems: SidebarMenuItem[] = [
     {
