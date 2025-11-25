@@ -80,6 +80,7 @@
         <app-actividades-table-with-pagination
           [headerColor]="'#E3F2FD'"
           [allRows]="actividadesData"
+          (executeButtonClick)="onExecuteActivityClick($event)"
         ></app-actividades-table-with-pagination>
       </div>
     </main>
