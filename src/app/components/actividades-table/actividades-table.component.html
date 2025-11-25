@@ -46,11 +46,15 @@
             <span class="fecha-date">{{ row.fecha }}</span>
             <span *ngIf="row.hora" class="fecha-time">{{ row.hora }}</span>
           </div>
-          <app-boton-ejecutar
+          <app-boton-maestro
             *ngIf="row.botonEjecutar"
             [label]="row.botonEjecutar.label"
-            [color]="row.botonEjecutar.color"
-          ></app-boton-ejecutar>
+            variant="ovalado"
+            [bgColor]="getBotonColor(row.botonEjecutar.color)"
+            textColor="#FFFFFF"
+            [iconName]="getPlayIconSvg()"
+            [showIcon]="true"
+          ></app-boton-maestro>
         </div>
       </div>
     </div>
