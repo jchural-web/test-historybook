@@ -115,7 +115,7 @@ export class CrmPageComponent implements OnInit {
       label: 'INQ',
       tipo: 'rectangular',
       showCount: true,
-      count: 8,
+      count: 0,
       color: 'gray',
       disabled: true,
     },
