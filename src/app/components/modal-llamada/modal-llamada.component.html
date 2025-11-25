@@ -3,7 +3,12 @@
     <!-- Header -->
     <div class="modal-header" [style.background-color]="headerColor">
       <div class="header-left">
-        <span [innerHTML]="phoneIconSvg" class="header-icon"></span>
+        <app-icon-slot
+          [iconName]="'phone'"
+          [backgroundColor]="'transparent'"
+          [iconColor]="'white'"
+          [size]="'sm'"
+        ></app-icon-slot>
         <span class="header-title">{{ headerTitle }}</span>
       </div>
       <button class="close-button" (click)="onCerrar()" type="button">
@@ -13,28 +18,21 @@
 
     <!-- Body -->
     <div class="modal-body">
-      <!-- Contact Information -->
-      <div class="contact-info-block">
+      <!-- Contact Information Row -->
+      <div class="info-row">
         <div class="info-label">CONTACTO</div>
         <div class="contact-name">{{ contactName }}</div>
       </div>
 
-      <!-- Opportunity Information -->
-      <div class="opportunity-info-block">
+      <!-- Opportunity Information Row -->
+      <div class="info-row">
         <div class="info-label">OPORTUNIDAD</div>
-        <div class="opportunity-title">{{ oportunidadTitulo }}</div>
-        <div class="metadata-list">
-          <div class="metadata-row" *ngIf="fase">
-            <span class="metadata-label">Fase:</span>
-            <span class="metadata-value">{{ fase }}</span>
-          </div>
-          <div class="metadata-row" *ngIf="categoria">
-            <span class="metadata-label">Categoria:</span>
-            <span class="metadata-value categoria-value">{{ categoria }}</span>
-          </div>
-          <div class="metadata-row" *ngIf="probabilidadActual">
-            <span class="metadata-label">Prob. Actual:</span>
-            <span class="metadata-value probability-value">{{ probabilidadActual }}</span>
+        <div class="opportunity-info">
+          <div class="opportunity-title">{{ oportunidadTitulo }}</div>
+          <div class="metadata-inline">
+            <span class="metadata-item" *ngIf="fase">Fase: <span class="metadata-text">{{ fase }}</span></span>
+            <span class="metadata-item" *ngIf="categoria">Categoria: <span class="metadata-text categoria-text">{{ categoria }}</span></span>
+            <span class="metadata-item" *ngIf="probabilidadActual">Prob. Actual: <span class="metadata-text probability-text">{{ probabilidadActual }}</span></span>
           </div>
         </div>
       </div>
@@ -44,9 +42,12 @@
         <div class="ring ring-1"></div>
         <div class="ring ring-2"></div>
         <div class="ring ring-3"></div>
-        <div class="phone-icon-center">
-          <span [innerHTML]="phoneCallIconSvg"></span>
-        </div>
+        <app-icon-slot
+          [iconName]="'phone'"
+          [backgroundColor]="'#DCFCE7'"
+          [iconColor]="'#16A34A'"
+          [size]="'lg'"
+        ></app-icon-slot>
       </div>
 
       <!-- Description text -->
