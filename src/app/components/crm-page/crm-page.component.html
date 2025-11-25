@@ -1,4 +1,20 @@
 <div class="crm-layout">
+  <!-- Loading Overlay with Modal -->
+  <div class="crm-loading-overlay" *ngIf="isLoading">
+    <app-modal-llamada
+      [contactName]="'Carlos Mendoza'"
+      [oportunidadTitulo]="'LEAN SSSB ONLINE 2024 II LIMA'"
+      [fase]="'BNC'"
+      [categoria]="'Facebook Chat'"
+      [probabilidadActual]="'Alta'"
+      [headerTitle]="'Llamada en curso'"
+      [headerColor]="'#9333EA'"
+      [descripcionLlamada]="'El sistema está realizando una llamada automática a este contacto'"
+      (cerrar)="onModalCerrar()"
+      (ejecutar)="onModalEjecutar()"
+    ></app-modal-llamada>
+  </div>
+
   <app-header-bar
     [username]="'Yesica Palomino'"
     [appName]="'Integra CRM'"
