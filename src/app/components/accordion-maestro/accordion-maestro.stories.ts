@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { CommonModule } from '@angular/common';
 import { AccordionMaestroComponent } from './accordion-maestro.component';
 import { CheckboxMaestroComponent } from '../checkbox-maestro/checkbox-maestro.component';
 
@@ -111,13 +112,13 @@ export const AccordionConItemAbierto: Story = {
         [items]="items"
         [activeItemId]="activeItemId"
         (activeItemChange)="activeItemChange.emit($event)">
-
+        
         <div [accordion-item-1]="true"></div>
-
+        
         <div [accordion-item-2]="true"></div>
-
+        
         <div [accordion-item-3]="true"></div>
-
+        
         <div [accordion-item-4]="true">
           <div class="accordion-content-group">
             <div class="checkbox-group">
@@ -150,14 +151,16 @@ export const AccordionConItemAbierto: Story = {
             </div>
           </div>
         </div>
-
+        
         <div [accordion-item-5]="true"></div>
-
+        
         <div [accordion-item-6]="true"></div>
       </app-accordion-maestro>
     `,
-    imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
   }),
+  moduleMetadata: {
+    imports: [AccordionMaestroComponent, CheckboxMaestroComponent, CommonModule],
+  },
   parameters: {
     docs: {
       storyDescription: `
@@ -166,7 +169,7 @@ Acordeón con un item abierto (item 4).
 Muestra cómo se ve cuando una sección está expandida.
 El contenido se despliega con una animación suave.
 
-Contiene CheckboxMaestro componentes con su respectivas etiquetas y descripciones.
+Contiene CheckboxMaestro componentes con sus respectivas etiquetas y descripciones.
 Al hacer clic en otro título, el item 4 se cierra y el nuevo se abre.
       `,
     },
@@ -191,13 +194,13 @@ export const AccordionInteractivo: Story = {
         [items]="items"
         [activeItemId]="activeItemId"
         (activeItemChange)="onActiveChange($event)">
-
+        
         <div [accordion-item-1]="true"></div>
-
+        
         <div [accordion-item-2]="true"></div>
-
+        
         <div [accordion-item-3]="true"></div>
-
+        
         <div [accordion-item-4]="true">
           <div class="accordion-content-group">
             <div class="checkbox-group">
@@ -230,14 +233,16 @@ export const AccordionInteractivo: Story = {
             </div>
           </div>
         </div>
-
+        
         <div [accordion-item-5]="true"></div>
-
+        
         <div [accordion-item-6]="true"></div>
       </app-accordion-maestro>
     `,
-    imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
   }),
+  moduleMetadata: {
+    imports: [AccordionMaestroComponent, CheckboxMaestroComponent, CommonModule],
+  },
   parameters: {
     docs: {
       storyDescription: `
