@@ -107,54 +107,53 @@ export const AccordionConItemAbierto: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <app-accordion-maestro
-        [items]="items"
-        [activeItemId]="activeItemId"
-        (activeItemChange)="activeItemChange.emit($event)">
-        
-        <div [accordion-item-1]="true"></div>
-        
-        <div [accordion-item-2]="true"></div>
-        
-        <div [accordion-item-3]="true"></div>
-        
-        <div [accordion-item-4]="true">
-          <div class="accordion-content-group">
-            <div class="checkbox-group">
-              <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
-              <div class="checkbox-text">
-                <div class="checkbox-label">Nivel de satisfacción</div>
-                <div class="checkbox-description">El nivel de satisfacción de los alumnos que participaron en el programa en los últimos 5 años es de 4.5 en una escala del 1 al 5.</div>
+      <div style="padding: 24px; background: #FFF;">
+        <app-accordion-maestro
+          [items]="items"
+          [activeItemId]="activeItemId"
+          (activeItemChange)="activeItemChange.emit($event)">
+
+          <div [accordion-item-1]="true"></div>
+          <div [accordion-item-2]="true"></div>
+          <div [accordion-item-3]="true"></div>
+
+          <div [accordion-item-4]="true">
+            <div class="accordion-content-group">
+              <div class="checkbox-group">
+                <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
+                <div class="checkbox-text">
+                  <div class="checkbox-label">Nivel de satisfacción</div>
+                  <div class="checkbox-description">El nivel de satisfacción de los alumnos que participaron en el programa en los últimos 5 años es de 4.5 en una escala del 1 al 5.</div>
+                </div>
               </div>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
-              <div class="checkbox-text">
-                <div class="checkbox-label">Tasa de recomendación</div>
-                <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, recomendaria el curso.</div>
+              <div class="checkbox-group">
+                <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
+                <div class="checkbox-text">
+                  <div class="checkbox-label">Tasa de recomendación</div>
+                  <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, recomendaria el curso.</div>
+                </div>
               </div>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
-              <div class="checkbox-text">
-                <div class="checkbox-label">Fidelidad de los estudiantes</div>
-                <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, estan dispuestos a inscribirse nuevamente en futuros programas.</div>
+              <div class="checkbox-group">
+                <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
+                <div class="checkbox-text">
+                  <div class="checkbox-label">Fidelidad de los estudiantes</div>
+                  <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, estan dispuestos a inscribirse nuevamente en futuros programas.</div>
+                </div>
               </div>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
-              <div class="checkbox-text">
-                <div class="checkbox-label">Según las reseñas de Google</div>
-                <div class="checkbox-description">En Perú: 4.8/5, Colombia 4.7/5, Chile 4.7/5, México 4.6/5, en la satisfacción de los estudiantes.</div>
+              <div class="checkbox-group">
+                <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
+                <div class="checkbox-text">
+                  <div class="checkbox-label">Según las reseñas de Google</div>
+                  <div class="checkbox-description">En Perú: 4.8/5, Colombia 4.7/5, Chile 4.7/5, México 4.6/5, en la satisfacción de los estudiantes.</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div [accordion-item-5]="true"></div>
-        
-        <div [accordion-item-6]="true"></div>
-      </app-accordion-maestro>
+
+          <div [accordion-item-5]="true"></div>
+          <div [accordion-item-6]="true"></div>
+        </app-accordion-maestro>
+      </div>
     `,
     imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
   }),
@@ -187,54 +186,53 @@ export const AccordionInteractivo: Story = {
       },
     },
     template: `
-      <app-accordion-maestro
-        [items]="items"
-        [activeItemId]="activeItemId"
-        (activeItemChange)="onActiveChange($event)">
-        
-        <div [accordion-item-1]="true"></div>
-        
-        <div [accordion-item-2]="true"></div>
-        
-        <div [accordion-item-3]="true"></div>
-        
-        <div [accordion-item-4]="true">
-          <div class="accordion-content-group">
-            <div class="checkbox-group">
-              <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
-              <div class="checkbox-text">
-                <div class="checkbox-label">Nivel de satisfacción</div>
-                <div class="checkbox-description">El nivel de satisfacción de los alumnos que participaron en el programa en los últimos 5 años es de 4.5 en una escala del 1 al 5.</div>
+      <div style="padding: 24px; background: #FFF;">
+        <app-accordion-maestro
+          [items]="items"
+          [activeItemId]="activeItemId"
+          (activeItemChange)="onActiveChange($event)">
+
+          <div [accordion-item-1]="true"></div>
+          <div [accordion-item-2]="true"></div>
+          <div [accordion-item-3]="true"></div>
+
+          <div [accordion-item-4]="true">
+            <div class="accordion-content-group">
+              <div class="checkbox-group">
+                <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
+                <div class="checkbox-text">
+                  <div class="checkbox-label">Nivel de satisfacción</div>
+                  <div class="checkbox-description">El nivel de satisfacción de los alumnos que participaron en el programa en los últimos 5 años es de 4.5 en una escala del 1 al 5.</div>
+                </div>
               </div>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
-              <div class="checkbox-text">
-                <div class="checkbox-label">Tasa de recomendación</div>
-                <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, recomendaria el curso.</div>
+              <div class="checkbox-group">
+                <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
+                <div class="checkbox-text">
+                  <div class="checkbox-label">Tasa de recomendación</div>
+                  <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, recomendaria el curso.</div>
+                </div>
               </div>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
-              <div class="checkbox-text">
-                <div class="checkbox-label">Fidelidad de los estudiantes</div>
-                <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, estan dispuestos a inscribirse nuevamente en futuros programas.</div>
+              <div class="checkbox-group">
+                <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
+                <div class="checkbox-text">
+                  <div class="checkbox-label">Fidelidad de los estudiantes</div>
+                  <div class="checkbox-description">El 92% de los alumnos que participaron en el curso en los últimos 5 años, estan dispuestos a inscribirse nuevamente en futuros programas.</div>
+                </div>
               </div>
-            </div>
-            <div class="checkbox-group">
-              <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
-              <div class="checkbox-text">
-                <div class="checkbox-label">Según las reseñas de Google</div>
-                <div class="checkbox-description">En Perú: 4.8/5, Colombia 4.7/5, Chile 4.7/5, México 4.6/5, en la satisfacción de los estudiantes.</div>
+              <div class="checkbox-group">
+                <app-checkbox-maestro [checked]="false"></app-checkbox-maestro>
+                <div class="checkbox-text">
+                  <div class="checkbox-label">Según las reseñas de Google</div>
+                  <div class="checkbox-description">En Perú: 4.8/5, Colombia 4.7/5, Chile 4.7/5, México 4.6/5, en la satisfacción de los estudiantes.</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div [accordion-item-5]="true"></div>
-        
-        <div [accordion-item-6]="true"></div>
-      </app-accordion-maestro>
+
+          <div [accordion-item-5]="true"></div>
+          <div [accordion-item-6]="true"></div>
+        </app-accordion-maestro>
+      </div>
     `,
     imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
   }),
