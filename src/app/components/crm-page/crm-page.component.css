@@ -107,6 +107,10 @@
   flex-wrap: wrap;
 }
 
+.header-actions app-boton-maestro {
+  display: flex;
+}
+
 .table-section {
   background: transparent;
   border-radius: 0;
