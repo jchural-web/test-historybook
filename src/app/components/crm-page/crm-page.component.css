@@ -45,6 +45,14 @@
   overflow-x: hidden;
 }
 
+.navigation-tabs-wrapper {
+  margin-bottom: 24px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 .crm-container.sidebar-expanded .crm-main-content {
   margin-left: 318px;
 }
