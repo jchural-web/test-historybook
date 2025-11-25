@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { ActividadesTableComponent, ActividadRow } from './actividades-table.component';
 import { TablePaginationFooterComponent } from '../table-pagination-footer/table-pagination-footer.component';
 
