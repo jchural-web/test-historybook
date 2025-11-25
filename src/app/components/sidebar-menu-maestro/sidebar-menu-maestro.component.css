@@ -123,6 +123,7 @@
 .sidebar-item-collapsed .sidebar-item-content {
   flex: none;
   width: auto;
+  overflow: visible;
 }
 
 /* Item Content */
