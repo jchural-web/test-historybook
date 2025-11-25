@@ -1,0 +1,27 @@
+<div class="gestion-agenda-layout">
+  <app-header-bar
+    [username]="'Yesica Palomino'"
+    [appName]="'Integra CRM'"
+    [actions]="headerActions"
+    (menuClick)="onMenuClick()"
+  ></app-header-bar>
+
+  <div class="gestion-agenda-container" [class.sidebar-expanded]="isSidebarExpanded">
+    <aside class="gestion-agenda-sidebar">
+      <app-sidebar-menu-maestro
+        [items]="sidebarItems"
+        [activeItemId]="activeSidebarId"
+        [expandedIds]="expandedSidebarIds"
+        [collapsed]="!isSidebarExpanded"
+        (itemClick)="onSidebarItemClick($event)"
+        (expandedIdsChange)="onExpandedIdsChange($event)"
+      ></app-sidebar-menu-maestro>
+    </aside>
+
+    <main class="gestion-agenda-main-content">
+      <div class="gestion-agenda-content">
+        <!-- Gestion Agenda Comercial page content will go here -->
+      </div>
+    </main>
+  </div>
+</div>
