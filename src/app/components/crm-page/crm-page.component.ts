@@ -27,6 +27,80 @@ export class CrmPageComponent {
   expandedSidebarIds: string[] = [];
   activeSidebarId: string = 'dashboard';
 
+  sidebarItems: SidebarMenuItem[] = [
+    {
+      id: 'dashboard',
+      label: 'Dashboard',
+      icon: 'house',
+    },
+    {
+      id: 'contactos',
+      label: 'Contactos',
+      icon: 'users',
+      children: [
+        {
+          id: 'contactos-activos',
+          label: 'Activos',
+          icon: 'users',
+        },
+        {
+          id: 'contactos-inactivos',
+          label: 'Inactivos',
+          icon: 'users',
+        },
+      ],
+    },
+    {
+      id: 'oportunidades',
+      label: 'Oportunidades',
+      icon: 'award',
+      children: [
+        {
+          id: 'oportunidades-prospección',
+          label: 'Prospección',
+          icon: 'folder',
+        },
+        {
+          id: 'oportunidades-calificación',
+          label: 'Calificación',
+          icon: 'folder',
+        },
+        {
+          id: 'oportunidades-negociación',
+          label: 'Negociación',
+          icon: 'folder',
+        },
+      ],
+    },
+    {
+      id: 'actividades',
+      label: 'Actividades',
+      icon: 'headset',
+      children: [
+        {
+          id: 'actividades-programadas',
+          label: 'Programadas',
+          icon: 'folder',
+        },
+        {
+          id: 'actividades-completadas',
+          label: 'Completadas',
+          icon: 'folder',
+        },
+      ],
+    },
+    {
+      id: 'reportes',
+      label: 'Reportes',
+      icon: 'book-open',
+    },
+    {
+      id: 'configuracion',
+      label: 'Configuración',
+      icon: 'settings',
+    },
+  ];
+
   headerActions: HeaderAction[] = [
     {
       label: 'Wavix',
