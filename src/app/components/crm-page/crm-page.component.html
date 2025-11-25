@@ -64,6 +64,11 @@
             (valueChange)="onSearch($event)"
           ></app-search-bar>
           <app-boton-maestro
+            label="Buscar"
+            variant="default"
+            (clicked)="onSearch()"
+          ></app-boton-maestro>
+          <app-boton-maestro
             label="Filtrar"
             variant="default"
             (clicked)="onFilter()"
