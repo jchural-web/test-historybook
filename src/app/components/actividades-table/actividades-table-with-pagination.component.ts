@@ -11,6 +11,7 @@ import { TablePaginationFooterComponent } from '../table-pagination-footer/table
     <app-actividades-table
       [headerColor]="headerColor"
       [rows]="displayedRows"
+      (executeButtonClick)="onExecuteButtonClick($event)"
     >
       <app-table-pagination-footer
         tableFooter
@@ -32,6 +33,9 @@ export class ActividadesTableWithPaginationComponent implements OnInit {
 
   @Input()
   allRows: ActividadRow[] = [];
+
+  @Output()
+  executeButtonClick = new EventEmitter<ActividadRow>();
 
   @Input()
   pageSizeOptions: number[] = [5, 10, 20, 50];
