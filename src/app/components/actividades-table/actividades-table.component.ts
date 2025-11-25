@@ -34,6 +34,9 @@ export class ActividadesTableComponent {
   @Input()
   rows: ActividadRow[] = [];
 
+  @Output()
+  executeButtonClick = new EventEmitter<ActividadRow>();
+
   getMensajeEtiquetaColor(
     etiqueta?: string,
   ): 'green' | 'orange' | 'red' | 'blue' | 'teal' | 'purple' {
