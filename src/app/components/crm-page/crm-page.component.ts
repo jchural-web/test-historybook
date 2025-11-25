@@ -5,6 +5,7 @@ import { PerformanceCardComponent } from '../performance-card/performance-card.c
 import { ActividadesTableWithPaginationComponent } from '../actividades-table/actividades-table-with-pagination.component';
 import { ActividadRow } from '../actividades-table/actividades-table.component';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { SidebarMenuMaestroComponent, SidebarMenuItem } from '../sidebar-menu-maestro/sidebar-menu-maestro.component';
 
 @Component({
   selector: 'app-crm-page',
@@ -15,6 +16,7 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
     PerformanceCardComponent,
     ActividadesTableWithPaginationComponent,
     SearchBarComponent,
+    SidebarMenuMaestroComponent,
   ],
   templateUrl: './crm-page.component.html',
   styleUrls: ['./crm-page.component.css'],
@@ -22,6 +24,8 @@ import { SearchBarComponent } from '../search-bar/search-bar.component';
 export class CrmPageComponent {
   isSidebarExpanded: boolean = false;
   searchValue: string = '';
+  expandedSidebarIds: string[] = [];
+  activeSidebarId: string = 'dashboard';
 
   headerActions: HeaderAction[] = [
     {
