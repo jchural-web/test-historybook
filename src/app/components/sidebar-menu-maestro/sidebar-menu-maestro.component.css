@@ -121,9 +121,7 @@
 }
 
 .sidebar-item-collapsed .sidebar-item-content {
-  flex: none;
-  width: auto;
-  overflow: visible;
+  flex: 0 0 auto;
 }
 
 /* Item Content */
