@@ -239,17 +239,10 @@ export class CrmPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Simulate loading state for 3 seconds on initial load
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 3000);
+    // Loading state is set on initial load, closes only when user clicks close button
   }
 
   onModalCerrar(): void {
-    this.isLoading = false;
-  }
-
-  onModalEjecutar(): void {
     this.isLoading = false;
   }
 }
