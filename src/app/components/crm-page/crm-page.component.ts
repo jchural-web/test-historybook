@@ -309,4 +309,12 @@ export class CrmPageComponent implements OnInit {
   onModalCerrar(): void {
     this.isLoading = false;
   }
+
+  onTabChange(tabId: string): void {
+    this.activeTabId = tabId;
+  }
+
+  onFilter(): void {
+    // Filter button clicked - implement filter logic here
+  }
 }
