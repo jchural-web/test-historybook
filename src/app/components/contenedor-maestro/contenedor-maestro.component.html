@@ -1,6 +1,6 @@
 <div class="contenedor-maestro-wrapper" [ngStyle]="containerStyle">
   <!-- Header (except for 'blanco' variant) -->
-  <div *ngIf="showHeader" class="contenedor-header" [ngStyle]="headerStyle" [class.collapsible-header]="collapsible && variant === 'tabla-desplegable'" (click)="toggleCollapse()">
+  <div *ngIf="showHeader" class="contenedor-header" [ngStyle]="headerStyle" [class.collapsible-header]="collapsible" (click)="toggleCollapse()">
     <div class="contenedor-header-content">
       <app-icon-slot
         *ngIf="iconName"
@@ -10,8 +10,8 @@
       ></app-icon-slot>
       <h2 class="contenedor-title">{{ title }}</h2>
     </div>
-    <!-- Chevron icon for collapsible variant -->
-    <div *ngIf="showCollapseIcon && collapsible && variant === 'tabla-desplegable'" class="collapse-chevron">
+    <!-- Chevron icon for collapsible variants -->
+    <div *ngIf="showCollapseIcon && collapsible" class="collapse-chevron">
       <svg *ngIf="isCollapsed" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6.30695 7.5C6.13549 7.33333 6.13549 7.06667 6.30695 6.93333C6.47841 6.76667 6.80271 6.76667 6.97418 6.93333L10 9.66667L13.0258 6.93333C13.1973 6.76667 13.5216 6.76667 13.693 6.93333C13.8645 7.06667 13.8645 7.33333 13.693 7.5L10.3345 10.5C10.166 10.6667 9.84169 10.6667 9.67022 10.5L6.30695 7.5Z" fill="currentColor"/>
       </svg>
@@ -22,7 +22,7 @@
   </div>
 
   <!-- Main container body -->
-  <div class="contenedor-body" *ngIf="showTableBody || variant === 'simple' || variant === 'blanco'">
+  <div class="contenedor-body" *ngIf="showContenido || showTableBody">
     <!-- Contenido para variantes 'simple' y 'blanco' -->
     <ng-content select="[contenido]"></ng-content>
 
