@@ -315,7 +315,7 @@ export class CrmPageComponent implements OnInit {
     this.activeTabId = tabId;
   }
 
-  onSearch(): void {
+  onSearchButtonClick(): void {
     // Search button clicked - implement search logic here
   }
 
