@@ -225,4 +225,12 @@ export class CrmPageComponent {
   onSearch(value: string): void {
     this.searchValue = value;
   }
+
+  onSidebarItemClick(itemId: string): void {
+    this.activeSidebarId = itemId;
+  }
+
+  onExpandedIdsChange(expandedIds: string[]): void {
+    this.expandedSidebarIds = expandedIds;
+  }
 }
