@@ -65,7 +65,7 @@ export class CrmPageComponent implements OnInit {
       label: 'No Prog. | Solicitud',
       tipo: 'rectangular',
       showCount: true,
-      count: 3,
+      count: 0,
       color: 'gray',
       disabled: true,
     },
