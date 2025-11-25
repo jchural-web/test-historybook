@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { OportunidadComponent } from '../oportunidad/oportunidad.component';
 import { TagPillComponent } from '../tag-pill/tag-pill.component';
-import { BotonEjecutarComponent } from '../boton-ejecutar/boton-ejecutar.component';
 import { ActivityItemComponent } from '../activity-item/activity-item.component';
 
 export interface ActividadRow {
@@ -27,7 +26,6 @@ export interface ActividadRow {
     CommonModule,
     OportunidadComponent,
     TagPillComponent,
-    BotonEjecutarComponent,
     ActivityItemComponent,
   ],
   templateUrl: './actividades-table.component.html',
