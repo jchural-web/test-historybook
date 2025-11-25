@@ -9,7 +9,7 @@ const meta: Meta<ContenedorMaestroComponent> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['simple', 'tabla', 'blanco', 'tabla-items', 'tabla-items-leyenda'],
+      options: ['simple', 'tabla', 'blanco', 'tabla-items', 'tabla-items-leyenda', 'tabla-desplegable'],
       description: 'Tipo de contenedor maestro',
     },
     title: {
@@ -35,6 +35,18 @@ const meta: Meta<ContenedorMaestroComponent> = {
     height: {
       control: 'text',
       description: 'Alto del contenedor (ej: auto, 400px)',
+    },
+    collapsible: {
+      control: 'boolean',
+      description: 'Habilita o no el comportamiento desplegable (solo para tabla-desplegable)',
+    },
+    defaultCollapsed: {
+      control: 'boolean',
+      description: 'Estado inicial del contenedor: true = colapsado, false = expandido',
+    },
+    showCollapseIcon: {
+      control: 'boolean',
+      description: 'Muestra el icono de chevron en la cabecera desplegable',
     },
   },
 };
@@ -377,6 +389,128 @@ export const Personalizado: Story = {
             <div>Producto B</div>
             <div>3</div>
             <div>$150</div>
+          </div>
+        </div>
+      </app-contenedor-maestro>
+    `,
+  }),
+};
+
+/**
+ * **Contenedor con Tabla Desplegable**
+ *
+ * Una variante del contenedor con tabla que permite desplegar/plegar el contenido.
+ * Usa el mismo diseño que "Contenedor con tabla" pero la cabecera es clickeable
+ * y muestra un chevron para indicar si está colapsado o expandido.
+ *
+ * - Cabecera con icono y título (igual que "Contenedor con tabla")
+ * - Chevron a la derecha que indica el estado de colapso
+ * - Al hacer clic en la cabecera, el cuerpo se oculta o se muestra
+ * - Utiliza los mismos slots: [tabla-body] y hereda el footer de paginación
+ */
+export const ConTablaDeplegable: Story = {
+  args: {
+    variant: 'tabla-desplegable',
+    title: 'Contenedor con tabla',
+    iconName: 'circle-check-big',
+    headerBgColor: '#E3F2FD',
+    headerTextColor: '#6B26E8',
+    collapsible: true,
+    defaultCollapsed: true,
+    showCollapseIcon: true,
+    currentPage: 1,
+    totalPages: 3,
+    pageSize: 10,
+    totalItems: 22,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <app-contenedor-maestro
+        [variant]="variant"
+        [title]="title"
+        [iconName]="iconName"
+        [headerBgColor]="headerBgColor"
+        [headerTextColor]="headerTextColor"
+        [collapsible]="collapsible"
+        [defaultCollapsed]="defaultCollapsed"
+        [showCollapseIcon]="showCollapseIcon"
+        [currentPage]="currentPage"
+        [totalPages]="totalPages"
+        [pageSize]="pageSize"
+        [totalItems]="totalItems"
+        style="width: 1200px; margin: auto;"
+      >
+        <div tabla-body style="padding: 0;">
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
+            <div>Dato 1.1</div>
+            <div>Dato 1.2</div>
+            <div>Dato 1.3</div>
+            <div>Dato 1.4</div>
+          </div>
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+            <div>Dato 2.1</div>
+            <div>Dato 2.2</div>
+            <div>Dato 2.3</div>
+            <div>Dato 2.4</div>
+          </div>
+        </div>
+      </app-contenedor-maestro>
+    `,
+  }),
+};
+
+/**
+ * **Contenedor con Tabla Desplegable (Expandido)**
+ *
+ * Mismo comportamiento que la variante anterior, pero mostrando el estado expandido
+ * por defecto para ver cómo se visualiza cuando la tabla está visible.
+ */
+export const ConTablaDeplegableExpandido: Story = {
+  args: {
+    variant: 'tabla-desplegable',
+    title: 'Contenedor con tabla',
+    iconName: 'circle-check-big',
+    headerBgColor: '#E3F2FD',
+    headerTextColor: '#6B26E8',
+    collapsible: true,
+    defaultCollapsed: false,
+    showCollapseIcon: true,
+    currentPage: 1,
+    totalPages: 3,
+    pageSize: 10,
+    totalItems: 22,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <app-contenedor-maestro
+        [variant]="variant"
+        [title]="title"
+        [iconName]="iconName"
+        [headerBgColor]="headerBgColor"
+        [headerTextColor]="headerTextColor"
+        [collapsible]="collapsible"
+        [defaultCollapsed]="defaultCollapsed"
+        [showCollapseIcon]="showCollapseIcon"
+        [currentPage]="currentPage"
+        [totalPages]="totalPages"
+        [pageSize]="pageSize"
+        [totalItems]="totalItems"
+        style="width: 1200px; margin: auto;"
+      >
+        <div tabla-body style="padding: 0;">
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; border-bottom: 1px solid #E4E4E7;">
+            <div>Dato 1.1</div>
+            <div>Dato 1.2</div>
+            <div>Dato 1.3</div>
+            <div>Dato 1.4</div>
+          </div>
+          <div style="padding: 12px 24px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+            <div>Dato 2.1</div>
+            <div>Dato 2.2</div>
+            <div>Dato 2.3</div>
+            <div>Dato 2.4</div>
           </div>
         </div>
       </app-contenedor-maestro>
