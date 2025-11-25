@@ -378,4 +378,8 @@ export class CrmPageComponent implements OnInit {
   onFilter(): void {
     // Filter button clicked - implement filter logic here
   }
+
+  onExecuteActivityClick(row: ActividadRow): void {
+    this.router.navigate(['/speech']);
+  }
 }
