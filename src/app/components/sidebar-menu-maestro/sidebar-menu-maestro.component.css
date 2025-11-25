@@ -120,6 +120,11 @@
   border: none;
 }
 
+.sidebar-item-collapsed .sidebar-item-content {
+  flex: 0;
+  justify-content: center;
+}
+
 /* Item Content */
 .sidebar-item-content {
   display: flex;
