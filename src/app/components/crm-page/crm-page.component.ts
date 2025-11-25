@@ -21,6 +21,8 @@ import { BotonMaestroComponent } from '../boton-maestro/boton-maestro.component'
     SearchBarComponent,
     SidebarMenuMaestroComponent,
     ModalLlamadaComponent,
+    TabsNavegacionMaestrasComponent,
+    BotonMaestroComponent,
   ],
   templateUrl: './crm-page.component.html',
   styleUrls: ['./crm-page.component.css'],
