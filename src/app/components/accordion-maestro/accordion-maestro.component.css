@@ -77,3 +77,44 @@
   background-color: #E1E3E7;
   margin: 0;
 }
+
+.accordion-content-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkbox-group {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.checkbox-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.checkbox-label {
+  color: #2A67EB;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin: 0;
+  padding: 0;
+}
+
+.checkbox-description {
+  color: #161616;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+  margin: 0;
+  padding: 0;
+}
