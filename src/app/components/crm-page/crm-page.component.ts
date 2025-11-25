@@ -1,13 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { HeaderBarComponent, HeaderAction } from '../header-bar/header-bar.component';
-import { SidebarMenuComponent, SidebarModule } from '../sidebar-menu/sidebar-menu.component';
 import { PerformanceCardComponent } from '../performance-card/performance-card.component';
-import { NavigationTabsComponent } from '../navigation-tabs/navigation-tabs.component';
 import { ActividadesTableWithPaginationComponent } from '../actividades-table/actividades-table-with-pagination.component';
 import { ActividadRow } from '../actividades-table/actividades-table.component';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { GeneralButtonComponent } from '../general-button/general-button.component';
 
 @Component({
   selector: 'app-crm-page',
@@ -15,12 +12,9 @@ import { GeneralButtonComponent } from '../general-button/general-button.compone
   imports: [
     CommonModule,
     HeaderBarComponent,
-    SidebarMenuComponent,
     PerformanceCardComponent,
-    NavigationTabsComponent,
     ActividadesTableWithPaginationComponent,
     SearchBarComponent,
-    GeneralButtonComponent,
   ],
   templateUrl: './crm-page.component.html',
   styleUrls: ['./crm-page.component.css'],
