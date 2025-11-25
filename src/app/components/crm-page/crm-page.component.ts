@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HeaderBarComponent, HeaderAction } from '../header-bar/header-bar.component';
 import { PerformanceCardComponent } from '../performance-card/performance-card.component';
 import { ActividadesTableWithPaginationComponent } from '../actividades-table/actividades-table-with-pagination.component';
