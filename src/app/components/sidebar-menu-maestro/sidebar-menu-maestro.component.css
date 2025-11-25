@@ -136,6 +136,15 @@
   min-height: 14px;
   color: #374151;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-item-icon svg {
+  width: 14px;
+  height: 14px;
+  color: inherit;
 }
 
 .sidebar-item-active .sidebar-item-icon {
