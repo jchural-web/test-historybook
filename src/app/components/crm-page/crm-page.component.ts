@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HeaderBarComponent, HeaderAction } from '../header-bar/header-bar.component';
 import { PerformanceCardComponent } from '../performance-card/performance-card.component';
 import { ActividadesTableWithPaginationComponent } from '../actividades-table/actividades-table-with-pagination.component';
 import { ActividadRow } from '../actividades-table/actividades-table.component';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { SidebarMenuMaestroComponent, SidebarMenuItem } from '../sidebar-menu-maestro/sidebar-menu-maestro.component';
+import { ModalLlamadaComponent } from '../modal-llamada/modal-llamada.component';
 
 @Component({
   selector: 'app-crm-page',
@@ -17,15 +18,17 @@ import { SidebarMenuMaestroComponent, SidebarMenuItem } from '../sidebar-menu-ma
     ActividadesTableWithPaginationComponent,
     SearchBarComponent,
     SidebarMenuMaestroComponent,
+    ModalLlamadaComponent,
   ],
   templateUrl: './crm-page.component.html',
   styleUrls: ['./crm-page.component.css'],
 })
-export class CrmPageComponent {
+export class CrmPageComponent implements OnInit {
   isSidebarExpanded: boolean = false;
   searchValue: string = '';
   expandedSidebarIds: string[] = [];
   activeSidebarId: string = 'comercial';
+  isLoading: boolean = true;
 
   sidebarItems: SidebarMenuItem[] = [
     {
