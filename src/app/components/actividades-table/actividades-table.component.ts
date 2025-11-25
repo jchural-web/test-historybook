@@ -68,4 +68,8 @@ export class ActividadesTableComponent {
 </defs>
 </svg>`;
   }
+
+  onExecuteButtonClick(row: ActividadRow): void {
+    this.executeButtonClick.emit(row);
+  }
 }
