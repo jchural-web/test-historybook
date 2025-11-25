@@ -9,11 +9,9 @@
 
 .modal-card {
   width: 331px;
-  height: 306px;
   background: #FFFFFF;
   border: 1px solid #BEBEBE;
   border-radius: 5px;
-  box-shadow: none;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -24,34 +22,27 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 41px;
-  padding: 13px 15px;
+  padding: 0;
   border-radius: 4px 4px 0 0;
-  border: 1px solid #BEBEBE;
-  border-bottom: none;
-  gap: 12px;
+  border: none;
+  gap: 0;
   flex-shrink: 0;
+  height: 41px;
 }
 
 .header-left {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  padding: 13px 15px;
   flex: 1;
 }
 
-.header-icon {
+.header-left app-icon-slot {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 15px;
-  height: 15px;
-}
-
-.header-icon svg {
-  width: 15px;
-  height: 15px;
 }
 
 .header-title {
@@ -69,13 +60,12 @@
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 13px 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 15px;
-  height: 15px;
+  margin: 0;
 }
 
 .close-icon {
@@ -92,28 +82,16 @@
 .modal-body {
   display: flex;
   flex-direction: column;
-  flex: 1;
   padding: 15px;
-  gap: 0;
+  gap: 15px;
   overflow-y: auto;
   position: relative;
-  height: calc(100% - 41px);
 }
 
-.contact-info-block {
+.info-row {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-bottom: 15px;
-  position: relative;
-}
-
-.opportunity-info-block {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  margin-bottom: 20px;
-  position: relative;
+  gap: 10px;
+  align-items: flex-start;
 }
 
 .info-label {
@@ -125,6 +103,8 @@
   line-height: normal;
   margin: 0;
   padding: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .contact-name {
@@ -136,6 +116,14 @@
   line-height: normal;
   margin: 0;
   padding: 0;
+  flex: 1;
+}
+
+.opportunity-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
 }
 
 .opportunity-title {
@@ -148,41 +136,35 @@
   margin: 0;
   padding: 0;
   word-break: break-word;
-  max-width: 200px;
 }
 
-.metadata-list {
+.metadata-inline {
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  margin-top: 5px;
+  gap: 2px;
 }
 
-.metadata-row {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
+.metadata-item {
+  color: #747B88;
   font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
   font-size: 11px;
   font-weight: 400;
   letter-spacing: -0.22px;
   line-height: normal;
+  display: flex;
+  gap: 4px;
+  align-items: center;
 }
 
-.metadata-label {
-  color: #747B88;
-  flex-shrink: 0;
-}
-
-.metadata-value {
+.metadata-text {
   color: #747B88;
 }
 
-.categoria-value {
+.categoria-text {
   color: #2563EB;
 }
 
-.probability-value {
+.probability-text {
   color: #32AE60;
 }
 
@@ -192,9 +174,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100px;
-  margin: 10px 0 15px 0;
+  height: 90px;
+  margin: 5px 0;
   flex-shrink: 0;
+}
+
+.phone-icon-wrapper app-icon-slot {
+  position: relative;
+  z-index: 1;
 }
 
 .ring {
@@ -233,24 +220,6 @@
   }
 }
 
-.phone-icon-center {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  background-color: #DCFCE7;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.phone-icon-center svg {
-  width: 24px;
-  height: 24px;
-}
-
 .description-text {
   color: #747B88;
   text-align: center;
@@ -268,7 +237,7 @@
 .button-wrapper {
   display: flex;
   justify-content: center;
-  margin-top: 12px;
+  margin-top: 5px;
   flex-shrink: 0;
 }
 
@@ -307,18 +276,25 @@
 
   .modal-card {
     width: 100%;
-    height: auto;
     max-width: 331px;
   }
 
-  .modal-header {
-    height: 41px;
+  .header-left {
     padding: 13px 12px;
+  }
+
+  .close-button {
+    padding: 13px 12px;
+  }
+
+  .modal-body {
+    padding: 12px;
+    gap: 12px;
   }
 
   .phone-icon-wrapper {
     height: 80px;
-    margin: 8px 0 12px 0;
+    margin: 3px 0;
   }
 
   .ring-1 {
