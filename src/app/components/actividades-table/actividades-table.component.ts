@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { OportunidadComponent } from '../oportunidad/oportunidad.component';
 import { TagPillComponent } from '../tag-pill/tag-pill.component';
 import { ActivityItemComponent } from '../activity-item/activity-item.component';
+import { BotonMaestroComponent } from '../boton-maestro/boton-maestro.component';
 
 export interface ActividadRow {
   actividad: string;
