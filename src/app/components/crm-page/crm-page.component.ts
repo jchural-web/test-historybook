@@ -237,4 +237,19 @@ export class CrmPageComponent implements OnInit {
   onExpandedIdsChange(expandedIds: string[]): void {
     this.expandedSidebarIds = expandedIds;
   }
+
+  ngOnInit(): void {
+    // Simulate loading state for 3 seconds on initial load
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 3000);
+  }
+
+  onModalCerrar(): void {
+    this.isLoading = false;
+  }
+
+  onModalEjecutar(): void {
+    this.isLoading = false;
+  }
 }
