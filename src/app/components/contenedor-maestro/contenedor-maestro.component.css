@@ -15,16 +15,34 @@
   padding: 12px 24px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   height: 67px;
   box-sizing: border-box;
+}
+
+.contenedor-header.collapsible-header {
+  cursor: pointer;
+  user-select: none;
 }
 
 .contenedor-header-content {
   display: flex;
   align-items: center;
   gap: 16px;
-  width: 100%;
+  flex: 1;
+}
+
+.collapse-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  flex-shrink: 0;
+}
+
+.collapse-chevron svg {
+  width: 24px;
+  height: 24px;
 }
 
 .contenedor-title {
