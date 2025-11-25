@@ -65,11 +65,11 @@ export class ContenedorMaestroComponent implements OnInit {
   }
 
   get showTableHeader(): boolean {
-    return this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda';
+    return (this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda') && !this.isCollapsed;
   }
 
   get showLeyenda(): boolean {
-    return this.variant === 'tabla-items-leyenda';
+    return this.variant === 'tabla-items-leyenda' && !this.isCollapsed;
   }
 
   get showTableFooter(): boolean {
@@ -80,6 +80,10 @@ export class ContenedorMaestroComponent implements OnInit {
   get showTableBody(): boolean {
     return (this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable')
       && !this.isCollapsed;
+  }
+
+  get showContenido(): boolean {
+    return (this.variant === 'simple' || this.variant === 'blanco') && !this.isCollapsed;
   }
 
   ngOnInit(): void {
