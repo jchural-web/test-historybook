@@ -45,6 +45,15 @@
         ></app-performance-card>
       </div>
 
+      <!-- Navigation Tabs -->
+      <div class="navigation-tabs-wrapper">
+        <app-tabs-navegacion-maestras
+          [tabs]="navigationTabs"
+          [activeTabId]="activeTabId"
+          (tabChange)="onTabChange($event)"
+        ></app-tabs-navegacion-maestras>
+      </div>
+
       <div class="content-header">
         <h1 class="page-title">Contacto Entrante</h1>
 
@@ -54,6 +63,11 @@
             [value]="searchValue"
             (valueChange)="onSearch($event)"
           ></app-search-bar>
+          <app-boton-maestro
+            label="Filtrar"
+            variant="default"
+            (clicked)="onFilter()"
+          ></app-boton-maestro>
         </div>
       </div>
 
