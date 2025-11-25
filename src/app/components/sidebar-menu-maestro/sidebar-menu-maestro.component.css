@@ -123,6 +123,7 @@
 .sidebar-item-collapsed .sidebar-item-content {
   flex: 0;
   justify-content: center;
+  width: 14px;
 }
 
 /* Item Content */
