@@ -36,6 +36,8 @@ export class CrmPageComponent implements OnInit {
   isLoading: boolean = true;
   activeTabId: string = 'contacto-entrante';
 
+  constructor(private router: Router) {}
+
   navigationTabs: TabMaestra[] = [
     {
       id: 'contacto-entrante',
