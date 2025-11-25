@@ -7,6 +7,8 @@ import { ActividadRow } from '../actividades-table/actividades-table.component';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { SidebarMenuMaestroComponent, SidebarMenuItem } from '../sidebar-menu-maestro/sidebar-menu-maestro.component';
 import { ModalLlamadaComponent } from '../modal-llamada/modal-llamada.component';
+import { TabsNavegacionMaestrasComponent, TabMaestra } from '../tabs-navegacion-maestras/tabs-navegacion-maestras.component';
+import { BotonMaestroComponent } from '../boton-maestro/boton-maestro.component';
 
 @Component({
   selector: 'app-crm-page',
