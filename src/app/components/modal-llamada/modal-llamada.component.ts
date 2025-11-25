@@ -25,6 +25,8 @@ export class ModalLlamadaComponent {
   @Output() cerrar = new EventEmitter<void>();
   @Output() ejecutar = new EventEmitter<void>();
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   onCerrar(): void {
     this.cerrar.emit();
   }
