@@ -2,6 +2,41 @@
     "pipes": [],
     "interfaces": [
         {
+            "name": "AccordionItem",
+            "id": "interface-AccordionItem-f196d5207e4859b58c115dd17e35b3505e92da3bc076af56f6d8ee7e887cac4f21dbf2ab9d6629293ad65be3d10f605e73024412125a6ff52f40badb8ef62f50",
+            "file": "src/app/components/accordion-maestro/accordion-maestro.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';\n\nexport interface AccordionItem {\n  id: string | number;\n  title: string;\n}\n\n@Component({\n  selector: 'app-accordion-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './accordion-maestro.component.html',\n  styleUrls: ['./accordion-maestro.component.css'],\n})\nexport class AccordionMaestroComponent implements OnInit {\n  @Input() items: AccordionItem[] = [];\n  @Input() activeItemId?: string | number | null;\n  @Output() activeItemChange = new EventEmitter<string | number | null>();\n\n  private _activeItemId: string | number | null = null;\n\n  ngOnInit(): void {\n    this._activeItemId = this.activeItemId ?? null;\n  }\n\n  toggleItem(itemId: string | number): void {\n    if (this._activeItemId === itemId) {\n      this._activeItemId = null;\n    } else {\n      this._activeItemId = itemId;\n    }\n    this.activeItemChange.emit(this._activeItemId);\n  }\n\n  isItemActive(itemId: string | number): boolean {\n    return this._activeItemId === itemId;\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "title",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "ActividadRow",
             "id": "interface-ActividadRow-67782e26fb9b6472e3eacacc1b55fa54bc023c3a30160d7012f25481803f877033ce363ffeaadc7a9773cec119bf90aa434f68a4301995512f8986f63d98031d",
             "file": "src/app/components/actividades-table/actividades-table.component.ts",
@@ -503,6 +538,167 @@
     "classes": [],
     "directives": [],
     "components": [
+        {
+            "name": "AccordionMaestroComponent",
+            "id": "component-AccordionMaestroComponent-f196d5207e4859b58c115dd17e35b3505e92da3bc076af56f6d8ee7e887cac4f21dbf2ab9d6629293ad65be3d10f605e73024412125a6ff52f40badb8ef62f50",
+            "file": "src/app/components/accordion-maestro/accordion-maestro.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-accordion-maestro",
+            "styleUrls": [
+                "./accordion-maestro.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./accordion-maestro.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "activeItemId",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "string | number | null",
+                    "decorators": []
+                },
+                {
+                    "name": "items",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "AccordionItem[]",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "activeItemChange",
+                    "defaultValue": "new EventEmitter<string | number | null>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "_activeItemId",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string | number | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "isItemActive",
+                    "args": [
+                        {
+                            "name": "itemId",
+                            "type": "string | number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "boolean",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "itemId",
+                            "type": "string | number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "toggleItem",
+                    "args": [
+                        {
+                            "name": "itemId",
+                            "type": "string | number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "itemId",
+                            "type": "string | number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';\n\nexport interface AccordionItem {\n  id: string | number;\n  title: string;\n}\n\n@Component({\n  selector: 'app-accordion-maestro',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './accordion-maestro.component.html',\n  styleUrls: ['./accordion-maestro.component.css'],\n})\nexport class AccordionMaestroComponent implements OnInit {\n  @Input() items: AccordionItem[] = [];\n  @Input() activeItemId?: string | number | null;\n  @Output() activeItemChange = new EventEmitter<string | number | null>();\n\n  private _activeItemId: string | number | null = null;\n\n  ngOnInit(): void {\n    this._activeItemId = this.activeItemId ?? null;\n  }\n\n  toggleItem(itemId: string | number): void {\n    if (this._activeItemId === itemId) {\n      this._activeItemId = null;\n    } else {\n      this._activeItemId = itemId;\n    }\n    this.activeItemChange.emit(this._activeItemId);\n  }\n\n  isItemActive(itemId: string | number): boolean {\n    return this._activeItemId === itemId;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".accordion-wrapper {\n  width: 100%;\n  border: 1px solid #E0E0E0;\n  border-radius: 14px;\n  background: #FFFFFF;\n  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);\n  overflow: hidden;\n}\n\n.accordion-item {\n  display: flex;\n  flex-direction: column;\n}\n\n.accordion-header {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n  padding: 16px 40px;\n  background: #FFFFFF;\n  border: none;\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n  text-align: left;\n}\n\n.accordion-header:hover {\n  background-color: #FAFAFA;\n}\n\n.accordion-header.active {\n  background-color: #FAFAFA;\n}\n\n.accordion-title {\n  color: #161616;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 16px;\n  font-weight: 600;\n  line-height: 1;\n  letter-spacing: -0.32px;\n  margin: 0;\n  padding: 0;\n}\n\n.chevron-icon {\n  flex-shrink: 0;\n  transition: transform 0.3s ease;\n  color: #777779;\n}\n\n.chevron-icon.open {\n  transform: rotate(180deg);\n}\n\n.accordion-content {\n  padding: 16px 40px;\n  background: #FFFFFF;\n  color: #161616;\n  animation: slideDown 0.3s ease;\n}\n\n@keyframes slideDown {\n  from {\n    opacity: 0;\n    max-height: 0;\n  }\n  to {\n    opacity: 1;\n    max-height: 1000px;\n  }\n}\n\n.accordion-divider {\n  height: 1px;\n  background-color: #E1E3E7;\n  margin: 0;\n}\n\n.accordion-content-group {\n  display: flex;\n  flex-direction: column;\n  gap: 16px;\n}\n\n.checkbox-group {\n  display: flex;\n  gap: 12px;\n  align-items: flex-start;\n}\n\n.checkbox-text {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n  flex: 1;\n}\n\n.checkbox-label {\n  color: #2A67EB;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 1.2;\n  letter-spacing: -0.3px;\n  margin: 0;\n  padding: 0;\n}\n\n.checkbox-description {\n  color: #161616;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 15px;\n  font-weight: 500;\n  line-height: 1.2;\n  letter-spacing: -0.3px;\n  margin: 0;\n  padding: 0;\n}\n",
+                    "styleUrl": "./accordion-maestro.component.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<div class=\"accordion-wrapper\">\n  <div *ngFor=\"let item of items; let last = last\" class=\"accordion-item\">\n    <button\n      class=\"accordion-header\"\n      (click)=\"toggleItem(item.id)\"\n      [class.active]=\"isItemActive(item.id)\"\n    >\n      <span class=\"accordion-title\">{{ item.title }}</span>\n      <svg\n        class=\"chevron-icon\"\n        [class.open]=\"isItemActive(item.id)\"\n        width=\"24\"\n        height=\"24\"\n        viewBox=\"0 0 24 24\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path\n          d=\"M6 9L12 15L18 9\"\n          stroke=\"#777779\"\n          stroke-width=\"2\"\n          stroke-linecap=\"round\"\n          stroke-linejoin=\"round\"\n        />\n      </svg>\n    </button>\n    <div *ngIf=\"isItemActive(item.id)\" class=\"accordion-content\">\n      <ng-content [select]=\"'[accordion-item-' + item.id + ']'\"></ng-content>\n    </div>\n    <div *ngIf=\"!last\" class=\"accordion-divider\"></div>\n  </div>\n</div>\n"
+        },
         {
             "name": "ActividadesTableComponent",
             "id": "component-ActividadesTableComponent-67782e26fb9b6472e3eacacc1b55fa54bc023c3a30160d7012f25481803f877033ce363ffeaadc7a9773cec119bf90aa434f68a4301995512f8986f63d98031d",
@@ -1688,7 +1884,7 @@
         },
         {
             "name": "ContenedorMaestroComponent",
-            "id": "component-ContenedorMaestroComponent-7fc8ecb9d04e7ee915bc3f047421328009d6da950e83d8a9116d43f718add9d34adc58791c5163e57e1e991465f2038b3b84a00546d313675ef60f151a5919a6",
+            "id": "component-ContenedorMaestroComponent-b1fd42b03c3ab3911465e1dd4f639fcaec2400eb2700282c3a7a2bd252263091b773489d977373991c13977916920386835ee22702a42f4110b84d2f2d88c9ba",
             "file": "src/app/components/contenedor-maestro/contenedor-maestro.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1876,7 +2072,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 89,
+                    "line": 92,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -1893,7 +2089,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 98,
+                    "line": 101,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1921,7 +2117,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 103,
+                    "line": 106,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -1942,7 +2138,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 93,
+                    "line": 96,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -1973,7 +2169,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { IconSlotComponent } from '../icon-slot/icon-slot.component';\nimport { TablePaginationFooterComponent } from '../table-pagination-footer/table-pagination-footer.component';\nimport { TagsMaestrasComponent } from '../tags-maestras/tags-maestras.component';\n\nexport type ContenedorMaestroVariant =\n  | 'simple'\n  | 'tabla'\n  | 'blanco'\n  | 'tabla-items'\n  | 'tabla-items-leyenda'\n  | 'tabla-desplegable';\n\n@Component({\n  selector: 'app-contenedor-maestro',\n  standalone: true,\n  imports: [CommonModule, IconSlotComponent, TablePaginationFooterComponent, TagsMaestrasComponent],\n  templateUrl: './contenedor-maestro.component.html',\n  styleUrls: ['./contenedor-maestro.component.css'],\n})\nexport class ContenedorMaestroComponent implements OnInit {\n  @Input() variant: ContenedorMaestroVariant = 'simple';\n  @Input() title?: string;\n  @Input() iconName?: string;\n  @Input() headerBgColor: string = '#E3F2FD';\n  @Input() headerTextColor: string = '#6B26E8';\n  @Input() width?: string;\n  @Input() height?: string;\n\n  // Pagination inputs\n  @Input() currentPage: number = 1;\n  @Input() totalPages: number = 3;\n  @Input() pageSize: number = 10;\n  @Input() pageSizeOptions: number[] = [5, 10, 20, 50];\n  @Input() totalItems: number = 22;\n\n  // Collapsible inputs\n  @Input() collapsible: boolean = false;\n  @Input() defaultCollapsed: boolean = true;\n  @Input() showCollapseIcon: boolean = true;\n\n  @Output() pageChange = new EventEmitter<number>();\n  @Output() pageSizeChange = new EventEmitter<number>();\n\n  // Collapsible state\n  isCollapsed: boolean = false;\n\n  get containerStyle(): { [key: string]: string } {\n    const style: { [key: string]: string } = {};\n    if (this.width) style['width'] = this.width;\n    if (this.height) style['height'] = this.height;\n    return style;\n  }\n\n  get headerStyle(): { [key: string]: string } {\n    return {\n      'background-color': this.headerBgColor,\n      'color': this.headerTextColor,\n    };\n  }\n\n  get showHeader(): boolean {\n    return this.variant !== 'blanco';\n  }\n\n  get showTableHeader(): boolean {\n    return (this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda') && !this.isCollapsed;\n  }\n\n  get showLeyenda(): boolean {\n    return this.variant === 'tabla-items-leyenda' && !this.isCollapsed;\n  }\n\n  get showTableFooter(): boolean {\n    return (this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable')\n      && !this.isCollapsed;\n  }\n\n  get showTableBody(): boolean {\n    return (this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable')\n      && !this.isCollapsed;\n  }\n\n  get showContenido(): boolean {\n    return (this.variant === 'simple' || this.variant === 'blanco') && !this.isCollapsed;\n  }\n\n  ngOnInit(): void {\n    this.isCollapsed = this.defaultCollapsed;\n  }\n\n  toggleCollapse(): void {\n    if (!this.collapsible) return;\n    this.isCollapsed = !this.isCollapsed;\n  }\n\n  onPageChange(page: number): void {\n    this.currentPage = page;\n    this.pageChange.emit(page);\n  }\n\n  onPageSizeChange(size: number): void {\n    this.pageSize = size;\n    this.pageSizeChange.emit(size);\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { IconSlotComponent } from '../icon-slot/icon-slot.component';\nimport { TablePaginationFooterComponent } from '../table-pagination-footer/table-pagination-footer.component';\nimport { TagsMaestrasComponent } from '../tags-maestras/tags-maestras.component';\n\nexport type ContenedorMaestroVariant =\n  | 'simple'\n  | 'tabla'\n  | 'blanco'\n  | 'tabla-items'\n  | 'tabla-items-leyenda'\n  | 'tabla-desplegable';\n\n@Component({\n  selector: 'app-contenedor-maestro',\n  standalone: true,\n  imports: [CommonModule, IconSlotComponent, TablePaginationFooterComponent, TagsMaestrasComponent],\n  templateUrl: './contenedor-maestro.component.html',\n  styleUrls: ['./contenedor-maestro.component.css'],\n})\nexport class ContenedorMaestroComponent implements OnInit {\n  @Input() variant: ContenedorMaestroVariant = 'simple';\n  @Input() title?: string;\n  @Input() iconName?: string;\n  @Input() headerBgColor: string = '#E3F2FD';\n  @Input() headerTextColor: string = '#6B26E8';\n  @Input() width?: string;\n  @Input() height?: string;\n\n  // Pagination inputs\n  @Input() currentPage: number = 1;\n  @Input() totalPages: number = 3;\n  @Input() pageSize: number = 10;\n  @Input() pageSizeOptions: number[] = [5, 10, 20, 50];\n  @Input() totalItems: number = 22;\n\n  // Collapsible inputs\n  @Input() collapsible: boolean = false;\n  @Input() defaultCollapsed: boolean = true;\n  @Input() showCollapseIcon: boolean = true;\n\n  @Output() pageChange = new EventEmitter<number>();\n  @Output() pageSizeChange = new EventEmitter<number>();\n\n  // Collapsible state\n  isCollapsed: boolean = false;\n\n  get containerStyle(): { [key: string]: string } {\n    const style: { [key: string]: string } = {};\n    if (this.width) style['width'] = this.width;\n    if (this.height) style['height'] = this.height;\n    return style;\n  }\n\n  get headerStyle(): { [key: string]: string } {\n    return {\n      'background-color': this.headerBgColor,\n      'color': this.headerTextColor,\n    };\n  }\n\n  get showHeader(): boolean {\n    return this.variant !== 'blanco';\n  }\n\n  get showTableHeader(): boolean {\n    const isTablaVariant = this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda';\n    return this.collapsible ? isTablaVariant && !this.isCollapsed : isTablaVariant;\n  }\n\n  get showLeyenda(): boolean {\n    const isLeyendaVariant = this.variant === 'tabla-items-leyenda';\n    return this.collapsible ? isLeyendaVariant && !this.isCollapsed : isLeyendaVariant;\n  }\n\n  get showTableFooter(): boolean {\n    const isTablaVariant = this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable';\n    return this.collapsible ? isTablaVariant && !this.isCollapsed : isTablaVariant;\n  }\n\n  get showTableBody(): boolean {\n    const isTablaVariant = this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable';\n    return this.collapsible ? isTablaVariant && !this.isCollapsed : isTablaVariant;\n  }\n\n  get showContenido(): boolean {\n    const isSimpleVariant = this.variant === 'simple' || this.variant === 'blanco';\n    return this.collapsible ? isSimpleVariant && !this.isCollapsed : isSimpleVariant;\n  }\n\n  ngOnInit(): void {\n    this.isCollapsed = this.defaultCollapsed;\n  }\n\n  toggleCollapse(): void {\n    if (!this.collapsible) return;\n    this.isCollapsed = !this.isCollapsed;\n  }\n\n  onPageChange(page: number): void {\n    this.currentPage = page;\n    this.pageChange.emit(page);\n  }\n\n  onPageSizeChange(size: number): void {\n    this.pageSize = size;\n    this.pageSizeChange.emit(size);\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2029,7 +2225,7 @@
                         "name": "showLeyenda",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 71
+                        "line": 72
                     }
                 },
                 "showTableFooter": {
@@ -2038,7 +2234,7 @@
                         "name": "showTableFooter",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 75
+                        "line": 77
                     }
                 },
                 "showTableBody": {
@@ -2047,7 +2243,7 @@
                         "name": "showTableBody",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 80
+                        "line": 82
                     }
                 },
                 "showContenido": {
@@ -2056,7 +2252,7 @@
                         "name": "showContenido",
                         "type": "boolean",
                         "returnType": "boolean",
-                        "line": 85
+                        "line": 87
                     }
                 }
             },
@@ -6513,6 +6709,24 @@
                 "name": "App",
                 "coveragePercent": 0,
                 "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/accordion-maestro/accordion-maestro.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AccordionMaestroComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/components/accordion-maestro/accordion-maestro.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "AccordionItem",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
