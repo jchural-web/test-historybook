@@ -65,25 +65,28 @@ export class ContenedorMaestroComponent implements OnInit {
   }
 
   get showTableHeader(): boolean {
-    return (this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda') && !this.isCollapsed;
+    const isTablaVariant = this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda';
+    return this.collapsible ? isTablaVariant && !this.isCollapsed : isTablaVariant;
   }
 
   get showLeyenda(): boolean {
-    return this.variant === 'tabla-items-leyenda' && !this.isCollapsed;
+    const isLeyendaVariant = this.variant === 'tabla-items-leyenda';
+    return this.collapsible ? isLeyendaVariant && !this.isCollapsed : isLeyendaVariant;
   }
 
   get showTableFooter(): boolean {
-    return (this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable')
-      && !this.isCollapsed;
+    const isTablaVariant = this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable';
+    return this.collapsible ? isTablaVariant && !this.isCollapsed : isTablaVariant;
   }
 
   get showTableBody(): boolean {
-    return (this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable')
-      && !this.isCollapsed;
+    const isTablaVariant = this.variant === 'tabla' || this.variant === 'tabla-items' || this.variant === 'tabla-items-leyenda' || this.variant === 'tabla-desplegable';
+    return this.collapsible ? isTablaVariant && !this.isCollapsed : isTablaVariant;
   }
 
   get showContenido(): boolean {
-    return (this.variant === 'simple' || this.variant === 'blanco') && !this.isCollapsed;
+    const isSimpleVariant = this.variant === 'simple' || this.variant === 'blanco';
+    return this.collapsible ? isSimpleVariant && !this.isCollapsed : isSimpleVariant;
   }
 
   ngOnInit(): void {
