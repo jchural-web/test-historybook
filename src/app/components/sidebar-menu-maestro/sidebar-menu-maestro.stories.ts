@@ -20,10 +20,6 @@ const meta: Meta<SidebarMenuMaestroComponent> = {
     items: {
       description: 'Array of menu items to display',
     },
-    headerText: {
-      control: 'text',
-      description: 'Text displayed in the header',
-    },
   },
 };
 
