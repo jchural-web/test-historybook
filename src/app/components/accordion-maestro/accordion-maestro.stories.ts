@@ -112,11 +112,11 @@ export const AccordionConItemAbierto: Story = {
           [items]="items"
           [activeItemId]="activeItemId"
           (activeItemChange)="activeItemChange.emit($event)">
-          
+
           <div [accordion-item-1]="true"></div>
           <div [accordion-item-2]="true"></div>
           <div [accordion-item-3]="true"></div>
-          
+
           <div [accordion-item-4]="true">
             <div class="accordion-content-group">
               <div class="checkbox-group">
@@ -149,7 +149,7 @@ export const AccordionConItemAbierto: Story = {
               </div>
             </div>
           </div>
-          
+
           <div [accordion-item-5]="true"></div>
           <div [accordion-item-6]="true"></div>
         </app-accordion-maestro>
@@ -158,6 +158,9 @@ export const AccordionConItemAbierto: Story = {
     imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
   }),
   parameters: {
+    moduleMetadata: {
+      imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
+    },
     docs: {
       storyDescription: `
 Acordeón con un item abierto (item 4).
