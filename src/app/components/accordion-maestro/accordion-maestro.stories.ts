@@ -240,6 +240,9 @@ export const AccordionInteractivo: Story = {
     imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
   }),
   parameters: {
+    moduleMetadata: {
+      imports: [AccordionMaestroComponent, CheckboxMaestroComponent],
+    },
     docs: {
       storyDescription: `
 Acordeón totalmente interactivo.
