@@ -40,15 +40,10 @@
     (click)="onItemClick(item)"
   >
     <div class="sidebar-item-content">
-      <svg
+      <span
         class="sidebar-item-icon"
-        width="14"
-        height="14"
-        viewBox="0 0 15 15"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        [innerHTML]="getIconSvg(item.icon) | safe"
-      ></svg>
+        [innerHTML]="getIconSvg(item.icon)"
+      ></span>
 
       <span class="sidebar-item-label" *ngIf="!collapsed">{{ item.label }}</span>
 
