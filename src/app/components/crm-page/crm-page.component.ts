@@ -380,6 +380,6 @@ export class CrmPageComponent implements OnInit {
   }
 
   onExecuteActivityClick(row: ActividadRow): void {
-    this.router.navigate(['/speech']);
+    this.router.navigate(['/gestion-agenda-comercial']);
   }
 }
