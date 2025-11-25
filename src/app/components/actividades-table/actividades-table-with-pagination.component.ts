@@ -68,4 +68,8 @@ export class ActividadesTableWithPaginationComponent implements OnInit {
     const endIndex = startIndex + this.pageSize;
     this.displayedRows = this.allRows.slice(startIndex, endIndex);
   }
+
+  onExecuteButtonClick(row: ActividadRow): void {
+    this.executeButtonClick.emit(row);
+  }
 }
