@@ -105,7 +105,10 @@ export const AccordionConItemAbierto: Story = {
     activeItemId: 4,
   },
   render: (args) => ({
-    props: args,
+    props: {
+      ...args,
+      CheckboxMaestroComponent,
+    },
     template: `
       <div style="padding: 24px; background: #FFF;">
         <app-accordion-maestro
