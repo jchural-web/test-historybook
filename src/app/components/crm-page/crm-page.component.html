@@ -7,6 +7,18 @@
   ></app-header-bar>
 
   <div class="crm-container" [class.sidebar-expanded]="isSidebarExpanded">
+    <aside class="crm-sidebar">
+      <app-sidebar-menu-maestro
+        [items]="sidebarItems"
+        [activeItemId]="activeSidebarId"
+        [expandedIds]="expandedSidebarIds"
+        [collapsed]="!isSidebarExpanded"
+        [headerText]="'Integra CRM'"
+        (itemClick)="onSidebarItemClick($event)"
+        (expandedIdsChange)="onExpandedIdsChange($event)"
+      ></app-sidebar-menu-maestro>
+    </aside>
+
     <main class="crm-main-content">
       <div class="performance-cards-grid">
         <app-performance-card
