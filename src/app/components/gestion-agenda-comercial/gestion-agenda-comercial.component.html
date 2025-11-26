@@ -20,7 +20,13 @@
 
     <main class="gestion-agenda-main-content">
       <div class="gestion-agenda-content">
-        <!-- Gestion Agenda Comercial page content will go here -->
+        <div class="navigation-tabs-wrapper">
+          <app-tabs-navegacion-maestras
+            [tabs]="navigationTabs"
+            [activeTabId]="activeTabId"
+            (tabChange)="onTabChange($event)"
+          ></app-tabs-navegacion-maestras>
+        </div>
       </div>
     </main>
   </div>
