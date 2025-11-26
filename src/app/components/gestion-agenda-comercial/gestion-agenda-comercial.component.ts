@@ -102,6 +102,67 @@ export class GestionAgendaComercialComponent implements OnInit {
     },
   ];
 
+  navigationTabs: TabMaestra[] = [
+    {
+      id: 'speech',
+      label: 'Speech',
+      tipo: 'cuadrada-icono',
+      iconName: 'speech',
+      color: 'blue',
+    },
+    {
+      id: 'editar-datos',
+      label: 'Editar datos\npersonales',
+      tipo: 'cuadrada-icono',
+      iconName: 'edit',
+      color: 'blue',
+    },
+    {
+      id: 'cronograma-pagos',
+      label: 'Cronograma de\npagos',
+      tipo: 'cuadrada-icono',
+      iconName: 'calendar',
+      color: 'blue',
+    },
+    {
+      id: 'info-programa',
+      label: 'Información del\nprograma',
+      tipo: 'cuadrada-icono',
+      iconName: 'info',
+      color: 'green',
+    },
+    {
+      id: 'docs-programa',
+      label: 'Documentos del\nprograma',
+      tipo: 'cuadrada-icono',
+      iconName: 'file-text',
+      color: 'green',
+    },
+    {
+      id: 'resumen-prog-1',
+      label: 'Resumen\nprogramas',
+      tipo: 'cuadrada-icono',
+      iconName: 'file',
+      color: 'green',
+    },
+    {
+      id: 'competidores',
+      label: 'Competidores',
+      tipo: 'cuadrada-icono',
+      iconName: 'question-circle',
+      color: 'orange',
+    },
+    {
+      id: 'resumen-prog-2',
+      label: 'Resumen\nprogramas',
+      tipo: 'cuadrada-icono',
+      iconName: 'check-circle',
+      color: 'orange',
+    },
+  ];
+
+  activeTabId: string = 'speech';
+
   ngOnInit(): void {
     // Component initialization
   }
