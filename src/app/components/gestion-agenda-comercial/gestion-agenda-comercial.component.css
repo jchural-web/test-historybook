@@ -45,6 +45,13 @@
   gap: 20px;
 }
 
+.navigation-tabs-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 0;
+}
+
 @media (max-width: 1024px) {
   .gestion-agenda-main-content {
     padding: 30px 30px;
