@@ -42,29 +42,29 @@ export class TabsNavegacionMaestrasComponent {
 
   getTabClasses(tab: TabMaestra): string {
     const classes = ['tab', `tab-${tab.tipo}`];
-    
+
     if (this.isActive(tab.id)) {
       classes.push('tab-selected');
     } else {
       classes.push('tab-unselected');
     }
-    
+
     if (tab.disabled) {
       classes.push('tab-disabled');
     }
-    
+
     if (tab.color) {
       classes.push(`tab-color-${tab.color}`);
     } else {
       classes.push('tab-color-blue');
     }
-    
+
     return classes.join(' ');
   }
 
   getContainerClasses(): string {
     if (this.tabs.length === 0) return 'tabs-container';
-    
+
     const firstTab = this.tabs[0];
     return `tabs-container tabs-container-${firstTab.tipo}`;
   }
@@ -76,19 +76,19 @@ export class TabsNavegacionMaestrasComponent {
 
   private getIconSvg(iconName: string): string {
     const iconMap: { [key: string]: string } = {
-      'speech': `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      speech: `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M2.25 2.8125C2.25 2.60516 2.33231 2.40628 2.47882 2.25976C2.62534 2.11325 2.82422 2.03094 3.03156 2.03094H14.9684C15.1758 2.03094 15.3747 2.11325 15.5212 2.25976C15.6677 2.40628 15.75 2.60516 15.75 2.8125V12.4688C15.75 12.6761 15.6677 12.875 15.5212 13.0215C15.3747 13.168 15.1758 13.2503 14.9684 13.2503H10.2187L6.8625 15.2878C6.77933 15.3389 6.68396 15.3669 6.58618 15.369C6.4884 15.3711 6.39194 15.3472 6.30663 15.2997C6.22132 15.2523 6.15004 15.1829 6.1003 15.0985C6.05055 15.0141 6.02407 14.9177 6.02344 14.8194V13.2503H3.03156C2.82422 13.2503 2.62534 13.168 2.47882 13.0215C2.33231 12.875 2.25 12.6761 2.25 12.4688V2.8125ZM5.625 6.75C5.625 6.54289 5.70743 6.34434 5.85484 6.19684C6.00226 6.04933 6.20109 5.96719 6.40781 5.96719H11.5922C11.7989 5.96719 11.9977 6.04933 12.1452 6.19684C12.2926 6.34434 12.375 6.54289 12.375 6.75C12.375 6.95711 12.2926 7.15566 12.1452 7.30316C11.9977 7.45067 11.7989 7.53281 11.5922 7.53281H6.40781C6.20109 7.53281 6.00226 7.45067 5.85484 7.30316C5.70743 7.15566 5.625 6.95711 5.625 6.75ZM6.40781 9.09844C6.20109 9.09844 6.00226 9.18057 5.85484 9.32808C5.70743 9.47558 5.625 9.67413 5.625 9.88125C5.625 10.0884 5.70743 10.2869 5.85484 10.4344C6.00226 10.5819 6.20109 10.6641 6.40781 10.6641H9.75469C9.96141 10.6641 10.1602 10.5819 10.3077 10.4344C10.4551 10.2869 10.5375 10.0884 10.5375 9.88125C10.5375 9.67413 10.4551 9.47558 10.3077 9.32808C10.1602 9.18057 9.96141 9.09844 9.75469 9.09844H6.40781Z" fill="currentColor"/>
 </svg>`,
-      'edit': `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      edit: `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.0625 2.4375L15.5625 3.9375L5.0625 14.4375H3.5625V12.9375L14.0625 2.4375ZM14.0625 0.5625C13.7813 0.5625 13.5 0.65625 13.2813 0.875L11.9063 2.25L15.75 6.09375L17.125 4.71875C17.5625 4.28125 17.5625 3.5625 17.125 3.125L14.875 0.875C14.6563 0.65625 14.375 0.5625 14.0625 0.5625ZM11 3.15625L0.5625 13.5938V17.4375H4.40625L14.8438 7L11 3.15625Z" fill="currentColor"/>
 </svg>`,
-      'calendar': `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      calendar: `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.625 2.25H13.5V1.125C13.5 0.71875 13.1563 0.375 12.75 0.375C12.3437 0.375 12 0.71875 12 1.125V2.25H6V1.125C6 0.71875 5.65625 0.375 5.25 0.375C4.84375 0.375 4.5 0.71875 4.5 1.125V2.25H3.375C2.13281 2.25 1.125 3.25781 1.125 4.5V15.375C1.125 16.6172 2.13281 17.625 3.375 17.625H14.625C15.8672 17.625 16.875 16.6172 16.875 15.375V4.5C16.875 3.25781 15.8672 2.25 14.625 2.25ZM15.375 15.375C15.375 15.7891 15.0391 16.125 14.625 16.125H3.375C2.96094 16.125 2.625 15.7891 2.625 15.375V6.75H15.375V15.375Z" fill="currentColor"/>
 </svg>`,
-      'info': `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      info: `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9 0.5625C4.44844 0.5625 0.5625 4.44844 0.5625 9C0.5625 13.5516 4.44844 17.4375 9 17.4375C13.5516 17.4375 17.4375 13.5516 17.4375 9C17.4375 4.44844 13.5516 0.5625 9 0.5625ZM9.75 13.5H8.25V8.25H9.75V13.5ZM9.75 6.75H8.25V5.25H9.75V6.75Z" fill="currentColor"/>
 </svg>`,
-      'file': `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+      file: `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M10.5 0.5625H3.375C2.54766 0.5625 1.875 1.24219 1.875 2.0625V15.9375C1.875 16.7648 2.54766 17.4375 3.375 17.4375H14.625C15.4523 17.4375 16.125 16.7648 16.125 15.9375V6.1875L10.5 0.5625ZM14.625 15.9375H3.375V2.0625H9.75V6.9375H14.625V15.9375Z" fill="currentColor"/>
 </svg>`,
       'file-text': `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
