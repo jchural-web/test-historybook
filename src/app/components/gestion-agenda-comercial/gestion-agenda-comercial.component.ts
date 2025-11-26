@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { HeaderBarComponent, HeaderAction } from '../header-bar/header-bar.component';
 import { SidebarMenuMaestroComponent, SidebarMenuItem } from '../sidebar-menu-maestro/sidebar-menu-maestro.component';
+import { TabsNavegacionMaestrasComponent, TabMaestra } from '../tabs-navegacion-maestras/tabs-navegacion-maestras.component';
 
 @Component({
   selector: 'app-gestion-agenda-comercial',
   standalone: true,
-  imports: [CommonModule, HeaderBarComponent, SidebarMenuMaestroComponent],
+  imports: [CommonModule, HeaderBarComponent, SidebarMenuMaestroComponent, TabsNavegacionMaestrasComponent],
   templateUrl: './gestion-agenda-comercial.component.html',
   styleUrls: ['./gestion-agenda-comercial.component.css'],
 })
