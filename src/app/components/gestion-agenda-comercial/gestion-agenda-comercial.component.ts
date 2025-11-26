@@ -182,4 +182,8 @@ export class GestionAgendaComercialComponent implements OnInit {
   onExpandedIdsChange(expandedIds: string[]): void {
     this.expandedSidebarIds = expandedIds;
   }
+
+  onTabChange(tabId: string): void {
+    this.activeTabId = tabId;
+  }
 }
