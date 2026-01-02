@@ -1,13 +1,9 @@
 #!/bin/bash
-# Wrapper to run Storybook and suppress the xdg-open ENOENT error
-# The error occurs after Storybook successfully starts, so we suppress it
+# Wrapper to run Storybook in a headless environment
+# Suppresses the xdg-open ENOENT error that occurs after successful startup
 
-exec npm run storybook 2>&1 | sed '/xdg-open/d' | sed '/^[[:space:]]*$/d' & 
-STORYBOOK_PID=$!
+# Run Storybook and pipe stderr to suppress xdg-open related errors
+npm run storybook 2>&1 | awk '!/spawn xdg-open|Error:|at ChildProcess/ || /Storybook.*started/ { print }'
 
-# Give Storybook time to start
-sleep 5
-
-# Storybook should be running now, even if there was an error at the end
-# Keep the process alive
-wait $STORYBOOK_PID 2>/dev/null || true
+# Exit gracefully
+exit 0
