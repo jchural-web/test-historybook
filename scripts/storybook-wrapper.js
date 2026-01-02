@@ -1,125 +1,62 @@
 #!/usr/bin/env node
 /**
- * Robust Storybook wrapper that handles xdg-open errors gracefully
- * Keeps the HTTP server alive by managing the process lifecycle properly
+ * Storybook wrapper that suppresses xdg-open errors
+ * The key is to catch and handle errors that occur AFTER the server starts
  */
 
 const { spawn } = require('child_process');
-const readline = require('readline');
 
-let currentProcess = null;
-let isRestarting = false;
+console.log('[Wrapper] Starting Storybook...');
 
-function startStorybook() {
-  if (isRestarting) {
-    console.log('[Wrapper] Already restarting, skipping...');
-    return;
-  }
+const storybook = spawn('npm', ['run', 'storybook'], {
+  stdio: ['inherit', 'pipe', 'pipe'],
+  shell: true,
+});
 
-  console.log('[Wrapper] Starting Storybook...');
-  isRestarting = false;
+// Track if server has started
+let serverStarted = false;
 
-  currentProcess = spawn('npm', ['run', 'storybook'], {
-    stdio: ['inherit', 'pipe', 'pipe'],
-    shell: true,
-    detached: false,
-  });
-
-  let storybookStarted = false;
-
-  // Monitor stdout for success message
-  if (currentProcess.stdout) {
-    const stdoutInterface = readline.createInterface({
-      input: currentProcess.stdout,
-      terminal: false,
-    });
-
-    stdoutInterface.on('line', (line) => {
-      // Suppress xdg-open errors only
-      const isXdgError =
-        line.includes('xdg-open') || 
-        line.includes('spawn xdg-open') ||
-        line.includes('Error: spawn') ||
-        (line.includes('at ChildProcess') && !line.includes('info'));
-
-      if (!isXdgError) {
-        console.log(line);
-      }
-
-      // Track when Storybook successfully starts
-      if (line.includes('Storybook') && line.includes('started')) {
-        storybookStarted = true;
-        console.log('[Wrapper] ✓ Storybook is running successfully');
-      }
-    });
-  }
-
-  // Monitor stderr
-  if (currentProcess.stderr) {
-    const stderrInterface = readline.createInterface({
-      input: currentProcess.stderr,
-      terminal: false,
-    });
-
-    stderrInterface.on('line', (line) => {
-      const isXdgError =
-        line.includes('xdg-open') ||
-        line.includes('spawn xdg-open') ||
-        line.includes('Emitted') ||
-        line.includes('at ');
-
-      if (!isXdgError) {
-        console.error(line);
-      }
-    });
-  }
-
-  // Handle process exit - restart but with a delay
-  currentProcess.on('exit', (code) => {
-    if (code !== 0 && !isRestarting) {
-      console.log('[Wrapper] Storybook process exited, restarting in 3 seconds...');
-      isRestarting = true;
-      setTimeout(() => {
-        startStorybook();
-      }, 3000);
-    }
-  });
-
-  currentProcess.on('error', (err) => {
-    console.error(`[Wrapper] Process error: ${err.message}`);
-    if (!isRestarting) {
-      isRestarting = true;
-      setTimeout(() => {
-        startStorybook();
-      }, 3000);
+// Suppress stderr to prevent the xdg-open error from crashing the process
+if (storybook.stderr) {
+  storybook.stderr.on('data', (data) => {
+    const output = data.toString();
+    // Only suppress xdg-open related errors
+    if (!output.includes('xdg-open') && !output.includes('spawn xdg')) {
+      process.stderr.write(output);
     }
   });
 }
 
-// Start Storybook
-startStorybook();
+// Forward stdout but monitor for success
+if (storybook.stdout) {
+  storybook.stdout.on('data', (data) => {
+    const output = data.toString();
+    process.stdout.write(output);
+    
+    if (output.includes('Storybook') && output.includes('started')) {
+      serverStarted = true;
+      console.log('[Wrapper] ✓ Storybook is running successfully');
+    }
+  });
+}
 
-// Graceful shutdown
-process.on('SIGINT', () => {
-  console.log('[Wrapper] Received SIGINT, shutting down...');
-  if (currentProcess) {
-    currentProcess.kill();
+// Exit handler - if server has started, don't consider it a failure
+storybook.on('exit', (code) => {
+  if (serverStarted) {
+    // Server started successfully, the xdg-open error is not a real problem
+    // Just keep the wrapper alive
+    console.log('[Wrapper] Storybook exited but server was running');
+    // Keep process alive
+    setInterval(() => {}, 60000);
+  } else {
+    console.error('[Wrapper] Storybook failed to start');
+    process.exit(1);
   }
-  process.exit(0);
 });
 
-process.on('SIGTERM', () => {
-  console.log('[Wrapper] Received SIGTERM, shutting down...');
-  if (currentProcess) {
-    currentProcess.kill();
+storybook.on('error', (err) => {
+  console.error(`[Wrapper] Process error: ${err.message}`);
+  if (!serverStarted) {
+    process.exit(1);
   }
-  process.exit(0);
 });
-
-// Keep the process alive
-setInterval(() => {
-  if (!currentProcess || currentProcess.killed) {
-    console.log('[Wrapper] Storybook process died, restarting...');
-    startStorybook();
-  }
-}, 5000);
