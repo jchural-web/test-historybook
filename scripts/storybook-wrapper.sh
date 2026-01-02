@@ -1,15 +1,9 @@
 #!/bin/bash
-# Run Storybook in the background and monitor it
-# This ensures the HTTP server stays alive even if xdg-open fails
+# Use nohup to completely detach Storybook from the shell
+# This prevents the process from receiving SIGHUP and ensures it stays alive
 
-npm run storybook &
-STORYBOOK_PID=$!
+nohup npm run storybook >/dev/null 2>&1 &
 
-# Give Storybook time to fully start and bind to the port
-sleep 10
-
-# Keep this script alive to keep the parent process alive
-# The Storybook process will continue running in the background
-while kill -0 $STORYBOOK_PID 2>/dev/null; do
-  sleep 5
-done
+# Keep this wrapper alive by sleeping forever
+# The nohup process will continue running independently
+sleep infinity
