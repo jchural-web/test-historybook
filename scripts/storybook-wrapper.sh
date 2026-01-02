@@ -1,9 +1,24 @@
 #!/bin/bash
-# Use nohup to completely detach Storybook from the shell
-# This prevents the process from receiving SIGHUP and ensures it stays alive
+# Storybook wrapper that handles xdg-open errors gracefully
+# Keeps Storybook running even if it tries to open a browser
 
-nohup npm run storybook >/dev/null 2>&1 &
+# Create a named pipe (FIFO) to handle output redirection
+mkfifo /tmp/storybook-pipe 2>/dev/null || true
 
-# Keep this wrapper alive by sleeping forever
-# The nohup process will continue running independently
-sleep infinity
+# Start Storybook in the background, redirecting errors
+{
+  npm run storybook 2>&1 | while read line; do
+    # Skip the xdg-open error lines
+    if [[ ! "$line" =~ "xdg-open" ]] && [[ ! "$line" =~ "spawn" ]] && [[ ! "$line" =~ "ChildProcess" ]]; then
+      echo "$line"
+    fi
+  done
+} &
+
+STORYBOOK_PID=$!
+
+# Keep the wrapper running to maintain the parent process
+wait $STORYBOOK_PID 2>/dev/null || true
+
+# If Storybook dies, restart it
+exec "$0"
