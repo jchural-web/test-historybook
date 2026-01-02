@@ -12,6 +12,9 @@ const config: StorybookConfig = {
       enableNgcc: true,
     },
   },
+  core: {
+    disableTelemetry: true,
+  },
 };
 
 export default config;
