@@ -108,6 +108,7 @@
 .btn-default:focus:not(:disabled),
 .btn-state-focus.btn-default {
   background: #4c1d95;
+  box-shadow: 0 0 0 3px transparent, 0 0 0 4px #2e1065;
 }
 
 /* Secondary variant */
