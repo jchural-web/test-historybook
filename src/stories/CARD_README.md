@@ -24,30 +24,33 @@ import { CardComponent } from './card.component';
 
 ```html
 <!-- Default card -->
-<storybook-card 
+<storybook-card
   variant="default"
   header="Actividades Totales"
   value="21"
   helper="+15.2%"
+  helperDescription="respecto al mes anterior"
   icon="phone">
 </storybook-card>
 
 <!-- Elevated card with shadow -->
-<storybook-card 
+<storybook-card
   variant="elevated"
   header="Usuarios Activos"
   value="1,247"
   helper="+8.4%"
+  helperDescription="respecto al mes anterior"
   icon="phone">
 </storybook-card>
 
 <!-- Card in hover state -->
-<storybook-card 
+<storybook-card
   variant="default"
   state="hover"
   header="Actividades Totales"
   value="21"
-  helper="+15.2%">
+  helper="+15.2%"
+  helperDescription="respecto al mes anterior">
 </storybook-card>
 ```
 
@@ -60,6 +63,7 @@ import { CardComponent } from './card.component';
 | `header` | `string` | `'Actividades Totales'` | Header text |
 | `value` | `string \| number` | `'21'` | Main value to display |
 | `helper` | `string` | `'+15.2%'` | Helper text (e.g., percentage change) |
+| `helperDescription` | `string` | `'respecto al mes anterior'` | Helper description text |
 | `icon` | `string` | `'phone'` | Optional icon name |
 
 ## Variants
@@ -97,25 +101,21 @@ import { CardComponent } from './card.component';
 ## Design Specifications
 
 ### Layout
-- **Display**: `inline-grid`
-- **Width**: 393px (responsive, max-width on mobile)
-- **Padding**: 25px 19px
+- **Display**: `flex` (column)
+- **Width**: 393px (responsive, 100% max-width on mobile)
+- **Padding**: 24px 20px
 - **Border Radius**: 8px
-- **Grid Template**: 3 rows × 3 columns
-  - Rows: `repeat(3, fit-content(100%))`
-  - Columns: `fit-content(100%) minmax(0, 1fr) fit-content(100%)`
-- **Row Gap**: 24px
-- **Column Gap**: 58px
+- **Gap**: 16px (between rows)
 
-### Grid Structure
+### Structure
 
 ```
 ┌─────────────────────────────────────────────┐
-│ Header          Info   Description   Icon   │ Row 1
+│ Header  [Info Icon] [Phone Icon]            │ Row 1
 ├─────────────────────────────────────────────┤
-│ Value                                       │ Row 2
+│ 21                                          │ Row 2 (Value)
 ├─────────────────────────────────────────────┤
-│ Helper                                      │ Row 3
+│ +15.2% respecto al mes anterior             │ Row 3 (Helper)
 └─────────────────────────────────────────────┘
 ```
 
