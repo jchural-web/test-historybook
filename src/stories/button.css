@@ -275,14 +275,5 @@
 
 /* Focus visible for accessibility */
 .btn:focus-visible {
-  outline: 2px solid #7c3aed;
-  outline-offset: 2px;
-}
-
-.btn-link:focus-visible {
-  outline-color: #2563eb;
-}
-
-.btn-destructive:focus-visible {
-  outline-color: #dc2626;
+  box-shadow: 0 0 0 3px transparent, 0 0 0 4px #2e1065;
 }
