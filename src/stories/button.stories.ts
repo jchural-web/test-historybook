@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { fn } from 'storybook/test';
 import { ButtonComponent } from './button.component';
 
 const meta: Meta<ButtonComponent> = {
@@ -41,7 +40,7 @@ const meta: Meta<ButtonComponent> = {
       description: 'Button label text',
     },
   },
-  args: { onClick: fn() },
+  args: { onClick: () => console.log('Button clicked') },
 };
 
 export default meta;
