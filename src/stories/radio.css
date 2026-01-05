@@ -1,0 +1,108 @@
+/* Radio wrapper */
+.radio-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.radio-wrapper[aria-disabled="true"] {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Size variants */
+.radio-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.radio-md {
+  width: 20px;
+  height: 20px;
+}
+
+/* Focus state wrapper size adjustment */
+.radio-state-focus.radio-sm {
+  width: 22px;
+  height: 22px;
+}
+
+.radio-state-focus.radio-md {
+  width: 26px;
+  height: 26px;
+}
+
+/* SVG positioning */
+.radio-focus-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.radio-outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radio-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* State-specific styles */
+
+/* Default state */
+.radio-state-default .radio-outer circle {
+  stroke: #64748b; /* neutral-500 */
+}
+
+/* Hover state */
+.radio-state-hover .radio-outer circle {
+  stroke: #3b82f6; /* Blue-500 */
+  opacity: 0.9;
+}
+
+/* Checked state */
+.radio-state-checked .radio-outer circle {
+  stroke: #2563eb; /* Blue-600 */
+}
+
+/* Disabled state */
+.radio-state-disabled .radio-outer circle {
+  stroke: #64748b; /* neutral-500 */
+  fill: #64748b; /* neutral-500 */
+  opacity: 0.4;
+}
+
+.radio-state-disabled .radio-inner circle {
+  opacity: 0.4;
+}
+
+/* Focus state - outer ring */
+.radio-state-focus .radio-focus-ring {
+  display: block;
+}
+
+/* Transitions */
+.radio-outer circle,
+.radio-inner circle {
+  transition: all 0.2s ease;
+}
+
+/* Accessibility - keyboard focus */
+.radio-wrapper:focus-visible {
+  outline: none;
+}
+
+.radio-wrapper:focus-visible .radio-outer circle {
+  stroke: #2563eb;
+}
