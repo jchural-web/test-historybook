@@ -306,8 +306,9 @@ export class CardComponent {
   @Input() header: string = 'Actividades Totales';
   @Input() value: string | number = '21';
   @Input() helper: string = '+15.2%';
+  @Input() helperDescription: string = 'respecto al mes anterior';
   @Input() icon: string = 'phone';
-  
+
   get cardClasses(): string[] { ... }
 }
 ```
@@ -316,15 +317,17 @@ export class CardComponent {
 
 The component uses external CSS (`card.css`) with:
 
-- `.card` - Main container with grid layout
-- `.card-{variant}` - Variant-specific styles
+- `.card` - Main container with flexbox layout
+- `.card-{variant}` - Variant-specific styles (default, elevated, outlined)
 - `.card-hover` - Hover state styling
-- `.card-header` - Header text
-- `.card-value` - Main value display
-- `.card-helper` - Helper text
-- `.card-helper-description` - Secondary description
-- `.card-info-icon` - Info icon positioning
-- `.card-action-icon` - Action icon positioning
+- `.card-header-row` - Header row with icons (flex container)
+- `.card-header` - Header text with icon
+- `.card-info-icon` - Info icon (17×17px)
+- `.card-action-icon` - Action icon (20×20px)
+- `.card-value` - Main value display (large, bold)
+- `.card-helper-row` - Helper row container
+- `.card-helper` - Helper text (e.g., "+15.2%")
+- `.card-helper-description` - Helper description text
 
 ## Browser Compatibility
 
