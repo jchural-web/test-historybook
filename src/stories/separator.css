@@ -1,0 +1,32 @@
+/* Separator Base */
+.separator {
+  flex-shrink: 0;
+  background-color: #cbd5e1; /* Figma color */
+  border: none;
+}
+
+/* Horizontal Separator */
+.separator-horizontal {
+  width: 100%;
+  height: 1px;
+}
+
+/* Vertical Separator */
+.separator-vertical {
+  width: 1px;
+  height: 100%;
+  align-self: stretch;
+}
+
+/* Custom thickness variants */
+.separator[style*="--thickness"] {
+  --separator-thickness: 1px;
+}
+
+.separator-horizontal[style*="--thickness"] {
+  height: var(--separator-thickness);
+}
+
+.separator-vertical[style*="--thickness"] {
+  width: var(--separator-thickness);
+}
