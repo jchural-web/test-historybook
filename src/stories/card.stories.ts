@@ -28,6 +28,10 @@ const meta: Meta<CardComponent> = {
       control: 'text',
       description: 'Helper text (e.g., percentage change)',
     },
+    helperDescription: {
+      control: 'text',
+      description: 'Helper description text (e.g., "respecto al mes anterior")',
+    },
     icon: {
       control: 'text',
       description: 'Icon name (currently only "phone" supported)',
