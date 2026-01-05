@@ -1,0 +1,75 @@
+/* Badge Base */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  line-height: 17px;
+  letter-spacing: 0.05px;
+}
+
+/* Badge Dot */
+.badge-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Badge Text (Default & Large) */
+.badge-text {
+  padding: 2px 8px;
+  border-radius: 12.5px;
+  font-size: 12px;
+  min-height: 15px;
+  white-space: nowrap;
+}
+
+/* Size: Large (same as default, just semantic difference) */
+.badge-size-large {
+  /* Same styling as default */
+}
+
+/* Variant: Default (Violet) */
+.badge-default {
+  background-color: #7c3aed; /* Violet-600 */
+  color: #ffffff;
+}
+
+/* Variant: Secondary (Blue) */
+.badge-secondary {
+  background-color: #2563eb; /* Blue-600 */
+  color: #ffffff;
+}
+
+/* Variant: Destructive (Red) */
+.badge-destructive {
+  background-color: #dc2626; /* Red-600 */
+  color: #ffffff;
+}
+
+/* Variant: Outline */
+.badge-outline.badge-dot {
+  background-color: transparent;
+  border: 1px solid #cbd5e1; /* neutral-300 */
+}
+
+.badge-outline.badge-text {
+  background-color: transparent;
+  border: 1px solid #cbd5e1; /* neutral-300 */
+  color: #1e293b; /* neutral-800 */
+}
+
+/* Variant: Success (Green) */
+.badge-success {
+  background-color: #16a34a; /* Green-600 */
+  color: #ffffff;
+}
+
+/* Non-interactive */
+.badge {
+  pointer-events: none;
+  user-select: none;
+}
