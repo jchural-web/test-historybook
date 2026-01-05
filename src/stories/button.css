@@ -1,30 +1,282 @@
-.storybook-button {
-  display: inline-block;
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  border: none;
   cursor: pointer;
-  border: 0;
-  border-radius: 3em;
-  font-weight: 700;
-  line-height: 1;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
-.storybook-button--primary {
-  background-color: #555ab9;
+
+/* Size variants */
+.btn-sm {
+  padding: 8px 16px;
+  height: 27px;
+}
+
+.btn-md {
+  padding: 12px 24px;
+  height: 35px;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  height: 43px;
+}
+
+/* Icon-only sizes */
+.btn-shape-icon.btn-sm {
+  width: 27px;
+  height: 27px;
+  padding: 8px;
+}
+
+.btn-shape-icon.btn-md {
+  width: 35px;
+  height: 35px;
+  padding: 8px;
+}
+
+.btn-shape-icon.btn-lg {
+  width: 43px;
+  height: 43px;
+  padding: 8px;
+}
+
+/* Shape variants */
+.btn-shape-rectangular {
+  border-radius: 2px;
+}
+
+.btn-shape-rectangular.btn-md {
+  border-radius: 3px;
+}
+
+.btn-shape-rectangular.btn-lg {
+  border-radius: 4px;
+}
+
+.btn-shape-pill {
+  border-radius: 9999px;
+}
+
+.btn-shape-icon {
+  border-radius: 4px;
+}
+
+.btn-shape-icon-text {
+  border-radius: 2px;
+}
+
+.btn-shape-icon-text.btn-md {
+  border-radius: 3px;
+}
+
+.btn-shape-icon-text.btn-lg {
+  border-radius: 4px;
+}
+
+/* Color variants - Default/Primary */
+.btn-default {
+  background: #7c3aed;
   color: white;
 }
-.storybook-button--secondary {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-  background-color: transparent;
-  color: #333;
+
+.btn-default:hover:not(:disabled),
+.btn-state-hover.btn-default {
+  opacity: 0.9;
 }
-.storybook-button--small {
-  padding: 10px 16px;
-  font-size: 12px;
+
+.btn-default:active:not(:disabled),
+.btn-state-active.btn-default {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
 }
-.storybook-button--medium {
-  padding: 11px 20px;
-  font-size: 14px;
+
+.btn-default:active:not(:disabled) .button-label,
+.btn-state-active.btn-default .button-label {
+  text-decoration: underline;
 }
-.storybook-button--large {
-  padding: 12px 24px;
-  font-size: 16px;
+
+.btn-default:focus:not(:disabled),
+.btn-state-focus.btn-default {
+  background: #4c1d95;
+}
+
+/* Secondary variant */
+.btn-secondary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled),
+.btn-state-hover.btn-secondary {
+  opacity: 0.9;
+}
+
+.btn-secondary:active:not(:disabled),
+.btn-state-active.btn-secondary {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-secondary:active:not(:disabled) .button-label,
+.btn-state-active.btn-secondary .button-label {
+  text-decoration: underline;
+}
+
+.btn-secondary:focus:not(:disabled),
+.btn-state-focus.btn-secondary {
+  background: #1d4ed8;
+}
+
+/* Outline variant */
+.btn-outline {
+  background: transparent;
+  color: #7c3aed;
+  border: 1px solid #7c3aed;
+}
+
+.btn-outline:hover:not(:disabled),
+.btn-state-hover.btn-outline {
+  opacity: 0.9;
+}
+
+.btn-outline:active:not(:disabled),
+.btn-state-active.btn-outline {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-outline:active:not(:disabled) .button-label,
+.btn-state-active.btn-outline .button-label {
+  text-decoration: underline;
+}
+
+.btn-outline:focus:not(:disabled),
+.btn-state-focus.btn-outline {
+  border-color: #4c1d95;
+  color: #4c1d95;
+}
+
+/* Ghost variant */
+.btn-ghost {
+  background: #ede9fe;
+  color: #1e293b;
+}
+
+.btn-ghost:hover:not(:disabled),
+.btn-state-hover.btn-ghost {
+  opacity: 0.9;
+}
+
+.btn-ghost:active:not(:disabled),
+.btn-state-active.btn-ghost {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-ghost:active:not(:disabled) .button-label,
+.btn-state-active.btn-ghost .button-label {
+  text-decoration: underline;
+}
+
+.btn-ghost:focus:not(:disabled),
+.btn-state-focus.btn-ghost {
+  background: #ddd6fe;
+}
+
+/* Link variant */
+.btn-link {
+  background: transparent;
+  color: #2563eb;
+}
+
+.btn-link:hover:not(:disabled),
+.btn-state-hover.btn-link {
+  opacity: 0.9;
+}
+
+.btn-link:active:not(:disabled),
+.btn-state-active.btn-link {
+  text-decoration: underline;
+}
+
+.btn-link:focus:not(:disabled),
+.btn-state-focus.btn-link {
+  color: #1d4ed8;
+}
+
+/* Destructive variant */
+.btn-destructive {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-destructive:hover:not(:disabled),
+.btn-state-hover.btn-destructive {
+  opacity: 0.9;
+}
+
+.btn-destructive:active:not(:disabled),
+.btn-state-active.btn-destructive {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-destructive:active:not(:disabled) .button-label,
+.btn-state-active.btn-destructive .button-label {
+  text-decoration: underline;
+}
+
+.btn-destructive:focus:not(:disabled),
+.btn-state-focus.btn-destructive {
+  background: #b91c1c;
+}
+
+/* Disabled state */
+.btn:disabled,
+.btn-state-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon styling */
+.button-icon {
+  flex-shrink: 0;
+}
+
+.button-icon-left {
+  margin-right: -2px;
+}
+
+.button-icon-right {
+  margin-left: -2px;
+}
+
+.btn-shape-icon .button-icon {
+  margin: 0;
+}
+
+/* Label styling */
+.button-label {
+  display: inline-block;
+}
+
+/* Focus visible for accessibility */
+.btn:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+.btn-link:focus-visible {
+  outline-color: #2563eb;
+}
+
+.btn-destructive:focus-visible {
+  outline-color: #dc2626;
 }
