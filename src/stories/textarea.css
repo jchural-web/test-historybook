@@ -1,0 +1,127 @@
+/* Base textarea wrapper styles */
+.textarea-wrapper {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: 6px;
+  border: 1px solid;
+  box-sizing: border-box;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+  width: 100%;
+  max-width: 203px;
+  min-height: 80px;
+}
+
+/* Textarea field base styles */
+.textarea-field {
+  flex: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.05px;
+  color: #64748B;
+  box-sizing: border-box;
+  resize: none;
+  padding: 0;
+  margin: 0;
+}
+
+.textarea-field::placeholder {
+  color: #64748B;
+}
+
+/* State variants - Default */
+.textarea-state-default {
+  border-color: #CBD5E1;
+  background: transparent;
+}
+
+.textarea-state-default:hover,
+.textarea-state-default.textarea-state-hover {
+  opacity: 0.9;
+}
+
+.textarea-state-default .textarea-field:focus {
+  outline: none;
+}
+
+/* State variants - Hover */
+.textarea-state-hover {
+  border-color: #CBD5E1;
+  background: transparent;
+  opacity: 0.9;
+}
+
+/* State variants - Focus */
+.textarea-state-focus,
+.textarea-wrapper:has(.textarea-field:focus) {
+  border-color: #CBD5E1;
+  background: transparent;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+}
+
+.textarea-state-focus .textarea-field,
+.textarea-wrapper:has(.textarea-field:focus) .textarea-field {
+  color: #64748B;
+}
+
+/* State variants - Disabled */
+.textarea-state-disabled {
+  border-color: #CBD5E1;
+  background: transparent;
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.textarea-state-disabled .textarea-field {
+  cursor: not-allowed;
+}
+
+/* State variants - Error */
+.textarea-state-error {
+  border-color: #DC2626;
+  background: transparent;
+}
+
+.textarea-state-error .textarea-field {
+  color: #DC2626;
+}
+
+.textarea-state-error .textarea-field::placeholder {
+  color: #DC2626;
+}
+
+/* Remove browser default focus styles */
+.textarea-field:focus {
+  outline: none;
+}
+
+/* Ensure consistent box-sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Scrollbar styling (optional, for better UX) */
+.textarea-field::-webkit-scrollbar {
+  width: 8px;
+}
+
+.textarea-field::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.textarea-field::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
+}
+
+.textarea-field::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
