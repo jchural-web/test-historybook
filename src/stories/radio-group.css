@@ -1,0 +1,80 @@
+/* Radio Group Container */
+.radio-group {
+  display: flex;
+  box-sizing: border-box;
+}
+
+/* Orientation variants */
+.radio-group-horizontal {
+  flex-direction: row;
+  align-items: center;
+}
+
+.radio-group-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Spacing between options - Horizontal */
+.radio-group-horizontal.radio-group-sm {
+  gap: 12px; /* Space between options for sm horizontal */
+}
+
+.radio-group-horizontal.radio-group-md {
+  gap: 15px; /* Space between options for md horizontal */
+}
+
+/* Spacing between options - Vertical */
+.radio-group-vertical.radio-group-sm {
+  gap: 12px; /* Space between options for sm vertical */
+}
+
+.radio-group-vertical.radio-group-md {
+  gap: 12px; /* Space between options for md vertical */
+}
+
+/* Radio Option (radio + label) */
+.radio-option {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.radio-option:has(storybook-radio[aria-disabled="true"]) {
+  cursor: not-allowed;
+}
+
+/* Gap between radio and label */
+.radio-option-sm {
+  gap: 8px;
+}
+
+.radio-option-md {
+  gap: 12px;
+}
+
+/* Label text */
+.radio-label {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05px;
+  color: #202020;
+}
+
+.radio-label-sm {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.radio-label-md {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* Disabled label styling */
+.radio-option:has(storybook-radio[aria-disabled="true"]) .radio-label {
+  color: #64748b;
+  opacity: 0.6;
+}
