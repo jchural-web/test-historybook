@@ -96,11 +96,11 @@ export class ProgressComponent {
   // Circular progress dimensions based on Figma design
   get circularDimensions() {
     const dimensions = {
-      sm: { size: 40, strokeWidth: 6, radius: 17 },
-      md: { size: 64, strokeWidth: 10, radius: 27 },
-      lg: { size: 124, strokeWidth: 18, radius: 53 }
+      sm: { size: 40, strokeWidth: 3, radius: 18.5 },
+      md: { size: 64, strokeWidth: 5, radius: 29.5 },
+      lg: { size: 124, strokeWidth: 8, radius: 58 }
     };
-    
+
     const dim = dimensions[this.size];
     return {
       ...dim,
