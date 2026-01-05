@@ -1,0 +1,45 @@
+/* Skeleton Base */
+.skeleton {
+  display: block;
+  background-color: #e2e8f0; /* neutral-200 from Figma */
+  border: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+/* Non-interactive */
+.skeleton {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Type: Text */
+.skeleton-text {
+  border-radius: 4px; /* sm radius */
+  width: 100%; /* Default for text lines */
+  height: 16px; /* Default text line height */
+}
+
+/* Type: Circular */
+.skeleton-circular {
+  border-radius: 50%; /* full radius */
+  width: 40px; /* Default size if not specified */
+  height: 40px; /* Must be equal to width for perfect circle */
+  aspect-ratio: 1 / 1; /* Ensure circular shape */
+}
+
+/* Type: Rectangular */
+.skeleton-rectangular {
+  border-radius: 8px; /* md radius from Figma */
+  width: 100%; /* Default full width */
+  height: 100px; /* Default height */
+}
+
+/* Auto width/height handling */
+.skeleton[style*="width: auto"] {
+  width: auto;
+}
+
+.skeleton[style*="height: auto"] {
+  height: auto;
+}
