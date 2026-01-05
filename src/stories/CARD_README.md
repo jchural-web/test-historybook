@@ -382,6 +382,11 @@ Builder.registerComponent(CardComponent, {
       defaultValue: '+15.2%'
     },
     {
+      name: 'helperDescription',
+      type: 'string',
+      defaultValue: 'respecto al mes anterior'
+    },
+    {
       name: 'icon',
       type: 'string',
       defaultValue: 'phone'
