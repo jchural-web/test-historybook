@@ -43,6 +43,7 @@ const meta: Meta<CardComponent> = {
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
+    helperDescription: 'respecto al mes anterior',
     icon: 'phone',
   },
 };
@@ -61,6 +62,7 @@ export const Default: Story = {
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
+    helperDescription: 'respecto al mes anterior',
     icon: 'phone',
   },
 };
@@ -72,6 +74,7 @@ export const DefaultHover: Story = {
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
+    helperDescription: 'respecto al mes anterior',
     icon: 'phone',
   },
 };
@@ -87,6 +90,7 @@ export const Elevated: Story = {
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
+    helperDescription: 'respecto al mes anterior',
     icon: 'phone',
   },
 };
@@ -98,6 +102,7 @@ export const ElevatedHover: Story = {
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
+    helperDescription: 'respecto al mes anterior',
     icon: 'phone',
   },
 };
@@ -113,6 +118,7 @@ export const Outlined: Story = {
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
+    helperDescription: 'respecto al mes anterior',
     icon: 'phone',
   },
 };
@@ -124,6 +130,7 @@ export const OutlinedHover: Story = {
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
+    helperDescription: 'respecto al mes anterior',
     icon: 'phone',
   },
 };
@@ -155,6 +162,7 @@ export const DesignSystemShowcase: Story = {
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
           </div>
@@ -165,6 +173,7 @@ export const DesignSystemShowcase: Story = {
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
           </div>
@@ -178,6 +187,7 @@ export const DesignSystemShowcase: Story = {
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
           </div>
@@ -188,6 +198,7 @@ export const DesignSystemShowcase: Story = {
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
           </div>
@@ -201,6 +212,7 @@ export const DesignSystemShowcase: Story = {
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
           </div>
@@ -211,6 +223,7 @@ export const DesignSystemShowcase: Story = {
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
           </div>
@@ -222,11 +235,9 @@ export const DesignSystemShowcase: Story = {
           
           <div style="font-size: 14px; color: #64748B; line-height: 1.8;">
             <p style="margin: 4px 0;"><strong>Width:</strong> 393px (responsive)</p>
-            <p style="margin: 4px 0;"><strong>Padding:</strong> 25px 19px</p>
+            <p style="margin: 4px 0;"><strong>Padding:</strong> 24px 20px</p>
             <p style="margin: 4px 0;"><strong>Border Radius:</strong> 8px</p>
-            <p style="margin: 4px 0;"><strong>Grid Layout:</strong> 3 rows × 3 columns</p>
-            <p style="margin: 4px 0;"><strong>Row Gap:</strong> 24px</p>
-            <p style="margin: 4px 0;"><strong>Column Gap:</strong> 58px</p>
+            <p style="margin: 4px 0;"><strong>Gap:</strong> 16px (between rows)</p>
             <p style="margin: 16px 0 8px 0;"><strong>Variant Styles:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li><strong>Default:</strong> Border #E4E4E7, White background</li>
@@ -241,9 +252,9 @@ export const DesignSystemShowcase: Story = {
             <p style="margin: 16px 0 8px 0;"><strong>Typography:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li><strong>Header:</strong> Inter 14px, 400 weight, #434C57</li>
-              <li><strong>Value:</strong> Inter 29px, 800 weight, #2D2929</li>
-              <li><strong>Helper:</strong> Inter 14px, 400 weight, #16A34A (green)</li>
-              <li><strong>Description:</strong> Inter 12px, 400 weight, #707688</li>
+              <li><strong>Value:</strong> Inter 32px, 800 weight, #2D2929</li>
+              <li><strong>Helper:</strong> Inter 14px, 500 weight, #16A34A (green)</li>
+              <li><strong>Description:</strong> Inter 13px, 400 weight, #707688</li>
             </ul>
           </div>
         </section>
@@ -271,6 +282,7 @@ export const UsageExamples: Story = {
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
             
@@ -279,6 +291,7 @@ export const UsageExamples: Story = {
               header="Usuarios Activos"
               value="1,247"
               helper="+8.4%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
             
@@ -287,6 +300,7 @@ export const UsageExamples: Story = {
               header="Tasa de Conversión"
               value="3.2%"
               helper="-2.1%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
           </div>
@@ -301,6 +315,7 @@ export const UsageExamples: Story = {
               header="Ingresos Mensuales"
               value="$45,230"
               helper="+12.5%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
             
@@ -309,6 +324,7 @@ export const UsageExamples: Story = {
               header="Nuevos Registros"
               value="156"
               helper="+23.8%"
+              helperDescription="respecto al mes anterior"
               icon="phone">
             </storybook-card>
           </div>
@@ -339,6 +355,7 @@ export const InteractivePlayground: Story = {
             [header]="header"
             [value]="value"
             [helper]="helper"
+            [helperDescription]="helperDescription"
             [icon]="icon">
           </storybook-card>
         </div>
@@ -351,6 +368,7 @@ export const InteractivePlayground: Story = {
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
+    helperDescription: 'respecto al mes anterior',
     icon: 'phone',
   },
 };
@@ -368,6 +386,7 @@ export const DifferentDataExamples: Story = {
           header="Actividades Totales"
           value="21"
           helper="+15.2%"
+          helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
         
@@ -376,6 +395,7 @@ export const DifferentDataExamples: Story = {
           header="Ventas Completadas"
           value="4,892"
           helper="+28.4%"
+          helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
         
@@ -384,6 +404,7 @@ export const DifferentDataExamples: Story = {
           header="Tiempo Promedio"
           value="2.4h"
           helper="-5.2%"
+          helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
         
@@ -392,6 +413,7 @@ export const DifferentDataExamples: Story = {
           header="Tasa de Éxito"
           value="94.7%"
           helper="+1.3%"
+          helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
         
@@ -400,6 +422,7 @@ export const DifferentDataExamples: Story = {
           header="Satisfacción Cliente"
           value="4.8/5"
           helper="+0.2"
+          helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
         
@@ -408,6 +431,7 @@ export const DifferentDataExamples: Story = {
           header="Proyectos Activos"
           value="12"
           helper="+3"
+          helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
       </div>
