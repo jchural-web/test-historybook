@@ -135,7 +135,7 @@
 .btn-secondary:focus:not(:disabled),
 .btn-state-focus.btn-secondary {
   background: #1d4ed8;
-  box-shadow: 0 0 0 3px transparent, 0 0 0 4px #2e1065;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
 }
 
 /* Outline variant */
@@ -164,7 +164,7 @@
 .btn-state-focus.btn-outline {
   border-color: #4c1d95;
   color: #4c1d95;
-  box-shadow: 0 0 0 3px transparent, 0 0 0 4px #2e1065;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
 }
 
 /* Ghost variant */
@@ -191,7 +191,7 @@
 .btn-ghost:focus:not(:disabled),
 .btn-state-focus.btn-ghost {
   background: #ddd6fe;
-  box-shadow: 0 0 0 3px transparent, 0 0 0 4px #2e1065;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
 }
 
 /* Link variant */
@@ -213,7 +213,7 @@
 .btn-link:focus:not(:disabled),
 .btn-state-focus.btn-link {
   color: #1d4ed8;
-  box-shadow: 0 0 0 3px transparent, 0 0 0 4px #2e1065;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
 }
 
 /* Destructive variant */
@@ -240,7 +240,7 @@
 .btn-destructive:focus:not(:disabled),
 .btn-state-focus.btn-destructive {
   background: #b91c1c;
-  box-shadow: 0 0 0 3px transparent, 0 0 0 4px #2e1065;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
 }
 
 /* Disabled state */
@@ -275,5 +275,5 @@
 
 /* Focus visible for accessibility */
 .btn:focus-visible {
-  box-shadow: 0 0 0 3px transparent, 0 0 0 4px #2e1065;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
 }
