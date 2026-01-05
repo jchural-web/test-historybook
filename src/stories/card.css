@@ -1,0 +1,151 @@
+/* Card Container */
+.card {
+  display: inline-grid;
+  width: 393px;
+  padding: 25px 19px;
+  row-gap: 24px;
+  column-gap: 58px;
+  grid-template-rows: repeat(3, fit-content(100%));
+  grid-template-columns: fit-content(100%) minmax(0, 1fr) fit-content(100%);
+  border-radius: 8px;
+  background: #fff;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Variant: Default */
+.card-default {
+  border: 1px solid #e4e4e7;
+}
+
+/* Variant: Elevated */
+.card-elevated {
+  border: 1px solid #e4e4e7;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08);
+}
+
+/* Variant: Outlined */
+.card-outlined {
+  border: 1px solid #e4e4e7;
+  background: #fff;
+}
+
+/* Hover State */
+.card-hover {
+  opacity: 0.9;
+}
+
+/* Card Header */
+.card-header {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+  width: 131px;
+  height: 16px;
+  color: #434c57;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Info Icon */
+.card-info-icon {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+  width: 17px;
+  height: 17px;
+  position: relative;
+  left: 153.645px;
+  top: -0.736px;
+  justify-self: start;
+}
+
+/* Action Icon (phone, etc.) */
+.card-action-icon {
+  grid-row: 1 / span 1;
+  grid-column: 3 / span 1;
+  width: 20px;
+  height: 20px;
+}
+
+/* Helper Description */
+.card-helper-description {
+  grid-row: 1 / span 1;
+  grid-column: 2 / span 1;
+  position: relative;
+  left: 73.164px;
+  top: -1.314px;
+  color: #707688;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+/* Value */
+.card-value {
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+  color: #2d2929;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 29px;
+  font-weight: 800;
+  line-height: normal;
+}
+
+/* Helper */
+.card-helper {
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 1;
+  color: #16a34a; /* Green for positive changes */
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Helper color variants */
+.card-helper[data-type="positive"] {
+  color: #16a34a; /* Green */
+}
+
+.card-helper[data-type="negative"] {
+  color: #dc2626; /* Red */
+}
+
+.card-helper[data-type="neutral"] {
+  color: #707688; /* Gray */
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+    max-width: 393px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 20px 16px;
+    row-gap: 20px;
+    column-gap: 40px;
+  }
+
+  .card-header {
+    font-size: 13px;
+  }
+
+  .card-value {
+    font-size: 24px;
+  }
+
+  .card-helper {
+    font-size: 13px;
+  }
+
+  .card-helper-description {
+    font-size: 11px;
+  }
+}
