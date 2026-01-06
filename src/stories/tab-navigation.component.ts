@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 export type TabSize = 'sm' | 'md' | 'lg';
 export type TabVariant = 'text' | 'icon-text';
 export type TabState = 'default' | 'hover' | 'active' | 'focus' | 'disabled';
+export type TabColor = 'blue' | 'green' | 'yellow';
 
 export interface TabItem {
   label: string;
@@ -74,6 +75,9 @@ export class TabNavigationComponent {
   /** Tab state */
   @Input() state: TabState = 'default';
 
+  /** Tab color variant */
+  @Input() color: TabColor = 'blue';
+
   /** List of tabs */
   @Input() tabs: TabItem[] = [
     { label: 'Solicitudes Realizadas', count: 3 },
@@ -91,6 +95,7 @@ export class TabNavigationComponent {
       `tab-navigation-${this.size}`,
       `tab-navigation-${this.variant}`,
       `tab-navigation-state-${this.state}`,
+      `tab-navigation-color-${this.color}`,
     ];
   }
 
@@ -98,6 +103,7 @@ export class TabNavigationComponent {
     const classes = [
       `tab-item-${this.size}`,
       `tab-item-${this.variant}`,
+      `tab-item-color-${this.color}`,
     ];
 
     if (index === this.activeIndex) {
@@ -113,7 +119,13 @@ export class TabNavigationComponent {
     if (index === this.activeIndex) {
       return 'white';
     }
-    return '#2563EB';
+    // Return color-specific stroke values
+    const strokeMap: Record<TabColor, string> = {
+      blue: '#2563EB',    // Blue-600
+      green: '#16A34A',   // Green-600
+      yellow: '#CA8A04',  // Yellow-600
+    };
+    return strokeMap[this.color];
   }
 
   handleTabClick(index: number): void {
