@@ -1,0 +1,204 @@
+/* Tab Navigation Container */
+.tab-navigation {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Tab Item Base */
+.tab-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: none;
+  background: #eff6ff; /* Blue-50 */
+  color: #2563eb; /* Blue-600 */
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s, opacity 0.2s, border 0.2s;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.tab-item:focus {
+  outline: none;
+}
+
+/* Remove default button styles */
+.tab-item::-moz-focus-inner {
+  border: 0;
+}
+
+/* Text Variant */
+.tab-item-text {
+  gap: 10px;
+}
+
+.tab-text-content {
+  white-space: nowrap;
+}
+
+/* Icon-Text Variant */
+.tab-item-icon-text {
+  flex-direction: column;
+  gap: 0;
+}
+
+.tab-icon-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.tab-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #dbeafe; /* Blue-100 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background-color 0.2s;
+}
+
+.tab-icon-svg {
+  display: block;
+}
+
+.tab-label {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* Size: SM */
+.tab-item-sm.tab-item-text {
+  padding: 8px 16px;
+  min-height: 29px;
+}
+
+.tab-item-sm.tab-item-icon-text {
+  padding: 8px 18px;
+  min-height: 80px;
+  width: 168px;
+}
+
+/* Size: MD */
+.tab-item-md.tab-item-text {
+  padding: 12px 24px;
+  min-height: 35px;
+}
+
+.tab-item-md.tab-item-icon-text {
+  padding: 13px 26px;
+  min-height: 88px;
+  width: 184px;
+}
+
+/* Size: LG */
+.tab-item-lg.tab-item-text {
+  padding: 16px 32px;
+  min-height: 43px;
+}
+
+.tab-item-lg.tab-item-icon-text {
+  padding: 17px 34px;
+  min-height: 96px;
+  width: 200px;
+}
+
+/* State: Default */
+.tab-item-default {
+  background: #eff6ff;
+  color: #2563eb;
+  opacity: 1;
+}
+
+.tab-item-default .tab-icon-circle {
+  background: #dbeafe;
+}
+
+/* State: Hover */
+.tab-item-hover,
+.tab-item:hover:not(.tab-item-active):not([disabled]) {
+  background: #eff6ff;
+  color: #2563eb;
+  opacity: 0.9;
+}
+
+.tab-item-hover .tab-icon-circle,
+.tab-item:hover:not(.tab-item-active):not([disabled]) .tab-icon-circle {
+  background: #dbeafe;
+}
+
+/* State: Active */
+.tab-item-active {
+  background: #2563eb; /* Blue-600 */
+  color: #ffffff;
+  opacity: 1;
+}
+
+.tab-item-active .tab-icon-circle {
+  background: #3b82f6; /* Blue-500 */
+}
+
+/* State: Focus */
+.tab-item-focus,
+.tab-item:focus-visible:not(.tab-item-active):not([disabled]) {
+  background: #eff6ff;
+  color: #2563eb;
+  border: 1px solid #7c3aed; /* Violet-600 */
+  opacity: 1;
+}
+
+.tab-item-focus .tab-icon-circle,
+.tab-item:focus-visible:not(.tab-item-active):not([disabled]) .tab-icon-circle {
+  background: #dbeafe;
+}
+
+/* Adjust padding for focus border */
+.tab-item-sm.tab-item-focus,
+.tab-item-sm:focus-visible:not(.tab-item-active):not([disabled]) {
+  padding: 7px 15px; /* Reduced by 1px for border */
+}
+
+.tab-item-md.tab-item-focus,
+.tab-item-md:focus-visible:not(.tab-item-active):not([disabled]) {
+  padding: 11px 23px; /* Reduced by 1px for border */
+}
+
+.tab-item-lg.tab-item-focus,
+.tab-item-lg:focus-visible:not(.tab-item-active):not([disabled]) {
+  padding: 15px 31px; /* Reduced by 1px for border */
+}
+
+/* State: Disabled */
+.tab-item-disabled,
+.tab-item[disabled] {
+  background: #eff6ff;
+  color: #2563eb;
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.tab-item-disabled .tab-icon-circle,
+.tab-item[disabled] .tab-icon-circle {
+  background: #dbeafe;
+}
+
+/* Non-interactive when disabled globally */
+.tab-navigation-state-disabled .tab-item {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.4;
+}
