@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:test-historybook": "node dist/test-historybook/server/server.mjs",
-    "storybook": "ng run test-historybook:storybook",
+    "storybook": "node scripts/storybook-wrapper.js",
     "build-storybook": "ng run test-historybook:build-storybook"
   },
   "prettier": {
