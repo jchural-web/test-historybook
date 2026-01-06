@@ -1,0 +1,721 @@
+import type { Meta, StoryObj } from '@storybook/angular';
+import { TabNavigationComponent } from './tab-navigation.component';
+
+const meta: Meta<TabNavigationComponent> = {
+  title: 'Example/TabNavigation',
+  component: TabNavigationComponent,
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Tab size',
+    },
+    variant: {
+      control: 'select',
+      options: ['text', 'icon-text'],
+      description: 'Tab variant (text only or icon + text)',
+    },
+    state: {
+      control: 'select',
+      options: ['default', 'hover', 'active', 'focus', 'disabled'],
+      description: 'Tab state',
+    },
+    activeIndex: {
+      control: 'number',
+      description: 'Index of the active tab',
+    },
+    tabs: {
+      control: 'object',
+      description: 'Array of tab items',
+    },
+  },
+  args: {
+    size: 'md',
+    variant: 'text',
+    state: 'default',
+    activeIndex: 0,
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+  },
+};
+
+export default meta;
+type Story = StoryObj<TabNavigationComponent>;
+
+// ===========================
+// Text Variant - All Sizes & States
+// ===========================
+
+export const TextSM: Story = {
+  args: {
+    variant: 'text',
+    size: 'sm',
+    state: 'default',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+    activeIndex: 0,
+  },
+};
+
+export const TextMD: Story = {
+  args: {
+    variant: 'text',
+    size: 'md',
+    state: 'default',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+    activeIndex: 0,
+  },
+};
+
+export const TextLG: Story = {
+  args: {
+    variant: 'text',
+    size: 'lg',
+    state: 'default',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+    activeIndex: 0,
+  },
+};
+
+// ===========================
+// Icon-Text Variant - All Sizes & States
+// ===========================
+
+export const IconTextSM: Story = {
+  args: {
+    variant: 'icon-text',
+    size: 'sm',
+    state: 'default',
+    tabs: [
+      { label: 'Información del cliente', icon: true },
+      { label: 'Detalles de pago', icon: true },
+      { label: 'Historial', icon: true },
+    ],
+    activeIndex: 0,
+  },
+};
+
+export const IconTextMD: Story = {
+  args: {
+    variant: 'icon-text',
+    size: 'md',
+    state: 'default',
+    tabs: [
+      { label: 'Información del cliente', icon: true },
+      { label: 'Detalles de pago', icon: true },
+      { label: 'Historial', icon: true },
+    ],
+    activeIndex: 0,
+  },
+};
+
+export const IconTextLG: Story = {
+  args: {
+    variant: 'icon-text',
+    size: 'lg',
+    state: 'default',
+    tabs: [
+      { label: 'Información del cliente', icon: true },
+      { label: 'Detalles de pago', icon: true },
+      { label: 'Historial', icon: true },
+    ],
+    activeIndex: 0,
+  },
+};
+
+// ===========================
+// States Showcase
+// ===========================
+
+export const StateHover: Story = {
+  args: {
+    variant: 'text',
+    size: 'md',
+    state: 'hover',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+    ],
+    activeIndex: -1, // No active tab
+  },
+};
+
+export const StateActive: Story = {
+  args: {
+    variant: 'text',
+    size: 'md',
+    state: 'default',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+    activeIndex: 1,
+  },
+};
+
+export const StateFocus: Story = {
+  args: {
+    variant: 'text',
+    size: 'md',
+    state: 'focus',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+    ],
+    activeIndex: -1,
+  },
+};
+
+export const StateDisabled: Story = {
+  args: {
+    variant: 'text',
+    size: 'md',
+    state: 'disabled',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+    activeIndex: 0,
+  },
+};
+
+// ===========================
+// Design System Showcase
+// ===========================
+
+export const DesignSystemShowcase: Story = {
+  render: () => ({
+    template: `
+      <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 1400px;">
+        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Tab Navigation Component Library</h2>
+        
+        <!-- Text Variant Grid -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Text Variant</h3>
+          
+          <div style="display: grid; grid-template-columns: 100px repeat(5, 1fr); gap: 24px 32px; align-items: center;">
+            <!-- Headers -->
+            <div></div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Default</div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Hover</div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Active</div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Focus</div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Disabled</div>
+            
+            <!-- SM Row -->
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">sm</div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="sm" 
+                state="default" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="sm" 
+                state="hover" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="sm" 
+                state="default" 
+                [activeIndex]="0"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="sm" 
+                state="focus" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="sm" 
+                state="disabled" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            
+            <!-- MD Row -->
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">md</div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="md" 
+                state="default" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="md" 
+                state="hover" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="md" 
+                state="default" 
+                [activeIndex]="0"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="md" 
+                state="focus" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="md" 
+                state="disabled" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            
+            <!-- LG Row -->
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">lg</div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="lg" 
+                state="default" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="lg" 
+                state="hover" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="lg" 
+                state="default" 
+                [activeIndex]="0"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="lg" 
+                state="focus" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="text" 
+                size="lg" 
+                state="disabled" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
+              </storybook-tab-navigation>
+            </div>
+          </div>
+        </section>
+
+        <!-- Icon-Text Variant Grid -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Icon-Text Variant</h3>
+          
+          <div style="display: grid; grid-template-columns: 100px repeat(5, 1fr); gap: 24px 32px; align-items: center;">
+            <!-- Headers -->
+            <div></div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Default</div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Hover</div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Active</div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Focus</div>
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">Disabled</div>
+            
+            <!-- SM Row -->
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">sm</div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="sm" 
+                state="default" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="sm" 
+                state="hover" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="sm" 
+                state="default" 
+                [activeIndex]="0"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="sm" 
+                state="focus" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="sm" 
+                state="disabled" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            
+            <!-- MD Row -->
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">md</div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="md" 
+                state="default" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="md" 
+                state="hover" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="md" 
+                state="default" 
+                [activeIndex]="0"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="md" 
+                state="focus" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="md" 
+                state="disabled" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            
+            <!-- LG Row -->
+            <div style="font-size: 16px; font-weight: 600; color: #202020;">lg</div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="lg" 
+                state="default" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="lg" 
+                state="hover" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="lg" 
+                state="default" 
+                [activeIndex]="0"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="lg" 
+                state="focus" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+            <div>
+              <storybook-tab-navigation 
+                variant="icon-text" 
+                size="lg" 
+                state="disabled" 
+                [activeIndex]="-1"
+                [tabs]="[{ label: 'Información del cliente', icon: true }]">
+              </storybook-tab-navigation>
+            </div>
+          </div>
+        </section>
+
+        <!-- Design Specifications -->
+        <section style="margin-top: 64px;">
+          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
+          
+          <div style="font-size: 14px; color: #64748B; line-height: 1.8;">
+            <p style="margin: 16px 0 8px 0;"><strong>Variant: Text</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Displays label with optional counter in parentheses</li>
+              <li>Horizontal layout with centered text</li>
+              <li>Border Radius: 8px</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Variant: Icon-Text</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Displays icon (32px circle) above label</li>
+              <li>Vertical layout (column)</li>
+              <li>Icon Background: #DBEAFE (Blue-100) default, #3B82F6 (Blue-500) active</li>
+              <li>Icon Stroke: #2563EB default, white active</li>
+              <li>Label: 12px, 600 weight</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Size: sm</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Text: padding 8px 16px, min-height 29px</li>
+              <li>Icon-Text: padding 8px 18px, 168×80px</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Size: md</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Text: padding 12px 24px, min-height 35px</li>
+              <li>Icon-Text: padding 13px 26px, 184×88px</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Size: lg</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Text: padding 16px 32px, min-height 43px</li>
+              <li>Icon-Text: padding 17px 34px, 200×96px</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>States:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li><strong>Default:</strong> Background #EFF6FF, Text #2563EB</li>
+              <li><strong>Hover:</strong> Opacity 90%</li>
+              <li><strong>Active:</strong> Background #2563EB, Text white</li>
+              <li><strong>Focus:</strong> Border 1px solid #7C3AED (Violet-600)</li>
+              <li><strong>Disabled:</strong> Opacity 40%, no interactions</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Typography:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Font Family: Inter</li>
+              <li>Font Size: 14px (text variant), 12px (icon-text labels)</li>
+              <li>Font Weight: 500 (text), 600 (icon-text labels)</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Behavior:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Only one tab can be active at a time</li>
+              <li>Clicking inactive tab emits onTabChange event</li>
+              <li>Disabled state prevents all interactions</li>
+              <li>Focus state shows on keyboard navigation</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    `,
+  }),
+};
+
+// ===========================
+// Usage Examples
+// ===========================
+
+export const UsageExamples: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">TabNavigation Usage Examples</h3>
+        
+        <!-- Example 1: Simple Text Tabs -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Text Tabs with Counters</h4>
+          <storybook-tab-navigation
+            variant="text"
+            size="md"
+            [tabs]="[
+              { label: 'Solicitudes Realizadas', count: 3 },
+              { label: 'En Proceso', count: 12 },
+              { label: 'Completadas', count: 45 }
+            ]"
+            [activeIndex]="0">
+          </storybook-tab-navigation>
+        </div>
+        
+        <!-- Example 2: Icon Tabs -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Icon-Text Tabs</h4>
+          <storybook-tab-navigation
+            variant="icon-text"
+            size="lg"
+            [tabs]="[
+              { label: 'Información del cliente', icon: true },
+              { label: 'Detalles de pago', icon: true },
+              { label: 'Historial de pedidos', icon: true }
+            ]"
+            [activeIndex]="1">
+          </storybook-tab-navigation>
+        </div>
+        
+        <!-- Example 3: Settings Sections -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Settings Navigation</h4>
+          <storybook-tab-navigation
+            variant="text"
+            size="sm"
+            [tabs]="[
+              { label: 'General' },
+              { label: 'Seguridad' },
+              { label: 'Notificaciones' },
+              { label: 'Privacidad' }
+            ]"
+            [activeIndex]="2">
+          </storybook-tab-navigation>
+        </div>
+        
+        <!-- Example 4: Dashboard Sections -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Dashboard Views</h4>
+          <storybook-tab-navigation
+            variant="icon-text"
+            size="md"
+            [tabs]="[
+              { label: 'Resumen', icon: true },
+              { label: 'Análisis', icon: true },
+              { label: 'Reportes', icon: true },
+              { label: 'Configuración', icon: true }
+            ]"
+            [activeIndex]="0">
+          </storybook-tab-navigation>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// ===========================
+// Interactive Playground
+// ===========================
+
+export const InteractivePlayground: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive TabNavigation Playground</h3>
+        <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
+          Use the controls panel to adjust variant, size, state, and tabs
+        </p>
+        
+        <div style="display: flex; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
+          <storybook-tab-navigation 
+            [variant]="variant"
+            [size]="size"
+            [state]="state"
+            [tabs]="tabs"
+            [activeIndex]="activeIndex"
+            (onTabChange)="handleTabChange($event)">
+          </storybook-tab-navigation>
+        </div>
+        
+        <div style="margin-top: 32px; padding: 16px; background: #FEF3C7; border-radius: 8px; font-size: 13px; color: #78350F; line-height: 1.6;">
+          <strong>Tips:</strong>
+          <ul style="margin: 8px 0 0 20px;">
+            <li>Set <code>variant</code> to "text" for simple tabs or "icon-text" for icon-based tabs</li>
+            <li>Use <code>count</code> property in tabs array to show counters (text variant only)</li>
+            <li>Set <code>activeIndex</code> to control which tab is selected (0-based)</li>
+            <li>The component emits <code>onTabChange</code> event when a tab is clicked</li>
+            <li>Set <code>state</code> to "disabled" to prevent all interactions</li>
+          </ul>
+        </div>
+      </div>
+    `,
+  }),
+  args: {
+    variant: 'text',
+    size: 'md',
+    state: 'default',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+    activeIndex: 0,
+  },
+};
