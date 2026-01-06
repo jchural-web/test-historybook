@@ -54,6 +54,7 @@ import { TabNavigationComponent } from './tab-navigation.component';
 |------|------|---------|-------------|
 | `variant` | `'text' \| 'icon-text'` | `'text'` | Tab display variant |
 | `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tab size |
+| `color` | `'blue' \| 'green' \| 'yellow'` | `'blue'` | Tab color variant |
 | `state` | `'default' \| 'hover' \| 'active' \| 'focus' \| 'disabled'` | `'default'` | Tab state (applied to inactive tabs) |
 | `tabs` | `TabItem[]` | `[]` | Array of tab items |
 | `activeIndex` | `number` | `0` | Index of the currently active tab |
@@ -119,6 +120,68 @@ Displays tabs with an icon above the label in a vertical layout.
 - Icon Stroke: #2563EB default, white active
 - Label: 12px, 600 weight, centered
 - Fixed width per size
+
+## Color Variants
+
+### Blue (Default)
+
+Classic blue color scheme using Tailwind Blue palette.
+
+```html
+<storybook-tab-navigation
+  variant="text"
+  size="md"
+  color="blue"
+  [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
+  [activeIndex]="0">
+</storybook-tab-navigation>
+```
+
+**Colors:**
+- Default: Background #EFF6FF (Blue-50), Text #2563EB (Blue-600)
+- Icon Circle: #DBEAFE (Blue-100)
+- Active: Background #2563EB (Blue-600), Icon Circle #3B82F6 (Blue-500)
+- Focus Border: #7C3AED (Violet-600)
+
+### Green
+
+Fresh green color scheme using Tailwind Green palette.
+
+```html
+<storybook-tab-navigation
+  variant="text"
+  size="md"
+  color="green"
+  [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
+  [activeIndex]="0">
+</storybook-tab-navigation>
+```
+
+**Colors:**
+- Default: Background #F0FDF4 (Green-50), Text #16A34A (Green-600)
+- Icon Circle: #DCFCE7 (Green-100)
+- Active: Background #16A34A (Green-600), Icon Circle #22C55E (Green-500)
+- Focus Border: #16A34A (Green-600)
+
+### Yellow
+
+Warm yellow color scheme using Tailwind Yellow palette.
+
+```html
+<storybook-tab-navigation
+  variant="text"
+  size="md"
+  color="yellow"
+  [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
+  [activeIndex]="0">
+</storybook-tab-navigation>
+```
+
+**Colors:**
+- Default: Background #FEFCE8 (Yellow-50), Text #CA8A04 (Yellow-600)
+- Icon Circle: #FEF3C7 (Yellow-100)
+- Active: Background #CA8A04 (Yellow-600), Icon Circle #EAB308 (Yellow-500)
+- Focus Border: #CA8A04 (Yellow-600)
 
 ## Sizes
 
@@ -295,20 +358,26 @@ Prevents all user interactions.
 
 ### Colors
 
-**Default/Inactive:**
-- Background: #EFF6FF (Blue-50)
-- Text: #2563EB (Blue-600)
+**Blue Color:**
+- Default/Inactive: Background #EFF6FF (Blue-50), Text #2563EB (Blue-600)
 - Icon Circle BG: #DBEAFE (Blue-100)
 - Icon Stroke: #2563EB (Blue-600)
+- Active: Background #2563EB (Blue-600), Icon Circle #3B82F6 (Blue-500)
+- Focus Border: #7C3AED (Violet-600)
 
-**Active:**
-- Background: #2563EB (Blue-600)
-- Text: #FFFFFF (White)
-- Icon Circle BG: #3B82F6 (Blue-500)
-- Icon Stroke: #FFFFFF (White)
+**Green Color:**
+- Default/Inactive: Background #F0FDF4 (Green-50), Text #16A34A (Green-600)
+- Icon Circle BG: #DCFCE7 (Green-100)
+- Icon Stroke: #16A34A (Green-600)
+- Active: Background #16A34A (Green-600), Icon Circle #22C55E (Green-500)
+- Focus Border: #16A34A (Green-600)
 
-**Focus Border:**
-- Border: 1px solid #7C3AED (Violet-600)
+**Yellow Color:**
+- Default/Inactive: Background #FEFCE8 (Yellow-50), Text #CA8A04 (Yellow-600)
+- Icon Circle BG: #FEF3C7 (Yellow-100)
+- Icon Stroke: #CA8A04 (Yellow-600)
+- Active: Background #CA8A04 (Yellow-600), Icon Circle #EAB308 (Yellow-500)
+- Focus Border: #CA8A04 (Yellow-600)
 
 ### Behavior
 
@@ -321,12 +390,13 @@ Prevents all user interactions.
 
 ## Examples
 
-### Dashboard Navigation
+### Dashboard Navigation (Green)
 
 ```html
 <storybook-tab-navigation
   variant="icon-text"
   size="md"
+  color="green"
   [tabs]="[
     { label: 'Resumen', icon: true },
     { label: 'Análisis', icon: true },
