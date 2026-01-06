@@ -671,13 +671,14 @@ export const UsageExamples: Story = {
     template: `
       <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
         <h3 style="margin: 0; font-size: 16px; font-weight: 600;">TabNavigation Usage Examples</h3>
-        
-        <!-- Example 1: Simple Text Tabs -->
+
+        <!-- Example 1: Blue Color Variant -->
         <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Text Tabs with Counters</h4>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Blue Tabs with Counters</h4>
           <storybook-tab-navigation
             variant="text"
             size="md"
+            color="blue"
             [tabs]="[
               { label: 'Solicitudes Realizadas', count: 3 },
               { label: 'En Proceso', count: 12 },
@@ -686,13 +687,14 @@ export const UsageExamples: Story = {
             [activeIndex]="0">
           </storybook-tab-navigation>
         </div>
-        
-        <!-- Example 2: Icon Tabs -->
+
+        <!-- Example 2: Green Color Variant -->
         <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Icon-Text Tabs</h4>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Green Icon-Text Tabs</h4>
           <storybook-tab-navigation
             variant="icon-text"
             size="lg"
+            color="green"
             [tabs]="[
               { label: 'Información del cliente', icon: true },
               { label: 'Detalles de pago', icon: true },
@@ -701,13 +703,14 @@ export const UsageExamples: Story = {
             [activeIndex]="1">
           </storybook-tab-navigation>
         </div>
-        
-        <!-- Example 3: Settings Sections -->
+
+        <!-- Example 3: Yellow Color Variant -->
         <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Settings Navigation</h4>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Yellow Settings Navigation</h4>
           <storybook-tab-navigation
             variant="text"
             size="sm"
+            color="yellow"
             [tabs]="[
               { label: 'General' },
               { label: 'Seguridad' },
@@ -717,18 +720,35 @@ export const UsageExamples: Story = {
             [activeIndex]="2">
           </storybook-tab-navigation>
         </div>
-        
-        <!-- Example 4: Dashboard Sections -->
+
+        <!-- Example 4: Green Dashboard Sections -->
         <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Dashboard Views</h4>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Green Dashboard Views</h4>
           <storybook-tab-navigation
             variant="icon-text"
             size="md"
+            color="green"
             [tabs]="[
               { label: 'Resumen', icon: true },
               { label: 'Análisis', icon: true },
               { label: 'Reportes', icon: true },
               { label: 'Configuración', icon: true }
+            ]"
+            [activeIndex]="0">
+          </storybook-tab-navigation>
+        </div>
+
+        <!-- Example 5: Yellow Tabs with Counters -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Yellow Request Tabs</h4>
+          <storybook-tab-navigation
+            variant="text"
+            size="md"
+            color="yellow"
+            [tabs]="[
+              { label: 'Pendientes', count: 8 },
+              { label: 'En Revisión', count: 5 },
+              { label: 'Completadas', count: 32 }
             ]"
             [activeIndex]="0">
           </storybook-tab-navigation>
