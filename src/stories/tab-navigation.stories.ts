@@ -769,24 +769,26 @@ export const InteractivePlayground: Story = {
       <div style="padding: 24px; font-family: Roboto, sans-serif;">
         <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive TabNavigation Playground</h3>
         <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
-          Use the controls panel to adjust variant, size, state, and tabs
+          Use the controls panel to adjust variant, size, color, state, and tabs
         </p>
-        
+
         <div style="display: flex; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <storybook-tab-navigation 
+          <storybook-tab-navigation
             [variant]="variant"
             [size]="size"
+            [color]="color"
             [state]="state"
             [tabs]="tabs"
             [activeIndex]="activeIndex"
             (onTabChange)="handleTabChange($event)">
           </storybook-tab-navigation>
         </div>
-        
+
         <div style="margin-top: 32px; padding: 16px; background: #FEF3C7; border-radius: 8px; font-size: 13px; color: #78350F; line-height: 1.6;">
           <strong>Tips:</strong>
           <ul style="margin: 8px 0 0 20px;">
             <li>Set <code>variant</code> to "text" for simple tabs or "icon-text" for icon-based tabs</li>
+            <li>Choose <code>color</code> from "blue", "green", or "yellow" variants</li>
             <li>Use <code>count</code> property in tabs array to show counters (text variant only)</li>
             <li>Set <code>activeIndex</code> to control which tab is selected (0-based)</li>
             <li>The component emits <code>onTabChange</code> event when a tab is clicked</li>
@@ -799,6 +801,7 @@ export const InteractivePlayground: Story = {
   args: {
     variant: 'text',
     size: 'md',
+    color: 'blue',
     state: 'default',
     tabs: [
       { label: 'Solicitudes Realizadas', count: 3 },
