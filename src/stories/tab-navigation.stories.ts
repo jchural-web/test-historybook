@@ -25,6 +25,11 @@ const meta: Meta<TabNavigationComponent> = {
       control: 'number',
       description: 'Index of the active tab',
     },
+    color: {
+      control: 'select',
+      options: ['blue', 'green', 'yellow'],
+      description: 'Tab color variant',
+    },
     tabs: {
       control: 'object',
       description: 'Array of tab items',
@@ -128,6 +133,70 @@ export const IconTextLG: Story = {
   args: {
     variant: 'icon-text',
     size: 'lg',
+    state: 'default',
+    tabs: [
+      { label: 'Información del cliente', icon: true },
+      { label: 'Detalles de pago', icon: true },
+      { label: 'Historial', icon: true },
+    ],
+    activeIndex: 0,
+  },
+};
+
+// ===========================
+// Color Variants
+// ===========================
+
+export const ColorGreen: Story = {
+  args: {
+    variant: 'text',
+    size: 'md',
+    color: 'green',
+    state: 'default',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+    activeIndex: 0,
+  },
+};
+
+export const ColorGreenIconText: Story = {
+  args: {
+    variant: 'icon-text',
+    size: 'md',
+    color: 'green',
+    state: 'default',
+    tabs: [
+      { label: 'Información del cliente', icon: true },
+      { label: 'Detalles de pago', icon: true },
+      { label: 'Historial', icon: true },
+    ],
+    activeIndex: 0,
+  },
+};
+
+export const ColorYellow: Story = {
+  args: {
+    variant: 'text',
+    size: 'md',
+    color: 'yellow',
+    state: 'default',
+    tabs: [
+      { label: 'Solicitudes Realizadas', count: 3 },
+      { label: 'Información del cliente' },
+      { label: 'Documentos', count: 5 },
+    ],
+    activeIndex: 0,
+  },
+};
+
+export const ColorYellowIconText: Story = {
+  args: {
+    variant: 'icon-text',
+    size: 'md',
+    color: 'yellow',
     state: 'default',
     tabs: [
       { label: 'Información del cliente', icon: true },
