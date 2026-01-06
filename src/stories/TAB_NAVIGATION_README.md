@@ -630,6 +630,12 @@ Builder.registerComponent(TabNavigationComponent, {
       defaultValue: 'default'
     },
     {
+      name: 'color',
+      type: 'string',
+      enum: ['blue', 'green', 'yellow'],
+      defaultValue: 'blue'
+    },
+    {
       name: 'tabs',
       type: 'list',
       subFields: [
