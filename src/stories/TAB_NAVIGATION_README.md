@@ -33,7 +33,8 @@ import { TabNavigationComponent } from './tab-navigation.component';
     { label: 'Documentos', count: 5 }
   ]"
   [activeIndex]="0"
-  (onTabChange)="handleTabChange($event)">
+  (onTabChange)="handleTabChange($event)"
+>
 </storybook-tab-navigation>
 
 <!-- Icon-text variant -->
@@ -44,29 +45,30 @@ import { TabNavigationComponent } from './tab-navigation.component';
     { label: 'Información del cliente', icon: true },
     { label: 'Detalles de pago', icon: true }
   ]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'text' \| 'icon-text'` | `'text'` | Tab display variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Tab size |
-| `color` | `'blue' \| 'green' \| 'yellow'` | `'blue'` | Tab color variant |
-| `state` | `'default' \| 'hover' \| 'active' \| 'focus' \| 'disabled'` | `'default'` | Tab state (applied to inactive tabs) |
-| `tabs` | `TabItem[]` | `[]` | Array of tab items |
-| `activeIndex` | `number` | `0` | Index of the currently active tab |
-| `onTabChange` | `EventEmitter<number>` | - | Event emitted when tab is clicked (emits new index) |
+| Prop          | Type                                                        | Default     | Description                                         |
+| ------------- | ----------------------------------------------------------- | ----------- | --------------------------------------------------- |
+| `variant`     | `'text' \| 'icon-text'`                                     | `'text'`    | Tab display variant                                 |
+| `size`        | `'sm' \| 'md' \| 'lg'`                                      | `'md'`      | Tab size                                            |
+| `color`       | `'blue' \| 'green' \| 'yellow'`                             | `'blue'`    | Tab color variant                                   |
+| `state`       | `'default' \| 'hover' \| 'active' \| 'focus' \| 'disabled'` | `'default'` | Tab state (applied to inactive tabs)                |
+| `tabs`        | `TabItem[]`                                                 | `[]`        | Array of tab items                                  |
+| `activeIndex` | `number`                                                    | `0`         | Index of the currently active tab                   |
+| `onTabChange` | `EventEmitter<number>`                                      | -           | Event emitted when tab is clicked (emits new index) |
 
 ### TabItem Interface
 
 ```typescript
 interface TabItem {
-  label: string;        // Tab label text
-  count?: number;       // Optional counter (text variant only)
-  icon?: boolean;       // Whether to show icon (icon-text variant)
+  label: string; // Tab label text
+  count?: number; // Optional counter (text variant only)
+  icon?: boolean; // Whether to show icon (icon-text variant)
 }
 ```
 
@@ -85,11 +87,13 @@ Displays tabs with text labels and optional counters in parentheses.
     { label: 'En Proceso', count: 12 },
     { label: 'Completadas', count: 45 }
   ]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 **Specifications:**
+
 - Layout: Horizontal inline
 - Content: Label + optional counter
 - Counter Format: " (n)" appended to label
@@ -109,11 +113,13 @@ Displays tabs with an icon above the label in a vertical layout.
     { label: 'Detalles de pago', icon: true },
     { label: 'Historial', icon: true }
   ]"
-  [activeIndex]="1">
+  [activeIndex]="1"
+>
 </storybook-tab-navigation>
 ```
 
 **Specifications:**
+
 - Layout: Vertical (column)
 - Icon: 32px circle with user icon SVG
 - Icon Background: #DBEAFE (Blue-100) default, #3B82F6 (Blue-500) active
@@ -133,11 +139,13 @@ Classic blue color scheme using Tailwind Blue palette.
   size="md"
   color="blue"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 **Colors:**
+
 - Default: Background #EFF6FF (Blue-50), Text #2563EB (Blue-600)
 - Icon Circle: #DBEAFE (Blue-100)
 - Active: Background #2563EB (Blue-600), Icon Circle #3B82F6 (Blue-500)
@@ -153,11 +161,13 @@ Fresh green color scheme using Tailwind Green palette.
   size="md"
   color="green"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 **Colors:**
+
 - Default: Background #F0FDF4 (Green-50), Text #16A34A (Green-600)
 - Icon Circle: #DCFCE7 (Green-100)
 - Active: Background #16A34A (Green-600), Icon Circle #22C55E (Green-500)
@@ -173,11 +183,13 @@ Warm yellow color scheme using Tailwind Yellow palette.
   size="md"
   color="yellow"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 **Colors:**
+
 - Default: Background #FEFCE8 (Yellow-50), Text #CA8A04 (Yellow-600)
 - Icon Circle: #FEF3C7 (Yellow-100)
 - Active: Background #CA8A04 (Yellow-600), Icon Circle #EAB308 (Yellow-500)
@@ -188,10 +200,12 @@ Warm yellow color scheme using Tailwind Yellow palette.
 ### Small (sm)
 
 **Text Variant:**
+
 - Padding: 8px 16px
 - Min Height: 29px
 
 **Icon-Text Variant:**
+
 - Padding: 8px 18px
 - Dimensions: 168×80px
 
@@ -200,17 +214,20 @@ Warm yellow color scheme using Tailwind Yellow palette.
   variant="text"
   size="sm"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 ### Medium (md) - Default
 
 **Text Variant:**
+
 - Padding: 12px 24px
 - Min Height: 35px
 
 **Icon-Text Variant:**
+
 - Padding: 13px 26px
 - Dimensions: 184×88px
 
@@ -219,17 +236,20 @@ Warm yellow color scheme using Tailwind Yellow palette.
   variant="text"
   size="md"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 ### Large (lg)
 
 **Text Variant:**
+
 - Padding: 16px 32px
 - Min Height: 43px
 
 **Icon-Text Variant:**
+
 - Padding: 17px 34px
 - Dimensions: 200×96px
 
@@ -238,7 +258,8 @@ Warm yellow color scheme using Tailwind Yellow palette.
   variant="text"
   size="lg"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
@@ -254,11 +275,13 @@ Normal appearance for inactive tabs.
   size="md"
   state="default"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 **Specifications:**
+
 - Background: #EFF6FF (Blue-50)
 - Text Color: #2563EB (Blue-600)
 - Opacity: 100%
@@ -268,6 +291,7 @@ Normal appearance for inactive tabs.
 Applied when user hovers over an inactive tab.
 
 **Specifications:**
+
 - Background: #EFF6FF (Blue-50)
 - Text Color: #2563EB (Blue-600)
 - Opacity: 90%
@@ -281,11 +305,13 @@ Applied to the tab specified by `activeIndex`.
   variant="text"
   size="md"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="1">
+  [activeIndex]="1"
+>
 </storybook-tab-navigation>
 ```
 
 **Specifications:**
+
 - Background: #2563EB (Blue-600)
 - Text Color: #FFFFFF (White)
 - Icon Circle Background: #3B82F6 (Blue-500)
@@ -297,6 +323,7 @@ Applied to the tab specified by `activeIndex`.
 Applied when user navigates via keyboard.
 
 **Specifications:**
+
 - Background: #EFF6FF (Blue-50)
 - Text Color: #2563EB (Blue-600)
 - Border: 1px solid #7C3AED (Violet-600)
@@ -314,11 +341,13 @@ Prevents all user interactions.
   size="md"
   state="disabled"
   [tabs]="[{ label: 'Tab 1' }, { label: 'Tab 2' }]"
-  [activeIndex]="0">
+  [activeIndex]="0"
+>
 </storybook-tab-navigation>
 ```
 
 **Specifications:**
+
 - Background: #EFF6FF (Blue-50)
 - Text Color: #2563EB (Blue-600)
 - Opacity: 40%
@@ -330,6 +359,7 @@ Prevents all user interactions.
 ### Typography
 
 **Text Variant:**
+
 - Font Family: Inter, -apple-system, Roboto, Helvetica, sans-serif
 - Font Size: 14px
 - Font Weight: 500
@@ -337,6 +367,7 @@ Prevents all user interactions.
 - White Space: nowrap
 
 **Icon-Text Variant Label:**
+
 - Font Family: Inter, -apple-system, Roboto, Helvetica, sans-serif
 - Font Size: 12px
 - Font Weight: 600
@@ -346,12 +377,14 @@ Prevents all user interactions.
 ### Layout
 
 **Text Variant:**
+
 - Display: flex
 - Justify Content: center
 - Align Items: center
 - Gap: 10px (between tabs)
 
 **Icon-Text Variant:**
+
 - Display: flex (column)
 - Align Items: center
 - Icon-Label Gap: 4px
@@ -359,6 +392,7 @@ Prevents all user interactions.
 ### Colors
 
 **Blue Color:**
+
 - Default/Inactive: Background #EFF6FF (Blue-50), Text #2563EB (Blue-600)
 - Icon Circle BG: #DBEAFE (Blue-100)
 - Icon Stroke: #2563EB (Blue-600)
@@ -366,6 +400,7 @@ Prevents all user interactions.
 - Focus Border: #7C3AED (Violet-600)
 
 **Green Color:**
+
 - Default/Inactive: Background #F0FDF4 (Green-50), Text #16A34A (Green-600)
 - Icon Circle BG: #DCFCE7 (Green-100)
 - Icon Stroke: #16A34A (Green-600)
@@ -373,6 +408,7 @@ Prevents all user interactions.
 - Focus Border: #16A34A (Green-600)
 
 **Yellow Color:**
+
 - Default/Inactive: Background #FEFCE8 (Yellow-50), Text #CA8A04 (Yellow-600)
 - Icon Circle BG: #FEF3C7 (Yellow-100)
 - Icon Stroke: #CA8A04 (Yellow-600)
@@ -403,7 +439,8 @@ Prevents all user interactions.
     { label: 'Reportes', icon: true }
   ]"
   [activeIndex]="dashboardActiveTab"
-  (onTabChange)="dashboardActiveTab = $event">
+  (onTabChange)="dashboardActiveTab = $event"
+>
 </storybook-tab-navigation>
 ```
 
@@ -419,7 +456,8 @@ Prevents all user interactions.
     { label: 'Pendientes', count: requestCounts.pending }
   ]"
   [activeIndex]="activeRequestTab"
-  (onTabChange)="onRequestTabChange($event)">
+  (onTabChange)="onRequestTabChange($event)"
+>
 </storybook-tab-navigation>
 
 <div [ngSwitch]="activeRequestTab">
@@ -442,7 +480,8 @@ Prevents all user interactions.
     { label: 'Privacidad' }
   ]"
   [activeIndex]="settingsTab"
-  (onTabChange)="settingsTab = $event">
+  (onTabChange)="settingsTab = $event"
+>
 </storybook-tab-navigation>
 ```
 
@@ -458,13 +497,15 @@ Prevents all user interactions.
     { label: 'Historial de pedidos', icon: true }
   ]"
   [activeIndex]="profileTab"
-  (onTabChange)="loadProfileSection($event)">
+  (onTabChange)="loadProfileSection($event)"
+>
 </storybook-tab-navigation>
 ```
 
 ## Use Cases
 
 ### When to Use Text Variant
+
 - Dashboard sections with counters
 - Settings navigation
 - Simple category filters
@@ -472,6 +513,7 @@ Prevents all user interactions.
 - Status filters (with counts)
 
 ### When to Use Icon-Text Variant
+
 - User profile sections
 - Dashboard main sections
 - Form step indicators
@@ -490,18 +532,15 @@ Prevents all user interactions.
 ```html
 <!-- Rendered output -->
 <div class="tab-navigation" role="tablist">
-  <button 
-    class="tab-item tab-item-active" 
-    role="tab" 
-    aria-selected="true" 
-    aria-controls="tabpanel-0">
+  <button
+    class="tab-item tab-item-active"
+    role="tab"
+    aria-selected="true"
+    aria-controls="tabpanel-0"
+  >
     Solicitudes Realizadas (3)
   </button>
-  <button 
-    class="tab-item" 
-    role="tab" 
-    aria-selected="false" 
-    aria-controls="tabpanel-1">
+  <button class="tab-item" role="tab" aria-selected="false" aria-controls="tabpanel-1">
     Información del cliente
   </button>
 </div>
@@ -524,7 +563,7 @@ export class TabNavigationComponent {
   @Input() tabs: TabItem[] = [];
   @Input() activeIndex: number = 0;
   @Output() onTabChange = new EventEmitter<number>();
-  
+
   get navigationClasses(): string[] { ... }
   getTabClasses(index: number): string[] { ... }
   getIconStroke(index: number): string { ... }
@@ -542,11 +581,11 @@ Emitted when a user clicks on an inactive tab.
 // Component class
 export class MyComponent {
   currentTab = 0;
-  
+
   handleTabChange(newIndex: number) {
     console.log(`Switching from tab ${this.currentTab} to ${newIndex}`);
     this.currentTab = newIndex;
-    
+
     // Load data for new tab
     this.loadTabData(newIndex);
   }
@@ -558,7 +597,8 @@ export class MyComponent {
 <storybook-tab-navigation
   [tabs]="tabs"
   [activeIndex]="currentTab"
-  (onTabChange)="handleTabChange($event)">
+  (onTabChange)="handleTabChange($event)"
+>
 </storybook-tab-navigation>
 ```
 
@@ -615,25 +655,25 @@ Builder.registerComponent(TabNavigationComponent, {
       name: 'variant',
       type: 'string',
       enum: ['text', 'icon-text'],
-      defaultValue: 'text'
+      defaultValue: 'text',
     },
     {
       name: 'size',
       type: 'string',
       enum: ['sm', 'md', 'lg'],
-      defaultValue: 'md'
+      defaultValue: 'md',
     },
     {
       name: 'state',
       type: 'string',
       enum: ['default', 'hover', 'active', 'focus', 'disabled'],
-      defaultValue: 'default'
+      defaultValue: 'default',
     },
     {
       name: 'color',
       type: 'string',
       enum: ['blue', 'green', 'yellow'],
-      defaultValue: 'blue'
+      defaultValue: 'blue',
     },
     {
       name: 'tabs',
@@ -642,30 +682,26 @@ Builder.registerComponent(TabNavigationComponent, {
         {
           name: 'label',
           type: 'string',
-          required: true
+          required: true,
         },
         {
           name: 'count',
-          type: 'number'
+          type: 'number',
         },
         {
           name: 'icon',
           type: 'boolean',
-          defaultValue: false
-        }
+          defaultValue: false,
+        },
       ],
-      defaultValue: [
-        { label: 'Tab 1' },
-        { label: 'Tab 2' },
-        { label: 'Tab 3' }
-      ]
+      defaultValue: [{ label: 'Tab 1' }, { label: 'Tab 2' }, { label: 'Tab 3' }],
     },
     {
       name: 'activeIndex',
       type: 'number',
-      defaultValue: 0
-    }
-  ]
+      defaultValue: 0,
+    },
+  ],
 });
 ```
 
@@ -698,13 +734,9 @@ Builder.registerComponent(TabNavigationComponent, {
 ```typescript
 export class MyComponent {
   activeTab = 0;
-  
-  tabs = [
-    { label: 'Overview', count: 5 },
-    { label: 'Details' },
-    { label: 'History', count: 12 }
-  ];
-  
+
+  tabs = [{ label: 'Overview', count: 5 }, { label: 'Details' }, { label: 'History', count: 12 }];
+
   handleTabChange(index: number) {
     this.activeTab = index;
   }
@@ -715,7 +747,8 @@ export class MyComponent {
 <storybook-tab-navigation
   [tabs]="tabs"
   [activeIndex]="activeTab"
-  (onTabChange)="handleTabChange($event)">
+  (onTabChange)="handleTabChange($event)"
+>
 </storybook-tab-navigation>
 ```
 
@@ -724,7 +757,7 @@ export class MyComponent {
 ```typescript
 export class MyComponent {
   currentView = 0;
-  
+
   switchView(index: number) {
     this.currentView = index;
     // Load data for new view
@@ -739,7 +772,8 @@ export class MyComponent {
   size="md"
   [tabs]="viewTabs"
   [activeIndex]="currentView"
-  (onTabChange)="switchView($event)">
+  (onTabChange)="switchView($event)"
+>
 </storybook-tab-navigation>
 
 <div class="content">
@@ -756,14 +790,14 @@ export class MyComponent {
   requestCounts = {
     pending: 5,
     inProgress: 12,
-    completed: 145
+    completed: 145,
   };
-  
+
   get tabs() {
     return [
       { label: 'Pendientes', count: this.requestCounts.pending },
       { label: 'En Proceso', count: this.requestCounts.inProgress },
-      { label: 'Completadas', count: this.requestCounts.completed }
+      { label: 'Completadas', count: this.requestCounts.completed },
     ];
   }
 }
@@ -774,7 +808,8 @@ export class MyComponent {
   variant="text"
   [tabs]="tabs"
   [activeIndex]="activeRequestTab"
-  (onTabChange)="activeRequestTab = $event">
+  (onTabChange)="activeRequestTab = $event"
+>
 </storybook-tab-navigation>
 ```
 
@@ -791,9 +826,7 @@ export class MyComponent {
 <storybook-tab-navigation [activeIndex]="0"></storybook-tab-navigation>
 
 <!-- Correct -->
-<storybook-tab-navigation 
-  [activeIndex]="currentTab"
-  (onTabChange)="currentTab = $event">
+<storybook-tab-navigation [activeIndex]="currentTab" (onTabChange)="currentTab = $event">
 </storybook-tab-navigation>
 ```
 
@@ -850,6 +883,7 @@ tabs = [{ label: 'Items', count: 5 }];
 ## Future Enhancements
 
 Potential features not included in current Figma design:
+
 - Scrollable tabs for overflow
 - Vertical tab orientation
 - Custom icons per tab

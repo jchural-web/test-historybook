@@ -15,7 +15,6 @@ Successfully implemented a production-ready **Pagination** component for table-o
   - Editable page input with validation
   - Page size selector
   - 5 navigation controls (First, Previous, Next, Last, Refresh)
-  
 - **`src/stories/pagination.css`** (195 lines)
   - Pixel-perfect styling from Figma
   - Responsive layout (desktop + mobile)
@@ -88,7 +87,7 @@ export class PaginationComponent {
   @Input() pageSizeOptions: number[] = [5, 10, 20];
   @Input() totalItems: number = 5;
   @Input() rangeLabel: string = '1 - 5 de 5 ítems';
-  
+
   // Outputs
   @Output() pageChange = new EventEmitter<number>();
   @Output() pageSizeChange = new EventEmitter<number>();
@@ -100,6 +99,7 @@ export class PaginationComponent {
 ### Design Specifications
 
 **Typography:**
+
 - Font: Inter, -apple-system, Roboto, Helvetica, sans-serif
 - Size: 13px
 - Weight: 500
@@ -107,6 +107,7 @@ export class PaginationComponent {
 - Letter spacing: -0.26px
 
 **Layout:**
+
 - Container: Flexbox, 16px gap, 29px height
 - Left section: 8px gap
 - Middle section: 10px gap
@@ -114,6 +115,7 @@ export class PaginationComponent {
 - Navigation controls: 7px gap
 
 **Colors:**
+
 - Background: #FFF
 - Border: #E4E4E7 (neutral-200)
 - Hover border: #D4D4D8 (neutral-300)
@@ -123,6 +125,7 @@ export class PaginationComponent {
 - Disabled icon: #D1D5DB
 
 **Inputs & Buttons:**
+
 - Border radius: 6px
 - Border: 1px solid #E4E4E7
 - Input: 42px width
@@ -132,12 +135,14 @@ export class PaginationComponent {
 ### States & Behavior
 
 **Navigation Button States:**
+
 - First page: First & Previous disabled
 - Middle page: All enabled
 - Last page: Next & Last disabled
 - Empty (totalPages = 0): All disabled
 
 **Interactive States:**
+
 - **Hover**: Background #F9FAFB, Border #D4D4D8
 - **Focus**: Border #2563EB, Shadow with 3px white gap
 - **Active**: Background #F3F4F6
@@ -153,6 +158,7 @@ export class PaginationComponent {
 ## Storybook Stories
 
 ### Basic Examples
+
 - **SinglePage**: Shows disabled navigation (1 page total)
 - **FirstPage**: Previous/First disabled
 - **MiddlePage**: All navigation enabled
@@ -160,15 +166,18 @@ export class PaginationComponent {
 - **EmptyState**: All controls disabled (0 items)
 
 ### Page Size Variations
+
 - PageSize10 (5 pages)
 - PageSize20 (3 pages)
 - PageSize50 (2 pages)
 
 ### Large Datasets
+
 - LargeDataset (100 pages, 1000 items)
 - VeryLargeDataset (500 pages, 10000 items)
 
 ### Special Stories
+
 - **DesignSystemShowcase**: Complete visual reference
 - **UsageExamples**: Real-world integration examples
 - **InteractivePlayground**: Live testing environment
@@ -182,29 +191,27 @@ export class DataTableComponent {
   totalPages = 0;
   totalItems = 0;
   items: any[] = [];
-  
+
   loadData() {
-    this.dataService
-      .getData(this.currentPage, this.pageSize)
-      .subscribe(response => {
-        this.items = response.data;
-        this.totalItems = response.total;
-        this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-      });
+    this.dataService.getData(this.currentPage, this.pageSize).subscribe((response) => {
+      this.items = response.data;
+      this.totalItems = response.total;
+      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+    });
   }
-  
+
   onPageChange(page: number) {
     this.currentPage = page;
     this.loadData();
   }
-  
+
   onPageSizeChange(size: number) {
     this.pageSize = size;
     this.currentPage = 1;
     this.totalPages = Math.ceil(this.totalItems / this.pageSize);
     this.loadData();
   }
-  
+
   get rangeLabel(): string {
     const start = (this.currentPage - 1) * this.pageSize + 1;
     const end = Math.min(this.currentPage * this.pageSize, this.totalItems);
@@ -229,13 +236,15 @@ export class DataTableComponent {
   [rangeLabel]="rangeLabel"
   (pageChange)="onPageChange($event)"
   (pageSizeChange)="onPageSizeChange($event)"
-  (refresh)="loadData()">
+  (refresh)="loadData()"
+>
 </storybook-pagination>
 ```
 
 ## Builder.io Compatibility
 
 ✅ **Fully compatible** with Builder.io:
+
 - Standalone component (no module dependencies)
 - Simple `@Input` props (editable in Builder.io)
 - Clean `@Output` events
@@ -253,19 +262,21 @@ Builder.registerComponent(PaginationComponent, {
     { name: 'pageSize', type: 'number', defaultValue: 10 },
     { name: 'pageSizeOptions', type: 'list', defaultValue: [5, 10, 20, 50] },
     { name: 'totalItems', type: 'number', defaultValue: 0 },
-    { name: 'rangeLabel', type: 'string', defaultValue: '1 - 10 de 50 ítems' }
-  ]
+    { name: 'rangeLabel', type: 'string', defaultValue: '1 - 10 de 50 ítems' },
+  ],
 });
 ```
 
 ## Responsive Design
 
 **Desktop (> 768px):**
+
 - Single horizontal row
 - All sections visible
 - Full spacing maintained
 
 **Mobile (≤ 768px):**
+
 - Wraps to multiple rows
 - Right section takes full width
 - Navigation controls maintain spacing
@@ -303,7 +314,7 @@ The component is now available in Storybook at `http://localhost:6006/`:
 ✅ Complete Storybook stories  
 ✅ Builder.io compatible  
 ✅ Accessible with ARIA  
-✅ Compiled successfully  
+✅ Compiled successfully
 
 ## Component Count
 
@@ -333,6 +344,7 @@ This brings the total component library to **20 components**:
 ## Next Steps
 
 The Pagination component is ready for:
+
 1. ✅ Storybook preview and testing
 2. ✅ Integration into data tables
 3. ✅ Builder.io registration

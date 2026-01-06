@@ -49,25 +49,29 @@ export const TableVariant: Story = {
       {
         number: '1',
         concept: 'Costos Gestión de Cobranza',
-        description: 'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza de una cuota con más de 5 días de vencimiento: llamadas telefónica, visitas, envió de cartas notariales u otros.',
+        description:
+          'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza de una cuota con más de 5 días de vencimiento: llamadas telefónica, visitas, envió de cartas notariales u otros.',
         amount: '30.00',
       },
       {
         number: '2',
         concept: 'Emisión de duplicado de certificado de estudios BSG Institute.',
-        description: 'Cuando el alumno solicita una segunda copia del certificado de estudios emitido por BSG Insitute.',
+        description:
+          'Cuando el alumno solicita una segunda copia del certificado de estudios emitido por BSG Insitute.',
         amount: '50.00',
       },
       {
         number: '3',
         concept: 'Emisión de duplicado de certificado de estudios partner.',
-        description: 'Cuando el alumno solicita una segunda copia del certificado de estudios emitido por el partner.',
+        description:
+          'Cuando el alumno solicita una segunda copia del certificado de estudios emitido por el partner.',
         amount: '30.00',
       },
       {
         number: '4',
         concept: 'Calificación de trabajos fuera de plazo.',
-        description: 'Cuando se haya superado el plazo para calificación y requiera una revisión en fecha posterior a la establecida.',
+        description:
+          'Cuando se haya superado el plazo para calificación y requiera una revisión en fecha posterior a la establecida.',
         amount: '30.00',
       },
     ],
@@ -94,12 +98,20 @@ export const ListVariant: Story = {
     collapsed: false,
     listIntro: 'La metodología consta de los siguientes componentes:',
     listItems: [
-      { text: 'Sesiones de clases grabadas publicadas en el Aula Virtual de BSG Institute y accesibles en línea 24 horas 7 días a la semana.' },
+      {
+        text: 'Sesiones de clases grabadas publicadas en el Aula Virtual de BSG Institute y accesibles en línea 24 horas 7 días a la semana.',
+      },
       { text: 'Auto-evaluaciones semanales.' },
-      { text: 'Interacción de los alumnos con el profesor a través del foro virtual de preguntas.' },
-      { text: 'Desarrollo de un trabajo de aplicación práctica a ser revisado por el expositor/tutor del programa.' },
+      {
+        text: 'Interacción de los alumnos con el profesor a través del foro virtual de preguntas.',
+      },
+      {
+        text: 'Desarrollo de un trabajo de aplicación práctica a ser revisado por el expositor/tutor del programa.',
+      },
       { text: 'Aplicación de una evaluación final.' },
-      { text: 'Interacción de los alumnos con el profesor mediante Q&A webinars en vivo, donde los alumnos podrán plantear sus dudas a los expositores y/o tutores.' },
+      {
+        text: 'Interacción de los alumnos con el profesor mediante Q&A webinars en vivo, donde los alumnos podrán plantear sus dudas a los expositores y/o tutores.',
+      },
     ],
   },
 };
@@ -110,7 +122,8 @@ export const ListVariant: Story = {
 
 export const TabsVariant: Story = {
   args: {
-    title: 'Solicitud de cambios: Centro de costo, fecha finalización, estado, sub estado y asistente asignado',
+    title:
+      'Solicitud de cambios: Centro de costo, fecha finalización, estado, sub estado y asistente asignado',
     variant: 'tabs',
     collapsible: true,
     collapsed: false,

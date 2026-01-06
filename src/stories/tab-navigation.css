@@ -15,11 +15,19 @@
   border: none;
   background: #eff6ff; /* Blue-50 */
   color: #2563eb; /* Blue-600 */
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-weight: 500;
   font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s, opacity 0.2s, border 0.2s;
+  transition:
+    background-color 0.2s,
+    opacity 0.2s,
+    border 0.2s;
   box-sizing: border-box;
   position: relative;
 }

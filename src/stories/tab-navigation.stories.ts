@@ -216,10 +216,7 @@ export const StateHover: Story = {
     variant: 'text',
     size: 'md',
     state: 'hover',
-    tabs: [
-      { label: 'Solicitudes Realizadas', count: 3 },
-      { label: 'Información del cliente' },
-    ],
+    tabs: [{ label: 'Solicitudes Realizadas', count: 3 }, { label: 'Información del cliente' }],
     activeIndex: -1, // No active tab
   },
 };
@@ -243,10 +240,7 @@ export const StateFocus: Story = {
     variant: 'text',
     size: 'md',
     state: 'focus',
-    tabs: [
-      { label: 'Solicitudes Realizadas', count: 3 },
-      { label: 'Información del cliente' },
-    ],
+    tabs: [{ label: 'Solicitudes Realizadas', count: 3 }, { label: 'Información del cliente' }],
     activeIndex: -1,
   },
 };

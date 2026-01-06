@@ -36,15 +36,8 @@ export interface PageSizeChangeEvent {
       <!-- Middle section: Page size selector -->
       <div class="pagination-section-middle">
         <div class="pagination-select-wrapper">
-          <select
-            class="pagination-select"
-            [value]="pageSize"
-            (change)="onPageSizeChange($event)"
-          >
-            <option
-              *ngFor="let option of pageSizeOptions"
-              [value]="option"
-            >
+          <select class="pagination-select" [value]="pageSize" (change)="onPageSizeChange($event)">
+            <option *ngFor="let option of pageSizeOptions" [value]="option">
               {{ option }}
             </option>
           </select>

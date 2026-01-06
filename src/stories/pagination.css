@@ -4,7 +4,12 @@
   align-items: center;
   gap: 16px;
   height: 29px;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }
 
 /* Sections */
@@ -29,7 +34,7 @@
 
 /* Labels */
 .pagination-label {
-  color: #4B5563;
+  color: #4b5563;
   font-size: 13px;
   font-weight: 500;
   line-height: normal;
@@ -37,7 +42,7 @@
 }
 
 .pagination-range-label {
-  color: #4B5563;
+  color: #4b5563;
   font-size: 13px;
   font-weight: 500;
   line-height: normal;
@@ -51,10 +56,15 @@
   height: 29px;
   padding: 0 8px;
   border-radius: 6px;
-  border: 1px solid #E4E4E7;
-  background: #FFF;
-  color: #4B5563;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  border: 1px solid #e4e4e7;
+  background: #fff;
+  color: #4b5563;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: normal;
@@ -72,16 +82,18 @@
 }
 
 .pagination-input:hover:not(:disabled) {
-  border-color: #D4D4D8;
+  border-color: #d4d4d8;
 }
 
 .pagination-input:focus {
-  border-color: #2563EB;
-  box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px #DBEAFE;
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 5px #dbeafe;
 }
 
 .pagination-input:disabled {
-  background: #F4F4F5;
+  background: #f4f4f5;
   cursor: not-allowed;
   opacity: 0.5;
 }
@@ -97,10 +109,15 @@
   height: 29px;
   padding: 0 24px 0 8px;
   border-radius: 6px;
-  border: 1px solid #E4E4E7;
-  background: #FFF;
-  color: #4B5563;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  border: 1px solid #e4e4e7;
+  background: #fff;
+  color: #4b5563;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: normal;
@@ -112,12 +129,14 @@
 }
 
 .pagination-select:hover:not(:disabled) {
-  border-color: #D4D4D8;
+  border-color: #d4d4d8;
 }
 
 .pagination-select:focus {
-  border-color: #2563EB;
-  box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px #DBEAFE;
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 5px #dbeafe;
 }
 
 .pagination-select-icon {
@@ -142,8 +161,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  border: 1px solid #E4E4E7;
-  background: #FFF;
+  border: 1px solid #e4e4e7;
+  background: #fff;
   cursor: pointer;
   outline: none;
   transition: all 0.2s ease;
@@ -151,17 +170,19 @@
 }
 
 .pagination-nav-btn:hover:not(:disabled) {
-  background: #F9FAFB;
-  border-color: #D4D4D8;
+  background: #f9fafb;
+  border-color: #d4d4d8;
 }
 
 .pagination-nav-btn:active:not(:disabled) {
-  background: #F3F4F6;
+  background: #f3f4f6;
 }
 
 .pagination-nav-btn:focus-visible {
-  border-color: #2563EB;
-  box-shadow: 0 0 0 3px #FFFFFF, 0 0 0 5px #DBEAFE;
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 5px #dbeafe;
 }
 
 .pagination-nav-btn:disabled {
@@ -170,7 +191,7 @@
 }
 
 .pagination-nav-btn:disabled svg path {
-  fill: #D1D5DB;
+  fill: #d1d5db;
 }
 
 /* Last button (refresh) styling */

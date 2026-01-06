@@ -34,24 +34,25 @@ import { PaginationComponent } from './pagination.component';
   [totalItems]="50"
   [rangeLabel]="'1 - 5 de 50 ítems'"
   (pageChange)="onPageChange($event)"
-  (pageSizeChange)="onPageSizeChange($event)">
+  (pageSizeChange)="onPageSizeChange($event)"
+>
 </storybook-pagination>
 ```
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `currentPage` | `number` | `1` | Current active page (1-based) |
-| `totalPages` | `number` | `1` | Total number of pages |
-| `pageSize` | `number` | `5` | Number of items per page |
-| `pageSizeOptions` | `number[]` | `[5, 10, 20]` | Available page size options |
-| `totalItems` | `number` | `5` | Total number of items in dataset |
-| `rangeLabel` | `string` | `'1 - 5 de 5 ítems'` | Range label text showing visible items |
-| `pageChange` | `EventEmitter<number>` | - | Emits when page changes (new page number) |
-| `pageSizeChange` | `EventEmitter<number>` | - | Emits when page size changes (new page size) |
-| `paginationChange` | `EventEmitter<PaginationChangeEvent>` | - | Emits when any pagination parameter changes |
-| `refresh` | `EventEmitter<void>` | - | Emits when refresh button is clicked |
+| Prop               | Type                                  | Default              | Description                                  |
+| ------------------ | ------------------------------------- | -------------------- | -------------------------------------------- |
+| `currentPage`      | `number`                              | `1`                  | Current active page (1-based)                |
+| `totalPages`       | `number`                              | `1`                  | Total number of pages                        |
+| `pageSize`         | `number`                              | `5`                  | Number of items per page                     |
+| `pageSizeOptions`  | `number[]`                            | `[5, 10, 20]`        | Available page size options                  |
+| `totalItems`       | `number`                              | `5`                  | Total number of items in dataset             |
+| `rangeLabel`       | `string`                              | `'1 - 5 de 5 ítems'` | Range label text showing visible items       |
+| `pageChange`       | `EventEmitter<number>`                | -                    | Emits when page changes (new page number)    |
+| `pageSizeChange`   | `EventEmitter<number>`                | -                    | Emits when page size changes (new page size) |
+| `paginationChange` | `EventEmitter<PaginationChangeEvent>` | -                    | Emits when any pagination parameter changes  |
+| `refresh`          | `EventEmitter<void>`                  | -                    | Emits when refresh button is clicked         |
 
 ### PaginationChangeEvent Interface
 
@@ -69,6 +70,7 @@ The component consists of three main sections:
 ### Left Section: Current Page
 
 Displays and allows editing of the current page:
+
 - "Página" label
 - Editable input field (42px width)
 - "de X" label showing total pages
@@ -77,11 +79,13 @@ Displays and allows editing of the current page:
 <storybook-pagination
   [currentPage]="currentPage"
   [totalPages]="totalPages"
-  [rangeLabel]="rangeLabel">
+  [rangeLabel]="rangeLabel"
+>
 </storybook-pagination>
 ```
 
 **Features:**
+
 - Direct page number entry
 - Validates input on blur
 - Clamps to valid range [1, totalPages]
@@ -90,6 +94,7 @@ Displays and allows editing of the current page:
 ### Middle Section: Page Size Selector
 
 Allows users to change the number of items per page:
+
 - Dropdown select (47px width)
 - "ítems por página" label
 - Custom chevron-down icon
@@ -98,11 +103,13 @@ Allows users to change the number of items per page:
 <storybook-pagination
   [pageSize]="10"
   [pageSizeOptions]="[5, 10, 20, 50, 100]"
-  (pageSizeChange)="onPageSizeChange($event)">
+  (pageSizeChange)="onPageSizeChange($event)"
+>
 </storybook-pagination>
 ```
 
 **Features:**
+
 - Displays current page size
 - Emits event on change
 - Customizable options array
@@ -110,6 +117,7 @@ Allows users to change the number of items per page:
 ### Right Section: Range & Navigation
 
 Displays visible items range and navigation controls:
+
 - Range label (e.g., "1 - 5 de 50 ítems")
 - First page button (double chevron left)
 - Previous page button (chevron left)
@@ -123,11 +131,13 @@ Displays visible items range and navigation controls:
   [totalPages]="10"
   [rangeLabel]="'21 - 25 de 50 ítems'"
   (pageChange)="onPageChange($event)"
-  (refresh)="onRefresh()">
+  (refresh)="onRefresh()"
+>
 </storybook-pagination>
 ```
 
 **Features:**
+
 - Auto-disables First/Previous on first page
 - Auto-disables Next/Last on last page
 - Auto-disables all when `totalPages === 0`
@@ -153,7 +163,8 @@ export class MyComponent {
 <storybook-pagination
   [currentPage]="currentPage"
   [totalPages]="totalPages"
-  (pageChange)="handlePageChange($event)">
+  (pageChange)="handlePageChange($event)"
+>
 </storybook-pagination>
 ```
 
@@ -176,7 +187,8 @@ export class MyComponent {
 <storybook-pagination
   [pageSize]="pageSize"
   [pageSizeOptions]="[5, 10, 20, 50]"
-  (pageSizeChange)="handlePageSizeChange($event)">
+  (pageSizeChange)="handlePageSizeChange($event)"
+>
 </storybook-pagination>
 ```
 
@@ -197,7 +209,8 @@ export class MyComponent {
 <storybook-pagination
   [currentPage]="currentPage"
   [pageSize]="pageSize"
-  (paginationChange)="handlePaginationChange($event)">
+  (paginationChange)="handlePaginationChange($event)"
+>
 </storybook-pagination>
 ```
 
@@ -215,9 +228,7 @@ export class MyComponent {
 ```
 
 ```html
-<storybook-pagination
-  (refresh)="handleRefresh()">
-</storybook-pagination>
+<storybook-pagination (refresh)="handleRefresh()"> </storybook-pagination>
 ```
 
 ## Usage Examples
@@ -231,33 +242,31 @@ export class ProductsTableComponent {
   totalPages = 0;
   totalItems = 0;
   products: Product[] = [];
-  
+
   ngOnInit() {
     this.loadProducts();
   }
-  
+
   loadProducts() {
-    this.productService
-      .getProducts(this.currentPage, this.pageSize)
-      .subscribe(response => {
-        this.products = response.data;
-        this.totalItems = response.total;
-        this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-      });
+    this.productService.getProducts(this.currentPage, this.pageSize).subscribe((response) => {
+      this.products = response.data;
+      this.totalItems = response.total;
+      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+    });
   }
-  
+
   onPageChange(page: number) {
     this.currentPage = page;
     this.loadProducts();
   }
-  
+
   onPageSizeChange(size: number) {
     this.pageSize = size;
     this.currentPage = 1; // Reset to first page
     this.totalPages = Math.ceil(this.totalItems / this.pageSize);
     this.loadProducts();
   }
-  
+
   getRangeLabel(): string {
     const start = (this.currentPage - 1) * this.pageSize + 1;
     const end = Math.min(this.currentPage * this.pageSize, this.totalItems);
@@ -284,7 +293,8 @@ export class ProductsTableComponent {
   [rangeLabel]="getRangeLabel()"
   (pageChange)="onPageChange($event)"
   (pageSizeChange)="onPageSizeChange($event)"
-  (refresh)="loadProducts()">
+  (refresh)="loadProducts()"
+>
 </storybook-pagination>
 ```
 
@@ -298,32 +308,30 @@ export class UsersComponent {
   totalItems = 0;
   users: User[] = [];
   loading = false;
-  
+
   loadUsers(page: number, size: number) {
     this.loading = true;
-    
-    this.userService
-      .getUsers({ page, pageSize: size, sort: 'name' })
-      .subscribe({
-        next: (response) => {
-          this.users = response.data;
-          this.totalItems = response.pagination.total;
-          this.totalPages = response.pagination.totalPages;
-          this.currentPage = page;
-          this.pageSize = size;
-          this.loading = false;
-        },
-        error: (err) => {
-          console.error('Failed to load users', err);
-          this.loading = false;
-        }
-      });
+
+    this.userService.getUsers({ page, pageSize: size, sort: 'name' }).subscribe({
+      next: (response) => {
+        this.users = response.data;
+        this.totalItems = response.pagination.total;
+        this.totalPages = response.pagination.totalPages;
+        this.currentPage = page;
+        this.pageSize = size;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Failed to load users', err);
+        this.loading = false;
+      },
+    });
   }
-  
+
   handlePaginationChange(event: PaginationChangeEvent) {
     this.loadUsers(event.currentPage, event.pageSize);
   }
-  
+
   get rangeLabel(): string {
     if (this.totalItems === 0) return '0 - 0 de 0 ítems';
     const start = (this.currentPage - 1) * this.pageSize + 1;
@@ -336,7 +344,7 @@ export class UsersComponent {
 ```html
 <div class="users-table">
   <div *ngIf="loading" class="loading-spinner">Cargando...</div>
-  
+
   <table *ngIf="!loading">
     <thead>
       <tr>
@@ -353,7 +361,7 @@ export class UsersComponent {
       </tr>
     </tbody>
   </table>
-  
+
   <storybook-pagination
     [currentPage]="currentPage"
     [totalPages]="totalPages"
@@ -362,7 +370,8 @@ export class UsersComponent {
     [totalItems]="totalItems"
     [rangeLabel]="rangeLabel"
     (paginationChange)="handlePaginationChange($event)"
-    (refresh)="loadUsers(currentPage, pageSize)">
+    (refresh)="loadUsers(currentPage, pageSize)"
+  >
   </storybook-pagination>
 </div>
 ```
@@ -376,37 +385,37 @@ export class ClientSidePaginationComponent {
   currentPage = 1;
   pageSize = 10;
   totalPages = 0;
-  
+
   ngOnInit() {
     this.loadAllItems();
   }
-  
+
   loadAllItems() {
-    this.itemService.getAllItems().subscribe(items => {
+    this.itemService.getAllItems().subscribe((items) => {
       this.allItems = items;
       this.totalPages = Math.ceil(this.allItems.length / this.pageSize);
       this.updateDisplayedItems();
     });
   }
-  
+
   updateDisplayedItems() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
     this.displayedItems = this.allItems.slice(startIndex, endIndex);
   }
-  
+
   onPageChange(page: number) {
     this.currentPage = page;
     this.updateDisplayedItems();
   }
-  
+
   onPageSizeChange(size: number) {
     this.pageSize = size;
     this.currentPage = 1;
     this.totalPages = Math.ceil(this.allItems.length / this.pageSize);
     this.updateDisplayedItems();
   }
-  
+
   get rangeLabel(): string {
     const start = (this.currentPage - 1) * this.pageSize + 1;
     const end = Math.min(this.currentPage * this.pageSize, this.allItems.length);
@@ -416,9 +425,7 @@ export class ClientSidePaginationComponent {
 ```
 
 ```html
-<div *ngFor="let item of displayedItems">
-  {{ item.name }}
-</div>
+<div *ngFor="let item of displayedItems">{{ item.name }}</div>
 
 <storybook-pagination
   [currentPage]="currentPage"
@@ -428,7 +435,8 @@ export class ClientSidePaginationComponent {
   [totalItems]="allItems.length"
   [rangeLabel]="rangeLabel"
   (pageChange)="onPageChange($event)"
-  (pageSizeChange)="onPageSizeChange($event)">
+  (pageSizeChange)="onPageSizeChange($event)"
+>
 </storybook-pagination>
 ```
 
@@ -446,23 +454,27 @@ export class ClientSidePaginationComponent {
 ### Layout
 
 **Container:**
+
 - Display: flex
 - Align Items: center
 - Gap: 16px
 - Height: 29px
 
 **Sections:**
+
 - Left: flex with 8px gap
 - Middle: flex with 10px gap
 - Right: flex with 17px gap, margin-left auto
 
 **Navigation Controls:**
+
 - Display: flex
 - Gap: 7px between buttons
 
 ### Inputs & Buttons
 
 **Page Input:**
+
 - Width: 42px
 - Height: 29px
 - Padding: 0 8px
@@ -472,6 +484,7 @@ export class ClientSidePaginationComponent {
 - Text Align: center
 
 **Page Size Select:**
+
 - Width: 47px
 - Height: 29px
 - Padding: 0 24px 0 8px (for icon space)
@@ -481,6 +494,7 @@ export class ClientSidePaginationComponent {
 - Appearance: none (custom dropdown)
 
 **Navigation Buttons:**
+
 - Width: 29px (30px for last button)
 - Height: 29px
 - Border Radius: 6px
@@ -491,29 +505,35 @@ export class ClientSidePaginationComponent {
 ### Colors
 
 **Default State:**
+
 - Background: #FFF (white)
 - Border: #E4E4E7 (neutral-200)
 - Text: #4B5563 (gray-600)
 - Icon Fill: #939394
 
 **Hover State:**
+
 - Background: #F9FAFB (neutral-50)
 - Border: #D4D4D8 (neutral-300)
 
 **Focus State:**
+
 - Border: #2563EB (Blue-600)
 - Shadow: 0 0 0 3px #FFF, 0 0 0 5px #DBEAFE (Blue-100)
 - (3px white gap + 2px blue focus ring)
 
 **Active State (buttons only):**
+
 - Background: #F3F4F6 (neutral-100)
 
 **Disabled State:**
+
 - Opacity: 40%
 - Cursor: not-allowed
 - Icon Fill: #D1D5DB (neutral-300)
 
 **Select Icon:**
+
 - Fill: #848485 (neutral-500)
 
 ### Icons
@@ -530,23 +550,28 @@ All icons are SVG paths from Figma design:
 ### States
 
 **Single Page (totalPages = 1):**
+
 - All navigation buttons disabled
 - Page input shows "1 de 1"
 - Range shows all items
 
 **First Page (currentPage = 1):**
+
 - First & Previous buttons disabled
 - Next & Last buttons enabled
 - Refresh always enabled
 
 **Middle Page:**
+
 - All navigation buttons enabled
 
 **Last Page (currentPage = totalPages):**
+
 - Next & Last buttons disabled
 - First & Previous buttons enabled
 
 **Empty State (totalPages = 0):**
+
 - All navigation buttons disabled
 - Page input disabled
 - Range shows "0 - 0 de 0 ítems"
@@ -554,11 +579,13 @@ All icons are SVG paths from Figma design:
 ### Responsive Behavior
 
 **Desktop (> 768px):**
+
 - Single row horizontal layout
 - All sections visible
 - Full spacing maintained
 
 **Mobile (≤ 768px):**
+
 - Component wraps to multiple rows
 - Right section takes full width
 - Maintains button spacing
@@ -570,7 +597,7 @@ All icons are SVG paths from Figma design:
     height: auto;
     gap: 12px;
   }
-  
+
   .pagination-section-right {
     margin-left: 0;
     width: 100%;
@@ -582,22 +609,20 @@ All icons are SVG paths from Figma design:
 ## Accessibility
 
 **ARIA Attributes:**
+
 - Buttons have descriptive `aria-label` attributes
 - Page input has `min` and `max` attributes
 - Disabled buttons have `disabled` attribute
 
 **Keyboard Navigation:**
+
 - Tab: Navigate between controls
 - Enter: Activate focused button
 - Input field: Type page number, Enter or blur to apply
 
 ```html
 <!-- Rendered output -->
-<button 
-  type="button" 
-  class="pagination-nav-btn"
-  disabled
-  aria-label="Primera página">
+<button type="button" class="pagination-nav-btn" disabled aria-label="Primera página">
   <!-- First page icon -->
 </button>
 
@@ -607,7 +632,8 @@ All icons are SVG paths from Figma design:
   min="1"
   max="10"
   value="1"
-  aria-label="Página actual">
+  aria-label="Página actual"
+/>
 ```
 
 ## Component Architecture
@@ -627,14 +653,14 @@ export class PaginationComponent {
   @Input() pageSizeOptions: number[] = [5, 10, 20];
   @Input() totalItems: number = 5;
   @Input() rangeLabel: string = '1 - 5 de 5 ítems';
-  
+
   @Output() pageChange = new EventEmitter<number>();
   @Output() pageSizeChange = new EventEmitter<number>();
   @Output() paginationChange = new EventEmitter<PaginationChangeEvent>();
   @Output() refresh = new EventEmitter<void>();
-  
+
   private tempPageValue: string = '';
-  
+
   goToFirstPage(): void { ... }
   goToPreviousPage(): void { ... }
   goToNextPage(): void { ... }
@@ -660,13 +686,13 @@ export class PaginationComponent {
 ```typescript
 onPageInputBlur(): void {
   if (this.tempPageValue === '') return;
-  
+
   let page = parseInt(this.tempPageValue, 10);
   if (isNaN(page)) {
     this.tempPageValue = '';
     return;
   }
-  
+
   // Clamp to valid range
   page = Math.max(1, Math.min(page, this.totalPages));
   this.updatePage(page);
@@ -677,6 +703,7 @@ onPageInputBlur(): void {
 ### Navigation Button Logic
 
 **First Button:**
+
 ```typescript
 goToFirstPage(): void {
   if (this.currentPage !== 1 && this.totalPages > 0) {
@@ -686,6 +713,7 @@ goToFirstPage(): void {
 ```
 
 **Previous Button:**
+
 ```typescript
 goToPreviousPage(): void {
   if (this.currentPage > 1) {
@@ -695,6 +723,7 @@ goToPreviousPage(): void {
 ```
 
 **Next Button:**
+
 ```typescript
 goToNextPage(): void {
   if (this.currentPage < this.totalPages) {
@@ -704,6 +733,7 @@ goToNextPage(): void {
 ```
 
 **Last Button:**
+
 ```typescript
 goToLastPage(): void {
   if (this.currentPage !== this.totalPages && this.totalPages > 0) {
@@ -718,7 +748,7 @@ goToLastPage(): void {
 onPageSizeChange(event: Event): void {
   const select = event.target as HTMLSelectElement;
   const newPageSize = parseInt(select.value, 10);
-  
+
   if (!isNaN(newPageSize) && newPageSize !== this.pageSize) {
     this.pageSizeChange.emit(newPageSize);
     this.paginationChange.emit({
@@ -738,10 +768,10 @@ function getRangeLabel(currentPage: number, pageSize: number, totalItems: number
   if (totalItems === 0) {
     return '0 - 0 de 0 ítems';
   }
-  
+
   const start = (currentPage - 1) * pageSize + 1;
   const end = Math.min(currentPage * pageSize, totalItems);
-  
+
   return `${start} - ${end} de ${totalItems} ítems`;
 }
 ```
@@ -753,7 +783,7 @@ function getTotalPages(totalItems: number, pageSize: number): number {
   if (totalItems === 0 || pageSize === 0) {
     return 0;
   }
-  
+
   return Math.ceil(totalItems / pageSize);
 }
 ```
@@ -812,63 +842,61 @@ export class DataTableComponent implements OnInit {
   pageSize = 10;
   totalPages = 0;
   totalItems = 0;
-  
+
   // Data
   items: any[] = [];
   loading = false;
-  
+
   // Available page sizes
   pageSizeOptions = [5, 10, 20, 50];
-  
+
   constructor(private dataService: DataService) {}
-  
+
   ngOnInit() {
     this.loadData();
   }
-  
+
   loadData() {
     this.loading = true;
-    
-    this.dataService
-      .getData(this.currentPage, this.pageSize)
-      .subscribe({
-        next: (response) => {
-          this.items = response.data;
-          this.totalItems = response.total;
-          this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-          this.loading = false;
-        },
-        error: (err) => {
-          console.error('Failed to load data', err);
-          this.loading = false;
-        }
-      });
+
+    this.dataService.getData(this.currentPage, this.pageSize).subscribe({
+      next: (response) => {
+        this.items = response.data;
+        this.totalItems = response.total;
+        this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Failed to load data', err);
+        this.loading = false;
+      },
+    });
   }
-  
+
   onPageChange(page: number) {
     this.currentPage = page;
     this.loadData();
   }
-  
+
   onPageSizeChange(size: number) {
     this.pageSize = size;
     this.currentPage = 1; // Reset to first page
     this.totalPages = Math.ceil(this.totalItems / this.pageSize);
     this.loadData();
   }
-  
+
   onRefresh() {
     this.loadData();
   }
-  
+
   get rangeLabel(): string {
     if (this.totalItems === 0) {
       return '0 - 0 de 0 ítems';
     }
-    
+
     const start = (this.currentPage - 1) * this.pageSize + 1;
     const end = Math.min(this.currentPage * this.pageSize, this.totalItems);
-    
+
     return `${start} - ${end} de ${this.totalItems} ítems`;
   }
 }
@@ -880,7 +908,7 @@ export class DataTableComponent implements OnInit {
   <div *ngIf="loading" class="loading-overlay">
     <div class="spinner">Cargando...</div>
   </div>
-  
+
   <!-- Data table -->
   <table class="data-table">
     <thead>
@@ -902,7 +930,7 @@ export class DataTableComponent implements OnInit {
       </tr>
     </tbody>
   </table>
-  
+
   <!-- Pagination -->
   <storybook-pagination
     [currentPage]="currentPage"
@@ -913,7 +941,8 @@ export class DataTableComponent implements OnInit {
     [rangeLabel]="rangeLabel"
     (pageChange)="onPageChange($event)"
     (pageSizeChange)="onPageSizeChange($event)"
-    (refresh)="onRefresh()">
+    (refresh)="onRefresh()"
+  >
   </storybook-pagination>
 </div>
 ```
@@ -941,43 +970,45 @@ Builder.registerComponent(PaginationComponent, {
       name: 'currentPage',
       type: 'number',
       defaultValue: 1,
-      helperText: 'Current active page (1-based)'
+      helperText: 'Current active page (1-based)',
     },
     {
       name: 'totalPages',
       type: 'number',
       defaultValue: 1,
-      helperText: 'Total number of pages'
+      helperText: 'Total number of pages',
     },
     {
       name: 'pageSize',
       type: 'number',
       defaultValue: 10,
-      helperText: 'Number of items per page'
+      helperText: 'Number of items per page',
     },
     {
       name: 'pageSizeOptions',
       type: 'list',
-      subFields: [{
-        name: 'size',
-        type: 'number'
-      }],
+      subFields: [
+        {
+          name: 'size',
+          type: 'number',
+        },
+      ],
       defaultValue: [5, 10, 20, 50],
-      helperText: 'Available page size options'
+      helperText: 'Available page size options',
     },
     {
       name: 'totalItems',
       type: 'number',
       defaultValue: 0,
-      helperText: 'Total number of items'
+      helperText: 'Total number of items',
     },
     {
       name: 'rangeLabel',
       type: 'string',
       defaultValue: '1 - 10 de 50 ítems',
-      helperText: 'Range label text'
-    }
-  ]
+      helperText: 'Range label text',
+    },
+  ],
 });
 ```
 
@@ -1007,9 +1038,7 @@ this.totalPages = this.totalItems / this.pageSize; // Should use Math.ceil
 
 ```html
 <!-- Correct -->
-<storybook-pagination
-  [currentPage]="currentPage"
-  (pageChange)="currentPage = $event">
+<storybook-pagination [currentPage]="currentPage" (pageChange)="currentPage = $event">
 </storybook-pagination>
 
 <!-- Wrong (input won't update) -->
@@ -1089,6 +1118,7 @@ onPageSizeChange(size: number) {
 ## Future Enhancements
 
 Potential features not included in current Figma design:
+
 - Jump to page dropdown (e.g., "Go to page...")
 - Configurable page number display format
 - Loading states for buttons

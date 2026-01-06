@@ -17,11 +17,7 @@ export interface TabItem {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div
-      class="tab-navigation"
-      [ngClass]="navigationClasses"
-      [attr.role]="'tablist'"
-    >
+    <div class="tab-navigation" [ngClass]="navigationClasses" [attr.role]="'tablist'">
       <button
         *ngFor="let tab of tabs; let i = index"
         type="button"
@@ -121,9 +117,9 @@ export class TabNavigationComponent {
     }
     // Return color-specific stroke values
     const strokeMap: Record<TabColor, string> = {
-      blue: '#2563EB',    // Blue-600
-      green: '#16A34A',   // Green-600
-      yellow: '#CA8A04',  // Yellow-600
+      blue: '#2563EB', // Blue-600
+      green: '#16A34A', // Green-600
+      yellow: '#CA8A04', // Yellow-600
     };
     return strokeMap[this.color];
   }

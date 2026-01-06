@@ -25,7 +25,9 @@ storybook.on('exit', (code) => {
   // Don't exit on error code 1 - it's likely just the xdg-open failure
   // The server is still running
   if (code === 1) {
-    console.log('[Wrapper] Storybook exited with code 1 (likely xdg-open error in headless environment)');
+    console.log(
+      '[Wrapper] Storybook exited with code 1 (likely xdg-open error in headless environment)',
+    );
     console.log('[Wrapper] Storybook is still accessible at http://localhost:6006/');
     // Keep the process running
     setInterval(() => {}, 60000);

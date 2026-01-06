@@ -26,6 +26,7 @@ import { InfoContainerComponent } from './info-container.component';
 ## Component Composition
 
 This component **reuses** the following existing components:
+
 - **TabNavigationComponent** - For tabs variant
 - **PaginationComponent** - For table and tabs pagination
 - **SeparatorComponent** - For dividers
@@ -65,7 +66,8 @@ This component **reuses** the following existing components:
     totalItems: 1,
     rangeLabel: '1 - 1 de 1 ítems'
   }"
-  (tablePageChange)="onPageChange($event)">
+  (tablePageChange)="onPageChange($event)"
+>
 </storybook-info-container>
 ```
 
@@ -82,7 +84,8 @@ This component **reuses** the following existing components:
     { text: 'Sesiones de clases grabadas publicadas en el Aula Virtual.' },
     { text: 'Auto-evaluaciones semanales.' },
     { text: 'Interacción con el profesor a través del foro virtual.' }
-  ]">
+  ]"
+>
 </storybook-info-container>
 ```
 
@@ -134,7 +137,8 @@ This component **reuses** the following existing components:
     }
   ]"
   (tabChange)="onTabChange($event)"
-  (tabPageChange)="onTabPageChange($event)">
+  (tabPageChange)="onTabPageChange($event)"
+>
 </storybook-info-container>
 ```
 
@@ -142,35 +146,37 @@ This component **reuses** the following existing components:
 
 ### Common Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | `'Título del Contenedor'` | Container title shown in header |
-| `variant` | `'table' \| 'list' \| 'tabs'` | `'table'` | Display variant |
-| `collapsible` | `boolean` | `true` | Whether the container can be collapsed |
-| `collapsed` | `boolean` | `false` | Initial collapsed state |
+| Prop          | Type                          | Default                   | Description                            |
+| ------------- | ----------------------------- | ------------------------- | -------------------------------------- |
+| `title`       | `string`                      | `'Título del Contenedor'` | Container title shown in header        |
+| `variant`     | `'table' \| 'list' \| 'tabs'` | `'table'`                 | Display variant                        |
+| `collapsible` | `boolean`                     | `true`                    | Whether the container can be collapsed |
+| `collapsed`   | `boolean`                     | `false`                   | Initial collapsed state                |
 
 ### Table Variant Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `tableColumns` | `TableColumn[]` | `[]` | Column definitions |
-| `tableRows` | `TableRow[]` | `[]` | Table data rows |
-| `tablePagination` | `object` | See below | Pagination configuration |
+| Prop              | Type            | Default   | Description              |
+| ----------------- | --------------- | --------- | ------------------------ |
+| `tableColumns`    | `TableColumn[]` | `[]`      | Column definitions       |
+| `tableRows`       | `TableRow[]`    | `[]`      | Table data rows          |
+| `tablePagination` | `object`        | See below | Pagination configuration |
 
 **TableColumn Interface:**
+
 ```typescript
 interface TableColumn {
-  key: string;        // Row property key
-  label: string;      // Column header label
-  width?: string;     // Optional column width (e.g., '200px')
+  key: string; // Row property key
+  label: string; // Column header label
+  width?: string; // Optional column width (e.g., '200px')
 }
 ```
 
 **TableRow Interface:**
+
 ```typescript
 interface TableRow {
-  [key: string]: any;  // Dynamic properties based on columns
-  
+  [key: string]: any; // Dynamic properties based on columns
+
   // Optional label rendering:
   // Add '_label' suffix to render as Label component
   // Add '_label_variant' suffix to specify label variant
@@ -178,6 +184,7 @@ interface TableRow {
 ```
 
 **Example with Labels:**
+
 ```typescript
 {
   status: 'Activo',
@@ -187,6 +194,7 @@ interface TableRow {
 ```
 
 **tablePagination Object:**
+
 ```typescript
 {
   currentPage: number;         // Current page (1-based)
@@ -200,35 +208,37 @@ interface TableRow {
 
 ### List Variant Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `listIntro` | `string` | `''` | Introduction text before list |
-| `listItems` | `ListItem[]` | `[]` | List items |
+| Prop        | Type         | Default | Description                   |
+| ----------- | ------------ | ------- | ----------------------------- |
+| `listIntro` | `string`     | `''`    | Introduction text before list |
+| `listItems` | `ListItem[]` | `[]`    | List items                    |
 
 **ListItem Interface:**
+
 ```typescript
 interface ListItem {
-  text: string;  // Item text content
+  text: string; // Item text content
 }
 ```
 
 ### Tabs Variant Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `tabs` | `TabConfig[]` | `[]` | Tab configurations |
-| `activeTabIndex` | `number` | `0` | Currently active tab index |
-| `tabsPagination` | `object[]` | `[]` | Pagination per tab (array) |
+| Prop             | Type          | Default | Description                |
+| ---------------- | ------------- | ------- | -------------------------- |
+| `tabs`           | `TabConfig[]` | `[]`    | Tab configurations         |
+| `activeTabIndex` | `number`      | `0`     | Currently active tab index |
+| `tabsPagination` | `object[]`    | `[]`    | Pagination per tab (array) |
 
 **TabConfig Interface:**
+
 ```typescript
 interface TabConfig {
-  label: string;               // Tab label
-  count?: number;              // Optional counter badge
-  icon?: boolean;              // Whether to show icon
+  label: string; // Tab label
+  count?: number; // Optional counter badge
+  icon?: boolean; // Whether to show icon
   tableData?: {
-    columns: TableColumn[];    // Table columns
-    rows: TableRow[];          // Table rows
+    columns: TableColumn[]; // Table columns
+    rows: TableRow[]; // Table rows
   };
 }
 ```
@@ -237,26 +247,26 @@ interface TabConfig {
 
 ### Common Events
 
-| Event | Type | Description |
-|-------|------|-------------|
+| Event            | Type                    | Description                         |
+| ---------------- | ----------------------- | ----------------------------------- |
 | `collapseChange` | `EventEmitter<boolean>` | Emitted when collapse state changes |
 
 ### Table Variant Events
 
-| Event | Type | Description |
-|-------|------|-------------|
-| `tablePageChange` | `EventEmitter<number>` | Emitted when page changes |
-| `tablePageSizeChange` | `EventEmitter<number>` | Emitted when page size changes |
-| `tableRefresh` | `EventEmitter<void>` | Emitted when refresh button clicked |
+| Event                 | Type                   | Description                         |
+| --------------------- | ---------------------- | ----------------------------------- |
+| `tablePageChange`     | `EventEmitter<number>` | Emitted when page changes           |
+| `tablePageSizeChange` | `EventEmitter<number>` | Emitted when page size changes      |
+| `tableRefresh`        | `EventEmitter<void>`   | Emitted when refresh button clicked |
 
 ### Tabs Variant Events
 
-| Event | Type | Description |
-|-------|------|-------------|
-| `tabChange` | `EventEmitter<number>` | Emitted when active tab changes |
-| `tabPageChange` | `EventEmitter<{tabIndex: number, page: number}>` | Emitted when tab page changes |
-| `tabPageSizeChange` | `EventEmitter<{tabIndex: number, pageSize: number}>` | Emitted when tab page size changes |
-| `tabRefresh` | `EventEmitter<number>` | Emitted when tab refresh clicked (sends tab index) |
+| Event               | Type                                                 | Description                                        |
+| ------------------- | ---------------------------------------------------- | -------------------------------------------------- |
+| `tabChange`         | `EventEmitter<number>`                               | Emitted when active tab changes                    |
+| `tabPageChange`     | `EventEmitter<{tabIndex: number, page: number}>`     | Emitted when tab page changes                      |
+| `tabPageSizeChange` | `EventEmitter<{tabIndex: number, pageSize: number}>` | Emitted when tab page size changes                 |
+| `tabRefresh`        | `EventEmitter<number>`                               | Emitted when tab refresh clicked (sends tab index) |
 
 ## Variants
 
@@ -265,12 +275,14 @@ interface TabConfig {
 Displays data in a table format with column headers, rows, and pagination at the bottom.
 
 **Features:**
+
 - Customizable columns with width
 - Label support for cell content
 - Separator between header and body
 - Pagination with refresh
 
 **Use Cases:**
+
 - Price lists
 - Service catalogs
 - Data grids
@@ -281,12 +293,14 @@ Displays data in a table format with column headers, rows, and pagination at the
 Displays content as a bullet-point list with optional introduction text.
 
 **Features:**
+
 - Introduction paragraph
 - Bullet-point items
 - Clean, simple layout
 - No pagination
 
 **Use Cases:**
+
 - Methodology descriptions
 - Feature lists
 - Instructions
@@ -297,12 +311,14 @@ Displays content as a bullet-point list with optional introduction text.
 Displays multiple tables organized in tabs with individual pagination per tab.
 
 **Features:**
+
 - Tab navigation with counters
 - Table per tab
 - Independent pagination per tab
 - Label support in tables
 
 **Use Cases:**
+
 - Request management
 - Status tracking
 - Historical records
@@ -375,7 +391,8 @@ export class MyComponent {
   [tablePagination]="pagination"
   (tablePageChange)="onPageChange($event)"
   (tablePageSizeChange)="onPageSizeChange($event)"
-  (tableRefresh)="onRefresh()">
+  (tableRefresh)="onRefresh()"
+>
 </storybook-info-container>
 ```
 
@@ -384,7 +401,7 @@ export class MyComponent {
 ```typescript
 export class MyComponent {
   activeTab = 0;
-  
+
   tabs: TabConfig[] = [
     {
       label: 'Solicitudes Pendientes',
@@ -466,7 +483,8 @@ export class MyComponent {
   [activeTabIndex]="activeTab"
   [tabsPagination]="tabsPagination"
   (tabChange)="onTabChange($event)"
-  (tabPageChange)="onTabPageChange($event)">
+  (tabPageChange)="onTabPageChange($event)"
+>
 </storybook-info-container>
 ```
 
@@ -475,6 +493,7 @@ export class MyComponent {
 ### Header
 
 **Layout:**
+
 - Display: flex
 - Align items: center
 - Gap: 14px
@@ -483,17 +502,20 @@ export class MyComponent {
 - Border radius: 12px (top only)
 
 **Icon:**
+
 - Size: 28×28px
 - Blue circle: #2563EB (Blue-600)
 - White checkmark inside
 
 **Title:**
+
 - Color: #2563EB (Blue-600)
 - Font size: 16px
 - Font weight: 600
 - Flex: 1 (takes remaining space)
 
 **Collapse Button:**
+
 - Size: 24×24px
 - Background: transparent
 - Icon: chevron-up (Blue-600)
@@ -503,6 +525,7 @@ export class MyComponent {
 ### Body - Table Variant
 
 **Table Header:**
+
 - Background: #EFF6FF (Blue-50)
 - Color: #2563EB (Blue-600)
 - Font size: 14px
@@ -510,6 +533,7 @@ export class MyComponent {
 - Padding: 12px 0
 
 **Table Rows:**
+
 - Color: #334155 (neutral-700)
 - Font size: 14px
 - Font weight: 500
@@ -517,6 +541,7 @@ export class MyComponent {
 - Border bottom: 1px solid #CBD5E1
 
 **Pagination:**
+
 - Separator above (1px solid #CBD5E1)
 - Padding: 20px
 - Uses Pagination component
@@ -524,12 +549,14 @@ export class MyComponent {
 ### Body - List Variant
 
 **Introduction:**
+
 - Color: #1E293B (neutral-800)
 - Font size: 14px
 - Font weight: 500
 - Margin bottom: 16px
 
 **List Items:**
+
 - Color: #1E293B (neutral-800)
 - Font size: 14px
 - Font weight: 500
@@ -539,10 +566,12 @@ export class MyComponent {
 ### Body - Tabs Variant
 
 **Tab Navigation:**
+
 - Uses TabNavigation component
 - Margin bottom: 24px
 
 **Tab Content:**
+
 - Each tab contains a table
 - Table structure same as table variant
 - Independent pagination per tab
@@ -564,10 +593,10 @@ export class MyComponent {
   standalone: true,
   imports: [
     CommonModule,
-    TabNavigationComponent,    // Reused
-    PaginationComponent,       // Reused
-    SeparatorComponent,        // Reused
-    LabelComponent,            // Reused
+    TabNavigationComponent, // Reused
+    PaginationComponent, // Reused
+    SeparatorComponent, // Reused
+    LabelComponent, // Reused
   ],
   // ...
 })
@@ -576,21 +605,21 @@ export class InfoContainerComponent {
   @Input() variant: InfoContainerVariant;
   @Input() collapsible: boolean;
   @Input() collapsed: boolean;
-  
+
   // Table variant
   @Input() tableColumns: TableColumn[];
   @Input() tableRows: TableRow[];
   @Input() tablePagination: object;
-  
+
   // List variant
   @Input() listIntro: string;
   @Input() listItems: ListItem[];
-  
+
   // Tabs variant
   @Input() tabs: TabConfig[];
   @Input() activeTabIndex: number;
   @Input() tabsPagination: object[];
-  
+
   // Events
   @Output() collapseChange = new EventEmitter<boolean>();
   @Output() tabChange = new EventEmitter<number>();
@@ -672,9 +701,7 @@ Builder.registerComponent(InfoContainerComponent, {
     {
       name: 'tableRows',
       type: 'list',
-      subFields: [
-        { name: 'data', type: 'object' },
-      ],
+      subFields: [{ name: 'data', type: 'object' }],
       showIf: 'options.get("variant") === "table"',
     },
     // ... more inputs
@@ -727,11 +754,11 @@ Builder.registerComponent(InfoContainerComponent, {
 ```typescript
 // Correct
 tableColumns = [{ key: 'name', label: 'Nombre' }];
-tableRows = [{ name: 'Value' }];  // 'name' key matches
+tableRows = [{ name: 'Value' }]; // 'name' key matches
 
 // Wrong
 tableColumns = [{ key: 'name', label: 'Nombre' }];
-tableRows = [{ title: 'Value' }];  // 'title' doesn't match 'name'
+tableRows = [{ title: 'Value' }]; // 'title' doesn't match 'name'
 ```
 
 ### Labels not rendering
@@ -775,15 +802,14 @@ get rangeLabel(): string {
 **Solution**: Handle `tabChange` event and update `activeTabIndex`.
 
 ```html
-<storybook-info-container
-  [activeTabIndex]="currentTab"
-  (tabChange)="currentTab = $event">
+<storybook-info-container [activeTabIndex]="currentTab" (tabChange)="currentTab = $event">
 </storybook-info-container>
 ```
 
 ## Future Enhancements
 
 Potential features not included in current version:
+
 - Custom header icons
 - Sortable table columns
 - Filterable lists

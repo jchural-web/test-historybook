@@ -2,10 +2,15 @@
 .info-container {
   width: 100%;
   border-radius: 12px;
-  border: 1px solid #CBD5E1;
-  background: #FFF;
+  border: 1px solid #cbd5e1;
+  background: #fff;
   overflow: hidden;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }
 
 /* Header */
@@ -14,7 +19,7 @@
   align-items: center;
   gap: 14px;
   padding: 20px;
-  background: #DBEAFE;
+  background: #dbeafe;
   border-radius: 12px 12px 0 0;
   position: relative;
 }
@@ -35,7 +40,7 @@
 .info-container-title {
   flex: 1;
   margin: 0;
-  color: #2563EB;
+  color: #2563eb;
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -81,14 +86,14 @@
   display: flex;
   gap: 16px;
   padding: 12px 0;
-  background: #EFF6FF;
+  background: #eff6ff;
   margin: 0 -20px;
   padding-left: 20px;
   padding-right: 20px;
 }
 
 .info-container-table-header-cell {
-  color: #2563EB;
+  color: #2563eb;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -103,7 +108,7 @@
   display: flex;
   gap: 16px;
   padding: 20px 0;
-  border-bottom: 1px solid #CBD5E1;
+  border-bottom: 1px solid #cbd5e1;
 }
 
 .info-container-table-row:last-child {
@@ -135,7 +140,7 @@
 
 .info-container-list-intro {
   margin: 0 0 16px 0;
-  color: #1E293B;
+  color: #1e293b;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -148,7 +153,7 @@
 }
 
 .info-container-list-item {
-  color: #1E293B;
+  color: #1e293b;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -165,7 +170,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #1E293B;
+  background: #1e293b;
 }
 
 /* Tabs Variant */
