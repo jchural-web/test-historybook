@@ -1,8 +1,22 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export type CardVariant = 'default' | 'elevated' | 'outlined';
 export type CardState = 'default' | 'hover';
+export type CardContentVariant = 'default' | 'metric' | 'infoDate' | 'infoCurrency' | 'placeholder';
+
+// Icon for infoCurrency variant (circle-dollar-sign from lucide)
+const currencyIcon = `<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_currency)">
+<path d="M18.375 10.5C18.375 6.15076 14.8492 2.625 10.5 2.625C6.15076 2.625 2.625 6.15076 2.625 10.5C2.625 14.8492 6.15076 18.375 10.5 18.375C14.8492 18.375 18.375 14.8492 18.375 10.5ZM13.125 12.25C13.125 12.0179 13.0327 11.7954 12.8687 11.6313C12.7046 11.4673 12.4821 11.375 12.25 11.375H11.375V13.125H12.25C12.4821 13.125 12.7046 13.0327 12.8687 12.8687C13.0327 12.7046 13.125 12.4821 13.125 12.25ZM14.875 12.25C14.875 12.9462 14.5982 13.6137 14.106 14.106C13.6137 14.5982 12.9462 14.875 12.25 14.875H11.375V15.75C11.375 16.2332 10.9832 16.625 10.5 16.625C10.0168 16.625 9.625 16.2332 9.625 15.75V14.875H7C6.51675 14.875 6.125 14.4832 6.125 14C6.125 13.5168 6.51675 13.125 7 13.125H9.625V11.375H8.75C8.05381 11.375 7.38633 11.0982 6.89404 10.606C6.46337 10.1753 6.19754 9.61057 6.13782 9.00977L6.125 8.75C6.125 8.05381 6.40176 7.38633 6.89404 6.89404C7.38633 6.40176 8.05381 6.125 8.75 6.125H9.625V5.25C9.625 4.76675 10.0168 4.375 10.5 4.375C10.9832 4.375 11.375 4.76675 11.375 5.25V6.125H14C14.4832 6.125 14.875 6.51675 14.875 7C14.875 7.48325 14.4832 7.875 14 7.875H11.375V9.625H12.25C12.9462 9.625 13.6137 9.90176 14.106 10.394C14.5982 10.8863 14.875 11.5538 14.875 12.25ZM20.125 10.5C20.125 15.8157 15.8157 20.125 10.5 20.125C5.18426 20.125 0.875 15.8157 0.875 10.5C0.875 5.18426 5.18426 0.875 10.5 0.875C15.8157 0.875 20.125 5.18426 20.125 10.5ZM7.87927 8.8363C7.89913 9.03668 7.98772 9.22503 8.13135 9.36865C8.29544 9.53275 8.51794 9.625 8.75 9.625H9.625V7.875H8.75C8.51794 7.875 8.29544 7.96725 8.13135 8.13135C7.96725 8.29544 7.875 8.51794 7.875 8.75L7.87927 8.8363Z" fill="#2563EB"/>
+</g>
+<defs>
+<clipPath id="clip0_currency">
+<rect width="21" height="21" fill="white"/>
+</clipPath>
+</defs>
+</svg>`;
 
 @Component({
   selector: 'storybook-card',
@@ -85,11 +99,36 @@ export type CardState = 'default' | 'hover';
   styleUrls: ['./card.css'],
 })
 export class CardComponent {
+  constructor(private sanitizer: DomSanitizer) {}
   /** Card variant */
   @Input() variant: CardVariant = 'default';
 
   /** Card state (visual only) */
   @Input() state: CardState = 'default';
+
+  /** Content variant (NEW: tipo de contenido del card) */
+  @Input() contentVariant: CardContentVariant = 'default';
+
+  // Props for 'metric' contentVariant
+  /** Title for metric variant */
+  @Input() metricTitle: string = '';
+
+  /** Value for metric variant */
+  @Input() metricValue: string | number = '';
+
+  // Props for 'infoDate' contentVariant
+  /** Label for infoDate variant */
+  @Input() dateLabel: string = '';
+
+  /** Date text for infoDate variant */
+  @Input() dateText: string = '';
+
+  // Props for 'infoCurrency' contentVariant
+  /** Label for infoCurrency variant */
+  @Input() currencyLabel: string = '';
+
+  /** Currency text for infoCurrency variant */
+  @Input() currencyText: string = '';
 
   /** Header text */
   @Input() header: string = 'Actividades Totales';
@@ -107,12 +146,16 @@ export class CardComponent {
   @Input() helperDescription: string = 'respecto al mes anterior';
 
   get cardClasses(): string[] {
-    const classes = [`card-${this.variant}`];
+    const classes = [`card-${this.variant}`, `card-content-${this.contentVariant}`];
 
     if (this.state === 'hover') {
       classes.push('card-hover');
     }
 
     return classes;
+  }
+
+  getCurrencyIcon(): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(currencyIcon);
   }
 }
