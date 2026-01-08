@@ -22,7 +22,7 @@
 .badge-dot {
   width: 12px;
   height: 12px;
-  border-radius: 50%;
+  border-radius: 9999px;
 }
 
 /* Badge Text (Default & Large) - Original Small Style */
