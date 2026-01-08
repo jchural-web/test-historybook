@@ -82,7 +82,7 @@
 
 .input-state-focus .input-field,
 .input-wrapper:has(.input-field:focus) .input-field {
-  color: #64748B;
+  color: #1E293B;
 }
 
 /* State variants - Disabled */
