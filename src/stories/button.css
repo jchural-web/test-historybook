@@ -272,6 +272,14 @@
   border: 1px solid #dc2626;
 }
 
+/* Force white icon for destructive variant - all states */
+.btn-shape-icon-only.btn-destructive .button-icon-only svg,
+.btn-shape-icon-only.btn-destructive .button-icon-only svg path,
+.btn-shape-icon-only.btn-destructive .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
+}
+
 .btn-shape-icon-only.btn-destructive:hover:not(:disabled),
 .btn-shape-icon-only.btn-destructive.btn-state-hover {
   opacity: 0.9;
