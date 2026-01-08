@@ -165,6 +165,55 @@ export const LargeSuccess: Story = {
 };
 
 // ===========================
+// Text Icon Layout (all variants)
+// ===========================
+
+export const TextIconDefault: Story = {
+  args: {
+    variant: 'default',
+    size: 'default',
+    layout: 'text-icon',
+    value: 'Etiqueta 2',
+  },
+};
+
+export const TextIconSecondary: Story = {
+  args: {
+    variant: 'secondary',
+    size: 'default',
+    layout: 'text-icon',
+    value: 'Etiqueta 2',
+  },
+};
+
+export const TextIconDestructive: Story = {
+  args: {
+    variant: 'destructive',
+    size: 'default',
+    layout: 'text-icon',
+    value: 'Etiqueta 2',
+  },
+};
+
+export const TextIconOutline: Story = {
+  args: {
+    variant: 'outline',
+    size: 'default',
+    layout: 'text-icon',
+    value: 'Etiqueta 2',
+  },
+};
+
+export const TextIconSuccess: Story = {
+  args: {
+    variant: 'success',
+    size: 'default',
+    layout: 'text-icon',
+    value: 'Etiqueta 2',
+  },
+};
+
+// ===========================
 // Design System Showcase
 // ===========================
 
