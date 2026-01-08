@@ -148,7 +148,9 @@
   color: #fbbf24;
 }
 
-.side-navbar-item:not(.side-navbar-item--active):has([fill='#FBBF24']) .side-navbar-item-icon :deep(path) {
+.side-navbar-item:not(.side-navbar-item--active):has([fill='#FBBF24'])
+  .side-navbar-item-icon
+  :deep(path) {
   fill: #fbbf24;
 }
 

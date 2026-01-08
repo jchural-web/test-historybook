@@ -8,7 +8,7 @@
   justify-content: space-between;
   height: 64px;
   padding: 0 24px;
-  background-color: #7B3FF7;
+  background-color: #7b3ff7;
   box-sizing: border-box;
 }
 
@@ -47,8 +47,13 @@
 .app-header-title {
   margin: 0;
   padding: 0;
-  color: #FFFFFF;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #ffffff;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 20px;
   font-weight: 600;
   line-height: normal;
@@ -110,8 +115,13 @@
 }
 
 .app-header-action-label {
-  color: #FFFFFF;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #ffffff;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: normal;
@@ -126,8 +136,13 @@
 }
 
 .app-header-user-name {
-  color: #FFFFFF;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  color: #ffffff;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 600;
   line-height: normal;

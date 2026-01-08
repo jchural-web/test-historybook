@@ -20,34 +20,34 @@ The **SideNavbar** is a production-ready, hierarchical navigation component buil
 
 ### Inputs
 
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `state` | `'collapsed' \| 'expanded'` | `'expanded'` | Navigation visibility state |
-| `items` | `NavItem[]` | `[]` | Hierarchical navigation items |
-| `activePath` | `string` | `''` | Current active route identifier |
+| Property     | Type                        | Default      | Description                     |
+| ------------ | --------------------------- | ------------ | ------------------------------- |
+| `state`      | `'collapsed' \| 'expanded'` | `'expanded'` | Navigation visibility state     |
+| `items`      | `NavItem[]`                 | `[]`         | Hierarchical navigation items   |
+| `activePath` | `string`                    | `''`         | Current active route identifier |
 
 ### Outputs
 
-| Event | Payload | Description |
-|-------|---------|-------------|
-| `itemClick` | `NavItemClickEvent` | Emitted when user clicks navigation item |
-| `stateChange` | `SideNavbarState` | Emitted when state changes |
+| Event         | Payload             | Description                              |
+| ------------- | ------------------- | ---------------------------------------- |
+| `itemClick`   | `NavItemClickEvent` | Emitted when user clicks navigation item |
+| `stateChange` | `SideNavbarState`   | Emitted when state changes               |
 
 ### Interfaces
 
 ```typescript
 export interface NavItem {
-  id: string;              // Unique identifier
-  label: string;           // Display text
-  icon: string;            // Icon name from library
-  count?: number;          // Optional badge count
-  children?: NavItem[];    // Nested items
-  path?: string;           // Route path
+  id: string; // Unique identifier
+  label: string; // Display text
+  icon: string; // Icon name from library
+  count?: number; // Optional badge count
+  children?: NavItem[]; // Nested items
+  path?: string; // Route path
 }
 
 export interface NavItemClickEvent {
-  item: NavItem;           // Clicked item
-  path: string;            // Full path
+  item: NavItem; // Clicked item
+  path: string; // Full path
 }
 
 export type SideNavbarState = 'collapsed' | 'expanded';
@@ -89,26 +89,26 @@ import { SideNavbarComponent, NavItem } from './side-navbar.component';
       [activePath]="currentPath"
       (itemClick)="onNavigate($event)"
     ></storybook-side-navbar>
-  `
+  `,
 })
 export class LayoutComponent {
   currentPath = 'clientes';
-  
+
   navigationItems: NavItem[] = [
     {
       id: 'clientes',
       label: 'Clientes',
       icon: 'users',
       count: 12,
-      path: 'clientes'
+      path: 'clientes',
     },
     {
       id: 'cursos',
       label: 'Cursos',
       icon: 'book-open',
       count: 8,
-      path: 'cursos'
-    }
+      path: 'cursos',
+    },
   ];
 
   onNavigate(event: NavItemClickEvent) {
@@ -167,11 +167,11 @@ navigationItems: NavItem[] = [
       [items]="navigationItems"
       [activePath]="currentPath"
     ></storybook-side-navbar>
-    
+
     <button (click)="toggleNav()">
       {{ navState === 'expanded' ? 'Collapse' : 'Expand' }}
     </button>
-  `
+  `,
 })
 export class LayoutComponent {
   navState: SideNavbarState = 'expanded';
@@ -208,8 +208,8 @@ Builder.registerComponent(SideNavbarComponent, {
         { name: 'icon', type: 'string', required: true },
         { name: 'count', type: 'number' },
         { name: 'path', type: 'string' },
-        { 
-          name: 'children', 
+        {
+          name: 'children',
           type: 'list',
           subFields: [
             { name: 'id', type: 'string', required: true },
@@ -217,10 +217,10 @@ Builder.registerComponent(SideNavbarComponent, {
             { name: 'icon', type: 'string', required: true },
             { name: 'count', type: 'number' },
             { name: 'path', type: 'string' },
-          ]
-        }
+          ],
+        },
       ],
-      defaultValue: []
+      defaultValue: [],
     },
     {
       name: 'activePath',
@@ -234,18 +234,21 @@ Builder.registerComponent(SideNavbarComponent, {
 ## Design Specifications
 
 ### Collapsed State
+
 - **Width**: 70px
 - **Padding**: 8px (sides)
 - **Icons Only**: Centered alignment
 - **Border**: 1px solid #E5E7EB
 
 ### Expanded State
+
 - **Width**: 280px
 - **Padding**: 15px (sides)
 - **Home Section**: 10px vertical padding
 - **Section Title**: "MÓDULOS" (#8A8587, 11px, 600 weight)
 
 ### Navigation Items
+
 - **Height**: 30px minimum
 - **Padding**: 7px 11px
 - **Border Radius**: 5px
@@ -256,6 +259,7 @@ Builder.registerComponent(SideNavbarComponent, {
 - **Active Color**: #7B3FF7
 
 ### Count Badges
+
 - **Min Width**: 27px
 - **Height**: 20px
 - **Padding**: 0 7px
@@ -266,11 +270,13 @@ Builder.registerComponent(SideNavbarComponent, {
 - **Letter Spacing**: 0.22px
 
 ### Icons
+
 - **Size**: 14px × 14px
 - **Color**: #000 (default), #7B3FF7 (active)
 - **Special Colors**: #FBBF24 for specific icons (message-square, target, calendar-days)
 
 ### Chevron
+
 - **Size**: 15px × 15px
 - **Rotation**: 90deg when expanded
 - **Transition**: 0.2s ease
@@ -292,7 +298,7 @@ Builder.registerComponent(SideNavbarComponent, {
     position: fixed;
     box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
   }
-  
+
   /* Auto-collapse on mobile */
   .side-navbar--collapsed {
     transform: translateX(-100%);
@@ -302,18 +308,18 @@ Builder.registerComponent(SideNavbarComponent, {
 
 ## Color Tokens
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--nav-bg` | `#FFF` | Background |
-| `--nav-border` | `#E5E7EB` | Border |
-| `--nav-text` | `#374151` | Default text |
-| `--nav-text-muted` | `#8A8587` | Section titles |
-| `--nav-active-bg` | `#F0EBFF` | Active background |
-| `--nav-active-color` | `#7B3FF7` | Active text/icon |
-| `--nav-hover-bg` | `#F9FAFB` | Hover background |
-| `--nav-divider` | `#E4E4E7` | Divider line |
-| `--nav-badge-bg` | `#F3F4F6` | Badge background |
-| `--nav-badge-border` | `#E4E4E7` | Badge border |
+| Token                | Value     | Usage             |
+| -------------------- | --------- | ----------------- |
+| `--nav-bg`           | `#FFF`    | Background        |
+| `--nav-border`       | `#E5E7EB` | Border            |
+| `--nav-text`         | `#374151` | Default text      |
+| `--nav-text-muted`   | `#8A8587` | Section titles    |
+| `--nav-active-bg`    | `#F0EBFF` | Active background |
+| `--nav-active-color` | `#7B3FF7` | Active text/icon  |
+| `--nav-hover-bg`     | `#F9FAFB` | Hover background  |
+| `--nav-divider`      | `#E4E4E7` | Divider line      |
+| `--nav-badge-bg`     | `#F3F4F6` | Badge background  |
+| `--nav-badge-border` | `#E4E4E7` | Badge border      |
 
 ## Best Practices
 
@@ -355,16 +361,14 @@ Map your existing navigation structure to `NavItem[]`:
 
 ```typescript
 // Bootstrap Navbar
-const bootstrapNav = [
-  { text: 'Home', link: '/home', icon: 'house' }
-];
+const bootstrapNav = [{ text: 'Home', link: '/home', icon: 'house' }];
 
 // Convert to NavItem[]
-const navItems: NavItem[] = bootstrapNav.map(item => ({
+const navItems: NavItem[] = bootstrapNav.map((item) => ({
   id: item.link.replace('/', ''),
   label: item.text,
   icon: item.icon,
-  path: item.link.replace('/', '')
+  path: item.link.replace('/', ''),
 }));
 ```
 
@@ -387,7 +391,7 @@ describe('SideNavbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SideNavbarComponent]
+      imports: [SideNavbarComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(SideNavbarComponent);
@@ -402,7 +406,7 @@ describe('SideNavbarComponent', () => {
   it('should toggle expanded state', () => {
     component.state = 'expanded';
     expect(component.state).toBe('expanded');
-    
+
     component.state = 'collapsed';
     expect(component.state).toBe('collapsed');
   });
@@ -410,10 +414,10 @@ describe('SideNavbarComponent', () => {
   it('should emit itemClick event', () => {
     const spy = jasmine.createSpy('itemClick');
     component.itemClick.subscribe(spy);
-    
+
     const item = { id: 'test', label: 'Test', icon: 'house', path: 'test' };
     component.onItemClick(item, 'test');
-    
+
     expect(spy).toHaveBeenCalledWith({ item, path: 'test' });
   });
 });
@@ -422,16 +426,19 @@ describe('SideNavbarComponent', () => {
 ## Troubleshooting
 
 ### Icons Not Displaying
+
 - Ensure icon name matches library exactly
 - Check CSS `currentColor` inheritance
 - Verify SVG `fill` attribute
 
 ### Active State Not Working
+
 - Confirm `activePath` matches item `path`
 - Check path format (no leading `/`)
 - Verify change detection is running
 
 ### Children Not Expanding
+
 - Ensure `state` is `'expanded'`
 - Check `children` array is populated
 - Verify click handler is bound
@@ -439,6 +446,7 @@ describe('SideNavbarComponent', () => {
 ## Changelog
 
 ### Version 1.0.0 (Current)
+
 - ✅ Initial release
 - ✅ Collapsed/Expanded states
 - ✅ Hierarchical navigation
@@ -451,6 +459,7 @@ describe('SideNavbarComponent', () => {
 ## Support
 
 For issues, questions, or feature requests:
+
 - Check [Storybook docs](http://localhost:6006/)
 - Review component source code
 - Test with provided stories

@@ -27,7 +27,7 @@ export interface NavItemClickEvent {
       class="side-navbar"
       [ngClass]="{
         'side-navbar--collapsed': state === 'collapsed',
-        'side-navbar--expanded': state === 'expanded'
+        'side-navbar--expanded': state === 'expanded',
       }"
       [attr.aria-label]="'Navegación principal'"
     >

@@ -7,6 +7,7 @@ A production-ready **SideNavbar** component has been created for the Angular 20 
 ## 📁 Files Created
 
 ### 1. Component TypeScript (`src/stories/side-navbar.component.ts`)
+
 - ✅ **227 lines** of production code
 - ✅ Angular 20 Standalone Component
 - ✅ Hierarchical navigation with unlimited nesting
@@ -17,6 +18,7 @@ A production-ready **SideNavbar** component has been created for the Angular 20 
 - ✅ Full TypeScript interfaces exported
 
 ### 2. Component Styles (`src/stories/side-navbar.css`)
+
 - ✅ **244 lines** of pixel-perfect CSS
 - ✅ Collapsed/Expanded state transitions
 - ✅ Active item highlighting (#F0EBFF background, #7B3FF7 text)
@@ -27,9 +29,10 @@ A production-ready **SideNavbar** component has been created for the Angular 20 
 - ✅ Accessibility-first approach
 
 ### 3. Storybook Stories (`src/stories/side-navbar.stories.ts`)
+
 - ✅ **311 lines** with 9 comprehensive examples
 - ✅ Expanded state demonstration
-- ✅ Collapsed state demonstration  
+- ✅ Collapsed state demonstration
 - ✅ Active item scenarios
 - ✅ Hierarchical navigation examples
 - ✅ Count badge examples
@@ -38,6 +41,7 @@ A production-ready **SideNavbar** component has been created for the Angular 20 
 - ✅ Empty state
 
 ### 4. Documentation (`src/stories/SIDE_NAVBAR_README.md`)
+
 - ✅ **462 lines** of comprehensive documentation
 - ✅ Complete API reference
 - ✅ Usage examples for all scenarios
@@ -52,12 +56,14 @@ A production-ready **SideNavbar** component has been created for the Angular 20 
 ## 🎨 Design Fidelity
 
 ### Collapsed State (70px width)
+
 - ✅ Icons centered and visible
 - ✅ Home button with purple active state
 - ✅ Divider line after home
 - ✅ All icons maintain color and size
 
 ### Expanded State (280px width)
+
 - ✅ "MÓDULOS" section header (#8A8587, 11px, 600 weight)
 - ✅ Home button with background (#F0EBFF) and label
 - ✅ Parent items with folder icons
@@ -67,6 +73,7 @@ A production-ready **SideNavbar** component has been created for the Angular 20 
 - ✅ Active items highlighted in purple (#7B3FF7)
 
 ### Color Tokens
+
 - ✅ Active Background: `#F0EBFF`
 - ✅ Active Text/Icon: `#7B3FF7`
 - ✅ Default Text: `#374151`
@@ -80,18 +87,20 @@ A production-ready **SideNavbar** component has been created for the Angular 20 
 ## 🔧 Technical Features
 
 ### Component Architecture
+
 ```typescript
 export interface NavItem {
-  id: string;              // Unique identifier
-  label: string;           // Display text
-  icon: string;            // Icon name
-  count?: number;          // Optional badge
-  children?: NavItem[];    // Nested items
-  path?: string;           // Route path
+  id: string; // Unique identifier
+  label: string; // Display text
+  icon: string; // Icon name
+  count?: number; // Optional badge
+  children?: NavItem[]; // Nested items
+  path?: string; // Route path
 }
 ```
 
 ### Icon Library (Embedded SVG)
+
 1. `house` - Home icon (14×14px)
 2. `folder` - Folder icon (15×15px)
 3. `message-square` - Chat icon (14×14px, yellow #FBBF24)
@@ -105,12 +114,14 @@ export interface NavItem {
 11. `chevron-right` - Chevron icon (15×15px)
 
 ### State Management
+
 - ✅ Auto-expansion based on active path
 - ✅ Collapse/expand toggle for parent items
 - ✅ Event emissions for navigation tracking
 - ✅ Persistent expansion state during navigation
 
 ### Accessibility
+
 - ✅ ARIA labels on all interactive elements
 - ✅ ARIA expanded state for parent items
 - ✅ Keyboard navigation support
@@ -118,6 +129,7 @@ export interface NavItem {
 - ✅ Semantic HTML structure
 
 ### Responsive Design
+
 - ✅ Desktop: Fixed sidebar
 - ✅ Mobile (< 768px): Fixed position with shadow
 - ✅ Auto-hide on mobile when collapsed
@@ -126,32 +138,35 @@ export interface NavItem {
 ## 📊 Component Specifications
 
 ### Measurements
-| Element | Collapsed | Expanded |
-|---------|-----------|----------|
-| Container Width | 70px | 280px |
-| Item Height | 30px | 30px |
-| Icon Size | 14-17px | 14-17px |
-| Badge Min Width | 27px | 27px |
-| Badge Height | 20px | 20px |
-| Border Radius (Item) | 5px | 5px |
-| Border Radius (Badge) | 10px | 10px |
+
+| Element               | Collapsed | Expanded |
+| --------------------- | --------- | -------- |
+| Container Width       | 70px      | 280px    |
+| Item Height           | 30px      | 30px     |
+| Icon Size             | 14-17px   | 14-17px  |
+| Badge Min Width       | 27px      | 27px     |
+| Badge Height          | 20px      | 20px     |
+| Border Radius (Item)  | 5px       | 5px      |
+| Border Radius (Badge) | 10px      | 10px     |
 
 ### Typography
-| Element | Font | Size | Weight | Spacing |
-|---------|------|------|--------|---------|
-| Item Label | Inter | 12px | 600 | 0.24px |
-| Section Title | Inter | 11px | 600 | 0.33px |
-| Badge Count | Inter | 11px | 600 | 0.22px |
+
+| Element       | Font  | Size | Weight | Spacing |
+| ------------- | ----- | ---- | ------ | ------- |
+| Item Label    | Inter | 12px | 600    | 0.24px  |
+| Section Title | Inter | 11px | 600    | 0.33px  |
+| Badge Count   | Inter | 11px | 600    | 0.22px  |
 
 ### Spacing
-| Location | Value |
-|----------|-------|
+
+| Location                  | Value                            |
+| ------------------------- | -------------------------------- |
 | Container Padding (sides) | 15px (expanded), 8px (collapsed) |
-| Home Section Padding | 10px vertical |
-| Item Padding | 7px 11px |
-| Icon to Label Gap | 12px |
-| Child Item Indent | 37px |
-| Section Title Padding | 14px 29px 8px 29px |
+| Home Section Padding      | 10px vertical                    |
+| Item Padding              | 7px 11px                         |
+| Icon to Label Gap         | 12px                             |
+| Child Item Indent         | 37px                             |
+| Section Title Padding     | 14px 29px 8px 29px               |
 
 ## 🚀 Usage Example
 
@@ -169,12 +184,12 @@ import { SideNavbarComponent, NavItem } from './side-navbar.component';
       [activePath]="currentPath"
       (itemClick)="onNavigate($event)"
     ></storybook-side-navbar>
-  `
+  `,
 })
 export class AppComponent {
   navState = 'expanded';
   currentPath = 'clientes';
-  
+
   navigationItems: NavItem[] = [
     {
       id: 'comercial',
@@ -191,19 +206,19 @@ export class AppComponent {
               label: 'Chats',
               icon: 'message-square',
               count: 3,
-              path: 'comercial/gestion-comercial/chats'
-            }
-          ]
-        }
-      ]
+              path: 'comercial/gestion-comercial/chats',
+            },
+          ],
+        },
+      ],
     },
     {
       id: 'clientes',
       label: 'Clientes',
       icon: 'users',
       count: 12,
-      path: 'clientes'
-    }
+      path: 'clientes',
+    },
   ];
 
   onNavigate(event: NavItemClickEvent) {
@@ -246,10 +261,12 @@ The component is fully ready for Builder.io registration with all properties exp
 ## 🔍 Storybook Access
 
 The component will be available in Storybook at:
+
 - **URL**: `http://localhost:6006/`
 - **Path**: `Example/SideNavbar`
 
 ### Available Stories:
+
 1. **Expanded** - Default expanded state
 2. **Collapsed** - Icon-only mode
 3. **WithActiveItem** - Active child item
@@ -263,6 +280,7 @@ The component will be available in Storybook at:
 ## 🎉 Summary
 
 The **SideNavbar** component has been successfully implemented with:
+
 - ✅ **900+ lines** of production code
 - ✅ **100% Figma fidelity**
 - ✅ **Full Angular 20 compatibility**

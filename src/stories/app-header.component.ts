@@ -62,7 +62,10 @@ const icons: Record<string, string> = {
           (click)="onActionClick()"
           [attr.aria-label]="actionLabel"
         >
-          <span class="app-header-icon app-header-icon--small" [innerHTML]="getIconSvg('refresh')"></span>
+          <span
+            class="app-header-icon app-header-icon--small"
+            [innerHTML]="getIconSvg('refresh')"
+          ></span>
           <span class="app-header-action-label">{{ actionLabel }}</span>
         </button>
 
