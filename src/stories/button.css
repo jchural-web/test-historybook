@@ -310,3 +310,73 @@
 .btn:focus-visible {
   box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
 }
+
+/* ===========================
+   Icon-only Circular Button States
+   =========================== */
+
+/* Default state - already defined above */
+.btn-shape-icon-only {
+  position: relative;
+}
+
+/* Hover state */
+.btn-shape-icon-only:hover:not(:disabled),
+.btn-shape-icon-only.btn-state-hover {
+  opacity: 0.9;
+}
+
+/* Active state */
+.btn-shape-icon-only:active:not(:disabled),
+.btn-shape-icon-only.btn-state-active {
+  opacity: 1;
+}
+
+/* Focus state - darker border, darker icon, purple ring */
+.btn-shape-icon-only:focus:not(:disabled),
+.btn-shape-icon-only.btn-state-focus {
+  border-color: #64748b;
+  color: #6b21a8;
+  outline: none;
+  box-shadow: 0 0 0 1px #581c87;
+}
+
+/* Disabled state */
+.btn-shape-icon-only:disabled,
+.btn-shape-icon-only.btn-state-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon-only button icon wrapper */
+.button-icon-only {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Icon sizing for icon-only buttons */
+.btn-shape-icon-only.btn-sm .button-icon-only {
+  width: 17px;
+  height: 17px;
+}
+
+.btn-shape-icon-only.btn-md .button-icon-only {
+  width: 21px;
+  height: 21px;
+}
+
+.btn-shape-icon-only.btn-lg .button-icon-only {
+  width: 26px;
+  height: 26px;
+}
+
+/* Ensure SVG icons render properly in icon-only buttons */
+.button-icon-only svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
