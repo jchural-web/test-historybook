@@ -186,6 +186,14 @@
   border: 1px solid #2563eb;
 }
 
+/* Force white icon for secondary variant - all states */
+.btn-shape-icon-only.btn-secondary .button-icon-only svg,
+.btn-shape-icon-only.btn-secondary .button-icon-only svg path,
+.btn-shape-icon-only.btn-secondary .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
+}
+
 .btn-shape-icon-only.btn-secondary:hover:not(:disabled),
 .btn-shape-icon-only.btn-secondary.btn-state-hover {
   opacity: 0.9;
