@@ -329,6 +329,12 @@ export const DesignSystemShowcase: Story = {
               <li><strong>Success:</strong> Background #16A34A (Green-600), Text White</li>
             </ul>
             
+            <p style="margin: 16px 0 8px 0;"><strong>Layouts:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li><strong>text:</strong> Text-only badge (legacy small size)</li>
+              <li><strong>text-icon:</strong> Badge with search icon and text (Figma design)</li>
+            </ul>
+
             <p style="margin: 16px 0 8px 0;"><strong>Behavior:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li>Non-interactive (pointer-events: none)</li>
