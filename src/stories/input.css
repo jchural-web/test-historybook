@@ -85,6 +85,14 @@
   color: #1E293B;
 }
 
+/* Focus state for error (destructive) - keep red border, purple ring only */
+.input-state-error.input-state-focus,
+.input-state-error:has(.input-field:focus) {
+  border-color: #DC2626;
+  background: transparent;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+}
+
 /* State variants - Disabled */
 .input-state-disabled {
   border-color: #CBD5E1;
