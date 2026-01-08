@@ -120,15 +120,8 @@ export interface TabConfig extends TabItem {
                   class="info-container-table-cell"
                   [style.width]="column.width || 'auto'"
                 >
-                  <!-- Render label if specified -->
-                  <storybook-label
-                    *ngIf="row[column.key + '_label']"
-                    [text]="row[column.key]"
-                    [variant]="row[column.key + '_label_variant'] || 'neutral'"
-                  ></storybook-label>
-
-                  <!-- Render plain text otherwise -->
-                  <span *ngIf="!row[column.key + '_label']">{{ row[column.key] }}</span>
+                  <!-- Render text -->
+                  <span style="color: #1E293B;">{{ row[column.key] }}</span>
                 </div>
               </div>
             </div>
@@ -198,15 +191,8 @@ export interface TabConfig extends TabItem {
                       class="info-container-table-cell"
                       [style.width]="column.width || 'auto'"
                     >
-                      <!-- Render label if specified -->
-                      <storybook-label
-                        *ngIf="row[column.key + '_label']"
-                        [text]="row[column.key]"
-                        [variant]="row[column.key + '_label_variant'] || 'neutral'"
-                      ></storybook-label>
-
-                      <!-- Render plain text otherwise -->
-                      <span *ngIf="!row[column.key + '_label']">{{ row[column.key] }}</span>
+                      <!-- Render text -->
+                      <span style="color: #1E293B;">{{ row[column.key] }}</span>
                     </div>
                   </div>
                 </div>
