@@ -220,12 +220,12 @@ export const TextIconSuccess: Story = {
 export const DesignSystemShowcase: Story = {
   render: () => ({
     template: `
-      <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 900px;">
+      <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 1100px;">
         <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Badge Component Library</h2>
-        
+
         <!-- Grid Layout matching Figma -->
-        <div style="display: grid; grid-template-columns: 100px repeat(5, 120px); gap: 24px; align-items: center; margin-bottom: 48px;">
-          
+        <div style="display: grid; grid-template-columns: 100px repeat(5, 150px); gap: 20px; align-items: center; margin-bottom: 48px;">
+
           <!-- Headers -->
           <div></div>
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Default</div>
@@ -233,7 +233,36 @@ export const DesignSystemShowcase: Story = {
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Destructive</div>
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Outline</div>
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Success</div>
-          
+
+          <!-- Text Row -->
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Text</div>
+          <div><storybook-badge variant="default" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><storybook-badge variant="secondary" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><storybook-badge variant="destructive" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><storybook-badge variant="outline" size="default" layout="text-icon" value="Etiqueta 3"></storybook-badge></div>
+          <div><storybook-badge variant="success" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+
+          <!-- Text Icon Row -->
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Text Icon</div>
+          <div><storybook-badge variant="default" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><storybook-badge variant="secondary" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><storybook-badge variant="destructive" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><storybook-badge variant="outline" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><storybook-badge variant="success" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+        </div>
+
+        <!-- Legacy Small Badges -->
+        <h3 style="margin: 48px 0 24px 0; font-size: 20px; font-weight: 600;">Legacy Badge Sizes</h3>
+        <div style="display: grid; grid-template-columns: 100px repeat(5, 150px); gap: 20px; align-items: center; margin-bottom: 48px;">
+
+          <!-- Headers -->
+          <div></div>
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Default</div>
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Secondary</div>
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Destructive</div>
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Outline</div>
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Success</div>
+
           <!-- Dot Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Dot</div>
           <div><storybook-badge variant="default" size="dot"></storybook-badge></div>
@@ -241,22 +270,22 @@ export const DesignSystemShowcase: Story = {
           <div><storybook-badge variant="destructive" size="dot"></storybook-badge></div>
           <div><storybook-badge variant="outline" size="dot"></storybook-badge></div>
           <div><storybook-badge variant="success" size="dot"></storybook-badge></div>
-          
-          <!-- Default Row -->
-          <div style="font-size: 16px; font-weight: 600; color: #202020;">Default</div>
-          <div><storybook-badge variant="default" size="default" value="10"></storybook-badge></div>
-          <div><storybook-badge variant="secondary" size="default" value="10"></storybook-badge></div>
-          <div><storybook-badge variant="destructive" size="default" value="10"></storybook-badge></div>
-          <div><storybook-badge variant="outline" size="default" value="10"></storybook-badge></div>
-          <div><storybook-badge variant="success" size="default" value="10"></storybook-badge></div>
-          
+
+          <!-- Small Text Row -->
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Small</div>
+          <div><storybook-badge variant="default" size="default" layout="text" value="10"></storybook-badge></div>
+          <div><storybook-badge variant="secondary" size="default" layout="text" value="10"></storybook-badge></div>
+          <div><storybook-badge variant="destructive" size="default" layout="text" value="10"></storybook-badge></div>
+          <div><storybook-badge variant="outline" size="default" layout="text" value="10"></storybook-badge></div>
+          <div><storybook-badge variant="success" size="default" layout="text" value="10"></storybook-badge></div>
+
           <!-- Large Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Large</div>
-          <div><storybook-badge variant="default" size="large" value="99+"></storybook-badge></div>
-          <div><storybook-badge variant="secondary" size="large" value="99+"></storybook-badge></div>
-          <div><storybook-badge variant="destructive" size="large" value="99+"></storybook-badge></div>
-          <div><storybook-badge variant="outline" size="large" value="99+"></storybook-badge></div>
-          <div><storybook-badge variant="success" size="large" value="99+"></storybook-badge></div>
+          <div><storybook-badge variant="default" size="large" layout="text" value="99+"></storybook-badge></div>
+          <div><storybook-badge variant="secondary" size="large" layout="text" value="99+"></storybook-badge></div>
+          <div><storybook-badge variant="destructive" size="large" layout="text" value="99+"></storybook-badge></div>
+          <div><storybook-badge variant="outline" size="large" layout="text" value="99+"></storybook-badge></div>
+          <div><storybook-badge variant="success" size="large" layout="text" value="99+"></storybook-badge></div>
         </div>
 
         <!-- Design Specifications -->
