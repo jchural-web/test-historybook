@@ -234,13 +234,13 @@ export const DesignSystemShowcase: Story = {
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Outline</div>
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Success</div>
 
-          <!-- Text Row -->
+          <!-- Text Row (Large text-only badges) -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Text</div>
-          <div><storybook-badge variant="default" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
-          <div><storybook-badge variant="secondary" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
-          <div><storybook-badge variant="destructive" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
-          <div><storybook-badge variant="outline" size="default" layout="text-icon" value="Etiqueta 3"></storybook-badge></div>
-          <div><storybook-badge variant="success" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><span style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 20px; border-radius: 15.5px; background-color: #7C3AED; color: #FFFFFF; font-family: Inter, sans-serif; font-size: 14px; font-weight: 400; line-height: 21px; letter-spacing: 0.05px; white-space: nowrap;">Etiqueta 2</span></div>
+          <div><span style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 20px; border-radius: 15.5px; background-color: #2563EB; color: #FFFFFF; font-family: Inter, sans-serif; font-size: 14px; font-weight: 400; line-height: 21px; letter-spacing: 0.05px; white-space: nowrap;">Etiqueta 2</span></div>
+          <div><span style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 20px; border-radius: 15.5px; background-color: #DC2626; color: #FFFFFF; font-family: Inter, sans-serif; font-size: 14px; font-weight: 400; line-height: 21px; letter-spacing: 0.05px; white-space: nowrap;">Etiqueta 2</span></div>
+          <div><span style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 20px; border-radius: 15.5px; background-color: #FFFFFF; border: 1px solid #CBD5E1; color: #1E293B; font-family: Inter, sans-serif; font-size: 14px; font-weight: 400; line-height: 21px; letter-spacing: 0.05px; white-space: nowrap;">Etiqueta 3</span></div>
+          <div><span style="display: inline-flex; align-items: center; justify-content: center; padding: 8px 20px; border-radius: 15.5px; background-color: #16A34A; color: #FFFFFF; font-family: Inter, sans-serif; font-size: 14px; font-weight: 400; line-height: 21px; letter-spacing: 0.05px; white-space: nowrap;">Etiqueta 2</span></div>
 
           <!-- Text Icon Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Text Icon</div>
