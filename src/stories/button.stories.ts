@@ -23,8 +23,13 @@ const meta: Meta<ButtonComponent> = {
     },
     shape: {
       control: 'select',
-      options: ['rectangular', 'pill', 'icon', 'icon-text'],
+      options: ['rectangular', 'pill', 'icon', 'icon-text', 'icon-only'],
       description: 'Shape of the button',
+    },
+    iconName: {
+      control: 'select',
+      options: ['check', 'chevron-left', 'chevron-right', 'chevron-up', 'chevron-down', 'none'],
+      description: 'Icon name for icon-only buttons',
     },
     icon: {
       control: 'boolean',
@@ -219,6 +224,266 @@ export const MediumDestructiveHover: Story = {
   },
 };
 
+// Icon-only circular button variants
+export const IconOnlySmallDefault: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'sm',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+export const IconOnlyMediumDefault: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+export const IconOnlyLargeDefault: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'lg',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+export const IconOnlyHover: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    state: 'hover',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+export const IconOnlyActive: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    state: 'active',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+export const IconOnlyFocus: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    state: 'focus',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+export const IconOnlyDisabled: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    state: 'disabled',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+// Icon-only with different icons
+export const IconOnlyChevronRight: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    iconName: 'chevron-right',
+    label: 'Next',
+  },
+};
+
+export const IconOnlyChevronUp: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    iconName: 'chevron-up',
+    label: 'Scroll up',
+  },
+};
+
+export const IconOnlyChevronDown: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    iconName: 'chevron-down',
+    label: 'Scroll down',
+  },
+};
+
+export const IconOnlyCheck: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    iconName: 'check',
+    label: 'Confirm',
+  },
+};
+
+// Icon-only showcase by size
+export const IconOnlyAllSizes: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Small (27px)</span>
+          <storybook-button
+            shape="icon-only"
+            size="sm"
+            iconName="chevron-left"
+            label="Small icon button"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Medium (35px)</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            iconName="chevron-left"
+            label="Medium icon button"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Large (43px)</span>
+          <storybook-button
+            shape="icon-only"
+            size="lg"
+            iconName="chevron-left"
+            label="Large icon button"
+          ></storybook-button>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// Icon-only showcase by state
+export const IconOnlyAllStates: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Default</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            state="default"
+            iconName="chevron-left"
+            label="Default state"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Hover</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            state="hover"
+            iconName="chevron-left"
+            label="Hover state"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Active</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            state="active"
+            iconName="chevron-left"
+            label="Active state"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Focus</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            state="focus"
+            iconName="chevron-left"
+            label="Focus state"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Disabled</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            state="disabled"
+            iconName="chevron-left"
+            label="Disabled state"
+          ></storybook-button>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// Icon-only showcase with all icon types
+export const IconOnlyAllIcons: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Chevron Left</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            iconName="chevron-left"
+            label="Previous"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Chevron Right</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            iconName="chevron-right"
+            label="Next"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Chevron Up</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            iconName="chevron-up"
+            label="Scroll up"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Chevron Down</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            iconName="chevron-down"
+            label="Scroll down"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Check</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            iconName="check"
+            label="Confirm"
+          ></storybook-button>
+        </div>
+      </div>
+    `,
+  }),
+};
+
 // Complete showcase
 export const AllSizesDefault: Story = {
   render: () => ({
@@ -269,6 +534,7 @@ export const AllShapes: Story = {
         <storybook-button shape="pill" label="Pill"></storybook-button>
         <storybook-button shape="icon" [icon]="true" label="Icon"></storybook-button>
         <storybook-button shape="icon-text" [icon]="true" label="Icon+Text"></storybook-button>
+        <storybook-button shape="icon-only" iconName="chevron-left" label="Icon Only"></storybook-button>
       </div>
     `,
   }),
@@ -341,7 +607,7 @@ export const DesignSystemShowcase: Story = {
           </div>
         </section>
 
-        <section>
+        <section style="margin-bottom: 40px;">
           <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600;">With Icons</h3>
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 8px;">
             <span style="width: 80px; font-size: 14px; color: #666;">Icon Only:</span>
@@ -355,6 +621,32 @@ export const DesignSystemShowcase: Story = {
             <storybook-button [icon]="true" iconPosition="right" variant="secondary" label="Boton"></storybook-button>
             <storybook-button [icon]="true" iconPosition="left" variant="outline" label="Boton"></storybook-button>
             <storybook-button [icon]="true" iconPosition="left" variant="ghost" label="Boton"></storybook-button>
+          </div>
+        </section>
+
+        <section>
+          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600;">Icon-Only Circular Buttons</h3>
+          <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
+            <span style="width: 80px; font-size: 14px; color: #666;">Sizes:</span>
+            <storybook-button shape="icon-only" size="sm" iconName="chevron-left" label="Small"></storybook-button>
+            <storybook-button shape="icon-only" size="md" iconName="chevron-left" label="Medium"></storybook-button>
+            <storybook-button shape="icon-only" size="lg" iconName="chevron-left" label="Large"></storybook-button>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
+            <span style="width: 80px; font-size: 14px; color: #666;">States:</span>
+            <storybook-button shape="icon-only" size="md" state="default" iconName="chevron-left" label="Default"></storybook-button>
+            <storybook-button shape="icon-only" size="md" state="hover" iconName="chevron-left" label="Hover"></storybook-button>
+            <storybook-button shape="icon-only" size="md" state="active" iconName="chevron-left" label="Active"></storybook-button>
+            <storybook-button shape="icon-only" size="md" state="focus" iconName="chevron-left" label="Focus"></storybook-button>
+            <storybook-button shape="icon-only" size="md" state="disabled" iconName="chevron-left" label="Disabled"></storybook-button>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 80px; font-size: 14px; color: #666;">Icons:</span>
+            <storybook-button shape="icon-only" size="md" iconName="chevron-left" label="Left"></storybook-button>
+            <storybook-button shape="icon-only" size="md" iconName="chevron-right" label="Right"></storybook-button>
+            <storybook-button shape="icon-only" size="md" iconName="chevron-up" label="Up"></storybook-button>
+            <storybook-button shape="icon-only" size="md" iconName="chevron-down" label="Down"></storybook-button>
+            <storybook-button shape="icon-only" size="md" iconName="check" label="Check"></storybook-button>
           </div>
         </section>
       </div>
