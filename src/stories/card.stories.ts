@@ -410,7 +410,7 @@ export const DifferentDataExamples: Story = {
   render: () => ({
     template: `
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 393px)); gap: 24px; padding: 24px;">
-        <storybook-card 
+        <storybook-card
           variant="elevated"
           header="Actividades Totales"
           value="21"
@@ -418,8 +418,8 @@ export const DifferentDataExamples: Story = {
           helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
-        
-        <storybook-card 
+
+        <storybook-card
           variant="elevated"
           header="Ventas Completadas"
           value="4,892"
@@ -427,8 +427,8 @@ export const DifferentDataExamples: Story = {
           helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
-        
-        <storybook-card 
+
+        <storybook-card
           variant="elevated"
           header="Tiempo Promedio"
           value="2.4h"
@@ -436,8 +436,8 @@ export const DifferentDataExamples: Story = {
           helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
-        
-        <storybook-card 
+
+        <storybook-card
           variant="outlined"
           header="Tasa de Éxito"
           value="94.7%"
@@ -445,8 +445,8 @@ export const DifferentDataExamples: Story = {
           helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
-        
-        <storybook-card 
+
+        <storybook-card
           variant="outlined"
           header="Satisfacción Cliente"
           value="4.8/5"
@@ -454,8 +454,8 @@ export const DifferentDataExamples: Story = {
           helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
-        
-        <storybook-card 
+
+        <storybook-card
           variant="default"
           header="Proyectos Activos"
           value="12"
@@ -463,6 +463,140 @@ export const DifferentDataExamples: Story = {
           helperDescription="respecto al mes anterior"
           icon="phone">
         </storybook-card>
+      </div>
+    `,
+  }),
+};
+
+// ===========================
+// NEW: Content Variant Stories
+// ===========================
+
+// Metric Content Variant
+export const MetricContentVariant: Story = {
+  args: {
+    contentVariant: 'metric',
+    metricTitle: 'Compromisos Incumplidos',
+    metricValue: '0',
+  },
+};
+
+// InfoDate Content Variant
+export const InfoDateContentVariant: Story = {
+  args: {
+    contentVariant: 'infoDate',
+    dateLabel: 'Fecha',
+    dateText: '28/06/2024',
+  },
+};
+
+// InfoCurrency Content Variant
+export const InfoCurrencyContentVariant: Story = {
+  args: {
+    contentVariant: 'infoCurrency',
+    currencyLabel: 'Tipo de moneda:',
+    currencyText: 'PEN',
+  },
+};
+
+// Placeholder Content Variant
+export const PlaceholderContentVariant: Story = {
+  args: {
+    contentVariant: 'placeholder',
+  },
+};
+
+// All Content Variants Showcase
+export const AllContentVariants: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0; font-size: 20px; font-weight: 600;">Card Content Variants</h3>
+
+        <!-- Default -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">Default (Original Card)</h4>
+          <storybook-card
+            contentVariant="default"
+            variant="elevated"
+            header="Actividades Totales"
+            value="21"
+            helper="+15.2%"
+            helperDescription="respecto al mes anterior"
+            icon="phone">
+          </storybook-card>
+        </div>
+
+        <!-- Metric -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">Metric (Compromisos)</h4>
+          <storybook-card
+            contentVariant="metric"
+            metricTitle="Compromisos Incumplidos"
+            metricValue="0">
+          </storybook-card>
+        </div>
+
+        <!-- InfoDate -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">InfoDate (Fecha)</h4>
+          <storybook-card
+            contentVariant="infoDate"
+            dateLabel="Fecha"
+            dateText="28/06/2024">
+          </storybook-card>
+        </div>
+
+        <!-- InfoCurrency -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">InfoCurrency (Moneda)</h4>
+          <storybook-card
+            contentVariant="infoCurrency"
+            currencyLabel="Tipo de moneda:"
+            currencyText="PEN">
+          </storybook-card>
+        </div>
+
+        <!-- Placeholder -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">Placeholder (Vacío)</h4>
+          <storybook-card
+            contentVariant="placeholder">
+          </storybook-card>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// Content Variants with Different Variants (default, elevated, outlined)
+export const ContentVariantsWithCardVariants: Story = {
+  render: () => ({
+    template: `
+      <div style="display: grid; grid-template-columns: 150px auto auto auto; gap: 24px; padding: 24px; align-items: start;">
+        <!-- Headers -->
+        <div></div>
+        <div style="font-size: 14px; font-weight: 600;">Default Variant</div>
+        <div style="font-size: 14px; font-weight: 600;">Elevated Variant</div>
+        <div style="font-size: 14px; font-weight: 600;">Outlined Variant</div>
+
+        <!-- Metric Row -->
+        <div style="font-size: 14px; font-weight: 600;">Metric</div>
+        <storybook-card contentVariant="metric" variant="default" metricTitle="Compromisos Incumplidos" metricValue="0"></storybook-card>
+        <storybook-card contentVariant="metric" variant="elevated" metricTitle="Compromisos Incumplidos" metricValue="0"></storybook-card>
+        <storybook-card contentVariant="metric" variant="outlined" metricTitle="Compromisos Incumplidos" metricValue="0"></storybook-card>
+
+        <!-- InfoDate Row -->
+        <div style="font-size: 14px; font-weight: 600;">InfoDate</div>
+        <storybook-card contentVariant="infoDate" variant="default" dateLabel="Fecha" dateText="28/06/2024"></storybook-card>
+        <storybook-card contentVariant="infoDate" variant="elevated" dateLabel="Fecha" dateText="28/06/2024"></storybook-card>
+        <storybook-card contentVariant="infoDate" variant="outlined" dateLabel="Fecha" dateText="28/06/2024"></storybook-card>
+
+        <!-- InfoCurrency Row -->
+        <div style="font-size: 14px; font-weight: 600;">InfoCurrency</div>
+        <storybook-card contentVariant="infoCurrency" variant="default" currencyLabel="Tipo de moneda:" currencyText="PEN"></storybook-card>
+        <storybook-card contentVariant="infoCurrency" variant="elevated" currencyLabel="Tipo de moneda:" currencyText="PEN"></storybook-card>
+        <storybook-card contentVariant="infoCurrency" variant="outlined" currencyLabel="Tipo de moneda:" currencyText="PEN"></storybook-card>
       </div>
     `,
   }),
