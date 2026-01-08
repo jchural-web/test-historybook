@@ -224,11 +224,84 @@ export const MediumDestructiveHover: Story = {
   },
 };
 
+// Icon-only circular button - Outline variant (default)
+export const IconOnlyOutline: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    variant: 'outline',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+// Icon-only circular button - Default variant (filled purple)
+export const IconOnlyDefault: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    variant: 'default',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+// Icon-only circular button - Secondary variant (filled blue)
+export const IconOnlySecondary: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    variant: 'secondary',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+// Icon-only circular button - Ghost variant (light purple)
+export const IconOnlyGhost: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    variant: 'ghost',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+// Icon-only circular button - Link variant
+export const IconOnlyLink: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    variant: 'link',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Previous',
+  },
+};
+
+// Icon-only circular button - Destructive variant (red)
+export const IconOnlyDestructive: Story = {
+  args: {
+    shape: 'icon-only',
+    size: 'md',
+    variant: 'destructive',
+    state: 'default',
+    iconName: 'chevron-left',
+    label: 'Delete',
+  },
+};
+
 // Icon-only circular button variants
 export const IconOnlySmallDefault: Story = {
   args: {
     shape: 'icon-only',
     size: 'sm',
+    variant: 'outline',
     state: 'default',
     iconName: 'chevron-left',
     label: 'Previous',
@@ -239,6 +312,7 @@ export const IconOnlyMediumDefault: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     state: 'default',
     iconName: 'chevron-left',
     label: 'Previous',
@@ -249,6 +323,7 @@ export const IconOnlyLargeDefault: Story = {
   args: {
     shape: 'icon-only',
     size: 'lg',
+    variant: 'outline',
     state: 'default',
     iconName: 'chevron-left',
     label: 'Previous',
@@ -259,6 +334,7 @@ export const IconOnlyHover: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     state: 'hover',
     iconName: 'chevron-left',
     label: 'Previous',
@@ -269,6 +345,7 @@ export const IconOnlyActive: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     state: 'active',
     iconName: 'chevron-left',
     label: 'Previous',
@@ -279,6 +356,7 @@ export const IconOnlyFocus: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     state: 'focus',
     iconName: 'chevron-left',
     label: 'Previous',
@@ -289,6 +367,7 @@ export const IconOnlyDisabled: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     state: 'disabled',
     iconName: 'chevron-left',
     label: 'Previous',
@@ -300,6 +379,7 @@ export const IconOnlyChevronRight: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     iconName: 'chevron-right',
     label: 'Next',
   },
@@ -309,6 +389,7 @@ export const IconOnlyChevronUp: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     iconName: 'chevron-up',
     label: 'Scroll up',
   },
@@ -318,6 +399,7 @@ export const IconOnlyChevronDown: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     iconName: 'chevron-down',
     label: 'Scroll down',
   },
@@ -327,9 +409,80 @@ export const IconOnlyCheck: Story = {
   args: {
     shape: 'icon-only',
     size: 'md',
+    variant: 'outline',
     iconName: 'check',
     label: 'Confirm',
   },
+};
+
+// Icon-only showcase with all variants
+export const IconOnlyAllVariants: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Outline</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            variant="outline"
+            iconName="chevron-left"
+            label="Outline button"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Default</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            variant="default"
+            iconName="chevron-left"
+            label="Default button"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Secondary</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            variant="secondary"
+            iconName="chevron-left"
+            label="Secondary button"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Ghost</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            variant="ghost"
+            iconName="chevron-left"
+            label="Ghost button"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Link</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            variant="link"
+            iconName="chevron-left"
+            label="Link button"
+          ></storybook-button>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Destructive</span>
+          <storybook-button
+            shape="icon-only"
+            size="md"
+            variant="destructive"
+            iconName="chevron-left"
+            label="Destructive button"
+          ></storybook-button>
+        </div>
+      </div>
+    `,
+  }),
 };
 
 // Icon-only showcase by size
@@ -342,6 +495,7 @@ export const IconOnlyAllSizes: Story = {
           <storybook-button
             shape="icon-only"
             size="sm"
+            variant="outline"
             iconName="chevron-left"
             label="Small icon button"
           ></storybook-button>
@@ -351,6 +505,7 @@ export const IconOnlyAllSizes: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             iconName="chevron-left"
             label="Medium icon button"
           ></storybook-button>
@@ -360,6 +515,7 @@ export const IconOnlyAllSizes: Story = {
           <storybook-button
             shape="icon-only"
             size="lg"
+            variant="outline"
             iconName="chevron-left"
             label="Large icon button"
           ></storybook-button>
@@ -379,6 +535,7 @@ export const IconOnlyAllStates: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             state="default"
             iconName="chevron-left"
             label="Default state"
@@ -389,6 +546,7 @@ export const IconOnlyAllStates: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             state="hover"
             iconName="chevron-left"
             label="Hover state"
@@ -399,6 +557,7 @@ export const IconOnlyAllStates: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             state="active"
             iconName="chevron-left"
             label="Active state"
@@ -409,6 +568,7 @@ export const IconOnlyAllStates: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             state="focus"
             iconName="chevron-left"
             label="Focus state"
@@ -419,6 +579,7 @@ export const IconOnlyAllStates: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             state="disabled"
             iconName="chevron-left"
             label="Disabled state"
@@ -439,6 +600,7 @@ export const IconOnlyAllIcons: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             iconName="chevron-left"
             label="Previous"
           ></storybook-button>
@@ -448,6 +610,7 @@ export const IconOnlyAllIcons: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             iconName="chevron-right"
             label="Next"
           ></storybook-button>
@@ -457,6 +620,7 @@ export const IconOnlyAllIcons: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             iconName="chevron-up"
             label="Scroll up"
           ></storybook-button>
@@ -466,6 +630,7 @@ export const IconOnlyAllIcons: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             iconName="chevron-down"
             label="Scroll down"
           ></storybook-button>
@@ -475,6 +640,7 @@ export const IconOnlyAllIcons: Story = {
           <storybook-button
             shape="icon-only"
             size="md"
+            variant="outline"
             iconName="check"
             label="Confirm"
           ></storybook-button>
@@ -627,26 +793,35 @@ export const DesignSystemShowcase: Story = {
         <section>
           <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600;">Icon-Only Circular Buttons</h3>
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
+            <span style="width: 80px; font-size: 14px; color: #666;">Variants:</span>
+            <storybook-button shape="icon-only" size="md" variant="outline" iconName="chevron-left" label="Outline"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="default" iconName="chevron-left" label="Default"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="secondary" iconName="chevron-left" label="Secondary"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="ghost" iconName="chevron-left" label="Ghost"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="link" iconName="chevron-left" label="Link"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="destructive" iconName="chevron-left" label="Destructive"></storybook-button>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
             <span style="width: 80px; font-size: 14px; color: #666;">Sizes:</span>
-            <storybook-button shape="icon-only" size="sm" iconName="chevron-left" label="Small"></storybook-button>
-            <storybook-button shape="icon-only" size="md" iconName="chevron-left" label="Medium"></storybook-button>
-            <storybook-button shape="icon-only" size="lg" iconName="chevron-left" label="Large"></storybook-button>
+            <storybook-button shape="icon-only" size="sm" variant="outline" iconName="chevron-left" label="Small"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" iconName="chevron-left" label="Medium"></storybook-button>
+            <storybook-button shape="icon-only" size="lg" variant="outline" iconName="chevron-left" label="Large"></storybook-button>
           </div>
           <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
             <span style="width: 80px; font-size: 14px; color: #666;">States:</span>
-            <storybook-button shape="icon-only" size="md" state="default" iconName="chevron-left" label="Default"></storybook-button>
-            <storybook-button shape="icon-only" size="md" state="hover" iconName="chevron-left" label="Hover"></storybook-button>
-            <storybook-button shape="icon-only" size="md" state="active" iconName="chevron-left" label="Active"></storybook-button>
-            <storybook-button shape="icon-only" size="md" state="focus" iconName="chevron-left" label="Focus"></storybook-button>
-            <storybook-button shape="icon-only" size="md" state="disabled" iconName="chevron-left" label="Disabled"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" state="default" iconName="chevron-left" label="Default"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" state="hover" iconName="chevron-left" label="Hover"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" state="active" iconName="chevron-left" label="Active"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" state="focus" iconName="chevron-left" label="Focus"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" state="disabled" iconName="chevron-left" label="Disabled"></storybook-button>
           </div>
           <div style="display: flex; gap: 16px; align-items: center;">
             <span style="width: 80px; font-size: 14px; color: #666;">Icons:</span>
-            <storybook-button shape="icon-only" size="md" iconName="chevron-left" label="Left"></storybook-button>
-            <storybook-button shape="icon-only" size="md" iconName="chevron-right" label="Right"></storybook-button>
-            <storybook-button shape="icon-only" size="md" iconName="chevron-up" label="Up"></storybook-button>
-            <storybook-button shape="icon-only" size="md" iconName="chevron-down" label="Down"></storybook-button>
-            <storybook-button shape="icon-only" size="md" iconName="check" label="Check"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" iconName="chevron-left" label="Left"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" iconName="chevron-right" label="Right"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" iconName="chevron-up" label="Up"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" iconName="chevron-down" label="Down"></storybook-button>
+            <storybook-button shape="icon-only" size="md" variant="outline" iconName="check" label="Check"></storybook-button>
           </div>
         </section>
       </div>
