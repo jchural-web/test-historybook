@@ -299,7 +299,18 @@ export const DesignSystemShowcase: Story = {
               <li>Shape: Circle (border-radius: 50%)</li>
             </ul>
             
-            <p style="margin: 16px 0 8px 0;"><strong>Size: Default & Large</strong></p>
+            <p style="margin: 16px 0 8px 0;"><strong>Layout: Text Icon (Figma Design)</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Padding: 8px 20px</li>
+              <li>Height: 28px</li>
+              <li>Border Radius: 15.5px (rounded pill)</li>
+              <li>Font: Inter, 14px, 400 weight</li>
+              <li>Line Height: 21px</li>
+              <li>Letter Spacing: 0.05px</li>
+              <li>Icon: 16×16px with 10px gap</li>
+            </ul>
+
+            <p style="margin: 16px 0 8px 0;"><strong>Layout: Text Only (Legacy Small)</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li>Padding: 2px 8px</li>
               <li>Min Height: 15px</li>
