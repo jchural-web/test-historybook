@@ -442,13 +442,14 @@ export const InteractivePlayground: Story = {
       <div style="padding: 24px; font-family: Roboto, sans-serif;">
         <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive Badge Playground</h3>
         <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
-          Use the controls panel to adjust variant, size, and value
+          Use the controls panel to adjust variant, size, layout, and value
         </p>
-        
+
         <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <storybook-badge 
+          <storybook-badge
             [variant]="variant"
             [size]="size"
+            [layout]="layout"
             [value]="value">
           </storybook-badge>
         </div>
@@ -458,6 +459,7 @@ export const InteractivePlayground: Story = {
   args: {
     variant: 'default',
     size: 'default',
-    value: '10',
+    layout: 'text-icon',
+    value: 'Etiqueta 2',
   },
 };
