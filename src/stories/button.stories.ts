@@ -119,38 +119,6 @@ export const DestructiveButton: Story = {
   },
 };
 
-// State examples
-export const HoverState: Story = {
-  args: {
-    variant: 'default',
-    state: 'hover',
-    label: 'Boton',
-  },
-};
-
-export const ActiveState: Story = {
-  args: {
-    variant: 'default',
-    state: 'active',
-    label: 'Boton',
-  },
-};
-
-export const FocusState: Story = {
-  args: {
-    variant: 'default',
-    state: 'focus',
-    label: 'Boton',
-  },
-};
-
-export const DisabledState: Story = {
-  args: {
-    variant: 'default',
-    state: 'disabled',
-    label: 'Boton',
-  },
-};
 
 // Shape variants
 export const RectangularShape: Story = {
@@ -209,17 +177,6 @@ export const SmallOutlineWithIcon: Story = {
     variant: 'outline',
     icon: true,
     shape: 'icon-text',
-    label: 'Boton',
-  },
-};
-
-export const MediumDestructiveHover: Story = {
-  args: {
-    size: 'md',
-    variant: 'destructive',
-    state: 'hover',
-    icon: true,
-    iconPosition: 'left',
     label: 'Boton',
   },
 };
@@ -325,50 +282,6 @@ export const IconOnlyLargeDefault: Story = {
     size: 'lg',
     variant: 'outline',
     state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-export const IconOnlyHover: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    state: 'hover',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-export const IconOnlyActive: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    state: 'active',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-export const IconOnlyFocus: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    state: 'focus',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-export const IconOnlyDisabled: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    state: 'disabled',
     iconName: 'chevron-left',
     label: 'Previous',
   },
