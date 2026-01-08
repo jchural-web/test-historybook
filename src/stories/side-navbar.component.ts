@@ -224,6 +224,7 @@ export class SideNavbarComponent {
       </svg>`,
     };
 
-    return icons[iconName] || '';
+    const svg = icons[iconName] || '';
+    return this.sanitizer.bypassSecurityTrustHtml(svg);
   }
 }
