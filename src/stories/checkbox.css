@@ -82,7 +82,7 @@
 
 /* State variants - Focus */
 .checkbox-state-focus {
-  border: 1px solid #64748B;
+  border: 1px solid #7C3AED;
   background: transparent;
   box-shadow: 0 0 0 3px white, 0 0 0 4px #4C1D95;
 }
