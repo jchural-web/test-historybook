@@ -29,7 +29,7 @@
 .badge-text.badge-size-default.badge-layout-text,
 .badge-text.badge-size-large.badge-layout-text {
   padding: 2px 8px;
-  border-radius: 12.5px;
+  border-radius: 9999px;
   font-size: 12px;
   line-height: 17px;
   min-height: 15px;
