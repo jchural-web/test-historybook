@@ -39,8 +39,8 @@ const meta: Meta<InputComponent> = {
 export default meta;
 type Story = StoryObj<InputComponent>;
 
-// Default state examples (no icon)
-export const SmallDefault: Story = {
+// Default size variants (default state)
+export const Small: Story = {
   args: {
     size: 'sm',
     state: 'default',
@@ -48,7 +48,7 @@ export const SmallDefault: Story = {
   },
 };
 
-export const MediumDefault: Story = {
+export const Medium: Story = {
   args: {
     size: 'md',
     state: 'default',
@@ -56,7 +56,7 @@ export const MediumDefault: Story = {
   },
 };
 
-export const LargeDefault: Story = {
+export const Large: Story = {
   args: {
     size: 'lg',
     state: 'default',
@@ -64,108 +64,8 @@ export const LargeDefault: Story = {
   },
 };
 
-// Hover state examples
-export const SmallHover: Story = {
-  args: {
-    size: 'sm',
-    state: 'hover',
-    icon: 'none',
-  },
-};
-
-export const MediumHover: Story = {
-  args: {
-    size: 'md',
-    state: 'hover',
-    icon: 'none',
-  },
-};
-
-export const LargeHover: Story = {
-  args: {
-    size: 'lg',
-    state: 'hover',
-    icon: 'none',
-  },
-};
-
-// Focus state examples
-export const SmallFocus: Story = {
-  args: {
-    size: 'sm',
-    state: 'focus',
-    icon: 'none',
-  },
-};
-
-export const MediumFocus: Story = {
-  args: {
-    size: 'md',
-    state: 'focus',
-    icon: 'none',
-  },
-};
-
-export const LargeFocus: Story = {
-  args: {
-    size: 'lg',
-    state: 'focus',
-    icon: 'none',
-  },
-};
-
-// Disabled state examples
-export const SmallDisabled: Story = {
-  args: {
-    size: 'sm',
-    state: 'disabled',
-    icon: 'none',
-  },
-};
-
-export const MediumDisabled: Story = {
-  args: {
-    size: 'md',
-    state: 'disabled',
-    icon: 'none',
-  },
-};
-
-export const LargeDisabled: Story = {
-  args: {
-    size: 'lg',
-    state: 'disabled',
-    icon: 'none',
-  },
-};
-
-// Error state examples
-export const SmallError: Story = {
-  args: {
-    size: 'sm',
-    state: 'error',
-    icon: 'none',
-  },
-};
-
-export const MediumError: Story = {
-  args: {
-    size: 'md',
-    state: 'error',
-    icon: 'none',
-  },
-};
-
-export const LargeError: Story = {
-  args: {
-    size: 'lg',
-    state: 'error',
-    icon: 'none',
-  },
-};
-
-// With icon - Default state
-export const SmallWithIconDefault: Story = {
+// With leading icon
+export const SmallWithIcon: Story = {
   args: {
     size: 'sm',
     state: 'default',
@@ -173,7 +73,7 @@ export const SmallWithIconDefault: Story = {
   },
 };
 
-export const MediumWithIconDefault: Story = {
+export const MediumWithIcon: Story = {
   args: {
     size: 'md',
     state: 'default',
@@ -181,110 +81,10 @@ export const MediumWithIconDefault: Story = {
   },
 };
 
-export const LargeWithIconDefault: Story = {
+export const LargeWithIcon: Story = {
   args: {
     size: 'lg',
     state: 'default',
-    icon: 'leading',
-  },
-};
-
-// With icon - Hover state
-export const SmallWithIconHover: Story = {
-  args: {
-    size: 'sm',
-    state: 'hover',
-    icon: 'leading',
-  },
-};
-
-export const MediumWithIconHover: Story = {
-  args: {
-    size: 'md',
-    state: 'hover',
-    icon: 'leading',
-  },
-};
-
-export const LargeWithIconHover: Story = {
-  args: {
-    size: 'lg',
-    state: 'hover',
-    icon: 'leading',
-  },
-};
-
-// With icon - Focus state
-export const SmallWithIconFocus: Story = {
-  args: {
-    size: 'sm',
-    state: 'focus',
-    icon: 'leading',
-  },
-};
-
-export const MediumWithIconFocus: Story = {
-  args: {
-    size: 'md',
-    state: 'focus',
-    icon: 'leading',
-  },
-};
-
-export const LargeWithIconFocus: Story = {
-  args: {
-    size: 'lg',
-    state: 'focus',
-    icon: 'leading',
-  },
-};
-
-// With icon - Disabled state
-export const SmallWithIconDisabled: Story = {
-  args: {
-    size: 'sm',
-    state: 'disabled',
-    icon: 'leading',
-  },
-};
-
-export const MediumWithIconDisabled: Story = {
-  args: {
-    size: 'md',
-    state: 'disabled',
-    icon: 'leading',
-  },
-};
-
-export const LargeWithIconDisabled: Story = {
-  args: {
-    size: 'lg',
-    state: 'disabled',
-    icon: 'leading',
-  },
-};
-
-// With icon - Error state
-export const SmallWithIconError: Story = {
-  args: {
-    size: 'sm',
-    state: 'error',
-    icon: 'leading',
-  },
-};
-
-export const MediumWithIconError: Story = {
-  args: {
-    size: 'md',
-    state: 'error',
-    icon: 'leading',
-  },
-};
-
-export const LargeWithIconError: Story = {
-  args: {
-    size: 'lg',
-    state: 'error',
     icon: 'leading',
   },
 };
