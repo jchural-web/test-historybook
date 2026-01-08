@@ -3,6 +3,7 @@
 ## 🎯 Uso Rápido
 
 ### Básico (Outline - Recomendado)
+
 ```typescript
 <storybook-button
   shape="icon-only"
@@ -14,6 +15,7 @@
 ```
 
 ### Con Otros Variants
+
 ```typescript
 <!-- Default (púrpura lleno) -->
 <storybook-button shape="icon-only" variant="default" iconName="check" label="Confirm" />
@@ -116,27 +118,27 @@
 
 ## 🔧 Props
 
-| Prop       | Values                                         | Default         |
-| ---------- | ---------------------------------------------- | --------------- |
-| `shape`    | `'icon-only'` **(requerido)**                  | -               |
-| `variant`  | `'outline'` \| `'default'` \| `'secondary'` \| `'ghost'` \| `'link'` \| `'destructive'` | `'outline'` |
-| `size`     | `'sm'` \| `'md'` \| `'lg'`                     | `'md'`          |
+| Prop       | Values                                                                                   | Default          |
+| ---------- | ---------------------------------------------------------------------------------------- | ---------------- |
+| `shape`    | `'icon-only'` **(requerido)**                                                            | -                |
+| `variant`  | `'outline'` \| `'default'` \| `'secondary'` \| `'ghost'` \| `'link'` \| `'destructive'`  | `'outline'`      |
+| `size`     | `'sm'` \| `'md'` \| `'lg'`                                                               | `'md'`           |
 | `iconName` | `'chevron-left'` \| `'chevron-right'` \| `'chevron-up'` \| `'chevron-down'` \| `'check'` | `'chevron-left'` |
-| `state`    | `'default'` \| `'hover'` \| `'active'` \| `'focus'` \| `'disabled'` | `'default'`     |
-| `label`    | string (para aria-label)                       | `'Boton'`       |
+| `state`    | `'default'` \| `'hover'` \| `'active'` \| `'focus'` \| `'disabled'`                      | `'default'`      |
+| `label`    | string (para aria-label)                                                                 | `'Boton'`        |
 
 ---
 
 ## 📊 Tabla de Variants
 
-| Variant      | Visual | Border/Color | Uso |
-| ------------ | ------ | ------------ | --- |
-| **outline**  | 🔷 | `#CBD5E1` border, `#9333EA` icon | Navegación (RECOMENDADO) |
-| **default**  | 🟣 | `#7C3AED` background | Acción primaria |
-| **secondary**| 🔵 | `#2563EB` background | Acción alternativa |
-| **ghost**    | 💜 | `#EDE9FE` background | Acción sutil |
-| **link**     | 🔗 | Transparente, `#2563EB` icon | Links |
-| **destructive** | 🔴 | `#DC2626` background | Eliminar/Peligro |
+| Variant         | Visual | Border/Color                     | Uso                      |
+| --------------- | ------ | -------------------------------- | ------------------------ |
+| **outline**     | 🔷     | `#CBD5E1` border, `#9333EA` icon | Navegación (RECOMENDADO) |
+| **default**     | 🟣     | `#7C3AED` background             | Acción primaria          |
+| **secondary**   | 🔵     | `#2563EB` background             | Acción alternativa       |
+| **ghost**       | 💜     | `#EDE9FE` background             | Acción sutil             |
+| **link**        | 🔗     | Transparente, `#2563EB` icon     | Links                    |
+| **destructive** | 🔴     | `#DC2626` background             | Eliminar/Peligro         |
 
 ---
 
@@ -322,14 +324,14 @@ Asegúrate de que:
 
 ## 🎓 Diferencias con `shape="icon"`
 
-| Característica | `shape="icon"` | `shape="icon-only"` |
-| -------------- | -------------- | ------------------- |
-| Forma          | Cuadrado       | **Circular**        |
-| Icono          | Fijo (check)   | **Configurable** (chevron-left, right, up, down, check) |
+| Característica | `shape="icon"` | `shape="icon-only"`                                            |
+| -------------- | -------------- | -------------------------------------------------------------- |
+| Forma          | Cuadrado       | **Circular**                                                   |
+| Icono          | Fijo (check)   | **Configurable** (chevron-left, right, up, down, check)        |
 | Variants       | No             | **Sí (outline, default, secondary, ghost, link, destructive)** |
-| Background     | Color sólido   | **Depende del variant** |
-| Focus Ring     | Estándar       | **Personalizado**   |
-| Uso            | General        | **Navegación y acciones** |
+| Background     | Color sólido   | **Depende del variant**                                        |
+| Focus Ring     | Estándar       | **Personalizado**                                              |
+| Uso            | General        | **Navegación y acciones**                                      |
 
 ---
 

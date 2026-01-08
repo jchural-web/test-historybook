@@ -19,7 +19,7 @@ Se han agregado **variantes circulares icon-only** al componente Button existent
 ✅ **5 estados**: default, hover, active, focus, disabled  
 ✅ **DomSanitizer**: Renderizado seguro de iconos SVG  
 ✅ **Accesibilidad**: aria-label automático para screen readers  
-✅ **15+ Stories nuevas**: Documentación completa en Storybook  
+✅ **15+ Stories nuevas**: Documentación completa en Storybook
 
 ---
 
@@ -35,13 +35,13 @@ Se han agregado **variantes circulares icon-only** al componente Button existent
 
 ### Estados Visuales
 
-| Estado     | Border Color | Icon Color | Opacidad | Focus Ring  |
-| ---------- | ------------ | ---------- | -------- | ----------- |
-| `default`  | `#CBD5E1`    | `#9333EA`  | 1.0      | -           |
-| `hover`    | `#CBD5E1`    | `#9333EA`  | 0.9      | -           |
-| `active`   | `#CBD5E1`    | `#9333EA`  | 1.0      | -           |
-| `focus`    | `#64748B`    | `#6B21A8`  | 1.0      | `#581C87`   |
-| `disabled` | `#CBD5E1`    | `#9333EA`  | 0.4      | -           |
+| Estado     | Border Color | Icon Color | Opacidad | Focus Ring |
+| ---------- | ------------ | ---------- | -------- | ---------- |
+| `default`  | `#CBD5E1`    | `#9333EA`  | 1.0      | -          |
+| `hover`    | `#CBD5E1`    | `#9333EA`  | 0.9      | -          |
+| `active`   | `#CBD5E1`    | `#9333EA`  | 1.0      | -          |
+| `focus`    | `#64748B`    | `#6B21A8`  | 1.0      | `#581C87`  |
+| `disabled` | `#CBD5E1`    | `#9333EA`  | 0.4      | -          |
 
 ### Design Tokens
 
@@ -80,13 +80,13 @@ Se han agregado **variantes circulares icon-only** al componente Button existent
 
 ### Props del Icon-Only Button
 
-| Prop       | Tipo                                                            | Default         | Descripción                           |
-| ---------- | --------------------------------------------------------------- | --------------- | ------------------------------------- |
-| `shape`    | `'icon-only'`                                                   | -               | **Requerido** para botones circulares |
-| `size`     | `'sm' \| 'md' \| 'lg'`                                          | `'md'`          | Tamaño del botón circular             |
+| Prop       | Tipo                                                                                       | Default          | Descripción                           |
+| ---------- | ------------------------------------------------------------------------------------------ | ---------------- | ------------------------------------- |
+| `shape`    | `'icon-only'`                                                                              | -                | **Requerido** para botones circulares |
+| `size`     | `'sm' \| 'md' \| 'lg'`                                                                     | `'md'`           | Tamaño del botón circular             |
 | `iconName` | `'check' \| 'chevron-left' \| 'chevron-right' \| 'chevron-up' \| 'chevron-down' \| 'none'` | `'chevron-left'` | Icono a mostrar                       |
-| `state`    | `'default' \| 'hover' \| 'active' \| 'focus' \| 'disabled'`     | `'default'`     | Estado visual del botón               |
-| `label`    | `string`                                                        | `'Boton'`       | Texto para aria-label (accesibilidad) |
+| `state`    | `'default' \| 'hover' \| 'active' \| 'focus' \| 'disabled'`                                | `'default'`      | Estado visual del botón               |
+| `label`    | `string`                                                                                   | `'Boton'`        | Texto para aria-label (accesibilidad) |
 
 ---
 
@@ -221,26 +221,32 @@ export class PaginationComponent {
 Los iconos son renderizados mediante `DomSanitizer` para garantizar seguridad. Se incluyen las siguientes opciones:
 
 ### 1. **chevron-left** (←)
+
 - Uso: Navegación anterior, retroceder
 - Ejemplo: `iconName="chevron-left"`
 
 ### 2. **chevron-right** (→)
+
 - Uso: Navegación siguiente, avanzar
 - Ejemplo: `iconName="chevron-right"`
 
 ### 3. **chevron-up** (↑)
+
 - Uso: Colapsar, scroll arriba
 - Ejemplo: `iconName="chevron-up"`
 
 ### 4. **chevron-down** (↓)
+
 - Uso: Expandir, scroll abajo, dropdown
 - Ejemplo: `iconName="chevron-down"`
 
 ### 5. **check** (✓)
+
 - Uso: Confirmar, aprobar, completar
 - Ejemplo: `iconName="check"`
 
 ### 6. **none** (sin icono)
+
 - Uso: Placeholder o debugging
 - Ejemplo: `iconName="none"`
 
@@ -306,7 +312,7 @@ Builder.registerComponent(ButtonComponent, {
       type: 'string',
       enum: ['rectangular', 'pill', 'icon', 'icon-text', 'icon-only'],
       defaultValue: 'rectangular',
-      helperText: 'Shape of the button'
+      helperText: 'Shape of the button',
     },
     {
       name: 'iconName',
@@ -314,9 +320,9 @@ Builder.registerComponent(ButtonComponent, {
       enum: ['check', 'chevron-left', 'chevron-right', 'chevron-up', 'chevron-down', 'none'],
       defaultValue: 'chevron-left',
       helperText: 'Icon name for icon-only buttons',
-      showIf: 'options.get("shape") === "icon-only"'
-    }
-  ]
+      showIf: 'options.get("shape") === "icon-only"',
+    },
+  ],
 });
 ```
 
@@ -383,6 +389,7 @@ El estado focus incluye un anillo visible (`box-shadow`) para cumplir con WCAG 2
 ### Keyboard Navigation
 
 Los botones icon-only son completamente navegables por teclado:
+
 - `Tab` / `Shift+Tab`: Navegar entre botones
 - `Enter` / `Space`: Activar el botón
 - Visual feedback con focus ring
@@ -396,6 +403,7 @@ Los botones icon-only son completamente navegables por teclado:
 **Problema**: El icono no aparece dentro del botón circular.
 
 **Solución**: Verificar que:
+
 1. `shape="icon-only"` está configurado
 2. `iconName` tiene un valor válido
 3. `DomSanitizer` está inyectado en el constructor
@@ -421,8 +429,9 @@ constructor(private sanitizer: DomSanitizer) {}
 **Problema**: El icono se ve muy pequeño o muy grande.
 
 **Solución**: Los tamaños de icono están definidos en CSS:
+
 - sm: 17x17px
-- md: 21x21px  
+- md: 21x21px
 - lg: 26x26px
 
 Verificar que el CSS de `.button-icon-only` esté aplicado correctamente.
@@ -431,15 +440,15 @@ Verificar que el CSS de `.button-icon-only` esté aplicado correctamente.
 
 ## 📊 Comparación: `icon` vs `icon-only`
 
-| Característica     | `shape="icon"`     | `shape="icon-only"` |
-| ------------------ | ------------------ | ------------------- |
-| Forma              | Cuadrado           | **Circular**        |
-| Borde              | Sin borde          | **Con borde**       |
-| Icono              | Hardcoded (check)  | **Configurable**    |
-| Tamaños            | 27px, 35px, 43px   | 27px, 35px, 43px    |
-| Focus Ring         | Estándar           | **Personalizado**   |
-| Uso                | Sistema existente  | **Navegación**      |
-| Background         | Sólido (variants)  | **Transparente**    |
+| Característica | `shape="icon"`    | `shape="icon-only"` |
+| -------------- | ----------------- | ------------------- |
+| Forma          | Cuadrado          | **Circular**        |
+| Borde          | Sin borde         | **Con borde**       |
+| Icono          | Hardcoded (check) | **Configurable**    |
+| Tamaños        | 27px, 35px, 43px  | 27px, 35px, 43px    |
+| Focus Ring     | Estándar          | **Personalizado**   |
+| Uso            | Sistema existente | **Navegación**      |
+| Background     | Sólido (variants) | **Transparente**    |
 
 ---
 

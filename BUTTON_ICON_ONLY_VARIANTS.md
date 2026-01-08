@@ -10,14 +10,14 @@
 
 Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la misma lógica de diseño que los botones rectangulares:
 
-| Variant      | Descripción                    | Uso Recomendado                 |
-| ------------ | ------------------------------ | ------------------------------- |
-| `outline`    | Borde transparente, icono púrpura | Navegación, acciones secundarias |
-| `default`    | Fondo púrpura sólido           | Acciones primarias              |
-| `secondary`  | Fondo azul sólido              | Acciones alternativas           |
-| `ghost`      | Fondo púrpura claro            | Acciones sutiles                |
-| `link`       | Sin fondo, azul                | Links que parecen botones       |
-| `destructive`| Fondo rojo sólido              | Eliminar, cancelar, acciones destructivas |
+| Variant       | Descripción                       | Uso Recomendado                           |
+| ------------- | --------------------------------- | ----------------------------------------- |
+| `outline`     | Borde transparente, icono púrpura | Navegación, acciones secundarias          |
+| `default`     | Fondo púrpura sólido              | Acciones primarias                        |
+| `secondary`   | Fondo azul sólido                 | Acciones alternativas                     |
+| `ghost`       | Fondo púrpura claro               | Acciones sutiles                          |
+| `link`        | Sin fondo, azul                   | Links que parecen botones                 |
+| `destructive` | Fondo rojo sólido                 | Eliminar, cancelar, acciones destructivas |
 
 ---
 
@@ -36,6 +36,7 @@ Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la mi
 ```
 
 **Colores:**
+
 - **Default**: Border `#CBD5E1`, Icon `#9333EA`
 - **Hover**: Opacidad 0.9
 - **Active**: Border y icon intacto
@@ -59,6 +60,7 @@ Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la mi
 ```
 
 **Colores:**
+
 - **Default**: Background `#7C3AED`, Color `white`
 - **Hover**: Opacidad 0.9
 - **Active**: Opacidad sin cambio
@@ -82,6 +84,7 @@ Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la mi
 ```
 
 **Colores:**
+
 - **Default**: Background `#2563EB`, Color `white`
 - **Hover**: Opacidad 0.9
 - **Active**: Opacidad sin cambio
@@ -105,6 +108,7 @@ Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la mi
 ```
 
 **Colores:**
+
 - **Default**: Background `#EDE9FE`, Color `#1E293B`
 - **Hover**: Opacidad 0.9
 - **Active**: Opacidad sin cambio
@@ -128,6 +132,7 @@ Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la mi
 ```
 
 **Colores:**
+
 - **Default**: Background `transparent`, Color `#2563EB`, Border `transparent`
 - **Hover**: Opacidad 0.9
 - **Active**: Opacidad sin cambio
@@ -151,6 +156,7 @@ Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la mi
 ```
 
 **Colores:**
+
 - **Default**: Background `#DC2626`, Color `white`
 - **Hover**: Opacidad 0.9
 - **Active**: Opacidad sin cambio
@@ -300,13 +306,13 @@ Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la mi
 
 ## 📊 Tabla Comparativa de Variantes
 
-| Aspecto        | Outline  | Default  | Secondary | Ghost   | Link     | Destructive |
-| -------------- | -------- | -------- | --------- | ------- | -------- | ----------- |
-| **Background** | `transparent` | `#7C3AED` | `#2563EB` | `#EDE9FE` | `transparent` | `#DC2626` |
-| **Icon Color** | `#9333EA` | `white`  | `white`   | `#1E293B` | `#2563EB` | `white`     |
-| **Border**     | `#CBD5E1` | `#7C3AED` | `#2563EB` | `#EDE9FE` | `transparent` | `#DC2626` |
-| **Prominence** | Media    | Alta     | Alta      | Baja    | Baja     | Crítica     |
-| **Use Case**   | Nav.     | Primario | Alternativo | Sutil  | Links   | Destructivo |
+| Aspecto        | Outline       | Default   | Secondary   | Ghost     | Link          | Destructive |
+| -------------- | ------------- | --------- | ----------- | --------- | ------------- | ----------- |
+| **Background** | `transparent` | `#7C3AED` | `#2563EB`   | `#EDE9FE` | `transparent` | `#DC2626`   |
+| **Icon Color** | `#9333EA`     | `white`   | `white`     | `#1E293B` | `#2563EB`     | `white`     |
+| **Border**     | `#CBD5E1`     | `#7C3AED` | `#2563EB`   | `#EDE9FE` | `transparent` | `#DC2626`   |
+| **Prominence** | Media         | Alta      | Alta        | Baja      | Baja          | Crítica     |
+| **Use Case**   | Nav.          | Primario  | Alternativo | Sutil     | Links         | Destructivo |
 
 ---
 
@@ -315,21 +321,27 @@ Los botones icon-only ahora soportan **6 variantes** diferentes, siguiendo la mi
 Usa esta tabla para elegir el variant correcto:
 
 **¿Es una acción primaria importante?**
+
 - Sí → `variant="default"` (púrpura)
 
 **¿Es navegación o acción secundaria?**
+
 - Sí → `variant="outline"` (recomendado)
 
 **¿Es una acción alternativa?**
+
 - Sí → `variant="secondary"` (azul)
 
 **¿Es una acción sutil o decorativa?**
+
 - Sí → `variant="ghost"` (púrpura claro)
 
 **¿Es un link que parece botón?**
+
 - Sí → `variant="link"` (azul transparente)
 
 **¿Es una acción peligrosa (eliminar)?**
+
 - Sí → `variant="destructive"` (rojo)
 
 ---
@@ -339,6 +351,7 @@ Usa esta tabla para elegir el variant correcto:
 Todas las nuevas variantes están documentadas en Storybook:
 
 **Stories individuales:**
+
 - `IconOnlyOutline` - Variant outline
 - `IconOnlyDefault` - Variant default (púrpura lleno)
 - `IconOnlySecondary` - Variant secondary (azul lleno)
@@ -347,6 +360,7 @@ Todas las nuevas variantes están documentadas en Storybook:
 - `IconOnlyDestructive` - Variant destructive (rojo)
 
 **Stories showcase:**
+
 - `IconOnlyAllVariants` - Comparación lado a lado de todos los variants
 - `DesignSystemShowcase` - Sección completa con variants, tamaños, estados e iconos
 

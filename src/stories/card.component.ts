@@ -23,11 +23,7 @@ const currencyIcon = `<svg width="21" height="21" viewBox="0 0 21 21" fill="none
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div
-      class="card"
-      [ngClass]="cardClasses"
-      [attr.data-state]="state"
-    >
+    <div class="card" [ngClass]="cardClasses" [attr.data-state]="state">
       <!-- DEFAULT Content Variant (original card) -->
       <ng-container *ngIf="contentVariant === 'default'">
         <!-- Header Row with icons -->
@@ -53,7 +49,7 @@ const currencyIcon = `<svg width="21" height="21" viewBox="0 0 21 21" fill="none
             </g>
             <defs>
               <clipPath id="clip0_info">
-                <rect width="17" height="17" fill="white"/>
+                <rect width="17" height="17" fill="white" />
               </clipPath>
             </defs>
           </svg>
@@ -76,7 +72,7 @@ const currencyIcon = `<svg width="21" height="21" viewBox="0 0 21 21" fill="none
             </g>
             <defs>
               <clipPath id="clip0_phone">
-                <rect width="20" height="20" fill="white"/>
+                <rect width="20" height="20" fill="white" />
               </clipPath>
             </defs>
           </svg>

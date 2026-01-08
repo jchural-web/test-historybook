@@ -40,20 +40,21 @@
 
 ## 🎨 Tabla Visual Rápida
 
-| Variant | Visual | Uso | Estados |
-|---------|--------|-----|---------|
-| **Outline** | 🔷 | Navegación | ✓ hover, active, focus, disabled |
-| **Default** | 🟣 | Primario | ✓ hover, active, focus, disabled |
-| **Secondary** | 🔵 | Alternativo | ✓ hover, active, focus, disabled |
-| **Ghost** | 💜 | Sutil | ✓ hover, active, focus, disabled |
-| **Link** | 🔗 | Links | ✓ hover, active, focus, disabled |
-| **Destructive** | 🔴 | Eliminar | ✓ hover, active, focus, disabled |
+| Variant         | Visual | Uso         | Estados                          |
+| --------------- | ------ | ----------- | -------------------------------- |
+| **Outline**     | 🔷     | Navegación  | ✓ hover, active, focus, disabled |
+| **Default**     | 🟣     | Primario    | ✓ hover, active, focus, disabled |
+| **Secondary**   | 🔵     | Alternativo | ✓ hover, active, focus, disabled |
+| **Ghost**       | 💜     | Sutil       | ✓ hover, active, focus, disabled |
+| **Link**        | 🔗     | Links       | ✓ hover, active, focus, disabled |
+| **Destructive** | 🔴     | Eliminar    | ✓ hover, active, focus, disabled |
 
 ---
 
 ## 📱 Combinaciones Soportadas
 
 ### Por Tamaño
+
 ```typescript
 // sm (27px)
 <storybook-button shape="icon-only" size="sm" variant="outline" />
@@ -66,6 +67,7 @@
 ```
 
 ### Por Estado
+
 ```typescript
 // Todos estos funcionan con CUALQUIER variant
 <storybook-button shape="icon-only" variant="outline" state="default" />
@@ -76,6 +78,7 @@
 ```
 
 ### Por Icono
+
 ```typescript
 // Todos estos funcionan con CUALQUIER variant
 <storybook-button shape="icon-only" variant="outline" iconName="chevron-left" />
@@ -90,77 +93,83 @@
 ## 🎯 Casos de Uso Recomendados
 
 ### 🔷 Outline - Para Navegación
+
 ```typescript
 <!-- Paginación -->
 <div class="pagination">
-  <storybook-button shape="icon-only" variant="outline" 
+  <storybook-button shape="icon-only" variant="outline"
     iconName="chevron-left" label="Previous" />
-  <storybook-button shape="icon-only" variant="outline" 
+  <storybook-button shape="icon-only" variant="outline"
     iconName="chevron-right" label="Next" />
 </div>
 
 <!-- Carrusel -->
 <div class="carousel">
-  <storybook-button shape="icon-only" size="lg" variant="outline" 
+  <storybook-button shape="icon-only" size="lg" variant="outline"
     iconName="chevron-left" label="Prev item" />
   <!-- slider aquí -->
-  <storybook-button shape="icon-only" size="lg" variant="outline" 
+  <storybook-button shape="icon-only" size="lg" variant="outline"
     iconName="chevron-right" label="Next item" />
 </div>
 ```
 
 ### 🟣 Default - Para Acciones Primarias
+
 ```typescript
 <!-- Confirmar -->
-<storybook-button shape="icon-only" variant="default" 
+<storybook-button shape="icon-only" variant="default"
   iconName="check" label="Confirm" (onClick)="confirm()" />
 
 <!-- Guardar -->
-<storybook-button shape="icon-only" variant="default" 
+<storybook-button shape="icon-only" variant="default"
   iconName="check" label="Save" (onClick)="save()" />
 ```
 
 ### 🔵 Secondary - Para Acciones Alternativas
+
 ```typescript
 <!-- Skip/Siguiente -->
-<storybook-button shape="icon-only" variant="secondary" 
+<storybook-button shape="icon-only" variant="secondary"
   iconName="chevron-right" label="Skip" />
 
 <!-- Siguiente página -->
-<storybook-button shape="icon-only" variant="secondary" 
+<storybook-button shape="icon-only" variant="secondary"
   iconName="chevron-down" label="Load more" />
 ```
 
 ### 💜 Ghost - Para Acciones Sutiles
+
 ```typescript
 <!-- Expandir/Contraer -->
-<storybook-button shape="icon-only" variant="ghost" 
+<storybook-button shape="icon-only" variant="ghost"
   [iconName]="expanded ? 'chevron-up' : 'chevron-down'" />
 
 <!-- Scroll to top -->
-<storybook-button shape="icon-only" variant="ghost" 
+<storybook-button shape="icon-only" variant="ghost"
   iconName="chevron-up" label="Top" />
 ```
 
 ### 🔗 Link - Para Links
+
 ```typescript
 <!-- Links que parecen botones -->
-<storybook-button shape="icon-only" variant="link" 
+<storybook-button shape="icon-only" variant="link"
   iconName="chevron-right" label="More info" />
 
 <!-- Cerrar modal (sutil) -->
-<storybook-button shape="icon-only" variant="link" 
+<storybook-button shape="icon-only" variant="link"
   iconName="chevron-down" label="Close" />
 ```
 
 ### 🔴 Destructive - Para Acciones Peligrosas
+
 ```typescript
 <!-- Eliminar -->
-<storybook-button shape="icon-only" variant="destructive" 
+<storybook-button shape="icon-only" variant="destructive"
   iconName="check" label="Delete" (onClick)="delete()" />
 
 <!-- Cancelar (riesgo) -->
-<storybook-button shape="icon-only" variant="destructive" 
+<storybook-button shape="icon-only" variant="destructive"
   iconName="chevron-down" label="Cancel" />
 ```
 
@@ -169,6 +178,7 @@
 ## 🎭 Nuevas Stories en Storybook
 
 ### Stories por Variant
+
 - `IconOnlyOutline` ← Nuevo
 - `IconOnlyDefault` ← Nuevo
 - `IconOnlySecondary` ← Nuevo
@@ -177,12 +187,14 @@
 - `IconOnlyDestructive` ← Nuevo
 
 ### Showcase Stories
+
 - `IconOnlyAllVariants` ← Nuevo (comparar 6 variants lado a lado)
 - `IconOnlyAllSizes` (ya existía, ahora con variant)
 - `IconOnlyAllStates` (ya existía, ahora con variant)
 - `IconOnlyAllIcons` (ya existía, ahora con variant)
 
 ### En Design System
+
 - `DesignSystemShowcase` ← Actualizado con nueva sección
 
 ---
@@ -190,6 +202,7 @@
 ## ✨ Colores por Variant
 
 ### Outline
+
 ```
 Default:  Border #CBD5E1, Icon #9333EA
 Focus:    Border #64748B, Icon #6B21A8, Ring #581C87
@@ -198,6 +211,7 @@ Disabled: Opacidad 0.4
 ```
 
 ### Default (Púrpura)
+
 ```
 Default:  Background #7C3AED, Icon white
 Focus:    Background #4C1D95, Ring #2E1065
@@ -206,6 +220,7 @@ Disabled: Opacidad 0.4
 ```
 
 ### Secondary (Azul)
+
 ```
 Default:  Background #2563EB, Icon white
 Focus:    Background #1D4ED8, Ring #2E1065
@@ -214,6 +229,7 @@ Disabled: Opacidad 0.4
 ```
 
 ### Ghost (Púrpura Claro)
+
 ```
 Default:  Background #EDE9FE, Icon #1E293B
 Focus:    Background #DDD6FE, Ring #2E1065
@@ -222,6 +238,7 @@ Disabled: Opacidad 0.4
 ```
 
 ### Link (Azul Transparente)
+
 ```
 Default:  Background transparent, Icon #2563EB, Border transparent
 Focus:    Border #1D4ED8, Ring #2E1065
@@ -230,6 +247,7 @@ Disabled: Opacidad 0.4
 ```
 
 ### Destructive (Rojo)
+
 ```
 Default:  Background #DC2626, Icon white
 Focus:    Background #B91C1C, Ring #2E1065
@@ -241,17 +259,18 @@ Disabled: Opacidad 0.4
 
 ## 📊 Archivos Modificados
 
-| Archivo | Cambios |
-|---------|---------|
-| **button.css** | +150 líneas (estilos de variants para icon-only) |
+| Archivo               | Cambios                                            |
+| --------------------- | -------------------------------------------------- |
+| **button.css**        | +150 líneas (estilos de variants para icon-only)   |
 | **button.stories.ts** | +6 nuevas stories, +1 showcase stories actualizado |
-| **Documentación** | 3 archivos .md creados |
+| **Documentación**     | 3 archivos .md creados                             |
 
 ---
 
 ## 🚀 Cómo Usar
 
 ### Paso 1: Elegir el Variant Correcto
+
 ```
 ¿Es navegación? → outline
 ¿Es acción primaria? → default
@@ -262,6 +281,7 @@ Disabled: Opacidad 0.4
 ```
 
 ### Paso 2: Copiar el Código
+
 ```typescript
 <storybook-button
   shape="icon-only"        <!-- Requerido -->
@@ -274,7 +294,9 @@ Disabled: Opacidad 0.4
 ```
 
 ### Paso 3: Ver en Storybook
+
 Navega a **Example/Button** y busca:
+
 - `IconOnlyOutline` - Para ver la variante outline
 - `IconOnlyDefault` - Para ver la variante default
 - `IconOnlyAllVariants` - Para comparar todos
@@ -298,12 +320,14 @@ Navega a **Example/Button** y busca:
 ## 🎓 Comparación: Antes vs Después
 
 ### Antes
+
 ```typescript
 <!-- Solo había 1 estilo para icon-only (outline) -->
 <storybook-button shape="icon-only" size="md" iconName="chevron-left" />
 ```
 
 ### Después
+
 ```typescript
 <!-- Ahora tienes 6 estilos diferentes -->
 <storybook-button shape="icon-only" size="md" variant="outline" iconName="chevron-left" />
@@ -328,6 +352,7 @@ Navega a **Example/Button** y busca:
 ## 🎉 ¡Listo para Usar!
 
 Los nuevos variants están listos para:
+
 - ✅ Usar en tu código
 - ✅ Ver en Storybook
 - ✅ Registrar en Builder.io

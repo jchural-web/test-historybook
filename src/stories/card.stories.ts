@@ -35,7 +35,8 @@ const meta: Meta<CardComponent> = {
     },
     helperDescription: {
       control: 'text',
-      description: 'Helper description text (e.g., "respecto al mes anterior") (for default contentVariant)',
+      description:
+        'Helper description text (e.g., "respecto al mes anterior") (for default contentVariant)',
     },
     icon: {
       control: 'text',

@@ -4,7 +4,12 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -161,7 +166,9 @@
 .btn-shape-icon-only.btn-default.btn-state-focus {
   background: #4c1d95;
   border-color: #4c1d95;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Icon-only with secondary variant (filled blue) */
@@ -185,7 +192,9 @@
 .btn-shape-icon-only.btn-secondary.btn-state-focus {
   background: #1d4ed8;
   border-color: #1d4ed8;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Icon-only with ghost variant (light purple) */
@@ -209,7 +218,9 @@
 .btn-shape-icon-only.btn-ghost.btn-state-focus {
   background: #ddd6fe;
   border-color: #ddd6fe;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Icon-only with link variant */
@@ -233,7 +244,9 @@
 .btn-shape-icon-only.btn-link.btn-state-focus {
   color: #1d4ed8;
   border: 1px solid #1d4ed8;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Icon-only with destructive variant (red) */
@@ -257,7 +270,9 @@
 .btn-shape-icon-only.btn-destructive.btn-state-focus {
   background: #b91c1c;
   border-color: #b91c1c;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Color variants - Default/Primary */
@@ -284,7 +299,9 @@
 .btn-default:focus:not(:disabled),
 .btn-state-focus.btn-default {
   background: #4c1d95;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Secondary variant */
@@ -311,7 +328,9 @@
 .btn-secondary:focus:not(:disabled),
 .btn-state-focus.btn-secondary {
   background: #1d4ed8;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Outline variant */
@@ -340,7 +359,9 @@
 .btn-state-focus.btn-outline {
   border-color: #4c1d95;
   color: #4c1d95;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Ghost variant */
@@ -367,7 +388,9 @@
 .btn-ghost:focus:not(:disabled),
 .btn-state-focus.btn-ghost {
   background: #ddd6fe;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Link variant */
@@ -389,7 +412,9 @@
 .btn-link:focus:not(:disabled),
 .btn-state-focus.btn-link {
   color: #1d4ed8;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Destructive variant */
@@ -416,7 +441,9 @@
 .btn-destructive:focus:not(:disabled),
 .btn-state-focus.btn-destructive {
   background: #b91c1c;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* Disabled state */
@@ -451,7 +478,9 @@
 
 /* Focus visible for accessibility */
 .btn:focus-visible {
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
 }
 
 /* ===========================

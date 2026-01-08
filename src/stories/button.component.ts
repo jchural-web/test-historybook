@@ -6,7 +6,13 @@ export type ButtonSize = 'sm' | 'md' | 'lg';
 export type ButtonVariant = 'default' | 'secondary' | 'outline' | 'ghost' | 'link' | 'destructive';
 export type ButtonState = 'default' | 'hover' | 'active' | 'focus' | 'disabled';
 export type ButtonShape = 'rectangular' | 'pill' | 'icon' | 'icon-text' | 'icon-only';
-export type IconName = 'check' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'chevron-down' | 'none';
+export type IconName =
+  | 'check'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'chevron-up'
+  | 'chevron-down'
+  | 'none';
 
 // Icon definitions for icon-only buttons
 const icons: Record<string, string> = {
@@ -22,10 +28,10 @@ const icons: Record<string, string> = {
   'chevron-down': `<svg width="100%" height="100%" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.57275 6.35224C3.30915 6.08864 3.30915 5.66136 3.57275 5.39776C3.83636 5.13415 4.26364 5.13415 4.52724 5.39776L8.1 8.9705L11.6728 5.39776C11.9364 5.13415 12.3636 5.13415 12.6272 5.39776C12.8908 5.66136 12.8908 6.08864 12.6272 6.35224L8.57724 10.4022C8.31364 10.6659 7.88636 10.6659 7.62275 10.4022L3.57275 6.35224Z" fill="currentColor"/>
 </svg>`,
-  'check': `<svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+  check: `<svg width="100%" height="100%" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M11.4669 3.72684C11.7558 3.91574 11.8369 4.30308 11.648 4.59198L7.39799 11.092C7.29783 11.2452 7.13556 11.3467 6.95402 11.3699C6.77247 11.3931 6.58989 11.3355 6.45446 11.2124L3.70446 8.71241C3.44905 8.48022 3.43023 8.08494 3.66242 7.82953C3.89461 7.57412 4.28989 7.55529 4.5453 7.78749L6.75292 9.79441L10.6018 3.90792C10.7907 3.61902 11.178 3.53795 11.4669 3.72684Z" fill="currentColor"/>
 </svg>`,
-  'none': ''
+  none: '',
 };
 
 @Component({
@@ -39,7 +45,7 @@ const icons: Record<string, string> = {
       [ngClass]="classes"
       [disabled]="state === 'disabled' || disabled"
       [attr.aria-disabled]="state === 'disabled' || disabled"
-      [attr.aria-label]="shape === 'icon-only' ? (label || 'Icon button') : null"
+      [attr.aria-label]="shape === 'icon-only' ? label || 'Icon button' : null"
     >
       <!-- Icon-only button: centered icon using DomSanitizer -->
       <span
@@ -63,7 +69,9 @@ const icons: Record<string, string> = {
           [attr.fill]="iconColor"
         />
       </svg>
-      <span *ngIf="shape !== 'icon' && shape !== 'icon-only'" class="button-label">{{ label }}</span>
+      <span *ngIf="shape !== 'icon' && shape !== 'icon-only'" class="button-label">{{
+        label
+      }}</span>
       <svg
         *ngIf="shape !== 'icon-only' && icon && iconPosition === 'right'"
         class="button-icon button-icon-right"

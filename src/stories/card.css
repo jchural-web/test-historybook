@@ -8,7 +8,9 @@
   border-radius: 8px;
   background: #fff;
   box-sizing: border-box;
-  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 /* Variant: Default */
@@ -47,7 +49,12 @@
   align-items: center;
   gap: 8px;
   color: #434c57;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: normal;
@@ -70,7 +77,12 @@
 /* Value */
 .card-value {
   color: #2d2929;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 32px;
   font-weight: 800;
   line-height: 1.2;
@@ -86,7 +98,12 @@
 /* Helper */
 .card-helper {
   color: #16a34a; /* Green for positive changes */
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -96,22 +113,27 @@
 /* Helper Description */
 .card-helper-description {
   color: #707688;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 13px;
   font-weight: 400;
   line-height: normal;
 }
 
 /* Helper color variants */
-.card-helper[data-type="positive"] {
+.card-helper[data-type='positive'] {
   color: #16a34a; /* Green */
 }
 
-.card-helper[data-type="negative"] {
+.card-helper[data-type='negative'] {
   color: #dc2626; /* Red */
 }
 
-.card-helper[data-type="neutral"] {
+.card-helper[data-type='neutral'] {
   color: #707688; /* Gray */
 }
 
@@ -134,7 +156,12 @@
   display: flex;
   justify-content: center;
   color: rgba(71, 85, 105, 1);
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
@@ -145,7 +172,12 @@
   display: flex;
   justify-content: center;
   color: #dc2626;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 24px;
   font-weight: 700;
   line-height: normal;
@@ -173,7 +205,12 @@
   display: flex;
   justify-content: center;
   color: rgba(71, 85, 105, 1);
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 500;
   line-height: normal;
@@ -184,7 +221,12 @@
   display: flex;
   justify-content: center;
   color: rgba(71, 85, 105, 1);
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: normal;
@@ -211,7 +253,12 @@
 .card-currency-label {
   display: flex;
   color: rgba(51, 65, 85, 1);
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -241,7 +288,12 @@
 .card-currency-text {
   display: flex;
   color: #2563eb;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: normal;

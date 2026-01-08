@@ -12,13 +12,13 @@ Se agregó una nueva prop `contentVariant` al componente Card existente, permiti
 
 ### Nuevos Content Variants
 
-| ContentVariant | Descripción | Caso de Uso |
-|----------------|-------------|-------------|
-| `default` | Card original (sin cambios) | Dashboard metrics con helper text |
-| `metric` | Métrica destacada con valor rojo | Compromisos incumplidos, alertas |
-| `infoDate` | Información de fecha | Mostrar fechas importantes |
-| `infoCurrency` | Información de moneda con icono | Tipo de moneda, indicadores |
-| `placeholder` | Card vacío/placeholder | Contenido pendiente, carga |
+| ContentVariant | Descripción                      | Caso de Uso                       |
+| -------------- | -------------------------------- | --------------------------------- |
+| `default`      | Card original (sin cambios)      | Dashboard metrics con helper text |
+| `metric`       | Métrica destacada con valor rojo | Compromisos incumplidos, alertas  |
+| `infoDate`     | Información de fecha             | Mostrar fechas importantes        |
+| `infoCurrency` | Información de moneda con icono  | Tipo de moneda, indicadores       |
+| `placeholder`  | Card vacío/placeholder           | Contenido pendiente, carga        |
 
 ---
 
@@ -41,6 +41,7 @@ El comportamiento original del Card **se mantiene sin cambios**.
 ```
 
 **Props necesarios:**
+
 - `header`, `value`, `helper`, `helperDescription`, `icon`
 
 ---
@@ -58,16 +59,19 @@ Card compacto para mostrar métricas críticas con fondo rojo suave.
 ```
 
 **Props necesarios:**
+
 - `metricTitle` (string): Título de la métrica
 - `metricValue` (string | number): Valor de la métrica
 
 **Colores (desde Figma):**
+
 - Background: `#FEF2F2` (Red-50)
 - Border: `#FECACA` (Red-200)
 - Title: `rgba(71, 85, 105, 1)` (neutral-600)
 - Value: `#DC2626` (Red-600)
 
 **Dimensiones:**
+
 - Padding: `16px 89px`
 - Min Height: `87px`
 - Gap: `16px`
@@ -87,16 +91,19 @@ Card compacto para mostrar fechas con fondo azul suave.
 ```
 
 **Props necesarios:**
+
 - `dateLabel` (string): Label superior (ej. "Fecha")
 - `dateText` (string): Texto de la fecha
 
 **Colores (desde Figma):**
+
 - Background: `#EFF6FF` (Blue-50)
 - Border: Ninguno
 - Label: `rgba(71, 85, 105, 1)` (neutral-600)
 - Text: `rgba(71, 85, 105, 1)` (neutral-700, bold)
 
 **Dimensiones:**
+
 - Padding: `17px 8px`
 - Min Height: `84px`
 - Max Width: `101px`
@@ -117,10 +124,12 @@ Card para mostrar tipo de moneda con icono visible.
 ```
 
 **Props necesarios:**
+
 - `currencyLabel` (string): Label superior
 - `currencyText` (string): Código de moneda (PEN, USD, etc.)
 
 **Colores (desde Figma):**
+
 - Background: `#DBEAFE` (Blue-100)
 - Border: Ninguno
 - Label: `rgba(51, 65, 85, 1)` (neutral-700)
@@ -128,11 +137,13 @@ Card para mostrar tipo de moneda con icono visible.
 - Icon: `#2563EB` (Blue-600)
 
 **Icono:**
+
 - Usa `circle-dollar-sign` de lucide-react
 - Renderizado con `DomSanitizer` para seguridad
 - Tamaño: 21x21px
 
 **Dimensiones:**
+
 - Padding: `16px`
 - Min Height: `90px`
 - Max Width: `273px`
@@ -151,13 +162,16 @@ Card placeholder vacío con borde gris.
 ```
 
 **Props necesarios:**
+
 - Ninguno
 
 **Colores (desde Figma):**
+
 - Background: Transparente
 - Border: `rgba(226, 232, 240, 1)` (neutral-200)
 
 **Dimensiones:**
+
 - Width: `277px`
 - Min Height: `225px`
 - Border Radius: `8px`
@@ -210,9 +224,7 @@ import { CardComponent } from './card.component';
       ></storybook-card>
 
       <!-- Placeholder Card -->
-      <storybook-card
-        contentVariant="placeholder"
-      ></storybook-card>
+      <storybook-card contentVariant="placeholder"></storybook-card>
     </div>
   `,
 })
@@ -225,15 +237,16 @@ export class DashboardComponent {}
 
 ### Props Comunes (todos los contentVariants)
 
-| Prop | Type | Default | Descripción |
-|------|------|---------|-------------|
-| `variant` | `'default' \| 'elevated' \| 'outlined'` | `'default'` | Estilo visual del card (existente) |
-| `state` | `'default' \| 'hover'` | `'default'` | Estado visual (existente) |
-| `contentVariant` | `'default' \| 'metric' \| 'infoDate' \| 'infoCurrency' \| 'placeholder'` | `'default'` | **NUEVO**: Tipo de contenido |
+| Prop             | Type                                                                     | Default     | Descripción                        |
+| ---------------- | ------------------------------------------------------------------------ | ----------- | ---------------------------------- |
+| `variant`        | `'default' \| 'elevated' \| 'outlined'`                                  | `'default'` | Estilo visual del card (existente) |
+| `state`          | `'default' \| 'hover'`                                                   | `'default'` | Estado visual (existente)          |
+| `contentVariant` | `'default' \| 'metric' \| 'infoDate' \| 'infoCurrency' \| 'placeholder'` | `'default'` | **NUEVO**: Tipo de contenido       |
 
 ### Props específicos por contentVariant
 
 **Para `contentVariant="default"`:**
+
 - `header` (string)
 - `value` (string | number)
 - `helper` (string)
@@ -241,18 +254,22 @@ export class DashboardComponent {}
 - `icon` (string)
 
 **Para `contentVariant="metric"`:**
+
 - `metricTitle` (string)
 - `metricValue` (string | number)
 
 **Para `contentVariant="infoDate"`:**
+
 - `dateLabel` (string)
 - `dateText` (string)
 
 **Para `contentVariant="infoCurrency"`:**
+
 - `currencyLabel` (string)
 - `currencyText` (string)
 
 **Para `contentVariant="placeholder"`:**
+
 - Ninguno
 
 ---
@@ -296,15 +313,15 @@ export class DashboardComponent {}
 
 ```typescript
 // Metric con variant elevated
-<storybook-card contentVariant="metric" variant="elevated" 
+<storybook-card contentVariant="metric" variant="elevated"
   metricTitle="Alertas" metricValue="5" />
 
 // InfoDate con variant outlined
-<storybook-card contentVariant="infoDate" variant="outlined" 
+<storybook-card contentVariant="infoDate" variant="outlined"
   dateLabel="Fecha" dateText="28/06/2024" />
 
 // InfoCurrency con state hover
-<storybook-card contentVariant="infoCurrency" state="hover" 
+<storybook-card contentVariant="infoCurrency" state="hover"
   currencyLabel="Moneda" currencyText="USD" />
 ```
 
@@ -312,11 +329,11 @@ export class DashboardComponent {}
 
 ## 📊 Archivos Modificados
 
-| Archivo | Cambios | Líneas |
-|---------|---------|--------|
+| Archivo             | Cambios                                                                                  | Líneas      |
+| ------------------- | ---------------------------------------------------------------------------------------- | ----------- |
 | `card.component.ts` | Agregado `contentVariant` prop, props específicos, renderizado condicional, DomSanitizer | +100 líneas |
-| `card.css` | Agregados estilos para 4 nuevos contentVariants | +180 líneas |
-| `card.stories.ts` | Agregados argTypes y 6 nuevas stories | +150 líneas |
+| `card.css`          | Agregados estilos para 4 nuevos contentVariants                                          | +180 líneas |
+| `card.stories.ts`   | Agregados argTypes y 6 nuevas stories                                                    | +150 líneas |
 
 ---
 
@@ -355,69 +372,74 @@ Builder.registerComponent(CardComponent, {
   name: 'Card',
   inputs: [
     // Existentes
-    { name: 'variant', type: 'string', enum: ['default', 'elevated', 'outlined'], defaultValue: 'default' },
+    {
+      name: 'variant',
+      type: 'string',
+      enum: ['default', 'elevated', 'outlined'],
+      defaultValue: 'default',
+    },
     { name: 'state', type: 'string', enum: ['default', 'hover'], defaultValue: 'default' },
-    
+
     // NUEVO
     {
       name: 'contentVariant',
       type: 'string',
       enum: ['default', 'metric', 'infoDate', 'infoCurrency', 'placeholder'],
       defaultValue: 'default',
-      helperText: 'Tipo de contenido del card'
+      helperText: 'Tipo de contenido del card',
     },
-    
+
     // Props para metric
     {
       name: 'metricTitle',
       type: 'string',
       defaultValue: '',
-      showIf: 'options.get("contentVariant") === "metric"'
+      showIf: 'options.get("contentVariant") === "metric"',
     },
     {
       name: 'metricValue',
       type: 'string',
       defaultValue: '',
-      showIf: 'options.get("contentVariant") === "metric"'
+      showIf: 'options.get("contentVariant") === "metric"',
     },
-    
+
     // Props para infoDate
     {
       name: 'dateLabel',
       type: 'string',
       defaultValue: '',
-      showIf: 'options.get("contentVariant") === "infoDate"'
+      showIf: 'options.get("contentVariant") === "infoDate"',
     },
     {
       name: 'dateText',
       type: 'string',
       defaultValue: '',
-      showIf: 'options.get("contentVariant") === "infoDate"'
+      showIf: 'options.get("contentVariant") === "infoDate"',
     },
-    
+
     // Props para infoCurrency
     {
       name: 'currencyLabel',
       type: 'string',
       defaultValue: '',
-      showIf: 'options.get("contentVariant") === "infoCurrency"'
+      showIf: 'options.get("contentVariant") === "infoCurrency"',
     },
     {
       name: 'currencyText',
       type: 'string',
       defaultValue: '',
-      showIf: 'options.get("contentVariant") === "infoCurrency"'
+      showIf: 'options.get("contentVariant") === "infoCurrency"',
     },
-    
+
     // Props para default (existentes)
     {
       name: 'header',
       type: 'string',
       defaultValue: 'Actividades Totales',
-      showIf: 'options.get("contentVariant") === "default"'
+      showIf: 'options.get("contentVariant") === "default"',
     },
     // ... otros props existentes
-  ]
+  ],
 });
 ```
 
@@ -430,6 +452,7 @@ Builder.registerComponent(CardComponent, {
 **Problema**: El icono del contentVariant infoCurrency no es visible.
 
 **Solución**: El icono usa `DomSanitizer.bypassSecurityTrustHtml()`. Verificar que:
+
 1. `DomSanitizer` está inyectado en el constructor
 2. El método `getCurrencyIcon()` está implementado
 3. El binding `[innerHTML]` está correcto
@@ -439,6 +462,7 @@ Builder.registerComponent(CardComponent, {
 **Problema**: El card sigue mostrando el contenido default.
 
 **Solución**: Verificar que:
+
 1. El prop `contentVariant` está configurado correctamente
 2. Las clases CSS están aplicadas (`.card-content-{variant}`)
 3. Los props específicos están configurados (ej. `metricTitle` para metric)
