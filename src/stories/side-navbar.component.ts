@@ -125,6 +125,8 @@ export class SideNavbarComponent {
 
   private expandedItems: Set<string> = new Set();
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   ngOnInit() {
     // Auto-expand items based on active path
     this.autoExpandActiveItems();
