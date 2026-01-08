@@ -39,7 +39,7 @@
 /* Badge Text Icon Layout - Figma Design (28px height) */
 .badge-text.badge-layout-text-icon {
   padding: 8px 20px;
-  border-radius: 15.5px;
+  border-radius: 9999px;
   font-size: 14px;
   line-height: 21px;
   height: 28px;
