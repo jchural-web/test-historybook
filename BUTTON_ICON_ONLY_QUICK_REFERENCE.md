@@ -2,13 +2,57 @@
 
 ## 🎯 Uso Rápido
 
+### Básico (Outline - Recomendado)
 ```typescript
 <storybook-button
   shape="icon-only"
   size="md"
+  variant="outline"
   iconName="chevron-left"
   label="Previous"
 ></storybook-button>
+```
+
+### Con Otros Variants
+```typescript
+<!-- Default (púrpura lleno) -->
+<storybook-button shape="icon-only" variant="default" iconName="check" label="Confirm" />
+
+<!-- Secondary (azul lleno) -->
+<storybook-button shape="icon-only" variant="secondary" iconName="chevron-right" label="Next" />
+
+<!-- Ghost (púrpura claro) -->
+<storybook-button shape="icon-only" variant="ghost" iconName="chevron-up" label="Scroll up" />
+
+<!-- Link (azul transparente) -->
+<storybook-button shape="icon-only" variant="link" iconName="chevron-down" label="Expand" />
+
+<!-- Destructive (rojo - eliminar) -->
+<storybook-button shape="icon-only" variant="destructive" iconName="check" label="Delete" />
+```
+
+---
+
+## 🎨 Variants (NUEVO!)
+
+```typescript
+// outline - Borde, para navegación (RECOMENDADO)
+<storybook-button shape="icon-only" variant="outline" iconName="chevron-left" />
+
+// default - Púrpura lleno, para acciones primarias
+<storybook-button shape="icon-only" variant="default" iconName="check" />
+
+// secondary - Azul lleno, para acciones alternativas
+<storybook-button shape="icon-only" variant="secondary" iconName="chevron-right" />
+
+// ghost - Púrpura claro, para acciones sutiles
+<storybook-button shape="icon-only" variant="ghost" iconName="chevron-up" />
+
+// link - Azul transparente, para links
+<storybook-button shape="icon-only" variant="link" iconName="chevron-down" />
+
+// destructive - Rojo, para eliminar/peligroso
+<storybook-button shape="icon-only" variant="destructive" iconName="check" />
 ```
 
 ---
@@ -75,6 +119,7 @@
 | Prop       | Values                                         | Default         |
 | ---------- | ---------------------------------------------- | --------------- |
 | `shape`    | `'icon-only'` **(requerido)**                  | -               |
+| `variant`  | `'outline'` \| `'default'` \| `'secondary'` \| `'ghost'` \| `'link'` \| `'destructive'` | `'outline'` |
 | `size`     | `'sm'` \| `'md'` \| `'lg'`                     | `'md'`          |
 | `iconName` | `'chevron-left'` \| `'chevron-right'` \| `'chevron-up'` \| `'chevron-down'` \| `'check'` | `'chevron-left'` |
 | `state`    | `'default'` \| `'hover'` \| `'active'` \| `'focus'` \| `'disabled'` | `'default'`     |
@@ -82,15 +127,29 @@
 
 ---
 
+## 📊 Tabla de Variants
+
+| Variant      | Visual | Border/Color | Uso |
+| ------------ | ------ | ------------ | --- |
+| **outline**  | 🔷 | `#CBD5E1` border, `#9333EA` icon | Navegación (RECOMENDADO) |
+| **default**  | 🟣 | `#7C3AED` background | Acción primaria |
+| **secondary**| 🔵 | `#2563EB` background | Acción alternativa |
+| **ghost**    | 💜 | `#EDE9FE` background | Acción sutil |
+| **link**     | 🔗 | Transparente, `#2563EB` icon | Links |
+| **destructive** | 🔴 | `#DC2626` background | Eliminar/Peligro |
+
+---
+
 ## 🎯 Casos de Uso Comunes
 
-### Paginación
+### Paginación (Outline)
 
 ```typescript
 <div class="pagination">
   <storybook-button
     shape="icon-only"
     size="md"
+    variant="outline"
     iconName="chevron-left"
     label="Previous page"
     (onClick)="previousPage()"
@@ -101,6 +160,7 @@
   <storybook-button
     shape="icon-only"
     size="md"
+    variant="outline"
     iconName="chevron-right"
     label="Next page"
     (onClick)="nextPage()"
@@ -108,12 +168,13 @@
 </div>
 ```
 
-### Dropdown Menu
+### Dropdown Menu (Ghost - sutil)
 
 ```typescript
 <storybook-button
   shape="icon-only"
   size="sm"
+  variant="ghost"
   iconName="chevron-down"
   [state]="isOpen ? 'active' : 'default'"
   label="Toggle menu"
@@ -121,27 +182,42 @@
 ></storybook-button>
 ```
 
-### Scroll to Top
+### Scroll to Top (Ghost)
 
 ```typescript
 <storybook-button
   shape="icon-only"
   size="lg"
+  variant="ghost"
   iconName="chevron-up"
   label="Scroll to top"
   (onClick)="scrollToTop()"
 ></storybook-button>
 ```
 
-### Confirmación
+### Confirmación (Default - acción primaria)
 
 ```typescript
 <storybook-button
   shape="icon-only"
   size="md"
+  variant="default"
   iconName="check"
   label="Confirm"
   (onClick)="confirm()"
+></storybook-button>
+```
+
+### Eliminar (Destructive - rojo)
+
+```typescript
+<storybook-button
+  shape="icon-only"
+  size="md"
+  variant="destructive"
+  iconName="check"
+  label="Delete"
+  (onClick)="delete()"
 ></storybook-button>
 ```
 
@@ -209,7 +285,17 @@ Asegúrate de que:
 <storybook-button shape="icon" iconName="chevron-left"></storybook-button>
 
 // CORRECTO
+<storybook-button shape="icon-only" variant="outline" iconName="chevron-left"></storybook-button>
+```
+
+### ❌ Error: No veo los colores, todo está gris
+
+```typescript
+// INCORRECTO - Falta variant
 <storybook-button shape="icon-only" iconName="chevron-left"></storybook-button>
+
+// CORRECTO
+<storybook-button shape="icon-only" variant="default" iconName="chevron-left"></storybook-button>
 ```
 
 ### ❌ Error: Icono no aparece
@@ -236,13 +322,14 @@ Asegúrate de que:
 
 ## 🎓 Diferencias con `shape="icon"`
 
-| Característica | `shape="icon"`   | `shape="icon-only"` |
-| -------------- | ---------------- | ------------------- |
-| Forma          | Cuadrado         | **Circular**        |
-| Borde          | Sin borde        | **Con borde**       |
-| Icono          | Fijo (check)     | **Configurable**    |
-| Background     | Color sólido     | **Transparente**    |
-| Focus Ring     | Estándar         | **Personalizado**   |
+| Característica | `shape="icon"` | `shape="icon-only"` |
+| -------------- | -------------- | ------------------- |
+| Forma          | Cuadrado       | **Circular**        |
+| Icono          | Fijo (check)   | **Configurable** (chevron-left, right, up, down, check) |
+| Variants       | No             | **Sí (outline, default, secondary, ghost, link, destructive)** |
+| Background     | Color sólido   | **Depende del variant** |
+| Focus Ring     | Estándar       | **Personalizado**   |
+| Uso            | General        | **Navegación y acciones** |
 
 ---
 
