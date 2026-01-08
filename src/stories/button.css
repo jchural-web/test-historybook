@@ -152,6 +152,14 @@
   border: 1px solid #7c3aed;
 }
 
+/* Force white icon for default variant - all states */
+.btn-shape-icon-only.btn-default .button-icon-only svg,
+.btn-shape-icon-only.btn-default .button-icon-only svg path,
+.btn-shape-icon-only.btn-default .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
+}
+
 .btn-shape-icon-only.btn-default:hover:not(:disabled),
 .btn-shape-icon-only.btn-default.btn-state-hover {
   opacity: 0.9;
