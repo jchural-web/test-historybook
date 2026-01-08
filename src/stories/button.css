@@ -321,6 +321,18 @@
   box-shadow:
     0 0 0 3px white,
     0 0 0 4px #2e1065;
+  color: white;
+}
+
+/* Ensure white icon in focus state for destructive variant */
+.btn-shape-icon-only.btn-destructive:focus:not(:disabled) .button-icon-only svg,
+.btn-shape-icon-only.btn-destructive:focus:not(:disabled) .button-icon-only svg path,
+.btn-shape-icon-only.btn-destructive:focus:not(:disabled) .button-icon-only svg *,
+.btn-shape-icon-only.btn-destructive.btn-state-focus .button-icon-only svg,
+.btn-shape-icon-only.btn-destructive.btn-state-focus .button-icon-only svg path,
+.btn-shape-icon-only.btn-destructive.btn-state-focus .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
 }
 
 /* Text underline on hover for text-based buttons (text-only and icon-text, exclude icon-only) */
