@@ -16,25 +16,54 @@ const meta: Meta<CardComponent> = {
       options: ['default', 'hover'],
       description: 'Card state (visual only)',
     },
+    contentVariant: {
+      control: 'select',
+      options: ['default', 'metric', 'infoDate', 'infoCurrency', 'placeholder'],
+      description: 'Content variant type (NEW)',
+    },
     header: {
       control: 'text',
-      description: 'Header text',
+      description: 'Header text (for default contentVariant)',
     },
     value: {
       control: 'text',
-      description: 'Main value to display',
+      description: 'Main value to display (for default contentVariant)',
     },
     helper: {
       control: 'text',
-      description: 'Helper text (e.g., percentage change)',
+      description: 'Helper text (e.g., percentage change) (for default contentVariant)',
     },
     helperDescription: {
       control: 'text',
-      description: 'Helper description text (e.g., "respecto al mes anterior")',
+      description: 'Helper description text (e.g., "respecto al mes anterior") (for default contentVariant)',
     },
     icon: {
       control: 'text',
-      description: 'Icon name (currently only "phone" supported)',
+      description: 'Icon name (currently only "phone" supported) (for default contentVariant)',
+    },
+    metricTitle: {
+      control: 'text',
+      description: 'Title for metric contentVariant',
+    },
+    metricValue: {
+      control: 'text',
+      description: 'Value for metric contentVariant',
+    },
+    dateLabel: {
+      control: 'text',
+      description: 'Label for infoDate contentVariant',
+    },
+    dateText: {
+      control: 'text',
+      description: 'Date text for infoDate contentVariant',
+    },
+    currencyLabel: {
+      control: 'text',
+      description: 'Label for infoCurrency contentVariant',
+    },
+    currencyText: {
+      control: 'text',
+      description: 'Currency text for infoCurrency contentVariant',
     },
   },
   args: {
