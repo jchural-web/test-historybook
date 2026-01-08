@@ -223,6 +223,18 @@
   box-shadow:
     0 0 0 3px white,
     0 0 0 4px #2e1065;
+  color: white;
+}
+
+/* Ensure white icon in focus state for secondary variant */
+.btn-shape-icon-only.btn-secondary:focus:not(:disabled) .button-icon-only svg,
+.btn-shape-icon-only.btn-secondary:focus:not(:disabled) .button-icon-only svg path,
+.btn-shape-icon-only.btn-secondary:focus:not(:disabled) .button-icon-only svg *,
+.btn-shape-icon-only.btn-secondary.btn-state-focus .button-icon-only svg,
+.btn-shape-icon-only.btn-secondary.btn-state-focus .button-icon-only svg path,
+.btn-shape-icon-only.btn-secondary.btn-state-focus .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
 }
 
 /* Icon-only with ghost variant (light purple) */
