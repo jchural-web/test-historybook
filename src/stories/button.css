@@ -275,6 +275,16 @@
     0 0 0 4px #2e1065;
 }
 
+/* Text underline on hover for text-based buttons (text-only and icon-text, exclude icon-only) */
+.btn-shape-rectangular:hover:not(:disabled) .button-label,
+.btn-shape-rectangular.btn-state-hover .button-label,
+.btn-shape-pill:hover:not(:disabled) .button-label,
+.btn-shape-pill.btn-state-hover .button-label,
+.btn-shape-icon-text:hover:not(:disabled) .button-label,
+.btn-shape-icon-text.btn-state-hover .button-label {
+  text-decoration: underline;
+}
+
 /* Color variants - Default/Primary */
 .btn-default {
   background: #7c3aed;
