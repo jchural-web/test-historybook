@@ -112,9 +112,152 @@
 /* Icon-only circular buttons - always round */
 .btn-shape-icon-only {
   border-radius: 50%;
+}
+
+/* Icon-only with outline variant (default for icon-only) */
+.btn-shape-icon-only.btn-outline {
   background: transparent;
   border: 1px solid #cbd5e1;
   color: #9333ea;
+}
+
+.btn-shape-icon-only.btn-outline:hover:not(:disabled),
+.btn-shape-icon-only.btn-outline.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-outline:active:not(:disabled),
+.btn-shape-icon-only.btn-outline.btn-state-active {
+  border-color: #9333ea;
+  color: #9333ea;
+}
+
+.btn-shape-icon-only.btn-outline:focus:not(:disabled),
+.btn-shape-icon-only.btn-outline.btn-state-focus {
+  border-color: #64748b;
+  color: #6b21a8;
+  outline: none;
+  box-shadow: 0 0 0 1px #581c87;
+}
+
+/* Icon-only with default variant (filled purple) */
+.btn-shape-icon-only.btn-default {
+  background: #7c3aed;
+  color: white;
+  border: 1px solid #7c3aed;
+}
+
+.btn-shape-icon-only.btn-default:hover:not(:disabled),
+.btn-shape-icon-only.btn-default.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-default:active:not(:disabled),
+.btn-shape-icon-only.btn-default.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-default:focus:not(:disabled),
+.btn-shape-icon-only.btn-default.btn-state-focus {
+  background: #4c1d95;
+  border-color: #4c1d95;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+}
+
+/* Icon-only with secondary variant (filled blue) */
+.btn-shape-icon-only.btn-secondary {
+  background: #2563eb;
+  color: white;
+  border: 1px solid #2563eb;
+}
+
+.btn-shape-icon-only.btn-secondary:hover:not(:disabled),
+.btn-shape-icon-only.btn-secondary.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-secondary:active:not(:disabled),
+.btn-shape-icon-only.btn-secondary.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-secondary:focus:not(:disabled),
+.btn-shape-icon-only.btn-secondary.btn-state-focus {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+}
+
+/* Icon-only with ghost variant (light purple) */
+.btn-shape-icon-only.btn-ghost {
+  background: #ede9fe;
+  color: #1e293b;
+  border: 1px solid #ede9fe;
+}
+
+.btn-shape-icon-only.btn-ghost:hover:not(:disabled),
+.btn-shape-icon-only.btn-ghost.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-ghost:active:not(:disabled),
+.btn-shape-icon-only.btn-ghost.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-ghost:focus:not(:disabled),
+.btn-shape-icon-only.btn-ghost.btn-state-focus {
+  background: #ddd6fe;
+  border-color: #ddd6fe;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+}
+
+/* Icon-only with link variant */
+.btn-shape-icon-only.btn-link {
+  background: transparent;
+  color: #2563eb;
+  border: 1px solid transparent;
+}
+
+.btn-shape-icon-only.btn-link:hover:not(:disabled),
+.btn-shape-icon-only.btn-link.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-link:active:not(:disabled),
+.btn-shape-icon-only.btn-link.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-link:focus:not(:disabled),
+.btn-shape-icon-only.btn-link.btn-state-focus {
+  color: #1d4ed8;
+  border: 1px solid #1d4ed8;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
+}
+
+/* Icon-only with destructive variant (red) */
+.btn-shape-icon-only.btn-destructive {
+  background: #dc2626;
+  color: white;
+  border: 1px solid #dc2626;
+}
+
+.btn-shape-icon-only.btn-destructive:hover:not(:disabled),
+.btn-shape-icon-only.btn-destructive.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-destructive:active:not(:disabled),
+.btn-shape-icon-only.btn-destructive.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-destructive:focus:not(:disabled),
+.btn-shape-icon-only.btn-destructive.btn-state-focus {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #2e1065;
 }
 
 /* Color variants - Default/Primary */
