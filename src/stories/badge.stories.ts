@@ -16,6 +16,11 @@ const meta: Meta<BadgeComponent> = {
       options: ['dot', 'default', 'large'],
       description: 'Badge size',
     },
+    layout: {
+      control: 'select',
+      options: ['text', 'text-icon'],
+      description: 'Badge layout (text-only or with icon)',
+    },
     value: {
       control: 'text',
       description: 'Badge value (for default and large sizes)',
@@ -24,6 +29,7 @@ const meta: Meta<BadgeComponent> = {
   args: {
     variant: 'default',
     size: 'default',
+    layout: 'text',
     value: '10',
   },
 };
