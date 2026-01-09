@@ -39,102 +39,61 @@ const meta: Meta<InputComponent> = {
 export default meta;
 type Story = StoryObj<InputComponent>;
 
-// Default size variants (default state)
-export const Small: Story = {
-  args: {
-    size: 'sm',
-    state: 'default',
-    icon: 'none',
-  },
-};
+// ============================================================
+// API CATEGORY STORIES (One per axis)
+// ============================================================
 
-export const Medium: Story = {
-  args: {
-    size: 'md',
-    state: 'default',
-    icon: 'none',
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: 'lg',
-    state: 'default',
-    icon: 'none',
-  },
-};
-
-// With leading icon
-export const SmallWithIcon: Story = {
-  args: {
-    size: 'sm',
-    state: 'default',
-    icon: 'leading',
-  },
-};
-
-export const MediumWithIcon: Story = {
-  args: {
-    size: 'md',
-    state: 'default',
-    icon: 'leading',
-  },
-};
-
-export const LargeWithIcon: Story = {
-  args: {
-    size: 'lg',
-    state: 'default',
-    icon: 'leading',
-  },
-};
-
-// Showcase stories
-export const AllSizes: Story = {
+/**
+ * Input sizes: small, medium, and large.
+ * Demonstrates all available sizes in default state.
+ */
+export const Sizes: Story = {
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; font-family: Roboto, sans-serif;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Sizes - Default State</h3>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 60px; font-size: 14px; color: #666;">Small:</span>
-          <bsg-input size="sm" state="default" icon="none"></bsg-input>
+          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Small (sm)</span>
+          <bsg-input size="sm" state="default" icon="none" placeholder="Small input"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 60px; font-size: 14px; color: #666;">Medium:</span>
-          <bsg-input size="md" state="default" icon="none"></bsg-input>
+          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Medium (md)</span>
+          <bsg-input size="md" state="default" icon="none" placeholder="Medium input"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 60px; font-size: 14px; color: #666;">Large:</span>
-          <bsg-input size="lg" state="default" icon="none"></bsg-input>
+          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Large (lg)</span>
+          <bsg-input size="lg" state="default" icon="none" placeholder="Large input"></bsg-input>
         </div>
       </div>
     `,
   }),
 };
 
-export const AllStates: Story = {
+/**
+ * All input states: default, hover, focus, disabled, and error.
+ * Shows visual appearance of the input in different interaction states.
+ */
+export const States: Story = {
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; font-family: Roboto, sans-serif;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">All States - Medium Size</h3>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 80px; font-size: 14px; color: #666;">Default:</span>
+          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Default</span>
           <bsg-input size="md" state="default" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 80px; font-size: 14px; color: #666;">Hover:</span>
+          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
           <bsg-input size="md" state="hover" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 80px; font-size: 14px; color: #666;">Focus:</span>
+          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
           <bsg-input size="md" state="focus" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 80px; font-size: 14px; color: #666;">Disabled:</span>
+          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
           <bsg-input size="md" state="disabled" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 80px; font-size: 14px; color: #666;">Error:</span>
+          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Error</span>
           <bsg-input size="md" state="error" icon="none"></bsg-input>
         </div>
       </div>
@@ -142,29 +101,119 @@ export const AllStates: Story = {
   }),
 };
 
+// ============================================================
+// EXAMPLES SECTION
+// ============================================================
+
+/**
+ * Input with leading icon in all sizes and states.
+ * Shows how to use the leading icon content mode.
+ */
 export const WithIcons: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; font-family: Roboto, sans-serif;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">With Leading Icon</h3>
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 80px; font-size: 14px; color: #666;">Small:</span>
-          <bsg-input size="sm" state="default" icon="leading"></bsg-input>
+      <div style="display: flex; flex-direction: column; gap: 24px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #202020;">With Leading Icon - All Sizes</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Small</span>
+            <bsg-input size="sm" state="default" icon="leading"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Medium</span>
+            <bsg-input size="md" state="default" icon="leading"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Large</span>
+            <bsg-input size="lg" state="default" icon="leading"></bsg-input>
+          </div>
         </div>
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 80px; font-size: 14px; color: #666;">Medium:</span>
-          <bsg-input size="md" state="default" icon="leading"></bsg-input>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 80px; font-size: 14px; color: #666;">Large:</span>
-          <bsg-input size="lg" state="default" icon="leading"></bsg-input>
+
+        <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #202020;">With Leading Icon - All States</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Default</span>
+            <bsg-input size="md" state="default" icon="leading"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Hover</span>
+            <bsg-input size="md" state="hover" icon="leading"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Focus</span>
+            <bsg-input size="md" state="focus" icon="leading"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Disabled</span>
+            <bsg-input size="md" state="disabled" icon="leading"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Error</span>
+            <bsg-input size="md" state="error" icon="leading"></bsg-input>
+          </div>
         </div>
       </div>
     `,
   }),
 };
 
-export const DesignSystemShowcase: Story = {
+// ============================================================
+// PLAYGROUND (Interactive)
+// ============================================================
+
+/**
+ * Interactive playground for testing all input configurations.
+ * Use the controls to experiment with different sizes, states, and icon modes.
+ */
+export const Playground: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive Input Playground</h3>
+        <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
+          Use the controls panel to adjust size, state, icon, and placeholder
+        </p>
+
+        <div style="display: flex; align-items: center; justify-content: center; min-height: 120px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
+          <bsg-input
+            [size]="size"
+            [state]="state"
+            [icon]="icon"
+            [placeholder]="placeholder"
+            [value]="value">
+          </bsg-input>
+        </div>
+
+        <div style="margin-top: 32px; padding: 16px; background: #EFF6FF; border-radius: 8px; font-size: 13px; color: #1E40AF; line-height: 1.6;">
+          <strong>Tips:</strong>
+          <ul style="margin: 8px 0 0 20px;">
+            <li>Set <code>icon="leading"</code> to display a search icon on the left</li>
+            <li>Try different states to see visual feedback (hover, focus, error, disabled)</li>
+            <li>Adjust size to see how the input scales (sm, md, lg)</li>
+          </ul>
+        </div>
+      </div>
+    `,
+  }),
+  args: {
+    size: 'md',
+    state: 'default',
+    icon: 'none',
+    placeholder: 'Ingresa información',
+    value: '',
+  },
+};
+
+// ============================================================
+// SHOWCASE (Comprehensive reference)
+// ============================================================
+
+/**
+ * Complete design system showcase featuring all input sizes, states,
+ * and content modes with and without icons.
+ */
+export const Showcase: Story = {
   render: () => ({
     template: `
       <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 1200px;">
@@ -176,7 +225,7 @@ export const DesignSystemShowcase: Story = {
           <div style="margin-bottom: 32px;">
             <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">Sizes</h4>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-              <span style="width: 80px; font-size: 14px; color: #666;">sm:</span>
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">sm:</span>
               <bsg-input size="sm" state="default" icon="none"></bsg-input>
               <bsg-input size="sm" state="hover" icon="none"></bsg-input>
               <bsg-input size="sm" state="focus" icon="none"></bsg-input>
@@ -184,7 +233,7 @@ export const DesignSystemShowcase: Story = {
               <bsg-input size="sm" state="error" icon="none"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-              <span style="width: 80px; font-size: 14px; color: #666;">md:</span>
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">md:</span>
               <bsg-input size="md" state="default" icon="none"></bsg-input>
               <bsg-input size="md" state="hover" icon="none"></bsg-input>
               <bsg-input size="md" state="focus" icon="none"></bsg-input>
@@ -192,7 +241,7 @@ export const DesignSystemShowcase: Story = {
               <bsg-input size="md" state="error" icon="none"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center;">
-              <span style="width: 80px; font-size: 14px; color: #666;">lg:</span>
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">lg:</span>
               <bsg-input size="lg" state="default" icon="none"></bsg-input>
               <bsg-input size="lg" state="hover" icon="none"></bsg-input>
               <bsg-input size="lg" state="focus" icon="none"></bsg-input>
@@ -208,7 +257,7 @@ export const DesignSystemShowcase: Story = {
           <div style="margin-bottom: 32px;">
             <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">Sizes</h4>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-              <span style="width: 80px; font-size: 14px; color: #666;">sm:</span>
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">sm:</span>
               <bsg-input size="sm" state="default" icon="leading"></bsg-input>
               <bsg-input size="sm" state="hover" icon="leading"></bsg-input>
               <bsg-input size="sm" state="focus" icon="leading"></bsg-input>
@@ -216,7 +265,7 @@ export const DesignSystemShowcase: Story = {
               <bsg-input size="sm" state="error" icon="leading"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-              <span style="width: 80px; font-size: 14px; color: #666;">md:</span>
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">md:</span>
               <bsg-input size="md" state="default" icon="leading"></bsg-input>
               <bsg-input size="md" state="hover" icon="leading"></bsg-input>
               <bsg-input size="md" state="focus" icon="leading"></bsg-input>
@@ -224,7 +273,7 @@ export const DesignSystemShowcase: Story = {
               <bsg-input size="md" state="error" icon="leading"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center;">
-              <span style="width: 80px; font-size: 14px; color: #666;">lg:</span>
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">lg:</span>
               <bsg-input size="lg" state="default" icon="leading"></bsg-input>
               <bsg-input size="lg" state="hover" icon="leading"></bsg-input>
               <bsg-input size="lg" state="focus" icon="leading"></bsg-input>
@@ -236,12 +285,12 @@ export const DesignSystemShowcase: Story = {
 
         <section>
           <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">State Reference</h3>
-          <div style="display: flex; gap: 24px; font-size: 14px;">
-            <span style="color: #666;">Default</span>
-            <span style="color: #666;">Hover</span>
-            <span style="color: #666;">Focus</span>
-            <span style="color: #666;">Disabled</span>
-            <span style="color: #666;">Error</span>
+          <div style="display: flex; gap: 24px; font-size: 14px; color: #64748B;">
+            <span>Default</span>
+            <span>Hover</span>
+            <span>Focus</span>
+            <span>Disabled</span>
+            <span>Error</span>
           </div>
         </section>
       </div>
