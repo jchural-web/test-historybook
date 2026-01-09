@@ -378,8 +378,6 @@ export const DesignSystemShowcase: Story = {
           <bsg-table
             title="Historial de mensajes"
             variant="table-tabs"
-            [collapsible]="true"
-            [collapsed]="false"
             [activeTabIndex]="0"
             [headerAction]="{
               label: 'Nuevo mensaje',
