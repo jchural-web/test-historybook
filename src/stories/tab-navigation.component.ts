@@ -108,7 +108,7 @@ export class TabNavigationComponent {
       `tab-item-color-${this.color}`,
     ];
 
-    if (index === this.activeIndex) {
+    if (index === this._activeIndex) {
       classes.push('tab-item-active');
     } else {
       classes.push(`tab-item-${this.state}`);
@@ -118,7 +118,7 @@ export class TabNavigationComponent {
   }
 
   getIconStroke(index: number): string {
-    if (index === this.activeIndex) {
+    if (index === this._activeIndex) {
       return 'white';
     }
     // Return color-specific stroke values
@@ -131,7 +131,8 @@ export class TabNavigationComponent {
   }
 
   handleTabClick(index: number): void {
-    if (this.state !== 'disabled' && index !== this.activeIndex) {
+    if (this.state !== 'disabled' && index !== this._activeIndex) {
+      this._activeIndex = index;
       this.onTabChange.emit(index);
     }
   }
