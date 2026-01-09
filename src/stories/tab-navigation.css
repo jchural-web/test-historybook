@@ -134,6 +134,7 @@
 .tab-navigation-color-blue .tab-item-hover {
   background: #eff6ff;
   color: #2563eb;
+  opacity: 0.9;
 }
 
 .tab-navigation-color-blue .tab-item-active,
@@ -179,6 +180,7 @@
 .tab-navigation-color-green .tab-item-hover {
   background: #f0fdf4;
   color: #16a34a;
+  opacity: 0.9;
 }
 
 .tab-navigation-color-green .tab-item-active,
@@ -224,6 +226,7 @@
 .tab-navigation-color-yellow .tab-item-hover {
   background: #fefce8;
   color: #ca8a04;
+  opacity: 0.9;
 }
 
 .tab-navigation-color-yellow .tab-item-active,
