@@ -235,12 +235,22 @@ export const DesignSystemShowcase: Story = {
               <li>Flex Shrink: 0</li>
             </ul>
             
+            <p style="margin: 16px 0 8px 0;"><strong>Spacing & Layout:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li><strong>Text:</strong> 8px bottom margin (auto-removed on last child)</li>
+              <li><strong>Circular:</strong> No default margin (flex-shrink: 0 for flex layouts)</li>
+              <li><strong>Rectangular:</strong> 12px bottom margin (auto-removed on last child)</li>
+              <li>Use <code>gap</code> property in flex/grid containers for consistent spacing</li>
+              <li>Stack text elements vertically without additional spacing (margins are built-in)</li>
+            </ul>
+
             <p style="margin: 16px 0 8px 0;"><strong>Behavior:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li>Non-interactive (pointer-events: none)</li>
               <li>Non-selectable (user-select: none)</li>
               <li>No animations (unless added by consumer)</li>
-              <li>No default spacing or layout</li>
+              <li>Composable - multiple skeletons work together seamlessly</li>
+              <li>No overlapping or collision between elements</li>
             </ul>
           </div>
         </section>
