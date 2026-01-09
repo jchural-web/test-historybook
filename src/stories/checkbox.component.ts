@@ -5,7 +5,7 @@ export type CheckboxSize = 'sm' | 'md';
 export type CheckboxState = 'default' | 'hover' | 'checked' | 'disabled' | 'indeterminate' | 'focus';
 
 @Component({
-  selector: 'storybook-checkbox',
+  selector: 'bsg-checkbox',
   standalone: true,
   imports: [CommonModule],
   template: `
