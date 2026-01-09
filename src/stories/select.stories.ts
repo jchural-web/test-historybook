@@ -331,3 +331,13 @@ export const FormExample: Story = {
     `,
   }),
 };
+
+// Error state with message example
+export const ErrorState: Story = {
+  args: {
+    size: 'md',
+    state: 'error',
+    placeholder: 'Selecciona una opción',
+    errorMessage: 'Este campo es requerido',
+  },
+};
