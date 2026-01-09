@@ -98,9 +98,9 @@ export const DesignSystemShowcase: Story = {
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
               <bsg-select size="sm" state="disabled"></bsg-select>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-              <bsg-select size="sm" state="error"></bsg-select>
+              <bsg-select size="sm" state="error" errorMessage="Este campo es requerido"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Dropdown</span>
