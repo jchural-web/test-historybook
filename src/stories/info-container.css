@@ -75,11 +75,14 @@
 
 /* Table Variant */
 .info-container-table-wrapper {
-  padding: 0;
+  padding: 20px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  margin: 20px;
 }
 
 .info-container-table {
-  padding: 0 20px;
+  padding: 0;
 }
 
 .info-container-table-header {
@@ -87,9 +90,9 @@
   gap: 16px;
   padding: 12px 0;
   background: #eff6ff;
-  margin: 0 -20px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .info-container-table-header-cell {
