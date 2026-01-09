@@ -157,7 +157,7 @@
 
 .tab-navigation-color-blue .tab-item:focus-visible:not(.tab-item-active):not([disabled]),
 .tab-navigation-color-blue .tab-item-focus {
-  border-color: #7c3aed; /* Violet-600 */
+  outline-color: #7c3aed; /* Violet-600 */
 }
 
 .tab-navigation-color-blue .tab-item-disabled,
