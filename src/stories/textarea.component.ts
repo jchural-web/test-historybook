@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LabelComponent } from './label.component';
 import { ButtonComponent } from './button.component';
@@ -22,6 +22,7 @@ export type TextareaComposition = 'default' | 'withLabel' | 'withText' | 'withBu
       <!-- Textarea Field -->
       <div class="textarea-wrapper" [ngClass]="wrapperClasses">
         <textarea
+          #textareaRef
           class="textarea-field"
           [placeholder]="placeholder"
           [disabled]="state === 'disabled'"
@@ -51,7 +52,7 @@ export type TextareaComposition = 'default' | 'withLabel' | 'withText' | 'withBu
   `,
   styleUrls: ['./textarea.css'],
 })
-export class TextareaComponent {
+export class TextareaComponent implements AfterViewInit {
   @Input() state: TextareaState = 'default';
   @Input() placeholder: string = 'Ingresa información';
   @Input() value: string = '';
@@ -67,6 +68,8 @@ export class TextareaComponent {
   @Output() onBlurEvent = new EventEmitter<void>();
   @Output() onButtonClick = new EventEmitter<Event>();
 
+  @ViewChild('textareaRef') textareaRef: ElementRef<HTMLTextAreaElement> | undefined;
+
   get compositionClasses(): string[] {
     return ['textarea-composition', `composition-${this.composition}`].filter(Boolean);
   }
@@ -79,11 +82,24 @@ export class TextareaComponent {
     return [];
   }
 
+  ngAfterViewInit(): void {
+    this.adjustHeight();
+  }
+
   onInput(event: Event): void {
     const target = event.target as HTMLTextAreaElement;
     this.value = target.value;
     this.valueChange.emit(target.value);
     this.onInputChange.emit(target.value);
+    this.adjustHeight();
+  }
+
+  private adjustHeight(): void {
+    if (this.textareaRef?.nativeElement) {
+      const textarea = this.textareaRef.nativeElement;
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
+    }
   }
 
   onFocus(): void {
