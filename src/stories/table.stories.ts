@@ -131,8 +131,6 @@ export const TableTabs: Story = {
   args: {
     title: 'Historial de mensajes',
     variant: 'table-tabs',
-    collapsible: true,
-    collapsed: false,
     activeTabIndex: 0,
     headerAction: {
       label: 'Nuevo mensaje',
@@ -255,8 +253,6 @@ export const ListContent: Story = {
   args: {
     title: 'Versión Profesional',
     variant: 'list-content',
-    collapsible: true,
-    collapsed: false,
     listItems: [
       {
         text: 'Aplicarás técnicas avanzadas en el diseño de arquitecturas seguras, escalables y optimizadas en AWS, aplicables directamente a tu entorno laboral para resolver problemas complejos.',
