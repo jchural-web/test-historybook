@@ -196,7 +196,6 @@
 .ui-table-tabs-wrapper storybook-tab-navigation {
   display: block;
   padding: 20px;
-  border-bottom: 1px solid #cbd5e1;
 }
 
 .ui-table-tabs-wrapper storybook-tab-navigation .tab-navigation {
@@ -212,10 +211,6 @@
 
 .ui-table-tab-content .ui-table-content {
   padding: 0;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  margin: 20px;
-  overflow: hidden;
 }
 
 .ui-table-tab-content .ui-table-content-header {
