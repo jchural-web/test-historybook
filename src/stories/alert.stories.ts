@@ -127,23 +127,23 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; flex-direction: column; gap: 16px;">
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Default</h4>
-              <storybook-alert variant="default" [dismissible]="false" content="Componente de alerta Default"></storybook-alert>
+              <bsg-alert variant="default" [dismissible]="false" content="Componente de alerta Default"></bsg-alert>
             </div>
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Info</h4>
-              <storybook-alert variant="info" [dismissible]="false" content="Componente de alerta Info"></storybook-alert>
+              <bsg-alert variant="info" [dismissible]="false" content="Componente de alerta Info"></bsg-alert>
             </div>
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Success</h4>
-              <storybook-alert variant="success" [dismissible]="false" content="Componente de alerta Succes"></storybook-alert>
+              <bsg-alert variant="success" [dismissible]="false" content="Componente de alerta Succes"></bsg-alert>
             </div>
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Warning</h4>
-              <storybook-alert variant="warning" [dismissible]="false" content="Componente de alerta Warning"></storybook-alert>
+              <bsg-alert variant="warning" [dismissible]="false" content="Componente de alerta Warning"></bsg-alert>
             </div>
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Destructive</h4>
-              <storybook-alert variant="destructive" [dismissible]="false" content="Componente de alerta Destructive"></storybook-alert>
+              <bsg-alert variant="destructive" [dismissible]="false" content="Componente de alerta Destructive"></bsg-alert>
             </div>
           </div>
         </section>
@@ -153,23 +153,23 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; flex-direction: column; gap: 16px;">
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Default</h4>
-              <storybook-alert variant="default" [dismissible]="true" content="Componente de alerta Default"></storybook-alert>
+              <bsg-alert variant="default" [dismissible]="true" content="Componente de alerta Default"></bsg-alert>
             </div>
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Info</h4>
-              <storybook-alert variant="info" [dismissible]="true" content="Componente de alerta Info"></storybook-alert>
+              <bsg-alert variant="info" [dismissible]="true" content="Componente de alerta Info"></bsg-alert>
             </div>
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Success</h4>
-              <storybook-alert variant="success" [dismissible]="true" content="Componente de alerta Succes"></storybook-alert>
+              <bsg-alert variant="success" [dismissible]="true" content="Componente de alerta Succes"></bsg-alert>
             </div>
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Warning</h4>
-              <storybook-alert variant="warning" [dismissible]="true" content="Componente de alerta Warning"></storybook-alert>
+              <bsg-alert variant="warning" [dismissible]="true" content="Componente de alerta Warning"></bsg-alert>
             </div>
             <div>
               <h4 style="margin-bottom: 8px; font-size: 14px; font-weight: 600; color: #202020;">Destructive</h4>
-              <storybook-alert variant="destructive" [dismissible]="true" content="Componente de alerta Destructive"></storybook-alert>
+              <bsg-alert variant="destructive" [dismissible]="true" content="Componente de alerta Destructive"></bsg-alert>
             </div>
           </div>
         </section>
@@ -208,47 +208,47 @@ export const UsageExamples: Story = {
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Success Notification</h4>
-          <storybook-alert 
+          <bsg-alert 
             variant="success" 
             [dismissible]="true" 
             content="Your changes have been saved successfully!">
-          </storybook-alert>
+          </bsg-alert>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Error Alert</h4>
-          <storybook-alert 
+          <bsg-alert 
             variant="destructive" 
             [dismissible]="true" 
             content="Error: Unable to complete your request. Please try again.">
-          </storybook-alert>
+          </bsg-alert>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Warning Message</h4>
-          <storybook-alert 
+          <bsg-alert 
             variant="warning" 
             [dismissible]="false" 
             content="Your session will expire in 5 minutes. Please save your work.">
-          </storybook-alert>
+          </bsg-alert>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Information</h4>
-          <storybook-alert 
+          <bsg-alert 
             variant="info" 
             [dismissible]="false" 
             content="New features are now available. Check out the documentation.">
-          </storybook-alert>
+          </bsg-alert>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">System Status</h4>
-          <storybook-alert 
+          <bsg-alert 
             variant="default" 
             [dismissible]="false" 
             content="All systems operational. No issues detected.">
-          </storybook-alert>
+          </bsg-alert>
         </div>
       </div>
     `,
@@ -266,23 +266,23 @@ export const NotificationStack: Story = {
         </p>
         
         <div style="display: flex; flex-direction: column; gap: 12px; max-width: 600px;">
-          <storybook-alert 
+          <bsg-alert 
             variant="success" 
             [dismissible]="true" 
             content="Profile updated successfully">
-          </storybook-alert>
+          </bsg-alert>
           
-          <storybook-alert 
+          <bsg-alert 
             variant="info" 
             [dismissible]="true" 
             content="3 new messages in your inbox">
-          </storybook-alert>
+          </bsg-alert>
           
-          <storybook-alert 
+          <bsg-alert 
             variant="warning" 
             [dismissible]="true" 
             content="Your password will expire in 7 days">
-          </storybook-alert>
+          </bsg-alert>
         </div>
       </div>
     `,
