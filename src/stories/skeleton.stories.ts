@@ -384,26 +384,26 @@ export const CompositionExamples: Story = {
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">List Items</h4>
           <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
-            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
               <storybook-skeleton type="circular" width="40px" height="40px"></storybook-skeleton>
-              <div style="flex: 1;">
-                <storybook-skeleton type="text" width="150px" height="16px" style="margin-bottom: 6px;"></storybook-skeleton>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 0;">
+                <storybook-skeleton type="text" width="150px" height="16px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="100px" height="12px"></storybook-skeleton>
               </div>
             </div>
-            
-            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
+
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
               <storybook-skeleton type="circular" width="40px" height="40px"></storybook-skeleton>
-              <div style="flex: 1;">
-                <storybook-skeleton type="text" width="130px" height="16px" style="margin-bottom: 6px;"></storybook-skeleton>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 0;">
+                <storybook-skeleton type="text" width="130px" height="16px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="90px" height="12px"></storybook-skeleton>
               </div>
             </div>
-            
-            <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
+
+            <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
               <storybook-skeleton type="circular" width="40px" height="40px"></storybook-skeleton>
-              <div style="flex: 1;">
-                <storybook-skeleton type="text" width="170px" height="16px" style="margin-bottom: 6px;"></storybook-skeleton>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 0;">
+                <storybook-skeleton type="text" width="170px" height="16px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="110px" height="12px"></storybook-skeleton>
               </div>
             </div>
