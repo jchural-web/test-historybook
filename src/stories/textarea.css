@@ -45,7 +45,6 @@
 .textarea-state-default:hover,
 .textarea-state-default.textarea-state-hover {
   opacity: 0.9;
-  text-decoration: underline;
 }
 
 .textarea-state-default .textarea-field:focus {
