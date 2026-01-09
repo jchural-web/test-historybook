@@ -35,22 +35,23 @@
   transition: stroke-dashoffset 0.3s ease;
 }
 
-/* Circular indeterminate animation - seamless infinite loop */
+/* Circular indeterminate animation - seamless infinite loop without reaching 100% */
 @keyframes circular-indeterminate {
   0% {
     transform: rotate(-90deg);
     stroke-dashoffset: 0;
   }
   50% {
-    stroke-dashoffset: -80;
+    stroke-dashoffset: -60;
   }
   100% {
     transform: rotate(270deg);
-    stroke-dashoffset: -160;
+    stroke-dashoffset: -100;
   }
 }
 
 .progress-indeterminate {
+  /* Seamless animation that never completes the full circle - always shows a gap */
   animation: circular-indeterminate 2s linear infinite;
 }
 
