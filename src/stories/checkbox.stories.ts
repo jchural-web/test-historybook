@@ -21,7 +21,7 @@ const meta: Meta<CheckboxComponent> = {
       description: 'Checked state',
     },
   },
-  args: { 
+  args: {
     checked: false,
   },
 };

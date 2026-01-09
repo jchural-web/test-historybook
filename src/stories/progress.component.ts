@@ -30,7 +30,7 @@ export type ProgressMode = 'determinate' | 'indeterminate';
           [attr.stroke-width]="circularDimensions.strokeWidth"
           fill="none"
         />
-        
+
         <!-- Progress circle (fill) -->
         <circle
           class="progress-fill"
@@ -46,24 +46,27 @@ export type ProgressMode = 'determinate' | 'indeterminate';
           [style.transform-origin]="'center'"
         />
       </svg>
-      
+
       <!-- Center content for determinate mode -->
-      <div *ngIf="mode === 'determinate'" class="circular-content" [ngClass]="'circular-content-' + size">
-        <div class="circular-percentage" [ngClass]="'circular-percentage-' + size">{{ value }}%</div>
+      <div
+        *ngIf="mode === 'determinate'"
+        class="circular-content"
+        [ngClass]="'circular-content-' + size"
+      >
+        <div class="circular-percentage" [ngClass]="'circular-percentage-' + size">
+          {{ value }}%
+        </div>
         <div *ngIf="size === 'lg' && label" class="circular-label">{{ label }}</div>
       </div>
     </div>
 
     <!-- Linear Progress -->
-    <div
-      *ngIf="type === 'linear'"
-      class="linear-progress-container"
-    >
+    <div *ngIf="type === 'linear'" class="linear-progress-container">
       <!-- Label for determinate mode -->
       <div *ngIf="mode === 'determinate' && label" class="linear-label">
         {{ label }} {{ value }}%
       </div>
-      
+
       <!-- Progress bar -->
       <div class="linear-progress">
         <div class="linear-track"></div>
@@ -98,13 +101,13 @@ export class ProgressComponent {
     const dimensions = {
       sm: { size: 40, strokeWidth: 3, radius: 18.5 },
       md: { size: 64, strokeWidth: 5, radius: 29.5 },
-      lg: { size: 124, strokeWidth: 8, radius: 58 }
+      lg: { size: 124, strokeWidth: 8, radius: 58 },
     };
 
     const dim = dimensions[this.size];
     return {
       ...dim,
-      center: dim.size / 2
+      center: dim.size / 2,
     };
   }
 

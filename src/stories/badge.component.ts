@@ -60,7 +60,7 @@ export class BadgeComponent {
     const classes = [
       `badge-${this.variant}`,
       `badge-size-${this.size}`,
-      `badge-layout-${this.layout}`
+      `badge-layout-${this.layout}`,
     ];
 
     return classes;

@@ -119,7 +119,6 @@ export const DestructiveButton: Story = {
   },
 };
 
-
 // Shape variants
 export const RectangularShape: Story = {
   args: {

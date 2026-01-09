@@ -5,9 +5,7 @@ import { Component, Input } from '@angular/core';
   selector: 'bsg-label',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <span class="label">{{ text }}</span>
-  `,
+  template: ` <span class="label">{{ text }}</span> `,
   styleUrls: ['./label.css'],
 })
 export class LabelComponent {

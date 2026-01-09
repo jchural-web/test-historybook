@@ -21,7 +21,7 @@ const meta: Meta<RadioComponent> = {
       description: 'Checked state',
     },
   },
-  args: { 
+  args: {
     checked: false,
   },
 };

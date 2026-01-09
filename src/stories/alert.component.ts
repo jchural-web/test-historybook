@@ -8,12 +8,7 @@ export type AlertVariant = 'default' | 'info' | 'success' | 'warning' | 'destruc
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div
-      *ngIf="!dismissed"
-      class="alert"
-      [ngClass]="alertClasses"
-      [attr.role]="'alert'"
-    >
+    <div *ngIf="!dismissed" class="alert" [ngClass]="alertClasses" [attr.role]="'alert'">
       <!-- Icon -->
       <svg
         *ngIf="variant === 'default'"
@@ -113,13 +108,7 @@ export type AlertVariant = 'default' | 'info' | 'success' | 'warning' | 'destruc
         (click)="dismiss()"
         [attr.aria-label]="'Close alert'"
       >
-        <svg
-          width="8"
-          height="8"
-          viewBox="0 0 8 8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M7.02459 0.167369C7.24775 -0.0557898 7.60947 -0.0557898 7.83263 0.167369C8.05579 0.390529 8.05579 0.752255 7.83263 0.975414L4.80804 4L7.83263 7.02459C8.05579 7.24775 8.05579 7.60947 7.83263 7.83263C7.60947 8.05579 7.24775 8.05579 7.02459 7.83263L4 4.80804L0.975414 7.83263C0.752255 8.05579 0.390529 8.05579 0.167369 7.83263C-0.0557898 7.60947 -0.0557898 7.24775 0.167369 7.02459L3.19196 4L0.167369 0.975414C-0.0557898 0.752255 -0.0557898 0.390529 0.167369 0.167369C0.390529 -0.0557898 0.752255 -0.0557898 0.975414 0.167369L4 3.19196L7.02459 0.167369Z"
             [attr.fill]="iconColor"
@@ -152,11 +141,11 @@ export class AlertComponent {
 
   get iconColor(): string {
     const colorMap = {
-      default: '#0284C7',    // Sky-600
-      info: '#2563EB',       // Blue-600
-      success: '#16A34A',    // Green-600
-      warning: '#CA8A04',    // Yellow-600
-      destructive: '#DC2626' // Red-600
+      default: '#0284C7', // Sky-600
+      info: '#2563EB', // Blue-600
+      success: '#16A34A', // Green-600
+      warning: '#CA8A04', // Yellow-600
+      destructive: '#DC2626', // Red-600
     };
     return colorMap[this.variant];
   }

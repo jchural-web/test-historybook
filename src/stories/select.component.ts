@@ -44,12 +44,7 @@ export interface SelectOption {
       </button>
 
       <!-- Dropdown menu -->
-      <div
-        *ngIf="open"
-        class="select-dropdown"
-        [ngClass]="dropdownClasses"
-        role="listbox"
-      >
+      <div *ngIf="open" class="select-dropdown" [ngClass]="dropdownClasses" role="listbox">
         <div
           *ngFor="let option of options; let i = index"
           class="select-option"
@@ -99,43 +94,33 @@ export class SelectComponent {
   @Output() openChange = new EventEmitter<boolean>();
 
   get wrapperClasses(): string[] {
-    return [
-      `select-${this.size}`,
-      `select-state-${this.state}`,
-    ];
+    return [`select-${this.size}`, `select-state-${this.state}`];
   }
 
   get triggerClasses(): string[] {
-    const classes = [
-      `select-trigger-${this.size}`,
-      `select-trigger-${this.state}`,
-    ];
-    
+    const classes = [`select-trigger-${this.size}`, `select-trigger-${this.state}`];
+
     if (this.open) {
       classes.push('select-trigger-open');
     }
-    
+
     return classes;
   }
 
   get dropdownClasses(): string[] {
-    return [
-      `select-dropdown-${this.size}`,
-    ];
+    return [`select-dropdown-${this.size}`];
   }
 
   get iconClasses(): string[] {
-    return [
-      `select-icon-${this.state}`,
-    ];
+    return [`select-icon-${this.state}`];
   }
 
   get selectedLabel(): string {
     if (!this.selectedValue) {
       return this.placeholder;
     }
-    
-    const selected = this.options.find(opt => opt.value === this.selectedValue);
+
+    const selected = this.options.find((opt) => opt.value === this.selectedValue);
     return selected ? selected.label : this.placeholder;
   }
 
@@ -148,11 +133,11 @@ export class SelectComponent {
 
   getOptionClasses(value: string): string[] {
     const classes: string[] = [];
-    
+
     if (this.selectedValue === value) {
       classes.push('select-option-selected');
     }
-    
+
     return classes;
   }
 
@@ -160,7 +145,7 @@ export class SelectComponent {
     if (this.state === 'disabled') {
       return;
     }
-    
+
     this.open = !this.open;
     this.openChange.emit(this.open);
   }
@@ -169,10 +154,10 @@ export class SelectComponent {
     if (this.state === 'disabled') {
       return;
     }
-    
+
     this.selectedValue = option.value;
     this.open = false;
-    
+
     this.valueChange.emit(option.value);
     this.selectionChange.emit(option);
     this.openChange.emit(false);
@@ -182,7 +167,7 @@ export class SelectComponent {
   onDocumentClick(event: MouseEvent): void {
     const target = event.target as HTMLElement;
     const selectWrapper = target.closest('.select-wrapper');
-    
+
     if (!selectWrapper && this.open) {
       this.open = false;
       this.openChange.emit(false);

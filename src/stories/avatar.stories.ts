@@ -128,7 +128,8 @@ export const FallbackXL: Story = {
 // Default Type - Image (all sizes)
 // ===========================
 
-const sampleImage = 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop';
+const sampleImage =
+  'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop';
 
 export const ImageXS: Story = {
   args: {

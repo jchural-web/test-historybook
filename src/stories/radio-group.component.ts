@@ -15,12 +15,8 @@ export interface RadioGroupOption {
   standalone: true,
   imports: [CommonModule, RadioComponent],
   template: `
-    <div 
-      class="radio-group"
-      [ngClass]="groupClasses"
-      [attr.role]="'radiogroup'"
-    >
-      <label 
+    <div class="radio-group" [ngClass]="groupClasses" [attr.role]="'radiogroup'">
+      <label
         *ngFor="let option of options; let i = index"
         class="radio-option"
         [ngClass]="optionClasses"
@@ -61,22 +57,15 @@ export class RadioGroupComponent {
   @Output() selectionChange = new EventEmitter<RadioGroupOption>();
 
   get groupClasses(): string[] {
-    return [
-      `radio-group-${this.orientation}`,
-      `radio-group-${this.size}`,
-    ];
+    return [`radio-group-${this.orientation}`, `radio-group-${this.size}`];
   }
 
   get optionClasses(): string[] {
-    return [
-      `radio-option-${this.size}`,
-    ];
+    return [`radio-option-${this.size}`];
   }
 
   get labelClasses(): string[] {
-    return [
-      `radio-label-${this.size}`,
-    ];
+    return [`radio-label-${this.size}`];
   }
 
   getRadioState(value: string, disabled?: boolean): 'default' | 'checked' | 'disabled' {
@@ -87,8 +76,8 @@ export class RadioGroupComponent {
   }
 
   selectOption(value: string): void {
-    const option = this.options.find(opt => opt.value === value);
-    
+    const option = this.options.find((opt) => opt.value === value);
+
     if (option && !option.disabled) {
       this.selectedValue = value;
       this.valueChange.emit(value);

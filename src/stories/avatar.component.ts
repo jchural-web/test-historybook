@@ -35,9 +35,14 @@ export type AvatarType = 'default' | 'fallback';
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <circle [attr.cx]="iconCenter" [attr.cy]="iconCenter" [attr.r]="iconCenter" fill="white"/>
-        <circle [attr.cx]="iconCenter" [attr.cy]="headCenterY" [attr.r]="headRadius" fill="#EAB308"/>
-        <path [attr.d]="bodyPath" fill="#EAB308"/>
+        <circle [attr.cx]="iconCenter" [attr.cy]="iconCenter" [attr.r]="iconCenter" fill="white" />
+        <circle
+          [attr.cx]="iconCenter"
+          [attr.cy]="headCenterY"
+          [attr.r]="headRadius"
+          fill="#EAB308"
+        />
+        <path [attr.d]="bodyPath" fill="#EAB308" />
       </svg>
     </div>
 
@@ -49,11 +54,7 @@ export type AvatarType = 'default' | 'fallback';
       [attr.role]="'img'"
       [attr.aria-label]="'User avatar'"
     >
-      <img
-        [src]="image"
-        [alt]="'User avatar'"
-        class="avatar-img"
-      />
+      <img [src]="image" [alt]="'User avatar'" class="avatar-img" />
     </div>
   `,
   styleUrls: ['./avatar.css'],
@@ -99,22 +100,22 @@ export class AvatarComponent {
   // Head circle position and radius (based on Figma proportions)
   get headCenterY(): number {
     const ratios: Record<AvatarSize, number> = {
-      xs: 9.75,   // 9.75/24 = 0.40625
-      sm: 13,     // 13/32 = 0.40625
-      md: 16.25,  // 16.25/40 = 0.40625
-      lg: 19.5,   // 19.5/48 = 0.40625
-      xl: 26,     // 26/64 = 0.40625
+      xs: 9.75, // 9.75/24 = 0.40625
+      sm: 13, // 13/32 = 0.40625
+      md: 16.25, // 16.25/40 = 0.40625
+      lg: 19.5, // 19.5/48 = 0.40625
+      xl: 26, // 26/64 = 0.40625
     };
     return ratios[this.size];
   }
 
   get headRadius(): number {
     const ratios: Record<AvatarSize, number> = {
-      xs: 5.25,   // 5.25/24 = 0.21875
-      sm: 7,      // 7/32 = 0.21875
-      md: 8.75,   // 8.75/40 = 0.21875
-      lg: 10.5,   // 10.5/48 = 0.21875
-      xl: 14,     // 14/64 = 0.21875
+      xs: 5.25, // 5.25/24 = 0.21875
+      sm: 7, // 7/32 = 0.21875
+      md: 8.75, // 8.75/40 = 0.21875
+      lg: 10.5, // 10.5/48 = 0.21875
+      xl: 14, // 14/64 = 0.21875
     };
     return ratios[this.size];
   }

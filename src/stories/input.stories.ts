@@ -30,7 +30,7 @@ const meta: Meta<InputComponent> = {
       description: 'Input value',
     },
   },
-  args: { 
+  args: {
     placeholder: 'Ingresa información',
     value: '',
   },

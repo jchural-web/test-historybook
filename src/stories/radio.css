@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-.radio-wrapper[aria-disabled="true"] {
+.radio-wrapper[aria-disabled='true'] {
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -67,13 +67,13 @@
 
 /* Hover state */
 .radio-state-hover .radio-outer circle {
-  stroke: #8B5CF6; /* Violet-500 */
+  stroke: #8b5cf6; /* Violet-500 */
   opacity: 0.9;
 }
 
 /* Checked state */
 .radio-state-checked .radio-outer circle {
-  stroke: #7C3AED; /* Violet-600 */
+  stroke: #7c3aed; /* Violet-600 */
 }
 
 /* Disabled state */
@@ -104,5 +104,5 @@
 }
 
 .radio-wrapper:focus-visible .radio-outer circle {
-  stroke: #7C3AED;
+  stroke: #7c3aed;
 }

@@ -42,7 +42,7 @@
   user-select: none;
 }
 
-.radio-option:has(bsg-radio[aria-disabled="true"]) {
+.radio-option:has(bsg-radio[aria-disabled='true']) {
   cursor: not-allowed;
 }
 
@@ -57,7 +57,12 @@
 
 /* Label text */
 .radio-label {
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-weight: 400;
   letter-spacing: 0.05px;
   color: #202020;
@@ -74,7 +79,7 @@
 }
 
 /* Disabled label styling */
-.radio-option:has(bsg-radio[aria-disabled="true"]) .radio-label {
+.radio-option:has(bsg-radio[aria-disabled='true']) .radio-label {
   color: #64748b;
   opacity: 0.6;
 }

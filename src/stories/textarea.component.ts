@@ -35,10 +35,9 @@ export type TextareaComposition = 'default' | 'withLabel' | 'withText' | 'withBu
       </div>
 
       <!-- Helper Text (for withText) -->
-      <span
-        *ngIf="composition === 'withText'"
-        class="composition-helper-text"
-      >{{ helperText }}</span>
+      <span *ngIf="composition === 'withText'" class="composition-helper-text">{{
+        helperText
+      }}</span>
 
       <!-- Button (for withButton) -->
       <bsg-button
@@ -69,17 +68,11 @@ export class TextareaComponent {
   @Output() onButtonClick = new EventEmitter<Event>();
 
   get compositionClasses(): string[] {
-    return [
-      'textarea-composition',
-      `composition-${this.composition}`
-    ].filter(Boolean);
+    return ['textarea-composition', `composition-${this.composition}`].filter(Boolean);
   }
 
   get wrapperClasses(): string[] {
-    return [
-      'textarea',
-      `textarea-state-${this.state}`
-    ].filter(Boolean);
+    return ['textarea', `textarea-state-${this.state}`].filter(Boolean);
   }
 
   get textareaClasses(): string[] {
