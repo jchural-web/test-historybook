@@ -1,6 +1,6 @@
-# UI Table Component
+# Table Component
 
-The UI Table is a **composite component** that displays information in four different formats: table-basic, table-actions, table-tabs, and list-content. It reuses existing components from the design system (Button, Badge, TabNavigation, Pagination, Separator, Label) and provides a consistent container with collapsible functionality.
+The Table is a **composite component** that displays information in four different formats: table-basic, table-actions, table-tabs, and list-content. It reuses existing components from the design system (Button, Badge, TabNavigation, Pagination, Separator, Label) and provides a consistent container with collapsible functionality.
 
 ## Features
 
