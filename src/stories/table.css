@@ -261,6 +261,14 @@
 }
 
 /* Collapsed state */
+.table-collapsed {
+  border-radius: 12px;
+}
+
+.table-collapsed .table-header {
+  border-radius: 12px;
+}
+
 .table-collapsed .table-body {
   display: none;
 }
