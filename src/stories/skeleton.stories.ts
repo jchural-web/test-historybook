@@ -347,7 +347,7 @@ export const CompositionExamples: Story = {
             <storybook-skeleton type="rectangular" width="100%" height="200px"></storybook-skeleton>
 
             <!-- Content -->
-            <div style="padding: 16px; display: flex; flex-direction: column;">
+            <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px;">
               <storybook-skeleton type="text" width="80%" height="20px"></storybook-skeleton>
               <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
               <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
