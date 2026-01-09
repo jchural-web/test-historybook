@@ -83,7 +83,7 @@
 }
 
 .info-container-table {
-  padding: 0 20px;
+  padding: 0;
 }
 
 .info-container-table-header {
@@ -92,6 +92,10 @@
   padding: 12px 20px;
   background: #eff6ff;
   margin: 0;
+}
+
+.info-container-table-body {
+  padding: 0 20px;
 }
 
 .info-container-table-header-cell {
