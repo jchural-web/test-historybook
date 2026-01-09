@@ -9,7 +9,7 @@ import type { User } from './user';
   standalone: true,
   imports: [CommonModule, ButtonComponent],
   template: `<header>
-    <div class="storybook-header">
+    <div class="bsg-header">
       <div>
         <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
           <g fill="none" fillRule="evenodd">
@@ -35,29 +35,29 @@ import type { User } from './user';
             Welcome, <b>{{ user.name }}</b
             >!
           </span>
-          <storybook-button
+          <bsg-button
             *ngIf="user"
             size="sm"
             (onClick)="onLogout.emit($event)"
             label="Log out"
-          ></storybook-button>
+          ></bsg-button>
         </div>
         <div *ngIf="!user">
-          <storybook-button
+          <bsg-button
             *ngIf="!user"
             size="sm"
             class="margin-left"
             (onClick)="onLogin.emit($event)"
             label="Log in"
-          ></storybook-button>
-          <storybook-button
+          ></bsg-button>
+          <bsg-button
             *ngIf="!user"
             size="sm"
             variant="default"
             class="margin-left"
             (onClick)="onCreateAccount.emit($event)"
             label="Sign up"
-          ></storybook-button>
+          ></bsg-button>
         </div>
       </div>
     </div>
