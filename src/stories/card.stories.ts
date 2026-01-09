@@ -378,34 +378,28 @@ export const AllContentVariants: Story = {
   }),
 };
 
-// Content Variants with Different Variants (default, elevated, outlined)
+// Content Variants Showcase
 export const ContentVariantsWithCardVariants: Story = {
   render: () => ({
     template: `
-      <div style="display: grid; grid-template-columns: 150px auto auto auto; gap: 24px; padding: 24px; align-items: start;">
-        <!-- Headers -->
-        <div></div>
-        <div style="font-size: 14px; font-weight: 600;">Default Variant</div>
-        <div style="font-size: 14px; font-weight: 600;">Elevated Variant</div>
-        <div style="font-size: 14px; font-weight: 600;">Outlined Variant</div>
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px;">
+        <!-- Metric -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600;">Metric</h4>
+          <bsg-card contentVariant="metric" variant="default" metricTitle="Compromisos Incumplidos" metricValue="0"></bsg-card>
+        </div>
 
-        <!-- Metric Row -->
-        <div style="font-size: 14px; font-weight: 600;">Metric</div>
-        <bsg-card contentVariant="metric" variant="default" metricTitle="Compromisos Incumplidos" metricValue="0"></bsg-card>
-        <bsg-card contentVariant="metric" variant="elevated" metricTitle="Compromisos Incumplidos" metricValue="0"></bsg-card>
-        <bsg-card contentVariant="metric" variant="outlined" metricTitle="Compromisos Incumplidos" metricValue="0"></bsg-card>
+        <!-- InfoDate -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600;">InfoDate</h4>
+          <bsg-card contentVariant="infoDate" variant="default" dateLabel="Fecha" dateText="28/06/2024"></bsg-card>
+        </div>
 
-        <!-- InfoDate Row -->
-        <div style="font-size: 14px; font-weight: 600;">InfoDate</div>
-        <bsg-card contentVariant="infoDate" variant="default" dateLabel="Fecha" dateText="28/06/2024"></bsg-card>
-        <bsg-card contentVariant="infoDate" variant="elevated" dateLabel="Fecha" dateText="28/06/2024"></bsg-card>
-        <bsg-card contentVariant="infoDate" variant="outlined" dateLabel="Fecha" dateText="28/06/2024"></bsg-card>
-
-        <!-- InfoCurrency Row -->
-        <div style="font-size: 14px; font-weight: 600;">InfoCurrency</div>
-        <bsg-card contentVariant="infoCurrency" variant="default" currencyLabel="Tipo de moneda:" currencyText="PEN"></bsg-card>
-        <bsg-card contentVariant="infoCurrency" variant="elevated" currencyLabel="Tipo de moneda:" currencyText="PEN"></bsg-card>
-        <bsg-card contentVariant="infoCurrency" variant="outlined" currencyLabel="Tipo de moneda:" currencyText="PEN"></bsg-card>
+        <!-- InfoCurrency -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600;">InfoCurrency</h4>
+          <bsg-card contentVariant="infoCurrency" variant="default" currencyLabel="Tipo de moneda:" currencyText="PEN"></bsg-card>
+        </div>
       </div>
     `,
   }),
