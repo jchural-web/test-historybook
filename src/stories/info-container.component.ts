@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TabNavigationComponent, TabItem } from './tab-navigation.component';
 import { PaginationComponent } from './pagination.component';
 import { SeparatorComponent } from './separator.component';
+import { LabelComponent } from './label.component';
 
 export type InfoContainerVariant = 'table' | 'list' | 'tabs';
 
