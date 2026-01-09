@@ -31,58 +31,199 @@ const meta: Meta<AccordionComponent> = {
 export default meta;
 type Story = StoryObj<AccordionComponent>;
 
-// ===========================
-// Default - Table Actions Variant
-// ===========================
+// =====================
+// BEHAVIOR AXIS
+// =====================
 
-export const Default: Story = {
+/**
+ * Accordion behavior axis
+ * Shows single (only one item open) and multiple (multiple items can be open)
+ */
+export const Behavior: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Behavior</h3>
+        
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Single (only one item open at a time)</h4>
+          <bsg-accordion 
+            size="md"
+            variant="table-basic"
+            [items]="[
+              {
+                id: 'single-1',
+                title: 'Primer Acordeón',
+                tableVariant: 'table-basic',
+                tableColumns: [
+                  { key: 'name', label: 'Nombre', width: '200px' },
+                  { key: 'value', label: 'Valor', width: '200px' }
+                ],
+                tableRows: [
+                  { name: 'Item 1', value: 'Datos 1' }
+                ]
+              },
+              {
+                id: 'single-2',
+                title: 'Segundo Acordeón',
+                tableVariant: 'table-basic',
+                tableColumns: [
+                  { key: 'name', label: 'Nombre', width: '200px' },
+                  { key: 'value', label: 'Valor', width: '200px' }
+                ],
+                tableRows: [
+                  { name: 'Item 2', value: 'Datos 2' }
+                ]
+              }
+            ]">
+          </bsg-accordion>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Multiple (multiple items can be open simultaneously)</h4>
+          <bsg-accordion 
+            size="md"
+            variant="table-basic"
+            [items]="[
+              {
+                id: 'multi-1',
+                title: 'Primer Acordeón',
+                tableVariant: 'table-basic',
+                tableColumns: [
+                  { key: 'name', label: 'Nombre', width: '200px' },
+                  { key: 'value', label: 'Valor', width: '200px' }
+                ],
+                tableRows: [
+                  { name: 'Item A', value: 'Datos A' }
+                ]
+              },
+              {
+                id: 'multi-2',
+                title: 'Segundo Acordeón',
+                tableVariant: 'table-basic',
+                tableColumns: [
+                  { key: 'name', label: 'Nombre', width: '200px' },
+                  { key: 'value', label: 'Valor', width: '200px' }
+                ],
+                tableRows: [
+                  { name: 'Item B', value: 'Datos B' }
+                ]
+              }
+            ]">
+          </bsg-accordion>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+/**
+ * Accordion states axis
+ * Shows collapsed and expanded states
+ */
+export const States: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">States</h3>
+        
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Collapsed (closed by default)</h4>
+          <bsg-accordion 
+            size="md"
+            variant="table-basic"
+            [items]="[
+              {
+                id: 'collapsed-1',
+                title: 'Acordeón Colapsado',
+                tableVariant: 'table-basic',
+                tableColumns: [
+                  { key: 'name', label: 'Nombre', width: '200px' },
+                  { key: 'value', label: 'Valor', width: '200px' }
+                ],
+                tableRows: [
+                  { name: 'Contenido oculto', value: 'Haz click para expandir' }
+                ]
+              }
+            ]">
+          </bsg-accordion>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Expanded (open to show content)</h4>
+          <bsg-accordion 
+            size="md"
+            variant="table-basic"
+            [items]="[
+              {
+                id: 'expanded-1',
+                title: 'Acordeón Expandido',
+                isExpanded: true,
+                tableVariant: 'table-basic',
+                tableColumns: [
+                  { key: 'name', label: 'Nombre', width: '200px' },
+                  { key: 'value', label: 'Valor', width: '200px' }
+                ],
+                tableRows: [
+                  { name: 'Contenido visible', value: 'Contenido está expandido' }
+                ]
+              }
+            ]">
+          </bsg-accordion>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// =====================
+// EXAMPLES
+// =====================
+
+/**
+ * Basic accordion with simple table content
+ */
+export const Basic: Story = {
+  tags: ['!dev'],
   args: {
     size: 'md',
-    variant: 'table-actions',
+    variant: 'table-basic',
     items: [
       {
-        id: 'benefits-1',
-        title: 'Beneficios Solicitados (Coordinador)',
-        tableVariant: 'table-actions',
-        showActionsColumn: true,
+        id: 'tariffs-1',
+        title: 'Tarifario de Trámites y Servicios',
+        tableVariant: 'table-basic',
         tableColumns: [
-          { key: 'benefit', label: 'Beneficio solicitado', width: '210px' },
-          { key: 'program', label: 'Programa', width: '141px' },
-          { key: 'date', label: 'Fecha', width: '88px' },
-          { key: 'coordinator', label: 'Coordinador', width: '107px' },
+          { key: 'number', label: 'N°', width: '50px' },
+          { key: 'concept', label: 'Concepto', width: '218px' },
+          { key: 'description', label: 'Descripción', width: '400px' },
+          { key: 'amount', label: 'Monto (PEN)', width: '89px' },
         ],
         tableRows: [
           {
-            benefit: 'Acceso al material oficial del PMI...',
-            program: 'Curso Oficial de Preparación...',
-            date: '28/02/2025',
-            date_badge: true,
-            date_badge_variant: 'secondary',
-            coordinator: 'Bianca Mamani',
-            actions: [
-              { label: 'Aprobar', variant: 'approve' },
-              { label: 'Rechazar', variant: 'reject' },
-            ],
+            number: '1',
+            concept: 'Costos Gestión de Cobranza',
+            description:
+              'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza...',
+            amount: '30.00',
+          },
+          {
+            number: '2',
+            concept: 'Emisión de duplicado de certificado',
+            description: 'Cuando el alumno solicita una segunda copia del certificado...',
+            amount: '50.00',
           },
         ],
-        tablePagination: {
-          currentPage: 1,
-          totalPages: 1,
-          pageSize: 5,
-          pageSizeOptions: [5, 10, 20],
-          totalItems: 1,
-          rangeLabel: '1 - 1 de 1 ítems',
-        },
       },
     ],
   },
 };
 
-// ===========================
-// Table Actions Variant
-// ===========================
-
-export const TableActionsVariant: Story = {
+/**
+ * Accordion with table content (actions and basic variants)
+ */
+export const WithTableContent: Story = {
+  tags: ['!dev'],
   args: {
     size: 'md',
     variant: 'table-actions',
@@ -159,50 +300,11 @@ export const TableActionsVariant: Story = {
   },
 };
 
-// ===========================
-// Table Basic Variant
-// ===========================
-
-export const TableBasicVariant: Story = {
-  args: {
-    size: 'md',
-    variant: 'table-basic',
-    items: [
-      {
-        id: 'tariffs-1',
-        title: 'Tarifario de Trámites y Servicios',
-        tableVariant: 'table-basic',
-        tableColumns: [
-          { key: 'number', label: 'N°', width: '50px' },
-          { key: 'concept', label: 'Concepto', width: '218px' },
-          { key: 'description', label: 'Descripción', width: '400px' },
-          { key: 'amount', label: 'Monto (PEN)', width: '89px' },
-        ],
-        tableRows: [
-          {
-            number: '1',
-            concept: 'Costos Gestión de Cobranza',
-            description:
-              'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza...',
-            amount: '30.00',
-          },
-          {
-            number: '2',
-            concept: 'Emisión de duplicado de certificado',
-            description: 'Cuando el alumno solicita una segunda copia del certificado...',
-            amount: '50.00',
-          },
-        ],
-      },
-    ],
-  },
-};
-
-// ===========================
-// List Content Variant
-// ===========================
-
-export const ListContentVariant: Story = {
+/**
+ * Accordion with list content variant
+ */
+export const WithListContent: Story = {
+  tags: ['!dev'],
   args: {
     size: 'md',
     variant: 'list-content',
@@ -235,11 +337,11 @@ export const ListContentVariant: Story = {
   },
 };
 
-// ===========================
-// Multiple Tables in Accordion
-// ===========================
-
-export const MultipleTablesExample: Story = {
+/**
+ * Accordion with multiple tables
+ */
+export const MultipleTables: Story = {
+  tags: ['!dev'],
   args: {
     size: 'md',
     variant: 'table-actions',
@@ -349,11 +451,90 @@ export const MultipleTablesExample: Story = {
   },
 };
 
-// ===========================
-// Design System Showcase
-// ===========================
+// =====================
+// PLAYGROUND (Optional)
+// =====================
 
-export const DesignSystemShowcase: Story = {
+/**
+ * Interactive playground for Accordion
+ */
+export const Playground: Story = {
+  tags: ['!dev'],
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="padding: 24px; font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;">
+        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive Accordion Playground</h3>
+        <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
+          Use controls to adjust size, variant, and items
+        </p>
+
+        <bsg-accordion
+          [size]="size"
+          [variant]="variant"
+          [items]="items">
+        </bsg-accordion>
+
+        <div style="margin-top: 32px; padding: 16px; background: #DBEAFE; border-radius: 8px; font-size: 13px; color: #1E3A8A; line-height: 1.6;">
+          <strong>Tips:</strong>
+          <ul style="margin: 8px 0 0 20px;">
+            <li>Click on accordion header to expand/collapse</li>
+            <li>Chevron icon on right side indicates expand state</li>
+            <li>Each accordion item renders a table component</li>
+            <li>Multiple items can be expanded independently</li>
+            <li>All table variants (actions, basic, tabs, list) are supported</li>
+          </ul>
+        </div>
+      </div>
+    `,
+  }),
+  args: {
+    size: 'md',
+    variant: 'table-basic',
+    items: [
+      {
+        id: 'playground-1',
+        title: 'Primer Acordeón con Tabla',
+        tableVariant: 'table-basic',
+        tableColumns: [
+          { key: 'item', label: 'Elemento', width: '200px' },
+          { key: 'description', label: 'Descripción', width: '300px' },
+        ],
+        tableRows: [
+          {
+            item: 'Ejemplo 1',
+            description: 'Este es un acordeón con tabla integrada',
+          },
+        ],
+      },
+      {
+        id: 'playground-2',
+        title: 'Segundo Acordeón con Tabla',
+        tableVariant: 'table-basic',
+        tableColumns: [
+          { key: 'item', label: 'Elemento', width: '200px' },
+          { key: 'description', label: 'Descripción', width: '300px' },
+        ],
+        tableRows: [
+          {
+            item: 'Ejemplo 2',
+            description: 'Haz clic para expandir y ver la tabla',
+          },
+        ],
+      },
+    ],
+  },
+};
+
+// =====================
+// SHOWCASE (Optional)
+// =====================
+
+/**
+ * Complete showcase of Accordion component library
+ */
+export const Showcase: Story = {
+  tags: ['!dev'],
   render: () => ({
     template: `
       <div style="font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif; padding: 24px; max-width: 1400px;">
@@ -435,80 +616,71 @@ export const DesignSystemShowcase: Story = {
           </div>
         </section>
 
-        <!-- Variants -->
+        <!-- Behavior and States -->
         <section style="margin-bottom: 48px;">
-          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600;">Table Variants</h3>
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600;">Behavior &amp; States</h3>
           
           <div style="display: flex; flex-direction: column; gap: 32px;">
-            <!-- Table Actions -->
+            <!-- Single Behavior -->
             <div>
-              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Table Actions (with approval buttons)</h4>
-              <bsg-accordion 
-                size="md"
-                variant="table-actions"
-                [items]="[
-                  {
-                    id: 'showcase-actions',
-                    title: 'Beneficios Solicitados',
-                    tableVariant: 'table-actions',
-                    showActionsColumn: true,
-                    tableColumns: [
-                      { key: 'benefit', label: 'Beneficio', width: '200px' },
-                      { key: 'requester', label: 'Solicitante', width: '150px' }
-                    ],
-                    tableRows: [
-                      {
-                        benefit: 'Material Oficial PMI',
-                        requester: 'Bianca Mamani',
-                        actions: [
-                          { label: 'Aprobar', variant: 'approve' },
-                          { label: 'Rechazar', variant: 'reject' }
-                        ]
-                      }
-                    ]
-                  }
-                ]">
-              </bsg-accordion>
-            </div>
-
-            <!-- Table Basic -->
-            <div>
-              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Table Basic (pricing/data)</h4>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Single: Only one item open</h4>
               <bsg-accordion 
                 size="md"
                 variant="table-basic"
                 [items]="[
                   {
-                    id: 'showcase-basic',
-                    title: 'Tarifario de Servicios',
+                    id: 'single-showcase-1',
+                    title: 'Primer Acordeón',
                     tableVariant: 'table-basic',
                     tableColumns: [
-                      { key: 'service', label: 'Servicio', width: '200px' },
-                      { key: 'cost', label: 'Costo', width: '100px' }
+                      { key: 'name', label: 'Nombre', width: '200px' }
                     ],
                     tableRows: [
-                      { service: 'Gestión de Cobranza', cost: '30.00' }
+                      { name: 'Datos 1' }
+                    ]
+                  },
+                  {
+                    id: 'single-showcase-2',
+                    title: 'Segundo Acordeón',
+                    tableVariant: 'table-basic',
+                    tableColumns: [
+                      { key: 'name', label: 'Nombre', width: '200px' }
+                    ],
+                    tableRows: [
+                      { name: 'Datos 2' }
                     ]
                   }
                 ]">
               </bsg-accordion>
             </div>
 
-            <!-- List Content -->
+            <!-- Multiple Behavior -->
             <div>
-              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">List Content (features/benefits)</h4>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Multiple: Multiple items can be open</h4>
               <bsg-accordion 
                 size="md"
-                variant="list-content"
+                variant="table-basic"
                 [items]="[
                   {
-                    id: 'showcase-list',
-                    title: 'Versión Profesional - Características',
-                    tableVariant: 'list-content',
-                    listItems: [
-                      { text: 'Acceso a material oficial completamente actualizado' },
-                      { text: 'Simulador con 195 preguntas de certificación' },
-                      { text: 'Certificación oficial de participación' }
+                    id: 'multi-showcase-1',
+                    title: 'Primer Acordeón',
+                    tableVariant: 'table-basic',
+                    tableColumns: [
+                      { key: 'name', label: 'Nombre', width: '200px' }
+                    ],
+                    tableRows: [
+                      { name: 'Datos A' }
+                    ]
+                  },
+                  {
+                    id: 'multi-showcase-2',
+                    title: 'Segundo Acordeón',
+                    tableVariant: 'table-basic',
+                    tableColumns: [
+                      { key: 'name', label: 'Nombre', width: '200px' }
+                    ],
+                    tableRows: [
+                      { name: 'Datos B' }
                     ]
                   }
                 ]">
@@ -530,7 +702,19 @@ export const DesignSystemShowcase: Story = {
               <li>lg: 20px padding, 18px font size</li>
             </ul>
 
-            <p style="margin: 12px 0;"><strong>Variants (Table types):</strong></p>
+            <p style="margin: 12px 0;"><strong>Behavior:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>single: Only one accordion item can be open at a time</li>
+              <li>multiple: Multiple accordion items can be open simultaneously</li>
+            </ul>
+
+            <p style="margin: 12px 0;"><strong>States:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>collapsed: Item is closed (default)</li>
+              <li>expanded: Item is open, content is visible</li>
+            </ul>
+
+            <p style="margin: 12px 0;"><strong>Compositions (Table variants):</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li>table-actions: With action buttons (approve/reject)</li>
               <li>table-basic: For tabular data with pricing/details</li>
@@ -552,75 +736,4 @@ export const DesignSystemShowcase: Story = {
       </div>
     `,
   }),
-};
-
-// ===========================
-// Interactive Playground
-// ===========================
-
-export const InteractivePlayground: Story = {
-  render: (args) => ({
-    props: args,
-    template: `
-      <div style="padding: 24px; font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;">
-        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive Accordion Playground</h3>
-        <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
-          Use controls to adjust size, variant, and items
-        </p>
-
-        <bsg-accordion
-          [size]="size"
-          [variant]="variant"
-          [items]="items">
-        </bsg-accordion>
-
-        <div style="margin-top: 32px; padding: 16px; background: #DBEAFE; border-radius: 8px; font-size: 13px; color: #1E3A8A; line-height: 1.6;">
-          <strong>Tips:</strong>
-          <ul style="margin: 8px 0 0 20px;">
-            <li>Click on accordion header to expand/collapse</li>
-            <li>Chevron icon on right side indicates expand state</li>
-            <li>Each accordion item renders a table component</li>
-            <li>Multiple items can be expanded independently</li>
-            <li>All table variants (actions, basic, tabs, list) are supported</li>
-          </ul>
-        </div>
-      </div>
-    `,
-  }),
-  args: {
-    size: 'md',
-    variant: 'table-basic',
-    items: [
-      {
-        id: 'playground-1',
-        title: 'Primer Acordeón con Tabla',
-        tableVariant: 'table-basic',
-        tableColumns: [
-          { key: 'item', label: 'Elemento', width: '200px' },
-          { key: 'description', label: 'Descripción', width: '300px' },
-        ],
-        tableRows: [
-          {
-            item: 'Ejemplo 1',
-            description: 'Este es un acordeón con tabla integrada',
-          },
-        ],
-      },
-      {
-        id: 'playground-2',
-        title: 'Segundo Acordeón con Tabla',
-        tableVariant: 'table-basic',
-        tableColumns: [
-          { key: 'item', label: 'Elemento', width: '200px' },
-          { key: 'description', label: 'Descripción', width: '300px' },
-        ],
-        tableRows: [
-          {
-            item: 'Ejemplo 2',
-            description: 'Haz clic para expandir y ver la tabla',
-          },
-        ],
-      },
-    ],
-  },
 };
