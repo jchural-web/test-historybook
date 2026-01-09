@@ -14,12 +14,7 @@
   border-radius: 4px; /* sm radius */
   width: 100%; /* Default for text lines */
   height: 14px; /* Default text line height - slightly reduced for better stacking */
-  margin-bottom: 12px; /* Fixed gap between text lines - increased for clarity */
-}
-
-/* Last text element in parent container should not have bottom margin */
-.skeleton-text:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0; /* Remove margin, use gap in container instead */
 }
 
 /* Type: Circular - no margin by default, composable in flex layouts */
