@@ -149,53 +149,33 @@
   transition: width 0.3s ease;
 }
 
-/* Linear indeterminate animation - seamless infinite loop without visible restarts */
-@keyframes linear-indeterminate {
+/* Linear indeterminate animation - single segment that moves across track */
+@keyframes linear-indeterminate-segment {
   0% {
     left: -35%;
-    right: 100%;
+    width: 35%;
   }
-  60% {
-    left: 100%;
-    right: -90%;
-  }
-  100% {
-    left: 100%;
-    right: -90%;
-  }
-}
-
-@keyframes linear-indeterminate-short {
-  0% {
-    left: -200%;
-    right: 100%;
-  }
-  60% {
-    left: 107%;
-    right: -8%;
+  50% {
+    left: 30%;
+    width: 60%;
   }
   100% {
-    left: 107%;
-    right: -8%;
+    left: 100%;
+    width: 35%;
   }
 }
 
 .linear-indeterminate {
-  width: auto !important;
-  /* Seamless timing: primary bar animation */
-  animation: linear-indeterminate 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  width: 35% !important;
+  /* Single seamless animation: segment moves left to right without reaching 100% */
+  animation: linear-indeterminate-segment 1.5s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  left: -35%;
+  right: auto;
 }
 
+/* Remove pseudo-element to simplify and prevent overlapping bars */
 .linear-indeterminate::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background: inherit;
-  /* Secondary bar with delay that creates seamless handoff - no visible gaps between cycles */
-  animation: linear-indeterminate-short 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
-  animation-delay: 0.7s;
+  display: none;
 }
 
 /* Responsive behavior */
