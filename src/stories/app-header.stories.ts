@@ -135,35 +135,35 @@ export const Structure: Story = {
 // =====================
 
 /**
- * AppHeader behavior with menu button
- * Shows the AppHeader with menu button visible (toggles side navigation)
+ * AppHeader behavior axis
+ * Shows both menu button states: with menu button and without menu button
  */
-export const WithMenuButton: Story = {
-  args: {
-    title: 'Dashboard Central',
-    showMenuButton: true,
-    actionLabel: 'Sincronizar',
-    user: {
-      name: 'Carlos Méndez',
-      avatarImage: '',
-    },
-  },
-};
+export const Behavior: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 0;">
+        <div>
+          <div style="padding: 16px; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; font-size: 12px; font-weight: 600; color: #64748B;">With Menu Button</div>
+          <bsg-app-header
+            title="Dashboard Central"
+            [showMenuButton]="true"
+            actionLabel="Sincronizar"
+            [user]="{ name: 'Carlos Méndez', avatarImage: '' }">
+          </bsg-app-header>
+        </div>
 
-/**
- * AppHeader behavior without menu button
- * Shows the AppHeader without menu button (no side navigation toggle)
- */
-export const WithoutMenuButton: Story = {
-  args: {
-    title: 'Portal Público',
-    showMenuButton: false,
-    actionLabel: 'Recargar',
-    user: {
-      name: 'Ana García',
-      avatarImage: 'https://i.pravatar.cc/150?img=30',
-    },
-  },
+        <div>
+          <div style="padding: 16px; background: #F8FAFC; border-bottom: 1px solid #E2E8F0; font-size: 12px; font-weight: 600; color: #64748B;">Without Menu Button</div>
+          <bsg-app-header
+            title="Portal Público"
+            [showMenuButton]="false"
+            actionLabel="Recargar"
+            [user]="{ name: 'Ana García', avatarImage: 'https://i.pravatar.cc/150?img=30' }">
+          </bsg-app-header>
+        </div>
+      </div>
+    `,
+  }),
 };
 
 // =====================
