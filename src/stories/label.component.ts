@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'storybook-label',
+  selector: 'bsg-label',
   standalone: true,
   imports: [CommonModule],
   template: `
