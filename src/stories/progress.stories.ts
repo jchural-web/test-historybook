@@ -42,31 +42,224 @@ const meta: Meta<ProgressComponent> = {
 export default meta;
 type Story = StoryObj<ProgressComponent>;
 
-// ===========================
-// Circular Determinate
-// ===========================
+// ============================================================
+// API CATEGORY STORIES (One per axis)
+// ============================================================
 
-export const CircularDeterminateSm: Story = {
-  args: {
-    size: 'sm',
-    type: 'circular',
-    mode: 'determinate',
-    value: 73,
-  },
+/**
+ * Progress types: circular and linear.
+ * Demonstrates the two available progress display formats.
+ */
+export const Types: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Circular Progress</h4>
+          <div style="display: flex; justify-content: center;">
+            <bsg-progress size="md" type="circular" mode="determinate" [value]="73"></bsg-progress>
+          </div>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Linear Progress</h4>
+          <bsg-progress size="md" type="linear" mode="determinate" [value]="51" label="Progreso general"></bsg-progress>
+        </div>
+      </div>
+    `,
+  }),
 };
 
-export const CircularDeterminateMd: Story = {
+/**
+ * Progress states: determinate and indeterminate.
+ * Shows how progress behaves when the value is known vs. unknown.
+ */
+export const States: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Determinate (Linear)</h4>
+          <p style="margin: 0 0 12px 0; font-size: 12px; color: #64748B;">Known progress value</p>
+          <bsg-progress size="md" type="linear" mode="determinate" [value]="51" label="Progreso general"></bsg-progress>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Indeterminate (Linear)</h4>
+          <p style="margin: 0 0 12px 0; font-size: 12px; color: #64748B;">Unknown progress value</p>
+          <bsg-progress size="md" type="linear" mode="indeterminate"></bsg-progress>
+        </div>
+
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Determinate (Circular)</h4>
+          <p style="margin: 0 0 12px 0; font-size: 12px; color: #64748B;">Known progress value</p>
+          <div style="display: flex; justify-content: center;">
+            <bsg-progress size="md" type="circular" mode="determinate" [value]="73"></bsg-progress>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Indeterminate (Circular)</h4>
+          <p style="margin: 0 0 12px 0; font-size: 12px; color: #64748B;">Unknown progress value</p>
+          <div style="display: flex; justify-content: center;">
+            <bsg-progress size="md" type="circular" mode="indeterminate"></bsg-progress>
+          </div>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+/**
+ * Progress sizes: small, medium, and large.
+ * Demonstrates all available sizes with circular progress.
+ */
+export const Sizes: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 24px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #202020;">Circular Progress - All Sizes</h4>
+        <div style="display: flex; align-items: flex-end; gap: 32px;">
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <bsg-progress size="sm" type="circular" mode="determinate" [value]="73"></bsg-progress>
+            <span style="font-size: 12px; color: #64748B;">Small (40px)</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <bsg-progress size="md" type="circular" mode="determinate" [value]="73"></bsg-progress>
+            <span style="font-size: 12px; color: #64748B;">Medium (64px)</span>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+            <bsg-progress size="lg" type="circular" mode="determinate" [value]="73" label="Tasa de asistencia"></bsg-progress>
+            <span style="font-size: 12px; color: #64748B;">Large (124px)</span>
+          </div>
+        </div>
+
+        <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #202020;">Linear Progress - All Sizes</h4>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <bsg-progress size="sm" type="linear" mode="determinate" [value]="51" label="Small"></bsg-progress>
+          <bsg-progress size="md" type="linear" mode="determinate" [value]="51" label="Medium"></bsg-progress>
+          <bsg-progress size="lg" type="linear" mode="determinate" [value]="51" label="Large"></bsg-progress>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// ============================================================
+// EXAMPLES SECTION
+// ============================================================
+
+/**
+ * Common usage patterns and real-world examples of the Progress component.
+ */
+export const UsageExamples: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
+        
+        <!-- File Upload Progress -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">File Upload Progress</h4>
+          <bsg-progress 
+            type="linear" 
+            mode="determinate" 
+            [value]="67" 
+            label="Uploading files">
+          </bsg-progress>
+        </div>
+        
+        <!-- Loading Spinner -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Loading Spinner</h4>
+          <div style="display: flex; justify-content: center;">
+            <bsg-progress 
+              size="md"
+              type="circular" 
+              mode="indeterminate">
+            </bsg-progress>
+          </div>
+        </div>
+        
+        <!-- Attendance Rate -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Attendance Rate Dashboard</h4>
+          <div style="display: flex; justify-content: center;">
+            <bsg-progress 
+              size="lg"
+              type="circular" 
+              mode="determinate" 
+              [value]="73"
+              label="Tasa de asistencia">
+            </bsg-progress>
+          </div>
+        </div>
+        
+        <!-- Course Progress -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Course Completion</h4>
+          <bsg-progress 
+            type="linear" 
+            mode="determinate" 
+            [value]="51" 
+            label="Progreso general">
+          </bsg-progress>
+        </div>
+        
+        <!-- Processing Data -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Processing Data</h4>
+          <bsg-progress 
+            type="linear" 
+            mode="indeterminate">
+          </bsg-progress>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// ============================================================
+// PLAYGROUND (Interactive)
+// ============================================================
+
+/**
+ * Interactive playground for testing all progress configurations.
+ * Use the controls to experiment with different types, sizes, modes, and values.
+ */
+export const Playground: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <div style="padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive Progress Playground</h3>
+        <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
+          Use the controls panel to adjust size, type, mode, value, and label
+        </p>
+        
+        <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
+          <bsg-progress 
+            [size]="size"
+            [type]="type" 
+            [mode]="mode" 
+            [value]="value"
+            [label]="label">
+          </bsg-progress>
+        </div>
+
+        <div style="margin-top: 32px; padding: 16px; background: #EFF6FF; border-radius: 8px; font-size: 13px; color: #1E40AF; line-height: 1.6;">
+          <strong>Tips:</strong>
+          <ul style="margin: 8px 0 0 20px;">
+            <li>Use <code>mode="determinate"</code> when you know the exact progress value</li>
+            <li>Use <code>mode="indeterminate"</code> for loading states without a known value</li>
+            <li>Circular progress displays the percentage in the center (size lg shows a label)</li>
+            <li>Linear progress shows the label above the bar</li>
+          </ul>
+        </div>
+      </div>
+    `,
+  }),
   args: {
     size: 'md',
-    type: 'circular',
-    mode: 'determinate',
-    value: 73,
-  },
-};
-
-export const CircularDeterminateLg: Story = {
-  args: {
-    size: 'lg',
     type: 'circular',
     mode: 'determinate',
     value: 73,
@@ -74,101 +267,15 @@ export const CircularDeterminateLg: Story = {
   },
 };
 
-// ===========================
-// Circular Indeterminate
-// ===========================
+// ============================================================
+// SHOWCASE (Comprehensive reference)
+// ============================================================
 
-export const CircularIndeterminateSm: Story = {
-  args: {
-    size: 'sm',
-    type: 'circular',
-    mode: 'indeterminate',
-  },
-};
-
-export const CircularIndeterminateMd: Story = {
-  args: {
-    size: 'md',
-    type: 'circular',
-    mode: 'indeterminate',
-  },
-};
-
-export const CircularIndeterminateLg: Story = {
-  args: {
-    size: 'lg',
-    type: 'circular',
-    mode: 'indeterminate',
-  },
-};
-
-// ===========================
-// Linear Determinate
-// ===========================
-
-export const LinearDeterminateSm: Story = {
-  args: {
-    size: 'sm',
-    type: 'linear',
-    mode: 'determinate',
-    value: 51,
-    label: 'Progreso general',
-  },
-};
-
-export const LinearDeterminateMd: Story = {
-  args: {
-    size: 'md',
-    type: 'linear',
-    mode: 'determinate',
-    value: 51,
-    label: 'Progreso general',
-  },
-};
-
-export const LinearDeterminateLg: Story = {
-  args: {
-    size: 'lg',
-    type: 'linear',
-    mode: 'determinate',
-    value: 51,
-    label: 'Progreso general',
-  },
-};
-
-// ===========================
-// Linear Indeterminate
-// ===========================
-
-export const LinearIndeterminateSm: Story = {
-  args: {
-    size: 'sm',
-    type: 'linear',
-    mode: 'indeterminate',
-  },
-};
-
-export const LinearIndeterminateMd: Story = {
-  args: {
-    size: 'md',
-    type: 'linear',
-    mode: 'indeterminate',
-  },
-};
-
-export const LinearIndeterminateLg: Story = {
-  args: {
-    size: 'lg',
-    type: 'linear',
-    mode: 'indeterminate',
-  },
-};
-
-// ===========================
-// Design System Showcase
-// ===========================
-
-export const DesignSystemShowcase: Story = {
+/**
+ * Complete design system showcase featuring all progress types, sizes,
+ * and states with design specifications.
+ */
+export const Showcase: Story = {
   render: () => ({
     template: `
       <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 1400px;">
@@ -182,7 +289,7 @@ export const DesignSystemShowcase: Story = {
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Circular determinate</div>
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Circular indeterminate</div>
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Linear determinate</div>
-          <div style="font-size: 16px; font-weight: 600; color: #202020;">Linea indeterminate</div>
+          <div style="font-size: 16px; font-weight: 600; color: #202020;">Linear indeterminate</div>
           
           <!-- SM Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Sm</div>
@@ -270,106 +377,4 @@ export const DesignSystemShowcase: Story = {
       </div>
     `,
   }),
-};
-
-// ===========================
-// Usage Examples
-// ===========================
-
-export const UsageExamples: Story = {
-  render: () => ({
-    template: `
-      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Progress Usage Examples</h3>
-        
-        <!-- File Upload Progress -->
-        <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">File Upload Progress</h4>
-          <bsg-progress 
-            type="linear" 
-            mode="determinate" 
-            [value]="67" 
-            label="Uploading files">
-          </bsg-progress>
-        </div>
-        
-        <!-- Loading Spinner -->
-        <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Loading Spinner</h4>
-          <bsg-progress 
-            size="md"
-            type="circular" 
-            mode="indeterminate">
-          </bsg-progress>
-        </div>
-        
-        <!-- Attendance Rate -->
-        <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Attendance Rate Dashboard</h4>
-          <bsg-progress 
-            size="lg"
-            type="circular" 
-            mode="determinate" 
-            [value]="73"
-            label="Tasa de asistencia">
-          </bsg-progress>
-        </div>
-        
-        <!-- Course Progress -->
-        <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Course Completion</h4>
-          <bsg-progress 
-            type="linear" 
-            mode="determinate" 
-            [value]="51" 
-            label="Progreso general">
-          </bsg-progress>
-        </div>
-        
-        <!-- Processing Data -->
-        <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Processing Data</h4>
-          <bsg-progress 
-            type="linear" 
-            mode="indeterminate">
-          </bsg-progress>
-        </div>
-      </div>
-    `,
-  }),
-};
-
-// ===========================
-// Interactive Playground
-// ===========================
-
-export const InteractivePlayground: Story = {
-  render: (args) => ({
-    props: args,
-    template: `
-      <div style="padding: 24px; font-family: Roboto, sans-serif;">
-        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive Progress Playground</h3>
-        <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
-          Use the controls panel to adjust size, type, mode, value, and label
-        </p>
-        
-        <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <bsg-progress 
-            [size]="size"
-            [type]="type" 
-            [mode]="mode" 
-            [value]="value"
-            [label]="label">
-          </bsg-progress>
-        </div>
-      </div>
-    `,
-  }),
-  args: {
-    size: 'md',
-    type: 'circular',
-    mode: 'determinate',
-    value: 73,
-    label: 'Tasa de asistencia',
-  },
 };
