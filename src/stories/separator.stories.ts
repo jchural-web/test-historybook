@@ -25,108 +25,47 @@ const meta: Meta<SeparatorComponent> = {
 export default meta;
 type Story = StoryObj<SeparatorComponent>;
 
-// ===========================
-// Horizontal Separator
-// ===========================
+// =====================
+// AXES
+// =====================
 
-export const Horizontal: Story = {
-  args: {
-    orientation: 'horizontal',
-    thickness: 1,
-  },
-  render: (args) => ({
-    props: args,
-    template: `
-      <div style="width: 100%; max-width: 600px;">
-        <bsg-separator 
-          [orientation]="orientation"
-          [thickness]="thickness">
-        </bsg-separator>
-      </div>
-    `,
-  }),
-};
-
-// ===========================
-// Vertical Separator
-// ===========================
-
-export const Vertical: Story = {
-  args: {
-    orientation: 'vertical',
-    thickness: 1,
-  },
-  render: (args) => ({
-    props: args,
-    template: `
-      <div style="height: 400px; display: flex;">
-        <bsg-separator 
-          [orientation]="orientation"
-          [thickness]="thickness">
-        </bsg-separator>
-      </div>
-    `,
-  }),
-};
-
-// ===========================
-// Design System Showcase
-// ===========================
-
-export const DesignSystemShowcase: Story = {
+/**
+ * Separator orientation axis
+ * Shows all orientation options: horizontal and vertical
+ */
+export const Orientations: Story = {
   render: () => ({
     template: `
-      <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 800px;">
-        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Separator Component Library</h2>
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Orientations</h3>
         
-        <!-- Horizontal Separators -->
-        <section style="margin-bottom: 64px;">
-          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Horizontal</h3>
-          
-          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px;">
-            <bsg-separator orientation="horizontal" [thickness]="1"></bsg-separator>
-            <bsg-separator orientation="horizontal" [thickness]="1"></bsg-separator>
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Horizontal</h4>
+          <div style="width: 100%; max-width: 600px;">
             <bsg-separator orientation="horizontal" [thickness]="1"></bsg-separator>
           </div>
-        </section>
-
-        <!-- Vertical Separators -->
-        <section style="margin-bottom: 64px;">
-          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Vertical</h3>
-          
-          <div style="display: flex; gap: 16px; height: 400px;">
-            <bsg-separator orientation="vertical" [thickness]="1"></bsg-separator>
-            <bsg-separator orientation="vertical" [thickness]="1"></bsg-separator>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Vertical</h4>
+          <div style="height: 400px; display: flex;">
             <bsg-separator orientation="vertical" [thickness]="1"></bsg-separator>
           </div>
-        </section>
-
-        <!-- Design Specifications -->
-        <section>
-          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
-          
-          <div style="font-size: 14px; color: #64748B; line-height: 1.8;">
-            <p style="margin: 4px 0;"><strong>Default Thickness:</strong> 1px</p>
-            <p style="margin: 4px 0;"><strong>Color:</strong> #CBD5E1 (neutral-300)</p>
-            <p style="margin: 4px 0;"><strong>Length:</strong> 100% (adapts to container)</p>
-            <p style="margin: 4px 0;"><strong>Spacing:</strong> Managed by parent container (not the separator)</p>
-            <p style="margin: 16px 0 8px 0;"><strong>Orientations:</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li><strong>Horizontal:</strong> width: 100%, height: thickness</li>
-              <li><strong>Vertical:</strong> width: thickness, height: 100%</li>
-            </ul>
-          </div>
-        </section>
+        </div>
       </div>
     `,
   }),
 };
 
-// ===========================
-// Usage Examples
-// ===========================
+// =====================
+// EXAMPLES
+// =====================
 
+/**
+ * Real-world usage examples of Separator
+ */
 export const UsageExamples: Story = {
+  tags: ['!dev'],
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
@@ -190,11 +129,15 @@ export const UsageExamples: Story = {
   }),
 };
 
-// ===========================
-// Interactive Playground
-// ===========================
+// =====================
+// PLAYGROUND (Optional)
+// =====================
 
-export const InteractivePlayground: Story = {
+/**
+ * Interactive playground for Separator
+ */
+export const Playground: Story = {
+  tags: ['!dev'],
   render: (args) => ({
     props: args,
     template: `
@@ -219,4 +162,61 @@ export const InteractivePlayground: Story = {
     orientation: 'horizontal',
     thickness: 1,
   },
+};
+
+// =====================
+// SHOWCASE (Optional)
+// =====================
+
+/**
+ * Complete showcase of Separator component library
+ */
+export const Showcase: Story = {
+  tags: ['!dev'],
+  render: () => ({
+    template: `
+      <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 800px;">
+        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Separator Component Library</h2>
+        
+        <!-- Horizontal Separators -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Horizontal</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 16px; max-width: 600px;">
+            <bsg-separator orientation="horizontal" [thickness]="1"></bsg-separator>
+            <bsg-separator orientation="horizontal" [thickness]="1"></bsg-separator>
+            <bsg-separator orientation="horizontal" [thickness]="1"></bsg-separator>
+          </div>
+        </section>
+
+        <!-- Vertical Separators -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Vertical</h3>
+          
+          <div style="display: flex; gap: 16px; height: 400px;">
+            <bsg-separator orientation="vertical" [thickness]="1"></bsg-separator>
+            <bsg-separator orientation="vertical" [thickness]="1"></bsg-separator>
+            <bsg-separator orientation="vertical" [thickness]="1"></bsg-separator>
+          </div>
+        </section>
+
+        <!-- Design Specifications -->
+        <section>
+          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
+          
+          <div style="font-size: 14px; color: #64748B; line-height: 1.8;">
+            <p style="margin: 4px 0;"><strong>Default Thickness:</strong> 1px</p>
+            <p style="margin: 4px 0;"><strong>Color:</strong> #CBD5E1 (neutral-300)</p>
+            <p style="margin: 4px 0;"><strong>Length:</strong> 100% (adapts to container)</p>
+            <p style="margin: 4px 0;"><strong>Spacing:</strong> Managed by parent container (not the separator)</p>
+            <p style="margin: 16px 0 8px 0;"><strong>Orientations:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li><strong>Horizontal:</strong> width: 100%, height: thickness</li>
+              <li><strong>Vertical:</strong> width: thickness, height: 100%</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    `,
+  }),
 };
