@@ -20,7 +20,7 @@ The Table is a **composite component** that displays information in four differe
 ## Import
 
 ```typescript
-import { UITableComponent } from './ui-table.component';
+import { TableComponent } from './table.component';
 ```
 
 ## Component Composition
