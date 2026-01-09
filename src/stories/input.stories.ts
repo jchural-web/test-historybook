@@ -97,15 +97,15 @@ export const AllSizes: Story = {
         <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Sizes - Default State</h3>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 60px; font-size: 14px; color: #666;">Small:</span>
-          <storybook-input size="sm" state="default" icon="none"></storybook-input>
+          <bsg-input size="sm" state="default" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 60px; font-size: 14px; color: #666;">Medium:</span>
-          <storybook-input size="md" state="default" icon="none"></storybook-input>
+          <bsg-input size="md" state="default" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 60px; font-size: 14px; color: #666;">Large:</span>
-          <storybook-input size="lg" state="default" icon="none"></storybook-input>
+          <bsg-input size="lg" state="default" icon="none"></bsg-input>
         </div>
       </div>
     `,
@@ -119,23 +119,23 @@ export const AllStates: Story = {
         <h3 style="margin: 0; font-size: 16px; font-weight: 600;">All States - Medium Size</h3>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 80px; font-size: 14px; color: #666;">Default:</span>
-          <storybook-input size="md" state="default" icon="none"></storybook-input>
+          <bsg-input size="md" state="default" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 80px; font-size: 14px; color: #666;">Hover:</span>
-          <storybook-input size="md" state="hover" icon="none"></storybook-input>
+          <bsg-input size="md" state="hover" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 80px; font-size: 14px; color: #666;">Focus:</span>
-          <storybook-input size="md" state="focus" icon="none"></storybook-input>
+          <bsg-input size="md" state="focus" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 80px; font-size: 14px; color: #666;">Disabled:</span>
-          <storybook-input size="md" state="disabled" icon="none"></storybook-input>
+          <bsg-input size="md" state="disabled" icon="none"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 80px; font-size: 14px; color: #666;">Error:</span>
-          <storybook-input size="md" state="error" icon="none"></storybook-input>
+          <bsg-input size="md" state="error" icon="none"></bsg-input>
         </div>
       </div>
     `,
@@ -149,15 +149,15 @@ export const WithIcons: Story = {
         <h3 style="margin: 0; font-size: 16px; font-weight: 600;">With Leading Icon</h3>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 80px; font-size: 14px; color: #666;">Small:</span>
-          <storybook-input size="sm" state="default" icon="leading"></storybook-input>
+          <bsg-input size="sm" state="default" icon="leading"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 80px; font-size: 14px; color: #666;">Medium:</span>
-          <storybook-input size="md" state="default" icon="leading"></storybook-input>
+          <bsg-input size="md" state="default" icon="leading"></bsg-input>
         </div>
         <div style="display: flex; gap: 16px; align-items: center;">
           <span style="width: 80px; font-size: 14px; color: #666;">Large:</span>
-          <storybook-input size="lg" state="default" icon="leading"></storybook-input>
+          <bsg-input size="lg" state="default" icon="leading"></bsg-input>
         </div>
       </div>
     `,
@@ -177,27 +177,27 @@ export const DesignSystemShowcase: Story = {
             <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">Sizes</h4>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
               <span style="width: 80px; font-size: 14px; color: #666;">sm:</span>
-              <storybook-input size="sm" state="default" icon="none"></storybook-input>
-              <storybook-input size="sm" state="hover" icon="none"></storybook-input>
-              <storybook-input size="sm" state="focus" icon="none"></storybook-input>
-              <storybook-input size="sm" state="disabled" icon="none"></storybook-input>
-              <storybook-input size="sm" state="error" icon="none"></storybook-input>
+              <bsg-input size="sm" state="default" icon="none"></bsg-input>
+              <bsg-input size="sm" state="hover" icon="none"></bsg-input>
+              <bsg-input size="sm" state="focus" icon="none"></bsg-input>
+              <bsg-input size="sm" state="disabled" icon="none"></bsg-input>
+              <bsg-input size="sm" state="error" icon="none"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
               <span style="width: 80px; font-size: 14px; color: #666;">md:</span>
-              <storybook-input size="md" state="default" icon="none"></storybook-input>
-              <storybook-input size="md" state="hover" icon="none"></storybook-input>
-              <storybook-input size="md" state="focus" icon="none"></storybook-input>
-              <storybook-input size="md" state="disabled" icon="none"></storybook-input>
-              <storybook-input size="md" state="error" icon="none"></storybook-input>
+              <bsg-input size="md" state="default" icon="none"></bsg-input>
+              <bsg-input size="md" state="hover" icon="none"></bsg-input>
+              <bsg-input size="md" state="focus" icon="none"></bsg-input>
+              <bsg-input size="md" state="disabled" icon="none"></bsg-input>
+              <bsg-input size="md" state="error" icon="none"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center;">
               <span style="width: 80px; font-size: 14px; color: #666;">lg:</span>
-              <storybook-input size="lg" state="default" icon="none"></storybook-input>
-              <storybook-input size="lg" state="hover" icon="none"></storybook-input>
-              <storybook-input size="lg" state="focus" icon="none"></storybook-input>
-              <storybook-input size="lg" state="disabled" icon="none"></storybook-input>
-              <storybook-input size="lg" state="error" icon="none"></storybook-input>
+              <bsg-input size="lg" state="default" icon="none"></bsg-input>
+              <bsg-input size="lg" state="hover" icon="none"></bsg-input>
+              <bsg-input size="lg" state="focus" icon="none"></bsg-input>
+              <bsg-input size="lg" state="disabled" icon="none"></bsg-input>
+              <bsg-input size="lg" state="error" icon="none"></bsg-input>
             </div>
           </div>
         </section>
@@ -209,27 +209,27 @@ export const DesignSystemShowcase: Story = {
             <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">Sizes</h4>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
               <span style="width: 80px; font-size: 14px; color: #666;">sm:</span>
-              <storybook-input size="sm" state="default" icon="leading"></storybook-input>
-              <storybook-input size="sm" state="hover" icon="leading"></storybook-input>
-              <storybook-input size="sm" state="focus" icon="leading"></storybook-input>
-              <storybook-input size="sm" state="disabled" icon="leading"></storybook-input>
-              <storybook-input size="sm" state="error" icon="leading"></storybook-input>
+              <bsg-input size="sm" state="default" icon="leading"></bsg-input>
+              <bsg-input size="sm" state="hover" icon="leading"></bsg-input>
+              <bsg-input size="sm" state="focus" icon="leading"></bsg-input>
+              <bsg-input size="sm" state="disabled" icon="leading"></bsg-input>
+              <bsg-input size="sm" state="error" icon="leading"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
               <span style="width: 80px; font-size: 14px; color: #666;">md:</span>
-              <storybook-input size="md" state="default" icon="leading"></storybook-input>
-              <storybook-input size="md" state="hover" icon="leading"></storybook-input>
-              <storybook-input size="md" state="focus" icon="leading"></storybook-input>
-              <storybook-input size="md" state="disabled" icon="leading"></storybook-input>
-              <storybook-input size="md" state="error" icon="leading"></storybook-input>
+              <bsg-input size="md" state="default" icon="leading"></bsg-input>
+              <bsg-input size="md" state="hover" icon="leading"></bsg-input>
+              <bsg-input size="md" state="focus" icon="leading"></bsg-input>
+              <bsg-input size="md" state="disabled" icon="leading"></bsg-input>
+              <bsg-input size="md" state="error" icon="leading"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center;">
               <span style="width: 80px; font-size: 14px; color: #666;">lg:</span>
-              <storybook-input size="lg" state="default" icon="leading"></storybook-input>
-              <storybook-input size="lg" state="hover" icon="leading"></storybook-input>
-              <storybook-input size="lg" state="focus" icon="leading"></storybook-input>
-              <storybook-input size="lg" state="disabled" icon="leading"></storybook-input>
-              <storybook-input size="lg" state="error" icon="leading"></storybook-input>
+              <bsg-input size="lg" state="default" icon="leading"></bsg-input>
+              <bsg-input size="lg" state="hover" icon="leading"></bsg-input>
+              <bsg-input size="lg" state="focus" icon="leading"></bsg-input>
+              <bsg-input size="lg" state="disabled" icon="leading"></bsg-input>
+              <bsg-input size="lg" state="error" icon="leading"></bsg-input>
             </div>
           </div>
         </section>
