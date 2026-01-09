@@ -52,7 +52,7 @@ Standard table with columns, rows, and pagination. Perfect for displaying struct
 **Example:**
 
 ```html
-<storybook-ui-table
+<bsg-table
   title="Tarifario de Trámites y Servicios"
   variant="table-basic"
   [collapsible]="true"
@@ -80,7 +80,7 @@ Standard table with columns, rows, and pagination. Perfect for displaying struct
     rangeLabel: '1 - 1 de 1 ítems'
   }"
 >
-</storybook-ui-table>
+</bsg-table>
 ```
 
 ### 2. table-actions
@@ -97,7 +97,7 @@ Table with action buttons (Aprobar/Rechazar) and badges in cells. Perfect for ap
 **Example:**
 
 ```html
-<storybook-ui-table
+<bsg-table
   title="Beneficios Solicitados (Coordinador)"
   variant="table-actions"
   [collapsible]="true"
@@ -122,7 +122,7 @@ Table with action buttons (Aprobar/Rechazar) and badges in cells. Perfect for ap
   [tablePagination]="..."
   (rowAction)="onRowAction($event)"
 >
-</storybook-ui-table>
+</bsg-table>
 ```
 
 ### 3. table-tabs
@@ -139,7 +139,7 @@ Tabbed interface with tables. Each tab contains its own table with pagination.
 **Example:**
 
 ```html
-<storybook-ui-table
+<bsg-table
   title="Historial de mensajes"
   variant="table-tabs"
   [collapsible]="true"
@@ -172,7 +172,7 @@ Tabbed interface with tables. Each tab contains its own table with pagination.
   (tabChange)="onTabChange($event)"
   (headerActionClick)="onNewMessage()"
 >
-</storybook-ui-table>
+</bsg-table>
 ```
 
 ### 4. list-content
@@ -189,7 +189,7 @@ Numbered list format for sequential content. No table structure.
 **Example:**
 
 ```html
-<storybook-ui-table
+<bsg-table
   title="Versión Profesional"
   variant="list-content"
   [collapsible]="true"
@@ -203,7 +203,7 @@ Numbered list format for sequential content. No table structure.
     }
   ]"
 >
-</storybook-ui-table>
+</bsg-table>
 ```
 
 ## Props
@@ -429,7 +429,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-benefits-table',
   template: `
-    <storybook-ui-table
+    <bsg-table
       title="Beneficios Solicitados (Coordinador)"
       variant="table-actions"
       [collapsible]="true"
@@ -443,7 +443,7 @@ import { Component } from '@angular/core';
       (rowAction)="handleRowAction($event)"
       (tablePageChange)="handlePageChange($event)"
     >
-    </storybook-ui-table>
+    </bsg-table>
   `,
 })
 export class BenefitsTableComponent {
@@ -499,7 +499,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-messages-table',
   template: `
-    <storybook-ui-table
+    <bsg-table
       title="Historial de mensajes"
       variant="table-tabs"
       [collapsible]="true"
@@ -511,7 +511,7 @@ import { Component } from '@angular/core';
       (tabChange)="handleTabChange($event)"
       (headerActionClick)="handleNewMessage()"
     >
-    </storybook-ui-table>
+    </bsg-table>
   `,
 })
 export class MessagesTableComponent {
