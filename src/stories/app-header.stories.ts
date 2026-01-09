@@ -25,13 +25,13 @@ AppHeader es un componente de layout compuesto que estructura la barra de navega
 ## Estructura
 
 ### Left Section
-- **Menu Button**: Icono hamburger para abrir/cerrar navegación lateral
+- **Menu Button**: Icono hamburger para abrir/cerrar navegación lateral (configurable)
 - **Title**: Título o logo editable de la aplicación
 
 ### Right Section
 - **Notifications**: Icono de campana para notificaciones
 - **Action Button**: Botón con icono y texto (ej. "Actualizar")
-- **User Profile**: Avatar de usuario con nombre
+- **User Profile**: Avatar de usuario con nombre (opcional)
 
 ## Uso
 
@@ -110,8 +110,15 @@ AppHeader es un componente de layout compuesto que estructura la barra de navega
 export default meta;
 type Story = StoryObj<AppHeaderComponent>;
 
-// Default story with complete user profile
-export const Default: Story = {
+// =====================
+// STRUCTURE
+// =====================
+
+/**
+ * AppHeader base structure
+ * Shows the core layout with all sections: title, action button, notifications, and user profile
+ */
+export const Structure: Story = {
   args: {
     title: 'Integra CRM',
     showMenuButton: true,
@@ -123,8 +130,83 @@ export const Default: Story = {
   },
 };
 
-// With custom avatar image
+// =====================
+// BEHAVIOR
+// =====================
+
+/**
+ * AppHeader behavior with menu button
+ * Shows the AppHeader with menu button visible (toggles side navigation)
+ */
+export const WithMenuButton: Story = {
+  args: {
+    title: 'Dashboard Central',
+    showMenuButton: true,
+    actionLabel: 'Sincronizar',
+    user: {
+      name: 'Carlos Méndez',
+      avatarImage: '',
+    },
+  },
+};
+
+/**
+ * AppHeader behavior without menu button
+ * Shows the AppHeader without menu button (no side navigation toggle)
+ */
+export const WithoutMenuButton: Story = {
+  args: {
+    title: 'Portal Público',
+    showMenuButton: false,
+    actionLabel: 'Recargar',
+    user: {
+      name: 'Ana García',
+      avatarImage: 'https://i.pravatar.cc/150?img=30',
+    },
+  },
+};
+
+// =====================
+// EXAMPLES
+// =====================
+
+/**
+ * AppHeader with user profile
+ * Shows the complete header with user name and avatar
+ */
+export const WithUser: Story = {
+  tags: ['!dev'],
+  args: {
+    title: 'Integra CRM',
+    showMenuButton: true,
+    actionLabel: 'Actualizar',
+    user: {
+      name: 'Yesica Palomino',
+      avatarImage: '',
+    },
+  },
+};
+
+/**
+ * AppHeader without user profile
+ * Shows the header without user section
+ */
+export const WithoutUser: Story = {
+  tags: ['!dev'],
+  args: {
+    title: 'Portal Público',
+    showMenuButton: true,
+    actionLabel: 'Recargar',
+    user: undefined,
+  },
+};
+
+/**
+ * AppHeader with avatar image
+ * Shows the header with a custom avatar image
+ */
 export const WithAvatarImage: Story = {
+  tags: ['!dev'],
   args: {
     title: 'Integra CRM',
     showMenuButton: true,
@@ -136,31 +218,12 @@ export const WithAvatarImage: Story = {
   },
 };
 
-// Without menu button
-export const WithoutMenuButton: Story = {
-  args: {
-    title: 'Dashboard Central',
-    showMenuButton: false,
-    actionLabel: 'Sincronizar',
-    user: {
-      name: 'Carlos Méndez',
-      avatarImage: '',
-    },
-  },
-};
-
-// Without user profile
-export const WithoutUser: Story = {
-  args: {
-    title: 'Portal Público',
-    showMenuButton: true,
-    actionLabel: 'Recargar',
-    user: undefined,
-  },
-};
-
-// Custom action label
+/**
+ * AppHeader with custom action label
+ * Shows the header with different action button label
+ */
 export const CustomActionLabel: Story = {
+  tags: ['!dev'],
   args: {
     title: 'Sistema de Ventas',
     showMenuButton: true,
@@ -172,8 +235,12 @@ export const CustomActionLabel: Story = {
   },
 };
 
-// Long title and name (stress test)
+/**
+ * AppHeader with long texts
+ * Tests layout with long title and user names
+ */
 export const LongTexts: Story = {
+  tags: ['!dev'],
   args: {
     title: 'Sistema Integrado de Gestión Empresarial',
     showMenuButton: true,
@@ -185,8 +252,12 @@ export const LongTexts: Story = {
   },
 };
 
-// Minimal configuration
+/**
+ * AppHeader minimal configuration
+ * Shows the header with minimal content (no user, simple title)
+ */
 export const Minimal: Story = {
+  tags: ['!dev'],
   args: {
     title: 'App',
     showMenuButton: false,
@@ -195,8 +266,12 @@ export const Minimal: Story = {
   },
 };
 
-// Interactive example with all events
+/**
+ * AppHeader interactive example
+ * Full featured header for interactive testing
+ */
 export const Interactive: Story = {
+  tags: ['!dev'],
   args: {
     title: 'Integra CRM',
     showMenuButton: true,
