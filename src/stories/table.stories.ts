@@ -523,8 +523,6 @@ export const InteractivePlayground: Story = {
         <bsg-table
           [title]="title"
           [variant]="variant"
-          [collapsible]="collapsible"
-          [collapsed]="collapsed"
           [tableColumns]="tableColumns"
           [tableRows]="tableRows"
           [tablePagination]="tablePagination"
@@ -534,7 +532,6 @@ export const InteractivePlayground: Story = {
           [tabsPagination]="tabsPagination"
           [headerAction]="headerAction"
           [showActionsColumn]="showActionsColumn"
-          (collapseChange)="handleCollapseChange($event)"
           (tabChange)="handleTabChange($event)">
         </bsg-table>
 
@@ -542,7 +539,6 @@ export const InteractivePlayground: Story = {
           <strong>Table Features:</strong>
           <ul style="margin: 8px 0 0 20px;">
             <li>4 variants: table-actions, table-basic, table-tabs, list-content</li>
-            <li>Collapsible/non-collapsible options</li>
             <li>Reuses Button, Badge, TabNavigation, Pagination, Separator components</li>
             <li>Pixel-perfect borders and spacing from Figma</li>
             <li>Responsive design with mobile support</li>
@@ -554,8 +550,6 @@ export const InteractivePlayground: Story = {
   args: {
     title: 'Table Demo',
     variant: 'table-basic',
-    collapsible: true,
-    collapsed: false,
     showActionsColumn: false,
     tableColumns: [
       { key: 'id', label: 'ID', width: '80px' },
