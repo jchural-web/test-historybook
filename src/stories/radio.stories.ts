@@ -52,11 +52,11 @@ export const AllSizes: Story = {
         <div style="display: flex; gap: 32px; align-items: center;">
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Small (16px)</span>
-            <storybook-radio size="sm" state="default"></storybook-radio>
+            <bsg-radio size="sm" state="default"></bsg-radio>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Medium (20px)</span>
-            <storybook-radio size="md" state="default"></storybook-radio>
+            <bsg-radio size="md" state="default"></bsg-radio>
           </div>
         </div>
       </div>
@@ -72,23 +72,23 @@ export const AllStates: Story = {
         <div style="display: flex; gap: 16px; align-items: center;">
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Default</span>
-            <storybook-radio size="md" state="default"></storybook-radio>
+            <bsg-radio size="md" state="default"></bsg-radio>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Hover</span>
-            <storybook-radio size="md" state="hover"></storybook-radio>
+            <bsg-radio size="md" state="hover"></bsg-radio>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Checked</span>
-            <storybook-radio size="md" state="checked"></storybook-radio>
+            <bsg-radio size="md" state="checked"></bsg-radio>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Disabled</span>
-            <storybook-radio size="md" state="disabled"></storybook-radio>
+            <bsg-radio size="md" state="disabled"></bsg-radio>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Focus</span>
-            <storybook-radio size="md" state="focus"></storybook-radio>
+            <bsg-radio size="md" state="focus"></bsg-radio>
           </div>
         </div>
       </div>
@@ -107,23 +107,23 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; align-items: flex-start;">
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <storybook-radio size="sm" state="default"></storybook-radio>
+              <bsg-radio size="sm" state="default"></bsg-radio>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <storybook-radio size="sm" state="hover"></storybook-radio>
+              <bsg-radio size="sm" state="hover"></bsg-radio>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Checked</span>
-              <storybook-radio size="sm" state="checked"></storybook-radio>
+              <bsg-radio size="sm" state="checked"></bsg-radio>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <storybook-radio size="sm" state="disabled"></storybook-radio>
+              <bsg-radio size="sm" state="disabled"></bsg-radio>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <storybook-radio size="sm" state="focus"></storybook-radio>
+              <bsg-radio size="sm" state="focus"></bsg-radio>
             </div>
           </div>
         </section>
@@ -133,23 +133,23 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; align-items: flex-start;">
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <storybook-radio size="md" state="default"></storybook-radio>
+              <bsg-radio size="md" state="default"></bsg-radio>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <storybook-radio size="md" state="hover"></storybook-radio>
+              <bsg-radio size="md" state="hover"></bsg-radio>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Checked</span>
-              <storybook-radio size="md" state="checked"></storybook-radio>
+              <bsg-radio size="md" state="checked"></bsg-radio>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <storybook-radio size="md" state="disabled"></storybook-radio>
+              <bsg-radio size="md" state="disabled"></bsg-radio>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <storybook-radio size="md" state="focus"></storybook-radio>
+              <bsg-radio size="md" state="focus"></bsg-radio>
             </div>
           </div>
         </section>
@@ -185,22 +185,22 @@ export const WithLabel: Story = {
         <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Radio Button with Labels</h3>
         
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <storybook-radio size="md" state="default"></storybook-radio>
+          <bsg-radio size="md" state="default"></bsg-radio>
           <span style="font-size: 14px; color: #202020;">Option A</span>
         </label>
 
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <storybook-radio size="md" state="checked"></storybook-radio>
+          <bsg-radio size="md" state="checked"></bsg-radio>
           <span style="font-size: 14px; color: #202020;">Option B (Selected)</span>
         </label>
 
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <storybook-radio size="md" state="default"></storybook-radio>
+          <bsg-radio size="md" state="default"></bsg-radio>
           <span style="font-size: 14px; color: #202020;">Option C</span>
         </label>
 
         <label style="display: flex; align-items: center; gap: 8px; cursor: not-allowed;">
-          <storybook-radio size="md" state="disabled"></storybook-radio>
+          <bsg-radio size="md" state="disabled"></bsg-radio>
           <span style="font-size: 14px; color: #64748B;">Option D (Disabled)</span>
         </label>
       </div>
@@ -220,7 +220,7 @@ export const RadioGroup: Story = {
           
           <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <storybook-radio size="md" state="default"></storybook-radio>
+              <bsg-radio size="md" state="default"></bsg-radio>
               <div style="display: flex; flex-direction: column;">
                 <span style="font-size: 14px; font-weight: 500; color: #202020;">Basic Plan</span>
                 <span style="font-size: 12px; color: #64748B;">$9/month</span>
@@ -228,7 +228,7 @@ export const RadioGroup: Story = {
             </label>
 
             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <storybook-radio size="md" state="checked"></storybook-radio>
+              <bsg-radio size="md" state="checked"></bsg-radio>
               <div style="display: flex; flex-direction: column;">
                 <span style="font-size: 14px; font-weight: 500; color: #202020;">Pro Plan</span>
                 <span style="font-size: 12px; color: #64748B;">$29/month</span>
@@ -236,7 +236,7 @@ export const RadioGroup: Story = {
             </label>
 
             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-              <storybook-radio size="md" state="default"></storybook-radio>
+              <bsg-radio size="md" state="default"></bsg-radio>
               <div style="display: flex; flex-direction: column;">
                 <span style="font-size: 14px; font-weight: 500; color: #202020;">Enterprise Plan</span>
                 <span style="font-size: 12px; color: #64748B;">Contact us</span>
