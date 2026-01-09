@@ -247,7 +247,7 @@
 
 .tab-navigation-color-yellow .tab-item:focus-visible:not(.tab-item-active):not([disabled]),
 .tab-navigation-color-yellow .tab-item-focus {
-  border-color: #ca8a04; /* Yellow-600 */
+  outline-color: #ca8a04; /* Yellow-600 */
 }
 
 .tab-navigation-color-yellow .tab-item-disabled,
