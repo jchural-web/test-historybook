@@ -26,11 +26,11 @@ export interface RadioGroupOption {
         [ngClass]="optionClasses"
         (click)="selectOption(option.value)"
       >
-        <storybook-radio
+        <bsg-radio
           [size]="size"
           [state]="getRadioState(option.value, option.disabled)"
           [checked]="selectedValue === option.value"
-        ></storybook-radio>
+        ></bsg-radio>
         <span class="radio-label" [ngClass]="labelClasses">{{ option.label }}</span>
       </label>
     </div>
