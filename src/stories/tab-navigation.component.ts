@@ -81,7 +81,13 @@ export class TabNavigationComponent {
   ];
 
   /** Active tab index */
-  @Input() activeIndex: number = 0;
+  @Input() set activeIndex(value: number) {
+    this._activeIndex = value;
+  }
+  get activeIndex(): number {
+    return this._activeIndex;
+  }
+  private _activeIndex: number = 0;
 
   /** Tab change event emitter */
   @Output() onTabChange = new EventEmitter<number>();
