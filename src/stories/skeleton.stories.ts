@@ -306,7 +306,7 @@ export const CompositionExamples: Story = {
             <!-- Comment 1 -->
             <div style="display: flex; gap: 12px; align-items: flex-start;">
               <storybook-skeleton type="circular" width="32px" height="32px"></storybook-skeleton>
-              <div style="flex: 1; display: flex; flex-direction: column;">
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
                 <storybook-skeleton type="text" width="100px" height="14px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="100%" height="12px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="80%" height="12px"></storybook-skeleton>
@@ -316,7 +316,7 @@ export const CompositionExamples: Story = {
             <!-- Comment 2 -->
             <div style="display: flex; gap: 12px; align-items: flex-start;">
               <storybook-skeleton type="circular" width="32px" height="32px"></storybook-skeleton>
-              <div style="flex: 1; display: flex; flex-direction: column;">
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
                 <storybook-skeleton type="text" width="120px" height="14px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="100%" height="12px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="90%" height="12px"></storybook-skeleton>
@@ -326,7 +326,7 @@ export const CompositionExamples: Story = {
             <!-- Comment 3 -->
             <div style="display: flex; gap: 12px; align-items: flex-start;">
               <storybook-skeleton type="circular" width="32px" height="32px"></storybook-skeleton>
-              <div style="flex: 1; display: flex; flex-direction: column;">
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
                 <storybook-skeleton type="text" width="90px" height="14px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="100%" height="12px"></storybook-skeleton>
               </div>
