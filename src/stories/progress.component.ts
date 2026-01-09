@@ -6,7 +6,7 @@ export type ProgressType = 'circular' | 'linear';
 export type ProgressMode = 'determinate' | 'indeterminate';
 
 @Component({
-  selector: 'storybook-progress',
+  selector: 'bsg-progress',
   standalone: true,
   imports: [CommonModule],
   template: `
