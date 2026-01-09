@@ -56,6 +56,11 @@ export interface SelectOption {
           {{ option.label }}
         </div>
       </div>
+
+      <!-- Error message -->
+      <div *ngIf="state === 'error' && errorMessage" class="select-error-message">
+        {{ errorMessage }}
+      </div>
     </div>
   `,
   styleUrls: ['./select.css'],
