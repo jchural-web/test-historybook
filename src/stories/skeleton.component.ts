@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 export type SkeletonType = 'text' | 'circular' | 'rectangular';
 
 @Component({
-  selector: 'storybook-skeleton',
+  selector: 'bsg-skeleton',
   standalone: true,
   imports: [CommonModule],
   template: `
