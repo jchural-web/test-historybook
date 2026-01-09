@@ -15,14 +15,6 @@ const meta: Meta<TableComponent> = {
       options: ['table-basic', 'table-actions', 'table-tabs', 'list-content'],
       description: 'Display variant',
     },
-    collapsible: {
-      control: 'boolean',
-      description: 'Whether the container is collapsible',
-    },
-    collapsed: {
-      control: 'boolean',
-      description: 'Initial collapsed state',
-    },
   },
 };
 
@@ -37,8 +29,6 @@ export const TableActions: Story = {
   args: {
     title: 'Beneficios Solicitados (Coordinador)',
     variant: 'table-actions',
-    collapsible: true,
-    collapsed: false,
     showActionsColumn: true,
     actionsColumnLabel: 'Aprobar solicitud',
     actionsColumnWidth: '120px',
@@ -86,8 +76,6 @@ export const TableBasic: Story = {
   args: {
     title: 'Tarifario de Trámites y Servicios',
     variant: 'table-basic',
-    collapsible: true,
-    collapsed: false,
     tableColumns: [
       { key: 'number', label: 'N°', width: '50px' },
       { key: 'concept', label: 'Concepto', width: '218px' },
