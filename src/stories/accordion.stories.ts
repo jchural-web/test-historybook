@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { AccordionComponent } from './accordion.component';
+import { TableComponent } from './table.component';
 
 const meta: Meta<AccordionComponent> = {
   title: 'Example/Accordion',
@@ -326,6 +327,129 @@ export const DesignSystemShowcase: Story = {
         </section>
       </div>
     `,
+  }),
+};
+
+// ===========================
+// Tables in Accordion
+// ===========================
+
+export const TablesInAccordion: Story = {
+  render: () => ({
+    template: `
+      <div style="padding: 24px; font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;">
+        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Tables with Collapsible Accordion</h3>
+
+        <bsg-accordion
+          mode="single"
+          size="md"
+          [items]="accordionItems">
+        </bsg-accordion>
+      </div>
+    `,
+    component: {
+      accordionItems: [
+        {
+          id: 'table-actions',
+          title: 'Beneficios Solicitados (Coordinador)',
+          content: `
+            <!-- Table content will be rendered here -->
+            <div style="padding: 0;">
+              <bsg-table
+                title="Beneficios Solicitados"
+                variant="table-actions"
+                [showActionsColumn]="true"
+                actionsColumnLabel="Aprobar solicitud"
+                actionsColumnWidth="120px"
+                [tableColumns]="[
+                  { key: 'benefit', label: 'Beneficio solicitado', width: '210px' },
+                  { key: 'program', label: 'Programa', width: '141px' },
+                  { key: 'centerCost', label: 'Centro costo', width: '112px' },
+                  { key: 'date', label: 'Fecha', width: '88px' },
+                  { key: 'coordinator', label: 'Coordinador', width: '107px' }
+                ]"
+                [tableRows]="[
+                  {
+                    benefit: 'Acceso al material oficial del PMI...',
+                    program: 'Curso Oficial de Preparación...',
+                    centerCost: 'PREP EXAMPMP ONLINE 2024 XIV LIMA',
+                    date: '28/02/2025',
+                    date_badge: true,
+                    date_badge_variant: 'secondary',
+                    coordinator: 'Bianca Mamani',
+                    actions: [
+                      { label: 'Aprobar', variant: 'approve' },
+                      { label: 'Rechazar', variant: 'reject' }
+                    ]
+                  }
+                ]"
+                [tablePagination]="{
+                  currentPage: 1,
+                  totalPages: 1,
+                  pageSize: 5,
+                  pageSizeOptions: [5, 10, 20],
+                  totalItems: 1,
+                  rangeLabel: '1 - 1 de 1 ítems'
+                }">
+              </bsg-table>
+            </div>
+          `
+        },
+        {
+          id: 'table-basic',
+          title: 'Tarifario de Trámites y Servicios',
+          content: `
+            <!-- Table content will be rendered here -->
+            <div style="padding: 0;">
+              <bsg-table
+                title="Tarifario"
+                variant="table-basic"
+                [tableColumns]="[
+                  { key: 'number', label: 'N°', width: '50px' },
+                  { key: 'concept', label: 'Concepto', width: '218px' },
+                  { key: 'description', label: 'Descripción', width: '400px' },
+                  { key: 'amount', label: 'Monto (PEN)', width: '89px' }
+                ]"
+                [tableRows]="[
+                  {
+                    number: '1',
+                    concept: 'Costos Gestión de Cobranza',
+                    description: 'Aplica cuando se realicen cualquiera de las siguientes...',
+                    amount: '30.00'
+                  },
+                  {
+                    number: '2',
+                    concept: 'Emisión de duplicado de certificado',
+                    description: 'Cuando el alumno solicita una segunda copia del certificado...',
+                    amount: '50.00'
+                  }
+                ]">
+              </bsg-table>
+            </div>
+          `
+        },
+        {
+          id: 'table-list',
+          title: 'Versión Profesional',
+          content: `
+            <!-- Table content will be rendered here -->
+            <div style="padding: 0;">
+              <bsg-table
+                title="Características"
+                variant="list-content"
+                [listItems]="[
+                  { text: 'Acceso a material oficial completamente actualizado' },
+                  { text: 'Simulador con 195 preguntas del examen de certificación' },
+                  { text: 'Certificación oficial de participación en el curso' },
+                  { text: 'Acceso a laboratorios oficiales de AWS' },
+                  { text: 'Soporte técnico dedicado 24/7' }
+                ]">
+              </bsg-table>
+            </div>
+          `
+        }
+      ]
+    },
   }),
 };
 
