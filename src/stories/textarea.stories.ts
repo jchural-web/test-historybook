@@ -11,6 +11,11 @@ const meta: Meta<TextareaComponent> = {
       options: ['default', 'hover', 'focus', 'disabled', 'error'],
       description: 'Current state of the textarea',
     },
+    composition: {
+      control: 'select',
+      options: ['default', 'withLabel', 'withText', 'withButton'],
+      description: 'Composition variant of the textarea',
+    },
     placeholder: {
       control: 'text',
       description: 'Placeholder text',
@@ -23,11 +28,27 @@ const meta: Meta<TextareaComponent> = {
       control: 'number',
       description: 'Number of visible text rows',
     },
+    labelText: {
+      control: 'text',
+      description: 'Label text for withLabel and withText variants',
+    },
+    helperText: {
+      control: 'text',
+      description: 'Helper text for withText variant',
+    },
+    buttonLabel: {
+      control: 'text',
+      description: 'Button label for withButton variant',
+    },
   },
-  args: { 
+  args: {
     placeholder: 'Ingresa información',
     value: '',
     rows: 3,
+    composition: 'default',
+    labelText: 'Comentarios',
+    helperText: 'Proporciona más contexto sobre tu pregunta',
+    buttonLabel: 'Enviar',
   },
 };
 
@@ -41,6 +62,7 @@ type Story = StoryObj<TextareaComponent>;
 export const Default: Story = {
   args: {
     state: 'default',
+    composition: 'default',
     placeholder: 'Ingresa información',
     value: '',
     rows: 3,
