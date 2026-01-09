@@ -57,7 +57,7 @@
   margin-right: 16px;
 }
 
-.table-collapse-btn {
+.table-collapse-chevron {
   width: 24px;
   height: 24px;
   display: flex;
@@ -70,13 +70,22 @@
   outline: none;
   transition: transform 0.3s ease;
   flex-shrink: 0;
+  color: #2563eb;
+  margin-left: auto;
+  margin-right: 0;
 }
 
-.table-collapse-btn:hover {
+.table-collapse-chevron:hover {
   opacity: 0.8;
 }
 
-.table-collapse-icon-rotated {
+.table-collapse-chevron:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+.table-chevron-expanded {
   transform: rotate(180deg);
 }
 
