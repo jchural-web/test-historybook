@@ -1,0 +1,427 @@
+import type { Meta, StoryObj } from '@storybook/angular';
+import { AccordionComponent } from './accordion.component';
+
+const meta: Meta<AccordionComponent> = {
+  title: 'Example/Accordion',
+  component: AccordionComponent,
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Accordion size',
+    },
+    mode: {
+      control: 'select',
+      options: ['single', 'multiple'],
+      description: 'Accordion mode - single (one item open) or multiple (multiple items open)',
+    },
+    items: {
+      control: 'object',
+      description: 'Array of accordion items',
+    },
+    expandedItems: {
+      control: 'object',
+      description: 'Array of initially expanded item IDs',
+    },
+  },
+  args: {
+    size: 'md',
+    mode: 'single',
+    items: [
+      {
+        id: 'item-1',
+        title: 'Sección 1: Introducción',
+        content:
+          'Esta es la primera sección del acordeón. Contiene información introductoria que el usuario puede expandir o contraer según sea necesario.',
+      },
+      {
+        id: 'item-2',
+        title: 'Sección 2: Contenido Principal',
+        content:
+          'Esta es la segunda sección. Aquí se presenta el contenido principal que complementa la introducción con detalles más específicos.',
+      },
+      {
+        id: 'item-3',
+        title: 'Sección 3: Información Adicional',
+        content:
+          'Esta es la tercera sección que contiene información adicional útil para el usuario que desea profundizar en el tema.',
+      },
+    ],
+    expandedItems: [],
+  },
+};
+
+export default meta;
+type Story = StoryObj<AccordionComponent>;
+
+// ===========================
+// Default - Interactive Accordion
+// ===========================
+
+export const Default: Story = {
+  args: {
+    size: 'md',
+    mode: 'single',
+  },
+};
+
+// ===========================
+// Modes
+// ===========================
+
+export const SingleMode: Story = {
+  args: {
+    ...Default.args,
+    mode: 'single',
+    expandedItems: ['item-1'],
+  },
+};
+
+export const MultipleMode: Story = {
+  args: {
+    ...Default.args,
+    mode: 'multiple',
+    expandedItems: ['item-1', 'item-2'],
+  },
+};
+
+// ===========================
+// Sizes
+// ===========================
+
+export const SizeSmall: Story = {
+  args: {
+    ...Default.args,
+    size: 'sm',
+  },
+};
+
+export const SizeMedium: Story = {
+  args: {
+    ...Default.args,
+    size: 'md',
+  },
+};
+
+export const SizeLarge: Story = {
+  args: {
+    ...Default.args,
+    size: 'lg',
+  },
+};
+
+// ===========================
+// Content Examples
+// ===========================
+
+export const FAQExample: Story = {
+  args: {
+    size: 'md',
+    mode: 'single',
+    items: [
+      {
+        id: 'faq-1',
+        title: '¿Cuál es el proceso de registro?',
+        content:
+          'El proceso de registro es simple y rápido. Debes proporcionar tu correo electrónico, crear una contraseña segura y verificar tu dirección de correo. En menos de 5 minutos, tu cuenta estará lista para usar.',
+      },
+      {
+        id: 'faq-2',
+        title: '¿Cómo recupero mi contraseña?',
+        content:
+          'Si olvidaste tu contraseña, haz clic en "Olvidé mi contraseña" en la página de inicio de sesión. Recibirás un correo electrónico con un enlace para restablecer tu contraseña. El enlace es válido por 24 horas.',
+      },
+      {
+        id: 'faq-3',
+        title: '¿Cuáles son los métodos de pago disponibles?',
+        content:
+          'Aceptamos tarjetas de crédito (Visa, Mastercard, American Express), transferencia bancaria y billeteras digitales como PayPal y Apple Pay. Todos los pagos son seguros y encriptados.',
+      },
+      {
+        id: 'faq-4',
+        title: '¿Cuál es la política de reembolso?',
+        content:
+          'Ofrecemos una garantía de satisfacción de 30 días. Si no estás satisfecho con nuestro servicio, puedes solicitar un reembolso completo sin hacer preguntas. El reembolso se procesará dentro de 5 a 7 días hábiles.',
+      },
+    ],
+  },
+};
+
+export const FeaturesList: Story = {
+  args: {
+    size: 'md',
+    mode: 'multiple',
+    items: [
+      {
+        id: 'feat-1',
+        title: 'Autenticación Segura',
+        content:
+          'Implementamos autenticación de dos factores (2FA) para proteger tu cuenta. Puedes usar aplicaciones autenticadoras o recibir códigos por SMS.',
+      },
+      {
+        id: 'feat-2',
+        title: 'Sincronización en Tiempo Real',
+        content:
+          'Todos tus datos se sincronizan instantáneamente en todos tus dispositivos. Accede a tu información desde donde quieras, cuando quieras.',
+      },
+      {
+        id: 'feat-3',
+        title: 'Analítica Avanzada',
+        content:
+          'Obtén insights profundos con nuestros dashboards interactivos. Visualiza tendencias, identifica patrones y toma decisiones basadas en datos.',
+      },
+      {
+        id: 'feat-4',
+        title: 'Integración con Terceros',
+        content:
+          'Conecta fácilmente con más de 1000 aplicaciones populares. Automatiza tu flujo de trabajo sin escribir código.',
+      },
+    ],
+  },
+};
+
+export const DisabledItems: Story = {
+  args: {
+    size: 'md',
+    mode: 'single',
+    items: [
+      {
+        id: 'disabled-1',
+        title: 'Opción Disponible',
+        content: 'Esta opción está habilitada y puede ser expandida o contraída.',
+      },
+      {
+        id: 'disabled-2',
+        title: 'Opción Deshabilitada',
+        content: 'Este contenido no es accesible',
+        disabled: true,
+      },
+      {
+        id: 'disabled-3',
+        title: 'Otra Opción Disponible',
+        content: 'Esta es otra opción que funciona normalmente.',
+      },
+    ],
+  },
+};
+
+// ===========================
+// Design System Showcase
+// ===========================
+
+export const DesignSystemShowcase: Story = {
+  render: () => ({
+    template: `
+      <div style="font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif; padding: 24px; max-width: 1200px;">
+        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Accordion Component Library</h2>
+        
+        <!-- Sizes -->
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600;">Sizes</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 32px;">
+            <!-- Small -->
+            <div>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Small (sm)</h4>
+              <bsg-accordion 
+                size="sm" 
+                mode="single"
+                [items]="[
+                  { id: 'sm-1', title: 'Elemento 1', content: 'Contenido para tamaño pequeño' },
+                  { id: 'sm-2', title: 'Elemento 2', content: 'Otro contenido de ejemplo' }
+                ]">
+              </bsg-accordion>
+            </div>
+            
+            <!-- Medium -->
+            <div>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Medium (md) - Default</h4>
+              <bsg-accordion 
+                size="md" 
+                mode="single"
+                [items]="[
+                  { id: 'md-1', title: 'Elemento 1', content: 'Contenido para tamaño mediano' },
+                  { id: 'md-2', title: 'Elemento 2', content: 'Otro contenido de ejemplo' }
+                ]">
+              </bsg-accordion>
+            </div>
+            
+            <!-- Large -->
+            <div>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Large (lg)</h4>
+              <bsg-accordion 
+                size="lg" 
+                mode="single"
+                [items]="[
+                  { id: 'lg-1', title: 'Elemento 1', content: 'Contenido para tamaño grande' },
+                  { id: 'lg-2', title: 'Elemento 2', content: 'Otro contenido de ejemplo' }
+                ]">
+              </bsg-accordion>
+            </div>
+          </div>
+        </section>
+
+        <!-- Modes -->
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600;">Modes</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 32px;">
+            <!-- Single Mode -->
+            <div>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Single Mode (solo un elemento abierto)</h4>
+              <bsg-accordion 
+                size="md" 
+                mode="single"
+                [items]="[
+                  { id: 'single-1', title: 'Opción 1', content: 'Solo una sección puede estar abierta a la vez' },
+                  { id: 'single-2', title: 'Opción 2', content: 'Al abrir esta, la anterior se cerrará' },
+                  { id: 'single-3', title: 'Opción 3', content: 'Útil para FAQs y guías paso a paso' }
+                ]">
+              </bsg-accordion>
+            </div>
+            
+            <!-- Multiple Mode -->
+            <div>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Multiple Mode (múltiples elementos abiertos)</h4>
+              <bsg-accordion 
+                size="md" 
+                mode="multiple"
+                [items]="[
+                  { id: 'multi-1', title: 'Opción 1', content: 'Múltiples secciones pueden estar abiertas simultáneamente' },
+                  { id: 'multi-2', title: 'Opción 2', content: 'Perfecto para ver múltiples secciones a la vez' },
+                  { id: 'multi-3', title: 'Opción 3', content: 'Ideal para comparar información' }
+                ]">
+              </bsg-accordion>
+            </div>
+          </div>
+        </section>
+
+        <!-- Design Specifications -->
+        <section>
+          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600;">Design Specifications</h3>
+          <div style="font-size: 14px; color: #64748B; line-height: 1.6;">
+            <p style="margin: 12px 0;"><strong>Sizes:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>sm: 12px padding, 14px font size</li>
+              <li>md: 16px padding, 16px font size (default)</li>
+              <li>lg: 20px padding, 18px font size</li>
+            </ul>
+            
+            <p style="margin: 12px 0;"><strong>Modes:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>single: Solo un elemento puede estar abierto a la vez</li>
+              <li>multiple: Múltiples elementos pueden estar abiertos simultáneamente</li>
+            </ul>
+            
+            <p style="margin: 12px 0;"><strong>Features:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Animación suave al expandir/contraer</li>
+              <li>Soporte para elementos deshabilitados</li>
+              <li>Iconos de chevron rotativos</li>
+              <li>Estados hover y focus accesibles</li>
+              <li>ARIA labels para accesibilidad</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    `,
+  }),
+};
+
+// ===========================
+// Usage Examples
+// ===========================
+
+export const UsageExamples: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Accordion Usage Examples</h3>
+        
+        <!-- FAQ Section -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">FAQ (Preguntas Frecuentes)</h4>
+          <bsg-accordion 
+            size="md" 
+            mode="single"
+            [items]="[
+              {
+                id: 'faq-plan-1',
+                title: '¿Cuáles son los planes disponibles?',
+                content: 'Ofrecemos tres planes: Básico, Profesional y Empresarial. Cada plan incluye características específicas adaptadas a diferentes necesidades.'
+              },
+              {
+                id: 'faq-plan-2',
+                title: '¿Puedo cambiar de plan en cualquier momento?',
+                content: 'Sí, puedes cambiar tu plan en cualquier momento desde tu panel de control. Los cambios entran en vigor en tu próximo ciclo de facturación.'
+              },
+              {
+                id: 'faq-plan-3',
+                title: '¿Hay descuentos por pago anual?',
+                content: 'Sí, ofrecemos un 20% de descuento si pagas anualmente en lugar de mensualmente.'
+              }
+            ]">
+          </bsg-accordion>
+        </div>
+        
+        <!-- Product Features -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Características del Producto</h4>
+          <bsg-accordion 
+            size="md" 
+            mode="multiple"
+            [items]="[
+              {
+                id: 'feature-1',
+                title: '📊 Analytics en Tiempo Real',
+                content: 'Obtén reportes detallados y métricas en tiempo real. Monitorea el rendimiento de tu negocio con dashboards personalizables.'
+              },
+              {
+                id: 'feature-2',
+                title: '🔒 Seguridad de Nivel Empresarial',
+                content: 'Protección avanzada con encriptación end-to-end, autenticación de dos factores y cumplimiento de normativas internacionales.'
+              },
+              {
+                id: 'feature-3',
+                title: '⚙️ API Flexible',
+                content: 'Integra nuestros servicios con tus aplicaciones existentes usando nuestra API REST completamente documentada.'
+              },
+              {
+                id: 'feature-4',
+                title: '👥 Soporte Dedicado',
+                content: 'Acceso a especialistas dedicados disponibles 24/7 para ayudarte con cualquier pregunta o problema.'
+              }
+            ]">
+          </bsg-accordion>
+        </div>
+        
+        <!-- Course Modules -->
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Módulos del Curso</h4>
+          <bsg-accordion 
+            size="md" 
+            mode="multiple"
+            [items]="[
+              {
+                id: 'module-1',
+                title: 'Módulo 1: Fundamentos',
+                content: 'Aprende los conceptos básicos necesarios para comenzar. Este módulo cubre definiciones, principios fundamentales y mejores prácticas.'
+              },
+              {
+                id: 'module-2',
+                title: 'Módulo 2: Técnicas Avanzadas',
+                content: 'Domina técnicas avanzadas para optimizar tu trabajo. Incluye casos de uso reales y ejemplos prácticos.'
+              },
+              {
+                id: 'module-3',
+                title: 'Módulo 3: Implementación Práctica',
+                content: 'Implementa lo aprendido en proyectos reales. Recibe retroalimentación personalizada de instructores expertos.'
+              }
+            ]">
+          </bsg-accordion>
+        </div>
+      </div>
+    `,
+  }),
+};
