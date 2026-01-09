@@ -236,7 +236,7 @@ export interface TableAction {
             [tabs]="tabs"
             [activeIndex]="activeTabIndex"
             [size]="'md'"
-            [variant]="'pill'"
+            [variant]="'text'"
             (onTabChange)="onTabChange($event)"
           ></storybook-tab-navigation>
 
