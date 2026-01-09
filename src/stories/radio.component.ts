@@ -5,7 +5,7 @@ export type RadioSize = 'sm' | 'md';
 export type RadioState = 'default' | 'hover' | 'checked' | 'disabled' | 'focus';
 
 @Component({
-  selector: 'storybook-radio',
+  selector: 'bsg-radio',
   standalone: true,
   imports: [CommonModule],
   template: `
