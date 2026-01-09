@@ -6,7 +6,7 @@ export type BadgeSize = 'dot' | 'default' | 'large';
 export type BadgeLayout = 'text' | 'text-icon';
 
 @Component({
-  selector: 'storybook-badge',
+  selector: 'bsg-badge',
   standalone: true,
   imports: [CommonModule],
   template: `
