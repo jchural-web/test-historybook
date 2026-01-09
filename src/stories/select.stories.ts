@@ -56,151 +56,60 @@ const meta: Meta<SelectComponent> = {
 export default meta;
 type Story = StoryObj<SelectComponent>;
 
-// ===========================
-// Default - Interactive Select
-// ===========================
+// =====================
+// AXES
+// =====================
 
-export const Default: Story = {
-  args: {
-    size: 'md',
-    state: 'default',
-    open: false,
-  },
-};
-
-// ===========================
-// Showcase Stories
-// ===========================
-
-// Design System Showcase
-export const DesignSystemShowcase: Story = {
+/**
+ * Select states axis
+ * Shows all state combinations: default, focus, open, error, disabled
+ */
+export const States: Story = {
   render: () => ({
     template: `
-      <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 1200px;">
-        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Select Component Library</h2>
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">All States - Medium Size</h3>
         
-        <section style="margin-bottom: 48px;">
-          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Small (sm) - 32px height</h3>
-          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <bsg-select size="sm" state="default"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <bsg-select size="sm" state="hover"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <bsg-select size="sm" state="focus"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <bsg-select size="sm" state="disabled"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-              <bsg-select size="sm" state="error" errorMessage="Este campo es requerido"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Dropdown</span>
-              <bsg-select size="sm" state="default" [open]="true" selectedValue="3"></bsg-select>
-            </div>
+        <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+            <bsg-select size="md" state="default" placeholder="Select..."></bsg-select>
           </div>
-        </section>
-
-        <section style="margin-bottom: 48px;">
-          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Medium (md) - 40px height</h3>
-          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <bsg-select size="md" state="default"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <bsg-select size="md" state="hover"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <bsg-select size="md" state="focus"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <bsg-select size="md" state="disabled"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-              <bsg-select size="md" state="error" errorMessage="Este campo es requerido"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Dropdown</span>
-              <bsg-select size="md" state="default" [open]="true" selectedValue="3"></bsg-select>
-            </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+            <bsg-select size="md" state="focus" placeholder="Select..."></bsg-select>
           </div>
-        </section>
-
-        <section style="margin-bottom: 48px;">
-          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Large (lg) - 48px height</h3>
-          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <bsg-select size="lg" state="default"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <bsg-select size="lg" state="hover"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <bsg-select size="lg" state="focus"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <bsg-select size="lg" state="disabled"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-              <bsg-select size="lg" state="error" errorMessage="Este campo es requerido"></bsg-select>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
-              <span style="font-size: 14px; font-weight: 600; color: #202020;">Dropdown</span>
-              <bsg-select size="lg" state="default" [open]="true" selectedValue="3"></bsg-select>
-            </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Open</span>
+            <bsg-select size="md" state="default" [open]="true" selectedValue="3"></bsg-select>
           </div>
-        </section>
-
-        <section>
-          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
-          <div style="font-size: 14px; color: #64748B; line-height: 1.6;">
-            <p style="margin: 8px 0;"><strong>Sizes:</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li><strong>sm:</strong> 32px height, padding 4px 12px, width 133px</li>
-              <li><strong>md:</strong> 40px height, padding 4px 12px, width 132px</li>
-              <li><strong>lg:</strong> 48px height, padding 4px 12px, width 133px</li>
-            </ul>
-            <p style="margin: 8px 0;"><strong>Border Radius:</strong> 6px</p>
-            <p style="margin: 8px 0;"><strong>Gap:</strong> 12px between text and icon</p>
-            <p style="margin: 8px 0;"><strong>Typography:</strong> Inter, 16px, 400 weight, 24px line-height</p>
-            <p style="margin: 8px 0;"><strong>Colors:</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li>Default border: #CBD5E1 (neutral-300)</li>
-              <li>Default text: #64748B (neutral-500)</li>
-              <li>Focus border: #7C3AED (Violet-600)</li>
-              <li>Error border & text: #DC2626 (Red-600)</li>
-              <li>Disabled: opacity 40%</li>
-              <li>Hover: opacity 90%</li>
-              <li>Selected option background: #CBD5E1 (neutral-300)</li>
-            </ul>
-            <p style="margin: 8px 0;"><strong>Chevron Icon:</strong> 14×8px</p>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+            <bsg-select size="md" state="error" placeholder="Select..." errorMessage="Campo requerido"></bsg-select>
           </div>
-        </section>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+            <bsg-select size="md" state="disabled" placeholder="Not available"></bsg-select>
+          </div>
+        </div>
       </div>
     `,
   }),
 };
 
-// Usage examples
+// =====================
+// EXAMPLES
+// =====================
+
+/**
+ * Real-world usage examples of Select
+ */
 export const UsageExamples: Story = {
+  tags: ['!dev'],
   render: () => ({
     template: `
       <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
@@ -268,8 +177,11 @@ export const UsageExamples: Story = {
   }),
 };
 
-// Form integration example
+/**
+ * Form integration example with Select
+ */
 export const FormExample: Story = {
+  tags: ['!dev'],
   render: () => ({
     template: `
       <div style="padding: 24px; font-family: Roboto, sans-serif; max-width: 500px;">
@@ -332,12 +244,124 @@ export const FormExample: Story = {
   }),
 };
 
-// Error state with message example
-export const ErrorState: Story = {
-  args: {
-    size: 'md',
-    state: 'error',
-    placeholder: 'Selecciona una opción',
-    errorMessage: 'Este campo es requerido',
-  },
+// =====================
+// SHOWCASE (Optional)
+// =====================
+
+/**
+ * Complete showcase of Select component library
+ */
+export const Showcase: Story = {
+  tags: ['!dev'],
+  render: () => ({
+    template: `
+      <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 1200px;">
+        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Select Component Library</h2>
+        
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Small (sm) - 32px height</h3>
+          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+              <bsg-select size="sm" state="default"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+              <bsg-select size="sm" state="focus"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Open</span>
+              <bsg-select size="sm" state="default" [open]="true" selectedValue="3"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+              <bsg-select size="sm" state="error" errorMessage="Este campo es requerido"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+              <bsg-select size="sm" state="disabled"></bsg-select>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Medium (md) - 40px height</h3>
+          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+              <bsg-select size="md" state="default"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+              <bsg-select size="md" state="focus"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Open</span>
+              <bsg-select size="md" state="default" [open]="true" selectedValue="3"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+              <bsg-select size="md" state="error" errorMessage="Este campo es requerido"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+              <bsg-select size="md" state="disabled"></bsg-select>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Large (lg) - 48px height</h3>
+          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+              <bsg-select size="lg" state="default"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+              <bsg-select size="lg" state="focus"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Open</span>
+              <bsg-select size="lg" state="default" [open]="true" selectedValue="3"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+              <bsg-select size="lg" state="error" errorMessage="Este campo es requerido"></bsg-select>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+              <bsg-select size="lg" state="disabled"></bsg-select>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
+          <div style="font-size: 14px; color: #64748B; line-height: 1.6;">
+            <p style="margin: 8px 0;"><strong>Sizes:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li><strong>sm:</strong> 32px height, padding 4px 12px, width 133px</li>
+              <li><strong>md:</strong> 40px height, padding 4px 12px, width 132px</li>
+              <li><strong>lg:</strong> 48px height, padding 4px 12px, width 133px</li>
+            </ul>
+            <p style="margin: 8px 0;"><strong>Border Radius:</strong> 6px</p>
+            <p style="margin: 8px 0;"><strong>Gap:</strong> 12px between text and icon</p>
+            <p style="margin: 8px 0;"><strong>Typography:</strong> Inter, 16px, 400 weight, 24px line-height</p>
+            <p style="margin: 8px 0;"><strong>Colors:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Default border: #CBD5E1 (neutral-300)</li>
+              <li>Default text: #64748B (neutral-500)</li>
+              <li>Focus border: #7C3AED (Violet-600)</li>
+              <li>Error border & text: #DC2626 (Red-600)</li>
+              <li>Disabled: opacity 40%</li>
+              <li>Hover: opacity 90%</li>
+              <li>Selected option background: #CBD5E1 (neutral-300)</li>
+            </ul>
+            <p style="margin: 8px 0;"><strong>Chevron Icon:</strong> 14×8px</p>
+          </div>
+        </section>
+      </div>
+    `,
+  }),
 };
