@@ -281,7 +281,7 @@ export const CompositionExamples: Story = {
             <!-- Profile Header -->
             <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px;">
               <storybook-skeleton type="circular" width="64px" height="64px"></storybook-skeleton>
-              <div style="flex: 1; display: flex; flex-direction: column;">
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
                 <storybook-skeleton type="text" width="160px" height="20px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="120px" height="14px"></storybook-skeleton>
               </div>
