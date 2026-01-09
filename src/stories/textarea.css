@@ -1,3 +1,51 @@
+/* Composition Container */
+.textarea-composition {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Composition Variants */
+.composition-default {
+  gap: 0;
+}
+
+.composition-withLabel {
+  gap: 8px;
+}
+
+.composition-withText {
+  gap: 8px;
+}
+
+.composition-withButton {
+  gap: 12px;
+}
+
+/* Label styling for compositions */
+.composition-label {
+  display: block;
+  color: #1e293b; /* neutral-800 */
+  font-size: 14px;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Helper text styling for withText composition */
+.composition-helper-text {
+  display: block;
+  color: #9ca3af; /* neutral-600 */
+  font-size: 13px;
+  font-family: inherit;
+  line-height: 18px;
+  letter-spacing: 0.02px;
+}
+
+/* Button styling for withButton composition */
+.composition-button {
+  width: 100%;
+}
+
 /* Base textarea wrapper styles */
 .textarea-wrapper {
   display: inline-flex;
@@ -11,6 +59,12 @@
   width: 100%;
   max-width: 203px;
   min-height: 80px;
+}
+
+.composition-withLabel .textarea-wrapper,
+.composition-withText .textarea-wrapper,
+.composition-withButton .textarea-wrapper {
+  max-width: none;
 }
 
 /* Textarea field base styles */
