@@ -126,32 +126,6 @@ export const DesignSystemShowcase: Story = {
               icon="phone">
             </bsg-card>
           </div>
-
-          <!-- Elevated Row -->
-          <div style="font-size: 16px; font-weight: 600; color: #202020;">Elevated</div>
-          <div>
-            <bsg-card
-              variant="elevated"
-              header="Actividades Totales"
-              value="21"
-              helper="+15.2%"
-              helperDescription="respecto al mes anterior"
-              icon="phone">
-            </bsg-card>
-          </div>
-
-          <!-- Outlined Row -->
-          <div style="font-size: 16px; font-weight: 600; color: #202020;">Outlined</div>
-          <div>
-            <bsg-card
-              variant="outlined"
-              header="Actividades Totales"
-              value="21"
-              helper="+15.2%"
-              helperDescription="respecto al mes anterior"
-              icon="phone">
-            </bsg-card>
-          </div>
         </div>
 
         <!-- Design Specifications -->
@@ -166,8 +140,6 @@ export const DesignSystemShowcase: Story = {
             <p style="margin: 16px 0 8px 0;"><strong>Variant Styles:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li><strong>Default:</strong> Border #E4E4E7, White background</li>
-              <li><strong>Elevated:</strong> Border #E4E4E7, Box shadow 0 1px 2px rgba(0,0,0,0.08)</li>
-              <li><strong>Outlined:</strong> Border #E4E4E7, White background</li>
             </ul>
             <p style="margin: 16px 0 8px 0;"><strong>State Styles:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
