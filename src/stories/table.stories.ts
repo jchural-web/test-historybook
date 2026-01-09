@@ -274,56 +274,6 @@ export const ListContent: Story = {
 };
 
 // ===========================
-// Collapsed States
-// ===========================
-
-export const CollapsedTableBasic: Story = {
-  args: {
-    ...TableBasic.args,
-    collapsed: true,
-  },
-};
-
-export const CollapsedTableActions: Story = {
-  args: {
-    ...TableActions.args,
-    collapsed: true,
-  },
-};
-
-export const CollapsedTableTabs: Story = {
-  args: {
-    ...TableTabs.args,
-    collapsed: true,
-  },
-};
-
-export const CollapsedListContent: Story = {
-  args: {
-    ...ListContent.args,
-    collapsed: true,
-  },
-};
-
-// ===========================
-// Non-Collapsible
-// ===========================
-
-export const NonCollapsible: Story = {
-  args: {
-    title: 'Información Permanente',
-    variant: 'list-content',
-    collapsible: false,
-    collapsed: false,
-    listItems: [
-      { text: 'Esta información siempre está visible.' },
-      { text: 'No puede ser colapsada por el usuario.' },
-      { text: 'Útil para contenido crítico o importante.' },
-    ],
-  },
-};
-
-// ===========================
 // Design System Showcase
 // ===========================
 
