@@ -23,7 +23,7 @@ const icons: Record<string, string> = {
 };
 
 @Component({
-  selector: 'storybook-app-header',
+  selector: 'bsg-app-header',
   standalone: true,
   imports: [CommonModule, ButtonComponent, AvatarComponent],
   template: `
