@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 export type AlertVariant = 'default' | 'info' | 'success' | 'warning' | 'destructive';
 
 @Component({
-  selector: 'storybook-alert',
+  selector: 'bsg-alert',
   standalone: true,
   imports: [CommonModule],
   template: `
