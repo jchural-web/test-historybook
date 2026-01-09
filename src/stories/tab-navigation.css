@@ -134,6 +134,7 @@
   background: #eff6ff;
   color: #2563eb;
   opacity: 0.9;
+  text-decoration: underline;
 }
 
 .tab-navigation-color-blue .tab-item-active,
@@ -180,6 +181,7 @@
   background: #f0fdf4;
   color: #16a34a;
   opacity: 0.9;
+  text-decoration: underline;
 }
 
 .tab-navigation-color-green .tab-item-active,
@@ -226,6 +228,7 @@
   background: #fefce8;
   color: #ca8a04;
   opacity: 0.9;
+  text-decoration: underline;
 }
 
 .tab-navigation-color-yellow .tab-item-active,
