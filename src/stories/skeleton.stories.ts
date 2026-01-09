@@ -166,20 +166,16 @@ export const DesignSystemShowcase: Story = {
               width: 367px;
             ">
               <!-- Avatar + Title -->
-              <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+              <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
                 <storybook-skeleton type="circular" width="29px" height="29px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="228px" height="16px"></storybook-skeleton>
               </div>
-              
+
               <!-- Large content block -->
-              <div style="margin-bottom: 16px;">
-                <storybook-skeleton type="rectangular" width="100%" height="87px"></storybook-skeleton>
-              </div>
-              
+              <storybook-skeleton type="rectangular" width="100%" height="87px"></storybook-skeleton>
+
               <!-- Subtitle -->
-              <div style="margin-bottom: 16px;">
-                <storybook-skeleton type="text" width="131px" height="16px"></storybook-skeleton>
-              </div>
+              <storybook-skeleton type="text" width="131px" height="16px" style="margin-bottom: 16px;"></storybook-skeleton>
               
               <!-- Three cards grid -->
               <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
