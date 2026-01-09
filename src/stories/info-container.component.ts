@@ -36,6 +36,7 @@ export interface TabConfig extends TabItem {
     TabNavigationComponent,
     PaginationComponent,
     SeparatorComponent,
+    LabelComponent,
   ],
   template: `
     <div class="info-container" [ngClass]="containerClasses">
