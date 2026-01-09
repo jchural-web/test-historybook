@@ -157,3 +157,13 @@
 .select-option-selected:hover {
   background-color: #cbd5e1;
 }
+
+/* Error message */
+.select-error-message {
+  margin-top: 6px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #dc2626; /* Red-600 */
+}
