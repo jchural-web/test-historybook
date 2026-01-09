@@ -237,11 +237,12 @@ export const DesignSystemShowcase: Story = {
             
             <p style="margin: 16px 0 8px 0;"><strong>Spacing & Layout:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
-              <li><strong>Text:</strong> 8px bottom margin (auto-removed on last child)</li>
+              <li><strong>Text Elements:</strong> Use <code>gap: 8px</code> in flex containers for text stacking</li>
+              <li><strong>Comment/List Text:</strong> Use <code>gap: 6px</code> for tighter text grouping</li>
               <li><strong>Circular:</strong> No default margin (flex-shrink: 0 for flex layouts)</li>
-              <li><strong>Rectangular:</strong> 12px bottom margin (auto-removed on last child)</li>
-              <li>Use <code>gap</code> property in flex/grid containers for consistent spacing</li>
-              <li>Stack text elements vertically without additional spacing (margins are built-in)</li>
+              <li><strong>Rectangular:</strong> No default margin - use <code>gap</code> in container</li>
+              <li>Always use <code>gap</code> property in flex/grid containers for consistent spacing</li>
+              <li>Group related elements (text lines, images + text) within flex containers with appropriate gap</li>
             </ul>
 
             <p style="margin: 16px 0 8px 0;"><strong>Behavior:</strong></p>
