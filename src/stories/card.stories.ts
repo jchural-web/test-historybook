@@ -108,19 +108,17 @@ export const DesignSystemShowcase: Story = {
         <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Card Component Library</h2>
         
         <!-- Grid Layout matching Figma -->
-        <div style="display: grid; grid-template-columns: 100px 450px 450px; gap: 24px; align-items: start; margin-bottom: 48px;">
-          
+        <div style="display: grid; grid-template-columns: 100px 450px; gap: 24px; align-items: start; margin-bottom: 48px;">
+
           <!-- Headers -->
           <div></div>
           <div style="font-size: 16px; font-weight: 600; color: #202020; margin-bottom: 8px;">Default</div>
-          <div style="font-size: 16px; font-weight: 600; color: #202020; margin-bottom: 8px;">Hover</div>
-          
+
           <!-- Default Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Default</div>
           <div>
-            <bsg-card 
-              variant="default" 
-              state="default"
+            <bsg-card
+              variant="default"
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
@@ -128,24 +126,12 @@ export const DesignSystemShowcase: Story = {
               icon="phone">
             </bsg-card>
           </div>
-          <div>
-            <bsg-card 
-              variant="default" 
-              state="hover"
-              header="Actividades Totales"
-              value="21"
-              helper="+15.2%"
-              helperDescription="respecto al mes anterior"
-              icon="phone">
-            </bsg-card>
-          </div>
-          
+
           <!-- Elevated Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Elevated</div>
           <div>
-            <bsg-card 
-              variant="elevated" 
-              state="default"
+            <bsg-card
+              variant="elevated"
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
@@ -153,35 +139,12 @@ export const DesignSystemShowcase: Story = {
               icon="phone">
             </bsg-card>
           </div>
-          <div>
-            <bsg-card 
-              variant="elevated" 
-              state="hover"
-              header="Actividades Totales"
-              value="21"
-              helper="+15.2%"
-              helperDescription="respecto al mes anterior"
-              icon="phone">
-            </bsg-card>
-          </div>
-          
+
           <!-- Outlined Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Outlined</div>
           <div>
-            <bsg-card 
-              variant="outlined" 
-              state="default"
-              header="Actividades Totales"
-              value="21"
-              helper="+15.2%"
-              helperDescription="respecto al mes anterior"
-              icon="phone">
-            </bsg-card>
-          </div>
-          <div>
-            <bsg-card 
-              variant="outlined" 
-              state="hover"
+            <bsg-card
+              variant="outlined"
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
