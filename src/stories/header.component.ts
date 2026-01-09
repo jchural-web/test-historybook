@@ -5,7 +5,7 @@ import { ButtonComponent } from './button.component';
 import type { User } from './user';
 
 @Component({
-  selector: 'storybook-header',
+  selector: 'bsg-header',
   standalone: true,
   imports: [CommonModule, ButtonComponent],
   template: `<header>
