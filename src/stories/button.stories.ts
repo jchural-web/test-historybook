@@ -51,534 +51,18 @@ const meta: Meta<ButtonComponent> = {
 export default meta;
 type Story = StoryObj<ButtonComponent>;
 
-// Size variants
-export const SmallDefault: Story = {
-  args: {
-    size: 'sm',
-    variant: 'default',
-    label: 'Boton',
-  },
-};
+// ============================================================
+// API CATEGORY STORIES (One per category)
+// ============================================================
 
-export const MediumDefault: Story = {
-  args: {
-    size: 'md',
-    variant: 'default',
-    label: 'Boton',
-  },
-};
-
-export const LargeDefault: Story = {
-  args: {
-    size: 'lg',
-    variant: 'default',
-    label: 'Boton',
-  },
-};
-
-// Variant examples
-export const DefaultButton: Story = {
-  args: {
-    variant: 'default',
-    label: 'Boton',
-  },
-};
-
-export const SecondaryButton: Story = {
-  args: {
-    variant: 'secondary',
-    label: 'Boton',
-  },
-};
-
-export const OutlineButton: Story = {
-  args: {
-    variant: 'outline',
-    label: 'Boton',
-  },
-};
-
-export const GhostButton: Story = {
-  args: {
-    variant: 'ghost',
-    label: 'Boton',
-  },
-};
-
-export const LinkButton: Story = {
-  args: {
-    variant: 'link',
-    label: 'Boton',
-  },
-};
-
-export const DestructiveButton: Story = {
-  args: {
-    variant: 'destructive',
-    label: 'Boton',
-  },
-};
-
-// Shape variants
-export const RectangularShape: Story = {
-  args: {
-    shape: 'rectangular',
-    label: 'Boton',
-  },
-};
-
-export const PillShape: Story = {
-  args: {
-    shape: 'pill',
-    label: 'Boton',
-  },
-};
-
-export const IconOnly: Story = {
-  args: {
-    shape: 'icon',
-    icon: true,
-    label: 'Download',
-  },
-};
-
-export const IconWithTextLeft: Story = {
-  args: {
-    shape: 'icon-text',
-    icon: true,
-    iconPosition: 'left',
-    label: 'Boton',
-  },
-};
-
-export const IconWithTextRight: Story = {
-  args: {
-    shape: 'icon-text',
-    icon: true,
-    iconPosition: 'right',
-    label: 'Boton',
-  },
-};
-
-// Combined examples
-export const LargePillSecondary: Story = {
-  args: {
-    size: 'lg',
-    shape: 'pill',
-    variant: 'secondary',
-    label: 'Boton',
-  },
-};
-
-export const SmallOutlineWithIcon: Story = {
-  args: {
-    size: 'sm',
-    variant: 'outline',
-    icon: true,
-    shape: 'icon-text',
-    label: 'Boton',
-  },
-};
-
-// Icon-only circular button - Outline variant (default)
-export const IconOnlyOutline: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-// Icon-only circular button - Default variant (filled purple)
-export const IconOnlyDefault: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'default',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-// Icon-only circular button - Secondary variant (filled blue)
-export const IconOnlySecondary: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'secondary',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-// Icon-only circular button - Ghost variant (light purple)
-export const IconOnlyGhost: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'ghost',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-// Icon-only circular button - Link variant
-export const IconOnlyLink: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'link',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-// Icon-only circular button - Destructive variant (red)
-export const IconOnlyDestructive: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'destructive',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Delete',
-  },
-};
-
-// Icon-only circular button variants
-export const IconOnlySmallDefault: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'sm',
-    variant: 'outline',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-export const IconOnlyMediumDefault: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-export const IconOnlyLargeDefault: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'lg',
-    variant: 'outline',
-    state: 'default',
-    iconName: 'chevron-left',
-    label: 'Previous',
-  },
-};
-
-// Icon-only with different icons
-export const IconOnlyChevronRight: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    iconName: 'chevron-right',
-    label: 'Next',
-  },
-};
-
-export const IconOnlyChevronUp: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    iconName: 'chevron-up',
-    label: 'Scroll up',
-  },
-};
-
-export const IconOnlyChevronDown: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    iconName: 'chevron-down',
-    label: 'Scroll down',
-  },
-};
-
-export const IconOnlyCheck: Story = {
-  args: {
-    shape: 'icon-only',
-    size: 'md',
-    variant: 'outline',
-    iconName: 'check',
-    label: 'Confirm',
-  },
-};
-
-// Icon-only showcase with all variants
-export const IconOnlyAllVariants: Story = {
+/**
+ * All available button variants: default, secondary, outline, ghost, link, and destructive.
+ * These are the core visual styles available for the button component.
+ */
+export const Variants: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 24px;">
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Outline</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            iconName="chevron-left"
-            label="Outline button"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Default</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="default"
-            iconName="chevron-left"
-            label="Default button"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Secondary</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="secondary"
-            iconName="chevron-left"
-            label="Secondary button"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Ghost</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="ghost"
-            iconName="chevron-left"
-            label="Ghost button"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Link</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="link"
-            iconName="chevron-left"
-            label="Link button"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Destructive</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="destructive"
-            iconName="chevron-left"
-            label="Destructive button"
-          ></bsg-button>
-        </div>
-      </div>
-    `,
-  }),
-};
-
-// Icon-only showcase by size
-export const IconOnlyAllSizes: Story = {
-  render: () => ({
-    template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 24px;">
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Small (27px)</span>
-          <bsg-button
-            shape="icon-only"
-            size="sm"
-            variant="outline"
-            iconName="chevron-left"
-            label="Small icon button"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Medium (35px)</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            iconName="chevron-left"
-            label="Medium icon button"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Large (43px)</span>
-          <bsg-button
-            shape="icon-only"
-            size="lg"
-            variant="outline"
-            iconName="chevron-left"
-            label="Large icon button"
-          ></bsg-button>
-        </div>
-      </div>
-    `,
-  }),
-};
-
-// Icon-only showcase by state
-export const IconOnlyAllStates: Story = {
-  render: () => ({
-    template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 24px;">
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Default</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            state="default"
-            iconName="chevron-left"
-            label="Default state"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Hover</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            state="hover"
-            iconName="chevron-left"
-            label="Hover state"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Active</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            state="active"
-            iconName="chevron-left"
-            label="Active state"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Focus</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            state="focus"
-            iconName="chevron-left"
-            label="Focus state"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Disabled</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            state="disabled"
-            iconName="chevron-left"
-            label="Disabled state"
-          ></bsg-button>
-        </div>
-      </div>
-    `,
-  }),
-};
-
-// Icon-only showcase with all icon types
-export const IconOnlyAllIcons: Story = {
-  render: () => ({
-    template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap; padding: 24px;">
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Chevron Left</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            iconName="chevron-left"
-            label="Previous"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Chevron Right</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            iconName="chevron-right"
-            label="Next"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Chevron Up</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            iconName="chevron-up"
-            label="Scroll up"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Chevron Down</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            iconName="chevron-down"
-            label="Scroll down"
-          ></bsg-button>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
-          <span style="font-size: 12px; color: #666; font-family: Roboto, sans-serif;">Check</span>
-          <bsg-button
-            shape="icon-only"
-            size="md"
-            variant="outline"
-            iconName="check"
-            label="Confirm"
-          ></bsg-button>
-        </div>
-      </div>
-    `,
-  }),
-};
-
-// Complete showcase
-export const AllSizesDefault: Story = {
-  render: () => ({
-    template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
-        <bsg-button size="sm" variant="default" label="Small"></bsg-button>
-        <bsg-button size="md" variant="default" label="Medium"></bsg-button>
-        <bsg-button size="lg" variant="default" label="Large"></bsg-button>
-      </div>
-    `,
-  }),
-};
-
-export const AllVariants: Story = {
-  render: () => ({
-    template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
         <bsg-button variant="default" label="Default"></bsg-button>
         <bsg-button variant="secondary" label="Secondary"></bsg-button>
         <bsg-button variant="outline" label="Outline"></bsg-button>
@@ -590,10 +74,30 @@ export const AllVariants: Story = {
   }),
 };
 
-export const AllStates: Story = {
+/**
+ * Button sizes: small (sm), medium (md), and large (lg).
+ * Demonstrates all available sizes using the default variant.
+ */
+export const Sizes: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+        <bsg-button size="sm" variant="default" label="Small"></bsg-button>
+        <bsg-button size="md" variant="default" label="Medium"></bsg-button>
+        <bsg-button size="lg" variant="default" label="Large"></bsg-button>
+      </div>
+    `,
+  }),
+};
+
+/**
+ * Button states: default, hover, active, focus, and disabled.
+ * Shows the visual appearance of buttons in different interaction states.
+ */
+export const States: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
         <bsg-button state="default" label="Default"></bsg-button>
         <bsg-button state="hover" label="Hover"></bsg-button>
         <bsg-button state="active" label="Active"></bsg-button>
@@ -604,21 +108,133 @@ export const AllStates: Story = {
   }),
 };
 
-export const AllShapes: Story = {
+/**
+ * Button shapes: rectangular and pill.
+ * Demonstrates the available shape options for buttons.
+ */
+export const Shapes: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+      <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
         <bsg-button shape="rectangular" label="Rectangular"></bsg-button>
         <bsg-button shape="pill" label="Pill"></bsg-button>
-        <bsg-button shape="icon" [icon]="true" label="Icon"></bsg-button>
-        <bsg-button shape="icon-text" [icon]="true" label="Icon+Text"></bsg-button>
-        <bsg-button shape="icon-only" iconName="chevron-left" label="Icon Only"></bsg-button>
       </div>
     `,
   }),
 };
 
-// Complete design system showcase
+// ============================================================
+// EXAMPLES SECTION
+// ============================================================
+
+/**
+ * Icon-only buttons for focused actions.
+ * Useful for navigation, controls, and compact UI elements.
+ * Shows different icons and variants.
+ */
+export const IconOnly: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 24px; padding: 24px;">
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #666;">Different Icons</h4>
+          <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+              <span style="font-size: 12px; color: #999;">Chevron Left</span>
+              <bsg-button shape="icon-only" variant="outline" iconName="chevron-left" label="Previous"></bsg-button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+              <span style="font-size: 12px; color: #999;">Chevron Right</span>
+              <bsg-button shape="icon-only" variant="outline" iconName="chevron-right" label="Next"></bsg-button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+              <span style="font-size: 12px; color: #999;">Chevron Up</span>
+              <bsg-button shape="icon-only" variant="outline" iconName="chevron-up" label="Up"></bsg-button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+              <span style="font-size: 12px; color: #999;">Chevron Down</span>
+              <bsg-button shape="icon-only" variant="outline" iconName="chevron-down" label="Down"></bsg-button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
+              <span style="font-size: 12px; color: #999;">Check</span>
+              <bsg-button shape="icon-only" variant="outline" iconName="check" label="Confirm"></bsg-button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #666;">Sizes</h4>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <bsg-button shape="icon-only" size="sm" variant="outline" iconName="chevron-left" label="Small"></bsg-button>
+            <bsg-button shape="icon-only" size="md" variant="outline" iconName="chevron-left" label="Medium"></bsg-button>
+            <bsg-button shape="icon-only" size="lg" variant="outline" iconName="chevron-left" label="Large"></bsg-button>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #666;">Variants</h4>
+          <div style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+            <bsg-button shape="icon-only" variant="default" iconName="chevron-left" label="Default"></bsg-button>
+            <bsg-button shape="icon-only" variant="secondary" iconName="chevron-left" label="Secondary"></bsg-button>
+            <bsg-button shape="icon-only" variant="outline" iconName="chevron-left" label="Outline"></bsg-button>
+            <bsg-button shape="icon-only" variant="ghost" iconName="chevron-left" label="Ghost"></bsg-button>
+            <bsg-button shape="icon-only" variant="link" iconName="chevron-left" label="Link"></bsg-button>
+            <bsg-button shape="icon-only" variant="destructive" iconName="chevron-left" label="Delete"></bsg-button>
+          </div>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+/**
+ * Button with icon positioned on the left side of the text.
+ * Common use case for action buttons with visual indicators.
+ */
+export const WithLeftIcon: Story = {
+  args: {
+    shape: 'icon-text',
+    icon: true,
+    iconPosition: 'left',
+    label: 'Boton',
+    variant: 'default',
+  },
+};
+
+/**
+ * Button with icon positioned on the right side of the text.
+ * Useful for buttons indicating navigation or expansion.
+ */
+export const WithRightIcon: Story = {
+  args: {
+    shape: 'icon-text',
+    icon: true,
+    iconPosition: 'right',
+    label: 'Boton',
+    variant: 'default',
+  },
+};
+
+/**
+ * Link-style button that appears as a hyperlink.
+ * Used for secondary actions or navigation without emphasis.
+ */
+export const LinkButton: Story = {
+  args: {
+    variant: 'link',
+    label: 'Link Button',
+  },
+};
+
+// ============================================================
+// DESIGN SYSTEM SHOWCASE (Comprehensive overview)
+// ============================================================
+
+/**
+ * Complete design system showcase featuring all button variants,
+ * sizes, states, shapes, and icon configurations.
+ * Use this for documentation and design system reference.
+ */
 export const DesignSystemShowcase: Story = {
   render: () => ({
     template: `
@@ -675,30 +291,32 @@ export const DesignSystemShowcase: Story = {
         </section>
 
         <section style="margin-bottom: 40px;">
-          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600;">Pill Shape</h3>
+          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600;">Shapes</h3>
           <div style="display: flex; gap: 16px; align-items: center;">
-            <bsg-button shape="pill" variant="default" label="Boton"></bsg-button>
-            <bsg-button shape="pill" variant="secondary" label="Boton"></bsg-button>
-            <bsg-button shape="pill" variant="outline" label="Boton"></bsg-button>
-            <bsg-button shape="pill" variant="ghost" label="Boton"></bsg-button>
-            <bsg-button shape="pill" variant="destructive" label="Boton"></bsg-button>
+            <span style="width: 80px; font-size: 14px; color: #666;">Rectangular:</span>
+            <bsg-button shape="rectangular" label="Rectangular"></bsg-button>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center; margin-top: 8px;">
+            <span style="width: 80px; font-size: 14px; color: #666;">Pill:</span>
+            <bsg-button shape="pill" label="Pill"></bsg-button>
           </div>
         </section>
 
         <section style="margin-bottom: 40px;">
           <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600;">With Icons</h3>
-          <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 8px;">
-            <span style="width: 80px; font-size: 14px; color: #666;">Icon Only:</span>
-            <bsg-button size="sm" shape="icon" [icon]="true" variant="default"></bsg-button>
-            <bsg-button size="md" shape="icon" [icon]="true" variant="default"></bsg-button>
-            <bsg-button size="lg" shape="icon" [icon]="true" variant="default"></bsg-button>
+          <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
+            <span style="width: 80px; font-size: 14px; color: #666;">Left Icon:</span>
+            <bsg-button [icon]="true" iconPosition="left" label="Boton"></bsg-button>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
+            <span style="width: 80px; font-size: 14px; color: #666;">Right Icon:</span>
+            <bsg-button [icon]="true" iconPosition="right" label="Boton"></bsg-button>
           </div>
           <div style="display: flex; gap: 16px; align-items: center;">
-            <span style="width: 80px; font-size: 14px; color: #666;">With Text:</span>
-            <bsg-button [icon]="true" iconPosition="left" label="Boton"></bsg-button>
-            <bsg-button [icon]="true" iconPosition="right" variant="secondary" label="Boton"></bsg-button>
-            <bsg-button [icon]="true" iconPosition="left" variant="outline" label="Boton"></bsg-button>
-            <bsg-button [icon]="true" iconPosition="left" variant="ghost" label="Boton"></bsg-button>
+            <span style="width: 80px; font-size: 14px; color: #666;">Icon Only:</span>
+            <bsg-button size="sm" shape="icon" [icon]="true"></bsg-button>
+            <bsg-button size="md" shape="icon" [icon]="true"></bsg-button>
+            <bsg-button size="lg" shape="icon" [icon]="true"></bsg-button>
           </div>
         </section>
 
@@ -718,14 +336,6 @@ export const DesignSystemShowcase: Story = {
             <bsg-button shape="icon-only" size="sm" variant="outline" iconName="chevron-left" label="Small"></bsg-button>
             <bsg-button shape="icon-only" size="md" variant="outline" iconName="chevron-left" label="Medium"></bsg-button>
             <bsg-button shape="icon-only" size="lg" variant="outline" iconName="chevron-left" label="Large"></bsg-button>
-          </div>
-          <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
-            <span style="width: 80px; font-size: 14px; color: #666;">States:</span>
-            <bsg-button shape="icon-only" size="md" variant="outline" state="default" iconName="chevron-left" label="Default"></bsg-button>
-            <bsg-button shape="icon-only" size="md" variant="outline" state="hover" iconName="chevron-left" label="Hover"></bsg-button>
-            <bsg-button shape="icon-only" size="md" variant="outline" state="active" iconName="chevron-left" label="Active"></bsg-button>
-            <bsg-button shape="icon-only" size="md" variant="outline" state="focus" iconName="chevron-left" label="Focus"></bsg-button>
-            <bsg-button shape="icon-only" size="md" variant="outline" state="disabled" iconName="chevron-left" label="Disabled"></bsg-button>
           </div>
           <div style="display: flex; gap: 16px; align-items: center;">
             <span style="width: 80px; font-size: 14px; color: #666;">Icons:</span>
