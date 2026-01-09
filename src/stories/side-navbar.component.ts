@@ -19,7 +19,7 @@ export interface NavItemClickEvent {
 }
 
 @Component({
-  selector: 'storybook-side-navbar',
+  selector: 'bsg-side-navbar',
   standalone: true,
   imports: [CommonModule],
   template: `
