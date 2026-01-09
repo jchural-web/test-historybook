@@ -243,52 +243,50 @@ export interface TableAction {
           <!-- Tab Content -->
           <div class="ui-table-tab-content">
             <div *ngFor="let tab of tabs; let i = index">
-              <div *ngIf="i === activeTabIndex && tab.tableData" class="ui-table-content-wrapper">
-                <div class="ui-table-content">
-                  <!-- Table Header -->
-                  <div class="ui-table-content-header">
+              <div *ngIf="i === activeTabIndex && tab.tableData" class="ui-table-content">
+                <!-- Table Header -->
+                <div class="ui-table-content-header">
+                  <div
+                    *ngFor="let column of tab.tableData.columns"
+                    class="ui-table-header-cell"
+                    [style.width]="column.width || 'auto'"
+                  >
+                    {{ column.label }}
+                  </div>
+                </div>
+
+                <storybook-separator></storybook-separator>
+
+                <!-- Table Rows -->
+                <div class="ui-table-content-body">
+                  <div
+                    *ngFor="let row of tab.tableData.rows"
+                    class="ui-table-row"
+                  >
                     <div
                       *ngFor="let column of tab.tableData.columns"
-                      class="ui-table-header-cell"
+                      class="ui-table-cell"
                       [style.width]="column.width || 'auto'"
                     >
-                      {{ column.label }}
-                    </div>
-                  </div>
+                      <!-- Render badge if specified -->
+                      <storybook-badge
+                        *ngIf="row[column.key + '_badge']"
+                        [variant]="row[column.key + '_badge_variant'] || 'default'"
+                        [value]="row[column.key]"
+                        [size]="row[column.key + '_badge_size'] || 'default'"
+                      ></storybook-badge>
 
-                  <storybook-separator></storybook-separator>
+                      <!-- Render label if specified -->
+                      <storybook-label
+                        *ngIf="row[column.key + '_label'] && !row[column.key + '_badge']"
+                        [text]="row[column.key]"
+                      ></storybook-label>
 
-                  <!-- Table Rows -->
-                  <div class="ui-table-content-body">
-                    <div
-                      *ngFor="let row of tab.tableData.rows"
-                      class="ui-table-row"
-                    >
-                      <div
-                        *ngFor="let column of tab.tableData.columns"
-                        class="ui-table-cell"
-                        [style.width]="column.width || 'auto'"
+                      <!-- Render plain text otherwise -->
+                      <span
+                        *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']"
+                        >{{ row[column.key] }}</span
                       >
-                        <!-- Render badge if specified -->
-                        <storybook-badge
-                          *ngIf="row[column.key + '_badge']"
-                          [variant]="row[column.key + '_badge_variant'] || 'default'"
-                          [value]="row[column.key]"
-                          [size]="row[column.key + '_badge_size'] || 'default'"
-                        ></storybook-badge>
-
-                        <!-- Render label if specified -->
-                        <storybook-label
-                          *ngIf="row[column.key + '_label'] && !row[column.key + '_badge']"
-                          [text]="row[column.key]"
-                        ></storybook-label>
-
-                        <!-- Render plain text otherwise -->
-                        <span
-                          *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']"
-                          >{{ row[column.key] }}</span
-                        >
-                      </div>
                     </div>
                   </div>
                 </div>
