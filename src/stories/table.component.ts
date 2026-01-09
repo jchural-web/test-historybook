@@ -366,7 +366,12 @@ export class TableComponent {
   @Output() rowAction = new EventEmitter<{ rowIndex: number; action: TableAction }>();
 
   get containerClasses(): string[] {
-    return [`table-${this.variant}`];
+    return [`table-${this.variant}`, { 'table-collapsed': this.isCollapsible && !this.isExpanded }];
+  }
+
+  toggleCollapse(): void {
+    this.isExpanded = !this.isExpanded;
+    this.collapseToggle.emit(this.isExpanded);
   }
 
   onHeaderAction(): void {
