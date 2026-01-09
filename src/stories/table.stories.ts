@@ -293,8 +293,6 @@ export const DesignSystemShowcase: Story = {
           <bsg-table
             title="Beneficios Solicitados (Coordinador)"
             variant="table-actions"
-            [collapsible]="true"
-            [collapsed]="false"
             [showActionsColumn]="true"
             actionsColumnLabel="Aprobar solicitud"
             actionsColumnWidth="120px"
@@ -339,8 +337,6 @@ export const DesignSystemShowcase: Story = {
           <bsg-table
             title="Tarifario de Trámites y Servicios"
             variant="table-basic"
-            [collapsible]="true"
-            [collapsed]="false"
             [tableColumns]="[
               { key: 'number', label: 'N°', width: '50px' },
               { key: 'concept', label: 'Concepto', width: '218px' },
@@ -452,8 +448,6 @@ export const DesignSystemShowcase: Story = {
           <bsg-table
             title="Versión Profesional"
             variant="list-content"
-            [collapsible]="true"
-            [collapsed]="false"
             [listItems]="[
               {
                 text: 'Aplicarás técnicas avanzadas en el diseño de arquitecturas seguras, escalables y optimizadas en AWS.'
