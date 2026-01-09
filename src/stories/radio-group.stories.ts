@@ -136,7 +136,7 @@ export const DesignSystemShowcase: Story = {
           
           <div style="margin-bottom: 24px;">
             <h4 style="margin-bottom: 12px; font-size: 16px; font-weight: 600; color: #202020;">Small (sm)</h4>
-            <storybook-radio-group 
+            <bsg-radio-group 
               size="sm" 
               orientation="horizontal"
               [options]="[
@@ -144,12 +144,12 @@ export const DesignSystemShowcase: Story = {
                 { value: '2', label: 'Dos' },
                 { value: '3', label: 'Tres' }
               ]">
-            </storybook-radio-group>
+            </bsg-radio-group>
           </div>
           
           <div>
             <h4 style="margin-bottom: 12px; font-size: 16px; font-weight: 600; color: #202020;">Medium (md)</h4>
-            <storybook-radio-group 
+            <bsg-radio-group 
               size="md" 
               orientation="horizontal"
               [options]="[
@@ -157,7 +157,7 @@ export const DesignSystemShowcase: Story = {
                 { value: '2', label: 'Dos' },
                 { value: '3', label: 'Tres' }
               ]">
-            </storybook-radio-group>
+            </bsg-radio-group>
           </div>
         </section>
 
@@ -167,7 +167,7 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 64px;">
             <div>
               <h4 style="margin-bottom: 12px; font-size: 16px; font-weight: 600; color: #202020;">Small (sm)</h4>
-              <storybook-radio-group 
+              <bsg-radio-group 
                 size="sm" 
                 orientation="vertical"
                 [options]="[
@@ -175,12 +175,12 @@ export const DesignSystemShowcase: Story = {
                   { value: '2', label: 'Dos' },
                   { value: '3', label: 'Tres' }
                 ]">
-              </storybook-radio-group>
+              </bsg-radio-group>
             </div>
             
             <div>
               <h4 style="margin-bottom: 12px; font-size: 16px; font-weight: 600; color: #202020;">Medium (md)</h4>
-              <storybook-radio-group 
+              <bsg-radio-group 
                 size="md" 
                 orientation="vertical"
                 [options]="[
@@ -188,7 +188,7 @@ export const DesignSystemShowcase: Story = {
                   { value: '2', label: 'Dos' },
                   { value: '3', label: 'Tres' }
                 ]">
-              </storybook-radio-group>
+              </bsg-radio-group>
             </div>
           </div>
         </section>
@@ -227,7 +227,7 @@ export const UsageExamples: Story = {
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Select Payment Method</h4>
-          <storybook-radio-group 
+          <bsg-radio-group 
             size="md" 
             orientation="vertical"
             selectedValue="credit"
@@ -236,12 +236,12 @@ export const UsageExamples: Story = {
               { value: 'debit', label: 'Debit Card' },
               { value: 'paypal', label: 'PayPal' }
             ]">
-          </storybook-radio-group>
+          </bsg-radio-group>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Choose Subscription Plan</h4>
-          <storybook-radio-group 
+          <bsg-radio-group 
             size="sm" 
             orientation="horizontal"
             [options]="[
@@ -249,12 +249,12 @@ export const UsageExamples: Story = {
               { value: 'yearly', label: 'Yearly' },
               { value: 'lifetime', label: 'Lifetime' }
             ]">
-          </storybook-radio-group>
+          </bsg-radio-group>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Select Shipping Speed</h4>
-          <storybook-radio-group 
+          <bsg-radio-group 
             size="md" 
             orientation="vertical"
             selectedValue="standard"
@@ -263,12 +263,12 @@ export const UsageExamples: Story = {
               { value: 'standard', label: 'Standard (3-5 days)' },
               { value: 'economy', label: 'Economy (7-10 days)' }
             ]">
-          </storybook-radio-group>
+          </bsg-radio-group>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">With Disabled Option</h4>
-          <storybook-radio-group 
+          <bsg-radio-group 
             size="md" 
             orientation="vertical"
             selectedValue="email"
@@ -277,7 +277,7 @@ export const UsageExamples: Story = {
               { value: 'sms', label: 'SMS Notification', disabled: true },
               { value: 'push', label: 'Push Notification' }
             ]">
-          </storybook-radio-group>
+          </bsg-radio-group>
         </div>
       </div>
     `,
@@ -296,7 +296,7 @@ export const FormExample: Story = {
             <legend style="font-size: 14px; font-weight: 600; color: #202020; padding: 0 8px;">
               How often do you use our product?
             </legend>
-            <storybook-radio-group 
+            <bsg-radio-group 
               size="md" 
               orientation="vertical"
               [options]="[
@@ -305,14 +305,14 @@ export const FormExample: Story = {
                 { value: 'monthly', label: 'Monthly' },
                 { value: 'rarely', label: 'Rarely' }
               ]">
-            </storybook-radio-group>
+            </bsg-radio-group>
           </fieldset>
           
           <fieldset style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
             <legend style="font-size: 14px; font-weight: 600; color: #202020; padding: 0 8px;">
               Would you recommend us to a friend?
             </legend>
-            <storybook-radio-group 
+            <bsg-radio-group 
               size="md" 
               orientation="horizontal"
               [options]="[
@@ -320,7 +320,7 @@ export const FormExample: Story = {
                 { value: 'no', label: 'No' },
                 { value: 'maybe', label: 'Maybe' }
               ]">
-            </storybook-radio-group>
+            </bsg-radio-group>
           </fieldset>
         </form>
       </div>
