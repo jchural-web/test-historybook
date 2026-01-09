@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 export type SeparatorOrientation = 'horizontal' | 'vertical';
 
 @Component({
-  selector: 'storybook-separator',
+  selector: 'bsg-separator',
   standalone: true,
   imports: [CommonModule],
   template: `
