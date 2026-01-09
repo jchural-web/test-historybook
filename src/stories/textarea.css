@@ -152,6 +152,14 @@
   color: #DC2626;
 }
 
+/* State variants - Error with Focus */
+/* Ensures error border (red) persists while adding focus ring (purple outline) */
+.textarea-state-error:has(.textarea-field:focus) {
+  border-color: #DC2626;
+  background: transparent;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+}
+
 /* Remove browser default focus styles */
 .textarea-field:focus {
   outline: none;
