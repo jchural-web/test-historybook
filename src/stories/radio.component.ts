@@ -117,10 +117,10 @@ export class RadioComponent {
       return '#64748B'; // neutral-500
     }
     if (this.state === 'hover') {
-      return '#3B82F6'; // Blue-500
+      return '#8B5CF6'; // Violet-500
     }
     if (this.state === 'checked') {
-      return '#2563EB'; // Blue-600
+      return '#7C3AED'; // Violet-600
     }
     if (this.state === 'focus') {
       return '#64748B'; // neutral-500
