@@ -97,34 +97,10 @@ export interface TableAction {
             (onClick)="onHeaderAction()"
           ></bsg-button>
         </div>
-
-        <!-- Collapse button -->
-        <button
-          *ngIf="collapsible"
-          type="button"
-          class="table-collapse-btn"
-          (click)="toggleCollapse()"
-          [attr.aria-expanded]="!collapsed"
-          [attr.aria-label]="collapsed ? 'Expandir' : 'Contraer'"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            [ngClass]="{ 'table-collapse-icon-rotated': collapsed }"
-          >
-            <path
-              d="M11.3691 8.22462C11.7618 7.90427 12.3408 7.92686 12.707 8.29298L18.707 14.293C19.0975 14.6835 19.0975 15.3165 18.707 15.707C18.3164 16.0976 17.6834 16.0976 17.2929 15.707L11.9999 10.4141L6.70696 15.707C6.31643 16.0976 5.68342 16.0976 5.29289 15.707C4.90237 15.3165 4.90237 14.6835 5.29289 14.293L11.2929 8.29298L11.3691 8.22462Z"
-              fill="#2563EB"
-            />
-          </svg>
-        </button>
       </div>
 
       <!-- Body -->
-      <div class="table-body" *ngIf="!collapsed">
+      <div class="table-body">
         <!-- Table Variants (table-basic, table-actions) -->
         <div *ngIf="variant === 'table-basic' || variant === 'table-actions'" class="table-content">
           <!-- Table Header -->
@@ -321,12 +297,6 @@ export class TableComponent {
   /** Display variant */
   @Input() variant: TableVariant = 'table-basic';
 
-  /** Whether the container is collapsible */
-  @Input() collapsible: boolean = true;
-
-  /** Initial collapsed state */
-  @Input() collapsed: boolean = false;
-
   /** Header action button (e.g., "Nuevo mensaje") */
   @Input() headerAction?: { label: string; variant?: string; size?: string };
 
@@ -356,7 +326,6 @@ export class TableComponent {
   @Input() tabsPagination: any[] = [];
 
   // Events
-  @Output() collapseChange = new EventEmitter<boolean>();
   @Output() headerActionClick = new EventEmitter<void>();
   @Output() tabChange = new EventEmitter<number>();
   @Output() tablePageChange = new EventEmitter<number>();
@@ -368,12 +337,7 @@ export class TableComponent {
   @Output() rowAction = new EventEmitter<{ rowIndex: number; action: TableAction }>();
 
   get containerClasses(): string[] {
-    return [`table-${this.variant}`, this.collapsed ? 'table-collapsed' : 'table-expanded'];
-  }
-
-  toggleCollapse(): void {
-    this.collapsed = !this.collapsed;
-    this.collapseChange.emit(this.collapsed);
+    return [`table-${this.variant}`];
   }
 
   onHeaderAction(): void {
