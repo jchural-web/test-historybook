@@ -1,0 +1,7 @@
+/* Label Base */
+.label {
+  display: inline;
+  color: #1e293b; /* neutral-800 */
+  font-size: 14px;
+  font-family: inherit;
+}
