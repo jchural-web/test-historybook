@@ -155,7 +155,7 @@ export const DesignSystemShowcase: Story = {
           <!-- Text Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Text</div>
           <div>
-            <storybook-skeleton type="text" width="228px" height="16px"></storybook-skeleton>
+            <bsg-skeleton type="text" width="228px" height="16px"></bsg-skeleton>
           </div>
           <div style="grid-row: span 3;">
             <!-- Card Composition Example from Figma -->
@@ -170,21 +170,21 @@ export const DesignSystemShowcase: Story = {
             ">
               <!-- Avatar + Title -->
               <div style="display: flex; align-items: flex-start; gap: 16px;">
-                <storybook-skeleton type="circular" width="29px" height="29px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="228px" height="16px"></storybook-skeleton>
+                <bsg-skeleton type="circular" width="29px" height="29px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="228px" height="16px"></bsg-skeleton>
               </div>
 
               <!-- Large content block -->
-              <storybook-skeleton type="rectangular" width="100%" height="87px"></storybook-skeleton>
+              <bsg-skeleton type="rectangular" width="100%" height="87px"></bsg-skeleton>
 
               <!-- Subtitle -->
-              <storybook-skeleton type="text" width="131px" height="16px"></storybook-skeleton>
+              <bsg-skeleton type="text" width="131px" height="16px"></bsg-skeleton>
 
               <!-- Three cards grid -->
               <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
-                <storybook-skeleton type="rectangular" width="101px" height="84px"></storybook-skeleton>
-                <storybook-skeleton type="rectangular" width="101px" height="84px"></storybook-skeleton>
-                <storybook-skeleton type="rectangular" width="101px" height="84px"></storybook-skeleton>
+                <bsg-skeleton type="rectangular" width="101px" height="84px"></bsg-skeleton>
+                <bsg-skeleton type="rectangular" width="101px" height="84px"></bsg-skeleton>
+                <bsg-skeleton type="rectangular" width="101px" height="84px"></bsg-skeleton>
               </div>
             </div>
           </div>
@@ -192,13 +192,13 @@ export const DesignSystemShowcase: Story = {
           <!-- Circular Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Circular</div>
           <div>
-            <storybook-skeleton type="circular" width="29px" height="29px"></storybook-skeleton>
+            <bsg-skeleton type="circular" width="29px" height="29px"></bsg-skeleton>
           </div>
           
           <!-- Rectangular Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Rectangular</div>
           <div>
-            <storybook-skeleton type="rectangular" width="101px" height="84px"></storybook-skeleton>
+            <bsg-skeleton type="rectangular" width="101px" height="84px"></bsg-skeleton>
           </div>
         </div>
 
@@ -284,22 +284,22 @@ export const CompositionExamples: Story = {
           ">
             <!-- Profile Header -->
             <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px;">
-              <storybook-skeleton type="circular" width="64px" height="64px"></storybook-skeleton>
+              <bsg-skeleton type="circular" width="64px" height="64px"></bsg-skeleton>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
-                <storybook-skeleton type="text" width="160px" height="20px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="120px" height="14px"></storybook-skeleton>
+                <bsg-skeleton type="text" width="160px" height="20px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="120px" height="14px"></bsg-skeleton>
               </div>
             </div>
 
             <!-- Bio -->
             <div style="margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
-              <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="70%" height="14px"></storybook-skeleton>
+              <bsg-skeleton type="text" width="100%" height="14px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="100%" height="14px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="70%" height="14px"></bsg-skeleton>
             </div>
 
             <!-- Action Button -->
-            <storybook-skeleton type="rectangular" width="100%" height="40px"></storybook-skeleton>
+            <bsg-skeleton type="rectangular" width="100%" height="40px"></bsg-skeleton>
           </div>
         </div>
         
@@ -309,30 +309,30 @@ export const CompositionExamples: Story = {
           <div style="display: flex; flex-direction: column; gap: 16px; max-width: 500px;">
             <!-- Comment 1 -->
             <div style="display: flex; gap: 12px; align-items: flex-start;">
-              <storybook-skeleton type="circular" width="32px" height="32px"></storybook-skeleton>
+              <bsg-skeleton type="circular" width="32px" height="32px"></bsg-skeleton>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
-                <storybook-skeleton type="text" width="100px" height="14px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="100%" height="12px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="80%" height="12px"></storybook-skeleton>
+                <bsg-skeleton type="text" width="100px" height="14px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="100%" height="12px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="80%" height="12px"></bsg-skeleton>
               </div>
             </div>
 
             <!-- Comment 2 -->
             <div style="display: flex; gap: 12px; align-items: flex-start;">
-              <storybook-skeleton type="circular" width="32px" height="32px"></storybook-skeleton>
+              <bsg-skeleton type="circular" width="32px" height="32px"></bsg-skeleton>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
-                <storybook-skeleton type="text" width="120px" height="14px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="100%" height="12px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="90%" height="12px"></storybook-skeleton>
+                <bsg-skeleton type="text" width="120px" height="14px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="100%" height="12px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="90%" height="12px"></bsg-skeleton>
               </div>
             </div>
 
             <!-- Comment 3 -->
             <div style="display: flex; gap: 12px; align-items: flex-start;">
-              <storybook-skeleton type="circular" width="32px" height="32px"></storybook-skeleton>
+              <bsg-skeleton type="circular" width="32px" height="32px"></bsg-skeleton>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
-                <storybook-skeleton type="text" width="90px" height="14px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="100%" height="12px"></storybook-skeleton>
+                <bsg-skeleton type="text" width="90px" height="14px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="100%" height="12px"></bsg-skeleton>
               </div>
             </div>
           </div>
@@ -348,19 +348,19 @@ export const CompositionExamples: Story = {
             max-width: 350px;
           ">
             <!-- Image -->
-            <storybook-skeleton type="rectangular" width="100%" height="200px"></storybook-skeleton>
+            <bsg-skeleton type="rectangular" width="100%" height="200px"></bsg-skeleton>
 
             <!-- Content -->
             <div style="padding: 16px; display: flex; flex-direction: column; gap: 8px;">
-              <storybook-skeleton type="text" width="80%" height="20px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="60%" height="14px" style="margin-bottom: 16px;"></storybook-skeleton>
+              <bsg-skeleton type="text" width="80%" height="20px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="100%" height="14px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="100%" height="14px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="60%" height="14px" style="margin-bottom: 16px;"></bsg-skeleton>
 
               <!-- Metadata -->
               <div style="display: flex; align-items: center; gap: 12px;">
-                <storybook-skeleton type="circular" width="24px" height="24px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="100px" height="12px"></storybook-skeleton>
+                <bsg-skeleton type="circular" width="24px" height="24px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="100px" height="12px"></bsg-skeleton>
               </div>
             </div>
           </div>
@@ -371,21 +371,21 @@ export const CompositionExamples: Story = {
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Product Grid</h4>
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 600px;">
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <storybook-skeleton type="rectangular" width="100%" height="180px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="80%" height="16px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="50%" height="16px"></storybook-skeleton>
+              <bsg-skeleton type="rectangular" width="100%" height="180px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="80%" height="16px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="50%" height="16px"></bsg-skeleton>
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <storybook-skeleton type="rectangular" width="100%" height="180px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="90%" height="16px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="60%" height="16px"></storybook-skeleton>
+              <bsg-skeleton type="rectangular" width="100%" height="180px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="90%" height="16px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="60%" height="16px"></bsg-skeleton>
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 8px;">
-              <storybook-skeleton type="rectangular" width="100%" height="180px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="70%" height="16px"></storybook-skeleton>
-              <storybook-skeleton type="text" width="55%" height="16px"></storybook-skeleton>
+              <bsg-skeleton type="rectangular" width="100%" height="180px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="70%" height="16px"></bsg-skeleton>
+              <bsg-skeleton type="text" width="55%" height="16px"></bsg-skeleton>
             </div>
           </div>
         </div>
@@ -395,26 +395,26 @@ export const CompositionExamples: Story = {
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">List Items</h4>
           <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px;">
             <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
-              <storybook-skeleton type="circular" width="40px" height="40px"></storybook-skeleton>
+              <bsg-skeleton type="circular" width="40px" height="40px"></bsg-skeleton>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
-                <storybook-skeleton type="text" width="150px" height="16px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="100px" height="12px"></storybook-skeleton>
+                <bsg-skeleton type="text" width="150px" height="16px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="100px" height="12px"></bsg-skeleton>
               </div>
             </div>
 
             <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
-              <storybook-skeleton type="circular" width="40px" height="40px"></storybook-skeleton>
+              <bsg-skeleton type="circular" width="40px" height="40px"></bsg-skeleton>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
-                <storybook-skeleton type="text" width="130px" height="16px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="90px" height="12px"></storybook-skeleton>
+                <bsg-skeleton type="text" width="130px" height="16px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="90px" height="12px"></bsg-skeleton>
               </div>
             </div>
 
             <div style="display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: #F8FAFC; border-radius: 8px;">
-              <storybook-skeleton type="circular" width="40px" height="40px"></storybook-skeleton>
+              <bsg-skeleton type="circular" width="40px" height="40px"></bsg-skeleton>
               <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;">
-                <storybook-skeleton type="text" width="170px" height="16px"></storybook-skeleton>
-                <storybook-skeleton type="text" width="110px" height="12px"></storybook-skeleton>
+                <bsg-skeleton type="text" width="170px" height="16px"></bsg-skeleton>
+                <bsg-skeleton type="text" width="110px" height="12px"></bsg-skeleton>
               </div>
             </div>
           </div>
@@ -439,11 +439,11 @@ export const InteractivePlayground: Story = {
         </p>
         
         <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <storybook-skeleton 
+          <bsg-skeleton 
             [type]="type"
             [width]="width"
             [height]="height">
-          </storybook-skeleton>
+          </bsg-skeleton>
         </div>
         
         <div style="margin-top: 32px; padding: 16px; background: #FEF3C7; border-radius: 8px; font-size: 13px; color: #78350F; line-height: 1.6;">
