@@ -5,7 +5,7 @@ export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type AvatarType = 'default' | 'fallback';
 
 @Component({
-  selector: 'storybook-avatar',
+  selector: 'bsg-avatar',
   standalone: true,
   imports: [CommonModule],
   template: `
