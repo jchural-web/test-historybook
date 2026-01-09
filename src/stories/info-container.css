@@ -106,10 +106,6 @@
   flex-shrink: 0;
 }
 
-.info-container-table-body {
-  padding: 0;
-}
-
 .info-container-table-row {
   display: flex;
   gap: 16px;
