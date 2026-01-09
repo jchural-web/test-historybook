@@ -1,25 +1,53 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LabelComponent } from './label.component';
+import { ButtonComponent } from './button.component';
 
 export type TextareaState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';
+export type TextareaComposition = 'default' | 'withLabel' | 'withText' | 'withButton';
 
 @Component({
   selector: 'storybook-textarea',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, LabelComponent, ButtonComponent],
   template: `
-    <div class="textarea-wrapper" [ngClass]="wrapperClasses">
-      <textarea
-        class="textarea-field"
-        [placeholder]="placeholder"
-        [disabled]="state === 'disabled'"
-        [value]="value"
-        (input)="onInput($event)"
-        (focus)="onFocus()"
-        (blur)="onBlur()"
-        [attr.rows]="rows"
-        [ngClass]="textareaClasses"
-      ></textarea>
+    <div class="textarea-composition" [ngClass]="compositionClasses">
+      <!-- Label (for withLabel and withText) -->
+      <storybook-label
+        *ngIf="composition === 'withLabel' || composition === 'withText'"
+        [text]="labelText"
+        class="composition-label"
+      ></storybook-label>
+
+      <!-- Textarea Field -->
+      <div class="textarea-wrapper" [ngClass]="wrapperClasses">
+        <textarea
+          class="textarea-field"
+          [placeholder]="placeholder"
+          [disabled]="state === 'disabled'"
+          [value]="value"
+          (input)="onInput($event)"
+          (focus)="onFocus()"
+          (blur)="onBlur()"
+          [attr.rows]="rows"
+          [ngClass]="textareaClasses"
+        ></textarea>
+      </div>
+
+      <!-- Helper Text (for withText) -->
+      <span
+        *ngIf="composition === 'withText'"
+        class="composition-helper-text"
+      >{{ helperText }}</span>
+
+      <!-- Button (for withButton) -->
+      <storybook-button
+        *ngIf="composition === 'withButton'"
+        [label]="buttonLabel"
+        [state]="state === 'disabled' ? 'disabled' : 'default'"
+        (onClick)="onButtonClick($event)"
+        class="composition-button"
+      ></storybook-button>
     </div>
   `,
   styleUrls: ['./textarea.css'],
@@ -29,11 +57,23 @@ export class TextareaComponent {
   @Input() placeholder: string = 'Ingresa información';
   @Input() value: string = '';
   @Input() rows: number = 3;
-  
+  @Input() composition: TextareaComposition = 'default';
+  @Input() labelText: string = 'Etiqueta';
+  @Input() helperText: string = 'Texto auxiliar';
+  @Input() buttonLabel: string = 'Enviar';
+
   @Output() valueChange = new EventEmitter<string>();
   @Output() onInputChange = new EventEmitter<string>();
   @Output() onFocusEvent = new EventEmitter<void>();
   @Output() onBlurEvent = new EventEmitter<void>();
+  @Output() onButtonClick = new EventEmitter<Event>();
+
+  get compositionClasses(): string[] {
+    return [
+      'textarea-composition',
+      `composition-${this.composition}`
+    ].filter(Boolean);
+  }
 
   get wrapperClasses(): string[] {
     return [
@@ -59,5 +99,9 @@ export class TextareaComponent {
 
   onBlur(): void {
     this.onBlurEvent.emit();
+  }
+
+  handleButtonClick(event: Event): void {
+    this.onButtonClick.emit(event);
   }
 }
