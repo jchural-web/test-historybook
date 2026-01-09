@@ -81,24 +81,74 @@ export const AllStates: Story = {
         <div style="display: flex; gap: 24px; flex-wrap: wrap;">
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-            <storybook-textarea state="default"></storybook-textarea>
+            <storybook-textarea state="default" composition="default"></storybook-textarea>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-            <storybook-textarea state="hover"></storybook-textarea>
+            <storybook-textarea state="hover" composition="default"></storybook-textarea>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-            <storybook-textarea state="focus"></storybook-textarea>
+            <storybook-textarea state="focus" composition="default"></storybook-textarea>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-            <storybook-textarea state="disabled"></storybook-textarea>
+            <storybook-textarea state="disabled" composition="default"></storybook-textarea>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-            <storybook-textarea state="error"></storybook-textarea>
+            <storybook-textarea state="error" composition="default"></storybook-textarea>
           </div>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+export const CompositionVariants: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Composition Variants</h3>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px; border: 1px solid #E2E8F0; border-radius: 6px;">
+          <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+          <storybook-textarea
+            state="default"
+            composition="default"
+            placeholder="Ingresa información aquí..."
+          ></storybook-textarea>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px; border: 1px solid #E2E8F0; border-radius: 6px;">
+          <span style="font-size: 14px; font-weight: 600; color: #202020;">With Label</span>
+          <storybook-textarea
+            state="default"
+            composition="withLabel"
+            labelText="Comentarios"
+            placeholder="Ingresa tus comentarios..."
+          ></storybook-textarea>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px; border: 1px solid #E2E8F0; border-radius: 6px;">
+          <span style="font-size: 14px; font-weight: 600; color: #202020;">With Label and Helper Text</span>
+          <storybook-textarea
+            state="default"
+            composition="withText"
+            labelText="Descripción"
+            helperText="Proporciona una descripción clara y detallada"
+            placeholder="Describe tu solicitud aquí..."
+          ></storybook-textarea>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 16px; padding: 16px; border: 1px solid #E2E8F0; border-radius: 6px;">
+          <span style="font-size: 14px; font-weight: 600; color: #202020;">With Button</span>
+          <storybook-textarea
+            state="default"
+            composition="withButton"
+            buttonLabel="Enviar Mensaje"
+            placeholder="Escribe tu mensaje..."
+          ></storybook-textarea>
         </div>
       </div>
     `,
