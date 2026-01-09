@@ -241,10 +241,6 @@
     padding: 16px;
   }
 
-  .ui-table-content-wrapper {
-    margin: 16px;
-  }
-
   .ui-table-content-header,
   .ui-table-row {
     flex-direction: column;
