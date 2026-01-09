@@ -19,7 +19,7 @@ const currencyIcon = `<svg width="21" height="21" viewBox="0 0 21 21" fill="none
 </svg>`;
 
 @Component({
-  selector: 'storybook-card',
+  selector: 'bsg-card',
   standalone: true,
   imports: [CommonModule],
   template: `
