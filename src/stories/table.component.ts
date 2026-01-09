@@ -324,6 +324,10 @@ export class TableComponent {
   /** Header action button (e.g., "Nuevo mensaje") */
   @Input() headerAction?: { label: string; variant?: string; size?: string };
 
+  // Collapsible mode inputs
+  @Input() isCollapsible: boolean = false;
+  @Input() isExpanded: boolean = true;
+
   // Table variant inputs
   @Input() tableColumns: TableColumn[] = [];
   @Input() tableRows: TableRow[] = [];
@@ -351,6 +355,7 @@ export class TableComponent {
 
   // Events
   @Output() headerActionClick = new EventEmitter<void>();
+  @Output() collapseToggle = new EventEmitter<boolean>();
   @Output() tabChange = new EventEmitter<number>();
   @Output() tablePageChange = new EventEmitter<number>();
   @Output() tablePageSizeChange = new EventEmitter<number>();
