@@ -126,76 +126,71 @@ export interface TableAction {
       <!-- Body -->
       <div class="ui-table-body" *ngIf="!collapsed">
         <!-- Table Variants (table-basic, table-actions) -->
-        <div
-          *ngIf="variant === 'table-basic' || variant === 'table-actions'"
-          class="ui-table-content-wrapper"
-        >
-          <div class="ui-table-content">
-            <!-- Table Header -->
-            <div class="ui-table-content-header">
+        <div *ngIf="variant === 'table-basic' || variant === 'table-actions'" class="ui-table-content">
+          <!-- Table Header -->
+          <div class="ui-table-content-header">
+            <div
+              *ngFor="let column of tableColumns"
+              class="ui-table-header-cell"
+              [style.width]="column.width || 'auto'"
+            >
+              {{ column.label }}
+            </div>
+            <div
+              *ngIf="variant === 'table-actions' && showActionsColumn"
+              class="ui-table-header-cell ui-table-actions-header"
+              [style.width]="actionsColumnWidth || 'auto'"
+            >
+              {{ actionsColumnLabel || 'Acciones' }}
+            </div>
+          </div>
+
+          <storybook-separator></storybook-separator>
+
+          <!-- Table Rows -->
+          <div class="ui-table-content-body">
+            <div *ngFor="let row of tableRows; let i = index" class="ui-table-row">
               <div
                 *ngFor="let column of tableColumns"
-                class="ui-table-header-cell"
+                class="ui-table-cell"
                 [style.width]="column.width || 'auto'"
               >
-                {{ column.label }}
+                <!-- Render badge if specified -->
+                <storybook-badge
+                  *ngIf="row[column.key + '_badge']"
+                  [variant]="row[column.key + '_badge_variant'] || 'default'"
+                  [value]="row[column.key]"
+                  [size]="row[column.key + '_badge_size'] || 'default'"
+                ></storybook-badge>
+
+                <!-- Render label if specified -->
+                <storybook-label
+                  *ngIf="row[column.key + '_label'] && !row[column.key + '_badge']"
+                  [text]="row[column.key]"
+                ></storybook-label>
+
+                <!-- Render plain text otherwise -->
+                <span *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']">{{
+                  row[column.key]
+                }}</span>
               </div>
+
+              <!-- Actions Column (for table-actions variant) -->
               <div
-                *ngIf="variant === 'table-actions' && showActionsColumn"
-                class="ui-table-header-cell ui-table-actions-header"
+                *ngIf="variant === 'table-actions' && row.actions"
+                class="ui-table-cell ui-table-actions-cell"
                 [style.width]="actionsColumnWidth || 'auto'"
               >
-                {{ actionsColumnLabel || 'Acciones' }}
-              </div>
-            </div>
-
-            <storybook-separator></storybook-separator>
-
-            <!-- Table Rows -->
-            <div class="ui-table-content-body">
-              <div *ngFor="let row of tableRows; let i = index" class="ui-table-row">
-                <div
-                  *ngFor="let column of tableColumns"
-                  class="ui-table-cell"
-                  [style.width]="column.width || 'auto'"
-                >
-                  <!-- Render badge if specified -->
-                  <storybook-badge
-                    *ngIf="row[column.key + '_badge']"
-                    [variant]="row[column.key + '_badge_variant'] || 'default'"
-                    [value]="row[column.key]"
-                    [size]="row[column.key + '_badge_size'] || 'default'"
-                  ></storybook-badge>
-
-                  <!-- Render label if specified -->
-                  <storybook-label
-                    *ngIf="row[column.key + '_label'] && !row[column.key + '_badge']"
-                    [text]="row[column.key]"
-                  ></storybook-label>
-
-                  <!-- Render plain text otherwise -->
-                  <span *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']">{{
-                    row[column.key]
-                  }}</span>
-                </div>
-
-                <!-- Actions Column (for table-actions variant) -->
-                <div
-                  *ngIf="variant === 'table-actions' && row.actions"
-                  class="ui-table-cell ui-table-actions-cell"
-                  [style.width]="actionsColumnWidth || 'auto'"
-                >
-                  <div class="ui-table-actions">
-                    <storybook-button
-                      *ngFor="let action of row.actions"
-                      [label]="action.label"
-                      [variant]="getActionVariant(action.variant)"
-                      [size]="'md'"
-                      [shape]="'rectangular'"
-                      (onClick)="onRowAction(i, action)"
-                      class="ui-table-action-btn"
-                    ></storybook-button>
-                  </div>
+                <div class="ui-table-actions">
+                  <storybook-button
+                    *ngFor="let action of row.actions"
+                    [label]="action.label"
+                    [variant]="getActionVariant(action.variant)"
+                    [size]="'md'"
+                    [shape]="'rectangular'"
+                    (onClick)="onRowAction(i, action)"
+                    class="ui-table-action-btn"
+                  ></storybook-button>
                 </div>
               </div>
             </div>
