@@ -331,6 +331,95 @@ export const DesignSystemShowcase: Story = {
 };
 
 // ===========================
+// Accordion with Actions (like Table Actions Variant)
+// ===========================
+
+export const AccordionWithActions: Story = {
+  args: {
+    size: 'md',
+    mode: 'single',
+    items: [
+      {
+        id: 'action-1',
+        title: 'Acceso al material oficial del PMI - Bianca Mamani',
+        content: 'Programa: Curso Oficial de Preparación | Centro Costo: PREP EXAMPMP ONLINE 2024 XIV LIMA | Fecha: 28/02/2025 | Estado: Pendiente de aprobación | Acciones: Aprobar / Rechazar',
+      },
+      {
+        id: 'action-2',
+        title: 'Beca Completa AWS - Carlos López',
+        content: 'Programa: AWS Solutions Architect Training | Centro Costo: AWS TRAINING 2024 I LIMA | Fecha: 25/02/2025 | Estado: En revisión | Acciones: Aprobar / Rechazar',
+      },
+      {
+        id: 'action-3',
+        title: 'Material Digital Curso PMP - María García',
+        content: 'Programa: Certificación de Gestión de Proyectos | Centro Costo: CURSO PMP 2024 II BOGOTA | Fecha: 20/02/2025 | Estado: Pendiente | Acciones: Aprobar / Rechazar',
+      },
+    ],
+  },
+};
+
+// ===========================
+// Accordion with Basic Content (like Table Basic Variant)
+// ===========================
+
+export const AccordionBasic: Story = {
+  args: {
+    size: 'md',
+    mode: 'multiple',
+    items: [
+      {
+        id: 'basic-1',
+        title: 'Costos Gestión de Cobranza - $30.00 (PEN)',
+        content: 'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza: efectivo, transferencia, tarjeta de crédito. Válido para todos los cursos y programas.',
+      },
+      {
+        id: 'basic-2',
+        title: 'Emisión de duplicado de certificado - $50.00 (PEN)',
+        content: 'Cuando el alumno solicita una segunda copia del certificado de participación. Incluye envío digital y una copia física si lo requiere.',
+      },
+      {
+        id: 'basic-3',
+        title: 'Cambio de horario de clase - $25.00 (PEN)',
+        content: 'Cambio de horario después de la inscripción inicial. Se puede realizar hasta 2 cambios por semestre académico.',
+      },
+      {
+        id: 'basic-4',
+        title: 'Certificación adicional - $75.00 (PEN)',
+        content: 'Solicitud de certificación adicional en un programa diferente. Incluye evaluación y emisión de nuevo certificado.',
+      },
+    ],
+  },
+};
+
+// ===========================
+// Accordion with List Content (like Table List Variant)
+// ===========================
+
+export const AccordionListContent: Story = {
+  args: {
+    size: 'md',
+    mode: 'multiple',
+    items: [
+      {
+        id: 'list-1',
+        title: 'Plan Básico',
+        content: 'Acceso a cursos fundamentales\nMaterial de estudio en PDF\nForos de discusión comunitarios\nSoporte por correo (48 horas respuesta)\nCertificado de participación',
+      },
+      {
+        id: 'list-2',
+        title: 'Plan Profesional',
+        content: 'Acceso a material oficial completamente actualizado\nSimulador con 195 preguntas del examen de certificación\nCertificación oficial de participación en el curso\nAcceso a laboratorios oficiales de AWS\nSoporte técnico dedicado 24/7\nMentoría individual mensual',
+      },
+      {
+        id: 'list-3',
+        title: 'Plan Empresarial',
+        content: 'Todos los beneficios del Plan Profesional\nAcceso a cursos avanzados y especializados\nFormación personalizada para equipos (mínimo 5 personas)\nIntegración con sistemas empresariales\nReportes de progreso detallados\nSoporte prioritario con SLA garantizado\nLicencias ilimitadas para usuarios corporativos',
+      },
+    ],
+  },
+};
+
+// ===========================
 // Tables in Accordion
 // ===========================
 
@@ -338,8 +427,8 @@ export const TablesInAccordion: Story = {
   render: () => ({
     template: `
       <div style="padding: 24px; font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;">
-        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Tables with Collapsible Accordion</h3>
-        <p style="margin: 0 0 24px 0; color: #64748B; font-size: 14px;">Use Accordion component to make tables collapsible and expandable.</p>
+        <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Accordion with Embedded Tables</h3>
+        <p style="margin: 0 0 24px 0; color: #64748B; font-size: 14px;">Accordion items with complete table components inside, allowing collapsible table sections.</p>
 
         <!-- Collapsible Table Example 1: Table Actions -->
         <div style="margin-bottom: 24px;">
