@@ -202,7 +202,7 @@
 
 .tab-navigation-color-green .tab-item:focus-visible:not(.tab-item-active):not([disabled]),
 .tab-navigation-color-green .tab-item-focus {
-  border-color: #16a34a; /* Green-600 */
+  outline-color: #16a34a; /* Green-600 */
 }
 
 .tab-navigation-color-green .tab-item-disabled,
