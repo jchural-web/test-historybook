@@ -8,7 +8,7 @@ const meta: Meta<CardComponent> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'elevated', 'outlined'],
+      options: ['default'],
       description: 'Card variant type',
     },
     state: {
