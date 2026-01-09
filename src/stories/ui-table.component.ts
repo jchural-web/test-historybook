@@ -90,12 +90,12 @@ export interface TableAction {
 
         <!-- Header Actions (e.g., "Nuevo mensaje" button) -->
         <div class="ui-table-header-actions" *ngIf="headerAction">
-          <storybook-button
+          <bsg-button
             [label]="headerAction.label"
             [variant]="headerAction.variant || 'default'"
             [size]="headerAction.size || 'md'"
             (onClick)="onHeaderAction()"
-          ></storybook-button>
+          ></bsg-button>
         </div>
 
         <!-- Collapse button -->
@@ -148,7 +148,7 @@ export interface TableAction {
             </div>
           </div>
 
-          <storybook-separator></storybook-separator>
+          <bsg-separator></bsg-separator>
 
           <!-- Table Rows -->
           <div class="ui-table-content-body">
@@ -159,18 +159,18 @@ export interface TableAction {
                 [style.width]="column.width || 'auto'"
               >
                 <!-- Render badge if specified -->
-                <storybook-badge
+                <bsg-badge
                   *ngIf="row[column.key + '_badge']"
                   [variant]="row[column.key + '_badge_variant'] || 'default'"
                   [value]="row[column.key]"
                   [size]="row[column.key + '_badge_size'] || 'default'"
-                ></storybook-badge>
+                ></bsg-badge>
 
                 <!-- Render label if specified -->
-                <storybook-label
+                <bsg-label
                   *ngIf="row[column.key + '_label'] && !row[column.key + '_badge']"
                   [text]="row[column.key]"
-                ></storybook-label>
+                ></bsg-label>
 
                 <!-- Render plain text otherwise -->
                 <span *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']">{{
@@ -185,7 +185,7 @@ export interface TableAction {
                 [style.width]="actionsColumnWidth || 'auto'"
               >
                 <div class="ui-table-actions">
-                  <storybook-button
+                  <bsg-button
                     *ngFor="let action of row.actions"
                     [label]="action.label"
                     [variant]="getActionVariant(action.variant)"
@@ -193,7 +193,7 @@ export interface TableAction {
                     [shape]="'rectangular'"
                     (onClick)="onRowAction(i, action)"
                     class="ui-table-action-btn"
-                  ></storybook-button>
+                  ></bsg-button>
                 </div>
               </div>
             </div>
@@ -201,8 +201,8 @@ export interface TableAction {
 
           <!-- Pagination -->
           <div class="ui-table-pagination" *ngIf="tablePagination">
-            <storybook-separator></storybook-separator>
-            <storybook-pagination
+            <bsg-separator></bsg-separator>
+            <bsg-pagination
               [currentPage]="tablePagination.currentPage"
               [totalPages]="tablePagination.totalPages"
               [pageSize]="tablePagination.pageSize"
@@ -212,7 +212,7 @@ export interface TableAction {
               (pageChange)="onTablePageChange($event)"
               (pageSizeChange)="onTablePageSizeChange($event)"
               (refresh)="onTableRefresh()"
-            ></storybook-pagination>
+            ></bsg-pagination>
           </div>
         </div>
 
@@ -238,13 +238,13 @@ export interface TableAction {
         <!-- Tabs Variant (table-tabs) -->
         <div *ngIf="variant === 'table-tabs'" class="ui-table-tabs-wrapper">
           <!-- Tab Navigation -->
-          <storybook-tab-navigation
+          <bsg-tab-navigation
             [tabs]="tabs"
             [activeIndex]="activeTabIndex"
             [size]="'md'"
             [variant]="'text'"
             (onTabChange)="onTabChange($event)"
-          ></storybook-tab-navigation>
+          ></bsg-tab-navigation>
 
           <!-- Tab Content -->
           <div class="ui-table-tab-content">
@@ -261,7 +261,7 @@ export interface TableAction {
                   </div>
                 </div>
 
-                <storybook-separator></storybook-separator>
+                <bsg-separator></bsg-separator>
 
                 <!-- Table Rows -->
                 <div class="ui-table-content-body">
@@ -272,18 +272,18 @@ export interface TableAction {
                       [style.width]="column.width || 'auto'"
                     >
                       <!-- Render badge if specified -->
-                      <storybook-badge
+                      <bsg-badge
                         *ngIf="row[column.key + '_badge']"
                         [variant]="row[column.key + '_badge_variant'] || 'default'"
                         [value]="row[column.key]"
                         [size]="row[column.key + '_badge_size'] || 'default'"
-                      ></storybook-badge>
+                      ></bsg-badge>
 
                       <!-- Render label if specified -->
-                      <storybook-label
+                      <bsg-label
                         *ngIf="row[column.key + '_label'] && !row[column.key + '_badge']"
                         [text]="row[column.key]"
-                      ></storybook-label>
+                      ></bsg-label>
 
                       <!-- Render plain text otherwise -->
                       <span *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']">{{
@@ -295,8 +295,8 @@ export interface TableAction {
 
                 <!-- Pagination for this tab -->
                 <div class="ui-table-pagination" *ngIf="tabsPagination && tabsPagination[i]">
-                  <storybook-separator></storybook-separator>
-                  <storybook-pagination
+                  <bsg-separator></bsg-separator>
+                  <bsg-pagination
                     [currentPage]="tabsPagination[i].currentPage"
                     [totalPages]="tabsPagination[i].totalPages"
                     [pageSize]="tabsPagination[i].pageSize"
@@ -306,7 +306,7 @@ export interface TableAction {
                     (pageChange)="onTabPageChange(i, $event)"
                     (pageSizeChange)="onTabPageSizeChange(i, $event)"
                     (refresh)="onTabRefresh(i)"
-                  ></storybook-pagination>
+                  ></bsg-pagination>
                 </div>
               </div>
             </div>
