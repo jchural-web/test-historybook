@@ -288,7 +288,7 @@ export const CompositionExamples: Story = {
             </div>
 
             <!-- Bio -->
-            <div style="margin-bottom: 24px;">
+            <div style="margin-bottom: 24px; display: flex; flex-direction: column; gap: 8px;">
               <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
               <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
               <storybook-skeleton type="text" width="70%" height="14px"></storybook-skeleton>
