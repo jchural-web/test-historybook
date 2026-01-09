@@ -34,53 +34,23 @@ const meta: Meta<TextareaComponent> = {
 export default meta;
 type Story = StoryObj<TextareaComponent>;
 
-// State examples
+// ===========================
+// Default - Interactive Textarea
+// ===========================
+
 export const Default: Story = {
   args: {
     state: 'default',
+    placeholder: 'Ingresa información',
+    value: '',
+    rows: 3,
   },
 };
 
-export const Hover: Story = {
-  args: {
-    state: 'hover',
-  },
-};
+// ===========================
+// Showcase Stories
+// ===========================
 
-export const Focus: Story = {
-  args: {
-    state: 'focus',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    state: 'disabled',
-  },
-};
-
-export const Error: Story = {
-  args: {
-    state: 'error',
-  },
-};
-
-// With content
-export const WithContent: Story = {
-  args: {
-    state: 'default',
-    value: 'Este es un ejemplo de texto ingresado en el textarea. Puede contener múltiples líneas de texto.',
-  },
-};
-
-export const ErrorWithContent: Story = {
-  args: {
-    state: 'error',
-    value: 'Este texto contiene un error de validación.',
-  },
-};
-
-// Showcase stories
 export const AllStates: Story = {
   render: () => ({
     template: `
