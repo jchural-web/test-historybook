@@ -32,9 +32,6 @@
   position: relative;
 }
 
-.tab-item:focus {
-  outline: none;
-}
 
 /* Remove default button styles */
 .tab-item::-moz-focus-inner {
