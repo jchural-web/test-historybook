@@ -26,17 +26,12 @@
   flex-shrink: 0; /* Prevent shrinking in flex containers */
 }
 
-/* Type: Rectangular - with bottom spacing for stacked layouts */
+/* Type: Rectangular - no bottom margin, use gap in container instead */
 .skeleton-rectangular {
   border-radius: 8px; /* md radius from Figma */
   width: 100%; /* Default full width */
   height: 100px; /* Default height */
-  margin-bottom: 16px; /* Spacing between rectangular blocks - increased for visibility */
-}
-
-/* Last rectangular element in parent container should not have bottom margin */
-.skeleton-rectangular:last-child {
-  margin-bottom: 0;
+  margin-bottom: 0; /* Remove margin, use gap in container instead */
 }
 
 /* Auto width/height handling */
