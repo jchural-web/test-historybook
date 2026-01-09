@@ -366,19 +366,19 @@ export const CompositionExamples: Story = {
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Product Grid</h4>
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 600px;">
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
               <storybook-skeleton type="rectangular" width="100%" height="180px"></storybook-skeleton>
               <storybook-skeleton type="text" width="80%" height="16px"></storybook-skeleton>
               <storybook-skeleton type="text" width="50%" height="16px"></storybook-skeleton>
             </div>
 
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
               <storybook-skeleton type="rectangular" width="100%" height="180px"></storybook-skeleton>
               <storybook-skeleton type="text" width="90%" height="16px"></storybook-skeleton>
               <storybook-skeleton type="text" width="60%" height="16px"></storybook-skeleton>
             </div>
 
-            <div style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: column; gap: 8px;">
               <storybook-skeleton type="rectangular" width="100%" height="180px"></storybook-skeleton>
               <storybook-skeleton type="text" width="70%" height="16px"></storybook-skeleton>
               <storybook-skeleton type="text" width="55%" height="16px"></storybook-skeleton>
