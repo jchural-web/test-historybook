@@ -265,13 +265,13 @@ export const DesignSystemShowcase: Story = {
         <!-- Modes -->
         <section style="margin-bottom: 48px;">
           <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600;">Modes</h3>
-          
+
           <div style="display: flex; flex-direction: column; gap: 32px;">
             <!-- Single Mode -->
             <div>
               <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Single Mode (solo un elemento abierto)</h4>
-              <bsg-accordion 
-                size="md" 
+              <bsg-accordion
+                size="md"
                 mode="single"
                 [items]="[
                   { id: 'single-1', title: 'Opción 1', content: 'Solo una sección puede estar abierta a la vez' },
@@ -280,17 +280,88 @@ export const DesignSystemShowcase: Story = {
                 ]">
               </bsg-accordion>
             </div>
-            
+
             <!-- Multiple Mode -->
             <div>
               <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Multiple Mode (múltiples elementos abiertos)</h4>
-              <bsg-accordion 
-                size="md" 
+              <bsg-accordion
+                size="md"
                 mode="multiple"
                 [items]="[
                   { id: 'multi-1', title: 'Opción 1', content: 'Múltiples secciones pueden estar abiertas simultáneamente' },
                   { id: 'multi-2', title: 'Opción 2', content: 'Perfecto para ver múltiples secciones a la vez' },
                   { id: 'multi-3', title: 'Opción 3', content: 'Ideal para comparar información' }
+                ]">
+              </bsg-accordion>
+            </div>
+          </div>
+        </section>
+
+        <!-- Accordion Variants (like Table) -->
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600;">Accordion Variants (Table-like)</h3>
+          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">Accordion items with Table-like content structures</p>
+
+          <div style="display: flex; flex-direction: column; gap: 32px;">
+            <!-- Actions Variant -->
+            <div>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">With Actions (like table-actions)</h4>
+              <bsg-accordion
+                size="md"
+                mode="single"
+                [items]="[
+                  {
+                    id: 'var-action-1',
+                    title: 'Acceso al material oficial del PMI - Bianca Mamani',
+                    content: 'Programa: Curso Oficial de Preparación | Centro Costo: PREP EXAMPMP ONLINE 2024 XIV LIMA | Fecha: 28/02/2025 | Estado: Pendiente | Acciones: Aprobar / Rechazar'
+                  },
+                  {
+                    id: 'var-action-2',
+                    title: 'Beca Completa AWS - Carlos López',
+                    content: 'Programa: AWS Solutions Architect | Centro Costo: AWS TRAINING 2024 I LIMA | Fecha: 25/02/2025 | Estado: En revisión | Acciones: Aprobar / Rechazar'
+                  }
+                ]">
+              </bsg-accordion>
+            </div>
+
+            <!-- Basic Variant -->
+            <div>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">Basic Content (like table-basic)</h4>
+              <bsg-accordion
+                size="md"
+                mode="multiple"
+                [items]="[
+                  {
+                    id: 'var-basic-1',
+                    title: 'Costos Gestión de Cobranza - $30.00 (PEN)',
+                    content: 'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza: efectivo, transferencia, tarjeta de crédito. Válido para todos los cursos y programas.'
+                  },
+                  {
+                    id: 'var-basic-2',
+                    title: 'Emisión de duplicado de certificado - $50.00 (PEN)',
+                    content: 'Cuando el alumno solicita una segunda copia del certificado de participación. Incluye envío digital y una copia física si lo requiere.'
+                  }
+                ]">
+              </bsg-accordion>
+            </div>
+
+            <!-- List Content Variant -->
+            <div>
+              <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 500; color: #64748B;">List Content (like list-content)</h4>
+              <bsg-accordion
+                size="md"
+                mode="multiple"
+                [items]="[
+                  {
+                    id: 'var-list-1',
+                    title: 'Plan Profesional',
+                    content: 'Acceso a material oficial completamente actualizado\n\nSimulador con 195 preguntas del examen de certificación\n\nCertificación oficial de participación en el curso\n\nAcceso a laboratorios oficiales de AWS\n\nSoporte técnico dedicado 24/7'
+                  },
+                  {
+                    id: 'var-list-2',
+                    title: 'Plan Empresarial',
+                    content: 'Todos los beneficios del Plan Profesional\n\nFormación personalizada para equipos (mínimo 5 personas)\n\nIntegración con sistemas empresariales\n\nReportes de progreso detallados\n\nSoporte prioritario con SLA garantizado\n\nLicencias ilimitadas para usuarios corporativos'
+                  }
                 ]">
               </bsg-accordion>
             </div>
