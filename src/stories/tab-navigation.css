@@ -32,7 +32,6 @@
   position: relative;
 }
 
-
 /* Remove default button styles */
 .tab-item::-moz-focus-inner {
   border: 0;

@@ -126,10 +126,7 @@ export interface TableAction {
       <!-- Body -->
       <div class="table-body" *ngIf="!collapsed">
         <!-- Table Variants (table-basic, table-actions) -->
-        <div
-          *ngIf="variant === 'table-basic' || variant === 'table-actions'"
-          class="table-content"
-        >
+        <div *ngIf="variant === 'table-basic' || variant === 'table-actions'" class="table-content">
           <!-- Table Header -->
           <div class="table-content-header">
             <div
@@ -371,10 +368,7 @@ export class TableComponent {
   @Output() rowAction = new EventEmitter<{ rowIndex: number; action: TableAction }>();
 
   get containerClasses(): string[] {
-    return [
-      `table-${this.variant}`,
-      this.collapsed ? 'table-collapsed' : 'table-expanded',
-    ];
+    return [`table-${this.variant}`, this.collapsed ? 'table-collapsed' : 'table-expanded'];
   }
 
   toggleCollapse(): void {

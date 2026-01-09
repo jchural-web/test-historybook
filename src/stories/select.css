@@ -14,7 +14,12 @@
   border-radius: 6px;
   border: 1px solid #cbd5e1; /* neutral-300 */
   background: transparent;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -135,7 +140,12 @@
 /* Dropdown option */
 .select-option {
   padding: 4px 12px;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
@@ -161,7 +171,12 @@
 /* Error message */
 .select-error-message {
   margin-top: 6px;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 1.4;
