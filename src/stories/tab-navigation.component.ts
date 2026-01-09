@@ -13,7 +13,7 @@ export interface TabItem {
 }
 
 @Component({
-  selector: 'storybook-tab-navigation',
+  selector: 'bsg-tab-navigation',
   standalone: true,
   imports: [CommonModule],
   template: `
