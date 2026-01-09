@@ -180,7 +180,13 @@ export interface PageSizeChangeEvent {
 })
 export class PaginationComponent {
   /** Current active page (1-based) */
-  @Input() currentPage: number = 1;
+  @Input() set currentPage(value: number) {
+    this._currentPage = value;
+  }
+  get currentPage(): number {
+    return this._currentPage;
+  }
+  private _currentPage: number = 1;
 
   /** Total number of pages */
   @Input() totalPages: number = 1;
@@ -212,25 +218,25 @@ export class PaginationComponent {
   private tempPageValue: string = '';
 
   goToFirstPage(): void {
-    if (this.currentPage !== 1 && this.totalPages > 0) {
+    if (this._currentPage !== 1 && this.totalPages > 0) {
       this.updatePage(1);
     }
   }
 
   goToPreviousPage(): void {
-    if (this.currentPage > 1) {
-      this.updatePage(this.currentPage - 1);
+    if (this._currentPage > 1) {
+      this.updatePage(this._currentPage - 1);
     }
   }
 
   goToNextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.updatePage(this.currentPage + 1);
+    if (this._currentPage < this.totalPages) {
+      this.updatePage(this._currentPage + 1);
     }
   }
 
   goToLastPage(): void {
-    if (this.currentPage !== this.totalPages && this.totalPages > 0) {
+    if (this._currentPage !== this.totalPages && this.totalPages > 0) {
       this.updatePage(this.totalPages);
     }
   }
@@ -265,7 +271,7 @@ export class PaginationComponent {
     if (!isNaN(newPageSize) && newPageSize !== this.pageSize) {
       this.pageSizeChange.emit(newPageSize);
       this.paginationChange.emit({
-        currentPage: this.currentPage,
+        currentPage: this._currentPage,
         pageSize: newPageSize,
       });
     }
@@ -276,6 +282,7 @@ export class PaginationComponent {
   }
 
   private updatePage(page: number): void {
+    this._currentPage = page;
     this.pageChange.emit(page);
     this.paginationChange.emit({
       currentPage: page,
