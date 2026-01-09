@@ -273,21 +273,21 @@ export const CompositionExamples: Story = {
             max-width: 400px;
           ">
             <!-- Profile Header -->
-            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px;">
               <storybook-skeleton type="circular" width="64px" height="64px"></storybook-skeleton>
-              <div style="flex: 1;">
-                <storybook-skeleton type="text" width="160px" height="20px" style="margin-bottom: 8px;"></storybook-skeleton>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 0;">
+                <storybook-skeleton type="text" width="160px" height="20px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="120px" height="14px"></storybook-skeleton>
               </div>
             </div>
-            
+
             <!-- Bio -->
             <div style="margin-bottom: 24px;">
-              <storybook-skeleton type="text" width="100%" height="14px" style="margin-bottom: 8px;"></storybook-skeleton>
-              <storybook-skeleton type="text" width="100%" height="14px" style="margin-bottom: 8px;"></storybook-skeleton>
+              <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
+              <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
               <storybook-skeleton type="text" width="70%" height="14px"></storybook-skeleton>
             </div>
-            
+
             <!-- Action Button -->
             <storybook-skeleton type="rectangular" width="100%" height="40px"></storybook-skeleton>
           </div>
