@@ -52,11 +52,11 @@ export const AllSizes: Story = {
         <div style="display: flex; gap: 32px; align-items: center;">
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Small (16px)</span>
-            <storybook-checkbox size="sm" state="default"></storybook-checkbox>
+            <bsg-checkbox size="sm" state="default"></bsg-checkbox>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Medium (20px)</span>
-            <storybook-checkbox size="md" state="default"></storybook-checkbox>
+            <bsg-checkbox size="md" state="default"></bsg-checkbox>
           </div>
         </div>
       </div>
@@ -72,27 +72,27 @@ export const AllStates: Story = {
         <div style="display: flex; gap: 16px; align-items: center;">
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Default</span>
-            <storybook-checkbox size="md" state="default"></storybook-checkbox>
+            <bsg-checkbox size="md" state="default"></bsg-checkbox>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Hover</span>
-            <storybook-checkbox size="md" state="hover"></storybook-checkbox>
+            <bsg-checkbox size="md" state="hover"></bsg-checkbox>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Checked</span>
-            <storybook-checkbox size="md" state="checked"></storybook-checkbox>
+            <bsg-checkbox size="md" state="checked"></bsg-checkbox>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Disabled</span>
-            <storybook-checkbox size="md" state="disabled"></storybook-checkbox>
+            <bsg-checkbox size="md" state="disabled"></bsg-checkbox>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Indeterminate</span>
-            <storybook-checkbox size="md" state="indeterminate"></storybook-checkbox>
+            <bsg-checkbox size="md" state="indeterminate"></bsg-checkbox>
           </div>
           <div style="display: flex; flex-direction: column; gap: 8px; align-items: center;">
             <span style="font-size: 14px; color: #666;">Focus</span>
-            <storybook-checkbox size="md" state="focus"></storybook-checkbox>
+            <bsg-checkbox size="md" state="focus"></bsg-checkbox>
           </div>
         </div>
       </div>
@@ -111,27 +111,27 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; align-items: flex-start;">
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <storybook-checkbox size="sm" state="default"></storybook-checkbox>
+              <bsg-checkbox size="sm" state="default"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <storybook-checkbox size="sm" state="hover"></storybook-checkbox>
+              <bsg-checkbox size="sm" state="hover"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Checked</span>
-              <storybook-checkbox size="sm" state="checked"></storybook-checkbox>
+              <bsg-checkbox size="sm" state="checked"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <storybook-checkbox size="sm" state="disabled"></storybook-checkbox>
+              <bsg-checkbox size="sm" state="disabled"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Indeterminate</span>
-              <storybook-checkbox size="sm" state="indeterminate"></storybook-checkbox>
+              <bsg-checkbox size="sm" state="indeterminate"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <storybook-checkbox size="sm" state="focus"></storybook-checkbox>
+              <bsg-checkbox size="sm" state="focus"></bsg-checkbox>
             </div>
           </div>
         </section>
@@ -141,27 +141,27 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; align-items: flex-start;">
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <storybook-checkbox size="md" state="default"></storybook-checkbox>
+              <bsg-checkbox size="md" state="default"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <storybook-checkbox size="md" state="hover"></storybook-checkbox>
+              <bsg-checkbox size="md" state="hover"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Checked</span>
-              <storybook-checkbox size="md" state="checked"></storybook-checkbox>
+              <bsg-checkbox size="md" state="checked"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <storybook-checkbox size="md" state="disabled"></storybook-checkbox>
+              <bsg-checkbox size="md" state="disabled"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Indeterminate</span>
-              <storybook-checkbox size="md" state="indeterminate"></storybook-checkbox>
+              <bsg-checkbox size="md" state="indeterminate"></bsg-checkbox>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <storybook-checkbox size="md" state="focus"></storybook-checkbox>
+              <bsg-checkbox size="md" state="focus"></bsg-checkbox>
             </div>
           </div>
         </section>
@@ -195,22 +195,22 @@ export const WithLabel: Story = {
         <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Checkbox with Labels</h3>
         
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <storybook-checkbox size="md" state="default"></storybook-checkbox>
+          <bsg-checkbox size="md" state="default"></bsg-checkbox>
           <span style="font-size: 14px; color: #202020;">Accept terms and conditions</span>
         </label>
 
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <storybook-checkbox size="md" state="checked"></storybook-checkbox>
+          <bsg-checkbox size="md" state="checked"></bsg-checkbox>
           <span style="font-size: 14px; color: #202020;">Subscribe to newsletter</span>
         </label>
 
         <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-          <storybook-checkbox size="md" state="indeterminate"></storybook-checkbox>
+          <bsg-checkbox size="md" state="indeterminate"></bsg-checkbox>
           <span style="font-size: 14px; color: #202020;">Select all (partial selection)</span>
         </label>
 
         <label style="display: flex; align-items: center; gap: 8px; cursor: not-allowed;">
-          <storybook-checkbox size="md" state="disabled"></storybook-checkbox>
+          <bsg-checkbox size="md" state="disabled"></bsg-checkbox>
           <span style="font-size: 14px; color: #64748B;">Option disabled</span>
         </label>
       </div>
