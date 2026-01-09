@@ -33,35 +33,6 @@ const meta: Meta<PaginationComponent> = {
   },
   args: {
     currentPage: 1,
-    totalPages: 1,
-    pageSize: 5,
-    pageSizeOptions: [5, 10, 20],
-    totalItems: 5,
-    rangeLabel: '1 - 5 de 5 ítems',
-  },
-};
-
-export default meta;
-type Story = StoryObj<PaginationComponent>;
-
-// ===========================
-// Basic Examples
-// ===========================
-
-export const SinglePage: Story = {
-  args: {
-    currentPage: 1,
-    totalPages: 1,
-    pageSize: 5,
-    pageSizeOptions: [5, 10, 20],
-    totalItems: 5,
-    rangeLabel: '1 - 5 de 5 ítems',
-  },
-};
-
-export const FirstPage: Story = {
-  args: {
-    currentPage: 1,
     totalPages: 10,
     pageSize: 5,
     pageSizeOptions: [5, 10, 20, 50],
@@ -70,105 +41,8 @@ export const FirstPage: Story = {
   },
 };
 
-export const MiddlePage: Story = {
-  args: {
-    currentPage: 5,
-    totalPages: 10,
-    pageSize: 5,
-    pageSizeOptions: [5, 10, 20, 50],
-    totalItems: 50,
-    rangeLabel: '21 - 25 de 50 ítems',
-  },
-};
-
-export const LastPage: Story = {
-  args: {
-    currentPage: 10,
-    totalPages: 10,
-    pageSize: 5,
-    pageSizeOptions: [5, 10, 20, 50],
-    totalItems: 50,
-    rangeLabel: '46 - 50 de 50 ítems',
-  },
-};
-
-// ===========================
-// Different Page Sizes
-// ===========================
-
-export const PageSize10: Story = {
-  args: {
-    currentPage: 1,
-    totalPages: 5,
-    pageSize: 10,
-    pageSizeOptions: [5, 10, 20, 50],
-    totalItems: 50,
-    rangeLabel: '1 - 10 de 50 ítems',
-  },
-};
-
-export const PageSize20: Story = {
-  args: {
-    currentPage: 1,
-    totalPages: 3,
-    pageSize: 20,
-    pageSizeOptions: [5, 10, 20, 50],
-    totalItems: 50,
-    rangeLabel: '1 - 20 de 50 ítems',
-  },
-};
-
-export const PageSize50: Story = {
-  args: {
-    currentPage: 1,
-    totalPages: 2,
-    pageSize: 50,
-    pageSizeOptions: [5, 10, 20, 50],
-    totalItems: 75,
-    rangeLabel: '1 - 50 de 75 ítems',
-  },
-};
-
-// ===========================
-// Large Datasets
-// ===========================
-
-export const LargeDataset: Story = {
-  args: {
-    currentPage: 50,
-    totalPages: 100,
-    pageSize: 10,
-    pageSizeOptions: [10, 25, 50, 100],
-    totalItems: 1000,
-    rangeLabel: '491 - 500 de 1000 ítems',
-  },
-};
-
-export const VeryLargeDataset: Story = {
-  args: {
-    currentPage: 250,
-    totalPages: 500,
-    pageSize: 20,
-    pageSizeOptions: [10, 20, 50, 100],
-    totalItems: 10000,
-    rangeLabel: '4981 - 5000 de 10000 ítems',
-  },
-};
-
-// ===========================
-// Empty State
-// ===========================
-
-export const EmptyState: Story = {
-  args: {
-    currentPage: 1,
-    totalPages: 0,
-    pageSize: 5,
-    pageSizeOptions: [5, 10, 20],
-    totalItems: 0,
-    rangeLabel: '0 - 0 de 0 ítems',
-  },
-};
+export default meta;
+type Story = StoryObj<PaginationComponent>;
 
 // ===========================
 // Design System Showcase
@@ -182,12 +56,12 @@ export const DesignSystemShowcase: Story = {
         
         <!-- States Grid -->
         <section style="margin-bottom: 64px;">
-          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Different States</h3>
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Component States</h3>
           
           <div style="display: flex; flex-direction: column; gap: 32px;">
             <!-- Single Page (All disabled) -->
             <div>
-              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">Single Page (All navigation disabled)</div>
+              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">Single Page - All navigation disabled</div>
               <storybook-pagination
                 [currentPage]="1"
                 [totalPages]="1"
@@ -200,7 +74,7 @@ export const DesignSystemShowcase: Story = {
 
             <!-- First Page (Prev/First disabled) -->
             <div>
-              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">First Page (Previous & First disabled)</div>
+              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">First Page - Previous & First buttons disabled</div>
               <storybook-pagination
                 [currentPage]="1"
                 [totalPages]="10"
@@ -213,7 +87,7 @@ export const DesignSystemShowcase: Story = {
 
             <!-- Middle Page (All enabled) -->
             <div>
-              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">Middle Page (All controls enabled)</div>
+              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">Middle Page - All controls fully enabled</div>
               <storybook-pagination
                 [currentPage]="5"
                 [totalPages]="10"
@@ -226,7 +100,7 @@ export const DesignSystemShowcase: Story = {
 
             <!-- Last Page (Next/Last disabled) -->
             <div>
-              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">Last Page (Next & Last disabled)</div>
+              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">Last Page - Next & Last buttons disabled</div>
               <storybook-pagination
                 [currentPage]="10"
                 [totalPages]="10"
@@ -239,7 +113,7 @@ export const DesignSystemShowcase: Story = {
 
             <!-- Empty State -->
             <div>
-              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">Empty State (No data)</div>
+              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">Empty State - No data available</div>
               <storybook-pagination
                 [currentPage]="1"
                 [totalPages]="0"
@@ -254,7 +128,7 @@ export const DesignSystemShowcase: Story = {
 
         <!-- Page Size Variations -->
         <section style="margin-bottom: 64px;">
-          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Page Size Variations</h3>
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Page Size Options</h3>
           
           <div style="display: flex; flex-direction: column; gap: 32px;">
             <!-- 5 items per page -->
@@ -306,6 +180,39 @@ export const DesignSystemShowcase: Story = {
                 [pageSizeOptions]="[5, 10, 20, 50]"
                 [totalItems]="100"
                 [rangeLabel]="'1 - 50 de 100 ítems'">
+              </storybook-pagination>
+            </div>
+          </div>
+        </section>
+
+        <!-- Large Datasets -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Large Datasets</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 32px;">
+            <!-- Large Dataset -->
+            <div>
+              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">1,000 items dataset</div>
+              <storybook-pagination
+                [currentPage]="50"
+                [totalPages]="100"
+                [pageSize]="10"
+                [pageSizeOptions]="[10, 25, 50, 100]"
+                [totalItems]="1000"
+                [rangeLabel]="'491 - 500 de 1000 ítems'">
+              </storybook-pagination>
+            </div>
+
+            <!-- Very Large Dataset -->
+            <div>
+              <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 12px;">10,000 items dataset</div>
+              <storybook-pagination
+                [currentPage]="250"
+                [totalPages]="500"
+                [pageSize]="20"
+                [pageSizeOptions]="[10, 20, 50, 100]"
+                [totalItems]="10000"
+                [rangeLabel]="'4981 - 5000 de 10000 ítems'">
               </storybook-pagination>
             </div>
           </div>
@@ -383,6 +290,16 @@ export const DesignSystemShowcase: Story = {
               <li>Chevron-down (select): #848485</li>
             </ul>
             
+            <p style="margin: 16px 0 8px 0;"><strong>Component Props:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li><code>currentPage</code> (number): Current active page (1-based)</li>
+              <li><code>totalPages</code> (number): Total number of pages</li>
+              <li><code>pageSize</code> (number): Number of items per page</li>
+              <li><code>pageSizeOptions</code> (number[]): Available page size options</li>
+              <li><code>totalItems</code> (number): Total number of items</li>
+              <li><code>rangeLabel</code> (string): Range label text (e.g., "1 - 5 de 50 ítems")</li>
+            </ul>
+            
             <p style="margin: 16px 0 8px 0;"><strong>Events:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li><code>pageChange</code>: Emits new page number (number)</li>
@@ -396,7 +313,8 @@ export const DesignSystemShowcase: Story = {
               <li>Component is stateless - relies on inputs for display</li>
               <li>All state changes emit events for parent to handle</li>
               <li>Navigation buttons auto-disable at boundaries</li>
-              <li>Page input validates on blur</li>
+              <li>Page input validates on blur and clamps to [1, totalPages]</li>
+              <li>When <code>totalPages</code> is 0, all navigation is disabled (empty state)</li>
               <li>Compatible with Builder.io as a standalone component</li>
             </ul>
             
