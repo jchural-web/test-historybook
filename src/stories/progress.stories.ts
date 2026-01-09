@@ -187,46 +187,46 @@ export const DesignSystemShowcase: Story = {
           <!-- SM Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Sm</div>
           <div style="display: flex; justify-content: center;">
-            <storybook-progress size="sm" type="circular" mode="determinate" [value]="73"></storybook-progress>
+            <bsg-progress size="sm" type="circular" mode="determinate" [value]="73"></bsg-progress>
           </div>
           <div style="display: flex; justify-content: center;">
-            <storybook-progress size="sm" type="circular" mode="indeterminate"></storybook-progress>
+            <bsg-progress size="sm" type="circular" mode="indeterminate"></bsg-progress>
           </div>
           <div>
-            <storybook-progress size="sm" type="linear" mode="determinate" [value]="51" label="Progreso general"></storybook-progress>
+            <bsg-progress size="sm" type="linear" mode="determinate" [value]="51" label="Progreso general"></bsg-progress>
           </div>
           <div>
-            <storybook-progress size="sm" type="linear" mode="indeterminate"></storybook-progress>
+            <bsg-progress size="sm" type="linear" mode="indeterminate"></bsg-progress>
           </div>
           
           <!-- MD Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">md</div>
           <div style="display: flex; justify-content: center;">
-            <storybook-progress size="md" type="circular" mode="determinate" [value]="73"></storybook-progress>
+            <bsg-progress size="md" type="circular" mode="determinate" [value]="73"></bsg-progress>
           </div>
           <div style="display: flex; justify-content: center;">
-            <storybook-progress size="md" type="circular" mode="indeterminate"></storybook-progress>
+            <bsg-progress size="md" type="circular" mode="indeterminate"></bsg-progress>
           </div>
           <div>
-            <storybook-progress size="md" type="linear" mode="determinate" [value]="51" label="Progreso general"></storybook-progress>
+            <bsg-progress size="md" type="linear" mode="determinate" [value]="51" label="Progreso general"></bsg-progress>
           </div>
           <div>
-            <storybook-progress size="md" type="linear" mode="indeterminate"></storybook-progress>
+            <bsg-progress size="md" type="linear" mode="indeterminate"></bsg-progress>
           </div>
           
           <!-- LG Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">lg</div>
           <div style="display: flex; justify-content: center;">
-            <storybook-progress size="lg" type="circular" mode="determinate" [value]="73" label="Tasa de asistencia"></storybook-progress>
+            <bsg-progress size="lg" type="circular" mode="determinate" [value]="73" label="Tasa de asistencia"></bsg-progress>
           </div>
           <div style="display: flex; justify-content: center;">
-            <storybook-progress size="lg" type="circular" mode="indeterminate"></storybook-progress>
+            <bsg-progress size="lg" type="circular" mode="indeterminate"></bsg-progress>
           </div>
           <div>
-            <storybook-progress size="lg" type="linear" mode="determinate" [value]="51" label="Progreso general"></storybook-progress>
+            <bsg-progress size="lg" type="linear" mode="determinate" [value]="51" label="Progreso general"></bsg-progress>
           </div>
           <div>
-            <storybook-progress size="lg" type="linear" mode="indeterminate"></storybook-progress>
+            <bsg-progress size="lg" type="linear" mode="indeterminate"></bsg-progress>
           </div>
         </div>
 
@@ -285,54 +285,54 @@ export const UsageExamples: Story = {
         <!-- File Upload Progress -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">File Upload Progress</h4>
-          <storybook-progress 
+          <bsg-progress 
             type="linear" 
             mode="determinate" 
             [value]="67" 
             label="Uploading files">
-          </storybook-progress>
+          </bsg-progress>
         </div>
         
         <!-- Loading Spinner -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Loading Spinner</h4>
-          <storybook-progress 
+          <bsg-progress 
             size="md"
             type="circular" 
             mode="indeterminate">
-          </storybook-progress>
+          </bsg-progress>
         </div>
         
         <!-- Attendance Rate -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Attendance Rate Dashboard</h4>
-          <storybook-progress 
+          <bsg-progress 
             size="lg"
             type="circular" 
             mode="determinate" 
             [value]="73"
             label="Tasa de asistencia">
-          </storybook-progress>
+          </bsg-progress>
         </div>
         
         <!-- Course Progress -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Course Completion</h4>
-          <storybook-progress 
+          <bsg-progress 
             type="linear" 
             mode="determinate" 
             [value]="51" 
             label="Progreso general">
-          </storybook-progress>
+          </bsg-progress>
         </div>
         
         <!-- Processing Data -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Processing Data</h4>
-          <storybook-progress 
+          <bsg-progress 
             type="linear" 
             mode="indeterminate">
-          </storybook-progress>
+          </bsg-progress>
         </div>
       </div>
     `,
@@ -354,13 +354,13 @@ export const InteractivePlayground: Story = {
         </p>
         
         <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <storybook-progress 
+          <bsg-progress 
             [size]="size"
             [type]="type" 
             [mode]="mode" 
             [value]="value"
             [label]="label">
-          </storybook-progress>
+          </bsg-progress>
         </div>
       </div>
     `,
