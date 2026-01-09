@@ -197,11 +197,8 @@
   margin-top: 24px;
 }
 
-.ui-table-tab-content .ui-table-content-wrapper {
-  margin: 0;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  overflow: hidden;
+.ui-table-tab-content .ui-table-content {
+  padding: 0;
 }
 
 .ui-table-tab-content .ui-table-content-header {
