@@ -356,7 +356,7 @@ export const DesignSystemShowcase: Story = {
             Table with action buttons (Aprobar/Rechazar) and badges in cells. Perfect for approval workflows.
           </p>
           
-          <storybook-ui-table
+          <bsg-ui-table
             title="Beneficios Solicitados (Coordinador)"
             variant="table-actions"
             [collapsible]="true"
@@ -392,7 +392,7 @@ export const DesignSystemShowcase: Story = {
               totalItems: 1,
               rangeLabel: '1 - 1 de 1 ítems'
             }">
-          </storybook-ui-table>
+          </bsg-ui-table>
         </section>
 
         <!-- Table Basic Variant -->
@@ -402,7 +402,7 @@ export const DesignSystemShowcase: Story = {
             Standard table with columns, rows, and pagination. Ideal for displaying structured data.
           </p>
           
-          <storybook-ui-table
+          <bsg-ui-table
             title="Tarifario de Trámites y Servicios"
             variant="table-basic"
             [collapsible]="true"
@@ -435,7 +435,7 @@ export const DesignSystemShowcase: Story = {
               totalItems: 2,
               rangeLabel: '1 - 2 de 2 ítems'
             }">
-          </storybook-ui-table>
+          </bsg-ui-table>
         </section>
 
         <!-- Table Tabs Variant -->
@@ -445,7 +445,7 @@ export const DesignSystemShowcase: Story = {
             Tabbed interface with tables. Each tab contains its own table with pagination.
           </p>
           
-          <storybook-ui-table
+          <bsg-ui-table
             title="Historial de mensajes"
             variant="table-tabs"
             [collapsible]="true"
@@ -505,7 +505,7 @@ export const DesignSystemShowcase: Story = {
                 rangeLabel: '0 - 0 de 0 ítems'
               }
             ]">
-          </storybook-ui-table>
+          </bsg-ui-table>
         </section>
 
         <!-- List Content Variant -->
@@ -515,7 +515,7 @@ export const DesignSystemShowcase: Story = {
             Numbered list format for sequential content or features. No table structure.
           </p>
           
-          <storybook-ui-table
+          <bsg-ui-table
             title="Versión Profesional"
             variant="list-content"
             [collapsible]="true"
@@ -531,7 +531,7 @@ export const DesignSystemShowcase: Story = {
                 text: 'Obtendrás la Certificación Oficial de AWS de participación en el curso.'
               }
             ]">
-          </storybook-ui-table>
+          </bsg-ui-table>
         </section>
 
         <!-- Design Specifications -->
@@ -594,7 +594,7 @@ export const InteractivePlayground: Story = {
           Use the controls panel to test all variants and options
         </p>
 
-        <storybook-ui-table
+        <bsg-ui-table
           [title]="title"
           [variant]="variant"
           [collapsible]="collapsible"
@@ -610,7 +610,7 @@ export const InteractivePlayground: Story = {
           [showActionsColumn]="showActionsColumn"
           (collapseChange)="handleCollapseChange($event)"
           (tabChange)="handleTabChange($event)">
-        </storybook-ui-table>
+        </bsg-ui-table>
 
         <div style="margin-top: 32px; padding: 16px; background: #DBEAFE; border-radius: 8px; font-size: 13px; color: #1E3A8A; line-height: 1.6;">
           <strong>UI Table Features:</strong>
