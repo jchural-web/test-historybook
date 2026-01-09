@@ -71,11 +71,11 @@ const icons: Record<string, string> = {
 
         <!-- User Profile -->
         <div class="app-header-user" *ngIf="user">
-          <storybook-avatar
+          <bsg-avatar
             [size]="'sm'"
             [type]="user.avatarImage ? 'default' : 'default'"
             [image]="user.avatarImage || ''"
-          ></storybook-avatar>
+          ></bsg-avatar>
           <span class="app-header-user-name">{{ user.name }}</span>
         </div>
       </div>
