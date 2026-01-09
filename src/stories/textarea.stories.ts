@@ -166,23 +166,23 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; flex-wrap: wrap;">
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <storybook-textarea state="default"></storybook-textarea>
+              <storybook-textarea state="default" composition="default"></storybook-textarea>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <storybook-textarea state="hover"></storybook-textarea>
+              <storybook-textarea state="hover" composition="default"></storybook-textarea>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <storybook-textarea state="focus"></storybook-textarea>
+              <storybook-textarea state="focus" composition="default"></storybook-textarea>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <storybook-textarea state="disabled"></storybox-textarea>
+              <storybook-textarea state="disabled" composition="default"></storybook-textarea>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-              <storybook-textarea state="error"></storybook-textarea>
+              <storybook-textarea state="error" composition="default"></storybook-textarea>
             </div>
           </div>
         </section>
@@ -192,16 +192,59 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; flex-wrap: wrap;">
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default with text</span>
-              <storybook-textarea 
-                state="default" 
+              <storybook-textarea
+                state="default"
+                composition="default"
                 value="Este es un ejemplo de texto en el textarea."
               ></storybook-textarea>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Error with text</span>
-              <storybook-textarea 
-                state="error" 
+              <storybook-textarea
+                state="error"
+                composition="default"
                 value="Este texto contiene un error."
+              ></storybook-textarea>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Composition Variants</h3>
+
+          <div style="margin-bottom: 32px;">
+            <h4 style="margin-bottom: 12px; font-size: 14px; font-weight: 600; color: #202020;">With Label</h4>
+            <div style="padding: 16px; border: 1px solid #E2E8F0; border-radius: 6px;">
+              <storybook-textarea
+                state="default"
+                composition="withLabel"
+                labelText="Comentarios"
+                placeholder="Ingresa tus comentarios..."
+              ></storybook-textarea>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 32px;">
+            <h4 style="margin-bottom: 12px; font-size: 14px; font-weight: 600; color: #202020;">With Label and Helper Text</h4>
+            <div style="padding: 16px; border: 1px solid #E2E8F0; border-radius: 6px;">
+              <storybook-textarea
+                state="default"
+                composition="withText"
+                labelText="Descripción"
+                helperText="Proporciona una descripción clara y detallada"
+                placeholder="Describe tu solicitud aquí..."
+              ></storybook-textarea>
+            </div>
+          </div>
+
+          <div>
+            <h4 style="margin-bottom: 12px; font-size: 14px; font-weight: 600; color: #202020;">With Button</h4>
+            <div style="padding: 16px; border: 1px solid #E2E8F0; border-radius: 6px;">
+              <storybook-textarea
+                state="default"
+                composition="withButton"
+                buttonLabel="Enviar Mensaje"
+                placeholder="Escribe tu mensaje..."
               ></storybook-textarea>
             </div>
           </div>
@@ -210,7 +253,7 @@ export const DesignSystemShowcase: Story = {
         <section>
           <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
           <div style="font-size: 14px; color: #64748B; line-height: 1.6;">
-            <p style="margin: 8px 0;"><strong>Dimensions:</strong> 203px width, 80px min-height</p>
+            <p style="margin: 8px 0;"><strong>Dimensions:</strong> 203px width (default), full-width for compositions</p>
             <p style="margin: 8px 0;"><strong>Padding:</strong> 8px 12px</p>
             <p style="margin: 8px 0;"><strong>Border:</strong> 1px solid, border-radius: 6px</p>
             <p style="margin: 8px 0;"><strong>Font:</strong> Inter, 16px, line-height: 24px</p>
@@ -221,8 +264,16 @@ export const DesignSystemShowcase: Story = {
               <li>Text/placeholder: #64748B (neutral-500)</li>
               <li>Error border & text: #DC2626 (Red-600)</li>
               <li>Focus outline: #7C3AED (Violet-600)</li>
+              <li>Label: #1e293b (neutral-800)</li>
+              <li>Helper text: #9ca3af (neutral-600)</li>
               <li>Hover: opacity 90%</li>
               <li>Disabled: opacity 40%</li>
+            </ul>
+            <p style="margin: 8px 0;"><strong>Composition Spacing:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>withLabel: 8px gap</li>
+              <li>withText: 8px gap</li>
+              <li>withButton: 12px gap</li>
             </ul>
           </div>
         </section>
