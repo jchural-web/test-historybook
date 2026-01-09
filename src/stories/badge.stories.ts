@@ -244,11 +244,11 @@ export const DesignSystemShowcase: Story = {
 
           <!-- Text Icon Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Text Icon</div>
-          <div><storybook-badge variant="default" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
-          <div><storybook-badge variant="secondary" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
-          <div><storybook-badge variant="destructive" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
-          <div><storybook-badge variant="outline" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
-          <div><storybook-badge variant="success" size="default" layout="text-icon" value="Etiqueta 2"></storybook-badge></div>
+          <div><bsg-badge variant="default" size="default" layout="text-icon" value="Etiqueta 2"></bsg-badge></div>
+          <div><bsg-badge variant="secondary" size="default" layout="text-icon" value="Etiqueta 2"></bsg-badge></div>
+          <div><bsg-badge variant="destructive" size="default" layout="text-icon" value="Etiqueta 2"></bsg-badge></div>
+          <div><bsg-badge variant="outline" size="default" layout="text-icon" value="Etiqueta 2"></bsg-badge></div>
+          <div><bsg-badge variant="success" size="default" layout="text-icon" value="Etiqueta 2"></bsg-badge></div>
         </div>
 
         <!-- Legacy Small Badges -->
@@ -265,27 +265,27 @@ export const DesignSystemShowcase: Story = {
 
           <!-- Dot Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Dot</div>
-          <div><storybook-badge variant="default" size="dot"></storybook-badge></div>
-          <div><storybook-badge variant="secondary" size="dot"></storybook-badge></div>
-          <div><storybook-badge variant="destructive" size="dot"></storybook-badge></div>
-          <div><storybook-badge variant="outline" size="dot"></storybook-badge></div>
-          <div><storybook-badge variant="success" size="dot"></storybook-badge></div>
+          <div><bsg-badge variant="default" size="dot"></bsg-badge></div>
+          <div><bsg-badge variant="secondary" size="dot"></bsg-badge></div>
+          <div><bsg-badge variant="destructive" size="dot"></bsg-badge></div>
+          <div><bsg-badge variant="outline" size="dot"></bsg-badge></div>
+          <div><bsg-badge variant="success" size="dot"></bsg-badge></div>
 
           <!-- Small Text Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Small</div>
-          <div><storybook-badge variant="default" size="default" layout="text" value="10"></storybook-badge></div>
-          <div><storybook-badge variant="secondary" size="default" layout="text" value="10"></storybook-badge></div>
-          <div><storybook-badge variant="destructive" size="default" layout="text" value="10"></storybook-badge></div>
-          <div><storybook-badge variant="outline" size="default" layout="text" value="10"></storybook-badge></div>
-          <div><storybook-badge variant="success" size="default" layout="text" value="10"></storybook-badge></div>
+          <div><bsg-badge variant="default" size="default" layout="text" value="10"></bsg-badge></div>
+          <div><bsg-badge variant="secondary" size="default" layout="text" value="10"></bsg-badge></div>
+          <div><bsg-badge variant="destructive" size="default" layout="text" value="10"></bsg-badge></div>
+          <div><bsg-badge variant="outline" size="default" layout="text" value="10"></bsg-badge></div>
+          <div><bsg-badge variant="success" size="default" layout="text" value="10"></bsg-badge></div>
 
           <!-- Large Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Large</div>
-          <div><storybook-badge variant="default" size="large" layout="text" value="99+"></storybook-badge></div>
-          <div><storybook-badge variant="secondary" size="large" layout="text" value="99+"></storybook-badge></div>
-          <div><storybook-badge variant="destructive" size="large" layout="text" value="99+"></storybook-badge></div>
-          <div><storybook-badge variant="outline" size="large" layout="text" value="99+"></storybook-badge></div>
-          <div><storybook-badge variant="success" size="large" layout="text" value="99+"></storybook-badge></div>
+          <div><bsg-badge variant="default" size="large" layout="text" value="99+"></bsg-badge></div>
+          <div><bsg-badge variant="secondary" size="large" layout="text" value="99+"></bsg-badge></div>
+          <div><bsg-badge variant="destructive" size="large" layout="text" value="99+"></bsg-badge></div>
+          <div><bsg-badge variant="outline" size="large" layout="text" value="99+"></bsg-badge></div>
+          <div><bsg-badge variant="success" size="large" layout="text" value="99+"></bsg-badge></div>
         </div>
 
         <!-- Design Specifications -->
@@ -364,7 +364,7 @@ export const UsageExamples: Story = {
           <button style="position: relative; padding: 12px 24px; background: #7C3AED; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500;">
             Messages
             <span style="position: absolute; top: -6px; right: -6px;">
-              <storybook-badge variant="destructive" size="default" value="5"></storybook-badge>
+              <bsg-badge variant="destructive" size="default" value="5"></bsg-badge>
             </span>
           </button>
         </div>
@@ -375,7 +375,7 @@ export const UsageExamples: Story = {
           <div style="display: flex; align-items: center; gap: 8px;">
             <div style="width: 40px; height: 40px; border-radius: 50%; background: #E2E8F0; position: relative;">
               <span style="position: absolute; bottom: 0; right: 0;">
-                <storybook-badge variant="success" size="dot"></storybook-badge>
+                <bsg-badge variant="success" size="dot"></bsg-badge>
               </span>
             </div>
             <span style="font-size: 14px;">User is online</span>
@@ -386,10 +386,10 @@ export const UsageExamples: Story = {
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Category Tags</h4>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-            <storybook-badge variant="default" size="large" value="New"></storybook-badge>
-            <storybook-badge variant="secondary" size="large" value="Featured"></storybook-badge>
-            <storybook-badge variant="success" size="large" value="Active"></storybook-badge>
-            <storybook-badge variant="outline" size="large" value="Draft"></storybook-badge>
+            <bsg-badge variant="default" size="large" value="New"></bsg-badge>
+            <bsg-badge variant="secondary" size="large" value="Featured"></bsg-badge>
+            <bsg-badge variant="success" size="large" value="Active"></bsg-badge>
+            <bsg-badge variant="outline" size="large" value="Draft"></bsg-badge>
           </div>
         </div>
         
@@ -399,11 +399,11 @@ export const UsageExamples: Story = {
           <div style="display: flex; align-items: center; gap: 12px;">
             <div style="display: flex; align-items: center; gap: 6px;">
               <span style="font-size: 14px;">Inbox</span>
-              <storybook-badge variant="default" size="default" value="12"></storybook-badge>
+              <bsg-badge variant="default" size="default" value="12"></bsg-badge>
             </div>
             <div style="display: flex; align-items: center; gap: 6px;">
               <span style="font-size: 14px;">Alerts</span>
-              <storybook-badge variant="destructive" size="large" value="99+"></storybook-badge>
+              <bsg-badge variant="destructive" size="large" value="99+"></bsg-badge>
             </div>
           </div>
         </div>
@@ -414,15 +414,15 @@ export const UsageExamples: Story = {
           <div style="display: flex; flex-direction: column; gap: 8px; max-width: 250px;">
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 6px; background: #F8FAFC;">
               <span style="font-size: 14px;">Notifications</span>
-              <storybook-badge variant="destructive" size="default" value="3"></storybook-badge>
+              <bsg-badge variant="destructive" size="default" value="3"></bsg-badge>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 6px; background: #F8FAFC;">
               <span style="font-size: 14px;">Messages</span>
-              <storybook-badge variant="secondary" size="default" value="8"></storybook-badge>
+              <bsg-badge variant="secondary" size="default" value="8"></bsg-badge>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 6px; background: #F8FAFC;">
               <span style="font-size: 14px;">Tasks</span>
-              <storybook-badge variant="success" size="default" value="24"></storybook-badge>
+              <bsg-badge variant="success" size="default" value="24"></bsg-badge>
             </div>
           </div>
         </div>
@@ -446,12 +446,12 @@ export const InteractivePlayground: Story = {
         </p>
 
         <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <storybook-badge
+          <bsg-badge
             [variant]="variant"
             [size]="size"
             [layout]="layout"
             [value]="value">
-          </storybook-badge>
+          </bsg-badge>
         </div>
       </div>
     `,
