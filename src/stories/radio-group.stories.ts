@@ -40,92 +40,268 @@ const meta: Meta<RadioGroupComponent> = {
 export default meta;
 type Story = StoryObj<RadioGroupComponent>;
 
-// Horizontal - Small
-export const HorizontalSmall: Story = {
-  args: {
-    size: 'sm',
-    orientation: 'horizontal',
-    options: [
-      { value: '1', label: 'Uno' },
-      { value: '2', label: 'Dos' },
-      { value: '3', label: 'Tres' },
-    ],
-    selectedValue: '',
-  },
+// =====================
+// AXES
+// =====================
+
+/**
+ * RadioGroup orientation axis
+ * Shows all orientation options: horizontal and vertical
+ */
+export const Orientations: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <div>
+          <h3 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Horizontal</h3>
+          <bsg-radio-group 
+            size="md" 
+            orientation="horizontal"
+            [options]="[
+              { value: '1', label: 'Uno' },
+              { value: '2', label: 'Dos' },
+              { value: '3', label: 'Tres' }
+            ]">
+          </bsg-radio-group>
+        </div>
+        
+        <div>
+          <h3 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Vertical</h3>
+          <bsg-radio-group 
+            size="md" 
+            orientation="vertical"
+            [options]="[
+              { value: '1', label: 'Uno' },
+              { value: '2', label: 'Dos' },
+              { value: '3', label: 'Tres' }
+            ]">
+          </bsg-radio-group>
+        </div>
+      </div>
+    `,
+  }),
 };
 
-// Horizontal - Medium
-export const HorizontalMedium: Story = {
-  args: {
-    size: 'md',
-    orientation: 'horizontal',
-    options: [
-      { value: '1', label: 'Uno' },
-      { value: '2', label: 'Dos' },
-      { value: '3', label: 'Tres' },
-    ],
-    selectedValue: '',
-  },
+/**
+ * RadioGroup size axis
+ * Shows all size options: small and medium
+ */
+export const Sizes: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <div>
+          <h3 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Small (sm)</h3>
+          <bsg-radio-group 
+            size="sm" 
+            orientation="horizontal"
+            [options]="[
+              { value: '1', label: 'Uno' },
+              { value: '2', label: 'Dos' },
+              { value: '3', label: 'Tres' }
+            ]">
+          </bsg-radio-group>
+        </div>
+        
+        <div>
+          <h3 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Medium (md)</h3>
+          <bsg-radio-group 
+            size="md" 
+            orientation="horizontal"
+            [options]="[
+              { value: '1', label: 'Uno' },
+              { value: '2', label: 'Dos' },
+              { value: '3', label: 'Tres' }
+            ]">
+          </bsg-radio-group>
+        </div>
+      </div>
+    `,
+  }),
 };
 
-// Vertical - Small
-export const VerticalSmall: Story = {
-  args: {
-    size: 'sm',
-    orientation: 'vertical',
-    options: [
-      { value: '1', label: 'Uno' },
-      { value: '2', label: 'Dos' },
-      { value: '3', label: 'Tres' },
-    ],
-    selectedValue: '',
-  },
+/**
+ * RadioGroup states axis
+ * Shows all state combinations: default, selected, and disabled
+ */
+export const States: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <div>
+          <h3 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Default</h3>
+          <bsg-radio-group 
+            size="md" 
+            orientation="horizontal"
+            [options]="[
+              { value: '1', label: 'Uno' },
+              { value: '2', label: 'Dos' },
+              { value: '3', label: 'Tres' }
+            ]">
+          </bsg-radio-group>
+        </div>
+        
+        <div>
+          <h3 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Selected</h3>
+          <bsg-radio-group 
+            size="md" 
+            orientation="horizontal"
+            selectedValue="2"
+            [options]="[
+              { value: '1', label: 'Uno' },
+              { value: '2', label: 'Dos' },
+              { value: '3', label: 'Tres' }
+            ]">
+          </bsg-radio-group>
+        </div>
+        
+        <div>
+          <h3 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Disabled</h3>
+          <bsg-radio-group 
+            size="md" 
+            orientation="vertical"
+            selectedValue="1"
+            [options]="[
+              { value: '1', label: 'Uno' },
+              { value: '2', label: 'Dos', disabled: true },
+              { value: '3', label: 'Tres' }
+            ]">
+          </bsg-radio-group>
+        </div>
+      </div>
+    `,
+  }),
 };
 
-// Vertical - Medium
-export const VerticalMedium: Story = {
-  args: {
-    size: 'md',
-    orientation: 'vertical',
-    options: [
-      { value: '1', label: 'Uno' },
-      { value: '2', label: 'Dos' },
-      { value: '3', label: 'Tres' },
-    ],
-    selectedValue: '',
-  },
+// =====================
+// EXAMPLES
+// =====================
+
+/**
+ * Real-world usage examples of RadioGroup
+ */
+export const UsageExamples: Story = {
+  tags: ['!dev'],
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">RadioGroup Usage Examples</h3>
+        
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Select Payment Method</h4>
+          <bsg-radio-group 
+            size="md" 
+            orientation="vertical"
+            selectedValue="credit"
+            [options]="[
+              { value: 'credit', label: 'Credit Card' },
+              { value: 'debit', label: 'Debit Card' },
+              { value: 'paypal', label: 'PayPal' }
+            ]">
+          </bsg-radio-group>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Choose Subscription Plan</h4>
+          <bsg-radio-group 
+            size="sm" 
+            orientation="horizontal"
+            [options]="[
+              { value: 'monthly', label: 'Monthly' },
+              { value: 'yearly', label: 'Yearly' },
+              { value: 'lifetime', label: 'Lifetime' }
+            ]">
+          </bsg-radio-group>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Select Shipping Speed</h4>
+          <bsg-radio-group 
+            size="md" 
+            orientation="vertical"
+            selectedValue="standard"
+            [options]="[
+              { value: 'express', label: 'Express (1-2 days)' },
+              { value: 'standard', label: 'Standard (3-5 days)' },
+              { value: 'economy', label: 'Economy (7-10 days)' }
+            ]">
+          </bsg-radio-group>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">With Disabled Option</h4>
+          <bsg-radio-group 
+            size="md" 
+            orientation="vertical"
+            selectedValue="email"
+            [options]="[
+              { value: 'email', label: 'Email Notification' },
+              { value: 'sms', label: 'SMS Notification', disabled: true },
+              { value: 'push', label: 'Push Notification' }
+            ]">
+          </bsg-radio-group>
+        </div>
+      </div>
+    `,
+  }),
 };
 
-// With pre-selection
-export const WithSelection: Story = {
-  args: {
-    size: 'md',
-    orientation: 'horizontal',
-    options: [
-      { value: '1', label: 'Uno' },
-      { value: '2', label: 'Dos' },
-      { value: '3', label: 'Tres' },
-    ],
-    selectedValue: '2',
-  },
+/**
+ * Interactive form example with RadioGroup
+ */
+export const FormExample: Story = {
+  tags: ['!dev'],
+  render: () => ({
+    template: `
+      <div style="padding: 24px; font-family: Roboto, sans-serif; max-width: 500px;">
+        <h3 style="margin: 0 0 24px 0; font-size: 20px; font-weight: 600;">Survey Form</h3>
+        
+        <form style="display: flex; flex-direction: column; gap: 24px;">
+          <fieldset style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+            <legend style="font-size: 14px; font-weight: 600; color: #202020; padding: 0 8px;">
+              How often do you use our product?
+            </legend>
+            <bsg-radio-group 
+              size="md" 
+              orientation="vertical"
+              [options]="[
+                { value: 'daily', label: 'Daily' },
+                { value: 'weekly', label: 'Weekly' },
+                { value: 'monthly', label: 'Monthly' },
+                { value: 'rarely', label: 'Rarely' }
+              ]">
+            </bsg-radio-group>
+          </fieldset>
+          
+          <fieldset style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
+            <legend style="font-size: 14px; font-weight: 600; color: #202020; padding: 0 8px;">
+              Would you recommend us to a friend?
+            </legend>
+            <bsg-radio-group 
+              size="md" 
+              orientation="horizontal"
+              [options]="[
+                { value: 'yes', label: 'Yes' },
+                { value: 'no', label: 'No' },
+                { value: 'maybe', label: 'Maybe' }
+              ]">
+            </bsg-radio-group>
+          </fieldset>
+        </form>
+      </div>
+    `,
+  }),
 };
 
-// With disabled option
-export const WithDisabled: Story = {
-  args: {
-    size: 'md',
-    orientation: 'vertical',
-    options: [
-      { value: '1', label: 'Uno' },
-      { value: '2', label: 'Dos', disabled: true },
-      { value: '3', label: 'Tres' },
-    ],
-    selectedValue: '1',
-  },
-};
+// =====================
+// SHOWCASE (Optional)
+// =====================
 
-// Design System Showcase
-export const DesignSystemShowcase: Story = {
+/**
+ * Complete showcase of RadioGroup component library
+ */
+export const Showcase: Story = {
+  tags: ['!dev'],
   render: () => ({
     template: `
       <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 900px;">
@@ -213,116 +389,6 @@ export const DesignSystemShowcase: Story = {
             <p style="margin: 8px 0;"><strong>Behavior:</strong> Single selection only (radio group pattern)</p>
           </div>
         </section>
-      </div>
-    `,
-  }),
-};
-
-// Usage examples
-export const UsageExamples: Story = {
-  render: () => ({
-    template: `
-      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
-        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">RadioGroup Usage Examples</h3>
-        
-        <div>
-          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Select Payment Method</h4>
-          <bsg-radio-group 
-            size="md" 
-            orientation="vertical"
-            selectedValue="credit"
-            [options]="[
-              { value: 'credit', label: 'Credit Card' },
-              { value: 'debit', label: 'Debit Card' },
-              { value: 'paypal', label: 'PayPal' }
-            ]">
-          </bsg-radio-group>
-        </div>
-        
-        <div>
-          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Choose Subscription Plan</h4>
-          <bsg-radio-group 
-            size="sm" 
-            orientation="horizontal"
-            [options]="[
-              { value: 'monthly', label: 'Monthly' },
-              { value: 'yearly', label: 'Yearly' },
-              { value: 'lifetime', label: 'Lifetime' }
-            ]">
-          </bsg-radio-group>
-        </div>
-        
-        <div>
-          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Select Shipping Speed</h4>
-          <bsg-radio-group 
-            size="md" 
-            orientation="vertical"
-            selectedValue="standard"
-            [options]="[
-              { value: 'express', label: 'Express (1-2 days)' },
-              { value: 'standard', label: 'Standard (3-5 days)' },
-              { value: 'economy', label: 'Economy (7-10 days)' }
-            ]">
-          </bsg-radio-group>
-        </div>
-        
-        <div>
-          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">With Disabled Option</h4>
-          <bsg-radio-group 
-            size="md" 
-            orientation="vertical"
-            selectedValue="email"
-            [options]="[
-              { value: 'email', label: 'Email Notification' },
-              { value: 'sms', label: 'SMS Notification', disabled: true },
-              { value: 'push', label: 'Push Notification' }
-            ]">
-          </bsg-radio-group>
-        </div>
-      </div>
-    `,
-  }),
-};
-
-// Interactive form example
-export const FormExample: Story = {
-  render: () => ({
-    template: `
-      <div style="padding: 24px; font-family: Roboto, sans-serif; max-width: 500px;">
-        <h3 style="margin: 0 0 24px 0; font-size: 20px; font-weight: 600;">Survey Form</h3>
-        
-        <form style="display: flex; flex-direction: column; gap: 24px;">
-          <fieldset style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
-            <legend style="font-size: 14px; font-weight: 600; color: #202020; padding: 0 8px;">
-              How often do you use our product?
-            </legend>
-            <bsg-radio-group 
-              size="md" 
-              orientation="vertical"
-              [options]="[
-                { value: 'daily', label: 'Daily' },
-                { value: 'weekly', label: 'Weekly' },
-                { value: 'monthly', label: 'Monthly' },
-                { value: 'rarely', label: 'Rarely' }
-              ]">
-            </bsg-radio-group>
-          </fieldset>
-          
-          <fieldset style="border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px;">
-            <legend style="font-size: 14px; font-weight: 600; color: #202020; padding: 0 8px;">
-              Would you recommend us to a friend?
-            </legend>
-            <bsg-radio-group 
-              size="md" 
-              orientation="horizontal"
-              [options]="[
-                { value: 'yes', label: 'Yes' },
-                { value: 'no', label: 'No' },
-                { value: 'maybe', label: 'Maybe' }
-              ]">
-            </bsg-radio-group>
-          </fieldset>
-        </form>
       </div>
     `,
   }),
