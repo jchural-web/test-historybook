@@ -51,9 +51,9 @@ export interface TableAction {
   template: `
     <div class="table" [ngClass]="containerClasses">
       <!-- Header -->
-      <div class="table-header">
+      <div class="table-header" [ngClass]="{ 'table-header-collapsible': isCollapsible }">
         <!-- Icon -->
-        <div class="table-icon">
+        <div class="table-icon" *ngIf="!isCollapsible">
           <svg
             width="28"
             height="28"
@@ -89,7 +89,7 @@ export interface TableAction {
         <h2 class="table-title">{{ title }}</h2>
 
         <!-- Header Actions (e.g., "Nuevo mensaje" button) -->
-        <div class="table-header-actions" *ngIf="headerAction">
+        <div class="table-header-actions" *ngIf="headerAction && !isCollapsible">
           <bsg-button
             [label]="headerAction.label"
             [variant]="headerAction.variant || 'default'"
@@ -97,6 +97,30 @@ export interface TableAction {
             (onClick)="onHeaderAction()"
           ></bsg-button>
         </div>
+
+        <!-- Chevron Icon for Collapsible Mode (right side) -->
+        <button
+          *ngIf="isCollapsible"
+          type="button"
+          class="table-collapse-chevron"
+          [ngClass]="{ 'table-chevron-expanded': isExpanded }"
+          (click)="toggleCollapse()"
+          [attr.aria-expanded]="isExpanded"
+          [attr.aria-label]="isExpanded ? 'Contraer' : 'Expandir'"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.3691 8.22462C11.7618 7.90427 12.3408 7.92686 12.707 8.29298L18.707 14.293C19.0975 14.6835 19.0975 15.3165 18.707 15.707C18.3164 16.0976 17.6834 16.0976 17.2929 15.707L11.9999 10.4141L6.70696 15.707C6.31643 16.0976 5.68342 16.0976 5.29289 15.707C4.90237 15.3165 4.90237 14.6835 5.29289 14.293L11.2929 8.29298L11.3691 8.22462Z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
       </div>
 
       <!-- Body -->
