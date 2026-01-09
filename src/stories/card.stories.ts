@@ -13,8 +13,8 @@ const meta: Meta<CardComponent> = {
     },
     state: {
       control: 'select',
-      options: ['default', 'hover'],
-      description: 'Card state (visual only)',
+      options: ['default'],
+      description: 'Card state',
     },
     contentVariant: {
       control: 'select',
