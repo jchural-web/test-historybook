@@ -35,28 +35,36 @@
   transition: stroke-dashoffset 0.3s ease;
 }
 
-/* Circular indeterminate animation - single arc that rotates smoothly */
-@keyframes circular-indeterminate {
+/* Circular indeterminate animation - smooth single line with dual keyframes */
+@keyframes circular-rotate {
   0% {
-    stroke-dasharray: 50, 150;
-    stroke-dashoffset: 0;
     transform: rotate(-90deg);
   }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes circular-dash {
+  0% {
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: 0;
+  }
   50% {
-    stroke-dasharray: 100, 150;
-    stroke-dashoffset: -25;
-    transform: rotate(45deg);
+    stroke-dasharray: 125, 150;
+    stroke-dashoffset: -37.5;
   }
   100% {
-    stroke-dasharray: 50, 150;
-    stroke-dashoffset: -125;
-    transform: rotate(360deg);
+    stroke-dasharray: 0, 150;
+    stroke-dashoffset: -150;
   }
 }
 
 .progress-indeterminate {
-  /* Smooth continuous animation: single arc that grows, shrinks, and rotates */
-  animation: circular-indeterminate 2s ease-in-out infinite;
+  /* Smooth continuous animation: rotation + dash pattern that works for all sizes */
+  animation:
+    circular-rotate 1.8s linear infinite,
+    circular-dash 1.35s ease-in-out infinite;
   transform-origin: center;
 }
 
