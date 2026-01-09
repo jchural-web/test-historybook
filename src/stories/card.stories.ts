@@ -402,42 +402,8 @@ export const DifferentDataExamples: Story = {
 };
 
 // ===========================
-// NEW: Content Variant Stories
+// Showcase Stories
 // ===========================
-
-// Metric Content Variant
-export const MetricContentVariant: Story = {
-  args: {
-    contentVariant: 'metric',
-    metricTitle: 'Compromisos Incumplidos',
-    metricValue: '0',
-  },
-};
-
-// InfoDate Content Variant
-export const InfoDateContentVariant: Story = {
-  args: {
-    contentVariant: 'infoDate',
-    dateLabel: 'Fecha',
-    dateText: '28/06/2024',
-  },
-};
-
-// InfoCurrency Content Variant
-export const InfoCurrencyContentVariant: Story = {
-  args: {
-    contentVariant: 'infoCurrency',
-    currencyLabel: 'Tipo de moneda:',
-    currencyText: 'PEN',
-  },
-};
-
-// Placeholder Content Variant
-export const PlaceholderContentVariant: Story = {
-  args: {
-    contentVariant: 'placeholder',
-  },
-};
 
 // All Content Variants Showcase
 export const AllContentVariants: Story = {
