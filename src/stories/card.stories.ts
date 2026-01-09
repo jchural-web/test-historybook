@@ -254,7 +254,7 @@ export const DifferentDataExamples: Story = {
     template: `
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 393px)); gap: 24px; padding: 24px;">
         <bsg-card
-          variant="elevated"
+          variant="default"
           header="Actividades Totales"
           value="21"
           helper="+15.2%"
@@ -263,7 +263,7 @@ export const DifferentDataExamples: Story = {
         </bsg-card>
 
         <bsg-card
-          variant="elevated"
+          variant="default"
           header="Ventas Completadas"
           value="4,892"
           helper="+28.4%"
@@ -272,7 +272,7 @@ export const DifferentDataExamples: Story = {
         </bsg-card>
 
         <bsg-card
-          variant="elevated"
+          variant="default"
           header="Tiempo Promedio"
           value="2.4h"
           helper="-5.2%"
@@ -281,7 +281,7 @@ export const DifferentDataExamples: Story = {
         </bsg-card>
 
         <bsg-card
-          variant="outlined"
+          variant="default"
           header="Tasa de Éxito"
           value="94.7%"
           helper="+1.3%"
@@ -290,7 +290,7 @@ export const DifferentDataExamples: Story = {
         </bsg-card>
 
         <bsg-card
-          variant="outlined"
+          variant="default"
           header="Satisfacción Cliente"
           value="4.8/5"
           helper="+0.2"
@@ -327,7 +327,7 @@ export const AllContentVariants: Story = {
           <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">Default (Original Card)</h4>
           <bsg-card
             contentVariant="default"
-            variant="elevated"
+            variant="default"
             header="Actividades Totales"
             value="21"
             helper="+15.2%"
