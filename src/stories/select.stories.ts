@@ -32,6 +32,10 @@ const meta: Meta<SelectComponent> = {
       control: 'boolean',
       description: 'Dropdown open state',
     },
+    errorMessage: {
+      control: 'text',
+      description: 'Error message (shown when state is "error")',
+    },
   },
   args: {
     size: 'sm',
@@ -45,6 +49,7 @@ const meta: Meta<SelectComponent> = {
     selectedValue: '',
     placeholder: 'Selecciona',
     open: false,
+    errorMessage: '',
   },
 };
 
