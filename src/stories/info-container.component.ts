@@ -199,8 +199,14 @@ export interface TabConfig extends TabItem {
                       class="info-container-table-cell"
                       [style.width]="column.width || 'auto'"
                     >
-                      <!-- Render text -->
-                      <span style="color: #1E293B;">{{ row[column.key] }}</span>
+                      <!-- Render label if specified -->
+                      <storybook-label
+                        *ngIf="row[column.key + '_label']"
+                        [text]="row[column.key]"
+                      ></storybook-label>
+
+                      <!-- Render plain text otherwise -->
+                      <span *ngIf="!row[column.key + '_label']">{{ row[column.key] }}</span>
                     </div>
                   </div>
                 </div>
