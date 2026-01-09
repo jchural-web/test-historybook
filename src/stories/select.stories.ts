@@ -79,27 +79,27 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <storybook-select size="sm" state="default"></storybook-select>
+              <bsg-select size="sm" state="default"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <storybook-select size="sm" state="hover"></storybook-select>
+              <bsg-select size="sm" state="hover"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <storybook-select size="sm" state="focus"></storybook-select>
+              <bsg-select size="sm" state="focus"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <storybook-select size="sm" state="disabled"></storybook-select>
+              <bsg-select size="sm" state="disabled"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-              <storybook-select size="sm" state="error"></storybook-select>
+              <bsg-select size="sm" state="error"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Dropdown</span>
-              <storybook-select size="sm" state="default" [open]="true" selectedValue="3"></storybook-select>
+              <bsg-select size="sm" state="default" [open]="true" selectedValue="3"></bsg-select>
             </div>
           </div>
         </section>
@@ -109,27 +109,27 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <storybook-select size="md" state="default"></storybook-select>
+              <bsg-select size="md" state="default"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <storybook-select size="md" state="hover"></storybook-select>
+              <bsg-select size="md" state="hover"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <storybook-select size="md" state="focus"></storybook-select>
+              <bsg-select size="md" state="focus"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <storybook-select size="md" state="disabled"></storybook-select>
+              <bsg-select size="md" state="disabled"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-              <storybook-select size="md" state="error"></storybook-select>
+              <bsg-select size="md" state="error"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Dropdown</span>
-              <storybook-select size="md" state="default" [open]="true" selectedValue="3"></storybook-select>
+              <bsg-select size="md" state="default" [open]="true" selectedValue="3"></bsg-select>
             </div>
           </div>
         </section>
@@ -139,27 +139,27 @@ export const DesignSystemShowcase: Story = {
           <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-              <storybook-select size="lg" state="default"></storybook-select>
+              <bsg-select size="lg" state="default"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-              <storybook-select size="lg" state="hover"></storybook-select>
+              <bsg-select size="lg" state="hover"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-              <storybook-select size="lg" state="focus"></storybook-select>
+              <bsg-select size="lg" state="focus"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-              <storybook-select size="lg" state="disabled"></storybook-select>
+              <bsg-select size="lg" state="disabled"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-              <storybook-select size="lg" state="error"></storybook-select>
+              <bsg-select size="lg" state="error"></bsg-select>
             </div>
             <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
               <span style="font-size: 14px; font-weight: 600; color: #202020;">Dropdown</span>
-              <storybook-select size="lg" state="default" [open]="true" selectedValue="3"></storybook-select>
+              <bsg-select size="lg" state="default" [open]="true" selectedValue="3"></bsg-select>
             </div>
           </div>
         </section>
@@ -203,7 +203,7 @@ export const UsageExamples: Story = {
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Country Selection</h4>
-          <storybook-select 
+          <bsg-select 
             size="md" 
             state="default"
             placeholder="Select country"
@@ -213,12 +213,12 @@ export const UsageExamples: Story = {
               { value: 'ca', label: 'Canada' },
               { value: 'au', label: 'Australia' }
             ]">
-          </storybook-select>
+          </bsg-select>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Size Selection</h4>
-          <storybook-select 
+          <bsg-select 
             size="sm" 
             state="default"
             placeholder="Choose size"
@@ -228,12 +228,12 @@ export const UsageExamples: Story = {
               { value: 'l', label: 'Large' },
               { value: 'xl', label: 'Extra Large' }
             ]">
-          </storybook-select>
+          </bsg-select>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Error State Example</h4>
-          <storybook-select 
+          <bsg-select 
             size="md" 
             state="error"
             placeholder="Required field"
@@ -242,13 +242,13 @@ export const UsageExamples: Story = {
               { value: '2', label: 'Option 2' },
               { value: '3', label: 'Option 3' }
             ]">
-          </storybook-select>
+          </bsg-select>
           <p style="margin: 4px 0 0 0; font-size: 12px; color: #DC2626;">This field is required</p>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Disabled State Example</h4>
-          <storybook-select 
+          <bsg-select 
             size="md" 
             state="disabled"
             placeholder="Not available"
@@ -256,7 +256,7 @@ export const UsageExamples: Story = {
               { value: '1', label: 'Option 1' },
               { value: '2', label: 'Option 2' }
             ]">
-          </storybook-select>
+          </bsg-select>
         </div>
       </div>
     `,
@@ -275,7 +275,7 @@ export const FormExample: Story = {
             <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: #202020;">
               Country *
             </label>
-            <storybook-select 
+            <bsg-select 
               size="md" 
               state="default"
               placeholder="Select your country"
@@ -285,14 +285,14 @@ export const FormExample: Story = {
                 { value: 'ca', label: 'Canada' },
                 { value: 'mx', label: 'Mexico' }
               ]">
-            </storybook-select>
+            </bsg-select>
           </div>
           
           <div>
             <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: #202020;">
               Language
             </label>
-            <storybook-select 
+            <bsg-select 
               size="md" 
               state="default"
               placeholder="Select language"
@@ -303,14 +303,14 @@ export const FormExample: Story = {
                 { value: 'fr', label: 'French' },
                 { value: 'de', label: 'German' }
               ]">
-            </storybook-select>
+            </bsg-select>
           </div>
           
           <div>
             <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: #202020;">
               Account Type
             </label>
-            <storybook-select 
+            <bsg-select 
               size="lg" 
               state="default"
               placeholder="Choose account type"
@@ -319,7 +319,7 @@ export const FormExample: Story = {
                 { value: 'business', label: 'Business' },
                 { value: 'enterprise', label: 'Enterprise' }
               ]">
-            </storybook-select>
+            </bsg-select>
           </div>
         </form>
       </div>
