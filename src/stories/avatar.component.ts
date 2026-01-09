@@ -40,9 +40,9 @@ export type AvatarType = 'default' | 'fallback';
           [attr.cx]="iconCenter"
           [attr.cy]="headCenterY"
           [attr.r]="headRadius"
-          fill="#EAB308"
+          fill="#7c3aed"
         />
-        <path [attr.d]="bodyPath" fill="#EAB308" />
+        <path [attr.d]="bodyPath" fill="#7c3aed" />
       </svg>
     </div>
 
