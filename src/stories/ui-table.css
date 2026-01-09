@@ -84,6 +84,7 @@
   padding: 12px 20px;
   background: #eff6ff;
   margin: 0;
+  align-items: flex-start;
 }
 
 .ui-table-header-cell {
