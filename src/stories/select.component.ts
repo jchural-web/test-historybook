@@ -10,7 +10,7 @@ export interface SelectOption {
 }
 
 @Component({
-  selector: 'storybook-select',
+  selector: 'bsg-select',
   standalone: true,
   imports: [CommonModule],
   template: `
