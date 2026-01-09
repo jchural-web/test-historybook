@@ -37,7 +37,7 @@ export interface TableAction {
 }
 
 @Component({
-  selector: 'storybook-ui-table',
+  selector: 'bsg-ui-table',
   standalone: true,
   imports: [
     CommonModule,
