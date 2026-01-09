@@ -51,7 +51,8 @@ export const TableActions: Story = {
     ],
     tableRows: [
       {
-        benefit: 'Acceso al material oficial del PMI elaborado a partir del Esquema de Contenido del Examen PMP® (ECO) vigente para el desarrollo del Curso...',
+        benefit:
+          'Acceso al material oficial del PMI elaborado a partir del Esquema de Contenido del Examen PMP® (ECO) vigente para el desarrollo del Curso...',
         benefit_label: false,
         program: 'Curso Oficial de Preparación para el Examen Project Management...',
         program_label: false,

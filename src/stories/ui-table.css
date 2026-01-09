@@ -5,7 +5,12 @@
   border: 1px solid #cbd5e1;
   background: #fff;
   overflow: hidden;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
 }
 
 /* Header */

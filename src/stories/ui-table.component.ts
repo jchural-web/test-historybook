@@ -126,7 +126,10 @@ export interface TableAction {
       <!-- Body -->
       <div class="ui-table-body" *ngIf="!collapsed">
         <!-- Table Variants (table-basic, table-actions) -->
-        <div *ngIf="variant === 'table-basic' || variant === 'table-actions'" class="ui-table-content">
+        <div
+          *ngIf="variant === 'table-basic' || variant === 'table-actions'"
+          class="ui-table-content"
+        >
           <!-- Table Header -->
           <div class="ui-table-content-header">
             <div
@@ -215,13 +218,16 @@ export interface TableAction {
 
         <!-- List Variant (list-content) -->
         <div *ngIf="variant === 'list-content'" class="ui-table-list">
-          <div
-            *ngFor="let item of listItems; let i = index"
-            class="ui-table-list-item"
-          >
+          <div *ngFor="let item of listItems; let i = index" class="ui-table-list-item">
             <div class="ui-table-list-number">
-              <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <ellipse cx="13.5" cy="13" rx="13.5" ry="13" fill="#2563EB"/>
+              <svg
+                width="27"
+                height="26"
+                viewBox="0 0 27 26"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <ellipse cx="13.5" cy="13" rx="13.5" ry="13" fill="#2563EB" />
               </svg>
               <span class="ui-table-list-number-text">{{ i + 1 }}</span>
             </div>
@@ -259,10 +265,7 @@ export interface TableAction {
 
                 <!-- Table Rows -->
                 <div class="ui-table-content-body">
-                  <div
-                    *ngFor="let row of tab.tableData.rows"
-                    class="ui-table-row"
-                  >
+                  <div *ngFor="let row of tab.tableData.rows" class="ui-table-row">
                     <div
                       *ngFor="let column of tab.tableData.columns"
                       class="ui-table-cell"
@@ -283,10 +286,9 @@ export interface TableAction {
                       ></storybook-label>
 
                       <!-- Render plain text otherwise -->
-                      <span
-                        *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']"
-                        >{{ row[column.key] }}</span
-                      >
+                      <span *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']">{{
+                        row[column.key]
+                      }}</span>
                     </div>
                   </div>
                 </div>

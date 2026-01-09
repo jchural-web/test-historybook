@@ -43,12 +43,14 @@ This component **reuses** the following existing components:
 Standard table with columns, rows, and pagination. Perfect for displaying structured data.
 
 **Use Cases:**
+
 - Price lists
 - Service catalogs
 - Data grids
 - Reports
 
 **Example:**
+
 ```html
 <storybook-ui-table
   title="Tarifario de Trámites y Servicios"
@@ -86,12 +88,14 @@ Standard table with columns, rows, and pagination. Perfect for displaying struct
 Table with action buttons (Aprobar/Rechazar) and badges in cells. Perfect for approval workflows and administrative actions.
 
 **Use Cases:**
+
 - Approval workflows
 - Request management
 - Administrative actions
 - Status tracking
 
 **Example:**
+
 ```html
 <storybook-ui-table
   title="Beneficios Solicitados (Coordinador)"
@@ -126,12 +130,14 @@ Table with action buttons (Aprobar/Rechazar) and badges in cells. Perfect for ap
 Tabbed interface with tables. Each tab contains its own table with pagination.
 
 **Use Cases:**
+
 - Message history
 - Categorized data
 - Multi-view tables
 - Filtered datasets
 
 **Example:**
+
 ```html
 <storybook-ui-table
   title="Historial de mensajes"
@@ -174,12 +180,14 @@ Tabbed interface with tables. Each tab contains its own table with pagination.
 Numbered list format for sequential content. No table structure.
 
 **Use Cases:**
+
 - Feature lists
 - Benefits descriptions
 - Sequential instructions
 - Version features
 
 **Example:**
+
 ```html
 <storybook-ui-table
   title="Versión Profesional"
@@ -202,13 +210,13 @@ Numbered list format for sequential content. No table structure.
 
 ### Common Props
 
-| Prop          | Type                                                   | Default                   | Description                            |
-| ------------- | ------------------------------------------------------ | ------------------------- | -------------------------------------- |
-| `title`       | `string`                                               | `'Título del Contenedor'` | Container title shown in header        |
-| `variant`     | `'table-basic' \| 'table-actions' \| 'table-tabs' \| 'list-content'` | `'table-basic'`           | Display variant                        |
-| `collapsible` | `boolean`                                              | `true`                    | Whether the container can be collapsed |
-| `collapsed`   | `boolean`                                              | `false`                   | Initial collapsed state                |
-| `headerAction`| `{ label: string; variant?: string; size?: string }`   | `undefined`               | Optional header action button          |
+| Prop           | Type                                                                 | Default                   | Description                            |
+| -------------- | -------------------------------------------------------------------- | ------------------------- | -------------------------------------- |
+| `title`        | `string`                                                             | `'Título del Contenedor'` | Container title shown in header        |
+| `variant`      | `'table-basic' \| 'table-actions' \| 'table-tabs' \| 'list-content'` | `'table-basic'`           | Display variant                        |
+| `collapsible`  | `boolean`                                                            | `true`                    | Whether the container can be collapsed |
+| `collapsed`    | `boolean`                                                            | `false`                   | Initial collapsed state                |
+| `headerAction` | `{ label: string; variant?: string; size?: string }`                 | `undefined`               | Optional header action button          |
 
 ### Table Variants Props (table-basic, table-actions)
 
@@ -222,9 +230,9 @@ Numbered list format for sequential content. No table structure.
 
 ```typescript
 interface TableColumn {
-  key: string;      // Row property key
-  label: string;    // Column header label
-  width?: string;   // Optional column width (e.g., '200px')
+  key: string; // Row property key
+  label: string; // Column header label
+  width?: string; // Optional column width (e.g., '200px')
 }
 ```
 
@@ -232,13 +240,13 @@ interface TableColumn {
 
 ```typescript
 interface TableRow {
-  [key: string]: any;  // Dynamic properties based on columns
-  
+  [key: string]: any; // Dynamic properties based on columns
+
   // Optional badge rendering:
   // Add '_badge' suffix to render as Badge component
   // Add '_badge_variant' suffix to specify badge variant
   // Add '_badge_size' suffix to specify badge size
-  
+
   // Optional label rendering:
   // Add '_label' suffix to render as Label component
 }
@@ -270,11 +278,11 @@ interface TableRow {
 
 ### Table-Actions Specific Props
 
-| Prop                 | Type      | Default     | Description                    |
-| -------------------- | --------- | ----------- | ------------------------------ |
-| `showActionsColumn`  | `boolean` | `true`      | Show actions column            |
-| `actionsColumnLabel` | `string`  | `'Acciones'`| Actions column header label    |
-| `actionsColumnWidth` | `string`  | `'200px'`   | Actions column width           |
+| Prop                 | Type      | Default      | Description                 |
+| -------------------- | --------- | ------------ | --------------------------- |
+| `showActionsColumn`  | `boolean` | `true`       | Show actions column         |
+| `actionsColumnLabel` | `string`  | `'Acciones'` | Actions column header label |
+| `actionsColumnWidth` | `string`  | `'200px'`    | Actions column width        |
 
 **Actions in Rows:**
 
@@ -282,10 +290,10 @@ interface TableRow {
 {
   // ... other row data ...
   actions: [
-    { label: 'Aprobar', variant: 'approve' },   // Green button
-    { label: 'Rechazar', variant: 'reject' },   // Red button
-    { label: 'Ver', variant: 'view' }           // Light blue button
-  ]
+    { label: 'Aprobar', variant: 'approve' }, // Green button
+    { label: 'Rechazar', variant: 'reject' }, // Red button
+    { label: 'Ver', variant: 'view' }, // Light blue button
+  ];
 }
 ```
 
@@ -299,7 +307,7 @@ interface TableRow {
 
 ```typescript
 interface ListItem {
-  text: string;  // Item text content
+  text: string; // Item text content
 }
 ```
 
@@ -315,12 +323,12 @@ interface ListItem {
 
 ```typescript
 interface TabConfig {
-  label: string;      // Tab label
-  count?: number;     // Optional counter badge
-  icon?: boolean;     // Whether to show icon
+  label: string; // Tab label
+  count?: number; // Optional counter badge
+  icon?: boolean; // Whether to show icon
   tableData?: {
-    columns: TableColumn[];  // Table columns
-    rows: TableRow[];        // Table rows
+    columns: TableColumn[]; // Table columns
+    rows: TableRow[]; // Table rows
   };
 }
 ```
@@ -329,10 +337,10 @@ interface TabConfig {
 
 ### Common Events
 
-| Event                | Type                    | Description                         |
-| -------------------- | ----------------------- | ----------------------------------- |
-| `collapseChange`     | `EventEmitter<boolean>` | Emitted when collapse state changes |
-| `headerActionClick`  | `EventEmitter<void>`    | Emitted when header action clicked  |
+| Event               | Type                    | Description                         |
+| ------------------- | ----------------------- | ----------------------------------- |
+| `collapseChange`    | `EventEmitter<boolean>` | Emitted when collapse state changes |
+| `headerActionClick` | `EventEmitter<void>`    | Emitted when header action clicked  |
 
 ### Table Variant Events
 
@@ -344,9 +352,9 @@ interface TabConfig {
 
 ### Table-Actions Events
 
-| Event       | Type                                                              | Description                    |
-| ----------- | ----------------------------------------------------------------- | ------------------------------ |
-| `rowAction` | `EventEmitter<{rowIndex: number, action: TableAction}>`           | Emitted when row action clicked|
+| Event       | Type                                                    | Description                     |
+| ----------- | ------------------------------------------------------- | ------------------------------- |
+| `rowAction` | `EventEmitter<{rowIndex: number, action: TableAction}>` | Emitted when row action clicked |
 
 ### Tabs Variant Events
 
@@ -405,6 +413,7 @@ The border system follows Figma exactly:
 ### Typography
 
 All text uses **Inter** font family with fallbacks:
+
 - Header title: 16px, 600 weight
 - Column headers: 14px, 500 weight
 - Cell content: 14px, 500 weight
@@ -435,7 +444,7 @@ import { Component } from '@angular/core';
       (tablePageChange)="handlePageChange($event)"
     >
     </storybook-ui-table>
-  `
+  `,
 })
 export class BenefitsTableComponent {
   columns = [
@@ -451,9 +460,9 @@ export class BenefitsTableComponent {
       coordinator: 'Bianca Mamani',
       actions: [
         { label: 'Aprobar', variant: 'approve' },
-        { label: 'Rechazar', variant: 'reject' }
-      ]
-    }
+        { label: 'Rechazar', variant: 'reject' },
+      ],
+    },
   ];
 
   pagination = {
@@ -462,12 +471,12 @@ export class BenefitsTableComponent {
     pageSize: 5,
     pageSizeOptions: [5, 10, 20],
     totalItems: 1,
-    rangeLabel: '1 - 1 de 1 ítems'
+    rangeLabel: '1 - 1 de 1 ítems',
   };
 
   handleRowAction(event: { rowIndex: number; action: any }) {
     console.log('Action clicked:', event.action.label, 'for row', event.rowIndex);
-    
+
     if (event.action.variant === 'approve') {
       // Handle approval logic
     } else if (event.action.variant === 'reject') {
@@ -503,15 +512,15 @@ import { Component } from '@angular/core';
       (headerActionClick)="handleNewMessage()"
     >
     </storybook-ui-table>
-  `
+  `,
 })
 export class MessagesTableComponent {
   activeTab = 0;
-  
+
   newMessageAction = {
     label: 'Nuevo mensaje',
     variant: 'default',
-    size: 'md'
+    size: 'md',
   };
 
   tabs = [
@@ -522,16 +531,16 @@ export class MessagesTableComponent {
         columns: [
           { key: 'date', label: 'Fecha', width: '158px' },
           { key: 'subject', label: 'Asunto', width: '280px' },
-          { key: 'sender', label: 'Remitente', width: '207px' }
+          { key: 'sender', label: 'Remitente', width: '207px' },
         ],
         rows: [
           {
             date: '15/04/2024 | 10:15 AM',
             subject: 'Confirmación de inscripción',
-            sender: 'admisiones@bsginstitute.com'
-          }
-        ]
-      }
+            sender: 'admisiones@bsginstitute.com',
+          },
+        ],
+      },
     },
     {
       label: 'Correos enviados',
@@ -539,11 +548,11 @@ export class MessagesTableComponent {
       tableData: {
         columns: [
           { key: 'date', label: 'Fecha', width: '158px' },
-          { key: 'subject', label: 'Asunto', width: '280px' }
+          { key: 'subject', label: 'Asunto', width: '280px' },
         ],
-        rows: []
-      }
-    }
+        rows: [],
+      },
+    },
   ];
 
   tabsPagination = [
@@ -553,7 +562,7 @@ export class MessagesTableComponent {
       pageSize: 5,
       pageSizeOptions: [5, 10, 20],
       totalItems: 1,
-      rangeLabel: '1 - 1 de 1 ítems'
+      rangeLabel: '1 - 1 de 1 ítems',
     },
     {
       currentPage: 1,
@@ -561,8 +570,8 @@ export class MessagesTableComponent {
       pageSize: 5,
       pageSizeOptions: [5, 10, 20],
       totalItems: 0,
-      rangeLabel: '0 - 0 de 0 ítems'
-    }
+      rangeLabel: '0 - 0 de 0 ítems',
+    },
   ];
 
   handleTabChange(index: number) {
