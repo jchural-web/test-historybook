@@ -67,13 +67,13 @@
 
 /* Hover state */
 .radio-state-hover .radio-outer circle {
-  stroke: #3b82f6; /* Blue-500 */
+  stroke: #8B5CF6; /* Violet-500 */
   opacity: 0.9;
 }
 
 /* Checked state */
 .radio-state-checked .radio-outer circle {
-  stroke: #2563eb; /* Blue-600 */
+  stroke: #7C3AED; /* Violet-600 */
 }
 
 /* Disabled state */
