@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
-export type CardVariant = 'default' | 'elevated' | 'outlined';
+export type CardVariant = 'default';
 export type CardState = 'default';
 export type CardContentVariant = 'default' | 'metric' | 'infoDate' | 'infoCurrency' | 'placeholder';
 
