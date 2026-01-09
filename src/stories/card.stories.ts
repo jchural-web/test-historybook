@@ -118,7 +118,7 @@ export const DesignSystemShowcase: Story = {
           <!-- Default Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Default</div>
           <div>
-            <storybook-card 
+            <bsg-card 
               variant="default" 
               state="default"
               header="Actividades Totales"
@@ -126,10 +126,10 @@ export const DesignSystemShowcase: Story = {
               helper="+15.2%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
           </div>
           <div>
-            <storybook-card 
+            <bsg-card 
               variant="default" 
               state="hover"
               header="Actividades Totales"
@@ -137,13 +137,13 @@ export const DesignSystemShowcase: Story = {
               helper="+15.2%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
           </div>
           
           <!-- Elevated Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Elevated</div>
           <div>
-            <storybook-card 
+            <bsg-card 
               variant="elevated" 
               state="default"
               header="Actividades Totales"
@@ -151,10 +151,10 @@ export const DesignSystemShowcase: Story = {
               helper="+15.2%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
           </div>
           <div>
-            <storybook-card 
+            <bsg-card 
               variant="elevated" 
               state="hover"
               header="Actividades Totales"
@@ -162,13 +162,13 @@ export const DesignSystemShowcase: Story = {
               helper="+15.2%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
           </div>
           
           <!-- Outlined Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">Outlined</div>
           <div>
-            <storybook-card 
+            <bsg-card 
               variant="outlined" 
               state="default"
               header="Actividades Totales"
@@ -176,10 +176,10 @@ export const DesignSystemShowcase: Story = {
               helper="+15.2%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
           </div>
           <div>
-            <storybook-card 
+            <bsg-card 
               variant="outlined" 
               state="hover"
               header="Actividades Totales"
@@ -187,7 +187,7 @@ export const DesignSystemShowcase: Story = {
               helper="+15.2%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
           </div>
         </div>
 
@@ -239,32 +239,32 @@ export const UsageExamples: Story = {
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Dashboard Statistics</h4>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 393px)); gap: 24px;">
-            <storybook-card 
+            <bsg-card 
               variant="elevated"
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
             
-            <storybook-card 
+            <bsg-card 
               variant="elevated"
               header="Usuarios Activos"
               value="1,247"
               helper="+8.4%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
             
-            <storybook-card 
+            <bsg-card 
               variant="elevated"
               header="Tasa de Conversión"
               value="3.2%"
               helper="-2.1%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
           </div>
         </div>
         
@@ -272,23 +272,23 @@ export const UsageExamples: Story = {
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Outlined Cards (Secondary Info)</h4>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 393px)); gap: 24px;">
-            <storybook-card 
+            <bsg-card 
               variant="outlined"
               header="Ingresos Mensuales"
               value="$45,230"
               helper="+12.5%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
             
-            <storybook-card 
+            <bsg-card 
               variant="outlined"
               header="Nuevos Registros"
               value="156"
               helper="+23.8%"
               helperDescription="respecto al mes anterior"
               icon="phone">
-            </storybook-card>
+            </bsg-card>
           </div>
         </div>
       </div>
@@ -311,7 +311,7 @@ export const InteractivePlayground: Story = {
         </p>
         
         <div style="display: flex; align-items: center; justify-content: center; min-height: 250px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <storybook-card 
+          <bsg-card 
             [variant]="variant"
             [state]="state"
             [header]="header"
@@ -319,7 +319,7 @@ export const InteractivePlayground: Story = {
             [helper]="helper"
             [helperDescription]="helperDescription"
             [icon]="icon">
-          </storybook-card>
+          </bsg-card>
         </div>
       </div>
     `,
@@ -343,59 +343,59 @@ export const DifferentDataExamples: Story = {
   render: () => ({
     template: `
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 393px)); gap: 24px; padding: 24px;">
-        <storybook-card
+        <bsg-card
           variant="elevated"
           header="Actividades Totales"
           value="21"
           helper="+15.2%"
           helperDescription="respecto al mes anterior"
           icon="phone">
-        </storybook-card>
+        </bsg-card>
 
-        <storybook-card
+        <bsg-card
           variant="elevated"
           header="Ventas Completadas"
           value="4,892"
           helper="+28.4%"
           helperDescription="respecto al mes anterior"
           icon="phone">
-        </storybook-card>
+        </bsg-card>
 
-        <storybook-card
+        <bsg-card
           variant="elevated"
           header="Tiempo Promedio"
           value="2.4h"
           helper="-5.2%"
           helperDescription="respecto al mes anterior"
           icon="phone">
-        </storybook-card>
+        </bsg-card>
 
-        <storybook-card
+        <bsg-card
           variant="outlined"
           header="Tasa de Éxito"
           value="94.7%"
           helper="+1.3%"
           helperDescription="respecto al mes anterior"
           icon="phone">
-        </storybook-card>
+        </bsg-card>
 
-        <storybook-card
+        <bsg-card
           variant="outlined"
           header="Satisfacción Cliente"
           value="4.8/5"
           helper="+0.2"
           helperDescription="respecto al mes anterior"
           icon="phone">
-        </storybook-card>
+        </bsg-card>
 
-        <storybook-card
+        <bsg-card
           variant="default"
           header="Proyectos Activos"
           value="12"
           helper="+3"
           helperDescription="respecto al mes anterior"
           icon="phone">
-        </storybook-card>
+        </bsg-card>
       </div>
     `,
   }),
@@ -415,7 +415,7 @@ export const AllContentVariants: Story = {
         <!-- Default -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">Default (Original Card)</h4>
-          <storybook-card
+          <bsg-card
             contentVariant="default"
             variant="elevated"
             header="Actividades Totales"
@@ -423,45 +423,45 @@ export const AllContentVariants: Story = {
             helper="+15.2%"
             helperDescription="respecto al mes anterior"
             icon="phone">
-          </storybook-card>
+          </bsg-card>
         </div>
 
         <!-- Metric -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">Metric (Compromisos)</h4>
-          <storybook-card
+          <bsg-card
             contentVariant="metric"
             metricTitle="Compromisos Incumplidos"
             metricValue="0">
-          </storybook-card>
+          </bsg-card>
         </div>
 
         <!-- InfoDate -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">InfoDate (Fecha)</h4>
-          <storybook-card
+          <bsg-card
             contentVariant="infoDate"
             dateLabel="Fecha"
             dateText="28/06/2024">
-          </storybook-card>
+          </bsg-card>
         </div>
 
         <!-- InfoCurrency -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">InfoCurrency (Moneda)</h4>
-          <storybook-card
+          <bsg-card
             contentVariant="infoCurrency"
             currencyLabel="Tipo de moneda:"
             currencyText="PEN">
-          </storybook-card>
+          </bsg-card>
         </div>
 
         <!-- Placeholder -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 16px; font-weight: 600; color: #202020;">Placeholder (Vacío)</h4>
-          <storybook-card
+          <bsg-card
             contentVariant="placeholder">
-          </storybook-card>
+          </bsg-card>
         </div>
       </div>
     `,
@@ -481,21 +481,21 @@ export const ContentVariantsWithCardVariants: Story = {
 
         <!-- Metric Row -->
         <div style="font-size: 14px; font-weight: 600;">Metric</div>
-        <storybook-card contentVariant="metric" variant="default" metricTitle="Compromisos Incumplidos" metricValue="0"></storybook-card>
-        <storybook-card contentVariant="metric" variant="elevated" metricTitle="Compromisos Incumplidos" metricValue="0"></storybook-card>
-        <storybook-card contentVariant="metric" variant="outlined" metricTitle="Compromisos Incumplidos" metricValue="0"></storybook-card>
+        <bsg-card contentVariant="metric" variant="default" metricTitle="Compromisos Incumplidos" metricValue="0"></bsg-card>
+        <bsg-card contentVariant="metric" variant="elevated" metricTitle="Compromisos Incumplidos" metricValue="0"></bsg-card>
+        <bsg-card contentVariant="metric" variant="outlined" metricTitle="Compromisos Incumplidos" metricValue="0"></bsg-card>
 
         <!-- InfoDate Row -->
         <div style="font-size: 14px; font-weight: 600;">InfoDate</div>
-        <storybook-card contentVariant="infoDate" variant="default" dateLabel="Fecha" dateText="28/06/2024"></storybook-card>
-        <storybook-card contentVariant="infoDate" variant="elevated" dateLabel="Fecha" dateText="28/06/2024"></storybook-card>
-        <storybook-card contentVariant="infoDate" variant="outlined" dateLabel="Fecha" dateText="28/06/2024"></storybook-card>
+        <bsg-card contentVariant="infoDate" variant="default" dateLabel="Fecha" dateText="28/06/2024"></bsg-card>
+        <bsg-card contentVariant="infoDate" variant="elevated" dateLabel="Fecha" dateText="28/06/2024"></bsg-card>
+        <bsg-card contentVariant="infoDate" variant="outlined" dateLabel="Fecha" dateText="28/06/2024"></bsg-card>
 
         <!-- InfoCurrency Row -->
         <div style="font-size: 14px; font-weight: 600;">InfoCurrency</div>
-        <storybook-card contentVariant="infoCurrency" variant="default" currencyLabel="Tipo de moneda:" currencyText="PEN"></storybook-card>
-        <storybook-card contentVariant="infoCurrency" variant="elevated" currencyLabel="Tipo de moneda:" currencyText="PEN"></storybook-card>
-        <storybook-card contentVariant="infoCurrency" variant="outlined" currencyLabel="Tipo de moneda:" currencyText="PEN"></storybook-card>
+        <bsg-card contentVariant="infoCurrency" variant="default" currencyLabel="Tipo de moneda:" currencyText="PEN"></bsg-card>
+        <bsg-card contentVariant="infoCurrency" variant="elevated" currencyLabel="Tipo de moneda:" currencyText="PEN"></bsg-card>
+        <bsg-card contentVariant="infoCurrency" variant="outlined" currencyLabel="Tipo de moneda:" currencyText="PEN"></bsg-card>
       </div>
     `,
   }),
