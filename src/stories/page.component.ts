@@ -9,13 +9,13 @@ import type { User } from './user';
   standalone: true,
   imports: [CommonModule, HeaderComponent],
   template: `<article>
-  <storybook-header
+  <bsg-header
     [user]="user"
     (onLogout)="doLogout()"
     (onLogin)="doLogin()"
     (onCreateAccount)="doCreateAccount()"
-  ></storybook-header>
-  <section class="storybook-page">
+  ></bsg-header>
+  <section class="bsg-page">
     <h2>Pages in Storybook</h2>
     <p>
       We recommend building UIs with a
