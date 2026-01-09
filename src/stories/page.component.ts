@@ -1,20 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HeaderComponent } from './header.component';
 import type { User } from './user';
 
 @Component({
   selector: 'bsg-page',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule],
   template: `<article>
-    <bsg-header
-      [user]="user"
-      (onLogout)="doLogout()"
-      (onLogin)="doLogin()"
-      (onCreateAccount)="doCreateAccount()"
-    ></bsg-header>
     <section class="bsg-page">
       <h2>Pages in Storybook</h2>
       <p>
