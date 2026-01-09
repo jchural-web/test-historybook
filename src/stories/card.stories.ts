@@ -173,53 +173,29 @@ export const UsageExamples: Story = {
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Dashboard Statistics</h4>
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 393px)); gap: 24px;">
-            <bsg-card 
-              variant="elevated"
+            <bsg-card
+              variant="default"
               header="Actividades Totales"
               value="21"
               helper="+15.2%"
               helperDescription="respecto al mes anterior"
               icon="phone">
             </bsg-card>
-            
-            <bsg-card 
-              variant="elevated"
+
+            <bsg-card
+              variant="default"
               header="Usuarios Activos"
               value="1,247"
               helper="+8.4%"
               helperDescription="respecto al mes anterior"
               icon="phone">
             </bsg-card>
-            
-            <bsg-card 
-              variant="elevated"
+
+            <bsg-card
+              variant="default"
               header="Tasa de Conversión"
               value="3.2%"
               helper="-2.1%"
-              helperDescription="respecto al mes anterior"
-              icon="phone">
-            </bsg-card>
-          </div>
-        </div>
-        
-        <!-- Outlined Cards -->
-        <div>
-          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Outlined Cards (Secondary Info)</h4>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 393px)); gap: 24px;">
-            <bsg-card 
-              variant="outlined"
-              header="Ingresos Mensuales"
-              value="$45,230"
-              helper="+12.5%"
-              helperDescription="respecto al mes anterior"
-              icon="phone">
-            </bsg-card>
-            
-            <bsg-card 
-              variant="outlined"
-              header="Nuevos Registros"
-              value="156"
-              helper="+23.8%"
               helperDescription="respecto al mes anterior"
               icon="phone">
             </bsg-card>
