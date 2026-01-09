@@ -164,9 +164,12 @@ export const DesignSystemShowcase: Story = {
               border-radius: 8px;
               padding: 16px;
               width: 367px;
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
             ">
               <!-- Avatar + Title -->
-              <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px;">
+              <div style="display: flex; align-items: flex-start; gap: 16px;">
                 <storybook-skeleton type="circular" width="29px" height="29px"></storybook-skeleton>
                 <storybook-skeleton type="text" width="228px" height="16px"></storybook-skeleton>
               </div>
@@ -175,8 +178,8 @@ export const DesignSystemShowcase: Story = {
               <storybook-skeleton type="rectangular" width="100%" height="87px"></storybook-skeleton>
 
               <!-- Subtitle -->
-              <storybook-skeleton type="text" width="131px" height="16px" style="margin-bottom: 16px;"></storybook-skeleton>
-              
+              <storybook-skeleton type="text" width="131px" height="16px"></storybook-skeleton>
+
               <!-- Three cards grid -->
               <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
                 <storybook-skeleton type="rectangular" width="101px" height="84px"></storybook-skeleton>
