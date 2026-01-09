@@ -95,145 +95,145 @@ export const DesignSystemShowcase: Story = {
             <!-- SM Row -->
             <div style="font-size: 16px; font-weight: 600; color: #202020;">sm</div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="sm" 
                 state="default" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="sm" 
                 state="hover" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="sm" 
                 state="default" 
                 [activeIndex]="0"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="sm" 
                 state="focus" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="sm" 
                 state="disabled" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             
             <!-- MD Row -->
             <div style="font-size: 16px; font-weight: 600; color: #202020;">md</div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="md" 
                 state="default" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="md" 
                 state="hover" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="md" 
                 state="default" 
                 [activeIndex]="0"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="md" 
                 state="focus" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="md" 
                 state="disabled" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             
             <!-- LG Row -->
             <div style="font-size: 16px; font-weight: 600; color: #202020;">lg</div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="lg" 
                 state="default" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="lg" 
                 state="hover" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="lg" 
                 state="default" 
                 [activeIndex]="0"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="lg" 
                 state="focus" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="text" 
                 size="lg" 
                 state="disabled" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Solicitudes Realizadas', count: 3 }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
           </div>
         </section>
@@ -254,145 +254,145 @@ export const DesignSystemShowcase: Story = {
             <!-- SM Row -->
             <div style="font-size: 16px; font-weight: 600; color: #202020;">sm</div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="sm" 
                 state="default" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="sm" 
                 state="hover" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="sm" 
                 state="default" 
                 [activeIndex]="0"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="sm" 
                 state="focus" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="sm" 
                 state="disabled" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             
             <!-- MD Row -->
             <div style="font-size: 16px; font-weight: 600; color: #202020;">md</div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="md" 
                 state="default" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="md" 
                 state="hover" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="md" 
                 state="default" 
                 [activeIndex]="0"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="md" 
                 state="focus" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="md" 
                 state="disabled" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             
             <!-- LG Row -->
             <div style="font-size: 16px; font-weight: 600; color: #202020;">lg</div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="lg" 
                 state="default" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="lg" 
                 state="hover" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="lg" 
                 state="default" 
                 [activeIndex]="0"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="lg" 
                 state="focus" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
             <div>
-              <storybook-tab-navigation 
+              <bsg-tab-navigation 
                 variant="icon-text" 
                 size="lg" 
                 state="disabled" 
                 [activeIndex]="-1"
                 [tabs]="[{ label: 'Información del cliente', icon: true }]">
-              </storybook-tab-navigation>
+              </bsg-tab-navigation>
             </div>
           </div>
         </section>
@@ -454,7 +454,7 @@ export const UsageExamples: Story = {
         <!-- Example 1: Blue Color Variant -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Blue Tabs with Counters</h4>
-          <storybook-tab-navigation
+          <bsg-tab-navigation
             variant="text"
             size="md"
             color="blue"
@@ -464,13 +464,13 @@ export const UsageExamples: Story = {
               { label: 'Completadas', count: 45 }
             ]"
             [activeIndex]="0">
-          </storybook-tab-navigation>
+          </bsg-tab-navigation>
         </div>
 
         <!-- Example 2: Green Color Variant -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Green Icon-Text Tabs</h4>
-          <storybook-tab-navigation
+          <bsg-tab-navigation
             variant="icon-text"
             size="lg"
             color="green"
@@ -480,13 +480,13 @@ export const UsageExamples: Story = {
               { label: 'Historial de pedidos', icon: true }
             ]"
             [activeIndex]="1">
-          </storybook-tab-navigation>
+          </bsg-tab-navigation>
         </div>
 
         <!-- Example 3: Yellow Color Variant -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Yellow Settings Navigation</h4>
-          <storybook-tab-navigation
+          <bsg-tab-navigation
             variant="text"
             size="sm"
             color="yellow"
@@ -497,13 +497,13 @@ export const UsageExamples: Story = {
               { label: 'Privacidad' }
             ]"
             [activeIndex]="2">
-          </storybook-tab-navigation>
+          </bsg-tab-navigation>
         </div>
 
         <!-- Example 4: Green Dashboard Sections -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Green Dashboard Views</h4>
-          <storybook-tab-navigation
+          <bsg-tab-navigation
             variant="icon-text"
             size="md"
             color="green"
@@ -514,13 +514,13 @@ export const UsageExamples: Story = {
               { label: 'Configuración', icon: true }
             ]"
             [activeIndex]="0">
-          </storybook-tab-navigation>
+          </bsg-tab-navigation>
         </div>
 
         <!-- Example 5: Yellow Tabs with Counters -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Yellow Request Tabs</h4>
-          <storybook-tab-navigation
+          <bsg-tab-navigation
             variant="text"
             size="md"
             color="yellow"
@@ -530,7 +530,7 @@ export const UsageExamples: Story = {
               { label: 'Completadas', count: 32 }
             ]"
             [activeIndex]="0">
-          </storybook-tab-navigation>
+          </bsg-tab-navigation>
         </div>
       </div>
     `,
@@ -552,7 +552,7 @@ export const InteractivePlayground: Story = {
         </p>
 
         <div style="display: flex; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <storybook-tab-navigation
+          <bsg-tab-navigation
             [variant]="variant"
             [size]="size"
             [color]="color"
@@ -560,7 +560,7 @@ export const InteractivePlayground: Story = {
             [tabs]="tabs"
             [activeIndex]="activeIndex"
             (onTabChange)="handleTabChange($event)">
-          </storybook-tab-navigation>
+          </bsg-tab-navigation>
         </div>
 
         <div style="margin-top: 32px; padding: 16px; background: #FEF3C7; border-radius: 8px; font-size: 13px; color: #78350F; line-height: 1.6;">
