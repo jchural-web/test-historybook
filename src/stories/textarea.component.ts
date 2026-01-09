@@ -7,7 +7,7 @@ export type TextareaState = 'default' | 'hover' | 'focus' | 'disabled' | 'error'
 export type TextareaComposition = 'default' | 'withLabel' | 'withText' | 'withButton';
 
 @Component({
-  selector: 'storybook-textarea',
+  selector: 'bsg-textarea',
   standalone: true,
   imports: [CommonModule, LabelComponent, ButtonComponent],
   template: `
