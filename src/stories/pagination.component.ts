@@ -12,7 +12,7 @@ export interface PageSizeChangeEvent {
 }
 
 @Component({
-  selector: 'storybook-pagination',
+  selector: 'bsg-pagination',
   standalone: true,
   imports: [CommonModule, FormsModule],
   template: `
