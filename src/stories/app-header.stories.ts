@@ -36,7 +36,7 @@ AppHeader es un componente de layout compuesto que estructura la barra de navega
 ## Uso
 
 \`\`\`typescript
-<storybook-app-header
+<bsg-app-header
   [title]="'Mi Aplicación'"
   [showMenuButton]="true"
   [user]="{ name: 'Usuario', avatarImage: 'url' }"
@@ -44,7 +44,7 @@ AppHeader es un componente de layout compuesto que estructura la barra de navega
   (menuClick)="onMenuClick()"
   (notificationsClick)="onNotificationsClick()"
   (actionClick)="onActionClick()"
-></storybook-app-header>
+></bsg-app-header>
 \`\`\`
         `,
       },
