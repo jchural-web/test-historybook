@@ -11,7 +11,7 @@ export interface RadioGroupOption {
 }
 
 @Component({
-  selector: 'storybook-radio-group',
+  selector: 'bsg-radio-group',
   standalone: true,
   imports: [CommonModule, RadioComponent],
   template: `
