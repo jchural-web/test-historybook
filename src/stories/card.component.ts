@@ -181,13 +181,7 @@ export class CardComponent {
   @Input() helperDescription: string = 'respecto al mes anterior';
 
   get cardClasses(): string[] {
-    const classes = [`card-${this.variant}`, `card-content-${this.contentVariant}`];
-
-    if (this.state === 'hover') {
-      classes.push('card-hover');
-    }
-
-    return classes;
+    return [`card-${this.variant}`, `card-content-${this.contentVariant}`];
   }
 
   getCurrencyIcon(): SafeHtml {
