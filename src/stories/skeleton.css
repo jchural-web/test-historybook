@@ -36,7 +36,7 @@
   border-radius: 8px; /* md radius from Figma */
   width: 100%; /* Default full width */
   height: 100px; /* Default height */
-  margin-bottom: 12px; /* Spacing between rectangular blocks */
+  margin-bottom: 16px; /* Spacing between rectangular blocks - increased for visibility */
 }
 
 /* Last rectangular element in parent container should not have bottom margin */
