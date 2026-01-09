@@ -52,210 +52,20 @@ export default meta;
 type Story = StoryObj<TabNavigationComponent>;
 
 // ===========================
-// Text Variant - All Sizes & States
+// Default - Interactive TabNavigation
 // ===========================
 
-export const TextSM: Story = {
+export const Default: Story = {
   args: {
+    size: 'md',
     variant: 'text',
-    size: 'sm',
     state: 'default',
+    activeIndex: 0,
     tabs: [
       { label: 'Solicitudes Realizadas', count: 3 },
       { label: 'Información del cliente' },
       { label: 'Documentos', count: 5 },
     ],
-    activeIndex: 0,
-  },
-};
-
-export const TextMD: Story = {
-  args: {
-    variant: 'text',
-    size: 'md',
-    state: 'default',
-    tabs: [
-      { label: 'Solicitudes Realizadas', count: 3 },
-      { label: 'Información del cliente' },
-      { label: 'Documentos', count: 5 },
-    ],
-    activeIndex: 0,
-  },
-};
-
-export const TextLG: Story = {
-  args: {
-    variant: 'text',
-    size: 'lg',
-    state: 'default',
-    tabs: [
-      { label: 'Solicitudes Realizadas', count: 3 },
-      { label: 'Información del cliente' },
-      { label: 'Documentos', count: 5 },
-    ],
-    activeIndex: 0,
-  },
-};
-
-// ===========================
-// Icon-Text Variant - All Sizes & States
-// ===========================
-
-export const IconTextSM: Story = {
-  args: {
-    variant: 'icon-text',
-    size: 'sm',
-    state: 'default',
-    tabs: [
-      { label: 'Información del cliente', icon: true },
-      { label: 'Detalles de pago', icon: true },
-      { label: 'Historial', icon: true },
-    ],
-    activeIndex: 0,
-  },
-};
-
-export const IconTextMD: Story = {
-  args: {
-    variant: 'icon-text',
-    size: 'md',
-    state: 'default',
-    tabs: [
-      { label: 'Información del cliente', icon: true },
-      { label: 'Detalles de pago', icon: true },
-      { label: 'Historial', icon: true },
-    ],
-    activeIndex: 0,
-  },
-};
-
-export const IconTextLG: Story = {
-  args: {
-    variant: 'icon-text',
-    size: 'lg',
-    state: 'default',
-    tabs: [
-      { label: 'Información del cliente', icon: true },
-      { label: 'Detalles de pago', icon: true },
-      { label: 'Historial', icon: true },
-    ],
-    activeIndex: 0,
-  },
-};
-
-// ===========================
-// Color Variants
-// ===========================
-
-export const ColorGreen: Story = {
-  args: {
-    variant: 'text',
-    size: 'md',
-    color: 'green',
-    state: 'default',
-    tabs: [
-      { label: 'Solicitudes Realizadas', count: 3 },
-      { label: 'Información del cliente' },
-      { label: 'Documentos', count: 5 },
-    ],
-    activeIndex: 0,
-  },
-};
-
-export const ColorGreenIconText: Story = {
-  args: {
-    variant: 'icon-text',
-    size: 'md',
-    color: 'green',
-    state: 'default',
-    tabs: [
-      { label: 'Información del cliente', icon: true },
-      { label: 'Detalles de pago', icon: true },
-      { label: 'Historial', icon: true },
-    ],
-    activeIndex: 0,
-  },
-};
-
-export const ColorYellow: Story = {
-  args: {
-    variant: 'text',
-    size: 'md',
-    color: 'yellow',
-    state: 'default',
-    tabs: [
-      { label: 'Solicitudes Realizadas', count: 3 },
-      { label: 'Información del cliente' },
-      { label: 'Documentos', count: 5 },
-    ],
-    activeIndex: 0,
-  },
-};
-
-export const ColorYellowIconText: Story = {
-  args: {
-    variant: 'icon-text',
-    size: 'md',
-    color: 'yellow',
-    state: 'default',
-    tabs: [
-      { label: 'Información del cliente', icon: true },
-      { label: 'Detalles de pago', icon: true },
-      { label: 'Historial', icon: true },
-    ],
-    activeIndex: 0,
-  },
-};
-
-// ===========================
-// States Showcase
-// ===========================
-
-export const StateHover: Story = {
-  args: {
-    variant: 'text',
-    size: 'md',
-    state: 'hover',
-    tabs: [{ label: 'Solicitudes Realizadas', count: 3 }, { label: 'Información del cliente' }],
-    activeIndex: -1, // No active tab
-  },
-};
-
-export const StateActive: Story = {
-  args: {
-    variant: 'text',
-    size: 'md',
-    state: 'default',
-    tabs: [
-      { label: 'Solicitudes Realizadas', count: 3 },
-      { label: 'Información del cliente' },
-      { label: 'Documentos', count: 5 },
-    ],
-    activeIndex: 1,
-  },
-};
-
-export const StateFocus: Story = {
-  args: {
-    variant: 'text',
-    size: 'md',
-    state: 'focus',
-    tabs: [{ label: 'Solicitudes Realizadas', count: 3 }, { label: 'Información del cliente' }],
-    activeIndex: -1,
-  },
-};
-
-export const StateDisabled: Story = {
-  args: {
-    variant: 'text',
-    size: 'md',
-    state: 'disabled',
-    tabs: [
-      { label: 'Solicitudes Realizadas', count: 3 },
-      { label: 'Información del cliente' },
-      { label: 'Documentos', count: 5 },
-    ],
-    activeIndex: 0,
   },
 };
 
@@ -608,38 +418,13 @@ export const DesignSystemShowcase: Story = {
               <li>Label: 12px, 600 weight</li>
             </ul>
             
-            <p style="margin: 16px 0 8px 0;"><strong>Size: sm</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li>Text: padding 8px 16px, min-height 29px</li>
-              <li>Icon-Text: padding 8px 18px, 168×80px</li>
-            </ul>
-            
-            <p style="margin: 16px 0 8px 0;"><strong>Size: md</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li>Text: padding 12px 24px, min-height 35px</li>
-              <li>Icon-Text: padding 13px 26px, 184×88px</li>
-            </ul>
-            
-            <p style="margin: 16px 0 8px 0;"><strong>Size: lg</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li>Text: padding 16px 32px, min-height 43px</li>
-              <li>Icon-Text: padding 17px 34px, 200×96px</li>
-            </ul>
-            
             <p style="margin: 16px 0 8px 0;"><strong>States:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
               <li><strong>Default:</strong> Background #EFF6FF, Text #2563EB</li>
-              <li><strong>Hover:</strong> Opacity 90%</li>
+              <li><strong>Hover:</strong> Opacity 90%, Text underlined</li>
               <li><strong>Active:</strong> Background #2563EB, Text white</li>
               <li><strong>Focus:</strong> Border 1px solid #7C3AED (Violet-600)</li>
               <li><strong>Disabled:</strong> Opacity 40%, no interactions</li>
-            </ul>
-            
-            <p style="margin: 16px 0 8px 0;"><strong>Typography:</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li>Font Family: Inter</li>
-              <li>Font Size: 14px (text variant), 12px (icon-text labels)</li>
-              <li>Font Weight: 500 (text), 600 (icon-text labels)</li>
             </ul>
             
             <p style="margin: 16px 0 8px 0;"><strong>Behavior:</strong></p>
@@ -647,7 +432,7 @@ export const DesignSystemShowcase: Story = {
               <li>Only one tab can be active at a time</li>
               <li>Clicking inactive tab emits onTabChange event</li>
               <li>Disabled state prevents all interactions</li>
-              <li>Focus state shows on keyboard navigation</li>
+              <li>Use controls panel to change state, size, variant, and color</li>
             </ul>
           </div>
         </section>
@@ -785,12 +570,15 @@ export const InteractivePlayground: Story = {
             <li>Choose <code>color</code> from "blue", "green", or "yellow" variants</li>
             <li>Use <code>count</code> property in tabs array to show counters (text variant only)</li>
             <li>Set <code>activeIndex</code> to control which tab is selected (0-based)</li>
-            <li>The component emits <code>onTabChange</code> event when a tab is clicked</li>
-            <li>Set <code>state</code> to "disabled" to prevent all interactions</li>
+            <li>Change <code>state</code> to see different states (default, hover, active, focus, disabled)</li>
+            <li>Hover state shows with text underline decoration</li>
           </ul>
         </div>
       </div>
     `,
+    component: {
+      handleTabChange: (index: number) => console.log('Tab changed to:', index),
+    },
   }),
   args: {
     variant: 'text',
