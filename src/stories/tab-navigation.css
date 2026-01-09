@@ -280,27 +280,12 @@
   opacity: 1;
 }
 
-/* State: Focus */
+/* State: Focus - with visible outline ring */
 .tab-item-focus,
 .tab-item:focus-visible:not(.tab-item-active):not([disabled]) {
-  border: 1px solid;
+  outline: 2px solid;
+  outline-offset: 2px;
   opacity: 1;
-}
-
-/* Adjust padding for focus border */
-.tab-item-sm.tab-item-focus,
-.tab-item-sm:focus-visible:not(.tab-item-active):not([disabled]) {
-  padding: 7px 15px; /* Reduced by 1px for border */
-}
-
-.tab-item-md.tab-item-focus,
-.tab-item-md:focus-visible:not(.tab-item-active):not([disabled]) {
-  padding: 11px 23px; /* Reduced by 1px for border */
-}
-
-.tab-item-lg.tab-item-focus,
-.tab-item-lg:focus-visible:not(.tab-item-active):not([disabled]) {
-  padding: 15px 31px; /* Reduced by 1px for border */
 }
 
 /* State: Disabled */
