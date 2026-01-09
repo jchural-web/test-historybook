@@ -82,81 +82,13 @@ export default meta;
 type Story = StoryObj<CardComponent>;
 
 // ===========================
-// Default Variant
+// Default - Interactive Card
 // ===========================
 
 export const Default: Story = {
   args: {
     variant: 'default',
     state: 'default',
-    header: 'Actividades Totales',
-    value: '21',
-    helper: '+15.2%',
-    helperDescription: 'respecto al mes anterior',
-    icon: 'phone',
-  },
-};
-
-export const DefaultHover: Story = {
-  args: {
-    variant: 'default',
-    state: 'hover',
-    header: 'Actividades Totales',
-    value: '21',
-    helper: '+15.2%',
-    helperDescription: 'respecto al mes anterior',
-    icon: 'phone',
-  },
-};
-
-// ===========================
-// Elevated Variant
-// ===========================
-
-export const Elevated: Story = {
-  args: {
-    variant: 'elevated',
-    state: 'default',
-    header: 'Actividades Totales',
-    value: '21',
-    helper: '+15.2%',
-    helperDescription: 'respecto al mes anterior',
-    icon: 'phone',
-  },
-};
-
-export const ElevatedHover: Story = {
-  args: {
-    variant: 'elevated',
-    state: 'hover',
-    header: 'Actividades Totales',
-    value: '21',
-    helper: '+15.2%',
-    helperDescription: 'respecto al mes anterior',
-    icon: 'phone',
-  },
-};
-
-// ===========================
-// Outlined Variant
-// ===========================
-
-export const Outlined: Story = {
-  args: {
-    variant: 'outlined',
-    state: 'default',
-    header: 'Actividades Totales',
-    value: '21',
-    helper: '+15.2%',
-    helperDescription: 'respecto al mes anterior',
-    icon: 'phone',
-  },
-};
-
-export const OutlinedHover: Story = {
-  args: {
-    variant: 'outlined',
-    state: 'hover',
     header: 'Actividades Totales',
     value: '21',
     helper: '+15.2%',
