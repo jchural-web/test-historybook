@@ -157,7 +157,7 @@
   padding: 20px;
 }
 
-.ui-table-pagination storybook-separator {
+.ui-table-pagination bsg-separator {
   margin-bottom: 20px;
 }
 
@@ -206,12 +206,12 @@
   padding: 0;
 }
 
-.ui-table-tabs-wrapper storybook-tab-navigation {
+.ui-table-tabs-wrapper bsg-tab-navigation {
   display: block;
   padding: 20px;
 }
 
-.ui-table-tabs-wrapper storybook-tab-navigation .tab-navigation {
+.ui-table-tabs-wrapper bsg-tab-navigation .tab-navigation {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -288,18 +288,18 @@
 }
 
 /* Ensure action buttons follow design specs */
-.ui-table-action-btn storybook-button {
+.ui-table-action-btn bsg-button {
   width: 100%;
 }
 
 /* Approve button styling (green) */
-.ui-table-actions .ui-table-action-btn:first-child storybook-button {
+.ui-table-actions .ui-table-action-btn:first-child bsg-button {
   --button-bg: #16a34a;
   --button-color: #ffffff;
 }
 
 /* Reject button styling (red) */
-.ui-table-actions .ui-table-action-btn:last-child storybook-button {
+.ui-table-actions .ui-table-action-btn:last-child bsg-button {
   --button-bg: #dc2626;
   --button-color: #ffffff;
 }
