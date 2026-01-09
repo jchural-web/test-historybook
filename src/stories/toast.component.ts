@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 export type ToastVariant = 'default' | 'info' | 'success' | 'warning' | 'destructive';
 
 @Component({
-  selector: 'storybook-toast',
+  selector: 'bsg-toast',
   standalone: true,
   imports: [CommonModule],
   template: `
