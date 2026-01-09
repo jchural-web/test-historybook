@@ -182,19 +182,28 @@
 
 .info-container-tab-content {
   margin-top: 24px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .info-container-tab-content .info-container-table-header {
   margin: 0;
-  padding: 12px 0;
+  padding: 12px 20px;
+  background: #eff6ff;
 }
 
 .info-container-tab-content .info-container-table-body {
   margin-top: 0;
+  padding: 0 20px;
+}
+
+.info-container-tab-content .info-container-table-row {
+  padding: 20px 0;
 }
 
 .info-container-tab-content .info-container-pagination {
-  padding: 20px 0 0 0;
+  padding: 20px;
 }
 
 /* Collapsed state */
