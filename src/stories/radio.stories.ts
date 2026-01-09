@@ -29,79 +29,21 @@ const meta: Meta<RadioComponent> = {
 export default meta;
 type Story = StoryObj<RadioComponent>;
 
-// Small size - All states
-export const SmallDefault: Story = {
-  args: {
-    size: 'sm',
-    state: 'default',
-  },
-};
+// ===========================
+// Default - Interactive Radio
+// ===========================
 
-export const SmallHover: Story = {
-  args: {
-    size: 'sm',
-    state: 'hover',
-  },
-};
-
-export const SmallChecked: Story = {
-  args: {
-    size: 'sm',
-    state: 'checked',
-  },
-};
-
-export const SmallDisabled: Story = {
-  args: {
-    size: 'sm',
-    state: 'disabled',
-  },
-};
-
-export const SmallFocus: Story = {
-  args: {
-    size: 'sm',
-    state: 'focus',
-  },
-};
-
-// Medium size - All states
-export const MediumDefault: Story = {
+export const Default: Story = {
   args: {
     size: 'md',
     state: 'default',
   },
 };
 
-export const MediumHover: Story = {
-  args: {
-    size: 'md',
-    state: 'hover',
-  },
-};
+// ===========================
+// Showcase Stories
+// ===========================
 
-export const MediumChecked: Story = {
-  args: {
-    size: 'md',
-    state: 'checked',
-  },
-};
-
-export const MediumDisabled: Story = {
-  args: {
-    size: 'md',
-    state: 'disabled',
-  },
-};
-
-export const MediumFocus: Story = {
-  args: {
-    size: 'md',
-    state: 'focus',
-  },
-};
-
-// Showcase stories
 export const AllSizes: Story = {
   render: () => ({
     template: `
