@@ -29,61 +29,24 @@ export interface AccordionItem {
   template: `
     <div class="accordion-container" [ngClass]="containerClasses">
       <div *ngFor="let item of items; let i = index" class="accordion-item">
-        <!-- Accordion Header -->
-        <button
-          type="button"
-          class="accordion-header"
-          [ngClass]="getHeaderClasses(i)"
-          (click)="toggleItem(i)"
-          [attr.aria-expanded]="isItemExpanded(i)"
-          [attr.aria-controls]="'accordion-content-' + item.id"
-        >
-          <!-- Title (left side) -->
-          <span class="accordion-title">{{ item.title }}</span>
-
-          <!-- Chevron Icon (right side) -->
-          <svg
-            class="accordion-chevron"
-            [ngClass]="{ 'accordion-chevron-open': isItemExpanded(i) }"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11.3691 8.22462C11.7618 7.90427 12.3408 7.92686 12.707 8.29298L18.707 14.293C19.0975 14.6835 19.0975 15.3165 18.707 15.707C18.3164 16.0976 17.6834 16.0976 17.2929 15.707L11.9999 10.4141L6.70696 15.707C6.31643 16.0976 5.68342 16.0976 5.29289 15.707C4.90237 15.3165 4.90237 14.6835 5.29289 14.293L11.2929 8.29298L11.3691 8.22462Z"
-              fill="currentColor"
-            />
-          </svg>
-        </button>
-
-        <!-- Accordion Content (expandable) -->
-        <div
-          *ngIf="isItemExpanded(i)"
-          class="accordion-content"
-          [attr.id]="'accordion-content-' + item.id"
-          role="region"
-          [attr.aria-labelledby]="'accordion-header-' + item.id"
-        >
-          <!-- Render Table Component if table variant is specified -->
-          <div class="accordion-body">
-            <bsg-table
-              *ngIf="item.tableVariant"
-              [title]="item.title"
-              [variant]="item.tableVariant"
-              [tableColumns]="item.tableColumns || []"
-              [tableRows]="item.tableRows || []"
-              [tablePagination]="item.tablePagination"
-              [showActionsColumn]="item.showActionsColumn"
-              [listItems]="item.listItems"
-              [tabs]="item.tabs"
-              [activeTabIndex]="item.activeTabIndex || 0"
-              [tabsPagination]="item.tabsPagination"
-              [headerAction]="item.headerAction"
-            ></bsg-table>
-          </div>
-        </div>
+        <!-- Render Table Component with collapsible mode -->
+        <bsg-table
+          *ngIf="item.tableVariant"
+          [title]="item.title"
+          [variant]="item.tableVariant"
+          [isCollapsible]="true"
+          [isExpanded]="isItemExpanded(i)"
+          (collapseToggle)="toggleItem(i)"
+          [tableColumns]="item.tableColumns || []"
+          [tableRows]="item.tableRows || []"
+          [tablePagination]="item.tablePagination"
+          [showActionsColumn]="item.showActionsColumn"
+          [listItems]="item.listItems"
+          [tabs]="item.tabs"
+          [activeTabIndex]="item.activeTabIndex || 0"
+          [tabsPagination]="item.tabsPagination"
+          [headerAction]="item.headerAction"
+        ></bsg-table>
       </div>
     </div>
   `,
