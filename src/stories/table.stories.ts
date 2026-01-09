@@ -21,58 +21,15 @@ const meta: Meta<TableComponent> = {
 export default meta;
 type Story = StoryObj<TableComponent>;
 
-// ===========================
-// Table Actions Variant
-// ===========================
+// =====================
+// BASIC STRUCTURE
+// =====================
 
-export const TableActions: Story = {
-  args: {
-    title: 'Beneficios Solicitados (Coordinador)',
-    variant: 'table-actions',
-    showActionsColumn: true,
-    actionsColumnLabel: 'Aprobar solicitud',
-    actionsColumnWidth: '120px',
-    tableColumns: [
-      { key: 'benefit', label: 'Beneficio solicitado', width: '210px' },
-      { key: 'program', label: 'Programa', width: '141px' },
-      { key: 'centerCost', label: 'Centro costo', width: '112px' },
-      { key: 'date', label: 'Fecha', width: '88px' },
-      { key: 'coordinator', label: 'Coordinador', width: '107px' },
-    ],
-    tableRows: [
-      {
-        benefit:
-          'Acceso al material oficial del PMI elaborado a partir del Esquema de Contenido del Examen PMP® (ECO) vigente para el desarrollo del Curso...',
-        benefit_label: false,
-        program: 'Curso Oficial de Preparación para el Examen Project Management...',
-        program_label: false,
-        centerCost: 'PREP EXAMPMP ONLINE 2024 XIV LIMA',
-        date: '28/02/2025',
-        date_badge: true,
-        date_badge_variant: 'secondary',
-        coordinator: 'Bianca Mamani',
-        actions: [
-          { label: 'Aprobar', variant: 'approve' },
-          { label: 'Rechazar', variant: 'reject' },
-        ],
-      },
-    ],
-    tablePagination: {
-      currentPage: 1,
-      totalPages: 1,
-      pageSize: 5,
-      pageSizeOptions: [5, 10, 20],
-      totalItems: 1,
-      rangeLabel: '1 - 1 de 1 ítems',
-    },
-  },
-};
-
-// ===========================
-// Table Basic Variant
-// ===========================
-
-export const TableBasic: Story = {
+/**
+ * Basic table structure without extra compositions
+ * Shows the core table with header, body, and pagination
+ */
+export const Basic: Story = {
   args: {
     title: 'Tarifario de Trámites y Servicios',
     variant: 'table-basic',
@@ -123,11 +80,64 @@ export const TableBasic: Story = {
   },
 };
 
-// ===========================
-// Table Tabs Variant
-// ===========================
+// =====================
+// EXAMPLES
+// =====================
 
-export const TableTabs: Story = {
+/**
+ * Table with action buttons and badges
+ * Demonstrates composition with Button and Badge components
+ */
+export const WithActions: Story = {
+  tags: ['!dev'],
+  args: {
+    title: 'Beneficios Solicitados (Coordinador)',
+    variant: 'table-actions',
+    showActionsColumn: true,
+    actionsColumnLabel: 'Aprobar solicitud',
+    actionsColumnWidth: '120px',
+    tableColumns: [
+      { key: 'benefit', label: 'Beneficio solicitado', width: '210px' },
+      { key: 'program', label: 'Programa', width: '141px' },
+      { key: 'centerCost', label: 'Centro costo', width: '112px' },
+      { key: 'date', label: 'Fecha', width: '88px' },
+      { key: 'coordinator', label: 'Coordinador', width: '107px' },
+    ],
+    tableRows: [
+      {
+        benefit:
+          'Acceso al material oficial del PMI elaborado a partir del Esquema de Contenido del Examen PMP® (ECO) vigente para el desarrollo del Curso...',
+        benefit_label: false,
+        program: 'Curso Oficial de Preparación para el Examen Project Management...',
+        program_label: false,
+        centerCost: 'PREP EXAMPMP ONLINE 2024 XIV LIMA',
+        date: '28/02/2025',
+        date_badge: true,
+        date_badge_variant: 'secondary',
+        coordinator: 'Bianca Mamani',
+        actions: [
+          { label: 'Aprobar', variant: 'approve' },
+          { label: 'Rechazar', variant: 'reject' },
+        ],
+      },
+    ],
+    tablePagination: {
+      currentPage: 1,
+      totalPages: 1,
+      pageSize: 5,
+      pageSizeOptions: [5, 10, 20],
+      totalItems: 1,
+      rangeLabel: '1 - 1 de 1 ítems',
+    },
+  },
+};
+
+/**
+ * Table with tabbed interface
+ * Demonstrates composition with TabNavigation component
+ */
+export const WithTabs: Story = {
+  tags: ['!dev'],
   args: {
     title: 'Historial de mensajes',
     variant: 'table-tabs',
@@ -245,11 +255,12 @@ export const TableTabs: Story = {
   },
 };
 
-// ===========================
-// List Content Variant
-// ===========================
-
+/**
+ * Table with list content variant
+ * Demonstrates composition with numbered list format
+ */
 export const ListContent: Story = {
+  tags: ['!dev'],
   args: {
     title: 'Versión Profesional',
     variant: 'list-content',
@@ -273,244 +284,15 @@ export const ListContent: Story = {
   },
 };
 
-// ===========================
-// Design System Showcase
-// ===========================
+// =====================
+// PLAYGROUND (Optional)
+// =====================
 
-export const DesignSystemShowcase: Story = {
-  render: () => ({
-    template: `
-      <div style="font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif; padding: 24px; max-width: 1400px;">
-        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Table Component Library</h2>
-        
-        <!-- Table Actions Variant -->
-        <section style="margin-bottom: 64px;">
-          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Table Actions Variant</h3>
-          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">
-            Table with action buttons (Aprobar/Rechazar) and badges in cells. Perfect for approval workflows.
-          </p>
-          
-          <bsg-table
-            title="Beneficios Solicitados (Coordinador)"
-            variant="table-actions"
-            [showActionsColumn]="true"
-            actionsColumnLabel="Aprobar solicitud"
-            actionsColumnWidth="120px"
-            [tableColumns]="[
-              { key: 'benefit', label: 'Beneficio solicitado', width: '210px' },
-              { key: 'program', label: 'Programa', width: '141px' },
-              { key: 'date', label: 'Fecha', width: '88px' },
-              { key: 'coordinator', label: 'Coordinador', width: '107px' }
-            ]"
-            [tableRows]="[
-              {
-                benefit: 'Acceso al material oficial del PMI...',
-                program: 'Curso Oficial de Preparación...',
-                date: '28/02/2025',
-                date_badge: true,
-                date_badge_variant: 'secondary',
-                coordinator: 'Bianca Mamani',
-                actions: [
-                  { label: 'Aprobar', variant: 'approve' },
-                  { label: 'Rechazar', variant: 'reject' }
-                ]
-              }
-            ]"
-            [tablePagination]="{
-              currentPage: 1,
-              totalPages: 1,
-              pageSize: 5,
-              pageSizeOptions: [5, 10, 20],
-              totalItems: 1,
-              rangeLabel: '1 - 1 de 1 ítems'
-            }">
-          </bsg-table>
-        </section>
-
-        <!-- Table Basic Variant -->
-        <section style="margin-bottom: 64px;">
-          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Table Basic Variant</h3>
-          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">
-            Standard table with columns, rows, and pagination. Ideal for displaying structured data.
-          </p>
-          
-          <bsg-table
-            title="Tarifario de Trámites y Servicios"
-            variant="table-basic"
-            [tableColumns]="[
-              { key: 'number', label: 'N°', width: '50px' },
-              { key: 'concept', label: 'Concepto', width: '218px' },
-              { key: 'description', label: 'Descripción', width: '622px' },
-              { key: 'amount', label: 'Monto (PEN)', width: '89px' }
-            ]"
-            [tableRows]="[
-              {
-                number: '1',
-                concept: 'Costos Gestión de Cobranza',
-                description: 'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza...',
-                amount: '30.00'
-              },
-              {
-                number: '2',
-                concept: 'Emisión de duplicado de certificado',
-                description: 'Cuando el alumno solicita una segunda copia del certificado...',
-                amount: '50.00'
-              }
-            ]"
-            [tablePagination]="{
-              currentPage: 1,
-              totalPages: 1,
-              pageSize: 5,
-              pageSizeOptions: [5, 10, 20],
-              totalItems: 2,
-              rangeLabel: '1 - 2 de 2 ítems'
-            }">
-          </bsg-table>
-        </section>
-
-        <!-- Table Tabs Variant -->
-        <section style="margin-bottom: 64px;">
-          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Table Tabs Variant</h3>
-          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">
-            Tabbed interface with tables. Each tab contains its own table with pagination.
-          </p>
-          
-          <bsg-table
-            title="Historial de mensajes"
-            variant="table-tabs"
-            [activeTabIndex]="0"
-            [headerAction]="{
-              label: 'Nuevo mensaje',
-              variant: 'default',
-              size: 'md'
-            }"
-            [tabs]="[
-              {
-                label: 'Correos recibidos',
-                count: 2,
-                tableData: {
-                  columns: [
-                    { key: 'date', label: 'Fecha', width: '158px' },
-                    { key: 'subject', label: 'Asunto', width: '280px' },
-                    { key: 'sender', label: 'Remitente', width: '207px' }
-                  ],
-                  rows: [
-                    {
-                      date: '15/04/2024 | 10:15 AM',
-                      subject: 'Confirmación de inscripción',
-                      sender: 'admisiones@bsginstitute.com'
-                    }
-                  ]
-                }
-              },
-              {
-                label: 'Correos enviados',
-                count: 0,
-                tableData: {
-                  columns: [
-                    { key: 'date', label: 'Fecha', width: '158px' },
-                    { key: 'subject', label: 'Asunto', width: '280px' }
-                  ],
-                  rows: []
-                }
-              }
-            ]"
-            [tabsPagination]="[
-              {
-                currentPage: 1,
-                totalPages: 1,
-                pageSize: 5,
-                pageSizeOptions: [5, 10, 20],
-                totalItems: 1,
-                rangeLabel: '1 - 1 de 1 ítems'
-              },
-              {
-                currentPage: 1,
-                totalPages: 1,
-                pageSize: 5,
-                pageSizeOptions: [5, 10, 20],
-                totalItems: 0,
-                rangeLabel: '0 - 0 de 0 ítems'
-              }
-            ]">
-          </bsg-table>
-        </section>
-
-        <!-- List Content Variant -->
-        <section style="margin-bottom: 64px;">
-          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">List Content Variant</h3>
-          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">
-            Numbered list format for sequential content or features. No table structure.
-          </p>
-          
-          <bsg-table
-            title="Versión Profesional"
-            variant="list-content"
-            [listItems]="[
-              {
-                text: 'Aplicarás técnicas avanzadas en el diseño de arquitecturas seguras, escalables y optimizadas en AWS.'
-              },
-              {
-                text: 'Obtendrás acceso al simulador en español BSG AWS - CSA Tento® con 195 preguntas.'
-              },
-              {
-                text: 'Obtendrás la Certificación Oficial de AWS de participación en el curso.'
-              }
-            ]">
-          </bsg-table>
-        </section>
-
-        <!-- Design Specifications -->
-        <section style="margin-top: 64px;">
-          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
-          
-          <div style="font-size: 14px; color: #64748B; line-height: 1.8;">
-            <p style="margin: 16px 0 8px 0;"><strong>Variants:</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li><strong>table-actions:</strong> Table with action buttons/badges in cells</li>
-              <li><strong>table-basic:</strong> Standard table with columns and rows</li>
-              <li><strong>table-tabs:</strong> Tabbed interface with tables</li>
-              <li><strong>list-content:</strong> Numbered list without table grid</li>
-            </ul>
-            
-            <p style="margin: 16px 0 8px 0;"><strong>Component Reuse:</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li>Button component for action buttons</li>
-              <li>Badge/Label component for tags and badges</li>
-              <li>TabNavigation for tabs variant</li>
-              <li>Pagination for table footer</li>
-              <li>Separator for dividers</li>
-            </ul>
-            
-            <p style="margin: 16px 0 8px 0;"><strong>Border System:</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li>External container: 1px solid #CBD5E1, 12px radius</li>
-              <li>Table wrapper: 1px solid #CBD5E1, 6px radius (inner border)</li>
-              <li>Row separators: 1px solid #CBD5E1</li>
-              <li>No extra shadows or borders</li>
-            </ul>
-            
-            <p style="margin: 16px 0 8px 0;"><strong>Colors:</strong></p>
-            <ul style="margin: 8px 0 8px 20px;">
-              <li>Header background: #DBEAFE (Blue-100)</li>
-              <li>Title: #2563EB (Blue-600), 16px, 600 weight</li>
-              <li>Table header background: #EFF6FF (Blue-50)</li>
-              <li>Column headers: #2563EB, 14px, 500 weight</li>
-              <li>Row cells: #334155 (neutral-700), 14px, 500 weight</li>
-              <li>Borders: #CBD5E1 (neutral-300)</li>
-            </ul>
-          </div>
-        </section>
-      </div>
-    `,
-  }),
-};
-
-// ===========================
-// Interactive Playground
-// ===========================
-
-export const InteractivePlayground: Story = {
+/**
+ * Interactive playground for Table
+ */
+export const Playground: Story = {
+  tags: ['!dev'],
   render: (args) => ({
     props: args,
     template: `
@@ -586,4 +368,247 @@ export const InteractivePlayground: Story = {
     tabsPagination: [],
     headerAction: undefined,
   },
+};
+
+// =====================
+// SHOWCASE (Optional)
+// =====================
+
+/**
+ * Complete showcase of Table component library
+ */
+export const Showcase: Story = {
+  tags: ['!dev'],
+  render: () => ({
+    template: `
+      <div style="font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif; padding: 24px; max-width: 1400px;">
+        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Table Component Library</h2>
+        
+        <!-- Table Basic Structure -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Basic Table Structure</h3>
+          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">
+            Core table with header, body, and pagination. Foundation for all table compositions.
+          </p>
+          
+          <bsg-table
+            title="Tarifario de Trámites y Servicios"
+            variant="table-basic"
+            [tableColumns]="[
+              { key: 'number', label: 'N°', width: '50px' },
+              { key: 'concept', label: 'Concepto', width: '218px' },
+              { key: 'description', label: 'Descripción', width: '622px' },
+              { key: 'amount', label: 'Monto (PEN)', width: '89px' }
+            ]"
+            [tableRows]="[
+              {
+                number: '1',
+                concept: 'Costos Gestión de Cobranza',
+                description: 'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza...',
+                amount: '30.00'
+              },
+              {
+                number: '2',
+                concept: 'Emisión de duplicado de certificado',
+                description: 'Cuando el alumno solicita una segunda copia del certificado...',
+                amount: '50.00'
+              }
+            ]"
+            [tablePagination]="{
+              currentPage: 1,
+              totalPages: 1,
+              pageSize: 5,
+              pageSizeOptions: [5, 10, 20],
+              totalItems: 2,
+              rangeLabel: '1 - 2 de 2 ítems'
+            }">
+          </bsg-table>
+        </section>
+
+        <!-- Table with Actions -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Composition: With Actions</h3>
+          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">
+            Table composed with Button and Badge components for action workflows.
+          </p>
+          
+          <bsg-table
+            title="Beneficios Solicitados (Coordinador)"
+            variant="table-actions"
+            [showActionsColumn]="true"
+            actionsColumnLabel="Aprobar solicitud"
+            actionsColumnWidth="120px"
+            [tableColumns]="[
+              { key: 'benefit', label: 'Beneficio solicitado', width: '210px' },
+              { key: 'program', label: 'Programa', width: '141px' },
+              { key: 'date', label: 'Fecha', width: '88px' },
+              { key: 'coordinator', label: 'Coordinador', width: '107px' }
+            ]"
+            [tableRows]="[
+              {
+                benefit: 'Acceso al material oficial del PMI...',
+                program: 'Curso Oficial de Preparación...',
+                date: '28/02/2025',
+                date_badge: true,
+                date_badge_variant: 'secondary',
+                coordinator: 'Bianca Mamani',
+                actions: [
+                  { label: 'Aprobar', variant: 'approve' },
+                  { label: 'Rechazar', variant: 'reject' }
+                ]
+              }
+            ]"
+            [tablePagination]="{
+              currentPage: 1,
+              totalPages: 1,
+              pageSize: 5,
+              pageSizeOptions: [5, 10, 20],
+              totalItems: 1,
+              rangeLabel: '1 - 1 de 1 ítems'
+            }">
+          </bsg-table>
+        </section>
+
+        <!-- Table with Tabs -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Composition: With Tabs</h3>
+          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">
+            Table composed with TabNavigation component for organized content.
+          </p>
+          
+          <bsg-table
+            title="Historial de mensajes"
+            variant="table-tabs"
+            [activeTabIndex]="0"
+            [headerAction]="{
+              label: 'Nuevo mensaje',
+              variant: 'default',
+              size: 'md'
+            }"
+            [tabs]="[
+              {
+                label: 'Correos recibidos',
+                count: 2,
+                tableData: {
+                  columns: [
+                    { key: 'date', label: 'Fecha', width: '158px' },
+                    { key: 'subject', label: 'Asunto', width: '280px' },
+                    { key: 'sender', label: 'Remitente', width: '207px' }
+                  ],
+                  rows: [
+                    {
+                      date: '15/04/2024 | 10:15 AM',
+                      subject: 'Confirmación de inscripción',
+                      sender: 'admisiones@bsginstitute.com'
+                    }
+                  ]
+                }
+              },
+              {
+                label: 'Correos enviados',
+                count: 0,
+                tableData: {
+                  columns: [
+                    { key: 'date', label: 'Fecha', width: '158px' },
+                    { key: 'subject', label: 'Asunto', width: '280px' }
+                  ],
+                  rows: []
+                }
+              }
+            ]"
+            [tabsPagination]="[
+              {
+                currentPage: 1,
+                totalPages: 1,
+                pageSize: 5,
+                pageSizeOptions: [5, 10, 20],
+                totalItems: 1,
+                rangeLabel: '1 - 1 de 1 ítems'
+              },
+              {
+                currentPage: 1,
+                totalPages: 1,
+                pageSize: 5,
+                pageSizeOptions: [5, 10, 20],
+                totalItems: 0,
+                rangeLabel: '0 - 0 de 0 ítems'
+              }
+            ]">
+          </bsg-table>
+        </section>
+
+        <!-- List Content -->
+        <section style="margin-bottom: 64px;">
+          <h3 style="margin-bottom: 24px; font-size: 20px; font-weight: 600;">Composition: List Content</h3>
+          <p style="margin-bottom: 16px; color: #64748B; font-size: 14px;">
+            Alternative structure for sequential or feature lists. No table grid.
+          </p>
+          
+          <bsg-table
+            title="Versión Profesional"
+            variant="list-content"
+            [listItems]="[
+              {
+                text: 'Aplicarás técnicas avanzadas en el diseño de arquitecturas seguras, escalables y optimizadas en AWS.'
+              },
+              {
+                text: 'Obtendrás acceso al simulador en español BSG AWS - CSA Tento® con 195 preguntas.'
+              },
+              {
+                text: 'Obtendrás la Certificación Oficial de AWS de participación en el curso.'
+              }
+            ]">
+          </bsg-table>
+        </section>
+
+        <!-- Design Specifications -->
+        <section style="margin-top: 64px;">
+          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
+          
+          <div style="font-size: 14px; color: #64748B; line-height: 1.8;">
+            <p style="margin: 16px 0 8px 0;"><strong>Core Structure (Basic):</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Header: Title, optional action button</li>
+              <li>Body: Columns with headers, data rows, pagination</li>
+              <li>No extra separators or wrappers beyond design spec</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Compositions (Examples):</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li><strong>With Actions:</strong> Table + Button (approve/reject) + Badge</li>
+              <li><strong>With Tabs:</strong> Table + TabNavigation + Button (header action)</li>
+              <li><strong>List Content:</strong> Table with list variant (no grid)</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Component Reuse:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Button component for action buttons</li>
+              <li>Badge component for tags and badges</li>
+              <li>TabNavigation for tabs variant</li>
+              <li>Pagination for table footer</li>
+              <li>Separator for dividers</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Border System:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>External container: 1px solid #CBD5E1, 12px radius</li>
+              <li>Table wrapper: 1px solid #CBD5E1, 6px radius (inner border)</li>
+              <li>Row separators: 1px solid #CBD5E1</li>
+              <li>No extra shadows or borders</li>
+            </ul>
+            
+            <p style="margin: 16px 0 8px 0;"><strong>Colors:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Header background: #DBEAFE (Blue-100)</li>
+              <li>Title: #2563EB (Blue-600), 16px, 600 weight</li>
+              <li>Table header background: #EFF6FF (Blue-50)</li>
+              <li>Column headers: #2563EB, 14px, 500 weight</li>
+              <li>Row cells: #334155 (neutral-700), 14px, 500 weight</li>
+              <li>Borders: #CBD5E1 (neutral-300)</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    `,
+  }),
 };
