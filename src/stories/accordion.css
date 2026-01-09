@@ -1,0 +1,156 @@
+/* Accordion Container */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1; /* neutral-300 */
+  overflow: hidden;
+}
+
+/* Size Variants */
+.accordion-size-sm {
+  border-radius: 6px;
+}
+
+.accordion-size-md {
+  border-radius: 8px;
+}
+
+.accordion-size-lg {
+  border-radius: 10px;
+}
+
+/* Accordion Item */
+.accordion-item {
+  border-bottom: 1px solid #cbd5e1; /* neutral-300 */
+  transition: all 0.2s ease;
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-item-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Accordion Header (Button) */
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #202020; /* neutral-900 */
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.accordion-size-sm .accordion-header {
+  padding: 12px;
+  font-size: 14px;
+}
+
+.accordion-size-lg .accordion-header {
+  padding: 20px;
+  font-size: 18px;
+}
+
+/* Header States */
+.accordion-header:hover:not(:disabled) {
+  background: rgba(203, 213, 225, 0.3); /* neutral-300 with opacity */
+}
+
+.accordion-header:focus-visible {
+  outline: 2px solid #7c3aed; /* Violet-600 */
+  outline-offset: -2px;
+}
+
+.accordion-header:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.accordion-header-expanded {
+  background: rgba(203, 213, 225, 0.2); /* neutral-300 light */
+}
+
+/* Accordion Title */
+.accordion-title {
+  flex: 1;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Accordion Chevron Icon */
+.accordion-chevron {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: #64748b; /* neutral-500 */
+  transition: transform 0.3s ease;
+}
+
+.accordion-chevron-open {
+  transform: rotate(180deg);
+}
+
+/* Accordion Panel (Content Container) */
+.accordion-panel {
+  display: block;
+  border-top: 1px solid #cbd5e1; /* neutral-300 */
+  background: #f8fafc; /* neutral-50 */
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    overflow: visible;
+  }
+}
+
+/* Accordion Content */
+.accordion-content {
+  padding: 16px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #64748b; /* neutral-500 */
+  letter-spacing: 0.3px;
+}
+
+.accordion-size-sm .accordion-content {
+  padding: 12px;
+  font-size: 13px;
+}
+
+.accordion-size-lg .accordion-content {
+  padding: 20px;
+  font-size: 15px;
+}
+
+/* Mode-specific styling */
+.accordion-mode-single {
+  /* Single mode - only one item open at a time */
+}
+
+.accordion-mode-multiple {
+  /* Multiple mode - multiple items can be open */
+}
