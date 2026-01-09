@@ -138,21 +138,21 @@ export const DesignSystemShowcase: Story = {
           <!-- Default Row (non-dismissible) -->
           <div style="display: grid; grid-template-columns: 100px repeat(5, 1fr); gap: 16px; margin-bottom: 16px; align-items: center;">
             <div style="font-size: 16px; font-weight: 600; color: #202020;">Default</div>
-            <div><storybook-toast variant="default" [dismissible]="false" content="Componente de toast Default"></storybook-toast></div>
-            <div><storybook-toast variant="info" [dismissible]="false" content="Componente de toast Info"></storybook-toast></div>
-            <div><storybook-toast variant="success" [dismissible]="false" content="Componente de toast Succes"></storybook-toast></div>
-            <div><storybook-toast variant="warning" [dismissible]="false" content="Componente de toast Warning"></storybook-toast></div>
-            <div><storybook-toast variant="destructive" [dismissible]="false" content="Componente de toast Destructive"></storybook-toast></div>
+            <div><bsg-toast variant="default" [dismissible]="false" content="Componente de toast Default"></bsg-toast></div>
+            <div><bsg-toast variant="info" [dismissible]="false" content="Componente de toast Info"></bsg-toast></div>
+            <div><bsg-toast variant="success" [dismissible]="false" content="Componente de toast Succes"></bsg-toast></div>
+            <div><bsg-toast variant="warning" [dismissible]="false" content="Componente de toast Warning"></bsg-toast></div>
+            <div><bsg-toast variant="destructive" [dismissible]="false" content="Componente de toast Destructive"></bsg-toast></div>
           </div>
           
           <!-- Dismissible Row -->
           <div style="display: grid; grid-template-columns: 100px repeat(5, 1fr); gap: 16px; align-items: center;">
             <div style="font-size: 16px; font-weight: 600; color: #202020;">Dismissible</div>
-            <div><storybook-toast variant="default" [dismissible]="true" content="Componente de toast Default"></storybook-toast></div>
-            <div><storybook-toast variant="info" [dismissible]="true" content="Componente de toast Info"></storybook-toast></div>
-            <div><storybook-toast variant="success" [dismissible]="true" content="Componente de toast Succes"></storybook-toast></div>
-            <div><storybook-toast variant="warning" [dismissible]="true" content="Componente de toast Warning"></storybook-toast></div>
-            <div><storybook-toast variant="destructive" [dismissible]="true" content="Componente de toast Destructive"></storybook-toast></div>
+            <div><bsg-toast variant="default" [dismissible]="true" content="Componente de toast Default"></bsg-toast></div>
+            <div><bsg-toast variant="info" [dismissible]="true" content="Componente de toast Info"></bsg-toast></div>
+            <div><bsg-toast variant="success" [dismissible]="true" content="Componente de toast Succes"></bsg-toast></div>
+            <div><bsg-toast variant="warning" [dismissible]="true" content="Componente de toast Warning"></bsg-toast></div>
+            <div><bsg-toast variant="destructive" [dismissible]="true" content="Componente de toast Destructive"></bsg-toast></div>
           </div>
         </section>
 
@@ -194,47 +194,47 @@ export const UsageExamples: Story = {
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Success Notification</h4>
-          <storybook-toast 
+          <bsg-toast 
             variant="success" 
             [dismissible]="true" 
             content="Your changes have been saved successfully!">
-          </storybook-toast>
+          </bsg-toast>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Error Toast</h4>
-          <storybook-toast 
+          <bsg-toast 
             variant="destructive" 
             [dismissible]="true" 
             content="Error: Unable to complete your request. Please try again.">
-          </storybook-toast>
+          </bsg-toast>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Warning Message</h4>
-          <storybook-toast 
+          <bsg-toast 
             variant="warning" 
             [dismissible]="false" 
             content="Your session will expire in 5 minutes.">
-          </storybook-toast>
+          </bsg-toast>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Information</h4>
-          <storybook-toast 
+          <bsg-toast 
             variant="info" 
             [dismissible]="false" 
             content="New features are now available.">
-          </storybook-toast>
+          </bsg-toast>
         </div>
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">System Status</h4>
-          <storybook-toast 
+          <bsg-toast 
             variant="default" 
             [dismissible]="false" 
             content="All systems operational.">
-          </storybook-toast>
+          </bsg-toast>
         </div>
       </div>
     `,
@@ -252,23 +252,23 @@ export const ToastStack: Story = {
         </p>
         
         <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
-          <storybook-toast 
+          <bsg-toast 
             variant="success" 
             [dismissible]="true" 
             content="File uploaded successfully">
-          </storybook-toast>
+          </bsg-toast>
           
-          <storybook-toast 
+          <bsg-toast 
             variant="info" 
             [dismissible]="true" 
             content="3 new messages">
-          </storybook-toast>
+          </bsg-toast>
           
-          <storybook-toast 
+          <bsg-toast 
             variant="warning" 
             [dismissible]="true" 
             content="Password expires in 7 days">
-          </storybook-toast>
+          </bsg-toast>
         </div>
       </div>
     `,
@@ -289,29 +289,29 @@ export const ComparisonWithAlert: Story = {
         <div style="display: flex; flex-direction: column; gap: 24px;">
           <div>
             <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Toast (Fixed Width, White Background)</h4>
-            <storybook-toast 
+            <bsg-toast 
               variant="success" 
               [dismissible]="true" 
               content="Componente de toast Succes">
-            </storybook-toast>
+            </bsg-toast>
           </div>
           
           <div>
             <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Toast Info</h4>
-            <storybook-toast 
+            <bsg-toast 
               variant="info" 
               [dismissible]="true" 
               content="Componente de toast Info">
-            </storybook-toast>
+            </bsg-toast>
           </div>
           
           <div>
             <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Toast Warning</h4>
-            <storybook-toast 
+            <bsg-toast 
               variant="warning" 
               [dismissible]="true" 
               content="Componente de toast Warning">
-            </storybook-toast>
+            </bsg-toast>
           </div>
         </div>
       </div>
