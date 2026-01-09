@@ -277,6 +277,24 @@
   opacity: 1;
 }
 
+/* Active with focus */
+.tab-item-active:focus-visible {
+  outline: 2px solid;
+  outline-offset: 2px;
+}
+
+.tab-navigation-color-blue .tab-item-active:focus-visible {
+  outline-color: #7c3aed; /* Violet-600 */
+}
+
+.tab-navigation-color-green .tab-item-active:focus-visible {
+  outline-color: #16a34a; /* Green-600 */
+}
+
+.tab-navigation-color-yellow .tab-item-active:focus-visible {
+  outline-color: #ca8a04; /* Yellow-600 */
+}
+
 /* State: Focus - with visible outline ring */
 .tab-item-focus,
 .tab-item:focus-visible:not(.tab-item-active):not([disabled]) {
