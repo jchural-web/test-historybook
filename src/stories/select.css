@@ -32,7 +32,7 @@
 
 /* Size variants */
 .select-sm {
-  width: 133px;
+  min-width: 133px;
 }
 
 .select-trigger-sm {
@@ -41,11 +41,11 @@
 }
 
 .select-dropdown-sm {
-  width: 133px;
+  min-width: 133px;
 }
 
 .select-md {
-  width: 132px;
+  min-width: 132px;
 }
 
 .select-trigger-md {
@@ -54,11 +54,11 @@
 }
 
 .select-dropdown-md {
-  width: 132px;
+  min-width: 132px;
 }
 
 .select-lg {
-  width: 133px;
+  min-width: 133px;
 }
 
 .select-trigger-lg {
@@ -67,7 +67,7 @@
 }
 
 .select-dropdown-lg {
-  width: 133px;
+  min-width: 133px;
 }
 
 /* State variants */
