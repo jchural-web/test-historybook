@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 export type CardVariant = 'default' | 'elevated' | 'outlined';
-export type CardState = 'default' | 'hover';
+export type CardState = 'default';
 export type CardContentVariant = 'default' | 'metric' | 'infoDate' | 'infoCurrency' | 'placeholder';
 
 // Icon for infoCurrency variant (circle-dollar-sign from lucide)
