@@ -51,58 +51,11 @@ const meta: Meta<SelectComponent> = {
 export default meta;
 type Story = StoryObj<SelectComponent>;
 
-// Small size - All states
-export const SmallDefault: Story = {
-  args: {
-    size: 'sm',
-    state: 'default',
-    open: false,
-  },
-};
+// ===========================
+// Default - Interactive Select
+// ===========================
 
-export const SmallHover: Story = {
-  args: {
-    size: 'sm',
-    state: 'hover',
-    open: false,
-  },
-};
-
-export const SmallFocus: Story = {
-  args: {
-    size: 'sm',
-    state: 'focus',
-    open: false,
-  },
-};
-
-export const SmallDisabled: Story = {
-  args: {
-    size: 'sm',
-    state: 'disabled',
-    open: false,
-  },
-};
-
-export const SmallError: Story = {
-  args: {
-    size: 'sm',
-    state: 'error',
-    open: false,
-  },
-};
-
-export const SmallDropdown: Story = {
-  args: {
-    size: 'sm',
-    state: 'default',
-    open: true,
-    selectedValue: '3',
-  },
-};
-
-// Medium size - All states
-export const MediumDefault: Story = {
+export const Default: Story = {
   args: {
     size: 'md',
     state: 'default',
@@ -110,96 +63,9 @@ export const MediumDefault: Story = {
   },
 };
 
-export const MediumHover: Story = {
-  args: {
-    size: 'md',
-    state: 'hover',
-    open: false,
-  },
-};
-
-export const MediumFocus: Story = {
-  args: {
-    size: 'md',
-    state: 'focus',
-    open: false,
-  },
-};
-
-export const MediumDisabled: Story = {
-  args: {
-    size: 'md',
-    state: 'disabled',
-    open: false,
-  },
-};
-
-export const MediumError: Story = {
-  args: {
-    size: 'md',
-    state: 'error',
-    open: false,
-  },
-};
-
-export const MediumDropdown: Story = {
-  args: {
-    size: 'md',
-    state: 'default',
-    open: true,
-    selectedValue: '3',
-  },
-};
-
-// Large size - All states
-export const LargeDefault: Story = {
-  args: {
-    size: 'lg',
-    state: 'default',
-    open: false,
-  },
-};
-
-export const LargeHover: Story = {
-  args: {
-    size: 'lg',
-    state: 'hover',
-    open: false,
-  },
-};
-
-export const LargeFocus: Story = {
-  args: {
-    size: 'lg',
-    state: 'focus',
-    open: false,
-  },
-};
-
-export const LargeDisabled: Story = {
-  args: {
-    size: 'lg',
-    state: 'disabled',
-    open: false,
-  },
-};
-
-export const LargeError: Story = {
-  args: {
-    size: 'lg',
-    state: 'error',
-    open: false,
-  },
-};
-
-export const LargeDropdown: Story = {
-  args: {
-    size: 'lg',
-    state: 'default',
-    open: true,
-    selectedValue: '3',
-  },
-};
+// ===========================
+// Showcase Stories
+// ===========================
 
 // Design System Showcase
 export const DesignSystemShowcase: Story = {
