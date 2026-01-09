@@ -1,0 +1,305 @@
+/* Container */
+.table {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  overflow: hidden;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+}
+
+/* Header */
+.table-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: #dbeafe;
+  border-radius: 12px 12px 0 0;
+  position: relative;
+}
+
+.table-icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.table-check-icon {
+  position: absolute;
+  left: 7px;
+  top: 6px;
+}
+
+.table-title {
+  flex: 1;
+  margin: 0;
+  color: #2563eb;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.table-header-actions {
+  margin-left: auto;
+  margin-right: 16px;
+}
+
+.table-collapse-btn {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.table-collapse-btn:hover {
+  opacity: 0.8;
+}
+
+.table-collapse-icon-rotated {
+  transform: rotate(180deg);
+}
+
+/* Body */
+.table-body {
+  padding: 0;
+}
+
+.table-content {
+  padding: 0;
+}
+
+.table-content-header {
+  display: flex;
+  gap: 16px;
+  padding: 12px 20px;
+  background: #eff6ff;
+  margin: 0;
+  align-items: flex-start;
+}
+
+.table-header-cell {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  flex-shrink: 1;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+.table-actions-header {
+  text-align: center;
+}
+
+.table-content-body {
+  padding: 0 20px;
+}
+
+.table-row {
+  display: flex;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid #cbd5e1;
+  align-items: flex-start;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-cell {
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 1;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+.table-actions-cell {
+  justify-content: center;
+}
+
+.table-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.table-action-btn {
+  width: 83px;
+  height: 26px;
+}
+
+/* Pagination */
+.table-pagination {
+  padding: 20px;
+}
+
+.table-pagination bsg-separator {
+  margin-bottom: 20px;
+}
+
+/* List Variant */
+.table-list {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.table-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 17px;
+}
+
+.table-list-number {
+  position: relative;
+  width: 27px;
+  height: 26px;
+  flex-shrink: 0;
+}
+
+.table-list-number-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.table-list-text {
+  flex: 1;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* Tabs Variant */
+.table-tabs-wrapper {
+  padding: 0;
+}
+
+.table-tabs-wrapper bsg-tab-navigation {
+  display: block;
+  padding: 20px;
+}
+
+.table-tabs-wrapper bsg-tab-navigation .tab-navigation {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.table-tab-content {
+  margin-top: 0;
+  padding: 0;
+}
+
+.table-tab-content .table-content {
+  padding: 0;
+}
+
+.table-tab-content .table-content-header {
+  margin: 0;
+  padding: 12px 20px;
+  background: #eff6ff;
+}
+
+.table-tab-content .table-content-body {
+  margin-top: 0;
+  padding: 0 20px;
+}
+
+.table-tab-content .table-row {
+  padding: 20px 0;
+}
+
+.table-tab-content .table-pagination {
+  padding: 20px;
+}
+
+/* Collapsed state */
+.table-collapsed .table-body {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table-header {
+    padding: 16px;
+  }
+
+  .table-title {
+    font-size: 14px;
+  }
+
+  .table-content,
+  .table-list,
+  .table-tabs-wrapper {
+    padding: 16px;
+  }
+
+  .table-content-header,
+  .table-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .table-header-cell,
+  .table-cell {
+    width: 100% !important;
+  }
+
+  .table-actions {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .table-pagination {
+    padding: 16px;
+  }
+}
+
+/* Ensure action buttons follow design specs */
+.table-action-btn bsg-button {
+  width: 100%;
+}
+
+/* Approve button styling (green) */
+.table-actions .table-action-btn:first-child bsg-button {
+  --button-bg: #16a34a;
+  --button-color: #ffffff;
+}
+
+/* Reject button styling (red) */
+.table-actions .table-action-btn:last-child bsg-button {
+  --button-bg: #dc2626;
+  --button-color: #ffffff;
+}
