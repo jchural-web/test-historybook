@@ -393,6 +393,14 @@ export const DesignSystemShowcase: Story = {
               <li>Estados hover y focus accesibles</li>
               <li>ARIA labels para accesibilidad</li>
             </ul>
+
+            <p style="margin: 12px 0;"><strong>Content Variants (like Table):</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>With Actions: Items with action buttons and detailed information</li>
+              <li>Basic: Simple content items with key details and descriptions</li>
+              <li>List Content: Multiple features or benefits listed in each item</li>
+              <li>Compatible with embedded Table components for complex data</li>
+            </ul>
           </div>
         </section>
       </div>
