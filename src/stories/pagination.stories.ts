@@ -79,7 +79,7 @@ export const InteractivePlayground: Story = {
         </p>
 
         <div style="display: flex; justify-content: flex-start; min-height: 60px; padding: 24px; background: #F8FAFC; border-radius: 8px; border: 1px solid #E2E8F0;">
-          <storybook-pagination
+          <bsg-pagination
             [currentPage]="currentPage"
             [totalPages]="totalPages"
             [pageSize]="pageSize"
@@ -90,7 +90,7 @@ export const InteractivePlayground: Story = {
             (pageSizeChange)="onPageSizeChange($event)"
             (paginationChange)="onPaginationChange($event)"
             (refresh)="onRefresh()">
-          </storybook-pagination>
+          </bsg-pagination>
         </div>
 
         <div style="margin-top: 32px; padding: 16px; background: #DBEAFE; border-radius: 8px; font-size: 13px; color: #1E3A8A; line-height: 1.6;">
