@@ -66,12 +66,12 @@ export type RadioState = 'default' | 'hover' | 'checked' | 'disabled' | 'focus';
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        <circle 
-          [attr.cx]="innerSize / 2" 
-          [attr.cy]="innerSize / 2" 
-          [attr.r]="innerSize / 2 - 0.5" 
-          fill="#2563EB" 
-          stroke="#2563EB"
+        <circle
+          [attr.cx]="innerSize / 2"
+          [attr.cy]="innerSize / 2"
+          [attr.r]="innerSize / 2 - 0.5"
+          fill="#7C3AED"
+          stroke="#7C3AED"
           stroke-width="1"
         />
       </svg>
