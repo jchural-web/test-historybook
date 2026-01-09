@@ -10,20 +10,23 @@ The `bsg-accordion` component provides collapsible/expandable tables and content
 ## Usage
 
 ```html
-<bsg-accordion 
+<bsg-accordion
   [items]="accordionItems"
   size="md"
   variant="table-basic"
-  (itemToggle)="onItemToggle($event)">
+  (itemToggle)="onItemToggle($event)"
+>
 </bsg-accordion>
 ```
 
 ## Inputs
 
 ### `items: AccordionItem[]`
+
 Array of accordion items to display. Each item can contain a table component.
 
 **Interface**:
+
 ```typescript
 interface AccordionItem {
   id: string;
@@ -44,6 +47,7 @@ interface AccordionItem {
 ```
 
 **Example**:
+
 ```typescript
 items = [
   {
@@ -71,7 +75,9 @@ items = [
 ```
 
 ### `size: 'sm' | 'md' | 'lg'`
+
 Controls the size of the accordion headers.
+
 - `'sm'`: Small (12px padding, 14px font)
 - `'md'`: Medium (16px padding, 16px font) - Default
 - `'lg'`: Large (20px padding, 18px font)
@@ -79,6 +85,7 @@ Controls the size of the accordion headers.
 **Default**: `'md'`
 
 ### `variant: 'default' | 'table-actions' | 'table-basic' | 'table-tabs' | 'list-content'`
+
 Determines the accordion variant/styling based on table type.
 
 **Default**: `'default'`
@@ -86,9 +93,11 @@ Determines the accordion variant/styling based on table type.
 ## Outputs
 
 ### `itemToggle`
+
 Emitted when an accordion item is toggled.
 
 **Event Data**:
+
 ```typescript
 {
   itemIndex: number;
@@ -97,6 +106,7 @@ Emitted when an accordion item is toggled.
 ```
 
 **Example**:
+
 ```html
 <bsg-accordion (itemToggle)="onToggle($event)"></bsg-accordion>
 ```
@@ -110,12 +120,14 @@ onToggle(event: { itemIndex: number; expanded: boolean }) {
 ## Features
 
 ### Chevron Icon Positioning
+
 - Located on the **right side** of the header
 - Rotates 180° when item is expanded
 - Uses blue color (#2563eb) by default
 - Smooth rotation animation
 
 ### Table Integration
+
 - Full integration with `bsg-table` component
 - Supports all table variants:
   - **table-actions**: Action buttons for approve/reject workflows
@@ -124,12 +136,14 @@ onToggle(event: { itemIndex: number; expanded: boolean }) {
   - **list-content**: List of features or benefits
 
 ### Accessibility
+
 - ARIA labels and attributes
 - Keyboard navigation support
 - Focus management
 - Semantic HTML structure
 
 ### Animation
+
 - Smooth expand/collapse animation
 - Chevron rotation animation
 - Slide down/up content animation
@@ -137,16 +151,19 @@ onToggle(event: { itemIndex: number; expanded: boolean }) {
 ## Size Variants
 
 ### Small (sm)
+
 - Padding: 12px
 - Font Size: 14px
 - Ideal for compact layouts
 
 ### Medium (md) - Default
+
 - Padding: 16px
 - Font Size: 16px
 - Standard size for most use cases
 
 ### Large (lg)
+
 - Padding: 20px
 - Font Size: 18px
 - Ideal for larger screens or important content
@@ -154,7 +171,9 @@ onToggle(event: { itemIndex: number; expanded: boolean }) {
 ## Content Variants (Table Types)
 
 ### Table Actions Variant
+
 Use for approval workflows with action buttons:
+
 ```typescript
 {
   id: 'approvals',
@@ -176,7 +195,9 @@ Use for approval workflows with action buttons:
 ```
 
 ### Table Basic Variant
+
 Use for pricing tables or structured data:
+
 ```typescript
 {
   id: 'pricing',
@@ -193,7 +214,9 @@ Use for pricing tables or structured data:
 ```
 
 ### List Content Variant
+
 Use for features or benefits lists:
+
 ```typescript
 {
   id: 'features',
@@ -210,11 +233,13 @@ Use for features or benefits lists:
 ## CSS Classes
 
 ### Container Classes
+
 - `.accordion-container` - Main accordion wrapper
 - `.accordion-size-sm|md|lg` - Size variant
 - `.accordion-variant-*` - Variant type
 
 ### Item Classes
+
 - `.accordion-item` - Individual accordion item
 - `.accordion-header` - Item header button
 - `.accordion-header-expanded` - Header when expanded
@@ -226,6 +251,7 @@ Use for features or benefits lists:
 ## Examples
 
 ### Basic Table Actions
+
 ```typescript
 items = [
   {
@@ -243,6 +269,7 @@ items = [
 ```
 
 ### Multiple Sections with Different States
+
 ```typescript
 items = [
   {
@@ -261,6 +288,7 @@ items = [
 ```
 
 ### With Header Action Button
+
 ```typescript
 items = [
   {
@@ -306,14 +334,14 @@ Override CSS to customize appearance:
 
 ## Comparison with Table
 
-| Feature | Accordion | Table |
-|---------|-----------|-------|
-| Collapsible Rows | ✅ Yes (native) | ❌ No |
-| Multiple Visible Rows | ⚠️ Configurable | ✅ Yes |
-| Space Efficient | ✅ Excellent | ❌ No (all rows visible) |
-| Mobile Friendly | ✅ Excellent | ⚠️ Requires scroll |
-| Sorting | ❌ No | ✅ Yes |
-| Filtering | ❌ No | ✅ Yes |
+| Feature               | Accordion       | Table                    |
+| --------------------- | --------------- | ------------------------ |
+| Collapsible Rows      | ✅ Yes (native) | ❌ No                    |
+| Multiple Visible Rows | ⚠️ Configurable | ✅ Yes                   |
+| Space Efficient       | ✅ Excellent    | ❌ No (all rows visible) |
+| Mobile Friendly       | ✅ Excellent    | ⚠️ Requires scroll       |
+| Sorting               | ❌ No           | ✅ Yes                   |
+| Filtering             | ❌ No           | ✅ Yes                   |
 
 ## Related Components
 

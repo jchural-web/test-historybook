@@ -182,7 +182,8 @@ export const TableBasicVariant: Story = {
           {
             number: '1',
             concept: 'Costos Gestión de Cobranza',
-            description: 'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza...',
+            description:
+              'Aplica cuando se realicen cualquiera de las siguientes formas de cobranza...',
             amount: '30.00',
           },
           {

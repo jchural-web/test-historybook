@@ -74,12 +74,17 @@
   border: none;
   outline: none;
   background: transparent;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.05px;
-  color: #64748B;
+  color: #64748b;
   box-sizing: border-box;
   resize: vertical;
   padding: 0;
@@ -89,12 +94,12 @@
 }
 
 .textarea-field::placeholder {
-  color: #64748B;
+  color: #64748b;
 }
 
 /* State variants - Default */
 .textarea-state-default {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
 }
 
@@ -109,7 +114,7 @@
 
 /* State variants - Hover */
 .textarea-state-hover {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
   opacity: 0.9;
 }
@@ -117,19 +122,21 @@
 /* State variants - Focus */
 .textarea-state-focus,
 .textarea-wrapper:has(.textarea-field:focus) {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #7c3aed;
 }
 
 .textarea-state-focus .textarea-field,
 .textarea-wrapper:has(.textarea-field:focus) .textarea-field {
-  color: #64748B;
+  color: #64748b;
 }
 
 /* State variants - Disabled */
 .textarea-state-disabled {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
   opacity: 0.4;
   cursor: not-allowed;
@@ -142,24 +149,26 @@
 
 /* State variants - Error */
 .textarea-state-error {
-  border-color: #DC2626;
+  border-color: #dc2626;
   background: transparent;
 }
 
 .textarea-state-error .textarea-field {
-  color: #DC2626;
+  color: #dc2626;
 }
 
 .textarea-state-error .textarea-field::placeholder {
-  color: #DC2626;
+  color: #dc2626;
 }
 
 /* State variants - Error with Focus */
 /* Ensures error border (red) persists while adding focus ring (purple outline) */
 .textarea-state-error:has(.textarea-field:focus) {
-  border-color: #DC2626;
+  border-color: #dc2626;
   background: transparent;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #7c3aed;
 }
 
 /* Remove browser default focus styles */
@@ -182,10 +191,10 @@
 }
 
 .textarea-field::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #cbd5e1;
   border-radius: 4px;
 }
 
 .textarea-field::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #94a3b8;
 }

@@ -3,7 +3,12 @@ import { CommonModule } from '@angular/common';
 import { TableComponent } from './table.component';
 
 export type AccordionSize = 'sm' | 'md' | 'lg';
-export type AccordionVariant = 'default' | 'table-actions' | 'table-basic' | 'table-tabs' | 'list-content';
+export type AccordionVariant =
+  | 'default'
+  | 'table-actions'
+  | 'table-basic'
+  | 'table-tabs'
+  | 'list-content';
 
 export interface AccordionItem {
   id: string;
