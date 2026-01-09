@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { AccordionComponent } from './accordion.component';
-import { TableComponent } from './table.component';
 
 const meta: Meta<AccordionComponent> = {
   title: 'Example/Accordion',
