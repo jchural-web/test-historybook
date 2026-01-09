@@ -190,11 +190,24 @@
 
 /* Tabs Variant */
 .ui-table-tabs-wrapper {
+  padding: 0;
+}
+
+.ui-table-tabs-wrapper storybook-tab-navigation {
+  display: block;
   padding: 20px;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.ui-table-tabs-wrapper storybook-tab-navigation .tab-navigation {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .ui-table-tab-content {
-  margin-top: 24px;
+  margin-top: 0;
+  padding: 0;
 }
 
 .ui-table-tab-content .ui-table-content {
