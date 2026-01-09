@@ -6,7 +6,7 @@ export type InputState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';
 export type InputIcon = 'none' | 'leading';
 
 @Component({
-  selector: 'storybook-input',
+  selector: 'bsg-input',
   standalone: true,
   imports: [CommonModule],
   template: `
