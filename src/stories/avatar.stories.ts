@@ -190,28 +190,28 @@ export const DesignSystemShowcase: Story = {
           
           <!-- XS Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">xs</div>
-          <div><storybook-avatar size="xs" type="default" image=""></storybook-avatar></div>
-          <div><storybook-avatar size="xs" type="fallback" initials="JC"></storybook-avatar></div>
+          <div><bsg-avatar size="xs" type="default" image=""></bsg-avatar></div>
+          <div><bsg-avatar size="xs" type="fallback" initials="JC"></bsg-avatar></div>
           
           <!-- SM Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">sm</div>
-          <div><storybook-avatar size="sm" type="default" image=""></storybook-avatar></div>
-          <div><storybook-avatar size="sm" type="fallback" initials="JC"></storybook-avatar></div>
+          <div><bsg-avatar size="sm" type="default" image=""></bsg-avatar></div>
+          <div><bsg-avatar size="sm" type="fallback" initials="JC"></bsg-avatar></div>
           
           <!-- MD Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">md</div>
-          <div><storybook-avatar size="md" type="default" image=""></storybook-avatar></div>
-          <div><storybook-avatar size="md" type="fallback" initials="JC"></storybook-avatar></div>
+          <div><bsg-avatar size="md" type="default" image=""></bsg-avatar></div>
+          <div><bsg-avatar size="md" type="fallback" initials="JC"></bsg-avatar></div>
           
           <!-- LG Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">lg</div>
-          <div><storybook-avatar size="lg" type="default" image=""></storybook-avatar></div>
-          <div><storybook-avatar size="lg" type="fallback" initials="JC"></storybook-avatar></div>
+          <div><bsg-avatar size="lg" type="default" image=""></bsg-avatar></div>
+          <div><bsg-avatar size="lg" type="fallback" initials="JC"></bsg-avatar></div>
           
           <!-- XL Row -->
           <div style="font-size: 16px; font-weight: 600; color: #202020;">xl</div>
-          <div><storybook-avatar size="xl" type="default" image=""></storybook-avatar></div>
-          <div><storybook-avatar size="xl" type="fallback" initials="JC"></storybook-avatar></div>
+          <div><bsg-avatar size="xl" type="default" image=""></bsg-avatar></div>
+          <div><bsg-avatar size="xl" type="fallback" initials="JC"></bsg-avatar></div>
         </div>
 
         <!-- Design Specifications -->
@@ -288,7 +288,7 @@ export const UsageExamples: Story = {
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">User Profile Header</h4>
           <div style="display: flex; align-items: center; gap: 16px;">
-            <storybook-avatar size="lg" type="fallback" initials="AB"></storybook-avatar>
+            <bsg-avatar size="lg" type="fallback" initials="AB"></bsg-avatar>
             <div>
               <div style="font-size: 16px; font-weight: 600; color: #202020;">Alice Brown</div>
               <div style="font-size: 14px; color: #64748B;">alice.brown@example.com</div>
@@ -301,7 +301,7 @@ export const UsageExamples: Story = {
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Comment Thread</h4>
           <div style="display: flex; flex-direction: column; gap: 16px;">
             <div style="display: flex; gap: 12px;">
-              <storybook-avatar size="sm" type="fallback" initials="MJ"></storybook-avatar>
+              <bsg-avatar size="sm" type="fallback" initials="MJ"></bsg-avatar>
               <div style="flex: 1;">
                 <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 4px;">Michael Johnson</div>
                 <div style="font-size: 14px; color: #475569; line-height: 1.6;">
@@ -312,7 +312,7 @@ export const UsageExamples: Story = {
             </div>
             
             <div style="display: flex; gap: 12px;">
-              <storybook-avatar size="sm" type="fallback" initials="SK"></storybook-avatar>
+              <bsg-avatar size="sm" type="fallback" initials="SK"></bsg-avatar>
               <div style="flex: 1;">
                 <div style="font-size: 14px; font-weight: 600; color: #202020; margin-bottom: 4px;">Sarah Kim</div>
                 <div style="font-size: 14px; color: #475569; line-height: 1.6;">
@@ -329,7 +329,7 @@ export const UsageExamples: Story = {
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">User List</h4>
           <div style="display: flex; flex-direction: column; gap: 12px; max-width: 350px;">
             <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; background: #F8FAFC;">
-              <storybook-avatar size="md" type="fallback" initials="JD"></storybook-avatar>
+              <bsg-avatar size="md" type="fallback" initials="JD"></bsg-avatar>
               <div style="flex: 1;">
                 <div style="font-size: 14px; font-weight: 500; color: #202020;">John Doe</div>
                 <div style="font-size: 12px; color: #64748B;">Product Manager</div>
@@ -337,7 +337,7 @@ export const UsageExamples: Story = {
             </div>
             
             <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; background: #F8FAFC;">
-              <storybook-avatar size="md" type="fallback" initials="EW"></storybook-avatar>
+              <bsg-avatar size="md" type="fallback" initials="EW"></bsg-avatar>
               <div style="flex: 1;">
                 <div style="font-size: 14px; font-weight: 500; color: #202020;">Emma Wilson</div>
                 <div style="font-size: 12px; color: #64748B;">Senior Designer</div>
@@ -345,7 +345,7 @@ export const UsageExamples: Story = {
             </div>
             
             <div style="display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; background: #F8FAFC;">
-              <storybook-avatar size="md" type="fallback" initials="RT"></storybook-avatar>
+              <bsg-avatar size="md" type="fallback" initials="RT"></bsg-avatar>
               <div style="flex: 1;">
                 <div style="font-size: 14px; font-weight: 500; color: #202020;">Robert Taylor</div>
                 <div style="font-size: 12px; color: #64748B;">Lead Engineer</div>
@@ -360,16 +360,16 @@ export const UsageExamples: Story = {
           <div style="display: flex; align-items: center;">
             <div style="position: relative; display: flex;">
               <div style="position: relative; z-index: 4; border: 2px solid white; border-radius: 50%;">
-                <storybook-avatar size="sm" type="fallback" initials="AM"></storybook-avatar>
+                <bsg-avatar size="sm" type="fallback" initials="AM"></bsg-avatar>
               </div>
               <div style="position: relative; z-index: 3; margin-left: -12px; border: 2px solid white; border-radius: 50%;">
-                <storybook-avatar size="sm" type="fallback" initials="BT"></storybook-avatar>
+                <bsg-avatar size="sm" type="fallback" initials="BT"></bsg-avatar>
               </div>
               <div style="position: relative; z-index: 2; margin-left: -12px; border: 2px solid white; border-radius: 50%;">
-                <storybook-avatar size="sm" type="fallback" initials="CW"></storybook-avatar>
+                <bsg-avatar size="sm" type="fallback" initials="CW"></bsg-avatar>
               </div>
               <div style="position: relative; z-index: 1; margin-left: -12px; border: 2px solid white; border-radius: 50%;">
-                <storybook-avatar size="sm" type="fallback" initials="DL"></storybook-avatar>
+                <bsg-avatar size="sm" type="fallback" initials="DL"></bsg-avatar>
               </div>
             </div>
             <span style="margin-left: 12px; font-size: 14px; color: #64748B;">+5 more</span>
@@ -381,23 +381,23 @@ export const UsageExamples: Story = {
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Size Comparison</h4>
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="text-align: center;">
-              <storybook-avatar size="xs" type="fallback" initials="XS"></storybook-avatar>
+              <bsg-avatar size="xs" type="fallback" initials="XS"></bsg-avatar>
               <div style="font-size: 12px; color: #64748B; margin-top: 8px;">XS (24px)</div>
             </div>
             <div style="text-align: center;">
-              <storybook-avatar size="sm" type="fallback" initials="SM"></storybook-avatar>
+              <bsg-avatar size="sm" type="fallback" initials="SM"></bsg-avatar>
               <div style="font-size: 12px; color: #64748B; margin-top: 8px;">SM (32px)</div>
             </div>
             <div style="text-align: center;">
-              <storybook-avatar size="md" type="fallback" initials="MD"></storybook-avatar>
+              <bsg-avatar size="md" type="fallback" initials="MD"></bsg-avatar>
               <div style="font-size: 12px; color: #64748B; margin-top: 8px;">MD (40px)</div>
             </div>
             <div style="text-align: center;">
-              <storybook-avatar size="lg" type="fallback" initials="LG"></storybook-avatar>
+              <bsg-avatar size="lg" type="fallback" initials="LG"></bsg-avatar>
               <div style="font-size: 12px; color: #64748B; margin-top: 8px;">LG (48px)</div>
             </div>
             <div style="text-align: center;">
-              <storybook-avatar size="xl" type="fallback" initials="XL"></storybook-avatar>
+              <bsg-avatar size="xl" type="fallback" initials="XL"></bsg-avatar>
               <div style="font-size: 12px; color: #64748B; margin-top: 8px;">XL (64px)</div>
             </div>
           </div>
@@ -422,12 +422,12 @@ export const InteractivePlayground: Story = {
         </p>
         
         <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
-          <storybook-avatar 
+          <bsg-avatar 
             [size]="size"
             [type]="type"
             [initials]="initials"
             [image]="image">
-          </storybook-avatar>
+          </bsg-avatar>
         </div>
         
         <div style="margin-top: 32px; padding: 16px; background: #FEF3C7; border-radius: 8px; font-size: 13px; color: #78350F; line-height: 1.6;">
