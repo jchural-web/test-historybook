@@ -238,17 +238,17 @@ export const UsageExamples: Story = {
         
         <div>
           <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Error State Example</h4>
-          <bsg-select 
-            size="md" 
+          <bsg-select
+            size="md"
             state="error"
             placeholder="Required field"
+            errorMessage="Este campo es requerido"
             [options]="[
               { value: '1', label: 'Option 1' },
               { value: '2', label: 'Option 2' },
               { value: '3', label: 'Option 3' }
             ]">
           </bsg-select>
-          <p style="margin: 4px 0 0 0; font-size: 12px; color: #DC2626;">This field is required</p>
         </div>
         
         <div>
