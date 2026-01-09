@@ -339,14 +339,14 @@ export const CompositionExamples: Story = {
           ">
             <!-- Image -->
             <storybook-skeleton type="rectangular" width="100%" height="200px"></storybook-skeleton>
-            
+
             <!-- Content -->
-            <div style="padding: 16px;">
-              <storybook-skeleton type="text" width="80%" height="24px" style="margin-bottom: 12px;"></storybook-skeleton>
-              <storybook-skeleton type="text" width="100%" height="14px" style="margin-bottom: 6px;"></storybook-skeleton>
-              <storybook-skeleton type="text" width="100%" height="14px" style="margin-bottom: 6px;"></storybook-skeleton>
+            <div style="padding: 16px; display: flex; flex-direction: column; gap: 0;">
+              <storybook-skeleton type="text" width="80%" height="20px"></storybook-skeleton>
+              <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
+              <storybook-skeleton type="text" width="100%" height="14px"></storybook-skeleton>
               <storybook-skeleton type="text" width="60%" height="14px" style="margin-bottom: 16px;"></storybook-skeleton>
-              
+
               <!-- Metadata -->
               <div style="display: flex; align-items: center; gap: 12px;">
                 <storybook-skeleton type="circular" width="24px" height="24px"></storybook-skeleton>
