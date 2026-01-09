@@ -13,11 +13,11 @@ export type TextareaComposition = 'default' | 'withLabel' | 'withText' | 'withBu
   template: `
     <div class="textarea-composition" [ngClass]="compositionClasses">
       <!-- Label (for withLabel and withText) -->
-      <storybook-label
+      <bsg-label
         *ngIf="composition === 'withLabel' || composition === 'withText'"
         [text]="labelText"
         class="composition-label"
-      ></storybook-label>
+      ></bsg-label>
 
       <!-- Textarea Field -->
       <div class="textarea-wrapper" [ngClass]="wrapperClasses">
@@ -41,13 +41,13 @@ export type TextareaComposition = 'default' | 'withLabel' | 'withText' | 'withBu
       >{{ helperText }}</span>
 
       <!-- Button (for withButton) -->
-      <storybook-button
+      <bsg-button
         *ngIf="composition === 'withButton'"
         [label]="buttonLabel"
         [state]="state === 'disabled' ? 'disabled' : 'default'"
         (onClick)="onButtonClick($event)"
         class="composition-button"
-      ></storybook-button>
+      ></bsg-button>
     </div>
   `,
   styleUrls: ['./textarea.css'],
