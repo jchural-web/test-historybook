@@ -35,7 +35,7 @@ const icons: Record<string, string> = {
 };
 
 @Component({
-  selector: 'storybook-button',
+  selector: 'bsg-button',
   standalone: true,
   imports: [CommonModule],
   template: `
