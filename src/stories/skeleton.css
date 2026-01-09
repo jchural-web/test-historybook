@@ -14,7 +14,7 @@
   border-radius: 4px; /* sm radius */
   width: 100%; /* Default for text lines */
   height: 14px; /* Default text line height - slightly reduced for better stacking */
-  margin-bottom: 8px; /* Fixed gap between text lines */
+  margin-bottom: 12px; /* Fixed gap between text lines - increased for clarity */
 }
 
 /* Last text element in parent container should not have bottom margin */
