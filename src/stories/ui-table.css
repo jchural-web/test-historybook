@@ -90,8 +90,11 @@
   color: #2563eb;
   font-size: 14px;
   font-weight: 500;
-  line-height: normal;
-  flex-shrink: 0;
+  line-height: 1.5;
+  flex-shrink: 1;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
 }
 
 .ui-table-actions-header {
