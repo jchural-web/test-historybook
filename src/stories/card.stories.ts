@@ -171,8 +171,7 @@ export const DesignSystemShowcase: Story = {
             </ul>
             <p style="margin: 16px 0 8px 0;"><strong>State Styles:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
-              <li><strong>Default:</strong> Opacity 1</li>
-              <li><strong>Hover:</strong> Opacity 0.9</li>
+              <li><strong>Default:</strong> Standard appearance</li>
             </ul>
             <p style="margin: 16px 0 8px 0;"><strong>Typography:</strong></p>
             <ul style="margin: 8px 0 8px 20px;">
