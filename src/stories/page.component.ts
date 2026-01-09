@@ -58,18 +58,4 @@ import type { User } from './user';
   </article>`,
   styleUrls: ['./page.css'],
 })
-export class PageComponent {
-  user: User | null = null;
-
-  doLogout() {
-    this.user = null;
-  }
-
-  doLogin() {
-    this.user = { name: 'Jane Doe' };
-  }
-
-  doCreateAccount() {
-    this.user = { name: 'Jane Doe' };
-  }
-}
+export class PageComponent {}
