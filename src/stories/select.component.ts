@@ -84,6 +84,9 @@ export class SelectComponent {
   /** Dropdown open state */
   @Input() open: boolean = false;
 
+  /** Error message (shown when state is 'error') */
+  @Input() errorMessage: string = '';
+
   /** Value change event */
   @Output() valueChange = new EventEmitter<string>();
 
