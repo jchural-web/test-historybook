@@ -285,8 +285,74 @@ Override CSS variables or classes to customize appearance:
 - Animations are GPU-accelerated using CSS transforms
 - Handles large lists efficiently with virtual scrolling support
 
+## Content Variants (Like Table)
+
+The Accordion component can be configured with different content types to mirror Table component variants:
+
+### With Actions Variant
+Similar to `table-actions`, items can include action information:
+```typescript
+items: [
+  {
+    id: 'benefit-1',
+    title: 'Benefit Name - Requester Name',
+    content: 'Program: ... | Cost Center: ... | Date: ... | Actions: Approve / Reject'
+  }
+]
+```
+Use `mode: 'single'` for approval workflows.
+
+### Basic Content Variant
+Similar to `table-basic`, items with pricing or structured data:
+```typescript
+items: [
+  {
+    id: 'price-1',
+    title: 'Service Name - $Amount',
+    content: 'Detailed description of what this service includes...'
+  }
+]
+```
+Use `mode: 'multiple'` to compare options simultaneously.
+
+### List Content Variant
+Similar to `list-content`, items with features or benefits:
+```typescript
+items: [
+  {
+    id: 'plan-1',
+    title: 'Plan Name',
+    content: 'Feature 1\n\nFeature 2\n\nFeature 3'
+  }
+]
+```
+Use `mode: 'multiple'` for plan comparisons.
+
+## Accordion vs Table
+
+| Feature | Accordion | Table |
+|---------|-----------|-------|
+| Collapsible Rows | ✅ Yes (by default) | ❌ No (fixed display) |
+| Multiple Rows Visible | ✅ Configurable (single/multiple mode) | ✅ Yes (all rows visible) |
+| Sorting/Filtering | ❌ Not applicable | ✅ Yes |
+| Large Datasets | ⚠️ Good (better vertical scroll) | ✅ Best (optimized for tabular data) |
+| Mobile Friendly | ✅ Excellent (stacks naturally) | ⚠️ Requires horizontal scroll |
+| Action Buttons | ✅ In content | ✅ Dedicated column |
+
+**Use Accordion when:**
+- Content needs to be collapsible to save space
+- Users want to focus on one item at a time
+- Mobile-friendly layout is priority
+- Content is hierarchical or has detailed descriptions
+
+**Use Table when:**
+- Displaying structured tabular data
+- Users need to compare multiple rows side-by-side
+- Sorting/filtering is required
+- Data includes columns and structured fields
+
 ## Related Components
 
-- Table (bsg-table) - For tabular data display
-- Tabs (bsg-tab-navigation) - For multiple sections with tabs
+- Table (bsg-table) - For tabular data display without collapse/expand
+- Tabs (bsg-tab-navigation) - For multiple sections with tab navigation
 - Collapse (if available) - For single collapsible section
