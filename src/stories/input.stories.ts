@@ -106,8 +106,8 @@ export const States: Story = {
 // ============================================================
 
 /**
- * Input with leading icon in all sizes and states.
- * Shows how to use the leading icon content mode.
+ * Input with icons (leading and password toggle).
+ * Demonstrates leading icon and password variant with toggle functionality.
  */
 export const WithIcons: Story = {
   render: () => ({
@@ -150,6 +150,46 @@ export const WithIcons: Story = {
           <div style="display: flex; gap: 16px; align-items: center;">
             <span style="width: 100px; font-size: 14px; color: #666;">Error</span>
             <bsg-input size="md" state="error" icon="leading"></bsg-input>
+          </div>
+        </div>
+
+        <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #202020; margin-top: 16px;">Password Input - All Sizes</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Small</span>
+            <bsg-input size="sm" state="default" type="password" placeholder="Contraseña" value="SecurePass123"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Medium</span>
+            <bsg-input size="md" state="default" type="password" placeholder="Contraseña" value="SecurePass123"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Large</span>
+            <bsg-input size="lg" state="default" type="password" placeholder="Contraseña" value="SecurePass123"></bsg-input>
+          </div>
+        </div>
+
+        <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #202020; margin-top: 16px;">Password Input - All States</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Default</span>
+            <bsg-input size="md" state="default" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Hover</span>
+            <bsg-input size="md" state="hover" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Focus</span>
+            <bsg-input size="md" state="focus" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Disabled</span>
+            <bsg-input size="md" state="disabled" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+          </div>
+          <div style="display: flex; gap: 16px; align-items: center;">
+            <span style="width: 100px; font-size: 14px; color: #666;">Error</span>
+            <bsg-input size="md" state="error" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
           </div>
         </div>
       </div>
