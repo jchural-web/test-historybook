@@ -262,74 +262,106 @@ export const Playground: Story = {
 
 /**
  * Complete design system showcase featuring all input sizes, states,
- * and content modes with and without icons.
+ * content modes with and without icons, and password variant.
  */
 export const Showcase: Story = {
   render: () => ({
     template: `
       <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 1200px;">
         <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Input Component Library</h2>
-        
+
         <section style="margin-bottom: 48px;">
-          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Without Icon</h3>
-          
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Text Input</h3>
+
           <div style="margin-bottom: 32px;">
             <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">Sizes</h4>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
               <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">sm:</span>
-              <bsg-input size="sm" state="default" icon="none"></bsg-input>
-              <bsg-input size="sm" state="hover" icon="none"></bsg-input>
-              <bsg-input size="sm" state="focus" icon="none"></bsg-input>
-              <bsg-input size="sm" state="disabled" icon="none"></bsg-input>
-              <bsg-input size="sm" state="error" icon="none"></bsg-input>
+              <bsg-input size="sm" state="default" icon="none" type="text"></bsg-input>
+              <bsg-input size="sm" state="hover" icon="none" type="text"></bsg-input>
+              <bsg-input size="sm" state="focus" icon="none" type="text"></bsg-input>
+              <bsg-input size="sm" state="disabled" icon="none" type="text"></bsg-input>
+              <bsg-input size="sm" state="error" icon="none" type="text"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
               <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">md:</span>
-              <bsg-input size="md" state="default" icon="none"></bsg-input>
-              <bsg-input size="md" state="hover" icon="none"></bsg-input>
-              <bsg-input size="md" state="focus" icon="none"></bsg-input>
-              <bsg-input size="md" state="disabled" icon="none"></bsg-input>
-              <bsg-input size="md" state="error" icon="none"></bsg-input>
+              <bsg-input size="md" state="default" icon="none" type="text"></bsg-input>
+              <bsg-input size="md" state="hover" icon="none" type="text"></bsg-input>
+              <bsg-input size="md" state="focus" icon="none" type="text"></bsg-input>
+              <bsg-input size="md" state="disabled" icon="none" type="text"></bsg-input>
+              <bsg-input size="md" state="error" icon="none" type="text"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center;">
               <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">lg:</span>
-              <bsg-input size="lg" state="default" icon="none"></bsg-input>
-              <bsg-input size="lg" state="hover" icon="none"></bsg-input>
-              <bsg-input size="lg" state="focus" icon="none"></bsg-input>
-              <bsg-input size="lg" state="disabled" icon="none"></bsg-input>
-              <bsg-input size="lg" state="error" icon="none"></bsg-input>
+              <bsg-input size="lg" state="default" icon="none" type="text"></bsg-input>
+              <bsg-input size="lg" state="hover" icon="none" type="text"></bsg-input>
+              <bsg-input size="lg" state="focus" icon="none" type="text"></bsg-input>
+              <bsg-input size="lg" state="disabled" icon="none" type="text"></bsg-input>
+              <bsg-input size="lg" state="error" icon="none" type="text"></bsg-input>
             </div>
           </div>
         </section>
 
         <section style="margin-bottom: 48px;">
-          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">With Leading Icon</h3>
-          
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Text Input With Leading Icon</h3>
+
           <div style="margin-bottom: 32px;">
             <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">Sizes</h4>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
               <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">sm:</span>
-              <bsg-input size="sm" state="default" icon="leading"></bsg-input>
-              <bsg-input size="sm" state="hover" icon="leading"></bsg-input>
-              <bsg-input size="sm" state="focus" icon="leading"></bsg-input>
-              <bsg-input size="sm" state="disabled" icon="leading"></bsg-input>
-              <bsg-input size="sm" state="error" icon="leading"></bsg-input>
+              <bsg-input size="sm" state="default" icon="leading" type="text"></bsg-input>
+              <bsg-input size="sm" state="hover" icon="leading" type="text"></bsg-input>
+              <bsg-input size="sm" state="focus" icon="leading" type="text"></bsg-input>
+              <bsg-input size="sm" state="disabled" icon="leading" type="text"></bsg-input>
+              <bsg-input size="sm" state="error" icon="leading" type="text"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
               <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">md:</span>
-              <bsg-input size="md" state="default" icon="leading"></bsg-input>
-              <bsg-input size="md" state="hover" icon="leading"></bsg-input>
-              <bsg-input size="md" state="focus" icon="leading"></bsg-input>
-              <bsg-input size="md" state="disabled" icon="leading"></bsg-input>
-              <bsg-input size="md" state="error" icon="leading"></bsg-input>
+              <bsg-input size="md" state="default" icon="leading" type="text"></bsg-input>
+              <bsg-input size="md" state="hover" icon="leading" type="text"></bsg-input>
+              <bsg-input size="md" state="focus" icon="leading" type="text"></bsg-input>
+              <bsg-input size="md" state="disabled" icon="leading" type="text"></bsg-input>
+              <bsg-input size="md" state="error" icon="leading" type="text"></bsg-input>
             </div>
             <div style="display: flex; gap: 16px; align-items: center;">
               <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">lg:</span>
-              <bsg-input size="lg" state="default" icon="leading"></bsg-input>
-              <bsg-input size="lg" state="hover" icon="leading"></bsg-input>
-              <bsg-input size="lg" state="focus" icon="leading"></bsg-input>
-              <bsg-input size="lg" state="disabled" icon="leading"></bsg-input>
-              <bsg-input size="lg" state="error" icon="leading"></bsg-input>
+              <bsg-input size="lg" state="default" icon="leading" type="text"></bsg-input>
+              <bsg-input size="lg" state="hover" icon="leading" type="text"></bsg-input>
+              <bsg-input size="lg" state="focus" icon="leading" type="text"></bsg-input>
+              <bsg-input size="lg" state="disabled" icon="leading" type="text"></bsg-input>
+              <bsg-input size="lg" state="error" icon="leading" type="text"></bsg-input>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Password Input (With Show/Hide Toggle)</h3>
+
+          <div style="margin-bottom: 32px;">
+            <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">Sizes</h4>
+            <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">sm:</span>
+              <bsg-input size="sm" state="default" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="sm" state="hover" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="sm" state="focus" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="sm" state="disabled" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="sm" state="error" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center; margin-bottom: 12px;">
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">md:</span>
+              <bsg-input size="md" state="default" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="md" state="hover" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="md" state="focus" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="md" state="disabled" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="md" state="error" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">lg:</span>
+              <bsg-input size="lg" state="default" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="lg" state="hover" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="lg" state="focus" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="lg" state="disabled" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
+              <bsg-input size="lg" state="error" type="password" placeholder="Contraseña" value="Pass1234"></bsg-input>
             </div>
           </div>
         </section>
