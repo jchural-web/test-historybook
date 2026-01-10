@@ -203,7 +203,7 @@ export const WithIcons: Story = {
 
 /**
  * Interactive playground for testing all input configurations.
- * Use the controls to experiment with different sizes, states, and icon modes.
+ * Use the controls to experiment with different sizes, states, icon modes, and password variant.
  */
 export const Playground: Story = {
   render: (args) => ({
@@ -212,13 +212,14 @@ export const Playground: Story = {
       <div style="padding: 24px; font-family: Roboto, sans-serif;">
         <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive Input Playground</h3>
         <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
-          Use the controls panel to adjust size, state, icon, and placeholder
+          Use the controls panel to adjust size, state, type, icon, and placeholder
         </p>
 
         <div style="display: flex; align-items: center; justify-content: center; min-height: 120px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
           <bsg-input
             [size]="size"
             [state]="state"
+            [type]="type"
             [icon]="icon"
             [placeholder]="placeholder"
             [value]="value">
@@ -228,9 +229,11 @@ export const Playground: Story = {
         <div style="margin-top: 32px; padding: 16px; background: #EFF6FF; border-radius: 8px; font-size: 13px; color: #1E40AF; line-height: 1.6;">
           <strong>Tips:</strong>
           <ul style="margin: 8px 0 0 20px;">
+            <li>Set <code>type="password"</code> to enable password mode with show/hide toggle</li>
             <li>Set <code>icon="leading"</code> to display a search icon on the left</li>
             <li>Try different states to see visual feedback (hover, focus, error, disabled)</li>
             <li>Adjust size to see how the input scales (sm, md, lg)</li>
+            <li>When <code>state="disabled"</code>, the password toggle is also disabled</li>
           </ul>
         </div>
       </div>
@@ -239,9 +242,17 @@ export const Playground: Story = {
   args: {
     size: 'md',
     state: 'default',
+    type: 'text',
     icon: 'none',
     placeholder: 'Ingresa información',
     value: '',
+  },
+  argTypes: {
+    type: {
+      control: 'select',
+      options: ['text', 'password'],
+      description: 'Input type (text or password with toggle)',
+    },
   },
 };
 
