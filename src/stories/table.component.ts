@@ -418,7 +418,7 @@ export class TableComponent {
     }
   }
 
-  getActionVariant(actionVariant?: string): string {
+  getActionVariant(actionVariant?: string): ButtonVariant {
     switch (actionVariant) {
       case 'approve':
         return 'default'; // Green variant
@@ -429,5 +429,23 @@ export class TableComponent {
       default:
         return 'default';
     }
+  }
+
+  getHeaderActionVariant(): ButtonVariant {
+    const variant = this.headerAction?.variant;
+    const validVariants: ButtonVariant[] = ['default', 'secondary', 'outline', 'ghost', 'link', 'destructive'];
+    if (variant && validVariants.includes(variant as ButtonVariant)) {
+      return variant as ButtonVariant;
+    }
+    return 'default';
+  }
+
+  getHeaderActionSize(): ButtonSize {
+    const size = this.headerAction?.size;
+    const validSizes: ButtonSize[] = ['sm', 'md', 'lg'];
+    if (size && validSizes.includes(size as ButtonSize)) {
+      return size as ButtonSize;
+    }
+    return 'md';
   }
 }
