@@ -45,11 +45,11 @@ export interface AccordionItem {
           [tableColumns]="item.tableColumns || []"
           [tableRows]="item.tableRows || []"
           [tablePagination]="item.tablePagination"
-          [showActionsColumn]="item.showActionsColumn"
-          [listItems]="item.listItems"
-          [tabs]="item.tabs"
+          [showActionsColumn]="item.showActionsColumn || false"
+          [listItems]="item.listItems || []"
+          [tabs]="item.tabs || []"
           [activeTabIndex]="item.activeTabIndex || 0"
-          [tabsPagination]="item.tabsPagination"
+          [tabsPagination]="item.tabsPagination || []"
           [headerAction]="item.headerAction"
         ></bsg-table>
       </div>
