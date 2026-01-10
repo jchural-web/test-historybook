@@ -177,13 +177,13 @@ export interface TableAction {
 
               <!-- Actions Column (for table-actions variant) -->
               <div
-                *ngIf="variant === 'table-actions' && row.actions"
+                *ngIf="variant === 'table-actions' && row['actions']"
                 class="table-cell table-actions-cell"
                 [style.width]="actionsColumnWidth || 'auto'"
               >
                 <div class="table-actions">
                   <bsg-button
-                    *ngFor="let action of row.actions"
+                    *ngFor="let action of row['actions']"
                     [label]="action.label"
                     [variant]="getActionVariant(action.variant)"
                     [size]="'md'"
