@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ButtonComponent } from './button.component';
 import { AvatarComponent } from './avatar.component';
 
 export interface AppHeaderUser {
@@ -25,7 +24,7 @@ const icons: Record<string, string> = {
 @Component({
   selector: 'bsg-app-header',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, AvatarComponent],
+  imports: [CommonModule, AvatarComponent],
   template: `
     <header class="app-header" [attr.role]="'banner'">
       <!-- Left Section -->
