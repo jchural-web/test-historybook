@@ -53,7 +53,7 @@ export type TextareaComposition = 'default' | 'withLabel' | 'withText' | 'withBu
         *ngIf="composition === 'withButton'"
         [label]="buttonLabel"
         [state]="state === 'disabled' ? 'disabled' : 'default'"
-        (onClick)="onButtonClick($event)"
+        (onClick)="handleButtonClick($event)"
         class="composition-button"
       ></bsg-button>
     </div>
