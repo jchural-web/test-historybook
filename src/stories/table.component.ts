@@ -92,8 +92,8 @@ export interface TableAction {
         <div class="table-header-actions" *ngIf="headerAction && !isCollapsible">
           <bsg-button
             [label]="headerAction.label"
-            [variant]="headerAction.variant || 'default'"
-            [size]="headerAction.size || 'md'"
+            [variant]="getHeaderActionVariant()"
+            [size]="getHeaderActionSize()"
             (onClick)="onHeaderAction()"
           ></bsg-button>
         </div>
