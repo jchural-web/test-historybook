@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 export type InputSize = 'sm' | 'md' | 'lg';
 export type InputState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';
 export type InputIcon = 'none' | 'leading';
+export type InputType = 'text' | 'password';
 
 @Component({
   selector: 'bsg-input',
@@ -11,9 +12,10 @@ export type InputIcon = 'none' | 'leading';
   imports: [CommonModule],
   template: `
     <div class="input-wrapper" [ngClass]="wrapperClasses">
+      <!-- Leading Icon -->
       <svg
         *ngIf="icon === 'leading'"
-        class="input-icon"
+        class="input-icon input-icon-leading"
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -25,8 +27,10 @@ export type InputIcon = 'none' | 'leading';
           [attr.fill]="iconColor"
         />
       </svg>
+
+      <!-- Input Field -->
       <input
-        type="text"
+        [type]="inputType"
         class="input-field"
         [placeholder]="placeholder"
         [disabled]="state === 'disabled'"
@@ -36,6 +40,75 @@ export type InputIcon = 'none' | 'leading';
         (blur)="onBlur()"
         [ngClass]="inputClasses"
       />
+
+      <!-- Password Toggle Button (Eye Icon) -->
+      <button
+        *ngIf="type === 'password'"
+        type="button"
+        class="password-toggle-btn"
+        [disabled]="state === 'disabled'"
+        (click)="togglePasswordVisibility()"
+        [attr.aria-label]="showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'"
+        [attr.aria-pressed]="showPassword"
+      >
+        <!-- Eye Open Icon (visible password) -->
+        <svg
+          *ngIf="showPassword"
+          class="eye-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+            [attr.stroke]="passwordIconColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+          <circle
+            cx="12"
+            cy="12"
+            r="3"
+            [attr.stroke]="passwordIconColor"
+            stroke-width="2"
+            fill="none"
+          />
+        </svg>
+
+        <!-- Eye Closed Icon (hidden password) -->
+        <svg
+          *ngIf="!showPassword"
+          class="eye-icon"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+            [attr.stroke]="passwordIconColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            fill="none"
+          />
+          <line
+            x1="1"
+            y1="1"
+            x2="23"
+            y2="23"
+            [attr.stroke]="passwordIconColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
     </div>
   `,
   styleUrls: ['./input.css'],
@@ -44,6 +117,7 @@ export class InputComponent {
   @Input() size: InputSize = 'md';
   @Input() state: InputState = 'default';
   @Input() icon: InputIcon = 'none';
+  @Input() type: InputType = 'text';
   @Input() placeholder: string = 'Ingresa información';
   @Input() value: string = '';
 
@@ -52,20 +126,40 @@ export class InputComponent {
   @Output() onFocusEvent = new EventEmitter<void>();
   @Output() onBlurEvent = new EventEmitter<void>();
 
+  showPassword: boolean = false;
+
+  get inputType(): string {
+    if (this.type === 'password') {
+      return this.showPassword ? 'text' : 'password';
+    }
+    return this.type;
+  }
+
   get wrapperClasses(): string[] {
     return [
       'input',
       `input-${this.size}`,
       `input-state-${this.state}`,
-      this.icon === 'leading' ? 'input-with-icon' : '',
+      this.icon === 'leading' ? 'input-with-icon-leading' : '',
+      this.type === 'password' ? 'input-with-password-toggle' : '',
     ].filter(Boolean);
   }
 
   get inputClasses(): string[] {
-    return [this.icon === 'leading' ? 'has-icon' : ''].filter(Boolean);
+    return [this.icon === 'leading' ? 'has-icon-leading' : ''].filter(Boolean);
   }
 
   get iconColor(): string {
+    if (this.state === 'error') {
+      return '#DC2626';
+    }
+    return '#64748B';
+  }
+
+  get passwordIconColor(): string {
+    if (this.state === 'disabled') {
+      return '#CBD5E1';
+    }
     if (this.state === 'error') {
       return '#DC2626';
     }
@@ -85,5 +179,9 @@ export class InputComponent {
 
   onBlur(): void {
     this.onBlurEvent.emit();
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 }
