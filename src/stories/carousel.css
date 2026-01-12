@@ -202,7 +202,10 @@
 @media (max-width: 768px) {
   .carousel-root {
     padding: 0;
-    margin: 0 40px;
+  }
+
+  .carousel-viewport {
+    padding-inline: 44px;
   }
 
   .carousel-track {
@@ -228,7 +231,10 @@
 @media (max-width: 480px) {
   .carousel-root {
     padding: 0;
-    margin: 0 30px;
+  }
+
+  .carousel-viewport {
+    padding-inline: 40px;
   }
 
   .carousel-track {
@@ -236,8 +242,8 @@
   }
 
   .carousel-indicators {
-    bottom: -40px;
     gap: 12px;
+    margin-top: 16px;
   }
 
   .carousel-indicator {
