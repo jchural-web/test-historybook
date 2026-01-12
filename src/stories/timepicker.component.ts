@@ -196,7 +196,6 @@ export class TimePickerComponent {
 
   get wrapperClasses(): string[] {
     return [
-      'timepicker-input',
       `timepicker-${this.size}`,
       `timepicker-state-${this.state}`,
       this.open ? 'timepicker-open' : '',
