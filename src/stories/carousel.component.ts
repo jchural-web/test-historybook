@@ -112,6 +112,13 @@ export class CarouselComponent implements AfterContentInit, OnChanges {
     this.cdr.detectChanges();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['itemsPerView']) {
+      this.calculatePages();
+      this.setCSSVariables();
+    }
+  }
+
   /**
    * Detect the gap value from the viewport's computed gap
    * Falls back to desktop default if detection fails
