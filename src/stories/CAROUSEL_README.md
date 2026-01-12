@@ -200,6 +200,15 @@ const translateX = -currentIndex * 100; // Porcentaje
 const widthPercentage = 100 / itemsPerView;
 ```
 
+## Prevención de cortes de contenido
+
+✅ **Sin clipping garantizado**: El carrusel utiliza:
+- `flex: 0 0 calc(100% / var(--carousel-items-per-view))` en cada item
+- `overflow: hidden` en el viewport
+- Cálculos de translateX basados en múltiplos exactos de `100 / itemsPerView`
+
+Esto garantiza que **nunca se vea un contenedor parcialmente cortado**, incluso durante navegación.
+
 ## Limitaciones conocidas
 
 1. **No soporta responsive automático**: Debes cambiar `itemsPerView` manualmente según breakpoint
