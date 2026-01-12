@@ -169,7 +169,10 @@
 @media (max-width: 1024px) and (min-width: 769px) {
   .carousel-root {
     padding: 0;
-    margin: 0 50px;
+  }
+
+  .carousel-viewport {
+    padding-inline: 52px;
   }
 
   .carousel-track {
