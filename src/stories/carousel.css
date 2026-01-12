@@ -1,5 +1,16 @@
 /* ========================================
-   Carousel Root
+   Carousel Container
+   ======================================== */
+
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   Carousel Root (with arrows positioned absolutely)
    ======================================== */
 
 .carousel-root {
@@ -12,15 +23,16 @@
 }
 
 /* ========================================
-   Carousel Viewport (only items, overflow hidden)
+   Carousel Viewport (only items, overflow hidden, with padding for arrows)
    ======================================== */
 
 .carousel-viewport {
   overflow: hidden;
   flex: 1;
   min-width: 0;
-  width: 100%;
   position: relative;
+  /* Padding reserves space for arrows so they don't overlay */
+  padding-inline: 60px;
 }
 
 .carousel-track {
