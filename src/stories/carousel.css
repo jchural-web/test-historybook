@@ -20,10 +20,12 @@
   width: 100%;
   min-height: 260px;
   box-sizing: border-box;
+  /* Padding reserves space for arrows */
+  padding-inline: 60px;
 }
 
 /* ========================================
-   Carousel Viewport (only items, overflow hidden, with padding for arrows)
+   Carousel Viewport (only items, overflow hidden)
    ======================================== */
 
 .carousel-viewport {
@@ -31,8 +33,6 @@
   flex: 1;
   min-width: 0;
   position: relative;
-  /* Padding reserves space for arrows so they don't overlay */
-  padding-inline: 60px;
 }
 
 .carousel-track {
