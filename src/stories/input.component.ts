@@ -114,6 +114,12 @@ export type InputType = 'text' | 'password';
           />
         </svg>
       </button>
+      </div>
+
+      <!-- Error Message -->
+      <span *ngIf="state === 'error' && errorMessage" class="input-error-message" [attr.id]="errorMessageId">
+        {{ errorMessage }}
+      </span>
     </div>
   `,
   styleUrls: ['./input.css'],
