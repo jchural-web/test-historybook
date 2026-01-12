@@ -196,9 +196,22 @@ export class TimePickerComponent {
   }
 
   get wrapperClasses(): string[] {
+    // Determine the state to display
+    let displayState: TimePickerState = this.state;
+
+    // If error state is explicitly set, keep it
+    if (this.state === 'error') {
+      displayState = 'error';
+    }
+    // If focused and not in error, show focus state
+    else if (this.isFocused && this.state !== 'disabled') {
+      displayState = 'focus';
+    }
+    // Otherwise use the provided state
+
     return [
       `timepicker-${this.size}`,
-      `timepicker-state-${this.state}`,
+      `timepicker-state-${displayState}`,
       this.open ? 'timepicker-open' : '',
     ].filter(Boolean);
   }
