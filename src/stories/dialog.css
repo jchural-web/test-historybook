@@ -178,15 +178,7 @@
 
   .dialog-footer {
     padding: 16px 14px;
-    gap: 12px;
-  }
-
-  .dialog-footer bsg-button {
-    margin-left: 8px;
-  }
-
-  .dialog-footer bsg-button:first-child {
-    margin-left: 0;
+    gap: 20px !important;
   }
 
   .dialog-body-scrollable {
