@@ -6011,7 +6011,7 @@
         },
         {
             "name": "TimePickerComponent",
-            "id": "component-TimePickerComponent-94bec255039da20ea58bb84db78912ab476faecd08d2ac2eb84d8f87d2180d58ed85d13ef02f936b1263d173a15b3c2ede887432d97a73c245fa1474361c6432",
+            "id": "component-TimePickerComponent-c26cc468df6e029227c3c8ca87ba17417182c9fdc24b08677dbd306f8be9947916750ac6ac74e0a9c89430fe40c90744d4320bf6831b0071fa8f8caca902c251",
             "file": "src/stories/timepicker.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6192,6 +6192,17 @@
                     ]
                 },
                 {
+                    "name": "isFocused",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 185
+                },
+                {
                     "name": "minutesList",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -6240,7 +6251,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 316,
+                    "line": 330,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6250,7 +6261,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 352,
+                    "line": 366,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6267,7 +6278,7 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 240,
+                    "line": 254,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6295,7 +6306,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 244,
+                    "line": 258,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6323,7 +6334,7 @@
                     "optional": false,
                     "returnType": "boolean",
                     "typeParameters": [],
-                    "line": 263,
+                    "line": 277,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6344,7 +6355,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 376,
+                    "line": 391,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6354,7 +6365,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 361,
+                    "line": 376,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6371,7 +6382,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 366,
+                    "line": 381,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "decorators": [
@@ -6401,7 +6412,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 357,
+                    "line": 372,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6411,7 +6422,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 342,
+                    "line": 356,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6428,7 +6439,7 @@
                     "optional": false,
                     "returnType": "literal type",
                     "typeParameters": [],
-                    "line": 232,
+                    "line": 246,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6456,7 +6467,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 284,
+                    "line": 298,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6484,7 +6495,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 292,
+                    "line": 306,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6505,7 +6516,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 300,
+                    "line": 314,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6515,7 +6526,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 334,
+                    "line": 348,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -6525,7 +6536,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 327,
+                    "line": 341,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -6549,7 +6560,7 @@
                     ],
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 366
+                    "line": 381
                 }
             ],
             "standalone": true,
@@ -6566,7 +6577,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\n\nexport type TimePickerSize = 'sm' | 'md' | 'lg';\nexport type TimePickerState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';\n\n@Component({\n  selector: 'bsg-timepicker',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  template: `\n    <div class=\"timepicker-field-container\">\n      <!-- Optional Label -->\n      <label *ngIf=\"label\" class=\"timepicker-label\">{{ label }}</label>\n\n      <!-- TimePicker Input Wrapper -->\n      <div class=\"timepicker-wrapper\" [ngClass]=\"wrapperClasses\">\n        <!-- Time Input Field -->\n        <input\n          #timeInput\n          type=\"text\"\n          class=\"timepicker-input-field\"\n          [value]=\"timeValue\"\n          [placeholder]=\"placeholder\"\n          [disabled]=\"state === 'disabled'\"\n          [attr.aria-invalid]=\"state === 'error'\"\n          [attr.aria-describedby]=\"state === 'error' && errorMessage ? errorMessageId : null\"\n          (click)=\"openDropdown()\"\n          (focus)=\"onFocus()\"\n          (blur)=\"onBlur()\"\n          [ngClass]=\"inputClasses\"\n          readonly\n        />\n\n        <!-- Clock Icon (Trailing) -->\n        <button\n          type=\"button\"\n          class=\"timepicker-icon-btn\"\n          [disabled]=\"state === 'disabled'\"\n          (click)=\"toggleDropdown()\"\n          [attr.aria-label]=\"open ? 'Cerrar selector de hora' : 'Abrir selector de hora'\"\n          [attr.aria-pressed]=\"open\"\n        >\n          <svg\n            class=\"timepicker-clock-icon\"\n            width=\"16\"\n            height=\"16\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n          >\n            <circle\n              cx=\"12\"\n              cy=\"12\"\n              r=\"10\"\n              [attr.stroke]=\"iconColor\"\n              stroke-width=\"2\"\n            />\n            <path\n              d=\"M12 6V12L16 16\"\n              [attr.stroke]=\"iconColor\"\n              stroke-width=\"2\"\n              stroke-linecap=\"round\"\n              stroke-linejoin=\"round\"\n            />\n          </svg>\n        </button>\n\n        <!-- Dropdown (positioned relative to wrapper) -->\n        <div *ngIf=\"open\" class=\"timepicker-dropdown\" [ngClass]=\"dropdownClasses\" role=\"dialog\" aria-label=\"Selector de hora\">\n          <!-- Time Selection Area -->\n          <div class=\"timepicker-selection-area\">\n            <!-- Hours Column -->\n            <div class=\"timepicker-column\">\n              <div class=\"timepicker-column-header\">Horas</div>\n              <div class=\"timepicker-list\" #hoursList>\n                <div\n                  *ngFor=\"let hour of availableHours\"\n                  class=\"timepicker-option\"\n                  [ngClass]=\"{ 'selected': selectedHour === hour, 'disabled': isHourDisabled(hour) }\"\n                  [attr.data-value]=\"hour\"\n                  (click)=\"selectHour(hour)\"\n                >\n                  {{ formatNumber(hour) }}\n                </div>\n              </div>\n            </div>\n\n            <!-- Separator -->\n            <div class=\"timepicker-separator\">:</div>\n\n            <!-- Minutes Column -->\n            <div class=\"timepicker-column\">\n              <div class=\"timepicker-column-header\">Minutos</div>\n              <div class=\"timepicker-list\" #minutesList>\n                <div\n                  *ngFor=\"let minute of availableMinutes\"\n                  class=\"timepicker-option\"\n                  [ngClass]=\"{ 'selected': selectedMinute === minute, 'disabled': isMinuteDisabled(minute) }\"\n                  [attr.data-value]=\"minute\"\n                  (click)=\"selectMinute(minute)\"\n                >\n                  {{ formatNumber(minute) }}\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <!-- Action Buttons -->\n          <div class=\"timepicker-actions\">\n            <button\n              type=\"button\"\n              class=\"timepicker-action-btn timepicker-action-now\"\n              (click)=\"selectNow()\"\n              [disabled]=\"state === 'disabled'\"\n            >\n              Ahora\n            </button>\n            <button\n              type=\"button\"\n              class=\"timepicker-action-btn timepicker-action-clear\"\n              (click)=\"clearTime()\"\n              [disabled]=\"state === 'disabled'\"\n            >\n              Limpiar\n            </button>\n          </div>\n        </div>\n      </div>\n\n      <!-- Error Message -->\n      <span *ngIf=\"state === 'error' && errorMessage\" class=\"timepicker-error-message\" [attr.id]=\"errorMessageId\">\n        {{ errorMessage }}\n      </span>\n    </div>\n  `,\n  styleUrls: ['./timepicker.css'],\n})\nexport class TimePickerComponent {\n  /** Size of the input */\n  @Input() size: TimePickerSize = 'md';\n\n  /** Current state */\n  @Input() state: TimePickerState = 'default';\n\n  /** Selected time in HH:mm format */\n  @Input() value: string = '';\n\n  /** Placeholder text */\n  @Input() placeholder: string = 'HH:mm';\n\n  /** Optional label */\n  @Input() label: string = '';\n\n  /** Error message */\n  @Input() errorMessage: string = '';\n\n  /** Minimum time (HH:mm format) - hours/minutes before this are disabled */\n  @Input() minTime: string = '';\n\n  /** Maximum time (HH:mm format) - hours/minutes after this are disabled */\n  @Input() maxTime: string = '';\n\n  /** Step for minutes (e.g., 5, 10, 15) */\n  @Input() stepMinutes: number = 1;\n\n  /** Dropdown open state */\n  @Input() open: boolean = false;\n\n  /** Value change event */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Selection change event */\n  @Output() selectionChange = new EventEmitter<{ hour: number; minute: number }>();\n\n  /** Open state change event */\n  @Output() openChange = new EventEmitter<boolean>();\n\n  @ViewChild('hoursList') hoursList: ElementRef | undefined;\n  @ViewChild('minutesList') minutesList: ElementRef | undefined;\n\n  selectedHour: number = 0;\n  selectedMinute: number = 0;\n\n  get errorMessageId(): string {\n    return `timepicker-error-${Math.random().toString(36).substr(2, 9)}`;\n  }\n\n  get timeValue(): string {\n    if (!this.value) {\n      return '';\n    }\n    return this.value;\n  }\n\n  get wrapperClasses(): string[] {\n    return [\n      `timepicker-${this.size}`,\n      `timepicker-state-${this.state}`,\n      this.open ? 'timepicker-open' : '',\n    ].filter(Boolean);\n  }\n\n  get inputClasses(): string[] {\n    return [];\n  }\n\n  get dropdownClasses(): string[] {\n    return [`timepicker-dropdown-${this.size}`];\n  }\n\n  get iconColor(): string {\n    if (this.state === 'error') {\n      return '#DC2626';\n    }\n    return '#64748B';\n  }\n\n  get availableHours(): number[] {\n    return Array.from({ length: 24 }, (_, i) => i);\n  }\n\n  get availableMinutes(): number[] {\n    const minutes: number[] = [];\n    for (let i = 0; i < 60; i += this.stepMinutes) {\n      minutes.push(i);\n    }\n    return minutes;\n  }\n\n  parseTime(time: string): { hour: number; minute: number } {\n    if (!time) {\n      return { hour: 0, minute: 0 };\n    }\n    const [h, m] = time.split(':').map(Number);\n    return { hour: isNaN(h) ? 0 : h, minute: isNaN(m) ? 0 : m };\n  }\n\n  formatNumber(value: number): string {\n    return String(value).padStart(2, '0');\n  }\n\n  isHourDisabled(hour: number): boolean {\n    if (!this.minTime && !this.maxTime) {\n      return false;\n    }\n\n    const minParsed = this.parseTime(this.minTime);\n    const maxParsed = this.parseTime(this.maxTime);\n\n    if (this.minTime && hour < minParsed.hour) {\n      return true;\n    }\n\n    if (this.maxTime && hour > maxParsed.hour) {\n      return true;\n    }\n\n    return false;\n  }\n\n  isMinuteDisabled(minute: number): boolean {\n    if (!this.minTime && !this.maxTime) {\n      return false;\n    }\n\n    const minParsed = this.parseTime(this.minTime);\n    const maxParsed = this.parseTime(this.maxTime);\n\n    // If current hour is min hour, check minute\n    if (this.minTime && this.selectedHour === minParsed.hour && minute < minParsed.minute) {\n      return true;\n    }\n\n    // If current hour is max hour, check minute\n    if (this.maxTime && this.selectedHour === maxParsed.hour && minute > maxParsed.minute) {\n      return true;\n    }\n\n    return false;\n  }\n\n  selectHour(hour: number): void {\n    if (this.state === 'disabled' || this.isHourDisabled(hour)) {\n      return;\n    }\n    this.selectedHour = hour;\n    this.updateTimeValue();\n  }\n\n  selectMinute(minute: number): void {\n    if (this.state === 'disabled' || this.isMinuteDisabled(minute)) {\n      return;\n    }\n    this.selectedMinute = minute;\n    this.updateTimeValue();\n  }\n\n  selectNow(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n    const now = new Date();\n    const hour = now.getHours();\n    const minute = now.getMinutes();\n\n    // Snap minute to nearest step\n    const snappedMinute = Math.round(minute / this.stepMinutes) * this.stepMinutes;\n\n    this.selectedHour = hour;\n    this.selectedMinute = Math.min(snappedMinute, 59);\n    this.updateTimeValue();\n  }\n\n  clearTime(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n    this.selectedHour = 0;\n    this.selectedMinute = 0;\n    this.value = '';\n    this.valueChange.emit('');\n    this.selectionChange.emit({ hour: 0, minute: 0 });\n  }\n\n  updateTimeValue(): void {\n    const newValue = `${this.formatNumber(this.selectedHour)}:${this.formatNumber(this.selectedMinute)}`;\n    this.value = newValue;\n    this.valueChange.emit(newValue);\n    this.selectionChange.emit({ hour: this.selectedHour, minute: this.selectedMinute });\n  }\n\n  toggleDropdown(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n    this.open = !this.open;\n    this.openChange.emit(this.open);\n  }\n\n  openDropdown(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n    if (!this.open) {\n      this.open = true;\n      this.openChange.emit(true);\n    }\n  }\n\n  closeDropdown(): void {\n    this.open = false;\n    this.openChange.emit(false);\n  }\n\n  onFocus(): void {\n    // Handled by click event\n  }\n\n  onBlur(): void {\n    // Handled by outside click detection\n  }\n\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent): void {\n    const target = event.target as HTMLElement;\n    const timepickerWrapper = target.closest('.timepicker-wrapper');\n    const timepickerDropdown = target.closest('.timepicker-dropdown');\n\n    if (!timepickerWrapper && !timepickerDropdown && this.open) {\n      this.closeDropdown();\n    }\n  }\n\n  ngOnInit(): void {\n    if (this.value) {\n      const parsed = this.parseTime(this.value);\n      this.selectedHour = parsed.hour;\n      this.selectedMinute = parsed.minute;\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\n\nexport type TimePickerSize = 'sm' | 'md' | 'lg';\nexport type TimePickerState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';\n\n@Component({\n  selector: 'bsg-timepicker',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  template: `\n    <div class=\"timepicker-field-container\">\n      <!-- Optional Label -->\n      <label *ngIf=\"label\" class=\"timepicker-label\">{{ label }}</label>\n\n      <!-- TimePicker Input Wrapper -->\n      <div class=\"timepicker-wrapper\" [ngClass]=\"wrapperClasses\">\n        <!-- Time Input Field -->\n        <input\n          #timeInput\n          type=\"text\"\n          class=\"timepicker-input-field\"\n          [value]=\"timeValue\"\n          [placeholder]=\"placeholder\"\n          [disabled]=\"state === 'disabled'\"\n          [attr.aria-invalid]=\"state === 'error'\"\n          [attr.aria-describedby]=\"state === 'error' && errorMessage ? errorMessageId : null\"\n          (click)=\"openDropdown()\"\n          (focus)=\"onFocus()\"\n          (blur)=\"onBlur()\"\n          [ngClass]=\"inputClasses\"\n          readonly\n        />\n\n        <!-- Clock Icon (Trailing) -->\n        <button\n          type=\"button\"\n          class=\"timepicker-icon-btn\"\n          [disabled]=\"state === 'disabled'\"\n          (click)=\"toggleDropdown()\"\n          [attr.aria-label]=\"open ? 'Cerrar selector de hora' : 'Abrir selector de hora'\"\n          [attr.aria-pressed]=\"open\"\n        >\n          <svg\n            class=\"timepicker-clock-icon\"\n            width=\"16\"\n            height=\"16\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n          >\n            <circle\n              cx=\"12\"\n              cy=\"12\"\n              r=\"10\"\n              [attr.stroke]=\"iconColor\"\n              stroke-width=\"2\"\n            />\n            <path\n              d=\"M12 6V12L16 16\"\n              [attr.stroke]=\"iconColor\"\n              stroke-width=\"2\"\n              stroke-linecap=\"round\"\n              stroke-linejoin=\"round\"\n            />\n          </svg>\n        </button>\n\n        <!-- Dropdown (positioned relative to wrapper) -->\n        <div *ngIf=\"open\" class=\"timepicker-dropdown\" [ngClass]=\"dropdownClasses\" role=\"dialog\" aria-label=\"Selector de hora\">\n          <!-- Time Selection Area -->\n          <div class=\"timepicker-selection-area\">\n            <!-- Hours Column -->\n            <div class=\"timepicker-column\">\n              <div class=\"timepicker-column-header\">Horas</div>\n              <div class=\"timepicker-list\" #hoursList>\n                <div\n                  *ngFor=\"let hour of availableHours\"\n                  class=\"timepicker-option\"\n                  [ngClass]=\"{ 'selected': selectedHour === hour, 'disabled': isHourDisabled(hour) }\"\n                  [attr.data-value]=\"hour\"\n                  (click)=\"selectHour(hour)\"\n                >\n                  {{ formatNumber(hour) }}\n                </div>\n              </div>\n            </div>\n\n            <!-- Separator -->\n            <div class=\"timepicker-separator\">:</div>\n\n            <!-- Minutes Column -->\n            <div class=\"timepicker-column\">\n              <div class=\"timepicker-column-header\">Minutos</div>\n              <div class=\"timepicker-list\" #minutesList>\n                <div\n                  *ngFor=\"let minute of availableMinutes\"\n                  class=\"timepicker-option\"\n                  [ngClass]=\"{ 'selected': selectedMinute === minute, 'disabled': isMinuteDisabled(minute) }\"\n                  [attr.data-value]=\"minute\"\n                  (click)=\"selectMinute(minute)\"\n                >\n                  {{ formatNumber(minute) }}\n                </div>\n              </div>\n            </div>\n          </div>\n\n          <!-- Action Buttons -->\n          <div class=\"timepicker-actions\">\n            <button\n              type=\"button\"\n              class=\"timepicker-action-btn timepicker-action-now\"\n              (click)=\"selectNow()\"\n              [disabled]=\"state === 'disabled'\"\n            >\n              Ahora\n            </button>\n            <button\n              type=\"button\"\n              class=\"timepicker-action-btn timepicker-action-clear\"\n              (click)=\"clearTime()\"\n              [disabled]=\"state === 'disabled'\"\n            >\n              Limpiar\n            </button>\n          </div>\n        </div>\n      </div>\n\n      <!-- Error Message -->\n      <span *ngIf=\"state === 'error' && errorMessage\" class=\"timepicker-error-message\" [attr.id]=\"errorMessageId\">\n        {{ errorMessage }}\n      </span>\n    </div>\n  `,\n  styleUrls: ['./timepicker.css'],\n})\nexport class TimePickerComponent {\n  /** Size of the input */\n  @Input() size: TimePickerSize = 'md';\n\n  /** Current state */\n  @Input() state: TimePickerState = 'default';\n\n  /** Selected time in HH:mm format */\n  @Input() value: string = '';\n\n  /** Placeholder text */\n  @Input() placeholder: string = 'HH:mm';\n\n  /** Optional label */\n  @Input() label: string = '';\n\n  /** Error message */\n  @Input() errorMessage: string = '';\n\n  /** Minimum time (HH:mm format) - hours/minutes before this are disabled */\n  @Input() minTime: string = '';\n\n  /** Maximum time (HH:mm format) - hours/minutes after this are disabled */\n  @Input() maxTime: string = '';\n\n  /** Step for minutes (e.g., 5, 10, 15) */\n  @Input() stepMinutes: number = 1;\n\n  /** Dropdown open state */\n  @Input() open: boolean = false;\n\n  /** Value change event */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Selection change event */\n  @Output() selectionChange = new EventEmitter<{ hour: number; minute: number }>();\n\n  /** Open state change event */\n  @Output() openChange = new EventEmitter<boolean>();\n\n  @ViewChild('hoursList') hoursList: ElementRef | undefined;\n  @ViewChild('minutesList') minutesList: ElementRef | undefined;\n\n  selectedHour: number = 0;\n  selectedMinute: number = 0;\n  isFocused: boolean = false;\n\n  get errorMessageId(): string {\n    return `timepicker-error-${Math.random().toString(36).substr(2, 9)}`;\n  }\n\n  get timeValue(): string {\n    if (!this.value) {\n      return '';\n    }\n    return this.value;\n  }\n\n  get wrapperClasses(): string[] {\n    // Determine the state to display\n    let displayState: TimePickerState = this.state;\n\n    // If error state is explicitly set, keep it\n    if (this.state === 'error') {\n      displayState = 'error';\n    }\n    // If focused and not in error, show focus state\n    else if (this.isFocused && this.state !== 'disabled') {\n      displayState = 'focus';\n    }\n    // Otherwise use the provided state\n\n    return [\n      `timepicker-${this.size}`,\n      `timepicker-state-${displayState}`,\n      this.open ? 'timepicker-open' : '',\n    ].filter(Boolean);\n  }\n\n  get inputClasses(): string[] {\n    return [];\n  }\n\n  get dropdownClasses(): string[] {\n    return [`timepicker-dropdown-${this.size}`];\n  }\n\n  get iconColor(): string {\n    if (this.state === 'error') {\n      return '#DC2626';\n    }\n    return '#64748B';\n  }\n\n  get availableHours(): number[] {\n    return Array.from({ length: 24 }, (_, i) => i);\n  }\n\n  get availableMinutes(): number[] {\n    const minutes: number[] = [];\n    for (let i = 0; i < 60; i += this.stepMinutes) {\n      minutes.push(i);\n    }\n    return minutes;\n  }\n\n  parseTime(time: string): { hour: number; minute: number } {\n    if (!time) {\n      return { hour: 0, minute: 0 };\n    }\n    const [h, m] = time.split(':').map(Number);\n    return { hour: isNaN(h) ? 0 : h, minute: isNaN(m) ? 0 : m };\n  }\n\n  formatNumber(value: number): string {\n    return String(value).padStart(2, '0');\n  }\n\n  isHourDisabled(hour: number): boolean {\n    if (!this.minTime && !this.maxTime) {\n      return false;\n    }\n\n    const minParsed = this.parseTime(this.minTime);\n    const maxParsed = this.parseTime(this.maxTime);\n\n    if (this.minTime && hour < minParsed.hour) {\n      return true;\n    }\n\n    if (this.maxTime && hour > maxParsed.hour) {\n      return true;\n    }\n\n    return false;\n  }\n\n  isMinuteDisabled(minute: number): boolean {\n    if (!this.minTime && !this.maxTime) {\n      return false;\n    }\n\n    const minParsed = this.parseTime(this.minTime);\n    const maxParsed = this.parseTime(this.maxTime);\n\n    // If current hour is min hour, check minute\n    if (this.minTime && this.selectedHour === minParsed.hour && minute < minParsed.minute) {\n      return true;\n    }\n\n    // If current hour is max hour, check minute\n    if (this.maxTime && this.selectedHour === maxParsed.hour && minute > maxParsed.minute) {\n      return true;\n    }\n\n    return false;\n  }\n\n  selectHour(hour: number): void {\n    if (this.state === 'disabled' || this.isHourDisabled(hour)) {\n      return;\n    }\n    this.selectedHour = hour;\n    this.updateTimeValue();\n  }\n\n  selectMinute(minute: number): void {\n    if (this.state === 'disabled' || this.isMinuteDisabled(minute)) {\n      return;\n    }\n    this.selectedMinute = minute;\n    this.updateTimeValue();\n  }\n\n  selectNow(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n    const now = new Date();\n    const hour = now.getHours();\n    const minute = now.getMinutes();\n\n    // Snap minute to nearest step\n    const snappedMinute = Math.round(minute / this.stepMinutes) * this.stepMinutes;\n\n    this.selectedHour = hour;\n    this.selectedMinute = Math.min(snappedMinute, 59);\n    this.updateTimeValue();\n  }\n\n  clearTime(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n    this.selectedHour = 0;\n    this.selectedMinute = 0;\n    this.value = '';\n    this.valueChange.emit('');\n    this.selectionChange.emit({ hour: 0, minute: 0 });\n  }\n\n  updateTimeValue(): void {\n    const newValue = `${this.formatNumber(this.selectedHour)}:${this.formatNumber(this.selectedMinute)}`;\n    this.value = newValue;\n    this.valueChange.emit(newValue);\n    this.selectionChange.emit({ hour: this.selectedHour, minute: this.selectedMinute });\n  }\n\n  toggleDropdown(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n    this.open = !this.open;\n    this.openChange.emit(this.open);\n  }\n\n  openDropdown(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n    if (!this.open) {\n      this.open = true;\n      this.openChange.emit(true);\n    }\n  }\n\n  closeDropdown(): void {\n    this.open = false;\n    this.isFocused = false;\n    this.openChange.emit(false);\n  }\n\n  onFocus(): void {\n    this.isFocused = true;\n  }\n\n  onBlur(): void {\n    this.isFocused = false;\n  }\n\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent): void {\n    const target = event.target as HTMLElement;\n    const timepickerWrapper = target.closest('.timepicker-wrapper');\n    const timepickerDropdown = target.closest('.timepicker-dropdown');\n\n    if (!timepickerWrapper && !timepickerDropdown && this.open) {\n      this.closeDropdown();\n    }\n  }\n\n  ngOnInit(): void {\n    if (this.value) {\n      const parsed = this.parseTime(this.value);\n      this.selectedHour = parsed.hour;\n      this.selectedMinute = parsed.minute;\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -6583,7 +6594,7 @@
                         "name": "errorMessageId",
                         "type": "string",
                         "returnType": "string",
-                        "line": 186
+                        "line": 187
                     }
                 },
                 "timeValue": {
@@ -6592,7 +6603,7 @@
                         "name": "timeValue",
                         "type": "string",
                         "returnType": "string",
-                        "line": 190
+                        "line": 191
                     }
                 },
                 "wrapperClasses": {
@@ -6601,7 +6612,7 @@
                         "name": "wrapperClasses",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 197
+                        "line": 198
                     }
                 },
                 "inputClasses": {
@@ -6610,7 +6621,7 @@
                         "name": "inputClasses",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 205
+                        "line": 219
                     }
                 },
                 "dropdownClasses": {
@@ -6619,7 +6630,7 @@
                         "name": "dropdownClasses",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 209
+                        "line": 223
                     }
                 },
                 "iconColor": {
@@ -6628,7 +6639,7 @@
                         "name": "iconColor",
                         "type": "string",
                         "returnType": "string",
-                        "line": 213
+                        "line": 227
                     }
                 },
                 "availableHours": {
@@ -6637,7 +6648,7 @@
                         "name": "availableHours",
                         "type": "[]",
                         "returnType": "number[]",
-                        "line": 220
+                        "line": 234
                     }
                 },
                 "availableMinutes": {
@@ -6646,7 +6657,7 @@
                         "name": "availableMinutes",
                         "type": "[]",
                         "returnType": "number[]",
-                        "line": 224
+                        "line": 238
                     }
                 }
             }
@@ -9023,8 +9034,8 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TimePickerComponent",
-                "coveragePercent": 37,
-                "coverageCount": "13/35",
+                "coveragePercent": 36,
+                "coverageCount": "13/36",
                 "status": "medium"
             },
             {
