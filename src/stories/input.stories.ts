@@ -413,6 +413,46 @@ export const Showcase: Story = {
           </div>
         </section>
 
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">With Label and Error Message</h3>
+
+          <div style="margin-bottom: 32px;">
+            <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">With Label - All Sizes</h4>
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">sm:</span>
+                <bsg-input size="sm" state="default" label="Email" placeholder="usuario@email.com"></bsg-input>
+              </div>
+              <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">md:</span>
+                <bsg-input size="md" state="default" label="Email" placeholder="usuario@email.com"></bsg-input>
+              </div>
+              <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">lg:</span>
+                <bsg-input size="lg" state="default" label="Email" placeholder="usuario@email.com"></bsg-input>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 32px;">
+            <h4 style="margin-bottom: 16px; font-size: 16px; font-weight: 600; color: #202020;">Error Message - All Sizes</h4>
+            <div style="display: flex; flex-direction: column; gap: 24px;">
+              <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">sm:</span>
+                <bsg-input size="sm" state="error" label="Email" value="usuario@" errorMessage="Email inválido"></bsg-input>
+              </div>
+              <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">md:</span>
+                <bsg-input size="md" state="error" label="Email" value="usuario@" errorMessage="Email inválido"></bsg-input>
+              </div>
+              <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <span style="width: 80px; font-size: 14px; color: #666; font-weight: 600;">lg:</span>
+                <bsg-input size="lg" state="error" label="Email" value="usuario@" errorMessage="Email inválido"></bsg-input>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section>
           <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">State Reference</h3>
           <div style="display: flex; gap: 24px; font-size: 14px; color: #64748B;">
