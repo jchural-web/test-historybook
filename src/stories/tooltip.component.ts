@@ -21,10 +21,11 @@ export type TooltipPlacement = 'top' | 'right' | 'bottom' | 'left';
   template: `
     <div
       class="tooltip-trigger"
-      (mouseenter)="show()"
-      (mouseleave)="hide()"
-      (focus)="show()"
-      (blur)="hide()"
+      (mouseenter)="onMouseEnter()"
+      (mouseleave)="onMouseLeave()"
+      (focus)="onFocus()"
+      (blur)="onBlur()"
+      (mousedown)="onMouseDown()"
       tabindex="0"
       [attr.aria-describedby]="tooltipId"
       #triggerElement>
@@ -60,6 +61,8 @@ export class TooltipComponent implements OnInit, AfterContentInit {
   tooltipId: string = '';
 
   private hideTimeout: any;
+  private justClicked: boolean = false;
+  private isMouseHovering: boolean = false;
 
   constructor(
     private elementRef: ElementRef,
@@ -80,7 +83,59 @@ export class TooltipComponent implements OnInit, AfterContentInit {
     }
   }
 
-  show(): void {
+  /**
+   * Handle mouse enter: show tooltip
+   * Activation by hover is always allowed
+   */
+  onMouseEnter(): void {
+    this.isMouseHovering = true;
+    this.show();
+  }
+
+  /**
+   * Handle mouse leave: hide tooltip
+   */
+  onMouseLeave(): void {
+    this.isMouseHovering = false;
+    this.hide();
+  }
+
+  /**
+   * Handle focus: show tooltip only if triggered by keyboard, not by click
+   * If the focus is due to a click (justClicked is true), we skip showing
+   * because the tooltip may already be visible from mouseenter
+   */
+  onFocus(): void {
+    if (this.justClicked) {
+      // Click-triggered focus: ignore to prevent unwanted tooltip activation
+      this.justClicked = false;
+      return;
+    }
+    // Keyboard-triggered focus: show tooltip
+    this.show();
+  }
+
+  /**
+   * Handle blur: hide tooltip
+   */
+  onBlur(): void {
+    this.isMouseHovering = false;
+    this.justClicked = false;
+    this.hide();
+  }
+
+  /**
+   * Track mouse down to detect click-triggered focus
+   */
+  onMouseDown(): void {
+    this.justClicked = true;
+    // Clear the flag after a brief delay to handle async focus events
+    setTimeout(() => {
+      this.justClicked = false;
+    }, 0);
+  }
+
+  private show(): void {
     if (this.disabled) {
       return;
     }
@@ -89,7 +144,7 @@ export class TooltipComponent implements OnInit, AfterContentInit {
     this.cdr.markForCheck();
   }
 
-  hide(): void {
+  private hide(): void {
     // Debounce hide to prevent flickering
     this.hideTimeout = setTimeout(() => {
       this.isVisible = false;
