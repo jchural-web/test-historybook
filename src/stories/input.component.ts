@@ -40,6 +40,8 @@ export type InputType = 'text' | 'password';
         [placeholder]="placeholder"
         [disabled]="state === 'disabled'"
         [value]="value"
+        [attr.aria-invalid]="state === 'error'"
+        [attr.aria-describedby]="state === 'error' && errorMessage ? errorMessageId : null"
         (input)="onInput($event)"
         (focus)="onFocus()"
         (blur)="onBlur()"
