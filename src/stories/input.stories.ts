@@ -236,7 +236,7 @@ export const WithIcons: Story = {
 
 /**
  * Interactive playground for testing all input configurations.
- * Use the controls to experiment with different sizes, states, icon modes, and password variant.
+ * Use the controls to experiment with sizes, states, types, icons, and new label/errorMessage features.
  */
 export const Playground: Story = {
   render: (args) => ({
@@ -245,23 +245,27 @@ export const Playground: Story = {
       <div style="padding: 24px; font-family: Roboto, sans-serif;">
         <h3 style="margin: 0 0 24px 0; font-size: 16px; font-weight: 600;">Interactive Input Playground</h3>
         <p style="margin: 0 0 24px 0; font-size: 14px; color: #64748B;">
-          Use the controls panel to adjust size, state, type, icon, and placeholder
+          Use the controls panel to adjust size, state, type, icon, label, and error message
         </p>
 
-        <div style="display: flex; align-items: center; justify-content: center; min-height: 120px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
+        <div style="display: flex; align-items: center; justify-content: center; min-height: 140px; padding: 40px; background: #F8FAFC; border-radius: 8px;">
           <bsg-input
             [size]="size"
             [state]="state"
             [type]="type"
             [icon]="icon"
+            [label]="label"
             [placeholder]="placeholder"
-            [value]="value">
+            [value]="value"
+            [errorMessage]="state === 'error' ? errorMessage : ''">
           </bsg-input>
         </div>
 
         <div style="margin-top: 32px; padding: 16px; background: #EFF6FF; border-radius: 8px; font-size: 13px; color: #1E40AF; line-height: 1.6;">
           <strong>Tips:</strong>
           <ul style="margin: 8px 0 0 20px;">
+            <li>Use <code>label</code> prop to add a label above the input</li>
+            <li>When <code>state="error"</code>, set <code>errorMessage</code> to show error text below</li>
             <li>Set <code>type="password"</code> to enable password mode with show/hide toggle</li>
             <li>Set <code>icon="leading"</code> to display a search icon on the left</li>
             <li>Try different states to see visual feedback (hover, focus, error, disabled)</li>
@@ -277,14 +281,24 @@ export const Playground: Story = {
     state: 'default',
     type: 'text',
     icon: 'none',
+    label: '',
     placeholder: 'Ingresa información',
     value: '',
+    errorMessage: 'Este campo es requerido',
   },
   argTypes: {
     type: {
       control: 'select',
       options: ['text', 'password'],
       description: 'Input type (text or password with toggle)',
+    },
+    label: {
+      control: 'text',
+      description: 'Optional label displayed above the input',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Error message shown when state is "error" (only visible in error state)',
     },
   },
 };
