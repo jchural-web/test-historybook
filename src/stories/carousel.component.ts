@@ -1,4 +1,4 @@
-import { Component, Input, ContentChildren, QueryList, AfterContentInit, ChangeDetectorRef, ElementRef } from '@angular/core';
+import { Component, Input, ContentChildren, QueryList, AfterContentInit, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
   styles: [`
     :host {
       display: block;
-      flex: 0 0 calc(100% / var(--carousel-items-per-view, 2));
+      flex: 0 0 calc((100% - (var(--carousel-items-per-view, 2) - 1) * var(--carousel-gap, 30px)) / var(--carousel-items-per-view, 2));
       min-width: 0;
       box-sizing: border-box;
     }
@@ -23,8 +23,8 @@ export class CarouselItemComponent {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="carousel-container">
-      <!-- Previous Button -->
+    <div class="carousel-root">
+      <!-- Previous Button (outside viewport) -->
       <button 
         *ngIf="showArrows"
         class="carousel-arrow carousel-arrow-prev"
@@ -40,8 +40,8 @@ export class CarouselItemComponent {
         </svg>
       </button>
 
-      <!-- Viewport -->
-      <div class="carousel-viewport">
+      <!-- Viewport (only contains items, overflow hidden) -->
+      <div class="carousel-viewport" #viewportElement>
         <div 
           class="carousel-track"
           [style.transform]="translateX"
@@ -50,7 +50,7 @@ export class CarouselItemComponent {
         </div>
       </div>
 
-      <!-- Next Button -->
+      <!-- Next Button (outside viewport) -->
       <button 
         *ngIf="showArrows"
         class="carousel-arrow carousel-arrow-next"
@@ -65,18 +65,18 @@ export class CarouselItemComponent {
           <path d="M9.70699 18.707C9.31646 19.0976 8.68345 19.0976 8.29292 18.707C7.9024 18.3165 7.9024 17.6835 8.29292 17.293L13.5859 12L8.29292 6.70705C7.9024 6.31652 7.9024 5.68351 8.29292 5.29298C8.68345 4.90246 9.31646 4.90246 9.70699 5.29298L15.707 11.293C16.0975 11.6835 16.0975 12.3165 15.707 12.707L9.70699 18.707Z" fill="#9333EA"/>
         </svg>
       </button>
+    </div>
 
-      <!-- Indicators -->
-      <div *ngIf="showIndicators" class="carousel-indicators">
-        <button
-          *ngFor="let page of pages; let i = index"
-          class="carousel-indicator"
-          [class.active]="i === currentIndex"
-          (click)="goToSlide(i)"
-          [attr.aria-label]="'Go to slide ' + (i + 1)"
-          type="button">
-        </button>
-      </div>
+    <!-- Indicators (outside root, bottom-centered) -->
+    <div *ngIf="showIndicators" class="carousel-indicators">
+      <button
+        *ngFor="let page of pages; let i = index"
+        class="carousel-indicator"
+        [class.active]="i === currentIndex"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Go to slide ' + (i + 1)"
+        type="button">
+      </button>
     </div>
   `,
   styleUrls: ['./carousel.css']
@@ -95,23 +95,46 @@ export class CarouselComponent implements AfterContentInit {
   @Input() loop: boolean = false;
 
   @ContentChildren(CarouselItemComponent) items!: QueryList<CarouselItemComponent>;
+  @ViewChild('viewportElement') viewportElement!: ElementRef;
 
   currentIndex: number = 0;
   totalItems: number = 0;
   pages: number[] = [];
+  private gap: number = 30; // Default desktop gap
 
   constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
 
   ngAfterContentInit(): void {
     this.totalItems = this.items.length;
     this.calculatePages();
+    this.updateGapFromViewport();
     this.setCSSVariables();
   }
 
+  /**
+   * Detect the gap value from the viewport's computed gap
+   * Falls back to desktop default if detection fails
+   */
+  private updateGapFromViewport(): void {
+    if (!this.viewportElement?.nativeElement) {
+      return;
+    }
+
+    const track = this.viewportElement.nativeElement.querySelector('.carousel-track');
+    if (track) {
+      const computedGap = window.getComputedStyle(track).gap;
+      const gapValue = parseFloat(computedGap);
+      if (!isNaN(gapValue)) {
+        this.gap = gapValue;
+      }
+    }
+  }
+
   private setCSSVariables(): void {
-    const viewportElement = this.elementRef.nativeElement.querySelector('.carousel-viewport');
-    if (viewportElement) {
-      viewportElement.style.setProperty('--carousel-items-per-view', `${this.itemsPerView}`);
+    const track = this.viewportElement?.nativeElement.querySelector('.carousel-track');
+    if (track) {
+      track.style.setProperty('--carousel-items-per-view', `${this.itemsPerView}`);
+      track.style.setProperty('--carousel-gap', `${this.gap}px`);
     }
   }
 
@@ -124,9 +147,32 @@ export class CarouselComponent implements AfterContentInit {
     return Math.max(0, this.pages.length - 1);
   }
 
+  /**
+   * Deterministic translateX calculation
+   * step = itemWidth + gap (conceptually)
+   * For a viewport with N items and gap G:
+   *   available = 100% - (N-1) * G
+   *   itemWidth = available / N
+   *   step = itemWidth + G = (available / N) + G
+   *
+   * But in flex with gap, the step in percentage is:
+   *   translateX = -currentIndex * ((100% - (N-1)*G) / N + G)
+   *
+   * However, since flex gaps don't add to width in the same way,
+   * we simplify: each "page" moves by (100 / itemsPerView)% MINUS a correction for gaps
+   */
   get translateX(): string {
-    const pageWidthPercent = 100 / this.itemsPerView;
-    return `translateX(-${this.currentIndex * pageWidthPercent}%)`;
+    // Percentage per item (excluding gap from the visible viewport)
+    const itemPercent = 100 / this.itemsPerView;
+
+    // Correction: account for gap when moving
+    // gap in percentage of viewport
+    const gapPercent = (this.gap / (this.viewportElement?.nativeElement.offsetWidth || 1)) * 100;
+    const gapCorrectionPerPage = gapPercent * (this.itemsPerView - 1) / this.itemsPerView;
+
+    const totalPercentPerPage = itemPercent + gapCorrectionPerPage;
+
+    return `translateX(-${this.currentIndex * totalPercentPerPage}%)`;
   }
 
   next(): void {
