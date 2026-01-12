@@ -14,60 +14,35 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [DialogComponent, ButtonComponent, CommonModule],
   template: `
-    <div style="display: flex; flex-direction: column; gap: 32px;">
-      <div>
-        <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Header</h4>
-        <p style="margin: 0 0 16px 0; font-size: 13px; color: #64748B;">Contains the dialog title.</p>
-        <button (click)="openHeader = !openHeader" style="margin-bottom: 12px; padding: 8px 16px; background: #2563EB; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;">
-          Abrir dialog
-        </button>
-        <bsg-dialog [open]="openHeader" size="md" headerTone="brand" [dismissible]="false" [hasFooter]="false" (closeDialog)="openHeader = false">
-          <div dialog-header>Título del Dialog</div>
-          <div dialog-body><p style="margin: 0; color: #475569;">El header usa el atributo dialog-header para proyectar contenido.</p></div>
-        </bsg-dialog>
-      </div>
-
-      <div>
-        <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Body</h4>
-        <p style="margin: 0 0 16px 0; font-size: 13px; color: #64748B;">Main content area.</p>
-        <button (click)="openBody = !openBody" style="margin-bottom: 12px; padding: 8px 16px; background: #2563EB; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;">
-          Abrir dialog
-        </button>
-        <bsg-dialog [open]="openBody" size="md" headerTone="brand" [dismissible]="false" [hasFooter]="false" (closeDialog)="openBody = false">
-          <div dialog-header>Contenido Principal</div>
-          <div dialog-body>
-            <p style="margin: 0 0 12px 0; color: #475569;">El body usa el atributo dialog-body y puede contener cualquier contenido.</p>
+    <div>
+      <button (click)="openStructure = !openStructure" style="padding: 8px 16px; background: #2563EB; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;">
+        Abrir dialog
+      </button>
+      <bsg-dialog [open]="openStructure" size="md" headerTone="brand" [dismissible]="true" [hasFooter]="true" (closeDialog)="openStructure = false">
+        <div dialog-header>Título del Dialog</div>
+        <div dialog-body>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div>
+              <h5 style="margin: 0 0 8px 0; font-size: 14px; font-weight: 600; color: #202020;">Estructura Completa</h5>
+              <p style="margin: 0; color: #475569;">Este dialog muestra juntos el Header, Body y Footer.</p>
+            </div>
             <ul style="margin: 0; padding-left: 20px; color: #475569;">
-              <li>Texto y párrafos</li>
-              <li>Formularios</li>
-              <li>Tablas</li>
+              <li>El header usa el atributo dialog-header para proyectar contenido</li>
+              <li>El body usa el atributo dialog-body y puede contener cualquier contenido</li>
+              <li>El footer usa el atributo dialog-footer para proyectar botones de acción</li>
             </ul>
           </div>
-        </bsg-dialog>
-      </div>
-
-      <div>
-        <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Footer</h4>
-        <p style="margin: 0 0 16px 0; font-size: 13px; color: #64748B;">Action buttons area.</p>
-        <button (click)="openFooter = !openFooter" style="margin-bottom: 12px; padding: 8px 16px; background: #2563EB; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500;">
-          Abrir dialog
-        </button>
-        <bsg-dialog [open]="openFooter" size="md" headerTone="brand" [dismissible]="false" [hasFooter]="true" (closeDialog)="openFooter = false">
-          <div dialog-header>Acciones del Dialog</div>
-          <div dialog-body><p style="margin: 0; color: #475569;">El footer usa el atributo dialog-footer para proyectar botones de acción.</p></div>
-          <div dialog-footer>
-            <bsg-button variant="outline" size="md" label="Cancelar" (click)="openFooter = false"></bsg-button>
-            <bsg-button variant="default" size="md" label="Aceptar" (click)="openFooter = false"></bsg-button>
-          </div>
-        </bsg-dialog>
-      </div>
+        </div>
+        <div dialog-footer>
+          <bsg-button variant="outline" size="md" label="Cancelar" (click)="openStructure = false"></bsg-button>
+          <bsg-button variant="default" size="md" label="Aceptar" (click)="openStructure = false"></bsg-button>
+        </div>
+      </bsg-dialog>
     </div>
   `,
 })
 export class DialogStructureComponent {
-  openHeader = false;
-  openBody = false;
-  openFooter = false;
+  openStructure = false;
 }
 
 // ============================================================
