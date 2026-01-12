@@ -181,7 +181,11 @@
 
   .dialog-footer {
     padding: 16px 14px;
-    gap: 16px;
+    gap: 20px;
+  }
+
+  .dialog-footer > * + * {
+    margin-left: 8px;
   }
 
   .dialog-body-scrollable {
