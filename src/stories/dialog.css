@@ -139,15 +139,21 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 32px;
+  gap: 24px;
   padding: 20px 23px;
   border-top: 1px solid #E2E8F0;
   box-sizing: border-box;
+  width: 100%;
+  flex-wrap: wrap;
 }
 
 /* Ensure button spacing in footer */
-.dialog-footer > * + * {
-  margin-left: 16px;
+.dialog-footer bsg-button {
+  margin-left: 12px;
+}
+
+.dialog-footer bsg-button:first-child {
+  margin-left: 0;
 }
 
 /* ========================================
