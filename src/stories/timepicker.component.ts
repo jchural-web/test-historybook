@@ -369,11 +369,11 @@ export class TimePickerComponent {
   }
 
   onFocus(): void {
-    // Handled by click event
+    this.isFocused = true;
   }
 
   onBlur(): void {
-    // Handled by outside click detection
+    this.isFocused = false;
   }
 
   @HostListener('document:click', ['$event'])
