@@ -11,7 +11,12 @@ export type InputType = 'text' | 'password';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="input-wrapper" [ngClass]="wrapperClasses">
+    <div class="input-container" [ngClass]="containerClasses">
+      <!-- Optional Label -->
+      <label *ngIf="label" class="input-label">{{ label }}</label>
+
+      <!-- Input Wrapper -->
+      <div class="input-wrapper" [ngClass]="wrapperClasses">
       <!-- Leading Icon -->
       <svg
         *ngIf="icon === 'leading'"
