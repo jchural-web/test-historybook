@@ -112,35 +112,18 @@ export class CarouselComponent implements AfterContentInit {
   currentIndex: number = 0;
   totalItems: number = 0;
   pages: number[] = [];
-  private gap: number = 30;
-  viewportElement: HTMLElement | null = null;
 
   constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
 
   ngAfterContentInit(): void {
     this.totalItems = this.items.length;
     this.calculatePages();
-    this.setResponsiveGap();
     this.setCSSVariables();
-  }
-
-  private setResponsiveGap(): void {
-    const width = window.innerWidth;
-    if (width <= 480) {
-      this.gap = 16;
-    } else if (width <= 768) {
-      this.gap = 16;
-    } else if (width <= 1024) {
-      this.gap = 20;
-    } else {
-      this.gap = 30;
-    }
   }
 
   private setCSSVariables(): void {
     const viewportElement = this.elementRef.nativeElement.querySelector('.carousel-viewport');
     if (viewportElement) {
-      viewportElement.style.setProperty('--carousel-gap', `${this.gap}px`);
       viewportElement.style.setProperty('--carousel-items-per-view', `${this.itemsPerView}`);
     }
   }
