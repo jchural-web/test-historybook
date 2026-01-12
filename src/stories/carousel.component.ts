@@ -116,7 +116,7 @@ export class CarouselComponent implements AfterContentInit {
   updateItemWidths(): void {
     const widthPercentage = 100 / this.itemsPerView;
     this.items.forEach((item) => {
-      const element = (item as any).elementRef?.nativeElement;
+      const element = item.elementRef.nativeElement;
       if (element) {
         element.style.width = `${widthPercentage}%`;
       }
