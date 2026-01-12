@@ -1,0 +1,364 @@
+/* TimePicker field container (includes label and error) */
+.timepicker-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* TimePicker label */
+.timepicker-label {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #202020;
+  margin-bottom: 2px;
+}
+
+/* TimePicker input wrapper */
+.timepicker-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 6px;
+  border: 1px solid;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* TimePicker input field */
+.timepicker-input-field {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.05px;
+  color: #1E293B;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.timepicker-input-field::placeholder {
+  color: #64748B;
+}
+
+.timepicker-input-field:disabled {
+  cursor: not-allowed;
+}
+
+/* Clock icon button */
+.timepicker-icon-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: currentColor;
+  transition: opacity 0.2s ease;
+  margin-right: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.timepicker-icon-btn:not(:disabled):hover {
+  opacity: 0.7;
+}
+
+.timepicker-icon-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.timepicker-clock-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Size variants */
+.timepicker-sm {
+  height: 32px;
+  padding: 4px 8px 4px 12px;
+}
+
+.timepicker-md {
+  height: 40px;
+  padding: 4px 8px 4px 12px;
+}
+
+.timepicker-lg {
+  height: 48px;
+  padding: 4px 8px 4px 12px;
+}
+
+/* State variants - Default */
+.timepicker-state-default {
+  border-color: #CBD5E1;
+  background: transparent;
+}
+
+.timepicker-state-default:hover,
+.timepicker-state-default.timepicker-state-hover {
+  opacity: 0.9;
+}
+
+/* State variants - Hover */
+.timepicker-state-hover {
+  border-color: #CBD5E1;
+  background: transparent;
+  opacity: 0.9;
+}
+
+/* State variants - Focus */
+.timepicker-state-focus {
+  border-color: #64748B;
+  background: transparent;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+}
+
+.timepicker-state-focus .timepicker-input-field {
+  color: #1E293B;
+}
+
+/* State variants - Focus with Error */
+.timepicker-state-error.timepicker-state-focus {
+  border-color: #DC2626;
+  background: transparent;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+}
+
+/* State variants - Disabled */
+.timepicker-state-disabled {
+  border-color: #CBD5E1;
+  background: transparent;
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.timepicker-state-disabled .timepicker-input-field {
+  cursor: not-allowed;
+}
+
+/* State variants - Error */
+.timepicker-state-error {
+  border-color: #DC2626;
+  background: transparent;
+}
+
+.timepicker-state-error .timepicker-input-field {
+  color: #DC2626;
+}
+
+.timepicker-state-error .timepicker-input-field::placeholder {
+  color: #DC2626;
+}
+
+/* Error message */
+.timepicker-error-message {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #DC2626;
+  margin-top: 4px;
+}
+
+/* Dropdown */
+.timepicker-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 1000;
+  border-radius: 6px;
+  border: 1px solid #CBD5E1;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Size variants for dropdown */
+.timepicker-dropdown-sm {
+  width: 160px;
+}
+
+.timepicker-dropdown-md {
+  width: 180px;
+}
+
+.timepicker-dropdown-lg {
+  width: 200px;
+}
+
+/* Time selection area */
+.timepicker-selection-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  gap: 8px;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+/* Time column */
+.timepicker-column {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.timepicker-column-header {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748B;
+  text-align: center;
+  padding: 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Time option list */
+.timepicker-list {
+  max-height: 160px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 0;
+}
+
+/* Time option item */
+.timepicker-option {
+  padding: 8px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #334155;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-radius: 4px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.timepicker-option:hover:not(.disabled) {
+  background-color: #F1F5F9;
+}
+
+.timepicker-option.selected {
+  background-color: #7C3AED;
+  color: #fff;
+  font-weight: 500;
+}
+
+.timepicker-option.selected:hover {
+  background-color: #6D28D9;
+}
+
+.timepicker-option.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: #94A3B8;
+}
+
+.timepicker-option.disabled:hover {
+  background-color: transparent;
+}
+
+/* Time separator */
+.timepicker-separator {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #64748B;
+  margin-top: 20px;
+}
+
+/* Action buttons */
+.timepicker-actions {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-top: 1px solid #E2E8F0;
+}
+
+.timepicker-action-btn {
+  flex: 1;
+  padding: 8px 12px;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  border: 1px solid #CBD5E1;
+  border-radius: 4px;
+  background: transparent;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.timepicker-action-btn:hover:not(:disabled) {
+  background-color: #F8FAFC;
+  border-color: #94A3B8;
+}
+
+.timepicker-action-btn:active:not(:disabled) {
+  background-color: #F1F5F9;
+}
+
+.timepicker-action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Action button specific styles */
+.timepicker-action-now {
+  background: transparent;
+}
+
+.timepicker-action-clear {
+  background: transparent;
+}
+
+/* Scrollbar styling (optional but nice) */
+.timepicker-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.timepicker-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.timepicker-list::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 2px;
+}
+
+.timepicker-list::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Firefox scrollbar */
+.timepicker-list {
+  scrollbar-width: thin;
+  scrollbar-color: #CBD5E1 transparent;
+}
