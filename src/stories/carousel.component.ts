@@ -1,4 +1,4 @@
-import { Component, Input, ContentChildren, QueryList, AfterContentInit, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, ContentChildren, QueryList, AfterContentInit, OnChanges, SimpleChanges, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
