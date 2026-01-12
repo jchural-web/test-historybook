@@ -2622,6 +2622,254 @@
             }
         },
         {
+            "name": "DialogComponent",
+            "id": "component-DialogComponent-47644a20574acfa0484663f13c4d56c23f7d27f2fb10fa6e070490a50114d6b97b245f74a30655bee7fbeee1e8135b3ffac06d242f1b60557a960d14480ea048",
+            "file": "src/stories/dialog.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "bsg-dialog",
+            "styleUrls": [
+                "./dialog.css"
+            ],
+            "styles": [],
+            "template": "<!-- Dialog Overlay -->\n<div *ngIf=\"open\" class=\"dialog-overlay\" [ngClass]=\"overlayClasses\" (click)=\"onOverlayClick()\">\n  <!-- Dialog Content -->\n  <div class=\"dialog-content\" [ngClass]=\"contentClasses\" (click)=\"$event.stopPropagation()\" role=\"dialog\" [attr.aria-modal]=\"true\" [attr.aria-labelledby]=\"'dialog-title'\">\n    <!-- Dialog Header -->\n    <div class=\"dialog-header\" [ngClass]=\"headerClasses\">\n      <ng-content select=\"[dialog-header]\"></ng-content>\n    </div>\n\n    <!-- Dialog Body -->\n    <div class=\"dialog-body\" [ngClass]=\"bodyClasses\">\n      <ng-content select=\"[dialog-body]\"></ng-content>\n    </div>\n\n    <!-- Dialog Footer -->\n    <div *ngIf=\"hasFooter\" class=\"dialog-footer\" [ngClass]=\"footerClasses\">\n      <ng-content select=\"[dialog-footer]\"></ng-content>\n    </div>\n  </div>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "dismissible",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAllow dismissing via ESC or backdrop click",
+                    "description": "<p>Allow dismissing via ESC or backdrop click</p>\n",
+                    "line": 49,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "hasFooter",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nWhether footer content is present",
+                    "description": "<p>Whether footer content is present</p>\n",
+                    "line": 52,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "headerTone",
+                    "defaultValue": "'brand'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHeader tone/theme",
+                    "description": "<p>Header tone/theme</p>\n",
+                    "line": 43,
+                    "type": "DialogHeaderTone",
+                    "decorators": []
+                },
+                {
+                    "name": "open",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nControls dialog visibility",
+                    "description": "<p>Controls dialog visibility</p>\n",
+                    "line": 37,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "scrollable",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEnable scrollable body",
+                    "description": "<p>Enable scrollable body</p>\n",
+                    "line": 46,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'md'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDialog size",
+                    "description": "<p>Dialog size</p>\n",
+                    "line": 40,
+                    "type": "DialogSize",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "closeDialog",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nClose event",
+                    "description": "<p>Close event</p>\n",
+                    "line": 55,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "close",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 90,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onEscapeKey",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 95,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'document:keydown.escape', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onOverlayClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 84,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "document:keydown.escape",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 95
+                }
+            ],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type DialogSize = 'sm' | 'md' | 'lg';\nexport type DialogHeaderTone = 'brand' | 'info' | 'secondary';\n\n@Component({\n  selector: 'bsg-dialog',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <!-- Dialog Overlay -->\n    <div *ngIf=\"open\" class=\"dialog-overlay\" [ngClass]=\"overlayClasses\" (click)=\"onOverlayClick()\">\n      <!-- Dialog Content -->\n      <div class=\"dialog-content\" [ngClass]=\"contentClasses\" (click)=\"$event.stopPropagation()\" role=\"dialog\" [attr.aria-modal]=\"true\" [attr.aria-labelledby]=\"'dialog-title'\">\n        <!-- Dialog Header -->\n        <div class=\"dialog-header\" [ngClass]=\"headerClasses\">\n          <ng-content select=\"[dialog-header]\"></ng-content>\n        </div>\n\n        <!-- Dialog Body -->\n        <div class=\"dialog-body\" [ngClass]=\"bodyClasses\">\n          <ng-content select=\"[dialog-body]\"></ng-content>\n        </div>\n\n        <!-- Dialog Footer -->\n        <div *ngIf=\"hasFooter\" class=\"dialog-footer\" [ngClass]=\"footerClasses\">\n          <ng-content select=\"[dialog-footer]\"></ng-content>\n        </div>\n      </div>\n    </div>\n  `,\n  styleUrls: ['./dialog.css'],\n})\nexport class DialogComponent {\n  /** Controls dialog visibility */\n  @Input() open: boolean = false;\n\n  /** Dialog size */\n  @Input() size: DialogSize = 'md';\n\n  /** Header tone/theme */\n  @Input() headerTone: DialogHeaderTone = 'brand';\n\n  /** Enable scrollable body */\n  @Input() scrollable: boolean = false;\n\n  /** Allow dismissing via ESC or backdrop click */\n  @Input() dismissible: boolean = true;\n\n  /** Whether footer content is present */\n  @Input() hasFooter: boolean = true;\n\n  /** Close event */\n  @Output() closeDialog = new EventEmitter<void>();\n\n  get overlayClasses(): string[] {\n    return ['dialog-overlay-base'];\n  }\n\n  get contentClasses(): string[] {\n    return [\n      `dialog-${this.size}`,\n      this.scrollable ? 'dialog-scrollable' : ''\n    ].filter(Boolean);\n  }\n\n  get headerClasses(): string[] {\n    return [\n      `dialog-header-${this.headerTone}`\n    ];\n  }\n\n  get bodyClasses(): string[] {\n    return [\n      this.scrollable ? 'dialog-body-scrollable' : ''\n    ].filter(Boolean);\n  }\n\n  get footerClasses(): string[] {\n    return [];\n  }\n\n  onOverlayClick(): void {\n    if (this.dismissible) {\n      this.close();\n    }\n  }\n\n  close(): void {\n    this.closeDialog.emit();\n  }\n\n  @HostListener('document:keydown.escape', ['$event'])\n  onEscapeKey(event: KeyboardEvent): void {\n    if (this.open && this.dismissible) {\n      event.preventDefault();\n      this.close();\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* ========================================\n   Dialog Overlay\n   ======================================== */\n\n.dialog-overlay {\n  position: fixed;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 9999;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: rgba(0, 0, 0, 0.5);\n  padding: 16px;\n  box-sizing: border-box;\n  animation: dialog-overlay-fade-in 0.2s ease-out;\n}\n\n@keyframes dialog-overlay-fade-in {\n  from {\n    opacity: 0;\n  }\n  to {\n    opacity: 1;\n  }\n}\n\n.dialog-overlay-base {\n  /* Additional overlay styling if needed */\n}\n\n/* ========================================\n   Dialog Content (Main Container)\n   ======================================== */\n\n.dialog-content {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  background: #FFFFFF;\n  border-radius: 12px;\n  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), \n              0 10px 10px -5px rgba(0, 0, 0, 0.04);\n  max-height: 90vh;\n  width: 100%;\n  box-sizing: border-box;\n  animation: dialog-content-scale-in 0.2s ease-out;\n}\n\n@keyframes dialog-content-scale-in {\n  from {\n    opacity: 0;\n    transform: scale(0.95);\n  }\n  to {\n    opacity: 1;\n    transform: scale(1);\n  }\n}\n\n/* ========================================\n   Dialog Sizes\n   ======================================== */\n\n.dialog-sm {\n  max-width: 460px;\n}\n\n.dialog-md {\n  max-width: 670px;\n}\n\n.dialog-lg {\n  max-width: 1153px;\n}\n\n/* ========================================\n   Dialog Header\n   ======================================== */\n\n.dialog-header {\n  display: flex;\n  align-items: center;\n  min-height: 57px;\n  padding: 20px 17px;\n  border-radius: 12px 12px 0 0;\n  box-sizing: border-box;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 16px;\n  font-weight: 600;\n  line-height: normal;\n}\n\n/* Header Tone: Brand (Orange) */\n.dialog-header-brand {\n  background: #EA580C;\n  color: #FFFFFF;\n}\n\n/* Header Tone: Info/Secondary (Purple) */\n.dialog-header-info,\n.dialog-header-secondary {\n  background: #F3E8FF;\n  color: #9333EA;\n}\n\n/* ========================================\n   Dialog Body\n   ======================================== */\n\n.dialog-body {\n  flex: 1;\n  padding: 20px 23px;\n  overflow-y: visible;\n  box-sizing: border-box;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  line-height: normal;\n  color: #475569;\n}\n\n.dialog-body-scrollable {\n  overflow-y: auto;\n  max-height: calc(90vh - 200px);\n}\n\n.dialog-scrollable .dialog-body {\n  overflow-y: auto;\n}\n\n/* ========================================\n   Dialog Footer\n   ======================================== */\n\n.dialog-footer {\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  gap: 24px;\n  padding: 20px 23px;\n  border-top: 1px solid #E2E8F0;\n  box-sizing: border-box;\n  width: 100%;\n  flex-wrap: wrap;\n}\n\n/* Ensure button spacing in footer */\n.dialog-footer bsg-button {\n  margin-left: 12px;\n}\n\n.dialog-footer bsg-button:first-child {\n  margin-left: 0;\n}\n\n/* ========================================\n   Responsive Behavior\n   ======================================== */\n\n@media (max-width: 768px) {\n  .dialog-overlay {\n    padding: 12px;\n  }\n\n  .dialog-content {\n    max-height: 95vh;\n  }\n\n  .dialog-sm,\n  .dialog-md,\n  .dialog-lg {\n    max-width: 100%;\n  }\n\n  .dialog-header {\n    padding: 16px 14px;\n    font-size: 14px;\n  }\n\n  .dialog-body {\n    padding: 16px 14px;\n    font-size: 13px;\n  }\n\n  .dialog-footer {\n    padding: 16px 14px;\n    gap: 12px;\n  }\n\n  .dialog-footer bsg-button {\n    margin-left: 8px;\n  }\n\n  .dialog-footer bsg-button:first-child {\n    margin-left: 0;\n  }\n\n  .dialog-body-scrollable {\n    max-height: calc(95vh - 180px);\n  }\n}\n\n/* ========================================\n   Focus Trap & Accessibility\n   ======================================== */\n\n.dialog-content:focus {\n  outline: none;\n}\n\n/* Ensure content is not selectable on overlay */\n.dialog-overlay {\n  user-select: none;\n}\n\n.dialog-content {\n  user-select: text;\n}\n",
+                    "styleUrl": "./dialog.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "overlayClasses": {
+                    "name": "overlayClasses",
+                    "getSignature": {
+                        "name": "overlayClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 57
+                    }
+                },
+                "contentClasses": {
+                    "name": "contentClasses",
+                    "getSignature": {
+                        "name": "contentClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 61
+                    }
+                },
+                "headerClasses": {
+                    "name": "headerClasses",
+                    "getSignature": {
+                        "name": "headerClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 68
+                    }
+                },
+                "bodyClasses": {
+                    "name": "bodyClasses",
+                    "getSignature": {
+                        "name": "bodyClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 74
+                    }
+                },
+                "footerClasses": {
+                    "name": "footerClasses",
+                    "getSignature": {
+                        "name": "footerClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 80
+                    }
+                }
+            }
+        },
+        {
             "name": "InputComponent",
             "id": "component-InputComponent-2546aedbe5fe1f98025dcefefc7084240394ad2a71fd1f3af7387c881299dd17ae4406f16acbdb430c8a26ae7233b3cf603012dcad1e20b121c9e8f00963cea6",
             "file": "src/stories/input.component.ts",
@@ -7147,6 +7395,28 @@
                 "kind": 193
             },
             {
+                "name": "DialogHeaderTone",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"brand\" | \"info\" | \"secondary\"",
+                "file": "src/stories/dialog.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "DialogSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"sm\" | \"md\" | \"lg\"",
+                "file": "src/stories/dialog.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "IconName",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -7819,6 +8089,30 @@
                     "subtype": "typealias",
                     "rawtype": "\"default\" | \"hover\" | \"focus\" | \"disabled\" | \"error\"",
                     "file": "src/stories/combobox.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/stories/dialog.component.ts": [
+                {
+                    "name": "DialogHeaderTone",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"brand\" | \"info\" | \"secondary\"",
+                    "file": "src/stories/dialog.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "DialogSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"sm\" | \"md\" | \"lg\"",
+                    "file": "src/stories/dialog.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -8580,6 +8874,35 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "ComboboxState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/dialog.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DialogComponent",
+                "coveragePercent": 58,
+                "coverageCount": "7/12",
+                "status": "good"
+            },
+            {
+                "filePath": "src/stories/dialog.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "DialogHeaderTone",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/dialog.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "DialogSize",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
