@@ -148,31 +148,39 @@ export class CarouselComponent implements AfterContentInit {
   }
 
   /**
-   * Deterministic translateX calculation
-   * step = itemWidth + gap (conceptually)
-   * For a viewport with N items and gap G:
-   *   available = 100% - (N-1) * G
-   *   itemWidth = available / N
-   *   step = itemWidth + G = (available / N) + G
+   * Deterministic translateX calculation in pixels
+   * step = itemWidth + gap
+   * translateX = -currentIndex * step
    *
-   * But in flex with gap, the step in percentage is:
-   *   translateX = -currentIndex * ((100% - (N-1)*G) / N + G)
-   *
-   * However, since flex gaps don't add to width in the same way,
-   * we simplify: each "page" moves by (100 / itemsPerView)% MINUS a correction for gaps
+   * Ensures no drift: the position is calculated from zero each time,
+   * not accumulated.
    */
   get translateX(): string {
-    // Percentage per item (excluding gap from the visible viewport)
-    const itemPercent = 100 / this.itemsPerView;
+    if (!this.viewportElement?.nativeElement) {
+      return 'translateX(0)';
+    }
 
-    // Correction: account for gap when moving
-    // gap in percentage of viewport
-    const gapPercent = (this.gap / (this.viewportElement?.nativeElement.offsetWidth || 1)) * 100;
-    const gapCorrectionPerPage = gapPercent * (this.itemsPerView - 1) / this.itemsPerView;
+    const viewport = this.viewportElement.nativeElement;
+    const track = viewport.querySelector('.carousel-track');
 
-    const totalPercentPerPage = itemPercent + gapCorrectionPerPage;
+    if (!track || this.totalItems === 0) {
+      return 'translateX(0)';
+    }
 
-    return `translateX(-${this.currentIndex * totalPercentPerPage}%)`;
+    // Get the first item to measure its width
+    const firstItem = track.children[0];
+    if (!firstItem) {
+      return 'translateX(0)';
+    }
+
+    // Get computed dimensions
+    const itemWidth = firstItem.offsetWidth;
+    const step = itemWidth + this.gap;
+
+    // Deterministic: calculate position from zero
+    const offset = -this.currentIndex * step;
+
+    return `translateX(${offset}px)`;
   }
 
   next(): void {
