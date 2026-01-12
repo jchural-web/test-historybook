@@ -8,22 +8,9 @@ import { CommonModule } from '@angular/common';
   styles: [`
     :host {
       display: block;
-      flex: 0 0 auto;
-      flex-basis: calc((100vw - 120px - (var(--carousel-gap, 30px) * (var(--carousel-items-per-view, 2) - 1))) / var(--carousel-items-per-view, 2));
+      flex: 0 0 calc(100% / var(--carousel-items-per-view, 2));
       min-width: 0;
       box-sizing: border-box;
-    }
-
-    @media (max-width: 1024px) {
-      :host {
-        flex-basis: calc((100vw - 100px - (var(--carousel-gap, 20px) * (var(--carousel-items-per-view, 1) - 1))) / var(--carousel-items-per-view, 1));
-      }
-    }
-
-    @media (max-width: 768px) {
-      :host {
-        flex-basis: calc((100vw - 80px - (var(--carousel-gap, 16px) * (var(--carousel-items-per-view, 1) - 1))) / var(--carousel-items-per-view, 1));
-      }
     }
   `]
 })
@@ -55,9 +42,9 @@ export class CarouselItemComponent {
 
       <!-- Viewport -->
       <div class="carousel-viewport">
-        <div
+        <div 
           class="carousel-track"
-          [style.transform]="'translateX(' + translateX + ')'"
+          [style.transform]="translateX"
           [style.transition]="'transform 0.3s ease-in-out'">
           <ng-content></ng-content>
         </div>
@@ -138,11 +125,8 @@ export class CarouselComponent implements AfterContentInit {
   }
 
   get translateX(): string {
-    // Calculate the percentage to translate based on:
-    // - One page width = (100 / itemsPerView)% of viewport
-    // Each "page" is just 100/itemsPerView percentage of the track
     const pageWidthPercent = 100 / this.itemsPerView;
-    return `-${this.currentIndex * pageWidthPercent}%`;
+    return `translateX(-${this.currentIndex * pageWidthPercent}%)`;
   }
 
   next(): void {
