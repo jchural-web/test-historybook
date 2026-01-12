@@ -66,6 +66,67 @@ export type TimePickerState = 'default' | 'hover' | 'focus' | 'disabled' | 'erro
             />
           </svg>
         </button>
+
+        <!-- Dropdown (positioned relative to wrapper) -->
+        <div *ngIf="open" class="timepicker-dropdown" [ngClass]="dropdownClasses" role="dialog" aria-label="Selector de hora">
+          <!-- Time Selection Area -->
+          <div class="timepicker-selection-area">
+            <!-- Hours Column -->
+            <div class="timepicker-column">
+              <div class="timepicker-column-header">Horas</div>
+              <div class="timepicker-list" #hoursList>
+                <div
+                  *ngFor="let hour of availableHours"
+                  class="timepicker-option"
+                  [ngClass]="{ 'selected': selectedHour === hour, 'disabled': isHourDisabled(hour) }"
+                  [attr.data-value]="hour"
+                  (click)="selectHour(hour)"
+                >
+                  {{ formatNumber(hour) }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Separator -->
+            <div class="timepicker-separator">:</div>
+
+            <!-- Minutes Column -->
+            <div class="timepicker-column">
+              <div class="timepicker-column-header">Minutos</div>
+              <div class="timepicker-list" #minutesList>
+                <div
+                  *ngFor="let minute of availableMinutes"
+                  class="timepicker-option"
+                  [ngClass]="{ 'selected': selectedMinute === minute, 'disabled': isMinuteDisabled(minute) }"
+                  [attr.data-value]="minute"
+                  (click)="selectMinute(minute)"
+                >
+                  {{ formatNumber(minute) }}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="timepicker-actions">
+            <button
+              type="button"
+              class="timepicker-action-btn timepicker-action-now"
+              (click)="selectNow()"
+              [disabled]="state === 'disabled'"
+            >
+              Ahora
+            </button>
+            <button
+              type="button"
+              class="timepicker-action-btn timepicker-action-clear"
+              (click)="clearTime()"
+              [disabled]="state === 'disabled'"
+            >
+              Limpiar
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Error Message -->
