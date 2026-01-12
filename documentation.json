@@ -2102,6 +2102,453 @@
             }
         },
         {
+            "name": "CarouselComponent",
+            "id": "component-CarouselComponent-bbc07392b0b7e10d31f0641a773d2b900e86cec76888690fdfe5618965b02be73b34c7bf8b9fb74c9c39f9a34dae30c6e086f1a5782a25d45c3bda98a04c7dbc",
+            "file": "src/stories/carousel.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "bsg-carousel",
+            "styleUrls": [
+                "./carousel.css"
+            ],
+            "styles": [],
+            "template": "<div class=\"carousel-container\">\n  <!-- Main carousel with arrows and viewport -->\n  <div class=\"carousel-root\">\n    <!-- Previous Button (positioned absolutely outside viewport) -->\n    <button\n      *ngIf=\"showArrows\"\n      class=\"carousel-arrow carousel-arrow-prev\"\n      (click)=\"previous()\"\n      [disabled]=\"!loop && currentIndex === 0\"\n      aria-label=\"Previous slide\"\n      type=\"button\">\n      <svg width=\"41\" height=\"41\" viewBox=\"0 0 41 41\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <circle cx=\"20.5\" cy=\"20.5\" r=\"20\" fill=\"white\" stroke=\"#E2E8F0\"/>\n      </svg>\n      <svg class=\"chevron-icon\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M14.293 5.29295C14.6835 4.90243 15.3165 4.90243 15.707 5.29295C16.0976 5.68348 16.0976 6.31649 15.707 6.70702L10.4141 12L15.707 17.293C16.0976 17.6835 16.0976 18.3165 15.707 18.707C15.3165 19.0975 14.6835 19.0975 14.293 18.707L8.29297 12.707C7.90245 12.3165 7.90245 11.6835 8.29297 11.293L14.293 5.29295Z\" fill=\"#9333EA\"/>\n      </svg>\n    </button>\n\n    <!-- Viewport (only contains items, overflow hidden) -->\n    <div class=\"carousel-viewport\" #viewportElement>\n      <div\n        class=\"carousel-track\"\n        [style.transform]=\"translateX\"\n        [style.transition]=\"'transform 0.3s ease-in-out'\">\n        <ng-content></ng-content>\n      </div>\n    </div>\n\n    <!-- Next Button (positioned absolutely outside viewport) -->\n    <button\n      *ngIf=\"showArrows\"\n      class=\"carousel-arrow carousel-arrow-next\"\n      (click)=\"next()\"\n      [disabled]=\"!loop && currentIndex >= maxIndex\"\n      aria-label=\"Next slide\"\n      type=\"button\">\n      <svg width=\"41\" height=\"41\" viewBox=\"0 0 41 41\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <circle cx=\"20.5\" cy=\"20.5\" r=\"20\" transform=\"rotate(180 20.5 20.5)\" fill=\"white\" stroke=\"#E2E8F0\"/>\n      </svg>\n      <svg class=\"chevron-icon\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n        <path d=\"M9.70699 18.707C9.31646 19.0976 8.68345 19.0976 8.29292 18.707C7.9024 18.3165 7.9024 17.6835 8.29292 17.293L13.5859 12L8.29292 6.70705C7.9024 6.31652 7.9024 5.68351 8.29292 5.29298C8.68345 4.90246 9.31646 4.90246 9.70699 5.29298L15.707 11.293C16.0975 11.6835 16.0975 12.3165 15.707 12.707L9.70699 18.707Z\" fill=\"#9333EA\"/>\n      </svg>\n    </button>\n  </div>\n\n  <!-- Indicators (inside container, below carousel-root) -->\n  <div *ngIf=\"showIndicators\" class=\"carousel-indicators\">\n    <button\n      *ngFor=\"let page of pages; let i = index\"\n      class=\"carousel-indicator\"\n      [class.active]=\"i === currentIndex\"\n      (click)=\"goToSlide(i)\"\n      [attr.aria-label]=\"'Go to slide ' + (i + 1)\"\n      type=\"button\">\n    </button>\n  </div>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "itemsPerView",
+                    "defaultValue": "2",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nNumber of items visible at once",
+                    "description": "<p>Number of items visible at once</p>\n",
+                    "line": 89,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "loop",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEnable infinite loop",
+                    "description": "<p>Enable infinite loop</p>\n",
+                    "line": 98,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "showArrows",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow navigation arrows",
+                    "description": "<p>Show navigation arrows</p>\n",
+                    "line": 92,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "showIndicators",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nShow pagination indicators",
+                    "description": "<p>Show pagination indicators</p>\n",
+                    "line": 95,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "currentIndex",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 103
+                },
+                {
+                    "name": "gap",
+                    "defaultValue": "30",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 106,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "items",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<CarouselItemComponent>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 100,
+                    "decorators": [
+                        {
+                            "name": "ContentChildren",
+                            "stringifiedArguments": "CarouselItemComponent"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ]
+                },
+                {
+                    "name": "pages",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 105
+                },
+                {
+                    "name": "totalItems",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 104
+                },
+                {
+                    "name": "viewportElement",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 101,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'viewportElement'"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "calculatePages",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 153,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "goToSlide",
+                    "args": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 216,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "next",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 198,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterContentInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 110,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 118,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "previous",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 207,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "setCSSVariables",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 144,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "updateGapFromViewport",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 129,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nDetect the gap value from the viewport's computed gap\nFalls back to desktop default if detection fails\n",
+                    "description": "<p>Detect the gap value from the viewport&#39;s computed gap\nFalls back to desktop default if detection fails</p>\n",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, ContentChildren, QueryList, AfterContentInit, OnChanges, SimpleChanges, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'bsg-carousel-item',\n  standalone: true,\n  template: '<ng-content></ng-content>',\n  styles: [`\n    :host {\n      display: block;\n      flex: 0 0 calc((100% - (var(--carousel-items-per-view, 2) - 1) * var(--carousel-gap, 30px)) / var(--carousel-items-per-view, 2));\n      min-width: 0;\n      box-sizing: border-box;\n    }\n  `]\n})\nexport class CarouselItemComponent {\n  constructor(public elementRef: ElementRef) {}\n}\n\n@Component({\n  selector: 'bsg-carousel',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"carousel-container\">\n      <!-- Main carousel with arrows and viewport -->\n      <div class=\"carousel-root\">\n        <!-- Previous Button (positioned absolutely outside viewport) -->\n        <button\n          *ngIf=\"showArrows\"\n          class=\"carousel-arrow carousel-arrow-prev\"\n          (click)=\"previous()\"\n          [disabled]=\"!loop && currentIndex === 0\"\n          aria-label=\"Previous slide\"\n          type=\"button\">\n          <svg width=\"41\" height=\"41\" viewBox=\"0 0 41 41\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <circle cx=\"20.5\" cy=\"20.5\" r=\"20\" fill=\"white\" stroke=\"#E2E8F0\"/>\n          </svg>\n          <svg class=\"chevron-icon\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M14.293 5.29295C14.6835 4.90243 15.3165 4.90243 15.707 5.29295C16.0976 5.68348 16.0976 6.31649 15.707 6.70702L10.4141 12L15.707 17.293C16.0976 17.6835 16.0976 18.3165 15.707 18.707C15.3165 19.0975 14.6835 19.0975 14.293 18.707L8.29297 12.707C7.90245 12.3165 7.90245 11.6835 8.29297 11.293L14.293 5.29295Z\" fill=\"#9333EA\"/>\n          </svg>\n        </button>\n\n        <!-- Viewport (only contains items, overflow hidden) -->\n        <div class=\"carousel-viewport\" #viewportElement>\n          <div\n            class=\"carousel-track\"\n            [style.transform]=\"translateX\"\n            [style.transition]=\"'transform 0.3s ease-in-out'\">\n            <ng-content></ng-content>\n          </div>\n        </div>\n\n        <!-- Next Button (positioned absolutely outside viewport) -->\n        <button\n          *ngIf=\"showArrows\"\n          class=\"carousel-arrow carousel-arrow-next\"\n          (click)=\"next()\"\n          [disabled]=\"!loop && currentIndex >= maxIndex\"\n          aria-label=\"Next slide\"\n          type=\"button\">\n          <svg width=\"41\" height=\"41\" viewBox=\"0 0 41 41\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <circle cx=\"20.5\" cy=\"20.5\" r=\"20\" transform=\"rotate(180 20.5 20.5)\" fill=\"white\" stroke=\"#E2E8F0\"/>\n          </svg>\n          <svg class=\"chevron-icon\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M9.70699 18.707C9.31646 19.0976 8.68345 19.0976 8.29292 18.707C7.9024 18.3165 7.9024 17.6835 8.29292 17.293L13.5859 12L8.29292 6.70705C7.9024 6.31652 7.9024 5.68351 8.29292 5.29298C8.68345 4.90246 9.31646 4.90246 9.70699 5.29298L15.707 11.293C16.0975 11.6835 16.0975 12.3165 15.707 12.707L9.70699 18.707Z\" fill=\"#9333EA\"/>\n          </svg>\n        </button>\n      </div>\n\n      <!-- Indicators (inside container, below carousel-root) -->\n      <div *ngIf=\"showIndicators\" class=\"carousel-indicators\">\n        <button\n          *ngFor=\"let page of pages; let i = index\"\n          class=\"carousel-indicator\"\n          [class.active]=\"i === currentIndex\"\n          (click)=\"goToSlide(i)\"\n          [attr.aria-label]=\"'Go to slide ' + (i + 1)\"\n          type=\"button\">\n        </button>\n      </div>\n    </div>\n  `,\n  styleUrls: ['./carousel.css']\n})\nexport class CarouselComponent implements AfterContentInit, OnChanges {\n  /** Number of items visible at once */\n  @Input() itemsPerView: number = 2;\n\n  /** Show navigation arrows */\n  @Input() showArrows: boolean = true;\n\n  /** Show pagination indicators */\n  @Input() showIndicators: boolean = true;\n\n  /** Enable infinite loop */\n  @Input() loop: boolean = false;\n\n  @ContentChildren(CarouselItemComponent) items!: QueryList<CarouselItemComponent>;\n  @ViewChild('viewportElement') viewportElement!: ElementRef;\n\n  currentIndex: number = 0;\n  totalItems: number = 0;\n  pages: number[] = [];\n  private gap: number = 30; // Default desktop gap\n\n  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}\n\n  ngAfterContentInit(): void {\n    this.totalItems = this.items.length;\n    this.calculatePages();\n    this.updateGapFromViewport();\n    this.setCSSVariables();\n    this.cdr.detectChanges();\n  }\n\n  ngOnChanges(changes: SimpleChanges): void {\n    if (changes['itemsPerView']) {\n      this.calculatePages();\n      this.setCSSVariables();\n    }\n  }\n\n  /**\n   * Detect the gap value from the viewport's computed gap\n   * Falls back to desktop default if detection fails\n   */\n  private updateGapFromViewport(): void {\n    if (!this.viewportElement?.nativeElement) {\n      return;\n    }\n\n    const track = this.viewportElement.nativeElement.querySelector('.carousel-track');\n    if (track) {\n      const computedGap = window.getComputedStyle(track).gap;\n      const gapValue = parseFloat(computedGap);\n      if (!isNaN(gapValue)) {\n        this.gap = gapValue;\n      }\n    }\n  }\n\n  private setCSSVariables(): void {\n    // Set on the component's root element so all descendants inherit\n    const rootElement = this.elementRef.nativeElement;\n    if (rootElement) {\n      rootElement.style.setProperty('--carousel-items-per-view', `${this.itemsPerView}`);\n      rootElement.style.setProperty('--carousel-gap', `${this.gap}px`);\n    }\n  }\n\n  calculatePages(): void {\n    const pageCount = Math.ceil(this.totalItems / this.itemsPerView);\n    this.pages = Array.from({ length: pageCount }, (_, i) => i);\n  }\n\n  get maxIndex(): number {\n    return Math.max(0, this.pages.length - 1);\n  }\n\n  /**\n   * Deterministic translateX calculation in pixels\n   * step = itemWidth + gap\n   * translateX = -currentIndex * step\n   *\n   * Ensures no drift: the position is calculated from zero each time,\n   * not accumulated.\n   */\n  get translateX(): string {\n    if (!this.viewportElement?.nativeElement) {\n      return 'translateX(0)';\n    }\n\n    const viewport = this.viewportElement.nativeElement;\n    const track = viewport.querySelector('.carousel-track');\n\n    if (!track || this.totalItems === 0) {\n      return 'translateX(0)';\n    }\n\n    // Get the first item to measure its width\n    const firstItem = track.children[0];\n    if (!firstItem) {\n      return 'translateX(0)';\n    }\n\n    // Get computed dimensions\n    const itemWidth = firstItem.offsetWidth;\n    const step = itemWidth + this.gap;\n\n    // Deterministic: calculate position from zero\n    const offset = -this.currentIndex * step;\n\n    return `translateX(${offset}px)`;\n  }\n\n  next(): void {\n    if (this.currentIndex < this.maxIndex) {\n      this.currentIndex++;\n    } else if (this.loop) {\n      this.currentIndex = 0;\n    }\n    this.cdr.detectChanges();\n  }\n\n  previous(): void {\n    if (this.currentIndex > 0) {\n      this.currentIndex--;\n    } else if (this.loop) {\n      this.currentIndex = this.maxIndex;\n    }\n    this.cdr.detectChanges();\n  }\n\n  goToSlide(index: number): void {\n    if (index >= 0 && index <= this.maxIndex) {\n      this.currentIndex = index;\n      this.cdr.detectChanges();\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* ========================================\n   Carousel Container\n   ======================================== */\n\n.carousel-container {\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  box-sizing: border-box;\n}\n\n/* ========================================\n   Carousel Root (with arrows positioned absolutely)\n   ======================================== */\n\n.carousel-root {\n  position: relative;\n  display: flex;\n  align-items: center;\n  width: 100%;\n  min-height: 260px;\n  box-sizing: border-box;\n  /* Padding reserves space for arrows */\n  padding-inline: 60px;\n}\n\n/* ========================================\n   Carousel Viewport (only items, overflow hidden)\n   ======================================== */\n\n.carousel-viewport {\n  overflow: hidden;\n  flex: 1;\n  min-width: 0;\n  position: relative;\n}\n\n.carousel-track {\n  display: flex;\n  gap: 30px;\n  transition: transform 0.3s ease-in-out;\n  will-change: transform;\n  width: 100%;\n}\n\n/* ========================================\n   Navigation Arrows (positioned absolutely)\n   ======================================== */\n\n.carousel-arrow {\n  position: absolute;\n  top: 50%;\n  transform: translateY(-50%);\n  width: 41px;\n  height: 41px;\n  background: transparent;\n  border: none;\n  cursor: pointer;\n  padding: 0;\n  z-index: 20;\n  transition: opacity 0.2s ease;\n  flex-shrink: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.carousel-arrow:disabled {\n  opacity: 0.4;\n  cursor: not-allowed;\n}\n\n.carousel-arrow:not(:disabled):hover {\n  opacity: 0.8;\n}\n\n.carousel-arrow svg {\n  display: block;\n  width: 41px;\n  height: 41px;\n}\n\n.carousel-arrow .chevron-icon {\n  position: absolute;\n  width: 24px;\n  height: 24px;\n}\n\n.carousel-arrow-prev {\n  left: 10px;\n}\n\n.carousel-arrow-next {\n  right: 10px;\n}\n\n/* ========================================\n   Pagination Indicators (below carousel-root, centered)\n   ======================================== */\n\n.carousel-indicators {\n  display: flex;\n  gap: 20px;\n  align-items: center;\n  justify-content: center;\n  margin-top: 24px;\n  width: 100%;\n  pointer-events: auto;\n}\n\n.carousel-indicator {\n  width: 12px;\n  height: 12px;\n  border-radius: 50%;\n  background: #9333EA;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  opacity: 0.4;\n  transition: opacity 0.2s ease;\n  flex-shrink: 0;\n}\n\n.carousel-indicator:hover {\n  opacity: 0.6;\n}\n\n.carousel-indicator.active {\n  opacity: 1;\n}\n\n/* ========================================\n   Responsive Behavior - Desktop\n   ======================================== */\n\n@media (min-width: 1025px) {\n  .carousel-root {\n    padding-inline: 60px;\n  }\n\n  .carousel-track {\n    gap: 30px;\n  }\n\n  .carousel-arrow {\n    width: 41px;\n    height: 41px;\n  }\n\n  .carousel-arrow svg {\n    width: 41px;\n    height: 41px;\n  }\n\n  .carousel-arrow .chevron-icon {\n    width: 24px;\n    height: 24px;\n  }\n}\n\n/* ========================================\n   Responsive Behavior - Tablet\n   ======================================== */\n\n@media (max-width: 1024px) and (min-width: 769px) {\n  .carousel-root {\n    padding-inline: 52px;\n  }\n\n  .carousel-track {\n    gap: 20px;\n  }\n\n  .carousel-arrow {\n    width: 36px;\n    height: 36px;\n  }\n\n  .carousel-arrow svg {\n    width: 36px;\n    height: 36px;\n  }\n\n  .carousel-arrow .chevron-icon {\n    width: 22px;\n    height: 22px;\n  }\n}\n\n/* ========================================\n   Responsive Behavior - Mobile\n   ======================================== */\n\n@media (max-width: 768px) {\n  .carousel-root {\n    padding-inline: 44px;\n  }\n\n  .carousel-track {\n    gap: 16px;\n  }\n\n  .carousel-arrow {\n    width: 32px;\n    height: 32px;\n  }\n\n  .carousel-arrow svg {\n    width: 32px;\n    height: 32px;\n  }\n\n  .carousel-arrow .chevron-icon {\n    width: 20px;\n    height: 20px;\n  }\n}\n\n@media (max-width: 480px) {\n  .carousel-root {\n    padding-inline: 40px;\n  }\n\n  .carousel-track {\n    gap: 12px;\n  }\n\n  .carousel-indicators {\n    gap: 12px;\n    margin-top: 16px;\n  }\n\n  .carousel-indicator {\n    width: 10px;\n    height: 10px;\n  }\n\n  .carousel-arrow {\n    width: 28px;\n    height: 28px;\n  }\n\n  .carousel-arrow svg {\n    width: 28px;\n    height: 28px;\n  }\n\n  .carousel-arrow .chevron-icon {\n    width: 16px;\n    height: 16px;\n  }\n}\n\n/* ========================================\n   Accessibility\n   ======================================== */\n\n.carousel-arrow:focus-visible,\n.carousel-indicator:focus-visible {\n  outline: 2px solid #9333EA;\n  outline-offset: 2px;\n}\n\n.carousel-arrow:focus:not(:focus-visible),\n.carousel-indicator:focus:not(:focus-visible) {\n  outline: none;\n}\n\n/* ========================================\n   Prevent text selection\n   ======================================== */\n\n.carousel-root,\n.carousel-track,\n.carousel-viewport {\n  user-select: none;\n}\n",
+                    "styleUrl": "./carousel.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 106,
+                "jsdoctags": [
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "AfterContentInit",
+                "OnChanges"
+            ],
+            "accessors": {
+                "maxIndex": {
+                    "name": "maxIndex",
+                    "getSignature": {
+                        "name": "maxIndex",
+                        "type": "number",
+                        "returnType": "number",
+                        "line": 158
+                    }
+                },
+                "translateX": {
+                    "name": "translateX",
+                    "getSignature": {
+                        "name": "translateX",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 170,
+                        "rawdescription": "\n\nDeterministic translateX calculation in pixels\nstep = itemWidth + gap\ntranslateX = -currentIndex * step\n\nEnsures no drift: the position is calculated from zero each time,\nnot accumulated.\n",
+                        "description": "<p>Deterministic translateX calculation in pixels\nstep = itemWidth + gap\ntranslateX = -currentIndex * step</p>\n<p>Ensures no drift: the position is calculated from zero each time,\nnot accumulated.</p>\n"
+                    }
+                }
+            }
+        },
+        {
+            "name": "CarouselItemComponent",
+            "id": "component-CarouselItemComponent-bbc07392b0b7e10d31f0641a773d2b900e86cec76888690fdfe5618965b02be73b34c7bf8b9fb74c9c39f9a34dae30c6e086f1a5782a25d45c3bda98a04c7dbc",
+            "file": "src/stories/carousel.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "bsg-carousel-item",
+            "styleUrls": [],
+            "styles": [
+                "\n    :host {\n      display: block;\n      flex: 0 0 calc((100% - (var(--carousel-items-per-view, 2) - 1) * var(--carousel-gap, 30px)) / var(--carousel-items-per-view, 2));\n      min-width: 0;\n      box-sizing: border-box;\n    }\n  "
+            ],
+            "template": "<ng-content></ng-content>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "elementRef",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 18,
+                    "modifierKind": [
+                        125
+                    ]
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, ContentChildren, QueryList, AfterContentInit, OnChanges, SimpleChanges, ChangeDetectorRef, ElementRef, ViewChild } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'bsg-carousel-item',\n  standalone: true,\n  template: '<ng-content></ng-content>',\n  styles: [`\n    :host {\n      display: block;\n      flex: 0 0 calc((100% - (var(--carousel-items-per-view, 2) - 1) * var(--carousel-gap, 30px)) / var(--carousel-items-per-view, 2));\n      min-width: 0;\n      box-sizing: border-box;\n    }\n  `]\n})\nexport class CarouselItemComponent {\n  constructor(public elementRef: ElementRef) {}\n}\n\n@Component({\n  selector: 'bsg-carousel',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"carousel-container\">\n      <!-- Main carousel with arrows and viewport -->\n      <div class=\"carousel-root\">\n        <!-- Previous Button (positioned absolutely outside viewport) -->\n        <button\n          *ngIf=\"showArrows\"\n          class=\"carousel-arrow carousel-arrow-prev\"\n          (click)=\"previous()\"\n          [disabled]=\"!loop && currentIndex === 0\"\n          aria-label=\"Previous slide\"\n          type=\"button\">\n          <svg width=\"41\" height=\"41\" viewBox=\"0 0 41 41\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <circle cx=\"20.5\" cy=\"20.5\" r=\"20\" fill=\"white\" stroke=\"#E2E8F0\"/>\n          </svg>\n          <svg class=\"chevron-icon\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M14.293 5.29295C14.6835 4.90243 15.3165 4.90243 15.707 5.29295C16.0976 5.68348 16.0976 6.31649 15.707 6.70702L10.4141 12L15.707 17.293C16.0976 17.6835 16.0976 18.3165 15.707 18.707C15.3165 19.0975 14.6835 19.0975 14.293 18.707L8.29297 12.707C7.90245 12.3165 7.90245 11.6835 8.29297 11.293L14.293 5.29295Z\" fill=\"#9333EA\"/>\n          </svg>\n        </button>\n\n        <!-- Viewport (only contains items, overflow hidden) -->\n        <div class=\"carousel-viewport\" #viewportElement>\n          <div\n            class=\"carousel-track\"\n            [style.transform]=\"translateX\"\n            [style.transition]=\"'transform 0.3s ease-in-out'\">\n            <ng-content></ng-content>\n          </div>\n        </div>\n\n        <!-- Next Button (positioned absolutely outside viewport) -->\n        <button\n          *ngIf=\"showArrows\"\n          class=\"carousel-arrow carousel-arrow-next\"\n          (click)=\"next()\"\n          [disabled]=\"!loop && currentIndex >= maxIndex\"\n          aria-label=\"Next slide\"\n          type=\"button\">\n          <svg width=\"41\" height=\"41\" viewBox=\"0 0 41 41\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <circle cx=\"20.5\" cy=\"20.5\" r=\"20\" transform=\"rotate(180 20.5 20.5)\" fill=\"white\" stroke=\"#E2E8F0\"/>\n          </svg>\n          <svg class=\"chevron-icon\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n            <path d=\"M9.70699 18.707C9.31646 19.0976 8.68345 19.0976 8.29292 18.707C7.9024 18.3165 7.9024 17.6835 8.29292 17.293L13.5859 12L8.29292 6.70705C7.9024 6.31652 7.9024 5.68351 8.29292 5.29298C8.68345 4.90246 9.31646 4.90246 9.70699 5.29298L15.707 11.293C16.0975 11.6835 16.0975 12.3165 15.707 12.707L9.70699 18.707Z\" fill=\"#9333EA\"/>\n          </svg>\n        </button>\n      </div>\n\n      <!-- Indicators (inside container, below carousel-root) -->\n      <div *ngIf=\"showIndicators\" class=\"carousel-indicators\">\n        <button\n          *ngFor=\"let page of pages; let i = index\"\n          class=\"carousel-indicator\"\n          [class.active]=\"i === currentIndex\"\n          (click)=\"goToSlide(i)\"\n          [attr.aria-label]=\"'Go to slide ' + (i + 1)\"\n          type=\"button\">\n        </button>\n      </div>\n    </div>\n  `,\n  styleUrls: ['./carousel.css']\n})\nexport class CarouselComponent implements AfterContentInit, OnChanges {\n  /** Number of items visible at once */\n  @Input() itemsPerView: number = 2;\n\n  /** Show navigation arrows */\n  @Input() showArrows: boolean = true;\n\n  /** Show pagination indicators */\n  @Input() showIndicators: boolean = true;\n\n  /** Enable infinite loop */\n  @Input() loop: boolean = false;\n\n  @ContentChildren(CarouselItemComponent) items!: QueryList<CarouselItemComponent>;\n  @ViewChild('viewportElement') viewportElement!: ElementRef;\n\n  currentIndex: number = 0;\n  totalItems: number = 0;\n  pages: number[] = [];\n  private gap: number = 30; // Default desktop gap\n\n  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}\n\n  ngAfterContentInit(): void {\n    this.totalItems = this.items.length;\n    this.calculatePages();\n    this.updateGapFromViewport();\n    this.setCSSVariables();\n    this.cdr.detectChanges();\n  }\n\n  ngOnChanges(changes: SimpleChanges): void {\n    if (changes['itemsPerView']) {\n      this.calculatePages();\n      this.setCSSVariables();\n    }\n  }\n\n  /**\n   * Detect the gap value from the viewport's computed gap\n   * Falls back to desktop default if detection fails\n   */\n  private updateGapFromViewport(): void {\n    if (!this.viewportElement?.nativeElement) {\n      return;\n    }\n\n    const track = this.viewportElement.nativeElement.querySelector('.carousel-track');\n    if (track) {\n      const computedGap = window.getComputedStyle(track).gap;\n      const gapValue = parseFloat(computedGap);\n      if (!isNaN(gapValue)) {\n        this.gap = gapValue;\n      }\n    }\n  }\n\n  private setCSSVariables(): void {\n    // Set on the component's root element so all descendants inherit\n    const rootElement = this.elementRef.nativeElement;\n    if (rootElement) {\n      rootElement.style.setProperty('--carousel-items-per-view', `${this.itemsPerView}`);\n      rootElement.style.setProperty('--carousel-gap', `${this.gap}px`);\n    }\n  }\n\n  calculatePages(): void {\n    const pageCount = Math.ceil(this.totalItems / this.itemsPerView);\n    this.pages = Array.from({ length: pageCount }, (_, i) => i);\n  }\n\n  get maxIndex(): number {\n    return Math.max(0, this.pages.length - 1);\n  }\n\n  /**\n   * Deterministic translateX calculation in pixels\n   * step = itemWidth + gap\n   * translateX = -currentIndex * step\n   *\n   * Ensures no drift: the position is calculated from zero each time,\n   * not accumulated.\n   */\n  get translateX(): string {\n    if (!this.viewportElement?.nativeElement) {\n      return 'translateX(0)';\n    }\n\n    const viewport = this.viewportElement.nativeElement;\n    const track = viewport.querySelector('.carousel-track');\n\n    if (!track || this.totalItems === 0) {\n      return 'translateX(0)';\n    }\n\n    // Get the first item to measure its width\n    const firstItem = track.children[0];\n    if (!firstItem) {\n      return 'translateX(0)';\n    }\n\n    // Get computed dimensions\n    const itemWidth = firstItem.offsetWidth;\n    const step = itemWidth + this.gap;\n\n    // Deterministic: calculate position from zero\n    const offset = -this.currentIndex * step;\n\n    return `translateX(${offset}px)`;\n  }\n\n  next(): void {\n    if (this.currentIndex < this.maxIndex) {\n      this.currentIndex++;\n    } else if (this.loop) {\n      this.currentIndex = 0;\n    }\n    this.cdr.detectChanges();\n  }\n\n  previous(): void {\n    if (this.currentIndex > 0) {\n      this.currentIndex--;\n    } else if (this.loop) {\n      this.currentIndex = this.maxIndex;\n    }\n    this.cdr.detectChanges();\n  }\n\n  goToSlide(index: number): void {\n    if (index >= 0 && index <= this.maxIndex) {\n      this.currentIndex = index;\n      this.cdr.detectChanges();\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "\n    :host {\n      display: block;\n      flex: 0 0 calc((100% - (var(--carousel-items-per-view, 2) - 1) * var(--carousel-gap, 30px)) / var(--carousel-items-per-view, 2));\n      min-width: 0;\n      box-sizing: border-box;\n    }\n  \n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": []
+        },
+        {
             "name": "CheckboxComponent",
             "id": "component-CheckboxComponent-11ad13d15c161c20efa779cf8a7acdd19396a44f64ad9f9ea6d75f71fcf67c988d77daa0e50f44bb8b9370364deb1fd60f18d2be164b6f6a943f83583c71c8b6",
             "file": "src/stories/checkbox.component.ts",
@@ -7045,6 +7492,336 @@
                     }
                 }
             }
+        },
+        {
+            "name": "TooltipComponent",
+            "id": "component-TooltipComponent-93430bd3192f025f9ccc0f7ab4d647176787a1f4a587beca75bd33f14acc14d8f2aa87958f8108f8f66ab3511809a26a8f406231a5857bc4e667dad8f804ebe2",
+            "file": "src/stories/tooltip.component.ts",
+            "changeDetection": "ChangeDetectionStrategy.OnPush",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "bsg-tooltip",
+            "styleUrls": [
+                "./tooltip.css"
+            ],
+            "styles": [],
+            "template": "<div\n  class=\"tooltip-trigger\"\n  (mouseenter)=\"onMouseEnter()\"\n  (mouseleave)=\"onMouseLeave()\"\n  (focus)=\"onFocus()\"\n  (blur)=\"onBlur()\"\n  (mousedown)=\"onMouseDown()\"\n  tabindex=\"0\"\n  [attr.aria-describedby]=\"tooltipId\"\n  #triggerElement>\n  <ng-content></ng-content>\n\n  <!-- Tooltip overlay -->\n  <div\n    *ngIf=\"isVisible && !disabled\"\n    class=\"tooltip-overlay\"\n    [class]=\"'tooltip-' + placement\"\n    [attr.id]=\"tooltipId\"\n    role=\"tooltip\"\n    #tooltipElement>\n    <div class=\"tooltip-content\">\n      {{ content }}\n    </div>\n    <div class=\"tooltip-arrow\"></div>\n  </div>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "content",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 53,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 55,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "placement",
+                    "defaultValue": "'top'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 54,
+                    "type": "TooltipPlacement",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "hideTimeout",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 63,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isMouseHovering",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 65,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isVisible",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 60
+                },
+                {
+                    "name": "justClicked",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 64,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "tooltipElement",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 58,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'tooltipElement'"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ]
+                },
+                {
+                    "name": "tooltipId",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 61
+                },
+                {
+                    "name": "triggerElement",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 57,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'triggerElement'"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "hide",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 147,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "ngAfterContentInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 76,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 74,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onBlur",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 121,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHandle blur: hide tooltip\n",
+                    "description": "<p>Handle blur: hide tooltip</p>\n"
+                },
+                {
+                    "name": "onFocus",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 108,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHandle focus: show tooltip only if triggered by keyboard, not by click\nIf the focus is due to a click (justClicked is true), we skip showing\nbecause the tooltip may already be visible from mouseenter\n",
+                    "description": "<p>Handle focus: show tooltip only if triggered by keyboard, not by click\nIf the focus is due to a click (justClicked is true), we skip showing\nbecause the tooltip may already be visible from mouseenter</p>\n"
+                },
+                {
+                    "name": "onMouseDown",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 130,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nTrack mouse down to detect click-triggered focus\n",
+                    "description": "<p>Track mouse down to detect click-triggered focus</p>\n"
+                },
+                {
+                    "name": "onMouseEnter",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 90,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHandle mouse enter: show tooltip\nActivation by hover is always allowed\n",
+                    "description": "<p>Handle mouse enter: show tooltip\nActivation by hover is always allowed</p>\n"
+                },
+                {
+                    "name": "onMouseLeave",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 98,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHandle mouse leave: hide tooltip\n",
+                    "description": "<p>Handle mouse leave: hide tooltip</p>\n"
+                },
+                {
+                    "name": "show",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 138,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  Input,\n  ViewChild,\n  ElementRef,\n  HostListener,\n  OnInit,\n  ContentChild,\n  AfterContentInit,\n  ChangeDetectorRef,\n  ChangeDetectionStrategy\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type TooltipPlacement = 'top' | 'right' | 'bottom' | 'left';\n\n@Component({\n  selector: 'bsg-tooltip',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div\n      class=\"tooltip-trigger\"\n      (mouseenter)=\"onMouseEnter()\"\n      (mouseleave)=\"onMouseLeave()\"\n      (focus)=\"onFocus()\"\n      (blur)=\"onBlur()\"\n      (mousedown)=\"onMouseDown()\"\n      tabindex=\"0\"\n      [attr.aria-describedby]=\"tooltipId\"\n      #triggerElement>\n      <ng-content></ng-content>\n\n      <!-- Tooltip overlay -->\n      <div\n        *ngIf=\"isVisible && !disabled\"\n        class=\"tooltip-overlay\"\n        [class]=\"'tooltip-' + placement\"\n        [attr.id]=\"tooltipId\"\n        role=\"tooltip\"\n        #tooltipElement>\n        <div class=\"tooltip-content\">\n          {{ content }}\n        </div>\n        <div class=\"tooltip-arrow\"></div>\n      </div>\n    </div>\n  `,\n  styleUrls: ['./tooltip.css'],\n  changeDetection: ChangeDetectionStrategy.OnPush\n})\nexport class TooltipComponent implements OnInit, AfterContentInit {\n  @Input() content: string = '';\n  @Input() placement: TooltipPlacement = 'top';\n  @Input() disabled: boolean = false;\n\n  @ViewChild('triggerElement') triggerElement!: ElementRef;\n  @ViewChild('tooltipElement') tooltipElement!: ElementRef;\n\n  isVisible: boolean = false;\n  tooltipId: string = '';\n\n  private hideTimeout: any;\n  private justClicked: boolean = false;\n  private isMouseHovering: boolean = false;\n\n  constructor(\n    private elementRef: ElementRef,\n    private cdr: ChangeDetectorRef\n  ) {\n    this.tooltipId = `tooltip-${Math.random().toString(36).substr(2, 9)}`;\n  }\n\n  ngOnInit(): void {}\n\n  ngAfterContentInit(): void {\n    // Ensure trigger is focusable\n    if (this.triggerElement) {\n      const el = this.triggerElement.nativeElement;\n      if (!el.getAttribute('tabindex')) {\n        el.setAttribute('tabindex', '0');\n      }\n    }\n  }\n\n  /**\n   * Handle mouse enter: show tooltip\n   * Activation by hover is always allowed\n   */\n  onMouseEnter(): void {\n    this.isMouseHovering = true;\n    this.show();\n  }\n\n  /**\n   * Handle mouse leave: hide tooltip\n   */\n  onMouseLeave(): void {\n    this.isMouseHovering = false;\n    this.hide();\n  }\n\n  /**\n   * Handle focus: show tooltip only if triggered by keyboard, not by click\n   * If the focus is due to a click (justClicked is true), we skip showing\n   * because the tooltip may already be visible from mouseenter\n   */\n  onFocus(): void {\n    if (this.justClicked) {\n      // Click-triggered focus: ignore to prevent unwanted tooltip activation\n      this.justClicked = false;\n      return;\n    }\n    // Keyboard-triggered focus: show tooltip\n    this.show();\n  }\n\n  /**\n   * Handle blur: hide tooltip\n   */\n  onBlur(): void {\n    this.isMouseHovering = false;\n    this.justClicked = false;\n    this.hide();\n  }\n\n  /**\n   * Track mouse down to detect click-triggered focus\n   */\n  onMouseDown(): void {\n    this.justClicked = true;\n    // Clear the flag after a brief delay to handle async focus events\n    setTimeout(() => {\n      this.justClicked = false;\n    }, 0);\n  }\n\n  private show(): void {\n    if (this.disabled) {\n      return;\n    }\n    clearTimeout(this.hideTimeout);\n    this.isVisible = true;\n    this.cdr.markForCheck();\n  }\n\n  private hide(): void {\n    // Debounce hide to prevent flickering\n    this.hideTimeout = setTimeout(() => {\n      this.isVisible = false;\n      this.cdr.markForCheck();\n    }, 0);\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* ========================================\n   Component Host (positioning context)\n   ======================================== */\n\n:host {\n  position: relative;\n  display: inline-block;\n}\n\n/* ========================================\n   Tooltip Trigger (wrapper for content)\n   ======================================== */\n\n.tooltip-trigger {\n  position: relative;\n  display: inline-block;\n  cursor: pointer;\n  outline: none;\n}\n\n.tooltip-trigger:focus {\n  outline: 2px solid #9333ea;\n  outline-offset: 2px;\n  border-radius: 4px;\n}\n\n/* ========================================\n   Tooltip Overlay (floating container)\n   ======================================== */\n\n.tooltip-overlay {\n  position: absolute;\n  z-index: 1000;\n  background: #334155;\n  color: #f1f5f9;\n  border-radius: 6px;\n  padding: 8px 12px;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 13px;\n  font-weight: 500;\n  line-height: 1.4;\n  white-space: nowrap;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n  animation: tooltipAppear 0.2s ease-in-out;\n  pointer-events: none;\n  user-select: none;\n}\n\n@keyframes tooltipAppear {\n  from {\n    opacity: 0;\n    transform: scale(0.95);\n  }\n  to {\n    opacity: 1;\n    transform: scale(1);\n  }\n}\n\n/* ========================================\n   Tooltip Content\n   ======================================== */\n\n.tooltip-content {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n}\n\n/* ========================================\n   Tooltip Arrow (pointer to trigger)\n   ======================================== */\n\n.tooltip-arrow {\n  position: absolute;\n  width: 8px;\n  height: 8px;\n  background: inherit;\n  border-radius: 1px;\n  transform: rotate(45deg);\n}\n\n/* ========================================\n   Placement: TOP (default)\n   ======================================== */\n\n.tooltip-top {\n  bottom: calc(100% + 8px);\n  left: 50%;\n  transform: translateX(-50%);\n}\n\n.tooltip-top .tooltip-arrow {\n  bottom: -4px;\n  left: 50%;\n  transform: translateX(-50%) rotate(45deg);\n}\n\n/* ========================================\n   Placement: BOTTOM\n   ======================================== */\n\n.tooltip-bottom {\n  top: calc(100% + 8px);\n  left: 50%;\n  transform: translateX(-50%);\n}\n\n.tooltip-bottom .tooltip-arrow {\n  top: -4px;\n  left: 50%;\n  transform: translateX(-50%) rotate(45deg);\n}\n\n/* ========================================\n   Placement: LEFT\n   ======================================== */\n\n.tooltip-left {\n  right: calc(100% + 8px);\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.tooltip-left .tooltip-arrow {\n  right: -4px;\n  top: 50%;\n  transform: translateY(-50%) rotate(45deg);\n}\n\n/* ========================================\n   Placement: RIGHT\n   ======================================== */\n\n.tooltip-right {\n  left: calc(100% + 8px);\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.tooltip-right .tooltip-arrow {\n  left: -4px;\n  top: 50%;\n  transform: translateY(-50%) rotate(45deg);\n}\n\n/* ========================================\n   Accessibility\n   ======================================== */\n\n.tooltip-overlay:focus {\n  outline: none;\n}\n\n/* ========================================\n   Responsive behavior - small screens\n   ======================================== */\n\n@media (max-width: 640px) {\n  .tooltip-overlay {\n    padding: 8px 10px;\n    font-size: 12px;\n    max-width: 200px;\n    white-space: normal;\n  }\n}\n",
+                    "styleUrl": "./tooltip.css"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    },
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": ""
+                    }
+                ],
+                "line": 65,
+                "jsdoctags": [
+                    {
+                        "name": "elementRef",
+                        "type": "ElementRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "cdr",
+                        "type": "ChangeDetectorRef",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "extends": [],
+            "implements": [
+                "OnInit",
+                "AfterContentInit"
+            ]
         }
     ],
     "modules": [],
@@ -7697,6 +8474,17 @@
                 "subtype": "typealias",
                 "rawtype": "\"default\" | \"info\" | \"success\" | \"warning\" | \"destructive\"",
                 "file": "src/stories/toast.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "TooltipPlacement",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"top\" | \"right\" | \"bottom\" | \"left\"",
+                "file": "src/stories/tooltip.component.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -8419,6 +9207,19 @@
                     "description": "",
                     "kind": 193
                 }
+            ],
+            "src/stories/tooltip.component.ts": [
+                {
+                    "name": "TooltipPlacement",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"top\" | \"right\" | \"bottom\" | \"left\"",
+                    "file": "src/stories/tooltip.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
             ]
         }
     },
@@ -8809,6 +9610,24 @@
                 "name": "CardVariant",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/carousel.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CarouselComponent",
+                "coveragePercent": 25,
+                "coverageCount": "5/20",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/carousel.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CarouselItemComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
                 "status": "low"
             },
             {
@@ -9396,6 +10215,25 @@
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
                 "name": "ToastVariant",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/tooltip.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TooltipComponent",
+                "coveragePercent": 23,
+                "coverageCount": "5/21",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/tooltip.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "TooltipPlacement",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
