@@ -71,30 +71,63 @@ export const Sizes: Story = {
 /**
  * All input states: default, hover, focus, disabled, and error.
  * Shows visual appearance of the input in different interaction states.
+ * Also demonstrates label support and error message display.
  */
 export const States: Story = {
   render: () => ({
     template: `
-      <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; font-family: Roboto, sans-serif;">
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Default</span>
-          <bsg-input size="md" state="default" icon="none"></bsg-input>
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Basic States</h4>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+              <bsg-input size="md" state="default" icon="none"></bsg-input>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
+              <bsg-input size="md" state="hover" icon="none"></bsg-input>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+              <bsg-input size="md" state="focus" icon="none"></bsg-input>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+              <bsg-input size="md" state="disabled" icon="none"></bsg-input>
+            </div>
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+              <bsg-input size="md" state="error" icon="none"></bsg-input>
+            </div>
+          </div>
         </div>
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Hover</span>
-          <bsg-input size="md" state="hover" icon="none"></bsg-input>
+
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">With Label</h4>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; gap: 32px;">
+              <bsg-input size="md" state="default" icon="none" label="Email" placeholder="tu@email.com"></bsg-input>
+            </div>
+            <div style="display: flex; gap: 32px;">
+              <bsg-input size="md" state="focus" icon="none" label="Nombre completo" placeholder="Juan Pérez"></bsg-input>
+            </div>
+          </div>
         </div>
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
-          <bsg-input size="md" state="focus" icon="none"></bsg-input>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
-          <bsg-input size="md" state="disabled" icon="none"></bsg-input>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: center;">
-          <span style="width: 100px; font-size: 14px; font-weight: 600; color: #202020;">Error</span>
-          <bsg-input size="md" state="error" icon="none"></bsg-input>
+
+        <div>
+          <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">With Error Message</h4>
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; gap: 32px;">
+              <bsg-input size="md" state="error" icon="none" label="Email" value="usuario@" errorMessage="Email inválido. Incluye @ y dominio."></bsg-input>
+            </div>
+            <div style="display: flex; gap: 32px;">
+              <bsg-input size="md" state="error" icon="none" label="Contraseña" type="password" value="1234" errorMessage="Mínimo 8 caracteres requeridos"></bsg-input>
+            </div>
+            <div style="display: flex; gap: 32px;">
+              <bsg-input size="md" state="error" icon="none" label="Teléfono" value="123" errorMessage="Teléfono incompleto"></bsg-input>
+            </div>
+          </div>
         </div>
       </div>
     `,
