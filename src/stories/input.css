@@ -1,3 +1,30 @@
+/* Input field container (includes label and error) */
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Input label */
+.input-label {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #202020;
+  margin-bottom: 2px;
+}
+
+/* Error message */
+.input-error-message {
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #DC2626;
+  margin-top: 4px;
+}
+
 /* Base input wrapper styles */
 .input-wrapper {
   display: inline-flex;
