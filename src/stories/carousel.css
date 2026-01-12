@@ -1,0 +1,181 @@
+/* ========================================
+   Carousel Container
+   ======================================== */
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   Carousel Viewport & Track
+   ======================================== */
+
+.carousel-viewport {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+/* ========================================
+   Navigation Arrows
+   ======================================== */
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 41px;
+  height: 41px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+  transition: opacity 0.2s ease;
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.carousel-arrow:not(:disabled):hover {
+  opacity: 0.8;
+}
+
+.carousel-arrow svg {
+  display: block;
+}
+
+.carousel-arrow .chevron-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.carousel-arrow-prev {
+  left: 0;
+}
+
+.carousel-arrow-next {
+  right: 0;
+}
+
+/* ========================================
+   Pagination Indicators
+   ======================================== */
+
+.carousel-indicators {
+  position: absolute;
+  bottom: -48px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #9333EA;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.carousel-indicator:hover {
+  opacity: 0.6;
+}
+
+.carousel-indicator.active {
+  opacity: 1;
+}
+
+/* ========================================
+   Responsive Behavior
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .carousel-container {
+    padding: 0 50px;
+  }
+
+  .carousel-track {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    padding: 0 40px;
+  }
+
+  .carousel-track {
+    gap: 16px;
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+  }
+
+  .carousel-arrow svg:first-child {
+    width: 32px;
+    height: 32px;
+  }
+
+  .carousel-arrow .chevron-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-container {
+    padding: 0 30px;
+  }
+
+  .carousel-indicators {
+    bottom: -40px;
+    gap: 12px;
+  }
+
+  .carousel-indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* ========================================
+   Accessibility
+   ======================================== */
+
+.carousel-arrow:focus-visible,
+.carousel-indicator:focus-visible {
+  outline: 2px solid #9333EA;
+  outline-offset: 2px;
+}
+
+.carousel-arrow:focus:not(:focus-visible),
+.carousel-indicator:focus:not(:focus-visible) {
+  outline: none;
+}
