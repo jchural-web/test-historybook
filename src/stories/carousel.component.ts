@@ -109,6 +109,7 @@ export class CarouselComponent implements AfterContentInit {
     this.calculatePages();
     this.updateGapFromViewport();
     this.setCSSVariables();
+    this.cdr.detectChanges();
   }
 
   /**
