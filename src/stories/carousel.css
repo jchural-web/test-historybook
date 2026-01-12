@@ -87,11 +87,11 @@
 }
 
 .carousel-arrow-prev {
-  left: 0;
+  left: 10px;
 }
 
 .carousel-arrow-next {
-  right: 0;
+  right: 10px;
 }
 
 /* ========================================
