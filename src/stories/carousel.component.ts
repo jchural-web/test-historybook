@@ -131,10 +131,11 @@ export class CarouselComponent implements AfterContentInit {
   }
 
   private setCSSVariables(): void {
-    const track = this.viewportElement?.nativeElement.querySelector('.carousel-track');
-    if (track) {
-      track.style.setProperty('--carousel-items-per-view', `${this.itemsPerView}`);
-      track.style.setProperty('--carousel-gap', `${this.gap}px`);
+    const viewport = this.viewportElement?.nativeElement;
+    if (viewport) {
+      // Set variables on viewport so items inherit them
+      viewport.style.setProperty('--carousel-items-per-view', `${this.itemsPerView}`);
+      viewport.style.setProperty('--carousel-gap', `${this.gap}px`);
     }
   }
 
