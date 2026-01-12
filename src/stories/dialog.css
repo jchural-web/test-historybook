@@ -1,0 +1,202 @@
+/* ========================================
+   Dialog Overlay
+   ======================================== */
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  box-sizing: border-box;
+  animation: dialog-overlay-fade-in 0.2s ease-out;
+}
+
+@keyframes dialog-overlay-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dialog-overlay-base {
+  /* Additional overlay styling if needed */
+}
+
+/* ========================================
+   Dialog Content (Main Container)
+   ======================================== */
+
+.dialog-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-height: 90vh;
+  width: 100%;
+  box-sizing: border-box;
+  animation: dialog-content-scale-in 0.2s ease-out;
+}
+
+@keyframes dialog-content-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   Dialog Sizes
+   ======================================== */
+
+.dialog-sm {
+  max-width: 460px;
+}
+
+.dialog-md {
+  max-width: 670px;
+}
+
+.dialog-lg {
+  max-width: 1153px;
+}
+
+/* ========================================
+   Dialog Header
+   ======================================== */
+
+.dialog-header {
+  display: flex;
+  align-items: center;
+  min-height: 57px;
+  padding: 20px 17px;
+  border-radius: 12px 12px 0 0;
+  box-sizing: border-box;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+/* Header Tone: Brand (Orange) */
+.dialog-header-brand {
+  background: #EA580C;
+  color: #FFFFFF;
+}
+
+/* Header Tone: Info/Secondary (Purple) */
+.dialog-header-info,
+.dialog-header-secondary {
+  background: #F3E8FF;
+  color: #9333EA;
+}
+
+/* ========================================
+   Dialog Body
+   ======================================== */
+
+.dialog-body {
+  flex: 1;
+  padding: 20px 23px;
+  overflow-y: visible;
+  box-sizing: border-box;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: #475569;
+}
+
+.dialog-body-scrollable {
+  overflow-y: auto;
+  max-height: calc(90vh - 200px);
+}
+
+.dialog-scrollable .dialog-body {
+  overflow-y: auto;
+}
+
+/* ========================================
+   Dialog Footer
+   ======================================== */
+
+.dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 23px;
+  border-top: 1px solid #E2E8F0;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   Responsive Behavior
+   ======================================== */
+
+@media (max-width: 768px) {
+  .dialog-overlay {
+    padding: 12px;
+  }
+
+  .dialog-content {
+    max-height: 95vh;
+  }
+
+  .dialog-sm,
+  .dialog-md,
+  .dialog-lg {
+    max-width: 100%;
+  }
+
+  .dialog-header {
+    padding: 16px 14px;
+    font-size: 14px;
+  }
+
+  .dialog-body {
+    padding: 16px 14px;
+    font-size: 13px;
+  }
+
+  .dialog-footer {
+    padding: 16px 14px;
+    gap: 8px;
+  }
+
+  .dialog-body-scrollable {
+    max-height: calc(95vh - 180px);
+  }
+}
+
+/* ========================================
+   Focus Trap & Accessibility
+   ======================================== */
+
+.dialog-content:focus {
+  outline: none;
+}
+
+/* Ensure content is not selectable on overlay */
+.dialog-overlay {
+  user-select: none;
+}
+
+.dialog-content {
+  user-select: text;
+}
