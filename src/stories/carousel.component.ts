@@ -140,11 +140,9 @@ export class CarouselComponent implements AfterContentInit {
   get translateX(): string {
     // Calculate the percentage to translate based on:
     // - One page width = (100 / itemsPerView)% of viewport
-    // - Plus the gap adjusted for the visible items
+    // Each "page" is just 100/itemsPerView percentage of the track
     const pageWidthPercent = 100 / this.itemsPerView;
-    const gapPercent = (this.gap / 100) * (this.itemsPerView - 1);
-    const totalPercentPerPage = pageWidthPercent + gapPercent;
-    return `calc(-${this.currentIndex * totalPercentPerPage}% - ${this.currentIndex * this.gap}px)`;
+    return `-${this.currentIndex * pageWidthPercent}%`;
   }
 
   next(): void {
