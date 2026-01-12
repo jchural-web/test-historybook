@@ -25,6 +25,7 @@
   box-sizing: border-box;
   position: relative;
   transition: all 0.2s ease;
+  width: 100%;
 }
 
 /* TimePicker input field */
