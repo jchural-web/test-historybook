@@ -108,14 +108,13 @@
 
 .timepicker-state-default:hover,
 .timepicker-state-default.timepicker-state-hover {
-  opacity: 0.9;
+  border-color: #94A3B8;
 }
 
 /* State variants - Hover */
 .timepicker-state-hover {
-  border-color: #CBD5E1;
+  border-color: #94A3B8;
   background: transparent;
-  opacity: 0.9;
 }
 
 /* State variants - Focus */
