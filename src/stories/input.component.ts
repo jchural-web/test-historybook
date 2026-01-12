@@ -131,6 +131,8 @@ export class InputComponent {
   @Input() type: InputType = 'text';
   @Input() placeholder: string = 'Ingresa información';
   @Input() value: string = '';
+  @Input() label: string = '';
+  @Input() errorMessage: string = '';
 
   @Output() valueChange = new EventEmitter<string>();
   @Output() onInputChange = new EventEmitter<string>();
@@ -138,6 +140,14 @@ export class InputComponent {
   @Output() onBlurEvent = new EventEmitter<void>();
 
   showPassword: boolean = false;
+
+  get errorMessageId(): string {
+    return `input-error-${Math.random().toString(36).substr(2, 9)}`;
+  }
+
+  get containerClasses(): string[] {
+    return ['input-field-container'].filter(Boolean);
+  }
 
   get inputType(): string {
     if (this.type === 'password') {
