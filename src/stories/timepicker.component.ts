@@ -182,6 +182,7 @@ export class TimePickerComponent {
 
   selectedHour: number = 0;
   selectedMinute: number = 0;
+  isFocused: boolean = false;
 
   get errorMessageId(): string {
     return `timepicker-error-${Math.random().toString(36).substr(2, 9)}`;
