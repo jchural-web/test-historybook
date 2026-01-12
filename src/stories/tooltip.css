@@ -1,4 +1,13 @@
 /* ========================================
+   Component Host (positioning context)
+   ======================================== */
+
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+/* ========================================
    Tooltip Trigger (wrapper for content)
    ======================================== */
 
