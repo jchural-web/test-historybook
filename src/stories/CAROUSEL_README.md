@@ -200,14 +200,18 @@ const translateX = -currentIndex * 100; // Porcentaje
 const widthPercentage = 100 / itemsPerView;
 ```
 
-## Prevención de cortes de contenido
+## Prevención de cortes y deriva
 
-✅ **Sin clipping garantizado**: El carrusel utiliza:
-- `flex: 0 0 calc(100% / var(--carousel-items-per-view))` en cada item
-- `overflow: hidden` en el viewport
-- Cálculos de translateX basados en múltiplos exactos de `100 / itemsPerView`
+✅ **Sin clipping garantizado**:
+- Items calculan ancho: `flex: 0 0 calc((100% - (N-1) * gap) / N)`
+- Viewport con `overflow: hidden` aísla visibilidad
+- Flechas posicionadas absolutamente FUERA del viewport
 
-Esto garantiza que **nunca se vea un contenedor parcialmente cortado**, incluso durante navegación.
+✅ **Sin deriva (determinístico)**:
+- `step = itemWidth + gap` (medido en pixels del DOM)
+- `offset = -currentIndex * step` (cálculo desde cero, no acumulativo)
+- Cada navegación recalcula la posición sin memoria de estados anteriores
+- Múltiples navegaciones siempre aterrizan perfectamente alineado
 
 ## Limitaciones conocidas
 
