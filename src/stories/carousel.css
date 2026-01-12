@@ -95,19 +95,16 @@
 }
 
 /* ========================================
-   Pagination Indicators (outside root)
+   Pagination Indicators (below carousel-root, centered)
    ======================================== */
 
 .carousel-indicators {
-  position: absolute;
-  bottom: -48px;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   gap: 20px;
   align-items: center;
   justify-content: center;
-  z-index: 10;
+  margin-top: 24px;
+  width: 100%;
   pointer-events: auto;
 }
 
