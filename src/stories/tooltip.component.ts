@@ -30,20 +30,20 @@ export type TooltipPlacement = 'top' | 'right' | 'bottom' | 'left';
       [attr.aria-describedby]="tooltipId"
       #triggerElement>
       <ng-content></ng-content>
-    </div>
 
-    <!-- Tooltip overlay -->
-    <div
-      *ngIf="isVisible && !disabled"
-      class="tooltip-overlay"
-      [class]="'tooltip-' + placement"
-      [attr.id]="tooltipId"
-      role="tooltip"
-      #tooltipElement>
-      <div class="tooltip-content">
-        {{ content }}
+      <!-- Tooltip overlay -->
+      <div
+        *ngIf="isVisible && !disabled"
+        class="tooltip-overlay"
+        [class]="'tooltip-' + placement"
+        [attr.id]="tooltipId"
+        role="tooltip"
+        #tooltipElement>
+        <div class="tooltip-content">
+          {{ content }}
+        </div>
+        <div class="tooltip-arrow"></div>
       </div>
-      <div class="tooltip-arrow"></div>
     </div>
   `,
   styleUrls: ['./tooltip.css'],
