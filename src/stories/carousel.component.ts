@@ -81,7 +81,7 @@ export class CarouselItemComponent {
   `,
   styleUrls: ['./carousel.css']
 })
-export class CarouselComponent implements AfterContentInit {
+export class CarouselComponent implements AfterContentInit, OnChanges {
   /** Number of items visible at once */
   @Input() itemsPerView: number = 2;
 
