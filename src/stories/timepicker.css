@@ -101,42 +101,42 @@
 }
 
 /* State variants - Default */
-.timepicker-state-default {
+.timepicker-wrapper.timepicker-state-default {
   border-color: #CBD5E1;
   background: transparent;
 }
 
-.timepicker-state-default:hover,
-.timepicker-state-default.timepicker-state-hover {
+.timepicker-wrapper.timepicker-state-default:hover,
+.timepicker-wrapper.timepicker-state-default.timepicker-state-hover {
   border-color: #94A3B8;
 }
 
 /* State variants - Hover */
-.timepicker-state-hover {
+.timepicker-wrapper.timepicker-state-hover {
   border-color: #94A3B8;
   background: transparent;
 }
 
 /* State variants - Focus */
-.timepicker-state-focus {
+.timepicker-wrapper.timepicker-state-focus {
   border-color: #64748B;
   background: transparent;
   box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
 }
 
-.timepicker-state-focus .timepicker-input-field {
+.timepicker-wrapper.timepicker-state-focus .timepicker-input-field {
   color: #1E293B;
 }
 
 /* State variants - Focus with Error */
-.timepicker-state-error.timepicker-state-focus {
+.timepicker-wrapper.timepicker-state-error.timepicker-state-focus {
   border-color: #DC2626;
   background: transparent;
   box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
 }
 
 /* State variants - Disabled */
-.timepicker-state-disabled {
+.timepicker-wrapper.timepicker-state-disabled {
   border-color: #CBD5E1;
   background: transparent;
   opacity: 0.4;
@@ -144,21 +144,21 @@
   pointer-events: none;
 }
 
-.timepicker-state-disabled .timepicker-input-field {
+.timepicker-wrapper.timepicker-state-disabled .timepicker-input-field {
   cursor: not-allowed;
 }
 
 /* State variants - Error */
-.timepicker-state-error {
+.timepicker-wrapper.timepicker-state-error {
   border-color: #DC2626;
   background: transparent;
 }
 
-.timepicker-state-error .timepicker-input-field {
+.timepicker-wrapper.timepicker-state-error .timepicker-input-field {
   color: #DC2626;
 }
 
-.timepicker-state-error .timepicker-input-field::placeholder {
+.timepicker-wrapper.timepicker-state-error .timepicker-input-field::placeholder {
   color: #DC2626;
 }
 
