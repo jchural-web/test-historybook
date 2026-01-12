@@ -85,17 +85,17 @@
 }
 
 /* Size variants */
-.timepicker-sm {
+.timepicker-wrapper.timepicker-sm {
   height: 32px;
   padding: 4px 8px 4px 12px;
 }
 
-.timepicker-md {
+.timepicker-wrapper.timepicker-md {
   height: 40px;
   padding: 4px 8px 4px 12px;
 }
 
-.timepicker-lg {
+.timepicker-wrapper.timepicker-lg {
   height: 48px;
   padding: 4px 8px 4px 12px;
 }
