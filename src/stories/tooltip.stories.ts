@@ -71,7 +71,7 @@ export const Default: Story = {
   render: (args) => ({
     props: args,
     template: `
-      <div class="tooltip-example-container">
+      <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px;">
         <bsg-tooltip [content]="content" [placement]="placement" [disabled]="disabled">
           <svg
             width="20"
@@ -79,7 +79,7 @@ export const Default: Story = {
             viewBox="0 0 20 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            class="tooltip-trigger-icon">
+            style="cursor: pointer; color: #9333ea;">
             <circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.5" fill="none"/>
             <text x="10" y="14" text-anchor="middle" font-size="12" fill="currentColor" font-weight="bold">i</text>
           </svg>
@@ -87,13 +87,4 @@ export const Default: Story = {
       </div>
     `,
   }),
-  decorators: [
-    (story) => ({
-      template: `
-        <div style="display: flex; align-items: center; justify-content: center; min-height: 200px; padding: 40px;">
-          ${story.template}
-        </div>
-      `,
-    }),
-  ],
 };
