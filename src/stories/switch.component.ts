@@ -4,7 +4,7 @@ import {
   Output,
   EventEmitter,
   HostListener,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -24,14 +24,15 @@ import { CommonModule } from '@angular/common';
       [disabled]="disabled"
       (click)="toggle()"
       (keydown.space)="onKeydown($event)"
-      (keydown.enter)="onKeydown($event)">
+      (keydown.enter)="onKeydown($event)"
+    >
       <span class="switch-track">
         <span class="switch-thumb"></span>
       </span>
     </button>
   `,
   styleUrls: ['./switch.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SwitchComponent {
   /**

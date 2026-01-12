@@ -36,19 +36,19 @@ import { CarouselComponent, CarouselItemComponent } from './carousel.component';
         <div class="my-card">Slide 3</div>
       </bsg-carousel-item>
     </bsg-carousel>
-  `
+  `,
 })
 export class MyComponent {}
 ```
 
 ## Props
 
-| Prop | Tipo | Default | Descripción |
-|------|------|---------|-------------|
-| `itemsPerView` | `number` | `2` | Número de items visibles simultáneamente |
-| `showArrows` | `boolean` | `true` | Mostrar botones de navegación (Previous/Next) |
-| `showIndicators` | `boolean` | `true` | Mostrar dots de paginación |
-| `loop` | `boolean` | `false` | Habilitar navegación infinita (loop) |
+| Prop             | Tipo      | Default | Descripción                                   |
+| ---------------- | --------- | ------- | --------------------------------------------- |
+| `itemsPerView`   | `number`  | `2`     | Número de items visibles simultáneamente      |
+| `showArrows`     | `boolean` | `true`  | Mostrar botones de navegación (Previous/Next) |
+| `showIndicators` | `boolean` | `true`  | Mostrar dots de paginación                    |
+| `loop`           | `boolean` | `false` | Habilitar navegación infinita (loop)          |
 
 ## Estructura
 
@@ -126,6 +126,7 @@ export class MyComponent {}
 ### Paginación
 
 El carrusel calcula automáticamente el número de páginas basado en:
+
 - Total de items
 - Items visibles por página (`itemsPerView`)
 
@@ -169,14 +170,13 @@ El componente **NO aplica estilos** al contenido de las cards. Todo el styling v
 </bsg-carousel-item>
 
 <!-- ❌ Incorrecto: El carrusel NO estiliza esto -->
-<bsg-carousel-item>
-  Texto sin wrapper
-</bsg-carousel-item>
+<bsg-carousel-item> Texto sin wrapper </bsg-carousel-item>
 ```
 
 ### Colores del sistema
 
 Los controles utilizan el color primario definido en la paleta del design system:
+
 - Color principal: `#9333EA` (Purple-600)
 - Color de borde: `#E2E8F0` (Neutral-200)
 
@@ -203,11 +203,13 @@ const widthPercentage = 100 / itemsPerView;
 ## Prevención de cortes y deriva
 
 ✅ **Sin clipping garantizado**:
+
 - Items calculan ancho: `flex: 0 0 calc((100% - (N-1) * gap) / N)`
 - Viewport con `overflow: hidden` aísla visibilidad
 - Flechas posicionadas absolutamente FUERA del viewport
 
 ✅ **Sin deriva (determinístico)**:
+
 - `step = itemWidth + gap` (medido en pixels del DOM)
 - `offset = -currentIndex * step` (cálculo desde cero, no acumulativo)
 - Cada navegación recalcula la posición sin memoria de estados anteriores

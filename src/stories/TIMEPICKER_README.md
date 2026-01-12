@@ -63,26 +63,26 @@ export class ExampleComponent {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the component |
-| `state` | `'default' \| 'hover' \| 'focus' \| 'disabled' \| 'error'` | `'default'` | Current state |
-| `value` | `string` | `''` | Selected time in HH:mm format |
-| `placeholder` | `string` | `'HH:mm'` | Placeholder text |
-| `label` | `string` | `''` | Optional label above input |
-| `errorMessage` | `string` | `''` | Error message when state is 'error' |
-| `minTime` | `string` | `''` | Minimum time in HH:mm (disables earlier times) |
-| `maxTime` | `string` | `''` | Maximum time in HH:mm (disables later times) |
-| `stepMinutes` | `number` | `1` | Step size for minutes list |
-| `open` | `boolean` | `false` | Dropdown open state |
+| Prop           | Type                                                       | Default     | Description                                    |
+| -------------- | ---------------------------------------------------------- | ----------- | ---------------------------------------------- |
+| `size`         | `'sm' \| 'md' \| 'lg'`                                     | `'md'`      | Size of the component                          |
+| `state`        | `'default' \| 'hover' \| 'focus' \| 'disabled' \| 'error'` | `'default'` | Current state                                  |
+| `value`        | `string`                                                   | `''`        | Selected time in HH:mm format                  |
+| `placeholder`  | `string`                                                   | `'HH:mm'`   | Placeholder text                               |
+| `label`        | `string`                                                   | `''`        | Optional label above input                     |
+| `errorMessage` | `string`                                                   | `''`        | Error message when state is 'error'            |
+| `minTime`      | `string`                                                   | `''`        | Minimum time in HH:mm (disables earlier times) |
+| `maxTime`      | `string`                                                   | `''`        | Maximum time in HH:mm (disables later times)   |
+| `stepMinutes`  | `number`                                                   | `1`         | Step size for minutes list                     |
+| `open`         | `boolean`                                                  | `false`     | Dropdown open state                            |
 
 ## Events
 
-| Event | Type | Description |
-|-------|------|-------------|
-| `valueChange` | `EventEmitter<string>` | Emitted when time is selected (HH:mm format) |
-| `selectionChange` | `EventEmitter<{ hour: number; minute: number }>` | Emitted with numeric hour and minute |
-| `openChange` | `EventEmitter<boolean>` | Emitted when dropdown state changes |
+| Event             | Type                                             | Description                                  |
+| ----------------- | ------------------------------------------------ | -------------------------------------------- |
+| `valueChange`     | `EventEmitter<string>`                           | Emitted when time is selected (HH:mm format) |
+| `selectionChange` | `EventEmitter<{ hour: number; minute: number }>` | Emitted with numeric hour and minute         |
+| `openChange`      | `EventEmitter<boolean>`                          | Emitted when dropdown state changes          |
 
 ## Behavior
 
@@ -178,7 +178,7 @@ The TimePicker reuses Input's design tokens:
       <label>Appointment Date *</label>
       <input type="date" required />
     </div>
-    
+
     <div>
       <label>Time *</label>
       <bsg-timepicker

@@ -7,7 +7,12 @@
 
 /* Input label */
 .input-label {
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -17,11 +22,16 @@
 
 /* Error message */
 .input-error-message {
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #DC2626;
+  color: #dc2626;
   margin-top: 4px;
 }
 
@@ -43,17 +53,22 @@
   border: none;
   outline: none;
   background: transparent;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.05px;
-  color: #1E293B;
+  color: #1e293b;
   box-sizing: border-box;
 }
 
 .input-field::placeholder {
-  color: #64748B;
+  color: #64748b;
 }
 
 /* Icon styling */
@@ -147,7 +162,7 @@
 
 /* State variants - Default */
 .input-state-default {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
 }
 
@@ -162,7 +177,7 @@
 
 /* State variants - Hover */
 .input-state-hover {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
   opacity: 0.9;
 }
@@ -170,27 +185,31 @@
 /* State variants - Focus */
 .input-state-focus,
 .input-wrapper:has(.input-field:focus) {
-  border-color: #64748B;
+  border-color: #64748b;
   background: transparent;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #7c3aed;
 }
 
 .input-state-focus .input-field,
 .input-wrapper:has(.input-field:focus) .input-field {
-  color: #1E293B;
+  color: #1e293b;
 }
 
 /* Focus state for error (destructive) - keep red border, purple ring only */
 .input-state-error.input-state-focus,
 .input-state-error:has(.input-field:focus) {
-  border-color: #DC2626;
+  border-color: #dc2626;
   background: transparent;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #7c3aed;
 }
 
 /* State variants - Disabled */
 .input-state-disabled {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
   opacity: 0.4;
   cursor: not-allowed;
@@ -203,16 +222,16 @@
 
 /* State variants - Error */
 .input-state-error {
-  border-color: #DC2626;
+  border-color: #dc2626;
   background: transparent;
 }
 
 .input-state-error .input-field {
-  color: #DC2626;
+  color: #dc2626;
 }
 
 .input-state-error .input-field::placeholder {
-  color: #DC2626;
+  color: #dc2626;
 }
 
 /* Remove browser default focus styles */

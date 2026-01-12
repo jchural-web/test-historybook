@@ -39,10 +39,11 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 
-              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
   max-height: 90vh;
   width: 100%;
   box-sizing: border-box;
@@ -87,7 +88,12 @@
   padding: 20px 17px;
   border-radius: 12px 12px 0 0;
   box-sizing: border-box;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
@@ -95,15 +101,15 @@
 
 /* Header Tone: Brand (Orange) */
 .dialog-header-brand {
-  background: #EA580C;
-  color: #FFFFFF;
+  background: #ea580c;
+  color: #ffffff;
 }
 
 /* Header Tone: Info/Secondary (Purple) */
 .dialog-header-info,
 .dialog-header-secondary {
-  background: #F3E8FF;
-  color: #9333EA;
+  background: #f3e8ff;
+  color: #9333ea;
 }
 
 /* ========================================
@@ -115,7 +121,12 @@
   padding: 20px 23px;
   overflow-y: visible;
   box-sizing: border-box;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
@@ -141,7 +152,7 @@
   justify-content: flex-end;
   gap: 32px !important;
   padding: 20px 23px;
-  border-top: 1px solid #E2E8F0;
+  border-top: 1px solid #e2e8f0;
   box-sizing: border-box;
   width: 100%;
   flex-wrap: nowrap;

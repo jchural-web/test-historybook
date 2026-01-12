@@ -1,4 +1,12 @@
-import { Component, Input, Output, EventEmitter, HostListener, ViewChild, ElementRef } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  HostListener,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -50,13 +58,7 @@ export type TimePickerState = 'default' | 'hover' | 'focus' | 'disabled' | 'erro
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <circle
-              cx="12"
-              cy="12"
-              r="10"
-              [attr.stroke]="iconColor"
-              stroke-width="2"
-            />
+            <circle cx="12" cy="12" r="10" [attr.stroke]="iconColor" stroke-width="2" />
             <path
               d="M12 6V12L16 16"
               [attr.stroke]="iconColor"
@@ -68,7 +70,13 @@ export type TimePickerState = 'default' | 'hover' | 'focus' | 'disabled' | 'erro
         </button>
 
         <!-- Dropdown (positioned relative to wrapper) -->
-        <div *ngIf="open" class="timepicker-dropdown" [ngClass]="dropdownClasses" role="dialog" aria-label="Selector de hora">
+        <div
+          *ngIf="open"
+          class="timepicker-dropdown"
+          [ngClass]="dropdownClasses"
+          role="dialog"
+          aria-label="Selector de hora"
+        >
           <!-- Time Selection Area -->
           <div class="timepicker-selection-area">
             <!-- Hours Column -->
@@ -78,7 +86,7 @@ export type TimePickerState = 'default' | 'hover' | 'focus' | 'disabled' | 'erro
                 <div
                   *ngFor="let hour of availableHours"
                   class="timepicker-option"
-                  [ngClass]="{ 'selected': selectedHour === hour, 'disabled': isHourDisabled(hour) }"
+                  [ngClass]="{ selected: selectedHour === hour, disabled: isHourDisabled(hour) }"
                   [attr.data-value]="hour"
                   (click)="selectHour(hour)"
                 >
@@ -97,7 +105,10 @@ export type TimePickerState = 'default' | 'hover' | 'focus' | 'disabled' | 'erro
                 <div
                   *ngFor="let minute of availableMinutes"
                   class="timepicker-option"
-                  [ngClass]="{ 'selected': selectedMinute === minute, 'disabled': isMinuteDisabled(minute) }"
+                  [ngClass]="{
+                    selected: selectedMinute === minute,
+                    disabled: isMinuteDisabled(minute),
+                  }"
                   [attr.data-value]="minute"
                   (click)="selectMinute(minute)"
                 >
@@ -130,7 +141,11 @@ export type TimePickerState = 'default' | 'hover' | 'focus' | 'disabled' | 'erro
       </div>
 
       <!-- Error Message -->
-      <span *ngIf="state === 'error' && errorMessage" class="timepicker-error-message" [attr.id]="errorMessageId">
+      <span
+        *ngIf="state === 'error' && errorMessage"
+        class="timepicker-error-message"
+        [attr.id]="errorMessageId"
+      >
         {{ errorMessage }}
       </span>
     </div>

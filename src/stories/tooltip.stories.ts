@@ -20,7 +20,8 @@ const meta: Meta<TooltipComponent> = {
     placement: {
       control: 'select',
       options: ['top', 'right', 'bottom', 'left'],
-      description: 'Position of the tooltip relative to the trigger. Arrow points toward the trigger.',
+      description:
+        'Position of the tooltip relative to the trigger. Arrow points toward the trigger.',
     },
     disabled: {
       control: 'boolean',

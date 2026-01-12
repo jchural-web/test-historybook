@@ -7,7 +7,12 @@
 
 /* TimePicker label */
 .timepicker-label {
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -34,18 +39,23 @@
   border: none;
   outline: none;
   background: transparent;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   letter-spacing: 0.05px;
-  color: #1E293B;
+  color: #1e293b;
   box-sizing: border-box;
   cursor: pointer;
 }
 
 .timepicker-input-field::placeholder {
-  color: #64748B;
+  color: #64748b;
 }
 
 .timepicker-input-field:disabled {
@@ -102,42 +112,46 @@
 
 /* State variants - Default */
 .timepicker-wrapper.timepicker-state-default {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
 }
 
 .timepicker-wrapper.timepicker-state-default:hover,
 .timepicker-wrapper.timepicker-state-default.timepicker-state-hover {
-  border-color: #94A3B8;
+  border-color: #94a3b8;
 }
 
 /* State variants - Hover */
 .timepicker-wrapper.timepicker-state-hover {
-  border-color: #94A3B8;
+  border-color: #94a3b8;
   background: transparent;
 }
 
 /* State variants - Focus */
 .timepicker-wrapper.timepicker-state-focus {
-  border-color: #64748B;
+  border-color: #64748b;
   background: transparent;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #7c3aed;
 }
 
 .timepicker-wrapper.timepicker-state-focus .timepicker-input-field {
-  color: #1E293B;
+  color: #1e293b;
 }
 
 /* State variants - Focus with Error */
 .timepicker-wrapper.timepicker-state-error.timepicker-state-focus {
-  border-color: #DC2626;
+  border-color: #dc2626;
   background: transparent;
-  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #7c3aed;
 }
 
 /* State variants - Disabled */
 .timepicker-wrapper.timepicker-state-disabled {
-  border-color: #CBD5E1;
+  border-color: #cbd5e1;
   background: transparent;
   opacity: 0.4;
   cursor: not-allowed;
@@ -150,25 +164,30 @@
 
 /* State variants - Error */
 .timepicker-wrapper.timepicker-state-error {
-  border-color: #DC2626;
+  border-color: #dc2626;
   background: transparent;
 }
 
 .timepicker-wrapper.timepicker-state-error .timepicker-input-field {
-  color: #DC2626;
+  color: #dc2626;
 }
 
 .timepicker-wrapper.timepicker-state-error .timepicker-input-field::placeholder {
-  color: #DC2626;
+  color: #dc2626;
 }
 
 /* Error message */
 .timepicker-error-message {
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
-  color: #DC2626;
+  color: #dc2626;
   margin-top: 4px;
 }
 
@@ -179,7 +198,7 @@
   left: 0;
   z-index: 10000;
   border-radius: 6px;
-  border: 1px solid #CBD5E1;
+  border: 1px solid #cbd5e1;
   background: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -208,7 +227,7 @@
   justify-content: center;
   padding: 8px;
   gap: 8px;
-  border-bottom: 1px solid #E2E8F0;
+  border-bottom: 1px solid #e2e8f0;
 }
 
 /* Time column */
@@ -219,10 +238,15 @@
 }
 
 .timepicker-column-header {
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 12px;
   font-weight: 600;
-  color: #64748B;
+  color: #64748b;
   text-align: center;
   padding: 4px 0;
   text-transform: uppercase;
@@ -242,7 +266,12 @@
 /* Time option item */
 .timepicker-option {
   padding: 8px;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -259,23 +288,23 @@
 }
 
 .timepicker-option:hover:not(.disabled) {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
 }
 
 .timepicker-option.selected {
-  background-color: #7C3AED;
+  background-color: #7c3aed;
   color: #fff;
   font-weight: 500;
 }
 
 .timepicker-option.selected:hover {
-  background-color: #6D28D9;
+  background-color: #6d28d9;
 }
 
 .timepicker-option.disabled {
   opacity: 0.4;
   cursor: not-allowed;
-  color: #94A3B8;
+  color: #94a3b8;
 }
 
 .timepicker-option.disabled:hover {
@@ -284,10 +313,15 @@
 
 /* Time separator */
 .timepicker-separator {
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 20px;
   font-weight: 500;
-  color: #64748B;
+  color: #64748b;
   margin-top: 20px;
 }
 
@@ -296,17 +330,22 @@
   display: flex;
   gap: 8px;
   padding: 8px;
-  border-top: 1px solid #E2E8F0;
+  border-top: 1px solid #e2e8f0;
 }
 
 .timepicker-action-btn {
   flex: 1;
   padding: 8px 12px;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: 18px;
-  border: 1px solid #CBD5E1;
+  border: 1px solid #cbd5e1;
   border-radius: 4px;
   background: transparent;
   color: #334155;
@@ -317,12 +356,12 @@
 }
 
 .timepicker-action-btn:hover:not(:disabled) {
-  background-color: #F8FAFC;
-  border-color: #94A3B8;
+  background-color: #f8fafc;
+  border-color: #94a3b8;
 }
 
 .timepicker-action-btn:active:not(:disabled) {
-  background-color: #F1F5F9;
+  background-color: #f1f5f9;
 }
 
 .timepicker-action-btn:disabled {
@@ -349,16 +388,16 @@
 }
 
 .timepicker-list::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #cbd5e1;
   border-radius: 2px;
 }
 
 .timepicker-list::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #94a3b8;
 }
 
 /* Firefox scrollbar */
 .timepicker-list {
   scrollbar-width: thin;
-  scrollbar-color: #CBD5E1 transparent;
+  scrollbar-color: #cbd5e1 transparent;
 }

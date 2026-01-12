@@ -8,7 +8,7 @@ import {
   ContentChild,
   AfterContentInit,
   ChangeDetectorRef,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -28,7 +28,8 @@ export type TooltipPlacement = 'top' | 'right' | 'bottom' | 'left';
       (mousedown)="onMouseDown()"
       tabindex="0"
       [attr.aria-describedby]="tooltipId"
-      #triggerElement>
+      #triggerElement
+    >
       <ng-content></ng-content>
 
       <!-- Tooltip overlay -->
@@ -38,7 +39,8 @@ export type TooltipPlacement = 'top' | 'right' | 'bottom' | 'left';
         [class]="'tooltip-' + placement"
         [attr.id]="tooltipId"
         role="tooltip"
-        #tooltipElement>
+        #tooltipElement
+      >
         <div class="tooltip-content">
           {{ content }}
         </div>
@@ -47,7 +49,7 @@ export type TooltipPlacement = 'top' | 'right' | 'bottom' | 'left';
     </div>
   `,
   styleUrls: ['./tooltip.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TooltipComponent implements OnInit, AfterContentInit {
   @Input() content: string = '';
@@ -66,7 +68,7 @@ export class TooltipComponent implements OnInit, AfterContentInit {
 
   constructor(
     private elementRef: ElementRef,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
   ) {
     this.tooltipId = `tooltip-${Math.random().toString(36).substr(2, 9)}`;
   }

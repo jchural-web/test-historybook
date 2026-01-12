@@ -35,7 +35,12 @@
   color: #f1f5f9;
   border-radius: 6px;
   padding: 8px 12px;
-  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: 1.4;

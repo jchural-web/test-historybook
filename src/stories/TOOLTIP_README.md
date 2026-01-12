@@ -39,10 +39,7 @@ The Tooltip is a non-interactive, floating component that displays brief helpful
 ### Disabled Tooltip
 
 ```html
-<bsg-tooltip 
-  content="Help text" 
-  placement="top" 
-  [disabled]="true">
+<bsg-tooltip content="Help text" placement="top" [disabled]="true">
   <button>Action</button>
 </bsg-tooltip>
 ```
@@ -50,6 +47,7 @@ The Tooltip is a non-interactive, floating component that displays brief helpful
 ## Props
 
 ### `content` (string, required)
+
 The text displayed in the tooltip.
 
 ```typescript
@@ -57,6 +55,7 @@ content: string = '';
 ```
 
 ### `placement` (TooltipPlacement, optional)
+
 Position of tooltip relative to the trigger element.
 
 ```typescript
@@ -64,6 +63,7 @@ placement: 'top' | 'right' | 'bottom' | 'left' = 'top';
 ```
 
 ### `disabled` (boolean, optional)
+
 When true, the tooltip will not be displayed on hover or focus.
 
 ```typescript
@@ -94,35 +94,30 @@ The component includes several accessibility features:
 When you use a Tooltip, the HTML generated includes:
 
 ```html
-<div 
-  aria-describedby="tooltip-abc123"
-  tabindex="0">
+<div aria-describedby="tooltip-abc123" tabindex="0">
   <!-- Trigger content -->
 </div>
 
-<div 
-  id="tooltip-abc123"
-  role="tooltip">
-  Help text here
-</div>
+<div id="tooltip-abc123" role="tooltip">Help text here</div>
 ```
 
 ## Behavior
 
 ### Show/Hide Logic
 
-| Event | Action |
-|-------|--------|
+| Event        | Action       |
+| ------------ | ------------ |
 | `mouseenter` | Show tooltip |
 | `mouseleave` | Hide tooltip |
-| `focus` | Show tooltip |
-| `blur` | Hide tooltip |
+| `focus`      | Show tooltip |
+| `blur`       | Hide tooltip |
 
 The hide action is debounced (0ms) to prevent flickering.
 
 ### Disabled State
 
 When `disabled=true`:
+
 - Tooltip is never displayed
 - All events are ignored
 - Trigger remains focusable but visually disabled
@@ -134,6 +129,7 @@ The Tooltip floats above other content with `z-index: 1000` to ensure visibility
 ## Responsiveness
 
 On small screens (≤640px):
+
 - Font size reduces to 12px
 - Text can wrap on multiple lines
 - Max-width: 200px
@@ -167,6 +163,7 @@ The component includes comprehensive Storybook stories:
 ## Browser Support
 
 Works in all modern browsers supporting:
+
 - CSS `position: absolute`
 - CSS `transform` and `animation`
 - Angular 15+

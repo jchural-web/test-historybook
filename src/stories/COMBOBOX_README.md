@@ -50,23 +50,23 @@ export class ExampleComponent {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `'sm' \| 'md' \| 'lg'` | `'sm'` | Size of the combobox |
-| `state` | `'default' \| 'hover' \| 'focus' \| 'disabled' \| 'error'` | `'default'` | Current state of the combobox |
-| `options` | `ComboboxOption[]` | `[]` | Array of selectable options |
-| `selectedValue` | `string` | `''` | Currently selected option value |
-| `placeholder` | `string` | `'Selecciona'` | Placeholder text when no option is selected |
-| `open` | `boolean` | `false` | Controls whether the dropdown is open |
-| `errorMessage` | `string` | `''` | Error message displayed when state is 'error' |
+| Prop            | Type                                                       | Default        | Description                                   |
+| --------------- | ---------------------------------------------------------- | -------------- | --------------------------------------------- |
+| `size`          | `'sm' \| 'md' \| 'lg'`                                     | `'sm'`         | Size of the combobox                          |
+| `state`         | `'default' \| 'hover' \| 'focus' \| 'disabled' \| 'error'` | `'default'`    | Current state of the combobox                 |
+| `options`       | `ComboboxOption[]`                                         | `[]`           | Array of selectable options                   |
+| `selectedValue` | `string`                                                   | `''`           | Currently selected option value               |
+| `placeholder`   | `string`                                                   | `'Selecciona'` | Placeholder text when no option is selected   |
+| `open`          | `boolean`                                                  | `false`        | Controls whether the dropdown is open         |
+| `errorMessage`  | `string`                                                   | `''`           | Error message displayed when state is 'error' |
 
 ## Events
 
-| Event | Type | Description |
-|-------|------|-------------|
-| `valueChange` | `EventEmitter<string>` | Emitted when a value is selected |
-| `selectionChange` | `EventEmitter<ComboboxOption>` | Emitted when an option is selected |
-| `openChange` | `EventEmitter<boolean>` | Emitted when dropdown open state changes |
+| Event             | Type                           | Description                              |
+| ----------------- | ------------------------------ | ---------------------------------------- |
+| `valueChange`     | `EventEmitter<string>`         | Emitted when a value is selected         |
+| `selectionChange` | `EventEmitter<ComboboxOption>` | Emitted when an option is selected       |
+| `openChange`      | `EventEmitter<boolean>`        | Emitted when dropdown open state changes |
 
 ## Styles
 

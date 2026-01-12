@@ -12,7 +12,14 @@ export type DialogHeaderTone = 'brand' | 'info' | 'secondary';
     <!-- Dialog Overlay -->
     <div *ngIf="open" class="dialog-overlay" [ngClass]="overlayClasses" (click)="onOverlayClick()">
       <!-- Dialog Content -->
-      <div class="dialog-content" [ngClass]="contentClasses" (click)="$event.stopPropagation()" role="dialog" [attr.aria-modal]="true" [attr.aria-labelledby]="'dialog-title'">
+      <div
+        class="dialog-content"
+        [ngClass]="contentClasses"
+        (click)="$event.stopPropagation()"
+        role="dialog"
+        [attr.aria-modal]="true"
+        [attr.aria-labelledby]="'dialog-title'"
+      >
         <!-- Dialog Header -->
         <div class="dialog-header" [ngClass]="headerClasses">
           <ng-content select="[dialog-header]"></ng-content>
@@ -59,22 +66,15 @@ export class DialogComponent {
   }
 
   get contentClasses(): string[] {
-    return [
-      `dialog-${this.size}`,
-      this.scrollable ? 'dialog-scrollable' : ''
-    ].filter(Boolean);
+    return [`dialog-${this.size}`, this.scrollable ? 'dialog-scrollable' : ''].filter(Boolean);
   }
 
   get headerClasses(): string[] {
-    return [
-      `dialog-header-${this.headerTone}`
-    ];
+    return [`dialog-header-${this.headerTone}`];
   }
 
   get bodyClasses(): string[] {
-    return [
-      this.scrollable ? 'dialog-body-scrollable' : ''
-    ].filter(Boolean);
+    return [this.scrollable ? 'dialog-body-scrollable' : ''].filter(Boolean);
   }
 
   get footerClasses(): string[] {

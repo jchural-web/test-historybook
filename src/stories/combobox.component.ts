@@ -171,9 +171,7 @@ export class ComboboxComponent {
     }
 
     const searchLower = this.searchText.toLowerCase();
-    return this.options.filter((option) =>
-      option.label.toLowerCase().includes(searchLower)
-    );
+    return this.options.filter((option) => option.label.toLowerCase().includes(searchLower));
   }
 
   getOptionClasses(value: string): string[] {
