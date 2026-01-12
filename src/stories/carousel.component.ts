@@ -9,8 +9,21 @@ import { CommonModule } from '@angular/common';
     :host {
       display: block;
       flex: 0 0 auto;
-      width: 100%;
+      flex-basis: calc((100vw - 120px - (var(--carousel-gap, 30px) * (var(--carousel-items-per-view, 2) - 1))) / var(--carousel-items-per-view, 2));
+      min-width: 0;
       box-sizing: border-box;
+    }
+
+    @media (max-width: 1024px) {
+      :host {
+        flex-basis: calc((100vw - 100px - (var(--carousel-gap, 20px) * (var(--carousel-items-per-view, 1) - 1))) / var(--carousel-items-per-view, 1));
+      }
+    }
+
+    @media (max-width: 768px) {
+      :host {
+        flex-basis: calc((100vw - 80px - (var(--carousel-gap, 16px) * (var(--carousel-items-per-view, 1) - 1))) / var(--carousel-items-per-view, 1));
+      }
     }
   `]
 })
@@ -99,13 +112,37 @@ export class CarouselComponent implements AfterContentInit {
   currentIndex: number = 0;
   totalItems: number = 0;
   pages: number[] = [];
+  private gap: number = 30;
+  viewportElement: HTMLElement | null = null;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef) {}
 
   ngAfterContentInit(): void {
     this.totalItems = this.items.length;
     this.calculatePages();
-    this.updateItemWidths();
+    this.setResponsiveGap();
+    this.setCSSVariables();
+  }
+
+  private setResponsiveGap(): void {
+    const width = window.innerWidth;
+    if (width <= 480) {
+      this.gap = 16;
+    } else if (width <= 768) {
+      this.gap = 16;
+    } else if (width <= 1024) {
+      this.gap = 20;
+    } else {
+      this.gap = 30;
+    }
+  }
+
+  private setCSSVariables(): void {
+    const viewportElement = this.elementRef.nativeElement.querySelector('.carousel-viewport');
+    if (viewportElement) {
+      viewportElement.style.setProperty('--carousel-gap', `${this.gap}px`);
+      viewportElement.style.setProperty('--carousel-items-per-view', `${this.itemsPerView}`);
+    }
   }
 
   calculatePages(): void {
@@ -113,22 +150,18 @@ export class CarouselComponent implements AfterContentInit {
     this.pages = Array.from({ length: pageCount }, (_, i) => i);
   }
 
-  updateItemWidths(): void {
-    const widthPercentage = 100 / this.itemsPerView;
-    this.items.forEach((item) => {
-      const element = item.elementRef.nativeElement;
-      if (element) {
-        element.style.width = `${widthPercentage}%`;
-      }
-    });
-  }
-
   get maxIndex(): number {
     return Math.max(0, this.pages.length - 1);
   }
 
-  get translateX(): number {
-    return -this.currentIndex * 100;
+  get translateX(): string {
+    // Calculate the percentage to translate based on:
+    // - One page width = (100 / itemsPerView)% of viewport
+    // - Plus the gap adjusted for the visible items
+    const pageWidthPercent = 100 / this.itemsPerView;
+    const gapPercent = (this.gap / 100) * (this.itemsPerView - 1);
+    const totalPercentPerPage = pageWidthPercent + gapPercent;
+    return `calc(-${this.currentIndex * totalPercentPerPage}% - ${this.currentIndex * this.gap}px)`;
   }
 
   next(): void {
