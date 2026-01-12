@@ -365,6 +365,7 @@ export class TimePickerComponent {
 
   closeDropdown(): void {
     this.open = false;
+    this.isFocused = false;
     this.openChange.emit(false);
   }
 
