@@ -182,6 +182,41 @@
             "extends": []
         },
         {
+            "name": "ComboboxOption",
+            "id": "interface-ComboboxOption-a8fda6eb0cdc0957e7fb00af4e8e6c753894dd1520d4847307c502e86559665c10133ee1bd18953556672a6191225cfdc395e22b2d9614349a76cc80f266036d",
+            "file": "src/stories/combobox.component.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\n\nexport type ComboboxSize = 'sm' | 'md' | 'lg';\nexport type ComboboxState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';\n\nexport interface ComboboxOption {\n  value: string;\n  label: string;\n}\n\n@Component({\n  selector: 'bsg-combobox',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  template: `\n    <div class=\"combobox-wrapper\" [ngClass]=\"wrapperClasses\">\n      <!-- Combobox trigger -->\n      <button\n        type=\"button\"\n        class=\"combobox-trigger\"\n        [ngClass]=\"triggerClasses\"\n        [disabled]=\"state === 'disabled'\"\n        [attr.aria-expanded]=\"open\"\n        [attr.aria-haspopup]=\"'listbox'\"\n        [attr.aria-disabled]=\"state === 'disabled'\"\n        (click)=\"toggleDropdown()\"\n      >\n        <span class=\"combobox-value\">{{ selectedLabel }}</span>\n        <svg\n          class=\"combobox-icon\"\n          [ngClass]=\"iconClasses\"\n          width=\"14\"\n          height=\"8\"\n          viewBox=\"0 0 14 8\"\n          fill=\"none\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            d=\"M12.2929 0.292893C12.6834 -0.0976311 13.3164 -0.0976311 13.707 0.292893C14.0975 0.683417 14.0975 1.31643 13.707 1.70696L7.70696 7.70696C7.31643 8.09748 6.68342 8.09748 6.29289 7.70696L0.292893 1.70696C-0.0976311 1.31643 -0.0976311 0.683417 0.292893 0.292893C0.683418 -0.0976311 1.31643 -0.0976311 1.70696 0.292893L6.99992 5.58586L12.2929 0.292893Z\"\n            [attr.fill]=\"iconColor\"\n          />\n        </svg>\n      </button>\n\n      <!-- Dropdown menu with search -->\n      <div *ngIf=\"open\" class=\"combobox-dropdown\" [ngClass]=\"dropdownClasses\" role=\"listbox\">\n        <!-- Search input -->\n        <div class=\"combobox-search-wrapper\">\n          <input\n            type=\"text\"\n            class=\"combobox-search-input\"\n            [disabled]=\"state === 'disabled'\"\n            placeholder=\"Buscar...\"\n            [(ngModel)]=\"searchText\"\n            (input)=\"onSearchInput()\"\n            (keydown.escape)=\"closeDropdown()\"\n            aria-label=\"Search options\"\n          />\n        </div>\n\n        <!-- Options list -->\n        <div class=\"combobox-options-container\">\n          <div\n            *ngFor=\"let option of filteredOptions; let i = index\"\n            class=\"combobox-option\"\n            [ngClass]=\"getOptionClasses(option.value)\"\n            [attr.role]=\"'option'\"\n            [attr.aria-selected]=\"selectedValue === option.value\"\n            (click)=\"selectOption(option)\"\n          >\n            {{ option.label }}\n          </div>\n\n          <!-- Empty state -->\n          <div *ngIf=\"filteredOptions.length === 0\" class=\"combobox-empty-state\">\n            Sin resultados\n          </div>\n        </div>\n      </div>\n\n      <!-- Error message -->\n      <div *ngIf=\"state === 'error' && errorMessage\" class=\"combobox-error-message\">\n        {{ errorMessage }}\n      </div>\n    </div>\n  `,\n  styleUrls: ['./combobox.css'],\n})\nexport class ComboboxComponent {\n  /** Size of the combobox */\n  @Input() size: ComboboxSize = 'sm';\n\n  /** Current state */\n  @Input() state: ComboboxState = 'default';\n\n  /** List of options */\n  @Input() options: ComboboxOption[] = [\n    { value: '1', label: 'Opcion 1' },\n    { value: '2', label: 'Opcion 2' },\n    { value: '3', label: 'Opcion 3' },\n    { value: '4', label: 'Opcion 4' },\n  ];\n\n  /** Currently selected value */\n  @Input() selectedValue: string = '';\n\n  /** Placeholder text */\n  @Input() placeholder: string = 'Selecciona';\n\n  /** Dropdown open state */\n  @Input() open: boolean = false;\n\n  /** Error message (shown when state is 'error') */\n  @Input() errorMessage: string = '';\n\n  /** Value change event */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Selection change event */\n  @Output() selectionChange = new EventEmitter<ComboboxOption>();\n\n  /** Open state change event */\n  @Output() openChange = new EventEmitter<boolean>();\n\n  /** Search text for filtering */\n  searchText: string = '';\n\n  get wrapperClasses(): string[] {\n    return [`combobox-${this.size}`, `combobox-state-${this.state}`];\n  }\n\n  get triggerClasses(): string[] {\n    const classes = [`combobox-trigger-${this.size}`, `combobox-trigger-${this.state}`];\n\n    if (this.open) {\n      classes.push('combobox-trigger-open');\n    }\n\n    return classes;\n  }\n\n  get dropdownClasses(): string[] {\n    return [`combobox-dropdown-${this.size}`];\n  }\n\n  get iconClasses(): string[] {\n    return [`combobox-icon-${this.state}`];\n  }\n\n  get selectedLabel(): string {\n    if (!this.selectedValue) {\n      return this.placeholder;\n    }\n\n    const selected = this.options.find((opt) => opt.value === this.selectedValue);\n    return selected ? selected.label : this.placeholder;\n  }\n\n  get iconColor(): string {\n    if (this.state === 'error') {\n      return '#DC2626'; // Red-600\n    }\n    return '#64748B'; // neutral-500\n  }\n\n  get filteredOptions(): ComboboxOption[] {\n    if (!this.searchText.trim()) {\n      return this.options;\n    }\n\n    const searchLower = this.searchText.toLowerCase();\n    return this.options.filter((option) =>\n      option.label.toLowerCase().includes(searchLower)\n    );\n  }\n\n  getOptionClasses(value: string): string[] {\n    const classes: string[] = [];\n\n    if (this.selectedValue === value) {\n      classes.push('combobox-option-selected');\n    }\n\n    return classes;\n  }\n\n  toggleDropdown(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n\n    this.open = !this.open;\n    if (this.open) {\n      this.searchText = '';\n    }\n    this.openChange.emit(this.open);\n  }\n\n  closeDropdown(): void {\n    this.open = false;\n    this.searchText = '';\n    this.openChange.emit(false);\n  }\n\n  onSearchInput(): void {\n    // Filter options based on search text\n    // Filtered options are computed via getter\n  }\n\n  selectOption(option: ComboboxOption): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n\n    this.selectedValue = option.value;\n    this.open = false;\n    this.searchText = '';\n\n    this.valueChange.emit(option.value);\n    this.selectionChange.emit(option);\n    this.openChange.emit(false);\n  }\n\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent): void {\n    const target = event.target as HTMLElement;\n    const comboboxWrapper = target.closest('.combobox-wrapper');\n\n    if (!comboboxWrapper && this.open) {\n      this.open = false;\n      this.searchText = '';\n      this.openChange.emit(false);\n    }\n  }\n}\n",
+            "properties": [
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 172,
+            "methods": [],
+            "extends": []
+        },
+        {
             "name": "ListItem",
             "id": "interface-ListItem-29a31eb8da17a149a441f26e70237ad3ca981a0fe25975db501d3843d2d2b562db9e0bc59678fc763149dfb1054e842f304a7c379b0c98690213838e011ba4da",
             "file": "src/stories/table.component.ts",
@@ -2207,8 +2242,388 @@
             }
         },
         {
+            "name": "ComboboxComponent",
+            "id": "component-ComboboxComponent-a8fda6eb0cdc0957e7fb00af4e8e6c753894dd1520d4847307c502e86559665c10133ee1bd18953556672a6191225cfdc395e22b2d9614349a76cc80f266036d",
+            "file": "src/stories/combobox.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "bsg-combobox",
+            "styleUrls": [
+                "./combobox.css"
+            ],
+            "styles": [],
+            "template": "<div class=\"combobox-wrapper\" [ngClass]=\"wrapperClasses\">\n  <!-- Combobox trigger -->\n  <button\n    type=\"button\"\n    class=\"combobox-trigger\"\n    [ngClass]=\"triggerClasses\"\n    [disabled]=\"state === 'disabled'\"\n    [attr.aria-expanded]=\"open\"\n    [attr.aria-haspopup]=\"'listbox'\"\n    [attr.aria-disabled]=\"state === 'disabled'\"\n    (click)=\"toggleDropdown()\"\n  >\n    <span class=\"combobox-value\">{{ selectedLabel }}</span>\n    <svg\n      class=\"combobox-icon\"\n      [ngClass]=\"iconClasses\"\n      width=\"14\"\n      height=\"8\"\n      viewBox=\"0 0 14 8\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n    >\n      <path\n        d=\"M12.2929 0.292893C12.6834 -0.0976311 13.3164 -0.0976311 13.707 0.292893C14.0975 0.683417 14.0975 1.31643 13.707 1.70696L7.70696 7.70696C7.31643 8.09748 6.68342 8.09748 6.29289 7.70696L0.292893 1.70696C-0.0976311 1.31643 -0.0976311 0.683417 0.292893 0.292893C0.683418 -0.0976311 1.31643 -0.0976311 1.70696 0.292893L6.99992 5.58586L12.2929 0.292893Z\"\n        [attr.fill]=\"iconColor\"\n      />\n    </svg>\n  </button>\n\n  <!-- Dropdown menu with search -->\n  <div *ngIf=\"open\" class=\"combobox-dropdown\" [ngClass]=\"dropdownClasses\" role=\"listbox\">\n    <!-- Search input -->\n    <div class=\"combobox-search-wrapper\">\n      <input\n        type=\"text\"\n        class=\"combobox-search-input\"\n        [disabled]=\"state === 'disabled'\"\n        placeholder=\"Buscar...\"\n        [(ngModel)]=\"searchText\"\n        (input)=\"onSearchInput()\"\n        (keydown.escape)=\"closeDropdown()\"\n        aria-label=\"Search options\"\n      />\n    </div>\n\n    <!-- Options list -->\n    <div class=\"combobox-options-container\">\n      <div\n        *ngFor=\"let option of filteredOptions; let i = index\"\n        class=\"combobox-option\"\n        [ngClass]=\"getOptionClasses(option.value)\"\n        [attr.role]=\"'option'\"\n        [attr.aria-selected]=\"selectedValue === option.value\"\n        (click)=\"selectOption(option)\"\n      >\n        {{ option.label }}\n      </div>\n\n      <!-- Empty state -->\n      <div *ngIf=\"filteredOptions.length === 0\" class=\"combobox-empty-state\">\n        Sin resultados\n      </div>\n    </div>\n  </div>\n\n  <!-- Error message -->\n  <div *ngIf=\"state === 'error' && errorMessage\" class=\"combobox-error-message\">\n    {{ errorMessage }}\n  </div>\n</div>\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "errorMessage",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nError message (shown when state is 'error')",
+                    "description": "<p>Error message (shown when state is &#39;error&#39;)</p>\n",
+                    "line": 116,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "open",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nDropdown open state",
+                    "description": "<p>Dropdown open state</p>\n",
+                    "line": 113,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "options",
+                    "defaultValue": "[\n    { value: '1', label: 'Opcion 1' },\n    { value: '2', label: 'Opcion 2' },\n    { value: '3', label: 'Opcion 3' },\n    { value: '4', label: 'Opcion 4' },\n  ]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nList of options",
+                    "description": "<p>List of options</p>\n",
+                    "line": 99,
+                    "type": "ComboboxOption[]",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "'Selecciona'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nPlaceholder text",
+                    "description": "<p>Placeholder text</p>\n",
+                    "line": 110,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "selectedValue",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCurrently selected value",
+                    "description": "<p>Currently selected value</p>\n",
+                    "line": 107,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'sm'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSize of the combobox",
+                    "description": "<p>Size of the combobox</p>\n",
+                    "line": 93,
+                    "type": "ComboboxSize",
+                    "decorators": []
+                },
+                {
+                    "name": "state",
+                    "defaultValue": "'default'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nCurrent state",
+                    "description": "<p>Current state</p>\n",
+                    "line": 96,
+                    "type": "ComboboxState",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "openChange",
+                    "defaultValue": "new EventEmitter<boolean>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nOpen state change event",
+                    "description": "<p>Open state change event</p>\n",
+                    "line": 125,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "selectionChange",
+                    "defaultValue": "new EventEmitter<ComboboxOption>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nSelection change event",
+                    "description": "<p>Selection change event</p>\n",
+                    "line": 122,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nValue change event",
+                    "description": "<p>Value change event</p>\n",
+                    "line": 119,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "searchText",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "<p>Search text for filtering</p>\n",
+                    "line": 128,
+                    "rawdescription": "\nSearch text for filtering"
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "closeDropdown",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 201,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "getOptionClasses",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string[]",
+                    "typeParameters": [],
+                    "line": 179,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onDocumentClick",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 227,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "decorators": [
+                        {
+                            "name": "HostListener",
+                            "stringifiedArguments": "'document:click', ['$event']"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onSearchInput",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 207,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "selectOption",
+                    "args": [
+                        {
+                            "name": "option",
+                            "type": "ComboboxOption",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 212,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "option",
+                            "type": "ComboboxOption",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleDropdown",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 189,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "document:click",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "MouseEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "argsDecorator": [
+                        "$event"
+                    ],
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 227
+                }
+            ],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter, HostListener } from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\n\nexport type ComboboxSize = 'sm' | 'md' | 'lg';\nexport type ComboboxState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';\n\nexport interface ComboboxOption {\n  value: string;\n  label: string;\n}\n\n@Component({\n  selector: 'bsg-combobox',\n  standalone: true,\n  imports: [CommonModule, FormsModule],\n  template: `\n    <div class=\"combobox-wrapper\" [ngClass]=\"wrapperClasses\">\n      <!-- Combobox trigger -->\n      <button\n        type=\"button\"\n        class=\"combobox-trigger\"\n        [ngClass]=\"triggerClasses\"\n        [disabled]=\"state === 'disabled'\"\n        [attr.aria-expanded]=\"open\"\n        [attr.aria-haspopup]=\"'listbox'\"\n        [attr.aria-disabled]=\"state === 'disabled'\"\n        (click)=\"toggleDropdown()\"\n      >\n        <span class=\"combobox-value\">{{ selectedLabel }}</span>\n        <svg\n          class=\"combobox-icon\"\n          [ngClass]=\"iconClasses\"\n          width=\"14\"\n          height=\"8\"\n          viewBox=\"0 0 14 8\"\n          fill=\"none\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            d=\"M12.2929 0.292893C12.6834 -0.0976311 13.3164 -0.0976311 13.707 0.292893C14.0975 0.683417 14.0975 1.31643 13.707 1.70696L7.70696 7.70696C7.31643 8.09748 6.68342 8.09748 6.29289 7.70696L0.292893 1.70696C-0.0976311 1.31643 -0.0976311 0.683417 0.292893 0.292893C0.683418 -0.0976311 1.31643 -0.0976311 1.70696 0.292893L6.99992 5.58586L12.2929 0.292893Z\"\n            [attr.fill]=\"iconColor\"\n          />\n        </svg>\n      </button>\n\n      <!-- Dropdown menu with search -->\n      <div *ngIf=\"open\" class=\"combobox-dropdown\" [ngClass]=\"dropdownClasses\" role=\"listbox\">\n        <!-- Search input -->\n        <div class=\"combobox-search-wrapper\">\n          <input\n            type=\"text\"\n            class=\"combobox-search-input\"\n            [disabled]=\"state === 'disabled'\"\n            placeholder=\"Buscar...\"\n            [(ngModel)]=\"searchText\"\n            (input)=\"onSearchInput()\"\n            (keydown.escape)=\"closeDropdown()\"\n            aria-label=\"Search options\"\n          />\n        </div>\n\n        <!-- Options list -->\n        <div class=\"combobox-options-container\">\n          <div\n            *ngFor=\"let option of filteredOptions; let i = index\"\n            class=\"combobox-option\"\n            [ngClass]=\"getOptionClasses(option.value)\"\n            [attr.role]=\"'option'\"\n            [attr.aria-selected]=\"selectedValue === option.value\"\n            (click)=\"selectOption(option)\"\n          >\n            {{ option.label }}\n          </div>\n\n          <!-- Empty state -->\n          <div *ngIf=\"filteredOptions.length === 0\" class=\"combobox-empty-state\">\n            Sin resultados\n          </div>\n        </div>\n      </div>\n\n      <!-- Error message -->\n      <div *ngIf=\"state === 'error' && errorMessage\" class=\"combobox-error-message\">\n        {{ errorMessage }}\n      </div>\n    </div>\n  `,\n  styleUrls: ['./combobox.css'],\n})\nexport class ComboboxComponent {\n  /** Size of the combobox */\n  @Input() size: ComboboxSize = 'sm';\n\n  /** Current state */\n  @Input() state: ComboboxState = 'default';\n\n  /** List of options */\n  @Input() options: ComboboxOption[] = [\n    { value: '1', label: 'Opcion 1' },\n    { value: '2', label: 'Opcion 2' },\n    { value: '3', label: 'Opcion 3' },\n    { value: '4', label: 'Opcion 4' },\n  ];\n\n  /** Currently selected value */\n  @Input() selectedValue: string = '';\n\n  /** Placeholder text */\n  @Input() placeholder: string = 'Selecciona';\n\n  /** Dropdown open state */\n  @Input() open: boolean = false;\n\n  /** Error message (shown when state is 'error') */\n  @Input() errorMessage: string = '';\n\n  /** Value change event */\n  @Output() valueChange = new EventEmitter<string>();\n\n  /** Selection change event */\n  @Output() selectionChange = new EventEmitter<ComboboxOption>();\n\n  /** Open state change event */\n  @Output() openChange = new EventEmitter<boolean>();\n\n  /** Search text for filtering */\n  searchText: string = '';\n\n  get wrapperClasses(): string[] {\n    return [`combobox-${this.size}`, `combobox-state-${this.state}`];\n  }\n\n  get triggerClasses(): string[] {\n    const classes = [`combobox-trigger-${this.size}`, `combobox-trigger-${this.state}`];\n\n    if (this.open) {\n      classes.push('combobox-trigger-open');\n    }\n\n    return classes;\n  }\n\n  get dropdownClasses(): string[] {\n    return [`combobox-dropdown-${this.size}`];\n  }\n\n  get iconClasses(): string[] {\n    return [`combobox-icon-${this.state}`];\n  }\n\n  get selectedLabel(): string {\n    if (!this.selectedValue) {\n      return this.placeholder;\n    }\n\n    const selected = this.options.find((opt) => opt.value === this.selectedValue);\n    return selected ? selected.label : this.placeholder;\n  }\n\n  get iconColor(): string {\n    if (this.state === 'error') {\n      return '#DC2626'; // Red-600\n    }\n    return '#64748B'; // neutral-500\n  }\n\n  get filteredOptions(): ComboboxOption[] {\n    if (!this.searchText.trim()) {\n      return this.options;\n    }\n\n    const searchLower = this.searchText.toLowerCase();\n    return this.options.filter((option) =>\n      option.label.toLowerCase().includes(searchLower)\n    );\n  }\n\n  getOptionClasses(value: string): string[] {\n    const classes: string[] = [];\n\n    if (this.selectedValue === value) {\n      classes.push('combobox-option-selected');\n    }\n\n    return classes;\n  }\n\n  toggleDropdown(): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n\n    this.open = !this.open;\n    if (this.open) {\n      this.searchText = '';\n    }\n    this.openChange.emit(this.open);\n  }\n\n  closeDropdown(): void {\n    this.open = false;\n    this.searchText = '';\n    this.openChange.emit(false);\n  }\n\n  onSearchInput(): void {\n    // Filter options based on search text\n    // Filtered options are computed via getter\n  }\n\n  selectOption(option: ComboboxOption): void {\n    if (this.state === 'disabled') {\n      return;\n    }\n\n    this.selectedValue = option.value;\n    this.open = false;\n    this.searchText = '';\n\n    this.valueChange.emit(option.value);\n    this.selectionChange.emit(option);\n    this.openChange.emit(false);\n  }\n\n  @HostListener('document:click', ['$event'])\n  onDocumentClick(event: MouseEvent): void {\n    const target = event.target as HTMLElement;\n    const comboboxWrapper = target.closest('.combobox-wrapper');\n\n    if (!comboboxWrapper && this.open) {\n      this.open = false;\n      this.searchText = '';\n      this.openChange.emit(false);\n    }\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "/* Combobox wrapper */\n.combobox-wrapper {\n  position: relative;\n  display: inline-block;\n  box-sizing: border-box;\n}\n\n/* Combobox trigger (button) */\n.combobox-trigger {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 12px;\n  border-radius: 6px;\n  border: 1px solid #cbd5e1; /* neutral-300 */\n  background: transparent;\n  font-family:\n    Inter,\n    -apple-system,\n    Roboto,\n    Helvetica,\n    sans-serif;\n  font-size: 16px;\n  font-weight: 400;\n  line-height: 24px;\n  letter-spacing: 0.05px;\n  color: #334155; /* neutral-700 */\n  cursor: pointer;\n  box-sizing: border-box;\n  transition: all 0.2s ease;\n  width: 100%;\n}\n\n.combobox-trigger:focus {\n  outline: none;\n}\n\n/* Size variants */\n.combobox-sm {\n  min-width: 133px;\n}\n\n.combobox-trigger-sm {\n  height: 32px;\n  padding: 4px 12px;\n}\n\n.combobox-dropdown-sm {\n  min-width: 133px;\n}\n\n.combobox-md {\n  min-width: 132px;\n}\n\n.combobox-trigger-md {\n  height: 40px;\n  padding: 4px 12px;\n}\n\n.combobox-dropdown-md {\n  min-width: 132px;\n}\n\n.combobox-lg {\n  min-width: 133px;\n}\n\n.combobox-trigger-lg {\n  height: 48px;\n  padding: 4px 12px;\n}\n\n.combobox-dropdown-lg {\n  min-width: 133px;\n}\n\n/* State variants */\n\n/* Default state */\n.combobox-trigger-default {\n  border-color: #cbd5e1; /* neutral-300 */\n  color: #334155; /* neutral-700 */\n}\n\n/* Hover state */\n.combobox-trigger-hover,\n.combobox-trigger-default:hover:not(:disabled) {\n  opacity: 0.9;\n}\n\n/* Focus state */\n.combobox-trigger-focus,\n.combobox-trigger-default:focus:not(:disabled),\n.combobox-trigger-open {\n  border-color: #7c3aed; /* Violet-600 */\n}\n\n/* Disabled state */\n.combobox-trigger-disabled,\n.combobox-trigger:disabled {\n  opacity: 0.4;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n/* Error state */\n.combobox-trigger-error {\n  border-color: #dc2626; /* Red-600 */\n  color: #dc2626; /* Red-600 */\n}\n\n/* Combobox value text */\n.combobox-value {\n  flex: 1;\n  text-align: left;\n}\n\n/* Combobox icon (chevron) */\n.combobox-icon {\n  flex-shrink: 0;\n  width: 14px;\n  height: 8px;\n}\n\n/* Dropdown menu */\n.combobox-dropdown {\n  position: absolute;\n  top: calc(100% + 4px);\n  left: 0;\n  z-index: 1000;\n  border-radius: 6px;\n  border: 1px solid #cbd5e1; /* neutral-300 */\n  background: #fff;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\n  overflow: hidden;\n  box-sizing: border-box;\n}\n\n/* Search input wrapper */\n.combobox-search-wrapper {\n  padding: 8px;\n  border-bottom: 1px solid #e2e8f0; /* neutral-200 */\n  box-sizing: border-box;\n}\n\n/* Search input */\n.combobox-search-input {\n  width: 100%;\n  padding: 6px 10px;\n  border-radius: 4px;\n  border: 1px solid #cbd5e1; /* neutral-300 */\n  background: #fff;\n  font-family:\n    Inter,\n    -apple-system,\n    Roboto,\n    Helvetica,\n    sans-serif;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 20px;\n  color: #334155; /* neutral-700 */\n  box-sizing: border-box;\n  transition: all 0.2s ease;\n}\n\n.combobox-search-input:focus {\n  outline: none;\n  border-color: #7c3aed; /* Violet-600 */\n}\n\n.combobox-search-input:disabled {\n  opacity: 0.4;\n  cursor: not-allowed;\n}\n\n.combobox-search-input::placeholder {\n  color: #94a3b8; /* neutral-400 */\n}\n\n/* Options container */\n.combobox-options-container {\n  max-height: 200px;\n  overflow-y: auto;\n  box-sizing: border-box;\n}\n\n/* Dropdown option */\n.combobox-option {\n  padding: 4px 12px;\n  font-family:\n    Inter,\n    -apple-system,\n    Roboto,\n    Helvetica,\n    sans-serif;\n  font-size: 16px;\n  font-weight: 400;\n  line-height: 24px;\n  letter-spacing: 0.05px;\n  color: #334155; /* neutral-700 */\n  cursor: pointer;\n  transition: background-color 0.2s ease;\n  box-sizing: border-box;\n  min-height: 32px;\n  display: flex;\n  align-items: center;\n}\n\n.combobox-option:hover {\n  background-color: rgba(203, 213, 225, 0.5);\n}\n\n.combobox-option-selected {\n  background-color: #cbd5e1; /* neutral-300 */\n}\n\n.combobox-option-selected:hover {\n  background-color: #cbd5e1;\n}\n\n/* Empty state */\n.combobox-empty-state {\n  padding: 16px 12px;\n  text-align: center;\n  font-family:\n    Inter,\n    -apple-system,\n    Roboto,\n    Helvetica,\n    sans-serif;\n  font-size: 14px;\n  font-weight: 400;\n  color: #94a3b8; /* neutral-400 */\n}\n\n/* Error message */\n.combobox-error-message {\n  margin-top: 6px;\n  font-family:\n    Inter,\n    -apple-system,\n    Roboto,\n    Helvetica,\n    sans-serif;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 1.4;\n  color: #dc2626; /* Red-600 */\n}\n",
+                    "styleUrl": "./combobox.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "wrapperClasses": {
+                    "name": "wrapperClasses",
+                    "getSignature": {
+                        "name": "wrapperClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 130
+                    }
+                },
+                "triggerClasses": {
+                    "name": "triggerClasses",
+                    "getSignature": {
+                        "name": "triggerClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 134
+                    }
+                },
+                "dropdownClasses": {
+                    "name": "dropdownClasses",
+                    "getSignature": {
+                        "name": "dropdownClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 144
+                    }
+                },
+                "iconClasses": {
+                    "name": "iconClasses",
+                    "getSignature": {
+                        "name": "iconClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 148
+                    }
+                },
+                "selectedLabel": {
+                    "name": "selectedLabel",
+                    "getSignature": {
+                        "name": "selectedLabel",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 152
+                    }
+                },
+                "iconColor": {
+                    "name": "iconColor",
+                    "getSignature": {
+                        "name": "iconColor",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 161
+                    }
+                },
+                "filteredOptions": {
+                    "name": "filteredOptions",
+                    "getSignature": {
+                        "name": "filteredOptions",
+                        "type": "[]",
+                        "returnType": "ComboboxOption[]",
+                        "line": 168
+                    }
+                }
+            }
+        },
+        {
             "name": "InputComponent",
-            "id": "component-InputComponent-7ec28ec40ef9c249dad56ab6cbad774a72e25df1efa57de6ea6b5b0cd876a3abfae8829cd477329ce25915bc17a93cb8ede932bfec6223c1cffd82c38dcbe878",
+            "id": "component-InputComponent-2546aedbe5fe1f98025dcefefc7084240394ad2a71fd1f3af7387c881299dd17ae4406f16acbdb430c8a26ae7233b3cf603012dcad1e20b121c9e8f00963cea6",
             "file": "src/stories/input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -2220,18 +2635,36 @@
                 "./input.css"
             ],
             "styles": [],
-            "template": "<div class=\"input-wrapper\" [ngClass]=\"wrapperClasses\">\n  <!-- Leading Icon -->\n  <svg\n    *ngIf=\"icon === 'leading'\"\n    class=\"input-icon input-icon-leading\"\n    width=\"16\"\n    height=\"16\"\n    viewBox=\"0 0 16 16\"\n    fill=\"none\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <path\n      d=\"M12 7.33334C12 4.75601 9.91066 2.66668 7.33333 2.66668C4.756 2.66668 2.66666 4.75601 2.66666 7.33334C2.66666 9.91067 4.756 12 7.33333 12C9.91066 12 12 9.91067 12 7.33334ZM13.3333 7.33334C13.3333 8.74999 12.8412 10.051 12.0202 11.0775L14.4713 13.5287C14.7317 13.789 14.7317 14.211 14.4713 14.4714C14.211 14.7317 13.789 14.7317 13.5286 14.4714L11.0775 12.0202C10.051 12.8412 8.74997 13.3333 7.33333 13.3333C4.01962 13.3333 1.33333 10.6471 1.33333 7.33334C1.33333 4.01963 4.01962 1.33334 7.33333 1.33334C10.647 1.33334 13.3333 4.01963 13.3333 7.33334Z\"\n      [attr.fill]=\"iconColor\"\n    />\n  </svg>\n\n  <!-- Input Field -->\n  <input\n    [type]=\"inputType\"\n    class=\"input-field\"\n    [placeholder]=\"placeholder\"\n    [disabled]=\"state === 'disabled'\"\n    [value]=\"value\"\n    (input)=\"onInput($event)\"\n    (focus)=\"onFocus()\"\n    (blur)=\"onBlur()\"\n    [ngClass]=\"inputClasses\"\n  />\n\n  <!-- Password Toggle Button (Eye Icon) -->\n  <button\n    *ngIf=\"type === 'password'\"\n    type=\"button\"\n    class=\"password-toggle-btn\"\n    [disabled]=\"state === 'disabled'\"\n    (click)=\"togglePasswordVisibility()\"\n    [attr.aria-label]=\"showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'\"\n    [attr.aria-pressed]=\"showPassword\"\n  >\n    <!-- Eye Open Icon (visible password) -->\n    <svg\n      *ngIf=\"showPassword\"\n      class=\"eye-icon\"\n      width=\"16\"\n      height=\"16\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n    >\n      <path\n        d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"\n        [attr.stroke]=\"passwordIconColor\"\n        stroke-width=\"2\"\n        stroke-linecap=\"round\"\n        stroke-linejoin=\"round\"\n        fill=\"none\"\n      />\n      <circle\n        cx=\"12\"\n        cy=\"12\"\n        r=\"3\"\n        [attr.stroke]=\"passwordIconColor\"\n        stroke-width=\"2\"\n        fill=\"none\"\n      />\n    </svg>\n\n    <!-- Eye Closed Icon (hidden password) -->\n    <svg\n      *ngIf=\"!showPassword\"\n      class=\"eye-icon\"\n      width=\"16\"\n      height=\"16\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n    >\n      <path\n        d=\"M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24\"\n        [attr.stroke]=\"passwordIconColor\"\n        stroke-width=\"2\"\n        stroke-linecap=\"round\"\n        stroke-linejoin=\"round\"\n        fill=\"none\"\n      />\n      <line\n        x1=\"1\"\n        y1=\"1\"\n        x2=\"23\"\n        y2=\"23\"\n        [attr.stroke]=\"passwordIconColor\"\n        stroke-width=\"2\"\n        stroke-linecap=\"round\"\n        stroke-linejoin=\"round\"\n      />\n    </svg>\n  </button>\n</div>\n",
+            "template": "<div class=\"input-container\" [ngClass]=\"containerClasses\">\n  <!-- Optional Label -->\n  <label *ngIf=\"label\" class=\"input-label\">{{ label }}</label>\n\n  <!-- Input Wrapper -->\n  <div class=\"input-wrapper\" [ngClass]=\"wrapperClasses\">\n  <!-- Leading Icon -->\n  <svg\n    *ngIf=\"icon === 'leading'\"\n    class=\"input-icon input-icon-leading\"\n    width=\"16\"\n    height=\"16\"\n    viewBox=\"0 0 16 16\"\n    fill=\"none\"\n    xmlns=\"http://www.w3.org/2000/svg\"\n  >\n    <path\n      d=\"M12 7.33334C12 4.75601 9.91066 2.66668 7.33333 2.66668C4.756 2.66668 2.66666 4.75601 2.66666 7.33334C2.66666 9.91067 4.756 12 7.33333 12C9.91066 12 12 9.91067 12 7.33334ZM13.3333 7.33334C13.3333 8.74999 12.8412 10.051 12.0202 11.0775L14.4713 13.5287C14.7317 13.789 14.7317 14.211 14.4713 14.4714C14.211 14.7317 13.789 14.7317 13.5286 14.4714L11.0775 12.0202C10.051 12.8412 8.74997 13.3333 7.33333 13.3333C4.01962 13.3333 1.33333 10.6471 1.33333 7.33334C1.33333 4.01963 4.01962 1.33334 7.33333 1.33334C10.647 1.33334 13.3333 4.01963 13.3333 7.33334Z\"\n      [attr.fill]=\"iconColor\"\n    />\n  </svg>\n\n  <!-- Input Field -->\n  <input\n    [type]=\"inputType\"\n    class=\"input-field\"\n    [placeholder]=\"placeholder\"\n    [disabled]=\"state === 'disabled'\"\n    [value]=\"value\"\n    [attr.aria-invalid]=\"state === 'error'\"\n    [attr.aria-describedby]=\"state === 'error' && errorMessage ? errorMessageId : null\"\n    (input)=\"onInput($event)\"\n    (focus)=\"onFocus()\"\n    (blur)=\"onBlur()\"\n    [ngClass]=\"inputClasses\"\n  />\n\n  <!-- Password Toggle Button (Eye Icon) -->\n  <button\n    *ngIf=\"type === 'password'\"\n    type=\"button\"\n    class=\"password-toggle-btn\"\n    [disabled]=\"state === 'disabled'\"\n    (click)=\"togglePasswordVisibility()\"\n    [attr.aria-label]=\"showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'\"\n    [attr.aria-pressed]=\"showPassword\"\n  >\n    <!-- Eye Open Icon (visible password) -->\n    <svg\n      *ngIf=\"showPassword\"\n      class=\"eye-icon\"\n      width=\"16\"\n      height=\"16\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n    >\n      <path\n        d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"\n        [attr.stroke]=\"passwordIconColor\"\n        stroke-width=\"2\"\n        stroke-linecap=\"round\"\n        stroke-linejoin=\"round\"\n        fill=\"none\"\n      />\n      <circle\n        cx=\"12\"\n        cy=\"12\"\n        r=\"3\"\n        [attr.stroke]=\"passwordIconColor\"\n        stroke-width=\"2\"\n        fill=\"none\"\n      />\n    </svg>\n\n    <!-- Eye Closed Icon (hidden password) -->\n    <svg\n      *ngIf=\"!showPassword\"\n      class=\"eye-icon\"\n      width=\"16\"\n      height=\"16\"\n      viewBox=\"0 0 24 24\"\n      fill=\"none\"\n      xmlns=\"http://www.w3.org/2000/svg\"\n    >\n      <path\n        d=\"M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24\"\n        [attr.stroke]=\"passwordIconColor\"\n        stroke-width=\"2\"\n        stroke-linecap=\"round\"\n        stroke-linejoin=\"round\"\n        fill=\"none\"\n      />\n      <line\n        x1=\"1\"\n        y1=\"1\"\n        x2=\"23\"\n        y2=\"23\"\n        [attr.stroke]=\"passwordIconColor\"\n        stroke-width=\"2\"\n        stroke-linecap=\"round\"\n        stroke-linejoin=\"round\"\n      />\n    </svg>\n  </button>\n  </div>\n\n  <!-- Error Message -->\n  <span *ngIf=\"state === 'error' && errorMessage\" class=\"input-error-message\" [attr.id]=\"errorMessageId\">\n    {{ errorMessage }}\n  </span>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
+                    "name": "errorMessage",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 137,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
                     "name": "icon",
                     "defaultValue": "'none'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 119,
+                    "line": 132,
                     "type": "InputIcon",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 136,
+                    "type": "string",
                     "decorators": []
                 },
                 {
@@ -2239,7 +2672,7 @@
                     "defaultValue": "'Ingresa información'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 121,
+                    "line": 134,
                     "type": "string",
                     "decorators": []
                 },
@@ -2248,7 +2681,7 @@
                     "defaultValue": "'md'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 117,
+                    "line": 130,
                     "type": "InputSize",
                     "decorators": []
                 },
@@ -2257,7 +2690,7 @@
                     "defaultValue": "'default'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 118,
+                    "line": 131,
                     "type": "InputState",
                     "decorators": []
                 },
@@ -2266,7 +2699,7 @@
                     "defaultValue": "'text'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 120,
+                    "line": 133,
                     "type": "InputType",
                     "decorators": []
                 },
@@ -2275,7 +2708,7 @@
                     "defaultValue": "''",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 122,
+                    "line": 135,
                     "type": "string",
                     "decorators": []
                 }
@@ -2286,7 +2719,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 127,
+                    "line": 142,
                     "type": "EventEmitter"
                 },
                 {
@@ -2294,7 +2727,7 @@
                     "defaultValue": "new EventEmitter<void>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 126,
+                    "line": 141,
                     "type": "EventEmitter"
                 },
                 {
@@ -2302,7 +2735,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 125,
+                    "line": 140,
                     "type": "EventEmitter"
                 },
                 {
@@ -2310,7 +2743,7 @@
                     "defaultValue": "new EventEmitter<string>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 124,
+                    "line": 139,
                     "type": "EventEmitter"
                 }
             ],
@@ -2324,7 +2757,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 129
+                    "line": 144
                 }
             ],
             "methodsClass": [
@@ -2334,7 +2767,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 180,
+                    "line": 203,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2344,7 +2777,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 176,
+                    "line": 199,
                     "deprecated": false,
                     "deprecationMessage": ""
                 },
@@ -2361,7 +2794,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 169,
+                    "line": 192,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -2382,7 +2815,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 184,
+                    "line": 207,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -2401,24 +2834,42 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type InputSize = 'sm' | 'md' | 'lg';\nexport type InputState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';\nexport type InputIcon = 'none' | 'leading';\nexport type InputType = 'text' | 'password';\n\n@Component({\n  selector: 'bsg-input',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"input-wrapper\" [ngClass]=\"wrapperClasses\">\n      <!-- Leading Icon -->\n      <svg\n        *ngIf=\"icon === 'leading'\"\n        class=\"input-icon input-icon-leading\"\n        width=\"16\"\n        height=\"16\"\n        viewBox=\"0 0 16 16\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path\n          d=\"M12 7.33334C12 4.75601 9.91066 2.66668 7.33333 2.66668C4.756 2.66668 2.66666 4.75601 2.66666 7.33334C2.66666 9.91067 4.756 12 7.33333 12C9.91066 12 12 9.91067 12 7.33334ZM13.3333 7.33334C13.3333 8.74999 12.8412 10.051 12.0202 11.0775L14.4713 13.5287C14.7317 13.789 14.7317 14.211 14.4713 14.4714C14.211 14.7317 13.789 14.7317 13.5286 14.4714L11.0775 12.0202C10.051 12.8412 8.74997 13.3333 7.33333 13.3333C4.01962 13.3333 1.33333 10.6471 1.33333 7.33334C1.33333 4.01963 4.01962 1.33334 7.33333 1.33334C10.647 1.33334 13.3333 4.01963 13.3333 7.33334Z\"\n          [attr.fill]=\"iconColor\"\n        />\n      </svg>\n\n      <!-- Input Field -->\n      <input\n        [type]=\"inputType\"\n        class=\"input-field\"\n        [placeholder]=\"placeholder\"\n        [disabled]=\"state === 'disabled'\"\n        [value]=\"value\"\n        (input)=\"onInput($event)\"\n        (focus)=\"onFocus()\"\n        (blur)=\"onBlur()\"\n        [ngClass]=\"inputClasses\"\n      />\n\n      <!-- Password Toggle Button (Eye Icon) -->\n      <button\n        *ngIf=\"type === 'password'\"\n        type=\"button\"\n        class=\"password-toggle-btn\"\n        [disabled]=\"state === 'disabled'\"\n        (click)=\"togglePasswordVisibility()\"\n        [attr.aria-label]=\"showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'\"\n        [attr.aria-pressed]=\"showPassword\"\n      >\n        <!-- Eye Open Icon (visible password) -->\n        <svg\n          *ngIf=\"showPassword\"\n          class=\"eye-icon\"\n          width=\"16\"\n          height=\"16\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"\n            [attr.stroke]=\"passwordIconColor\"\n            stroke-width=\"2\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n            fill=\"none\"\n          />\n          <circle\n            cx=\"12\"\n            cy=\"12\"\n            r=\"3\"\n            [attr.stroke]=\"passwordIconColor\"\n            stroke-width=\"2\"\n            fill=\"none\"\n          />\n        </svg>\n\n        <!-- Eye Closed Icon (hidden password) -->\n        <svg\n          *ngIf=\"!showPassword\"\n          class=\"eye-icon\"\n          width=\"16\"\n          height=\"16\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            d=\"M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24\"\n            [attr.stroke]=\"passwordIconColor\"\n            stroke-width=\"2\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n            fill=\"none\"\n          />\n          <line\n            x1=\"1\"\n            y1=\"1\"\n            x2=\"23\"\n            y2=\"23\"\n            [attr.stroke]=\"passwordIconColor\"\n            stroke-width=\"2\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n          />\n        </svg>\n      </button>\n    </div>\n  `,\n  styleUrls: ['./input.css'],\n})\nexport class InputComponent {\n  @Input() size: InputSize = 'md';\n  @Input() state: InputState = 'default';\n  @Input() icon: InputIcon = 'none';\n  @Input() type: InputType = 'text';\n  @Input() placeholder: string = 'Ingresa información';\n  @Input() value: string = '';\n\n  @Output() valueChange = new EventEmitter<string>();\n  @Output() onInputChange = new EventEmitter<string>();\n  @Output() onFocusEvent = new EventEmitter<void>();\n  @Output() onBlurEvent = new EventEmitter<void>();\n\n  showPassword: boolean = false;\n\n  get inputType(): string {\n    if (this.type === 'password') {\n      return this.showPassword ? 'text' : 'password';\n    }\n    return this.type;\n  }\n\n  get wrapperClasses(): string[] {\n    return [\n      'input',\n      `input-${this.size}`,\n      `input-state-${this.state}`,\n      this.icon === 'leading' ? 'input-with-icon-leading' : '',\n      this.type === 'password' ? 'input-with-password-toggle' : '',\n    ].filter(Boolean);\n  }\n\n  get inputClasses(): string[] {\n    return [this.icon === 'leading' ? 'has-icon-leading' : ''].filter(Boolean);\n  }\n\n  get iconColor(): string {\n    if (this.state === 'error') {\n      return '#DC2626';\n    }\n    return '#64748B';\n  }\n\n  get passwordIconColor(): string {\n    if (this.state === 'disabled') {\n      return '#CBD5E1';\n    }\n    if (this.state === 'error') {\n      return '#DC2626';\n    }\n    return '#64748B';\n  }\n\n  onInput(event: Event): void {\n    const target = event.target as HTMLInputElement;\n    this.value = target.value;\n    this.valueChange.emit(target.value);\n    this.onInputChange.emit(target.value);\n  }\n\n  onFocus(): void {\n    this.onFocusEvent.emit();\n  }\n\n  onBlur(): void {\n    this.onBlurEvent.emit();\n  }\n\n  togglePasswordVisibility(): void {\n    this.showPassword = !this.showPassword;\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type InputSize = 'sm' | 'md' | 'lg';\nexport type InputState = 'default' | 'hover' | 'focus' | 'disabled' | 'error';\nexport type InputIcon = 'none' | 'leading';\nexport type InputType = 'text' | 'password';\n\n@Component({\n  selector: 'bsg-input',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"input-container\" [ngClass]=\"containerClasses\">\n      <!-- Optional Label -->\n      <label *ngIf=\"label\" class=\"input-label\">{{ label }}</label>\n\n      <!-- Input Wrapper -->\n      <div class=\"input-wrapper\" [ngClass]=\"wrapperClasses\">\n      <!-- Leading Icon -->\n      <svg\n        *ngIf=\"icon === 'leading'\"\n        class=\"input-icon input-icon-leading\"\n        width=\"16\"\n        height=\"16\"\n        viewBox=\"0 0 16 16\"\n        fill=\"none\"\n        xmlns=\"http://www.w3.org/2000/svg\"\n      >\n        <path\n          d=\"M12 7.33334C12 4.75601 9.91066 2.66668 7.33333 2.66668C4.756 2.66668 2.66666 4.75601 2.66666 7.33334C2.66666 9.91067 4.756 12 7.33333 12C9.91066 12 12 9.91067 12 7.33334ZM13.3333 7.33334C13.3333 8.74999 12.8412 10.051 12.0202 11.0775L14.4713 13.5287C14.7317 13.789 14.7317 14.211 14.4713 14.4714C14.211 14.7317 13.789 14.7317 13.5286 14.4714L11.0775 12.0202C10.051 12.8412 8.74997 13.3333 7.33333 13.3333C4.01962 13.3333 1.33333 10.6471 1.33333 7.33334C1.33333 4.01963 4.01962 1.33334 7.33333 1.33334C10.647 1.33334 13.3333 4.01963 13.3333 7.33334Z\"\n          [attr.fill]=\"iconColor\"\n        />\n      </svg>\n\n      <!-- Input Field -->\n      <input\n        [type]=\"inputType\"\n        class=\"input-field\"\n        [placeholder]=\"placeholder\"\n        [disabled]=\"state === 'disabled'\"\n        [value]=\"value\"\n        [attr.aria-invalid]=\"state === 'error'\"\n        [attr.aria-describedby]=\"state === 'error' && errorMessage ? errorMessageId : null\"\n        (input)=\"onInput($event)\"\n        (focus)=\"onFocus()\"\n        (blur)=\"onBlur()\"\n        [ngClass]=\"inputClasses\"\n      />\n\n      <!-- Password Toggle Button (Eye Icon) -->\n      <button\n        *ngIf=\"type === 'password'\"\n        type=\"button\"\n        class=\"password-toggle-btn\"\n        [disabled]=\"state === 'disabled'\"\n        (click)=\"togglePasswordVisibility()\"\n        [attr.aria-label]=\"showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'\"\n        [attr.aria-pressed]=\"showPassword\"\n      >\n        <!-- Eye Open Icon (visible password) -->\n        <svg\n          *ngIf=\"showPassword\"\n          class=\"eye-icon\"\n          width=\"16\"\n          height=\"16\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"\n            [attr.stroke]=\"passwordIconColor\"\n            stroke-width=\"2\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n            fill=\"none\"\n          />\n          <circle\n            cx=\"12\"\n            cy=\"12\"\n            r=\"3\"\n            [attr.stroke]=\"passwordIconColor\"\n            stroke-width=\"2\"\n            fill=\"none\"\n          />\n        </svg>\n\n        <!-- Eye Closed Icon (hidden password) -->\n        <svg\n          *ngIf=\"!showPassword\"\n          class=\"eye-icon\"\n          width=\"16\"\n          height=\"16\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            d=\"M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24\"\n            [attr.stroke]=\"passwordIconColor\"\n            stroke-width=\"2\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n            fill=\"none\"\n          />\n          <line\n            x1=\"1\"\n            y1=\"1\"\n            x2=\"23\"\n            y2=\"23\"\n            [attr.stroke]=\"passwordIconColor\"\n            stroke-width=\"2\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n          />\n        </svg>\n      </button>\n      </div>\n\n      <!-- Error Message -->\n      <span *ngIf=\"state === 'error' && errorMessage\" class=\"input-error-message\" [attr.id]=\"errorMessageId\">\n        {{ errorMessage }}\n      </span>\n    </div>\n  `,\n  styleUrls: ['./input.css'],\n})\nexport class InputComponent {\n  @Input() size: InputSize = 'md';\n  @Input() state: InputState = 'default';\n  @Input() icon: InputIcon = 'none';\n  @Input() type: InputType = 'text';\n  @Input() placeholder: string = 'Ingresa información';\n  @Input() value: string = '';\n  @Input() label: string = '';\n  @Input() errorMessage: string = '';\n\n  @Output() valueChange = new EventEmitter<string>();\n  @Output() onInputChange = new EventEmitter<string>();\n  @Output() onFocusEvent = new EventEmitter<void>();\n  @Output() onBlurEvent = new EventEmitter<void>();\n\n  showPassword: boolean = false;\n\n  get errorMessageId(): string {\n    return `input-error-${Math.random().toString(36).substr(2, 9)}`;\n  }\n\n  get containerClasses(): string[] {\n    return ['input-field-container'].filter(Boolean);\n  }\n\n  get inputType(): string {\n    if (this.type === 'password') {\n      return this.showPassword ? 'text' : 'password';\n    }\n    return this.type;\n  }\n\n  get wrapperClasses(): string[] {\n    return [\n      'input',\n      `input-${this.size}`,\n      `input-state-${this.state}`,\n      this.icon === 'leading' ? 'input-with-icon-leading' : '',\n      this.type === 'password' ? 'input-with-password-toggle' : '',\n    ].filter(Boolean);\n  }\n\n  get inputClasses(): string[] {\n    return [this.icon === 'leading' ? 'has-icon-leading' : ''].filter(Boolean);\n  }\n\n  get iconColor(): string {\n    if (this.state === 'error') {\n      return '#DC2626';\n    }\n    return '#64748B';\n  }\n\n  get passwordIconColor(): string {\n    if (this.state === 'disabled') {\n      return '#CBD5E1';\n    }\n    if (this.state === 'error') {\n      return '#DC2626';\n    }\n    return '#64748B';\n  }\n\n  onInput(event: Event): void {\n    const target = event.target as HTMLInputElement;\n    this.value = target.value;\n    this.valueChange.emit(target.value);\n    this.onInputChange.emit(target.value);\n  }\n\n  onFocus(): void {\n    this.onFocusEvent.emit();\n  }\n\n  onBlur(): void {\n    this.onBlurEvent.emit();\n  }\n\n  togglePasswordVisibility(): void {\n    this.showPassword = !this.showPassword;\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* Base input wrapper styles */\n.input-wrapper {\n  display: inline-flex;\n  align-items: center;\n  gap: 12px;\n  border-radius: 6px;\n  border: 1px solid;\n  box-sizing: border-box;\n  position: relative;\n  transition: all 0.2s ease;\n}\n\n/* Input field base styles */\n.input-field {\n  flex: 1;\n  border: none;\n  outline: none;\n  background: transparent;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 16px;\n  font-weight: 400;\n  line-height: 24px;\n  letter-spacing: 0.05px;\n  color: #1E293B;\n  box-sizing: border-box;\n}\n\n.input-field::placeholder {\n  color: #64748B;\n}\n\n/* Icon styling */\n.input-icon {\n  flex-shrink: 0;\n}\n\n.input-icon-leading {\n  order: -1;\n  margin-right: 0;\n  margin-left: 0;\n}\n\n/* Password toggle button */\n.password-toggle-btn {\n  flex-shrink: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: none;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  color: currentColor;\n  transition: opacity 0.2s ease;\n  margin-right: 4px;\n}\n\n.password-toggle-btn:not(:disabled):hover {\n  opacity: 0.7;\n}\n\n.password-toggle-btn:disabled {\n  cursor: not-allowed;\n  opacity: 0.4;\n}\n\n.eye-icon {\n  width: 16px;\n  height: 16px;\n  flex-shrink: 0;\n}\n\n/* Size variants */\n.input-sm {\n  height: 32px;\n  padding: 4px 12px;\n}\n\n.input-md {\n  height: 40px;\n  padding: 4px 12px;\n}\n\n.input-lg {\n  height: 48px;\n  padding: 4px 12px;\n}\n\n/* Adjust padding for leading icon */\n.input-with-icon-leading.input-sm {\n  padding-left: 8px;\n  padding-right: 12px;\n}\n\n.input-with-icon-leading.input-md {\n  padding-left: 8px;\n  padding-right: 12px;\n}\n\n.input-with-icon-leading.input-lg {\n  padding-left: 8px;\n  padding-right: 12px;\n}\n\n/* Adjust padding for password toggle (right-side icon) */\n.input-with-password-toggle.input-sm {\n  padding-left: 12px;\n  padding-right: 8px;\n}\n\n.input-with-password-toggle.input-md {\n  padding-left: 12px;\n  padding-right: 8px;\n}\n\n.input-with-password-toggle.input-lg {\n  padding-left: 12px;\n  padding-right: 8px;\n}\n\n/* State variants - Default */\n.input-state-default {\n  border-color: #CBD5E1;\n  background: transparent;\n}\n\n.input-state-default:hover,\n.input-state-default.input-state-hover {\n  opacity: 0.9;\n}\n\n.input-state-default .input-field:focus {\n  outline: none;\n}\n\n/* State variants - Hover */\n.input-state-hover {\n  border-color: #CBD5E1;\n  background: transparent;\n  opacity: 0.9;\n}\n\n/* State variants - Focus */\n.input-state-focus,\n.input-wrapper:has(.input-field:focus) {\n  border-color: #64748B;\n  background: transparent;\n  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;\n}\n\n.input-state-focus .input-field,\n.input-wrapper:has(.input-field:focus) .input-field {\n  color: #1E293B;\n}\n\n/* Focus state for error (destructive) - keep red border, purple ring only */\n.input-state-error.input-state-focus,\n.input-state-error:has(.input-field:focus) {\n  border-color: #DC2626;\n  background: transparent;\n  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;\n}\n\n/* State variants - Disabled */\n.input-state-disabled {\n  border-color: #CBD5E1;\n  background: transparent;\n  opacity: 0.4;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n.input-state-disabled .input-field {\n  cursor: not-allowed;\n}\n\n/* State variants - Error */\n.input-state-error {\n  border-color: #DC2626;\n  background: transparent;\n}\n\n.input-state-error .input-field {\n  color: #DC2626;\n}\n\n.input-state-error .input-field::placeholder {\n  color: #DC2626;\n}\n\n/* Remove browser default focus styles */\n.input-field:focus {\n  outline: none;\n}\n\n/* Ensure consistent box-sizing */\n* {\n  box-sizing: border-box;\n}\n",
+                    "data": "/* Input field container (includes label and error) */\n.input-field-container {\n  display: flex;\n  flex-direction: column;\n  gap: 6px;\n}\n\n/* Input label */\n.input-label {\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 14px;\n  font-weight: 500;\n  line-height: 20px;\n  color: #202020;\n  margin-bottom: 2px;\n}\n\n/* Error message */\n.input-error-message {\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 12px;\n  font-weight: 400;\n  line-height: 16px;\n  color: #DC2626;\n  margin-top: 4px;\n}\n\n/* Base input wrapper styles */\n.input-wrapper {\n  display: inline-flex;\n  align-items: center;\n  gap: 12px;\n  border-radius: 6px;\n  border: 1px solid;\n  box-sizing: border-box;\n  position: relative;\n  transition: all 0.2s ease;\n}\n\n/* Input field base styles */\n.input-field {\n  flex: 1;\n  border: none;\n  outline: none;\n  background: transparent;\n  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;\n  font-size: 16px;\n  font-weight: 400;\n  line-height: 24px;\n  letter-spacing: 0.05px;\n  color: #1E293B;\n  box-sizing: border-box;\n}\n\n.input-field::placeholder {\n  color: #64748B;\n}\n\n/* Icon styling */\n.input-icon {\n  flex-shrink: 0;\n}\n\n.input-icon-leading {\n  order: -1;\n  margin-right: 0;\n  margin-left: 0;\n}\n\n/* Password toggle button */\n.password-toggle-btn {\n  flex-shrink: 0;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: none;\n  border: none;\n  padding: 0;\n  cursor: pointer;\n  color: currentColor;\n  transition: opacity 0.2s ease;\n  margin-right: 4px;\n}\n\n.password-toggle-btn:not(:disabled):hover {\n  opacity: 0.7;\n}\n\n.password-toggle-btn:disabled {\n  cursor: not-allowed;\n  opacity: 0.4;\n}\n\n.eye-icon {\n  width: 16px;\n  height: 16px;\n  flex-shrink: 0;\n}\n\n/* Size variants */\n.input-sm {\n  height: 32px;\n  padding: 4px 12px;\n}\n\n.input-md {\n  height: 40px;\n  padding: 4px 12px;\n}\n\n.input-lg {\n  height: 48px;\n  padding: 4px 12px;\n}\n\n/* Adjust padding for leading icon */\n.input-with-icon-leading.input-sm {\n  padding-left: 8px;\n  padding-right: 12px;\n}\n\n.input-with-icon-leading.input-md {\n  padding-left: 8px;\n  padding-right: 12px;\n}\n\n.input-with-icon-leading.input-lg {\n  padding-left: 8px;\n  padding-right: 12px;\n}\n\n/* Adjust padding for password toggle (right-side icon) */\n.input-with-password-toggle.input-sm {\n  padding-left: 12px;\n  padding-right: 8px;\n}\n\n.input-with-password-toggle.input-md {\n  padding-left: 12px;\n  padding-right: 8px;\n}\n\n.input-with-password-toggle.input-lg {\n  padding-left: 12px;\n  padding-right: 8px;\n}\n\n/* State variants - Default */\n.input-state-default {\n  border-color: #CBD5E1;\n  background: transparent;\n}\n\n.input-state-default:hover,\n.input-state-default.input-state-hover {\n  opacity: 0.9;\n}\n\n.input-state-default .input-field:focus {\n  outline: none;\n}\n\n/* State variants - Hover */\n.input-state-hover {\n  border-color: #CBD5E1;\n  background: transparent;\n  opacity: 0.9;\n}\n\n/* State variants - Focus */\n.input-state-focus,\n.input-wrapper:has(.input-field:focus) {\n  border-color: #64748B;\n  background: transparent;\n  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;\n}\n\n.input-state-focus .input-field,\n.input-wrapper:has(.input-field:focus) .input-field {\n  color: #1E293B;\n}\n\n/* Focus state for error (destructive) - keep red border, purple ring only */\n.input-state-error.input-state-focus,\n.input-state-error:has(.input-field:focus) {\n  border-color: #DC2626;\n  background: transparent;\n  box-shadow: 0 0 0 3px white, 0 0 0 4px #7C3AED;\n}\n\n/* State variants - Disabled */\n.input-state-disabled {\n  border-color: #CBD5E1;\n  background: transparent;\n  opacity: 0.4;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n.input-state-disabled .input-field {\n  cursor: not-allowed;\n}\n\n/* State variants - Error */\n.input-state-error {\n  border-color: #DC2626;\n  background: transparent;\n}\n\n.input-state-error .input-field {\n  color: #DC2626;\n}\n\n.input-state-error .input-field::placeholder {\n  color: #DC2626;\n}\n\n/* Remove browser default focus styles */\n.input-field:focus {\n  outline: none;\n}\n\n/* Ensure consistent box-sizing */\n* {\n  box-sizing: border-box;\n}\n",
                     "styleUrl": "./input.css"
                 }
             ],
             "stylesData": "",
             "extends": [],
             "accessors": {
+                "errorMessageId": {
+                    "name": "errorMessageId",
+                    "getSignature": {
+                        "name": "errorMessageId",
+                        "type": "string",
+                        "returnType": "string",
+                        "line": 146
+                    }
+                },
+                "containerClasses": {
+                    "name": "containerClasses",
+                    "getSignature": {
+                        "name": "containerClasses",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 150
+                    }
+                },
                 "inputType": {
                     "name": "inputType",
                     "getSignature": {
                         "name": "inputType",
                         "type": "string",
                         "returnType": "string",
-                        "line": 131
+                        "line": 154
                     }
                 },
                 "wrapperClasses": {
@@ -2427,7 +2878,7 @@
                         "name": "wrapperClasses",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 138
+                        "line": 161
                     }
                 },
                 "inputClasses": {
@@ -2436,7 +2887,7 @@
                         "name": "inputClasses",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 148
+                        "line": 171
                     }
                 },
                 "iconColor": {
@@ -2445,7 +2896,7 @@
                         "name": "iconColor",
                         "type": "string",
                         "returnType": "string",
-                        "line": 152
+                        "line": 175
                     }
                 },
                 "passwordIconColor": {
@@ -2454,7 +2905,7 @@
                         "name": "passwordIconColor",
                         "type": "string",
                         "returnType": "string",
-                        "line": 159
+                        "line": 182
                     }
                 }
             }
@@ -6021,6 +6472,28 @@
                 "kind": 193
             },
             {
+                "name": "ComboboxSize",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"sm\" | \"md\" | \"lg\"",
+                "file": "src/stories/combobox.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
+                "name": "ComboboxState",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"default\" | \"hover\" | \"focus\" | \"disabled\" | \"error\"",
+                "file": "src/stories/combobox.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 193
+            },
+            {
                 "name": "IconName",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -6647,6 +7120,30 @@
                     "subtype": "typealias",
                     "rawtype": "\"default\" | \"hover\" | \"checked\" | \"disabled\" | \"indeterminate\" | \"focus\"",
                     "file": "src/stories/checkbox.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                }
+            ],
+            "src/stories/combobox.component.ts": [
+                {
+                    "name": "ComboboxSize",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"sm\" | \"md\" | \"lg\"",
+                    "file": "src/stories/combobox.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 193
+                },
+                {
+                    "name": "ComboboxState",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"default\" | \"hover\" | \"focus\" | \"disabled\" | \"error\"",
+                    "file": "src/stories/combobox.component.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -7351,12 +7848,50 @@
                 "status": "low"
             },
             {
+                "filePath": "src/stories/combobox.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ComboboxComponent",
+                "coveragePercent": 57,
+                "coverageCount": "11/19",
+                "status": "good"
+            },
+            {
+                "filePath": "src/stories/combobox.component.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ComboboxOption",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/combobox.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ComboboxSize",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/combobox.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "ComboboxState",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
                 "filePath": "src/stories/input.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "InputComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/16",
+                "coverageCount": "0/18",
                 "status": "low"
             },
             {
