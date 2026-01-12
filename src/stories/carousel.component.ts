@@ -1,4 +1,4 @@
-import { Component, Input, ContentChildren, QueryList, AfterContentInit, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, ContentChildren, QueryList, AfterContentInit, ChangeDetectorRef, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,7 +14,9 @@ import { CommonModule } from '@angular/common';
     }
   `]
 })
-export class CarouselItemComponent {}
+export class CarouselItemComponent {
+  constructor(public elementRef: ElementRef) {}
+}
 
 @Component({
   selector: 'bsg-carousel',
