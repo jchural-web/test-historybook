@@ -1,0 +1,370 @@
+import type { Meta, StoryObj } from '@storybook/angular';
+import { ComboboxComponent } from './combobox.component';
+
+const meta: Meta<ComboboxComponent> = {
+  title: 'Example/Combobox',
+  component: ComboboxComponent,
+  tags: ['autodocs'],
+  argTypes: {
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Size of the combobox',
+    },
+    state: {
+      control: 'select',
+      options: ['default', 'hover', 'focus', 'disabled', 'error'],
+      description: 'Current state of the combobox',
+    },
+    options: {
+      control: 'object',
+      description: 'Array of combobox options',
+    },
+    selectedValue: {
+      control: 'text',
+      description: 'Currently selected value',
+    },
+    placeholder: {
+      control: 'text',
+      description: 'Placeholder text when no option is selected',
+    },
+    open: {
+      control: 'boolean',
+      description: 'Dropdown open state',
+    },
+    errorMessage: {
+      control: 'text',
+      description: 'Error message (shown when state is "error")',
+    },
+  },
+  args: {
+    size: 'sm',
+    state: 'default',
+    options: [
+      { value: '1', label: 'Opcion 1' },
+      { value: '2', label: 'Opcion 2' },
+      { value: '3', label: 'Opcion 3' },
+      { value: '4', label: 'Opcion 4' },
+    ],
+    selectedValue: '',
+    placeholder: 'Selecciona',
+    open: false,
+    errorMessage: '',
+  },
+};
+
+export default meta;
+type Story = StoryObj<ComboboxComponent>;
+
+// =====================
+// AXES
+// =====================
+
+/**
+ * Combobox states axis
+ * Shows all state combinations: default, focus, open, error, disabled
+ */
+export const States: Story = {
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 48px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">All States - Medium Size</h3>
+        
+        <div style="display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+            <bsg-combobox size="md" state="default" placeholder="Search..."></bsg-combobox>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+            <bsg-combobox size="md" state="focus" placeholder="Search..."></bsg-combobox>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Open</span>
+            <bsg-combobox size="md" state="default" [open]="true" selectedValue="3"></bsg-combobox>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+            <bsg-combobox size="md" state="error" placeholder="Search..." errorMessage="Campo requerido"></bsg-combobox>
+          </div>
+          
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+            <bsg-combobox size="md" state="disabled" placeholder="Not available"></bsg-combobox>
+          </div>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+// =====================
+// EXAMPLES
+// =====================
+
+/**
+ * Real-world usage examples of Combobox
+ */
+export const UsageExamples: Story = {
+  tags: ['!dev'],
+  render: () => ({
+    template: `
+      <div style="display: flex; flex-direction: column; gap: 32px; padding: 24px; font-family: Roboto, sans-serif;">
+        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Combobox Usage Examples</h3>
+        
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Country Selection with Search</h4>
+          <bsg-combobox 
+            size="md" 
+            state="default"
+            placeholder="Search country..."
+            [options]="[
+              { value: 'us', label: 'United States' },
+              { value: 'uk', label: 'United Kingdom' },
+              { value: 'ca', label: 'Canada' },
+              { value: 'au', label: 'Australia' }
+            ]">
+          </bsg-combobox>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Size Selection with Search</h4>
+          <bsg-combobox 
+            size="sm" 
+            state="default"
+            placeholder="Search size..."
+            [options]="[
+              { value: 's', label: 'Small' },
+              { value: 'm', label: 'Medium' },
+              { value: 'l', label: 'Large' },
+              { value: 'xl', label: 'Extra Large' }
+            ]">
+          </bsg-combobox>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Error State Example</h4>
+          <bsg-combobox
+            size="md"
+            state="error"
+            placeholder="Required field"
+            errorMessage="Este campo es requerido"
+            [options]="[
+              { value: '1', label: 'Option 1' },
+              { value: '2', label: 'Option 2' },
+              { value: '3', label: 'Option 3' }
+            ]">
+          </bsg-combobox>
+        </div>
+        
+        <div>
+          <h4 style="margin: 0 0 12px 0; font-size: 14px; font-weight: 600; color: #202020;">Disabled State Example</h4>
+          <bsg-combobox 
+            size="md" 
+            state="disabled"
+            placeholder="Not available"
+            [options]="[
+              { value: '1', label: 'Option 1' },
+              { value: '2', label: 'Option 2' }
+            ]">
+          </bsg-combobox>
+        </div>
+      </div>
+    `,
+  }),
+};
+
+/**
+ * Form integration example with Combobox
+ */
+export const FormExample: Story = {
+  tags: ['!dev'],
+  render: () => ({
+    template: `
+      <div style="padding: 24px; font-family: Roboto, sans-serif; max-width: 500px;">
+        <h3 style="margin: 0 0 24px 0; font-size: 20px; font-weight: 600;">User Registration Form</h3>
+        
+        <form style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: #202020;">
+              Country *
+            </label>
+            <bsg-combobox 
+              size="md" 
+              state="default"
+              placeholder="Search country..."
+              [options]="[
+                { value: 'us', label: 'United States' },
+                { value: 'uk', label: 'United Kingdom' },
+                { value: 'ca', label: 'Canada' },
+                { value: 'mx', label: 'Mexico' }
+              ]">
+            </bsg-combobox>
+          </div>
+          
+          <div>
+            <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: #202020;">
+              Language
+            </label>
+            <bsg-combobox 
+              size="md" 
+              state="default"
+              placeholder="Search language..."
+              selectedValue="en"
+              [options]="[
+                { value: 'en', label: 'English' },
+                { value: 'es', label: 'Spanish' },
+                { value: 'fr', label: 'French' },
+                { value: 'de', label: 'German' }
+              ]">
+            </bsg-combobox>
+          </div>
+          
+          <div>
+            <label style="display: block; margin-bottom: 8px; font-size: 14px; font-weight: 500; color: #202020;">
+              Account Type
+            </label>
+            <bsg-combobox 
+              size="lg" 
+              state="default"
+              placeholder="Search type..."
+              [options]="[
+                { value: 'personal', label: 'Personal' },
+                { value: 'business', label: 'Business' },
+                { value: 'enterprise', label: 'Enterprise' }
+              ]">
+            </bsg-combobox>
+          </div>
+        </form>
+      </div>
+    `,
+  }),
+};
+
+// =====================
+// SHOWCASE (Optional)
+// =====================
+
+/**
+ * Complete showcase of Combobox component library
+ */
+export const Showcase: Story = {
+  tags: ['!dev'],
+  render: () => ({
+    template: `
+      <div style="font-family: Roboto, sans-serif; padding: 24px; max-width: 1200px;">
+        <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 600;">Combobox Component Library</h2>
+        
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Small (sm) - 32px height</h3>
+          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+              <bsg-combobox size="sm" state="default"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+              <bsg-combobox size="sm" state="focus"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Open</span>
+              <bsg-combobox size="sm" state="default" [open]="true" selectedValue="3"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+              <bsg-combobox size="sm" state="error" errorMessage="Este campo es requerido"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+              <bsg-combobox size="sm" state="disabled"></bsg-combobox>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Medium (md) - 40px height</h3>
+          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+              <bsg-combobox size="md" state="default"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+              <bsg-combobox size="md" state="focus"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Open</span>
+              <bsg-combobox size="md" state="default" [open]="true" selectedValue="3"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+              <bsg-combobox size="md" state="error" errorMessage="Este campo es requerido"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+              <bsg-combobox size="md" state="disabled"></bsg-combobox>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-bottom: 48px;">
+          <h3 style="margin-bottom: 24px; font-size: 18px; font-weight: 600; color: #202020;">Large (lg) - 48px height</h3>
+          <div style="display: flex; gap: 32px; align-items: flex-start; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Default</span>
+              <bsg-combobox size="lg" state="default"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Focus</span>
+              <bsg-combobox size="lg" state="focus"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Open</span>
+              <bsg-combobox size="lg" state="default" [open]="true" selectedValue="3"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: flex-start;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Error</span>
+              <bsg-combobox size="lg" state="error" errorMessage="Este campo es requerido"></bsg-combobox>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center;">
+              <span style="font-size: 14px; font-weight: 600; color: #202020;">Disabled</span>
+              <bsg-combobox size="lg" state="disabled"></bsg-combobox>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3 style="margin-bottom: 16px; font-size: 18px; font-weight: 600; color: #202020;">Design Specifications</h3>
+          <div style="font-size: 14px; color: #64748B; line-height: 1.6;">
+            <p style="margin: 8px 0;"><strong>Sizes:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li><strong>sm:</strong> 32px height, padding 4px 12px, width 133px</li>
+              <li><strong>md:</strong> 40px height, padding 4px 12px, width 132px</li>
+              <li><strong>lg:</strong> 48px height, padding 4px 12px, width 133px</li>
+            </ul>
+            <p style="margin: 8px 0;"><strong>Border Radius:</strong> 6px</p>
+            <p style="margin: 8px 0;"><strong>Gap:</strong> 12px between text and icon</p>
+            <p style="margin: 8px 0;"><strong>Typography:</strong> Inter, 16px, 400 weight, 24px line-height</p>
+            <p style="margin: 8px 0;"><strong>Search Input:</strong> 14px, padding 6px 10px, border-radius 4px</p>
+            <p style="margin: 8px 0;"><strong>Colors:</strong></p>
+            <ul style="margin: 8px 0 8px 20px;">
+              <li>Default border: #CBD5E1 (neutral-300)</li>
+              <li>Default text: #64748B (neutral-500)</li>
+              <li>Focus border: #7C3AED (Violet-600)</li>
+              <li>Error border & text: #DC2626 (Red-600)</li>
+              <li>Disabled: opacity 40%</li>
+              <li>Hover: opacity 90%</li>
+              <li>Selected option background: #CBD5E1 (neutral-300)</li>
+              <li>Search divider: #E2E8F0 (neutral-200)</li>
+            </ul>
+            <p style="margin: 8px 0;"><strong>Chevron Icon:</strong> 14×8px</p>
+            <p style="margin: 8px 0;"><strong>Search Feature:</strong> Real-time filtering, empty state message, disabled when combobox is disabled</p>
+          </div>
+        </section>
+      </div>
+    `,
+  }),
+};
