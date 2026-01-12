@@ -9,6 +9,7 @@
   width: 100%;
   padding: 0 60px;
   box-sizing: border-box;
+  gap: 16px;
 }
 
 /* ========================================
@@ -19,6 +20,8 @@
   overflow: hidden;
   width: 100%;
   position: relative;
+  flex: 1;
+  min-width: 0;
 }
 
 .carousel-track {
@@ -33,9 +36,7 @@
    ======================================== */
 
 .carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
   width: 41px;
   height: 41px;
   background: transparent;
@@ -44,6 +45,7 @@
   padding: 0;
   z-index: 10;
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
 }
 
 .carousel-arrow:disabled {
@@ -67,11 +69,11 @@
 }
 
 .carousel-arrow-prev {
-  left: 0;
+  order: -1;
 }
 
 .carousel-arrow-next {
-  right: 0;
+  order: 3;
 }
 
 /* ========================================
@@ -88,6 +90,8 @@
   align-items: center;
   justify-content: center;
   z-index: 10;
+  width: 100%;
+  pointer-events: auto;
 }
 
 .carousel-indicator {
@@ -100,6 +104,7 @@
   cursor: pointer;
   opacity: 0.4;
   transition: opacity 0.2s ease;
+  flex-shrink: 0;
 }
 
 .carousel-indicator:hover {
@@ -111,22 +116,64 @@
 }
 
 /* ========================================
-   Responsive Behavior
+   Responsive Behavior - Desktop
    ======================================== */
 
-@media (max-width: 1024px) {
+@media (min-width: 1025px) {
+  .carousel-container {
+    padding: 0 60px;
+    gap: 16px;
+  }
+
+  .carousel-track {
+    gap: 30px;
+  }
+}
+
+/* ========================================
+   Responsive Behavior - Tablet
+   ======================================== */
+
+@media (max-width: 1024px) and (min-width: 769px) {
   .carousel-container {
     padding: 0 50px;
+    gap: 12px;
   }
 
   .carousel-track {
     gap: 20px;
   }
+
+  .carousel-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .carousel-arrow svg:first-child {
+    width: 36px;
+    height: 36px;
+  }
+
+  .carousel-arrow .chevron-icon {
+    width: 22px;
+    height: 22px;
+  }
 }
+
+/* ========================================
+   Responsive Behavior - Mobile
+   ======================================== */
 
 @media (max-width: 768px) {
   .carousel-container {
     padding: 0 40px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .carousel-viewport {
+    order: 2;
+    width: 100%;
   }
 
   .carousel-track {
@@ -147,11 +194,24 @@
     width: 20px;
     height: 20px;
   }
+
+  .carousel-arrow-prev {
+    order: 1;
+  }
+
+  .carousel-arrow-next {
+    order: 3;
+  }
 }
 
 @media (max-width: 480px) {
   .carousel-container {
     padding: 0 30px;
+    gap: 6px;
+  }
+
+  .carousel-track {
+    gap: 12px;
   }
 
   .carousel-indicators {
@@ -162,6 +222,21 @@
   .carousel-indicator {
     width: 10px;
     height: 10px;
+  }
+
+  .carousel-arrow {
+    width: 28px;
+    height: 28px;
+  }
+
+  .carousel-arrow svg:first-child {
+    width: 28px;
+    height: 28px;
+  }
+
+  .carousel-arrow .chevron-icon {
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -178,4 +253,14 @@
 .carousel-arrow:focus:not(:focus-visible),
 .carousel-indicator:focus:not(:focus-visible) {
   outline: none;
+}
+
+/* ========================================
+   Prevent text selection on dragging
+   ======================================== */
+
+.carousel-container,
+.carousel-track,
+.carousel-viewport {
+  user-select: none;
 }
