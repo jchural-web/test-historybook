@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/angular';
+import { Component } from '@angular/core';
 import { DialogComponent } from './dialog.component';
 import { ButtonComponent } from './button.component';
-import { moduleMetadata, Component } from '@storybook/angular';
+import { moduleMetadata } from '@storybook/angular';
 import { CommonModule } from '@angular/common';
 
 const meta: Meta<DialogComponent> = {
