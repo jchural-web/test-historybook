@@ -55,9 +55,9 @@ export class CarouselItemComponent {
 
       <!-- Viewport -->
       <div class="carousel-viewport">
-        <div 
+        <div
           class="carousel-track"
-          [style.transform]="'translateX(' + translateX + '%)'"
+          [style.transform]="'translateX(' + translateX + ')'"
           [style.transition]="'transform 0.3s ease-in-out'">
           <ng-content></ng-content>
         </div>
