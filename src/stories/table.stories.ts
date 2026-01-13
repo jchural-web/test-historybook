@@ -33,6 +33,7 @@ export const Basic: Story = {
   args: {
     title: 'Tarifario de Trámites y Servicios',
     variant: 'table-basic',
+    disableExpansion: true,
     tableColumns: [
       { key: 'number', label: 'N°', width: '50px' },
       { key: 'concept', label: 'Concepto', width: '218px' },
