@@ -149,12 +149,14 @@ export interface TableAction {
 
           <!-- Table Rows -->
           <div class="table-content-body">
-            <div *ngFor="let row of tableRows; let i = index" class="table-row" [ngClass]="{ 'table-row-expanded': isCellExpanded(i, tableColumns[0]?.key) }">
+            <div *ngFor="let row of tableRows; let i = index" class="table-row">
               <div
                 *ngFor="let column of tableColumns"
                 class="table-cell"
                 [style.width]="column.width || 'auto'"
-                [ngClass]="{ 'table-cell-long': isCellLong(row, column.key), 'table-cell-expanded': isCellExpanded(i, column.key) }"
+                [ngClass]="{ 'table-cell-expanded': isCellExpanded(i, column.key) }"
+                #cellContainer
+                (afterViewInit)="onCellElementCreated(cellContainer, i, column.key)"
               >
                 <div class="table-cell-content">
                   <!-- Render badge if specified -->
@@ -174,16 +176,15 @@ export interface TableAction {
                   <!-- Render plain text with optional expansion -->
                   <span
                     *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']"
-                    class="table-cell-text"
-                    [ngClass]="{ 'table-cell-text-collapsed': isCellLong(row, column.key) && !isCellExpanded(i, column.key) }"
+                    class="table-cell-text table-cell-text-collapsed"
                   >
                     {{ row[column.key] }}
                   </span>
                 </div>
 
-                <!-- "Ver más…" / "Ver menos" button for long content -->
+                <!-- "Ver más…" / "Ver menos" button - only show if cell has overflow -->
                 <bsg-button
-                  *ngIf="isCellLong(row, column.key)"
+                  *ngIf="doesCellHaveOverflow(i, column.key)"
                   [label]="isCellExpanded(i, column.key) ? 'Ver menos' : 'Ver más…'"
                   variant="link"
                   size="sm"
