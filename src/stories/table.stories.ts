@@ -133,6 +133,65 @@ export const WithActions: Story = {
 };
 
 /**
+ * Table with long content and expansion
+ * Demonstrates "Ver más…" functionality for cells with long text
+ * The content expands vertically when clicking "Ver más…"
+ */
+export const WithLongContent: Story = {
+  args: {
+    title: 'Descripciones de Servicios',
+    variant: 'table-basic',
+    tableColumns: [
+      { key: 'number', label: 'N°', width: '50px' },
+      { key: 'service', label: 'Servicio', width: '250px' },
+      { key: 'description', label: 'Descripción Detallada', width: '500px' },
+      { key: 'price', label: 'Precio', width: '100px' },
+    ],
+    tableRows: [
+      {
+        number: '1',
+        service: 'Asesoría Académica',
+        description:
+          'Nuestro equipo de asesores académicos altamente capacitados te proporcionará orientación integral sobre tu carrera profesional, desarrollo de habilidades, planificación educativa y oportunidades de crecimiento en el mercado laboral actual. Nos enfocamos en entender tus objetivos personales y profesionales para ofrecerte recomendaciones personalizadas que se alineen con tus aspiraciones y el contexto del mercado global.',
+        description_expandable: true,
+        price: '$80',
+      },
+      {
+        number: '2',
+        service: 'Preparación para Certificaciones',
+        description:
+          'Ofrecemos programas comprensivos de preparación para certificaciones internacionales reconocidas mundialmente. Nuestros instructores certificados utilizan metodologías modernas de enseñanza, simuladores de examen actualizado y materiales de estudio basados en los últimos estándares de la industria. Cada programa está diseñado para maximizar tu probabilidad de éxito en el examen de certificación y asegurar que adquieras conocimientos prácticos aplicables en tu entorno laboral.',
+        description_expandable: true,
+        price: '$150',
+      },
+      {
+        number: '3',
+        service: 'Tutoría Privada',
+        description:
+          'Sesiones de tutoría personalizadas uno a uno con instructores especializados en tu área de interés, ajustadas completamente a tu ritmo de aprendizaje y disponibilidad horaria.',
+        price: '$50',
+      },
+      {
+        number: '4',
+        service: 'Desarrollo Profesional',
+        description:
+          'Programas especializados de desarrollo profesional que cubren liderazgo, gestión de proyectos, comunicación efectiva, negociación, pensamiento estratégico y otras competencias clave demandadas por las organizaciones modernas. Nuestros facilitadores traen experiencia práctica del mundo corporativo y comparten casos reales de implementación. Al completar estos programas, estarás equipado con herramientas prácticas y conocimientos aplicables inmediatamente en tu rol profesional actual.',
+        description_expandable: true,
+        price: '$120',
+      },
+    ],
+    tablePagination: {
+      currentPage: 1,
+      totalPages: 1,
+      pageSize: 5,
+      pageSizeOptions: [5, 10, 20],
+      totalItems: 4,
+      rangeLabel: '1 - 4 de 4 ítems',
+    },
+  },
+};
+
+/**
  * Table with tabbed interface
  * Demonstrates composition with TabNavigation component
  */
