@@ -509,32 +509,14 @@ export class TableComponent implements AfterViewInit, OnDestroy {
         // Set up ResizeObserver to re-detect on size changes
         if (!this.resizeObserver) {
           this.resizeObserver = new ResizeObserver(() => {
-            // Only recalculate non-expanded cells
-            const expandedCells = Array.from(this.expandedCells);
-            this.cellsWithOverflow.clear();
-
-            document.querySelectorAll('[data-row][data-col]').forEach((cell) => {
-              const row = cell.getAttribute('data-row');
-              const col = cell.getAttribute('data-col');
-              if (!row || !col) return;
-
-              const id = `${row}-${col}`;
-              if (!expandedCells.includes(id)) {
-                const txt = cell.querySelector('.table-cell-text') as HTMLElement | null;
-                if (txt && txt.scrollHeight > txt.clientHeight + 1) {
-                  this.cellsWithOverflow.add(id);
-                }
-              }
-            });
+            this.detectAllCellsOverflow();
           });
         }
 
-        if (!this.resizeObserver.listeners) {
-          this.resizeObserver.listeners = new Set();
-        }
-        if (!this.resizeObserver.listeners.has(cellElement)) {
+        // Only observe elements we haven't observed yet
+        if (!this.observedElements.has(cellElement)) {
           this.resizeObserver.observe(cellElement);
-          this.resizeObserver.listeners.add(cellElement);
+          this.observedElements.add(cellElement);
         }
       } else {
         this.cellsWithOverflow.delete(cellId);
