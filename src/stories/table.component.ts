@@ -365,6 +365,9 @@ export class TableComponent {
   @Output() tabRefresh = new EventEmitter<number>();
   @Output() rowAction = new EventEmitter<{ rowIndex: number; action: TableAction }>();
 
+  // Internal state for cell expansion (tracks expanded cells by rowIndex-columnKey)
+  private expandedCells: Set<string> = new Set();
+
   get containerClasses(): string[] {
     const classes = [`table-${this.variant}`];
     if (this.isCollapsible && !this.isExpanded) {
