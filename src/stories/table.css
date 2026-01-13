@@ -186,15 +186,54 @@
   overflow: visible;
 }
 
-/* Expand/Collapse button styling - uses Button Link design system styles */
+/* Expand/Collapse button styling - mimics Button Link design system */
 .table-cell-expand-btn {
   align-self: flex-start;
   margin-top: 2px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: #2563eb;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  transition: opacity 0.2s ease;
 }
 
-/* Ensure Button component inherits Link styles within the cell */
-.table-cell-expand-btn bsg-button {
-  display: inline-block;
+/* Link button hover state */
+.table-cell-expand-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Link button active state */
+.table-cell-expand-btn:active:not(:disabled) {
+  text-decoration: underline;
+}
+
+/* Link button focus state - purple outline matching design system */
+.table-cell-expand-btn:focus:not(:disabled),
+.table-cell-expand-btn:focus-visible {
+  color: #1d4ed8;
+  outline: none;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+  border-radius: 2px;
+}
+
+/* Disabled state */
+.table-cell-expand-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .table-actions-cell {
