@@ -149,30 +149,48 @@ export interface TableAction {
 
           <!-- Table Rows -->
           <div class="table-content-body">
-            <div *ngFor="let row of tableRows; let i = index" class="table-row">
+            <div *ngFor="let row of tableRows; let i = index" class="table-row" [ngClass]="{ 'table-row-expanded': isCellExpanded(i, tableColumns[0]?.key) }">
               <div
                 *ngFor="let column of tableColumns"
                 class="table-cell"
                 [style.width]="column.width || 'auto'"
+                [ngClass]="{ 'table-cell-long': isCellLong(row, column.key), 'table-cell-expanded': isCellExpanded(i, column.key) }"
               >
-                <!-- Render badge if specified -->
-                <bsg-badge
-                  *ngIf="row[column.key + '_badge']"
-                  [variant]="row[column.key + '_badge_variant'] || 'default'"
-                  [value]="row[column.key]"
-                  [size]="row[column.key + '_badge_size'] || 'default'"
-                ></bsg-badge>
+                <div class="table-cell-content">
+                  <!-- Render badge if specified -->
+                  <bsg-badge
+                    *ngIf="row[column.key + '_badge']"
+                    [variant]="row[column.key + '_badge_variant'] || 'default'"
+                    [value]="row[column.key]"
+                    [size]="row[column.key + '_badge_size'] || 'default'"
+                  ></bsg-badge>
 
-                <!-- Render label if specified -->
-                <bsg-label
-                  *ngIf="row[column.key + '_label'] && !row[column.key + '_badge']"
-                  [text]="row[column.key]"
-                ></bsg-label>
+                  <!-- Render label if specified -->
+                  <bsg-label
+                    *ngIf="row[column.key + '_label'] && !row[column.key + '_badge']"
+                    [text]="row[column.key]"
+                  ></bsg-label>
 
-                <!-- Render plain text otherwise -->
-                <span *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']">{{
-                  row[column.key]
-                }}</span>
+                  <!-- Render plain text with optional expansion -->
+                  <span
+                    *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']"
+                    class="table-cell-text"
+                    [ngClass]="{ 'table-cell-text-collapsed': isCellLong(row, column.key) && !isCellExpanded(i, column.key) }"
+                  >
+                    {{ row[column.key] }}
+                  </span>
+                </div>
+
+                <!-- "Ver más…" / "Ver menos" button for long content -->
+                <bsg-button
+                  *ngIf="isCellLong(row, column.key)"
+                  [label]="isCellExpanded(i, column.key) ? 'Ver menos' : 'Ver más…'"
+                  variant="link"
+                  size="sm"
+                  (onClick)="toggleCellExpansion(i, column.key)"
+                  [attr.aria-expanded]="isCellExpanded(i, column.key)"
+                  class="table-cell-expand-btn"
+                ></bsg-button>
               </div>
 
               <!-- Actions Column (for table-actions variant) -->
