@@ -153,11 +153,64 @@
   font-weight: 500;
   line-height: 1.5;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
   flex-shrink: 1;
   word-break: break-word;
   overflow-wrap: break-word;
   white-space: normal;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Cell content wrapper */
+.table-cell-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Long text handling */
+.table-cell-long .table-cell-text-collapsed {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Expanded cell shows full content */
+.table-cell-expanded .table-cell-text-collapsed {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.table-cell-text {
+  width: 100%;
+}
+
+/* Expand/Collapse button styling */
+.table-cell-expand-btn {
+  align-self: flex-start;
+  padding: 0;
+  height: auto;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  margin-top: 2px;
+}
+
+.table-cell-expand-btn:hover {
+  opacity: 0.8;
+}
+
+.table-cell-expand-btn:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .table-actions-cell {
