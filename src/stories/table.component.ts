@@ -281,12 +281,14 @@ export interface TableAction {
 
                 <!-- Table Rows -->
                 <div class="table-content-body">
-                  <div *ngFor="let row of tab.tableData.rows; let i = index" class="table-row" [ngClass]="{ 'table-row-expanded': isCellExpanded(i, tab.tableData!.columns[0]?.key) }">
+                  <div *ngFor="let row of tab.tableData.rows; let i = index" class="table-row">
                     <div
                       *ngFor="let column of tab.tableData.columns"
                       class="table-cell"
                       [style.width]="column.width || 'auto'"
-                      [ngClass]="{ 'table-cell-long': isCellLong(row, column.key), 'table-cell-expanded': isCellExpanded(i, column.key) }"
+                      [ngClass]="{ 'table-cell-expanded': isCellExpanded(i, column.key) }"
+                      [attr.data-row]="i"
+                      [attr.data-col]="column.key"
                     >
                       <div class="table-cell-content">
                         <!-- Render badge if specified -->
@@ -307,15 +309,14 @@ export interface TableAction {
                         <span
                           *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']"
                           class="table-cell-text"
-                          [ngClass]="{ 'table-cell-text-collapsed': isCellLong(row, column.key) && !isCellExpanded(i, column.key) }"
                         >
                           {{ row[column.key] }}
                         </span>
                       </div>
 
-                      <!-- "Ver más…" / "Ver menos" button for long content -->
+                      <!-- "Ver más…" / "Ver menos" button - only show if cell has overflow -->
                       <bsg-button
-                        *ngIf="isCellLong(row, column.key)"
+                        *ngIf="doesCellHaveOverflow(i, column.key)"
                         [label]="isCellExpanded(i, column.key) ? 'Ver menos' : 'Ver más…'"
                         variant="link"
                         size="sm"
