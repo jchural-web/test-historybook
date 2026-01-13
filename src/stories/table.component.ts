@@ -529,6 +529,9 @@ export class TableComponent implements AfterViewInit, OnDestroy {
       this.resizeObserver.disconnect();
       this.resizeObserver = null;
     }
+    this.observedElements.clear();
+    this.expandedCells.clear();
+    this.cellsWithOverflow.clear();
   }
 
   toggleCollapse(): void {
