@@ -135,7 +135,7 @@ export const WithActions: Story = {
 /**
  * Table with long content and expansion
  * Demonstrates "Ver más…" functionality for cells with long text
- * The content expands vertically when clicking "Ver más…"
+ * Short text rows do NOT show the button, only long text rows do
  */
 export const WithLongContent: Story = {
   args: {
@@ -143,8 +143,8 @@ export const WithLongContent: Story = {
     variant: 'table-basic',
     tableColumns: [
       { key: 'number', label: 'N°', width: '50px' },
-      { key: 'service', label: 'Servicio', width: '250px' },
-      { key: 'description', label: 'Descripción Detallada', width: '500px' },
+      { key: 'service', label: 'Servicio', width: '200px' },
+      { key: 'description', label: 'Descripción', width: '550px' },
       { key: 'price', label: 'Precio', width: '100px' },
     ],
     tableRows: [
@@ -153,30 +153,34 @@ export const WithLongContent: Story = {
         service: 'Asesoría Académica',
         description:
           'Nuestro equipo de asesores académicos altamente capacitados te proporcionará orientación integral sobre tu carrera profesional, desarrollo de habilidades, planificación educativa y oportunidades de crecimiento en el mercado laboral actual. Nos enfocamos en entender tus objetivos personales y profesionales para ofrecerte recomendaciones personalizadas que se alineen con tus aspiraciones y el contexto del mercado global.',
-        description_expandable: true,
         price: '$80',
       },
       {
         number: '2',
-        service: 'Preparación para Certificaciones',
-        description:
-          'Ofrecemos programas comprensivos de preparación para certificaciones internacionales reconocidas mundialmente. Nuestros instructores certificados utilizan metodologías modernas de enseñanza, simuladores de examen actualizado y materiales de estudio basados en los últimos estándares de la industria. Cada programa está diseñado para maximizar tu probabilidad de éxito en el examen de certificación y asegurar que adquieras conocimientos prácticos aplicables en tu entorno laboral.',
-        description_expandable: true,
-        price: '$150',
-      },
-      {
-        number: '3',
         service: 'Tutoría Privada',
         description:
-          'Sesiones de tutoría personalizadas uno a uno con instructores especializados en tu área de interés, ajustadas completamente a tu ritmo de aprendizaje y disponibilidad horaria.',
+          'Sesiones personalizadas con especialistas.',
         price: '$50',
       },
       {
+        number: '3',
+        service: 'Certificación AWS',
+        description:
+          'Preparación completa para el examen AWS Solutions Architect. Incluye simuladores, laboratorios prácticos, materiales en español y acceso de por vida. Instructores certificados con experiencia en arquitecturas en AWS en producción. Cada sesión cubre teoría y práctica con casos reales. Garantizamos apoyo hasta que apruebes el examen de certificación oficial.',
+        price: '$150',
+      },
+      {
         number: '4',
+        service: 'Consultoría',
+        description:
+          'Asesoría profesional.',
+        price: '$200',
+      },
+      {
+        number: '5',
         service: 'Desarrollo Profesional',
         description:
-          'Programas especializados de desarrollo profesional que cubren liderazgo, gestión de proyectos, comunicación efectiva, negociación, pensamiento estratégico y otras competencias clave demandadas por las organizaciones modernas. Nuestros facilitadores traen experiencia práctica del mundo corporativo y comparten casos reales de implementación. Al completar estos programas, estarás equipado con herramientas prácticas y conocimientos aplicables inmediatamente en tu rol profesional actual.',
-        description_expandable: true,
+          'Programas especializados que cubren liderazgo, gestión de proyectos, comunicación efectiva, negociación, pensamiento estratégico y competencias demandadas por empresas modernas. Facilitadores traen experiencia del mundo corporativo. Comparten casos reales y soluciones prácticas. Al completar, estarás equipado con herramientas aplicables inmediatamente en tu rol.',
         price: '$120',
       },
     ],
@@ -185,8 +189,8 @@ export const WithLongContent: Story = {
       totalPages: 1,
       pageSize: 5,
       pageSizeOptions: [5, 10, 20],
-      totalItems: 4,
-      rangeLabel: '1 - 4 de 4 ítems',
+      totalItems: 5,
+      rangeLabel: '1 - 5 de 5 ítems',
     },
   },
 };
