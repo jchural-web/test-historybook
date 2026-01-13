@@ -182,9 +182,9 @@ export interface TableAction {
                   </span>
                 </div>
 
-                <!-- "Ver más…" / "Ver menos" button - show if cell has overflow -->
+                <!-- "Ver más…" / "Ver menos" button - show if cell has overflow and expansion is enabled -->
                 <button
-                  *ngIf="doesCellHaveOverflow(i, column.key)"
+                  *ngIf="!disableExpansion && doesCellHaveOverflow(i, column.key)"
                   type="button"
                   class="table-cell-expand-btn"
                   (click)="toggleCellExpansion(i, column.key)"
@@ -314,9 +314,9 @@ export interface TableAction {
                         </span>
                       </div>
 
-                      <!-- "Ver más…" / "Ver menos" button - show if cell has overflow -->
+                      <!-- "Ver más…" / "Ver menos" button - show if cell has overflow and expansion is enabled -->
                       <button
-                        *ngIf="doesCellHaveOverflow(i, column.key)"
+                        *ngIf="!disableExpansion && doesCellHaveOverflow(i, column.key)"
                         type="button"
                         class="table-cell-expand-btn"
                         (click)="toggleCellExpansion(i, column.key)"
