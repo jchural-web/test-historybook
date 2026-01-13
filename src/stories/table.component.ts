@@ -434,7 +434,7 @@ export class TableComponent implements AfterViewInit, OnDestroy {
   }
 
   /**
-   * Toggle cell expansion state
+   * Toggle cell expansion state and recalculate overflow detection
    */
   toggleCellExpansion(rowIndex: number, columnKey: string): void {
     const cellId = `${rowIndex}-${columnKey}`;
@@ -443,6 +443,11 @@ export class TableComponent implements AfterViewInit, OnDestroy {
     } else {
       this.expandedCells.add(cellId);
     }
+
+    // Recalculate overflow after state change to ensure proper button visibility
+    setTimeout(() => {
+      this.detectAllCellsOverflow();
+    }, 0);
   }
 
 
