@@ -189,28 +189,15 @@
   width: 100%;
 }
 
-/* Expand/Collapse button styling */
+/* Expand/Collapse button styling - uses Button Link design system styles */
 .table-cell-expand-btn {
   align-self: flex-start;
-  padding: 0;
-  height: auto;
-  font-size: 13px;
-  font-weight: 500;
-  color: #2563eb;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  cursor: pointer;
   margin-top: 2px;
 }
 
-.table-cell-expand-btn:hover {
-  opacity: 0.8;
-}
-
-.table-cell-expand-btn:focus-visible {
-  outline: 2px solid #7c3aed;
-  outline-offset: 2px;
-  border-radius: 2px;
+/* Ensure Button component inherits Link styles within the cell */
+.table-cell-expand-btn bsg-button {
+  display: inline-block;
 }
 
 .table-actions-cell {
