@@ -155,8 +155,8 @@ export interface TableAction {
                 class="table-cell"
                 [style.width]="column.width || 'auto'"
                 [ngClass]="{ 'table-cell-expanded': isCellExpanded(i, column.key) }"
-                #cellContainer
-                (afterViewInit)="onCellElementCreated(cellContainer, i, column.key)"
+                [attr.data-row]="i"
+                [attr.data-col]="column.key"
               >
                 <div class="table-cell-content">
                   <!-- Render badge if specified -->
@@ -176,7 +176,7 @@ export interface TableAction {
                   <!-- Render plain text with optional expansion -->
                   <span
                     *ngIf="!row[column.key + '_label'] && !row[column.key + '_badge']"
-                    class="table-cell-text table-cell-text-collapsed"
+                    class="table-cell-text"
                   >
                     {{ row[column.key] }}
                   </span>
