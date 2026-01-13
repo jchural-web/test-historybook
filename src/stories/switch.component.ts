@@ -64,12 +64,13 @@ export class SwitchComponent {
   /**
    * Handle keyboard events (space and enter)
    */
-  onKeydown(event: KeyboardEvent): void {
+  onKeydown(event: Event): void {
+    const keyboardEvent = event as KeyboardEvent;
     if (this.disabled) {
       return;
     }
     // Prevent default to avoid page scroll on space
-    event.preventDefault();
+    keyboardEvent.preventDefault();
     this.toggle();
   }
 }

@@ -92,9 +92,10 @@ export class DialogComponent {
   }
 
   @HostListener('document:keydown.escape', ['$event'])
-  onEscapeKey(event: KeyboardEvent): void {
+  onEscapeKey(event: Event): void {
+    const keyboardEvent = event as KeyboardEvent;
     if (this.open && this.dismissible) {
-      event.preventDefault();
+      keyboardEvent.preventDefault();
       this.close();
     }
   }
