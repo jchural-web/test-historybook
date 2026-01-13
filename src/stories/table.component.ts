@@ -182,16 +182,16 @@ export interface TableAction {
                   </span>
                 </div>
 
-                <!-- "Ver más…" / "Ver menos" button - only show if cell has overflow -->
-                <bsg-button
+                <!-- "Ver más…" / "Ver menos" button - show if cell has overflow -->
+                <button
                   *ngIf="doesCellHaveOverflow(i, column.key)"
-                  [label]="isCellExpanded(i, column.key) ? 'Ver menos' : 'Ver más…'"
-                  variant="link"
-                  size="sm"
-                  (onClick)="toggleCellExpansion(i, column.key)"
-                  [attr.aria-expanded]="isCellExpanded(i, column.key)"
+                  type="button"
                   class="table-cell-expand-btn"
-                ></bsg-button>
+                  (click)="toggleCellExpansion(i, column.key)"
+                  [attr.aria-expanded]="isCellExpanded(i, column.key)"
+                >
+                  {{ isCellExpanded(i, column.key) ? 'Ver menos' : 'Ver más…' }}
+                </button>
               </div>
 
               <!-- Actions Column (for table-actions variant) -->
