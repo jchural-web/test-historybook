@@ -391,6 +391,9 @@ export class TableComponent implements AfterViewInit, OnDestroy {
   @Input() activeTabIndex: number = 0;
   @Input() tabsPagination: any[] = [];
 
+  // Expansion control
+  @Input() disableExpansion: boolean = false;
+
   // Events
   @Output() headerActionClick = new EventEmitter<void>();
   @Output() collapseToggle = new EventEmitter<boolean>();
