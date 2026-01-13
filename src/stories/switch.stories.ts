@@ -33,29 +33,7 @@ const meta: Meta<SwitchComponent> = {
   parameters: {
     docs: {
       description: {
-        component: `
-The Switch component is a toggle control for on/off states, commonly used in settings and forms.
-
-## Behavior
-- **Activation**: Click or keyboard (Space/Enter) toggles the checked state when not disabled
-- **Disabled state**: When disabled=true, the switch cannot be toggled and shows a non-interactive cursor
-- **Accessibility**: Uses role="switch" and aria-checked for screen reader support, fully keyboard navigable
-
-## Visual States
-- **Active (checked)**: White track with purple thumb on the right
-- **Disabled (unchecked)**: Purple track with white thumb on the left, reduced opacity, non-interactive
-
-## Usage
-The Switch is designed to be simple and consistent with the design system. Labels should be provided externally to the component.
-
-**Example with label:**
-\`\`\`html
-<div style="display: flex; align-items: center; gap: 12px;">
-  <bsg-switch [checked]="isEnabled" (onChange)="onToggle($event)"></bsg-switch>
-  <label>Enable notifications</label>
-</div>
-\`\`\`
-        `,
+        component: 'A toggle control for on/off states, commonly used in settings and forms. Activates via click or keyboard (Space/Enter). Fully accessible with role="switch" and keyboard navigation support.',
       },
     },
   },
