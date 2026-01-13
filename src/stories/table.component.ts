@@ -350,7 +350,7 @@ export interface TableAction {
   `,
   styleUrls: ['./table.css'],
 })
-export class TableComponent implements AfterViewInit {
+export class TableComponent implements AfterViewInit, OnDestroy {
   /** Container title */
   @Input() title: string = 'Título del Contenedor';
 
