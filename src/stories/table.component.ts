@@ -407,6 +407,7 @@ export class TableComponent implements AfterViewInit, OnDestroy {
   private expandedCells: Set<string> = new Set();
   private cellsWithOverflow: Set<string> = new Set();
   private resizeObserver: ResizeObserver | null = null;
+  private observedElements: Set<HTMLElement> = new Set();
 
   get containerClasses(): string[] {
     const classes = [`table-${this.variant}`];
