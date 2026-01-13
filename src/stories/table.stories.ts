@@ -159,8 +159,7 @@ export const WithLongContent: Story = {
       {
         number: '2',
         service: 'Tutoría Privada',
-        description:
-          'Sesiones personalizadas con especialistas.',
+        description: 'Sesiones personalizadas con especialistas.',
         price: '$50',
       },
       {
@@ -173,8 +172,7 @@ export const WithLongContent: Story = {
       {
         number: '4',
         service: 'Consultoría',
-        description:
-          'Asesoría profesional.',
+        description: 'Asesoría profesional.',
         price: '$200',
       },
       {

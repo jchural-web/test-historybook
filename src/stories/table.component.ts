@@ -1,4 +1,13 @@
-import { Component, Input, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabNavigationComponent, TabItem } from './tab-navigation.component';
 import { PaginationComponent } from './pagination.component';
@@ -454,7 +463,6 @@ export class TableComponent implements AfterViewInit, OnDestroy {
     }, 0);
   }
 
-
   ngAfterViewInit(): void {
     // Detect overflow after view has been rendered
     // Use multiple delays to ensure CSS has been fully applied and layout is complete
@@ -597,7 +605,14 @@ export class TableComponent implements AfterViewInit, OnDestroy {
 
   getHeaderActionVariant(): ButtonVariant {
     const variant = this.headerAction?.variant;
-    const validVariants: ButtonVariant[] = ['default', 'secondary', 'outline', 'ghost', 'link', 'destructive'];
+    const validVariants: ButtonVariant[] = [
+      'default',
+      'secondary',
+      'outline',
+      'ghost',
+      'link',
+      'destructive',
+    ];
     if (variant && validVariants.includes(variant as ButtonVariant)) {
       return variant as ButtonVariant;
     }
