@@ -350,7 +350,7 @@ export interface TableAction {
   `,
   styleUrls: ['./table.css'],
 })
-export class TableComponent {
+export class TableComponent implements AfterViewInit {
   /** Container title */
   @Input() title: string = 'Título del Contenedor';
 
@@ -401,8 +401,10 @@ export class TableComponent {
   @Output() tabRefresh = new EventEmitter<number>();
   @Output() rowAction = new EventEmitter<{ rowIndex: number; action: TableAction }>();
 
-  // Internal state for cell expansion (tracks expanded cells by rowIndex-columnKey)
+  // Internal state for cell expansion and overflow detection
   private expandedCells: Set<string> = new Set();
+  private cellsWithOverflow: Set<string> = new Set();
+  private resizeObserver: ResizeObserver | null = null;
 
   get containerClasses(): string[] {
     const classes = [`table-${this.variant}`];
