@@ -171,22 +171,19 @@
   gap: 6px;
 }
 
-/* Long text handling */
-.table-cell-long .table-cell-text-collapsed {
+/* Text handling - always apply line clamp initially */
+.table-cell-text {
+  width: 100%;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* Expanded cell shows full content */
-.table-cell-expanded .table-cell-text-collapsed {
+/* When cell is expanded, show all text */
+.table-cell-expanded .table-cell-text {
   -webkit-line-clamp: unset;
   overflow: visible;
-}
-
-.table-cell-text {
-  width: 100%;
 }
 
 /* Expand/Collapse button styling - uses Button Link design system styles */
