@@ -415,17 +415,12 @@ export class TableComponent implements AfterViewInit {
   }
 
   /**
-   * Check if cell content is long enough to need expansion
-   * (more than 80 characters or marked as expandable in row data)
+   * Detect if a cell has text overflow (content is truncated)
+   * Uses ResizeObserver to detect if scrollHeight > clientHeight
    */
-  isCellLong(row: TableRow, columnKey: string): boolean {
-    const cellContent = row[columnKey];
-    if (!cellContent) {
-      return false;
-    }
-    const contentStr = String(cellContent);
-    // Mark as long if explicitly set OR if content exceeds 80 characters
-    return row[columnKey + '_expandable'] === true || contentStr.length > 80;
+  doesCellHaveOverflow(rowIndex: number, columnKey: string): boolean {
+    const cellId = `${rowIndex}-${columnKey}`;
+    return this.cellsWithOverflow.has(cellId);
   }
 
   /**
@@ -445,6 +440,58 @@ export class TableComponent implements AfterViewInit {
       this.expandedCells.delete(cellId);
     } else {
       this.expandedCells.add(cellId);
+    }
+  }
+
+  /**
+   * Track cell element for overflow detection
+   */
+  onCellElementCreated(element: HTMLElement, rowIndex: number, columnKey: string): void {
+    const cellId = `${rowIndex}-${columnKey}`;
+
+    if (!this.resizeObserver) {
+      this.resizeObserver = new ResizeObserver(() => {
+        this.checkCellOverflow(element, cellId);
+      });
+    }
+
+    // Check immediately
+    this.checkCellOverflow(element, cellId);
+
+    // Observe for future changes
+    this.resizeObserver.observe(element);
+  }
+
+  /**
+   * Check if cell content overflows the visible area
+   */
+  private checkCellOverflow(element: HTMLElement, cellId: string): void {
+    // Get the text content span (not the entire cell)
+    const textSpan = element.querySelector('.table-cell-text') as HTMLElement | null;
+
+    if (!textSpan) {
+      this.cellsWithOverflow.delete(cellId);
+      return;
+    }
+
+    // Check if text has scrollHeight > clientHeight (truncated by -webkit-line-clamp)
+    const hasOverflow = textSpan.scrollHeight > textSpan.clientHeight;
+
+    if (hasOverflow) {
+      this.cellsWithOverflow.add(cellId);
+    } else {
+      this.cellsWithOverflow.delete(cellId);
+    }
+  }
+
+  ngAfterViewInit(): void {
+    // ResizeObserver will be initialized on demand when first cell is created
+  }
+
+  ngOnDestroy(): void {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
     }
   }
 
