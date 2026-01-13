@@ -453,22 +453,26 @@ export class TableComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     // Detect overflow after view has been rendered
-    // Use setTimeout to ensure CSS has been applied and layout is complete
+    // Use multiple delays to ensure CSS has been fully applied and layout is complete
+    // Some browsers need multiple checks for accurate measurements
     setTimeout(() => {
       this.detectAllCellsOverflow();
     }, 0);
+
+    setTimeout(() => {
+      this.detectAllCellsOverflow();
+    }, 100);
   }
 
   /**
    * Detect overflow in all table cells
+   * Measures actual scrollHeight vs clientHeight of text content
+   * This only detects overflow when the cell is in collapsed state (line-clamped)
    */
   private detectAllCellsOverflow(): void {
-    const cells = document.querySelectorAll('[data-row][data-col] .table-cell-text') as NodeListOf<HTMLElement>;
+    const cells = document.querySelectorAll('[data-row][data-col]') as NodeListOf<HTMLElement>;
 
-    cells.forEach((textElement) => {
-      const cellElement = textElement.closest('[data-row][data-col]') as HTMLElement;
-      if (!cellElement) return;
-
+    cells.forEach((cellElement) => {
       const rowIndex = cellElement.getAttribute('data-row');
       const colKey = cellElement.getAttribute('data-col');
 
@@ -476,18 +480,61 @@ export class TableComponent implements AfterViewInit, OnDestroy {
 
       const cellId = `${rowIndex}-${colKey}`;
 
-      // Check if text overflows: scrollHeight > clientHeight indicates truncation
-      const hasOverflow = textElement.scrollHeight > textElement.clientHeight;
+      // Only check overflow when the cell is NOT expanded
+      // Because when expanded, the line-clamp is removed and measurements become invalid
+      const isCurrentlyExpanded = this.expandedCells.has(cellId);
+
+      if (isCurrentlyExpanded) {
+        // Cell is expanded - don't check overflow while expanded
+        // We'll re-check when it collapses
+        return;
+      }
+
+      // Get the text content span (it should have line-clamp applied)
+      const textElement = cellElement.querySelector('.table-cell-text') as HTMLElement | null;
+
+      if (!textElement) {
+        this.cellsWithOverflow.delete(cellId);
+        return;
+      }
+
+      // Measure: if scrollHeight > clientHeight, text is truncated by line-clamp
+      // scrollHeight includes hidden overflow, clientHeight is what's visible
+      const hasOverflow = textElement.scrollHeight > textElement.clientHeight + 1; // +1 for rounding errors
 
       if (hasOverflow) {
         this.cellsWithOverflow.add(cellId);
-        // Observe for future resize changes
+
+        // Set up ResizeObserver to re-detect on size changes
         if (!this.resizeObserver) {
           this.resizeObserver = new ResizeObserver(() => {
-            this.detectAllCellsOverflow();
+            // Only recalculate non-expanded cells
+            const expandedCells = Array.from(this.expandedCells);
+            this.cellsWithOverflow.clear();
+
+            document.querySelectorAll('[data-row][data-col]').forEach((cell) => {
+              const row = cell.getAttribute('data-row');
+              const col = cell.getAttribute('data-col');
+              if (!row || !col) return;
+
+              const id = `${row}-${col}`;
+              if (!expandedCells.includes(id)) {
+                const txt = cell.querySelector('.table-cell-text') as HTMLElement | null;
+                if (txt && txt.scrollHeight > txt.clientHeight + 1) {
+                  this.cellsWithOverflow.add(id);
+                }
+              }
+            });
           });
         }
-        this.resizeObserver.observe(cellElement);
+
+        if (!this.resizeObserver.listeners) {
+          this.resizeObserver.listeners = new Set();
+        }
+        if (!this.resizeObserver.listeners.has(cellElement)) {
+          this.resizeObserver.observe(cellElement);
+          this.resizeObserver.listeners.add(cellElement);
+        }
       } else {
         this.cellsWithOverflow.delete(cellId);
       }
