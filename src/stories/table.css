@@ -215,6 +215,8 @@
 
 .table-actions-cell {
   justify-content: center;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .table-actions {
