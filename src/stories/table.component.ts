@@ -376,6 +376,40 @@ export class TableComponent {
     return classes;
   }
 
+  /**
+   * Check if cell content is long enough to need expansion
+   * (more than 80 characters or marked as expandable in row data)
+   */
+  isCellLong(row: TableRow, columnKey: string): boolean {
+    const cellContent = row[columnKey];
+    if (!cellContent) {
+      return false;
+    }
+    const contentStr = String(cellContent);
+    // Mark as long if explicitly set OR if content exceeds 80 characters
+    return row[columnKey + '_expandable'] === true || contentStr.length > 80;
+  }
+
+  /**
+   * Check if a specific cell is currently expanded
+   */
+  isCellExpanded(rowIndex: number, columnKey: string): boolean {
+    const cellId = `${rowIndex}-${columnKey}`;
+    return this.expandedCells.has(cellId);
+  }
+
+  /**
+   * Toggle cell expansion state
+   */
+  toggleCellExpansion(rowIndex: number, columnKey: string): void {
+    const cellId = `${rowIndex}-${columnKey}`;
+    if (this.expandedCells.has(cellId)) {
+      this.expandedCells.delete(cellId);
+    } else {
+      this.expandedCells.add(cellId);
+    }
+  }
+
   toggleCollapse(): void {
     this.isExpanded = !this.isExpanded;
     this.collapseToggle.emit(this.isExpanded);
