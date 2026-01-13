@@ -486,7 +486,46 @@ export class TableComponent implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    // ResizeObserver will be initialized on demand when first cell is created
+    // Detect overflow after view has been rendered
+    // Use setTimeout to ensure CSS has been applied and layout is complete
+    setTimeout(() => {
+      this.detectAllCellsOverflow();
+    }, 0);
+  }
+
+  /**
+   * Detect overflow in all table cells
+   */
+  private detectAllCellsOverflow(): void {
+    const cells = document.querySelectorAll('[data-row][data-col] .table-cell-text') as NodeListOf<HTMLElement>;
+
+    cells.forEach((textElement) => {
+      const cellElement = textElement.closest('[data-row][data-col]') as HTMLElement;
+      if (!cellElement) return;
+
+      const rowIndex = cellElement.getAttribute('data-row');
+      const colKey = cellElement.getAttribute('data-col');
+
+      if (!rowIndex || !colKey) return;
+
+      const cellId = `${rowIndex}-${colKey}`;
+
+      // Check if text overflows: scrollHeight > clientHeight indicates truncation
+      const hasOverflow = textElement.scrollHeight > textElement.clientHeight;
+
+      if (hasOverflow) {
+        this.cellsWithOverflow.add(cellId);
+        // Observe for future resize changes
+        if (!this.resizeObserver) {
+          this.resizeObserver = new ResizeObserver(() => {
+            this.detectAllCellsOverflow();
+          });
+        }
+        this.resizeObserver.observe(cellElement);
+      } else {
+        this.cellsWithOverflow.delete(cellId);
+      }
+    });
   }
 
   ngOnDestroy(): void {
