@@ -136,10 +136,15 @@
   padding: 20px 0;
   border-bottom: 1px solid #cbd5e1;
   align-items: flex-start;
+  transition: padding 0.2s ease;
 }
 
 .table-row:last-child {
   border-bottom: none;
+}
+
+.table-row-expanded {
+  padding: 20px 0;
 }
 
 .table-cell {
