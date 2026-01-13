@@ -219,10 +219,9 @@
   text-decoration: underline;
 }
 
-/* Link button focus state - purple outline matching design system */
+/* Link button focus state - Violet 950 outline matching design system */
 .table-cell-expand-btn:focus:not(:disabled),
 .table-cell-expand-btn:focus-visible {
-  color: #1d4ed8;
   outline: none;
   box-shadow:
     0 0 0 3px white,
