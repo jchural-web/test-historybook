@@ -1,4 +1,13 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type TabSize = 'sm' | 'md' | 'lg';
@@ -17,51 +26,87 @@ export interface TabItem {
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="tab-navigation" [ngClass]="navigationClasses" [attr.role]="'tablist'">
+    <div class="tab-navigation-wrapper" [ngClass]="{ 'tab-navigation-scrollable': scrollable }">
+      <!-- Left Chevron -->
       <button
-        *ngFor="let tab of tabs; let i = index"
+        *ngIf="scrollable && showLeftChevron"
         type="button"
-        class="tab-item"
-        [ngClass]="getTabClasses(i)"
-        [attr.role]="'tab'"
-        [attr.aria-selected]="i === activeIndex"
-        [attr.aria-controls]="'tabpanel-' + i"
-        [disabled]="state === 'disabled'"
-        (click)="handleTabClick(i)"
+        class="tab-scroll-btn tab-scroll-btn-left"
+        [ngClass]="'tab-scroll-btn-color-' + color"
+        (click)="scrollLeft()"
+        [attr.aria-label]="'Anterior'"
       >
-        <!-- Icon-text variant -->
-        <div *ngIf="variant === 'icon-text'" class="tab-icon-content">
-          <div class="tab-icon-circle">
-            <svg
-              class="tab-icon-svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1716C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1716C5.42143 16.9217 5 17.9391 5 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
-                [attr.stroke]="getIconStroke(i)"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-          <span class="tab-label">{{ tab.label }}</span>
-        </div>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M14.2929 5.29289C14.6834 4.90237 15.3164 4.90237 15.707 5.29289C16.0975 5.68342 16.0975 6.31643 15.707 6.70696L10.414 11.9999L15.707 17.2929C16.0975 17.6834 16.0975 18.3164 15.707 18.707C15.3164 19.0975 14.6834 19.0975 14.2929 18.707L8.29289 12.707C7.90237 12.3164 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289Z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
 
-        <!-- Text variant -->
-        <span *ngIf="variant === 'text'" class="tab-text-content">
-          {{ tab.label }}<span *ngIf="tab.count !== undefined"> ({{ tab.count }})</span>
-        </span>
+      <div #tabContainer class="tab-navigation" [ngClass]="navigationClasses" [attr.role]="'tablist'">
+        <button
+          *ngFor="let tab of tabs; let i = index"
+          type="button"
+          class="tab-item"
+          [ngClass]="getTabClasses(i)"
+          [attr.role]="'tab'"
+          [attr.aria-selected]="i === activeIndex"
+          [attr.aria-controls]="'tabpanel-' + i"
+          [disabled]="state === 'disabled'"
+          (click)="handleTabClick(i)"
+        >
+          <!-- Icon-text variant -->
+          <div *ngIf="variant === 'icon-text'" class="tab-icon-content">
+            <div class="tab-icon-circle">
+              <svg
+                class="tab-icon-svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1716C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1716C5.42143 16.9217 5 17.9391 5 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
+                  [attr.stroke]="getIconStroke(i)"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <span class="tab-label">{{ tab.label }}</span>
+          </div>
+
+          <!-- Text variant -->
+          <span *ngIf="variant === 'text'" class="tab-text-content">
+            {{ tab.label }}<span *ngIf="tab.count !== undefined"> ({{ tab.count }})</span>
+          </span>
+        </button>
+      </div>
+
+      <!-- Right Chevron -->
+      <button
+        *ngIf="scrollable && showRightChevron"
+        type="button"
+        class="tab-scroll-btn tab-scroll-btn-right"
+        [ngClass]="'tab-scroll-btn-color-' + color"
+        (click)="scrollRight()"
+        [attr.aria-label]="'Siguiente'"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M9.70711 18.7071C9.31658 19.0976 8.68357 19.0976 8.29305 18.7071C7.90252 18.3166 7.90252 17.6836 8.29305 17.293L13.586 12.0001L8.29305 6.70711C7.90252 6.31658 7.90252 5.68357 8.29304 5.29304C8.68357 4.90252 9.31658 4.90252 9.70711 5.29304L15.7071 11.293C16.0976 11.6836 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071Z"
+            fill="currentColor"
+          />
+        </svg>
       </button>
     </div>
   `,
   styleUrls: ['./tab-navigation.css'],
 })
-export class TabNavigationComponent {
+export class TabNavigationComponent implements AfterViewInit, OnDestroy {
   /** Tab size */
   @Input() size: TabSize = 'md';
 
@@ -89,8 +134,17 @@ export class TabNavigationComponent {
   }
   private _activeIndex: number = 0;
 
+  /** Enable scrollable tabs with chevron navigation */
+  @Input() scrollable: boolean = false;
+
   /** Tab change event emitter */
   @Output() onTabChange = new EventEmitter<number>();
+
+  @ViewChild('tabContainer') tabContainer?: ElementRef<HTMLDivElement>;
+
+  showLeftChevron: boolean = false;
+  showRightChevron: boolean = false;
+  private resizeObserver?: ResizeObserver;
 
   get navigationClasses(): string[] {
     return [
@@ -135,5 +189,73 @@ export class TabNavigationComponent {
       this._activeIndex = index;
       this.onTabChange.emit(index);
     }
+  }
+
+  ngAfterViewInit(): void {
+    if (this.scrollable && this.tabContainer) {
+      // Initial overflow check
+      setTimeout(() => this.updateChevronVisibility(), 0);
+
+      // Listen to scroll events to update chevron visibility
+      this.tabContainer.nativeElement.addEventListener('scroll', () => {
+        this.updateChevronVisibility();
+      });
+
+      // Use ResizeObserver to detect when container or content size changes
+      this.resizeObserver = new ResizeObserver(() => {
+        this.updateChevronVisibility();
+      });
+      this.resizeObserver.observe(this.tabContainer.nativeElement);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+    }
+  }
+
+  private updateChevronVisibility(): void {
+    if (!this.tabContainer) return;
+
+    const container = this.tabContainer.nativeElement;
+    const hasOverflow = container.scrollWidth > container.clientWidth;
+
+    if (!hasOverflow) {
+      this.showLeftChevron = false;
+      this.showRightChevron = false;
+      return;
+    }
+
+    // Show left chevron if not at the start
+    this.showLeftChevron = container.scrollLeft > 1;
+
+    // Show right chevron if not at the end (with 1px tolerance)
+    const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
+    this.showRightChevron = !isAtEnd;
+  }
+
+  scrollLeft(): void {
+    if (!this.tabContainer) return;
+
+    const container = this.tabContainer.nativeElement;
+    const scrollAmount = container.clientWidth * 0.8; // Scroll 80% of container width
+
+    container.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth',
+    });
+  }
+
+  scrollRight(): void {
+    if (!this.tabContainer) return;
+
+    const container = this.tabContainer.nativeElement;
+    const scrollAmount = container.clientWidth * 0.8; // Scroll 80% of container width
+
+    container.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth',
+    });
   }
 }
