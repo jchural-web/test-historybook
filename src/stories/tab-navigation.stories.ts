@@ -38,6 +38,10 @@ const meta: Meta<TabNavigationComponent> = {
       control: 'boolean',
       description: 'Enable horizontal scrolling with chevron navigation when tabs overflow',
     },
+    alwaysShowChevrons: {
+      control: 'boolean',
+      description: 'When scrollable=true, always show chevrons (enabled/disabled) instead of hiding them',
+    },
   },
   args: {
     size: 'md',
@@ -45,6 +49,7 @@ const meta: Meta<TabNavigationComponent> = {
     state: 'default',
     activeIndex: 0,
     scrollable: false,
+    alwaysShowChevrons: false,
     tabs: [
       { label: 'Solicitudes Realizadas', count: 3 },
       { label: 'Información del cliente' },
