@@ -520,12 +520,12 @@
         },
         {
             "name": "TabItem",
-            "id": "interface-TabItem-045dcb5b03ffcb126e53426d2e479ad92af5fca3f73dd289958f0cb9f572e295ecad72ef2fc1a3565b8cfd10f68455f76d525b5f55e7156e7ce757bdfa5c5e99",
+            "id": "interface-TabItem-8972f225f8b84bb54bf2fc6e86b44b62b82a4d48f8bf17bb36752047d45050bdaa8e9d9f35312d7f1461e4c2d5a21350c3e30476d5429d00f9f58892912bbc35",
             "file": "src/stories/tab-navigation.component.ts",
             "deprecated": false,
             "deprecationMessage": "",
             "type": "interface",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type TabSize = 'sm' | 'md' | 'lg';\nexport type TabVariant = 'text' | 'icon-text';\nexport type TabState = 'default' | 'hover' | 'active' | 'focus' | 'disabled';\nexport type TabColor = 'blue' | 'green' | 'yellow';\n\nexport interface TabItem {\n  label: string;\n  count?: number;\n  icon?: boolean; // Whether to show icon (for icon-text variant)\n}\n\n@Component({\n  selector: 'bsg-tab-navigation',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"tab-navigation\" [ngClass]=\"navigationClasses\" [attr.role]=\"'tablist'\">\n      <button\n        *ngFor=\"let tab of tabs; let i = index\"\n        type=\"button\"\n        class=\"tab-item\"\n        [ngClass]=\"getTabClasses(i)\"\n        [attr.role]=\"'tab'\"\n        [attr.aria-selected]=\"i === activeIndex\"\n        [attr.aria-controls]=\"'tabpanel-' + i\"\n        [disabled]=\"state === 'disabled'\"\n        (click)=\"handleTabClick(i)\"\n      >\n        <!-- Icon-text variant -->\n        <div *ngIf=\"variant === 'icon-text'\" class=\"tab-icon-content\">\n          <div class=\"tab-icon-circle\">\n            <svg\n              class=\"tab-icon-svg\"\n              width=\"24\"\n              height=\"24\"\n              viewBox=\"0 0 24 24\"\n              fill=\"none\"\n              xmlns=\"http://www.w3.org/2000/svg\"\n            >\n              <path\n                d=\"M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1716C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1716C5.42143 16.9217 5 17.9391 5 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z\"\n                [attr.stroke]=\"getIconStroke(i)\"\n                stroke-width=\"2\"\n                stroke-linecap=\"round\"\n                stroke-linejoin=\"round\"\n              />\n            </svg>\n          </div>\n          <span class=\"tab-label\">{{ tab.label }}</span>\n        </div>\n\n        <!-- Text variant -->\n        <span *ngIf=\"variant === 'text'\" class=\"tab-text-content\">\n          {{ tab.label }}<span *ngIf=\"tab.count !== undefined\"> ({{ tab.count }})</span>\n        </span>\n      </button>\n    </div>\n  `,\n  styleUrls: ['./tab-navigation.css'],\n})\nexport class TabNavigationComponent {\n  /** Tab size */\n  @Input() size: TabSize = 'md';\n\n  /** Tab variant */\n  @Input() variant: TabVariant = 'text';\n\n  /** Tab state */\n  @Input() state: TabState = 'default';\n\n  /** Tab color variant */\n  @Input() color: TabColor = 'blue';\n\n  /** List of tabs */\n  @Input() tabs: TabItem[] = [\n    { label: 'Solicitudes Realizadas', count: 3 },\n    { label: 'Información del cliente' },\n  ];\n\n  /** Active tab index */\n  @Input() set activeIndex(value: number) {\n    this._activeIndex = value;\n  }\n  get activeIndex(): number {\n    return this._activeIndex;\n  }\n  private _activeIndex: number = 0;\n\n  /** Tab change event emitter */\n  @Output() onTabChange = new EventEmitter<number>();\n\n  get navigationClasses(): string[] {\n    return [\n      `tab-navigation-${this.size}`,\n      `tab-navigation-${this.variant}`,\n      `tab-navigation-state-${this.state}`,\n      `tab-navigation-color-${this.color}`,\n    ];\n  }\n\n  getTabClasses(index: number): string[] {\n    const classes = [\n      `tab-item-${this.size}`,\n      `tab-item-${this.variant}`,\n      `tab-item-color-${this.color}`,\n    ];\n\n    if (index === this._activeIndex) {\n      classes.push('tab-item-active');\n    } else {\n      classes.push(`tab-item-${this.state}`);\n    }\n\n    return classes;\n  }\n\n  getIconStroke(index: number): string {\n    if (index === this._activeIndex) {\n      return 'white';\n    }\n    // Return color-specific stroke values\n    const strokeMap: Record<TabColor, string> = {\n      blue: '#2563EB', // Blue-600\n      green: '#16A34A', // Green-600\n      yellow: '#CA8A04', // Yellow-600\n    };\n    return strokeMap[this.color];\n  }\n\n  handleTabClick(index: number): void {\n    if (this.state !== 'disabled' && index !== this._activeIndex) {\n      this._activeIndex = index;\n      this.onTabChange.emit(index);\n    }\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  ViewChild,\n  ElementRef,\n  AfterViewInit,\n  OnDestroy,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type TabSize = 'sm' | 'md' | 'lg';\nexport type TabVariant = 'text' | 'icon-text';\nexport type TabState = 'default' | 'hover' | 'active' | 'focus' | 'disabled';\nexport type TabColor = 'blue' | 'green' | 'yellow';\n\nexport interface TabItem {\n  label: string;\n  count?: number;\n  icon?: boolean; // Whether to show icon (for icon-text variant)\n}\n\n@Component({\n  selector: 'bsg-tab-navigation',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"tab-navigation-wrapper\" [ngClass]=\"{ 'tab-navigation-scrollable': scrollable }\">\n      <!-- Left Chevron -->\n      <button\n        *ngIf=\"scrollable && (showLeftChevron || alwaysShowChevrons)\"\n        type=\"button\"\n        class=\"tab-scroll-btn tab-scroll-btn-left\"\n        [ngClass]=\"'tab-scroll-btn-color-' + color\"\n        [disabled]=\"isLeftChevronDisabled\"\n        (click)=\"scrollLeft()\"\n        [attr.aria-label]=\"'Anterior'\"\n      >\n        <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path\n            d=\"M14.2929 5.29289C14.6834 4.90237 15.3164 4.90237 15.707 5.29289C16.0975 5.68342 16.0975 6.31643 15.707 6.70696L10.414 11.9999L15.707 17.2929C16.0975 17.6834 16.0975 18.3164 15.707 18.707C15.3164 19.0975 14.6834 19.0975 14.2929 18.707L8.29289 12.707C7.90237 12.3164 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289Z\"\n            fill=\"currentColor\"\n          />\n        </svg>\n      </button>\n\n      <div #tabContainer class=\"tab-navigation\" [ngClass]=\"navigationClasses\" [attr.role]=\"'tablist'\">\n        <button\n          *ngFor=\"let tab of tabs; let i = index\"\n          type=\"button\"\n          class=\"tab-item\"\n          [ngClass]=\"getTabClasses(i)\"\n          [attr.role]=\"'tab'\"\n          [attr.aria-selected]=\"i === activeIndex\"\n          [attr.aria-controls]=\"'tabpanel-' + i\"\n          [disabled]=\"state === 'disabled'\"\n          (click)=\"handleTabClick(i)\"\n        >\n          <!-- Icon-text variant -->\n          <div *ngIf=\"variant === 'icon-text'\" class=\"tab-icon-content\">\n            <div class=\"tab-icon-circle\">\n              <svg\n                class=\"tab-icon-svg\"\n                width=\"24\"\n                height=\"24\"\n                viewBox=\"0 0 24 24\"\n                fill=\"none\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n              >\n                <path\n                  d=\"M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1716C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1716C5.42143 16.9217 5 17.9391 5 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z\"\n                  [attr.stroke]=\"getIconStroke(i)\"\n                  stroke-width=\"2\"\n                  stroke-linecap=\"round\"\n                  stroke-linejoin=\"round\"\n                />\n              </svg>\n            </div>\n            <span class=\"tab-label\">{{ tab.label }}</span>\n          </div>\n\n          <!-- Text variant -->\n          <span *ngIf=\"variant === 'text'\" class=\"tab-text-content\">\n            {{ tab.label }}<span *ngIf=\"tab.count !== undefined\"> ({{ tab.count }})</span>\n          </span>\n        </button>\n      </div>\n\n      <!-- Right Chevron -->\n      <button\n        *ngIf=\"scrollable && (showRightChevron || alwaysShowChevrons)\"\n        type=\"button\"\n        class=\"tab-scroll-btn tab-scroll-btn-right\"\n        [ngClass]=\"'tab-scroll-btn-color-' + color\"\n        [disabled]=\"isRightChevronDisabled\"\n        (click)=\"scrollRight()\"\n        [attr.aria-label]=\"'Siguiente'\"\n      >\n        <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path\n            d=\"M9.70711 18.7071C9.31658 19.0976 8.68357 19.0976 8.29305 18.7071C7.90252 18.3166 7.90252 17.6836 8.29305 17.293L13.586 12.0001L8.29305 6.70711C7.90252 6.31658 7.90252 5.68357 8.29304 5.29304C8.68357 4.90252 9.31658 4.90252 9.70711 5.29304L15.7071 11.293C16.0976 11.6836 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071Z\"\n            fill=\"currentColor\"\n          />\n        </svg>\n      </button>\n    </div>\n  `,\n  styleUrls: ['./tab-navigation.css'],\n})\nexport class TabNavigationComponent implements AfterViewInit, OnDestroy {\n  /** Tab size */\n  @Input() size: TabSize = 'md';\n\n  /** Tab variant */\n  @Input() variant: TabVariant = 'text';\n\n  /** Tab state */\n  @Input() state: TabState = 'default';\n\n  /** Tab color variant */\n  @Input() color: TabColor = 'blue';\n\n  /** List of tabs */\n  @Input() tabs: TabItem[] = [\n    { label: 'Solicitudes Realizadas', count: 3 },\n    { label: 'Información del cliente' },\n  ];\n\n  /** Active tab index */\n  @Input() set activeIndex(value: number) {\n    this._activeIndex = value;\n  }\n  get activeIndex(): number {\n    return this._activeIndex;\n  }\n  private _activeIndex: number = 0;\n\n  /** Enable scrollable tabs with chevron navigation */\n  @Input() scrollable: boolean = false;\n\n  /** Always show chevrons, even when not needed (enables disabled state) */\n  @Input() alwaysShowChevrons: boolean = false;\n\n  /** Tab change event emitter */\n  @Output() onTabChange = new EventEmitter<number>();\n\n  @ViewChild('tabContainer') tabContainer?: ElementRef<HTMLDivElement>;\n\n  showLeftChevron: boolean = false;\n  showRightChevron: boolean = false;\n  isLeftChevronDisabled: boolean = false;\n  isRightChevronDisabled: boolean = false;\n  private resizeObserver?: ResizeObserver;\n  private tabElements: HTMLElement[] = [];\n\n  get navigationClasses(): string[] {\n    return [\n      `tab-navigation-${this.size}`,\n      `tab-navigation-${this.variant}`,\n      `tab-navigation-state-${this.state}`,\n      `tab-navigation-color-${this.color}`,\n    ];\n  }\n\n  getTabClasses(index: number): string[] {\n    const classes = [\n      `tab-item-${this.size}`,\n      `tab-item-${this.variant}`,\n      `tab-item-color-${this.color}`,\n    ];\n\n    if (index === this._activeIndex) {\n      classes.push('tab-item-active');\n    } else {\n      classes.push(`tab-item-${this.state}`);\n    }\n\n    return classes;\n  }\n\n  getIconStroke(index: number): string {\n    if (index === this._activeIndex) {\n      return 'white';\n    }\n    // Return color-specific stroke values\n    const strokeMap: Record<TabColor, string> = {\n      blue: '#2563EB', // Blue-600\n      green: '#16A34A', // Green-600\n      yellow: '#CA8A04', // Yellow-600\n    };\n    return strokeMap[this.color];\n  }\n\n  handleTabClick(index: number): void {\n    if (this.state !== 'disabled' && index !== this._activeIndex) {\n      this._activeIndex = index;\n      this.onTabChange.emit(index);\n    }\n  }\n\n  ngAfterViewInit(): void {\n    if (this.scrollable && this.tabContainer) {\n      // Collect tab elements for snap calculation\n      this.collectTabElements();\n\n      // Initial overflow check\n      setTimeout(() => this.updateChevronVisibility(), 0);\n\n      // Listen to scroll events to update chevron visibility\n      this.tabContainer.nativeElement.addEventListener('scroll', () => {\n        this.updateChevronVisibility();\n      });\n\n      // Use ResizeObserver to detect when container or content size changes\n      this.resizeObserver = new ResizeObserver(() => {\n        this.collectTabElements();\n        this.updateChevronVisibility();\n      });\n      this.resizeObserver.observe(this.tabContainer.nativeElement);\n    }\n  }\n\n  ngOnDestroy(): void {\n    if (this.resizeObserver) {\n      this.resizeObserver.disconnect();\n    }\n  }\n\n  private collectTabElements(): void {\n    if (!this.tabContainer) return;\n    this.tabElements = Array.from(\n      this.tabContainer.nativeElement.querySelectorAll('.tab-item')\n    );\n  }\n\n  private updateChevronVisibility(): void {\n    if (!this.tabContainer) return;\n\n    const container = this.tabContainer.nativeElement;\n    const hasOverflow = container.scrollWidth > container.clientWidth;\n\n    if (!hasOverflow) {\n      this.showLeftChevron = false;\n      this.showRightChevron = false;\n      this.isLeftChevronDisabled = true;\n      this.isRightChevronDisabled = true;\n      return;\n    }\n\n    // Determine disabled state based on scroll position\n    this.isLeftChevronDisabled = container.scrollLeft <= 1;\n    const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;\n    this.isRightChevronDisabled = isAtEnd;\n\n    // For alwaysShowChevrons mode, always show them\n    if (this.alwaysShowChevrons) {\n      this.showLeftChevron = true;\n      this.showRightChevron = true;\n    } else {\n      // Original behavior: hide when not needed\n      this.showLeftChevron = !this.isLeftChevronDisabled;\n      this.showRightChevron = !this.isRightChevronDisabled;\n    }\n  }\n\n  private getSnapScrollAmount(direction: 'left' | 'right'): number {\n    if (!this.tabContainer || this.tabElements.length === 0) {\n      return 0;\n    }\n\n    const container = this.tabContainer.nativeElement;\n    const containerLeft = container.scrollLeft;\n    const containerRight = containerLeft + container.clientWidth;\n\n    // Find the first/last tab that needs to be scrolled into view\n    let targetScroll = containerLeft;\n\n    if (direction === 'right') {\n      // Find the first tab that's partially or fully out of view on the right\n      for (const tab of this.tabElements) {\n        const tabLeft = tab.offsetLeft;\n        const tabRight = tabLeft + tab.offsetWidth;\n\n        if (tabRight > containerRight) {\n          // This tab needs to be scrolled into view\n          // Snap so the tab is fully visible\n          targetScroll = Math.min(tabLeft, container.scrollWidth - container.clientWidth);\n          break;\n        }\n      }\n    } else {\n      // Find the last tab that's partially or fully out of view on the left\n      for (let i = this.tabElements.length - 1; i >= 0; i--) {\n        const tab = this.tabElements[i];\n        const tabLeft = tab.offsetLeft;\n\n        if (tabLeft < containerLeft) {\n          // This tab needs to be scrolled into view\n          // Snap so the tab is fully visible\n          targetScroll = Math.max(0, tabLeft);\n          break;\n        }\n      }\n    }\n\n    return targetScroll - containerLeft;\n  }\n\n  scrollLeft(): void {\n    if (!this.tabContainer || this.isLeftChevronDisabled) return;\n\n    const container = this.tabContainer.nativeElement;\n\n    if (this.alwaysShowChevrons) {\n      // Snap scrolling mode\n      const scrollAmount = this.getSnapScrollAmount('left');\n      container.scrollBy({\n        left: scrollAmount,\n        behavior: 'smooth',\n      });\n    } else {\n      // Original smooth scroll mode\n      const scrollAmount = container.clientWidth * 0.8;\n      container.scrollBy({\n        left: -scrollAmount,\n        behavior: 'smooth',\n      });\n    }\n  }\n\n  scrollRight(): void {\n    if (!this.tabContainer || this.isRightChevronDisabled) return;\n\n    const container = this.tabContainer.nativeElement;\n\n    if (this.alwaysShowChevrons) {\n      // Snap scrolling mode\n      const scrollAmount = this.getSnapScrollAmount('right');\n      container.scrollBy({\n        left: scrollAmount,\n        behavior: 'smooth',\n      });\n    } else {\n      // Original smooth scroll mode\n      const scrollAmount = container.clientWidth * 0.8;\n      container.scrollBy({\n        left: scrollAmount,\n        behavior: 'smooth',\n      });\n    }\n  }\n}\n",
             "properties": [
                 {
                     "name": "count",
@@ -535,7 +535,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 11
+                    "line": 20
                 },
                 {
                     "name": "icon",
@@ -545,7 +545,7 @@
                     "indexKey": "",
                     "optional": true,
                     "description": "",
-                    "line": 12
+                    "line": 21
                 },
                 {
                     "name": "label",
@@ -555,7 +555,7 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 10
+                    "line": 19
                 }
             ],
             "indexSignatures": [],
@@ -6477,7 +6477,7 @@
         },
         {
             "name": "TabNavigationComponent",
-            "id": "component-TabNavigationComponent-045dcb5b03ffcb126e53426d2e479ad92af5fca3f73dd289958f0cb9f572e295ecad72ef2fc1a3565b8cfd10f68455f76d525b5f55e7156e7ce757bdfa5c5e99",
+            "id": "component-TabNavigationComponent-8972f225f8b84bb54bf2fc6e86b44b62b82a4d48f8bf17bb36752047d45050bdaa8e9d9f35312d7f1461e4c2d5a21350c3e30476d5429d00f9f58892912bbc35",
             "file": "src/stories/tab-navigation.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -6489,7 +6489,7 @@
                 "./tab-navigation.css"
             ],
             "styles": [],
-            "template": "<div class=\"tab-navigation\" [ngClass]=\"navigationClasses\" [attr.role]=\"'tablist'\">\n  <button\n    *ngFor=\"let tab of tabs; let i = index\"\n    type=\"button\"\n    class=\"tab-item\"\n    [ngClass]=\"getTabClasses(i)\"\n    [attr.role]=\"'tab'\"\n    [attr.aria-selected]=\"i === activeIndex\"\n    [attr.aria-controls]=\"'tabpanel-' + i\"\n    [disabled]=\"state === 'disabled'\"\n    (click)=\"handleTabClick(i)\"\n  >\n    <!-- Icon-text variant -->\n    <div *ngIf=\"variant === 'icon-text'\" class=\"tab-icon-content\">\n      <div class=\"tab-icon-circle\">\n        <svg\n          class=\"tab-icon-svg\"\n          width=\"24\"\n          height=\"24\"\n          viewBox=\"0 0 24 24\"\n          fill=\"none\"\n          xmlns=\"http://www.w3.org/2000/svg\"\n        >\n          <path\n            d=\"M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1716C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1716C5.42143 16.9217 5 17.9391 5 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z\"\n            [attr.stroke]=\"getIconStroke(i)\"\n            stroke-width=\"2\"\n            stroke-linecap=\"round\"\n            stroke-linejoin=\"round\"\n          />\n        </svg>\n      </div>\n      <span class=\"tab-label\">{{ tab.label }}</span>\n    </div>\n\n    <!-- Text variant -->\n    <span *ngIf=\"variant === 'text'\" class=\"tab-text-content\">\n      {{ tab.label }}<span *ngIf=\"tab.count !== undefined\"> ({{ tab.count }})</span>\n    </span>\n  </button>\n</div>\n",
+            "template": "<div class=\"tab-navigation-wrapper\" [ngClass]=\"{ 'tab-navigation-scrollable': scrollable }\">\n  <!-- Left Chevron -->\n  <button\n    *ngIf=\"scrollable && (showLeftChevron || alwaysShowChevrons)\"\n    type=\"button\"\n    class=\"tab-scroll-btn tab-scroll-btn-left\"\n    [ngClass]=\"'tab-scroll-btn-color-' + color\"\n    [disabled]=\"isLeftChevronDisabled\"\n    (click)=\"scrollLeft()\"\n    [attr.aria-label]=\"'Anterior'\"\n  >\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path\n        d=\"M14.2929 5.29289C14.6834 4.90237 15.3164 4.90237 15.707 5.29289C16.0975 5.68342 16.0975 6.31643 15.707 6.70696L10.414 11.9999L15.707 17.2929C16.0975 17.6834 16.0975 18.3164 15.707 18.707C15.3164 19.0975 14.6834 19.0975 14.2929 18.707L8.29289 12.707C7.90237 12.3164 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289Z\"\n        fill=\"currentColor\"\n      />\n    </svg>\n  </button>\n\n  <div #tabContainer class=\"tab-navigation\" [ngClass]=\"navigationClasses\" [attr.role]=\"'tablist'\">\n    <button\n      *ngFor=\"let tab of tabs; let i = index\"\n      type=\"button\"\n      class=\"tab-item\"\n      [ngClass]=\"getTabClasses(i)\"\n      [attr.role]=\"'tab'\"\n      [attr.aria-selected]=\"i === activeIndex\"\n      [attr.aria-controls]=\"'tabpanel-' + i\"\n      [disabled]=\"state === 'disabled'\"\n      (click)=\"handleTabClick(i)\"\n    >\n      <!-- Icon-text variant -->\n      <div *ngIf=\"variant === 'icon-text'\" class=\"tab-icon-content\">\n        <div class=\"tab-icon-circle\">\n          <svg\n            class=\"tab-icon-svg\"\n            width=\"24\"\n            height=\"24\"\n            viewBox=\"0 0 24 24\"\n            fill=\"none\"\n            xmlns=\"http://www.w3.org/2000/svg\"\n          >\n            <path\n              d=\"M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1716C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1716C5.42143 16.9217 5 17.9391 5 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z\"\n              [attr.stroke]=\"getIconStroke(i)\"\n              stroke-width=\"2\"\n              stroke-linecap=\"round\"\n              stroke-linejoin=\"round\"\n            />\n          </svg>\n        </div>\n        <span class=\"tab-label\">{{ tab.label }}</span>\n      </div>\n\n      <!-- Text variant -->\n      <span *ngIf=\"variant === 'text'\" class=\"tab-text-content\">\n        {{ tab.label }}<span *ngIf=\"tab.count !== undefined\"> ({{ tab.count }})</span>\n      </span>\n    </button>\n  </div>\n\n  <!-- Right Chevron -->\n  <button\n    *ngIf=\"scrollable && (showRightChevron || alwaysShowChevrons)\"\n    type=\"button\"\n    class=\"tab-scroll-btn tab-scroll-btn-right\"\n    [ngClass]=\"'tab-scroll-btn-color-' + color\"\n    [disabled]=\"isRightChevronDisabled\"\n    (click)=\"scrollRight()\"\n    [attr.aria-label]=\"'Siguiente'\"\n  >\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n      <path\n        d=\"M9.70711 18.7071C9.31658 19.0976 8.68357 19.0976 8.29305 18.7071C7.90252 18.3166 7.90252 17.6836 8.29305 17.293L13.586 12.0001L8.29305 6.70711C7.90252 6.31658 7.90252 5.68357 8.29304 5.29304C8.68357 4.90252 9.31658 4.90252 9.70711 5.29304L15.7071 11.293C16.0976 11.6836 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071Z\"\n        fill=\"currentColor\"\n      />\n    </svg>\n  </button>\n</div>\n",
             "templateUrl": [],
             "viewProviders": [],
             "hostDirectives": [],
@@ -6500,8 +6500,19 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nActive tab index",
                     "description": "<p>Active tab index</p>\n",
-                    "line": 84,
+                    "line": 131,
                     "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "alwaysShowChevrons",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nAlways show chevrons, even when not needed (enables disabled state)",
+                    "description": "<p>Always show chevrons, even when not needed (enables disabled state)</p>\n",
+                    "line": 143,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -6511,8 +6522,19 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nTab color variant",
                     "description": "<p>Tab color variant</p>\n",
-                    "line": 75,
+                    "line": 122,
                     "type": "TabColor",
+                    "decorators": []
+                },
+                {
+                    "name": "scrollable",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEnable scrollable tabs with chevron navigation",
+                    "description": "<p>Enable scrollable tabs with chevron navigation</p>\n",
+                    "line": 140,
+                    "type": "boolean",
                     "decorators": []
                 },
                 {
@@ -6522,7 +6544,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nTab size",
                     "description": "<p>Tab size</p>\n",
-                    "line": 66,
+                    "line": 113,
                     "type": "TabSize",
                     "decorators": []
                 },
@@ -6533,7 +6555,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nTab state",
                     "description": "<p>Tab state</p>\n",
-                    "line": 72,
+                    "line": 119,
                     "type": "TabState",
                     "decorators": []
                 },
@@ -6544,7 +6566,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nList of tabs",
                     "description": "<p>List of tabs</p>\n",
-                    "line": 78,
+                    "line": 125,
                     "type": "TabItem[]",
                     "decorators": []
                 },
@@ -6555,7 +6577,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nTab variant",
                     "description": "<p>Tab variant</p>\n",
-                    "line": 69,
+                    "line": 116,
                     "type": "TabVariant",
                     "decorators": []
                 }
@@ -6568,7 +6590,7 @@
                     "deprecationMessage": "",
                     "rawdescription": "\nTab change event emitter",
                     "description": "<p>Tab change event emitter</p>\n",
-                    "line": 93,
+                    "line": 146,
                     "type": "EventEmitter"
                 }
             ],
@@ -6582,13 +6604,116 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 90,
+                    "line": 137,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "isLeftChevronDisabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 152
+                },
+                {
+                    "name": "isRightChevronDisabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 153
+                },
+                {
+                    "name": "resizeObserver",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ResizeObserver",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 154,
+                    "modifierKind": [
+                        123
+                    ]
+                },
+                {
+                    "name": "showLeftChevron",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 150
+                },
+                {
+                    "name": "showRightChevron",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 151
+                },
+                {
+                    "name": "tabContainer",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<HTMLDivElement>",
+                    "indexKey": "",
+                    "optional": true,
+                    "description": "",
+                    "line": 148,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'tabContainer'"
+                        }
+                    ],
+                    "modifierKind": [
+                        171
+                    ]
+                },
+                {
+                    "name": "tabElements",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "HTMLElement[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 155,
                     "modifierKind": [
                         123
                     ]
                 }
             ],
             "methodsClass": [
+                {
+                    "name": "collectTabElements",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 230,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ]
+                },
                 {
                     "name": "getIconStroke",
                     "args": [
@@ -6602,13 +6727,44 @@
                     "optional": false,
                     "returnType": "string",
                     "typeParameters": [],
-                    "line": 120,
+                    "line": 182,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
                         {
                             "name": "index",
                             "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getSnapScrollAmount",
+                    "args": [
+                        {
+                            "name": "direction",
+                            "type": "\"left\" | \"right\"",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 267,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "direction",
+                            "type": "\"left\" | \"right\"",
                             "deprecated": false,
                             "deprecationMessage": "",
                             "tagName": {
@@ -6630,7 +6786,7 @@
                     "optional": false,
                     "returnType": "string[]",
                     "typeParameters": [],
-                    "line": 104,
+                    "line": 166,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6658,7 +6814,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 133,
+                    "line": 195,
                     "deprecated": false,
                     "deprecationMessage": "",
                     "jsdoctags": [
@@ -6671,6 +6827,59 @@
                                 "text": "param"
                             }
                         }
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 202,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 224,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "scrollLeft",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 310,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "scrollRight",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 332,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "updateChevronVisibility",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 237,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
                     ]
                 }
             ],
@@ -6688,16 +6897,20 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type TabSize = 'sm' | 'md' | 'lg';\nexport type TabVariant = 'text' | 'icon-text';\nexport type TabState = 'default' | 'hover' | 'active' | 'focus' | 'disabled';\nexport type TabColor = 'blue' | 'green' | 'yellow';\n\nexport interface TabItem {\n  label: string;\n  count?: number;\n  icon?: boolean; // Whether to show icon (for icon-text variant)\n}\n\n@Component({\n  selector: 'bsg-tab-navigation',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"tab-navigation\" [ngClass]=\"navigationClasses\" [attr.role]=\"'tablist'\">\n      <button\n        *ngFor=\"let tab of tabs; let i = index\"\n        type=\"button\"\n        class=\"tab-item\"\n        [ngClass]=\"getTabClasses(i)\"\n        [attr.role]=\"'tab'\"\n        [attr.aria-selected]=\"i === activeIndex\"\n        [attr.aria-controls]=\"'tabpanel-' + i\"\n        [disabled]=\"state === 'disabled'\"\n        (click)=\"handleTabClick(i)\"\n      >\n        <!-- Icon-text variant -->\n        <div *ngIf=\"variant === 'icon-text'\" class=\"tab-icon-content\">\n          <div class=\"tab-icon-circle\">\n            <svg\n              class=\"tab-icon-svg\"\n              width=\"24\"\n              height=\"24\"\n              viewBox=\"0 0 24 24\"\n              fill=\"none\"\n              xmlns=\"http://www.w3.org/2000/svg\"\n            >\n              <path\n                d=\"M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1716C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1716C5.42143 16.9217 5 17.9391 5 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z\"\n                [attr.stroke]=\"getIconStroke(i)\"\n                stroke-width=\"2\"\n                stroke-linecap=\"round\"\n                stroke-linejoin=\"round\"\n              />\n            </svg>\n          </div>\n          <span class=\"tab-label\">{{ tab.label }}</span>\n        </div>\n\n        <!-- Text variant -->\n        <span *ngIf=\"variant === 'text'\" class=\"tab-text-content\">\n          {{ tab.label }}<span *ngIf=\"tab.count !== undefined\"> ({{ tab.count }})</span>\n        </span>\n      </button>\n    </div>\n  `,\n  styleUrls: ['./tab-navigation.css'],\n})\nexport class TabNavigationComponent {\n  /** Tab size */\n  @Input() size: TabSize = 'md';\n\n  /** Tab variant */\n  @Input() variant: TabVariant = 'text';\n\n  /** Tab state */\n  @Input() state: TabState = 'default';\n\n  /** Tab color variant */\n  @Input() color: TabColor = 'blue';\n\n  /** List of tabs */\n  @Input() tabs: TabItem[] = [\n    { label: 'Solicitudes Realizadas', count: 3 },\n    { label: 'Información del cliente' },\n  ];\n\n  /** Active tab index */\n  @Input() set activeIndex(value: number) {\n    this._activeIndex = value;\n  }\n  get activeIndex(): number {\n    return this._activeIndex;\n  }\n  private _activeIndex: number = 0;\n\n  /** Tab change event emitter */\n  @Output() onTabChange = new EventEmitter<number>();\n\n  get navigationClasses(): string[] {\n    return [\n      `tab-navigation-${this.size}`,\n      `tab-navigation-${this.variant}`,\n      `tab-navigation-state-${this.state}`,\n      `tab-navigation-color-${this.color}`,\n    ];\n  }\n\n  getTabClasses(index: number): string[] {\n    const classes = [\n      `tab-item-${this.size}`,\n      `tab-item-${this.variant}`,\n      `tab-item-color-${this.color}`,\n    ];\n\n    if (index === this._activeIndex) {\n      classes.push('tab-item-active');\n    } else {\n      classes.push(`tab-item-${this.state}`);\n    }\n\n    return classes;\n  }\n\n  getIconStroke(index: number): string {\n    if (index === this._activeIndex) {\n      return 'white';\n    }\n    // Return color-specific stroke values\n    const strokeMap: Record<TabColor, string> = {\n      blue: '#2563EB', // Blue-600\n      green: '#16A34A', // Green-600\n      yellow: '#CA8A04', // Yellow-600\n    };\n    return strokeMap[this.color];\n  }\n\n  handleTabClick(index: number): void {\n    if (this.state !== 'disabled' && index !== this._activeIndex) {\n      this._activeIndex = index;\n      this.onTabChange.emit(index);\n    }\n  }\n}\n",
+            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  ViewChild,\n  ElementRef,\n  AfterViewInit,\n  OnDestroy,\n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nexport type TabSize = 'sm' | 'md' | 'lg';\nexport type TabVariant = 'text' | 'icon-text';\nexport type TabState = 'default' | 'hover' | 'active' | 'focus' | 'disabled';\nexport type TabColor = 'blue' | 'green' | 'yellow';\n\nexport interface TabItem {\n  label: string;\n  count?: number;\n  icon?: boolean; // Whether to show icon (for icon-text variant)\n}\n\n@Component({\n  selector: 'bsg-tab-navigation',\n  standalone: true,\n  imports: [CommonModule],\n  template: `\n    <div class=\"tab-navigation-wrapper\" [ngClass]=\"{ 'tab-navigation-scrollable': scrollable }\">\n      <!-- Left Chevron -->\n      <button\n        *ngIf=\"scrollable && (showLeftChevron || alwaysShowChevrons)\"\n        type=\"button\"\n        class=\"tab-scroll-btn tab-scroll-btn-left\"\n        [ngClass]=\"'tab-scroll-btn-color-' + color\"\n        [disabled]=\"isLeftChevronDisabled\"\n        (click)=\"scrollLeft()\"\n        [attr.aria-label]=\"'Anterior'\"\n      >\n        <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path\n            d=\"M14.2929 5.29289C14.6834 4.90237 15.3164 4.90237 15.707 5.29289C16.0975 5.68342 16.0975 6.31643 15.707 6.70696L10.414 11.9999L15.707 17.2929C16.0975 17.6834 16.0975 18.3164 15.707 18.707C15.3164 19.0975 14.6834 19.0975 14.2929 18.707L8.29289 12.707C7.90237 12.3164 7.90237 11.6834 8.29289 11.2929L14.2929 5.29289Z\"\n            fill=\"currentColor\"\n          />\n        </svg>\n      </button>\n\n      <div #tabContainer class=\"tab-navigation\" [ngClass]=\"navigationClasses\" [attr.role]=\"'tablist'\">\n        <button\n          *ngFor=\"let tab of tabs; let i = index\"\n          type=\"button\"\n          class=\"tab-item\"\n          [ngClass]=\"getTabClasses(i)\"\n          [attr.role]=\"'tab'\"\n          [attr.aria-selected]=\"i === activeIndex\"\n          [attr.aria-controls]=\"'tabpanel-' + i\"\n          [disabled]=\"state === 'disabled'\"\n          (click)=\"handleTabClick(i)\"\n        >\n          <!-- Icon-text variant -->\n          <div *ngIf=\"variant === 'icon-text'\" class=\"tab-icon-content\">\n            <div class=\"tab-icon-circle\">\n              <svg\n                class=\"tab-icon-svg\"\n                width=\"24\"\n                height=\"24\"\n                viewBox=\"0 0 24 24\"\n                fill=\"none\"\n                xmlns=\"http://www.w3.org/2000/svg\"\n              >\n                <path\n                  d=\"M19 21V19C19 17.9391 18.5786 16.9217 17.8284 16.1716C17.0783 15.4214 16.0609 15 15 15H9C7.93913 15 6.92172 15.4214 6.17157 16.1716C5.42143 16.9217 5 17.9391 5 19V21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z\"\n                  [attr.stroke]=\"getIconStroke(i)\"\n                  stroke-width=\"2\"\n                  stroke-linecap=\"round\"\n                  stroke-linejoin=\"round\"\n                />\n              </svg>\n            </div>\n            <span class=\"tab-label\">{{ tab.label }}</span>\n          </div>\n\n          <!-- Text variant -->\n          <span *ngIf=\"variant === 'text'\" class=\"tab-text-content\">\n            {{ tab.label }}<span *ngIf=\"tab.count !== undefined\"> ({{ tab.count }})</span>\n          </span>\n        </button>\n      </div>\n\n      <!-- Right Chevron -->\n      <button\n        *ngIf=\"scrollable && (showRightChevron || alwaysShowChevrons)\"\n        type=\"button\"\n        class=\"tab-scroll-btn tab-scroll-btn-right\"\n        [ngClass]=\"'tab-scroll-btn-color-' + color\"\n        [disabled]=\"isRightChevronDisabled\"\n        (click)=\"scrollRight()\"\n        [attr.aria-label]=\"'Siguiente'\"\n      >\n        <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n          <path\n            d=\"M9.70711 18.7071C9.31658 19.0976 8.68357 19.0976 8.29305 18.7071C7.90252 18.3166 7.90252 17.6836 8.29305 17.293L13.586 12.0001L8.29305 6.70711C7.90252 6.31658 7.90252 5.68357 8.29304 5.29304C8.68357 4.90252 9.31658 4.90252 9.70711 5.29304L15.7071 11.293C16.0976 11.6836 16.0976 12.3166 15.7071 12.7071L9.70711 18.7071Z\"\n            fill=\"currentColor\"\n          />\n        </svg>\n      </button>\n    </div>\n  `,\n  styleUrls: ['./tab-navigation.css'],\n})\nexport class TabNavigationComponent implements AfterViewInit, OnDestroy {\n  /** Tab size */\n  @Input() size: TabSize = 'md';\n\n  /** Tab variant */\n  @Input() variant: TabVariant = 'text';\n\n  /** Tab state */\n  @Input() state: TabState = 'default';\n\n  /** Tab color variant */\n  @Input() color: TabColor = 'blue';\n\n  /** List of tabs */\n  @Input() tabs: TabItem[] = [\n    { label: 'Solicitudes Realizadas', count: 3 },\n    { label: 'Información del cliente' },\n  ];\n\n  /** Active tab index */\n  @Input() set activeIndex(value: number) {\n    this._activeIndex = value;\n  }\n  get activeIndex(): number {\n    return this._activeIndex;\n  }\n  private _activeIndex: number = 0;\n\n  /** Enable scrollable tabs with chevron navigation */\n  @Input() scrollable: boolean = false;\n\n  /** Always show chevrons, even when not needed (enables disabled state) */\n  @Input() alwaysShowChevrons: boolean = false;\n\n  /** Tab change event emitter */\n  @Output() onTabChange = new EventEmitter<number>();\n\n  @ViewChild('tabContainer') tabContainer?: ElementRef<HTMLDivElement>;\n\n  showLeftChevron: boolean = false;\n  showRightChevron: boolean = false;\n  isLeftChevronDisabled: boolean = false;\n  isRightChevronDisabled: boolean = false;\n  private resizeObserver?: ResizeObserver;\n  private tabElements: HTMLElement[] = [];\n\n  get navigationClasses(): string[] {\n    return [\n      `tab-navigation-${this.size}`,\n      `tab-navigation-${this.variant}`,\n      `tab-navigation-state-${this.state}`,\n      `tab-navigation-color-${this.color}`,\n    ];\n  }\n\n  getTabClasses(index: number): string[] {\n    const classes = [\n      `tab-item-${this.size}`,\n      `tab-item-${this.variant}`,\n      `tab-item-color-${this.color}`,\n    ];\n\n    if (index === this._activeIndex) {\n      classes.push('tab-item-active');\n    } else {\n      classes.push(`tab-item-${this.state}`);\n    }\n\n    return classes;\n  }\n\n  getIconStroke(index: number): string {\n    if (index === this._activeIndex) {\n      return 'white';\n    }\n    // Return color-specific stroke values\n    const strokeMap: Record<TabColor, string> = {\n      blue: '#2563EB', // Blue-600\n      green: '#16A34A', // Green-600\n      yellow: '#CA8A04', // Yellow-600\n    };\n    return strokeMap[this.color];\n  }\n\n  handleTabClick(index: number): void {\n    if (this.state !== 'disabled' && index !== this._activeIndex) {\n      this._activeIndex = index;\n      this.onTabChange.emit(index);\n    }\n  }\n\n  ngAfterViewInit(): void {\n    if (this.scrollable && this.tabContainer) {\n      // Collect tab elements for snap calculation\n      this.collectTabElements();\n\n      // Initial overflow check\n      setTimeout(() => this.updateChevronVisibility(), 0);\n\n      // Listen to scroll events to update chevron visibility\n      this.tabContainer.nativeElement.addEventListener('scroll', () => {\n        this.updateChevronVisibility();\n      });\n\n      // Use ResizeObserver to detect when container or content size changes\n      this.resizeObserver = new ResizeObserver(() => {\n        this.collectTabElements();\n        this.updateChevronVisibility();\n      });\n      this.resizeObserver.observe(this.tabContainer.nativeElement);\n    }\n  }\n\n  ngOnDestroy(): void {\n    if (this.resizeObserver) {\n      this.resizeObserver.disconnect();\n    }\n  }\n\n  private collectTabElements(): void {\n    if (!this.tabContainer) return;\n    this.tabElements = Array.from(\n      this.tabContainer.nativeElement.querySelectorAll('.tab-item')\n    );\n  }\n\n  private updateChevronVisibility(): void {\n    if (!this.tabContainer) return;\n\n    const container = this.tabContainer.nativeElement;\n    const hasOverflow = container.scrollWidth > container.clientWidth;\n\n    if (!hasOverflow) {\n      this.showLeftChevron = false;\n      this.showRightChevron = false;\n      this.isLeftChevronDisabled = true;\n      this.isRightChevronDisabled = true;\n      return;\n    }\n\n    // Determine disabled state based on scroll position\n    this.isLeftChevronDisabled = container.scrollLeft <= 1;\n    const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;\n    this.isRightChevronDisabled = isAtEnd;\n\n    // For alwaysShowChevrons mode, always show them\n    if (this.alwaysShowChevrons) {\n      this.showLeftChevron = true;\n      this.showRightChevron = true;\n    } else {\n      // Original behavior: hide when not needed\n      this.showLeftChevron = !this.isLeftChevronDisabled;\n      this.showRightChevron = !this.isRightChevronDisabled;\n    }\n  }\n\n  private getSnapScrollAmount(direction: 'left' | 'right'): number {\n    if (!this.tabContainer || this.tabElements.length === 0) {\n      return 0;\n    }\n\n    const container = this.tabContainer.nativeElement;\n    const containerLeft = container.scrollLeft;\n    const containerRight = containerLeft + container.clientWidth;\n\n    // Find the first/last tab that needs to be scrolled into view\n    let targetScroll = containerLeft;\n\n    if (direction === 'right') {\n      // Find the first tab that's partially or fully out of view on the right\n      for (const tab of this.tabElements) {\n        const tabLeft = tab.offsetLeft;\n        const tabRight = tabLeft + tab.offsetWidth;\n\n        if (tabRight > containerRight) {\n          // This tab needs to be scrolled into view\n          // Snap so the tab is fully visible\n          targetScroll = Math.min(tabLeft, container.scrollWidth - container.clientWidth);\n          break;\n        }\n      }\n    } else {\n      // Find the last tab that's partially or fully out of view on the left\n      for (let i = this.tabElements.length - 1; i >= 0; i--) {\n        const tab = this.tabElements[i];\n        const tabLeft = tab.offsetLeft;\n\n        if (tabLeft < containerLeft) {\n          // This tab needs to be scrolled into view\n          // Snap so the tab is fully visible\n          targetScroll = Math.max(0, tabLeft);\n          break;\n        }\n      }\n    }\n\n    return targetScroll - containerLeft;\n  }\n\n  scrollLeft(): void {\n    if (!this.tabContainer || this.isLeftChevronDisabled) return;\n\n    const container = this.tabContainer.nativeElement;\n\n    if (this.alwaysShowChevrons) {\n      // Snap scrolling mode\n      const scrollAmount = this.getSnapScrollAmount('left');\n      container.scrollBy({\n        left: scrollAmount,\n        behavior: 'smooth',\n      });\n    } else {\n      // Original smooth scroll mode\n      const scrollAmount = container.clientWidth * 0.8;\n      container.scrollBy({\n        left: -scrollAmount,\n        behavior: 'smooth',\n      });\n    }\n  }\n\n  scrollRight(): void {\n    if (!this.tabContainer || this.isRightChevronDisabled) return;\n\n    const container = this.tabContainer.nativeElement;\n\n    if (this.alwaysShowChevrons) {\n      // Snap scrolling mode\n      const scrollAmount = this.getSnapScrollAmount('right');\n      container.scrollBy({\n        left: scrollAmount,\n        behavior: 'smooth',\n      });\n    } else {\n      // Original smooth scroll mode\n      const scrollAmount = container.clientWidth * 0.8;\n      container.scrollBy({\n        left: scrollAmount,\n        behavior: 'smooth',\n      });\n    }\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": "/* Tab Navigation Container */\n.tab-navigation {\n  display: flex;\n  gap: 8px;\n  align-items: flex-start;\n  flex-wrap: wrap;\n}\n\n/* Tab Item Base */\n.tab-item {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 8px;\n  border: none;\n  background: #eff6ff; /* Blue-50 */\n  color: #2563eb; /* Blue-600 */\n  font-family:\n    Inter,\n    -apple-system,\n    Roboto,\n    Helvetica,\n    sans-serif;\n  font-weight: 500;\n  font-size: 14px;\n  cursor: pointer;\n  transition:\n    background-color 0.2s,\n    opacity 0.2s,\n    border 0.2s;\n  box-sizing: border-box;\n  position: relative;\n}\n\n/* Remove default button styles */\n.tab-item::-moz-focus-inner {\n  border: 0;\n}\n\n/* Text Variant */\n.tab-item-text {\n  gap: 10px;\n}\n\n.tab-text-content {\n  white-space: nowrap;\n}\n\n/* Icon-Text Variant */\n.tab-item-icon-text {\n  flex-direction: column;\n  gap: 0;\n}\n\n.tab-icon-content {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n}\n\n.tab-icon-circle {\n  width: 32px;\n  height: 32px;\n  border-radius: 50%;\n  background: #dbeafe; /* Blue-100 */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  transition: background-color 0.2s;\n}\n\n.tab-icon-svg {\n  display: block;\n}\n\n.tab-label {\n  font-size: 12px;\n  font-weight: 600;\n  line-height: normal;\n  text-align: center;\n  margin-top: 4px;\n}\n\n/* Size: SM */\n.tab-item-sm.tab-item-text {\n  padding: 8px 16px;\n  min-height: 29px;\n}\n\n.tab-item-sm.tab-item-icon-text {\n  padding: 8px 18px;\n  min-height: 80px;\n  width: 168px;\n}\n\n/* Size: MD */\n.tab-item-md.tab-item-text {\n  padding: 12px 24px;\n  min-height: 35px;\n}\n\n.tab-item-md.tab-item-icon-text {\n  padding: 13px 26px;\n  min-height: 88px;\n  width: 184px;\n}\n\n/* Size: LG */\n.tab-item-lg.tab-item-text {\n  padding: 16px 32px;\n  min-height: 43px;\n}\n\n.tab-item-lg.tab-item-icon-text {\n  padding: 17px 34px;\n  min-height: 96px;\n  width: 200px;\n}\n\n/* ===== COLOR VARIANTS ===== */\n\n/* BLUE COLOR (Default) */\n.tab-navigation-color-blue .tab-item,\n.tab-item-color-blue {\n  background: #eff6ff; /* Blue-50 */\n  color: #2563eb; /* Blue-600 */\n}\n\n.tab-navigation-color-blue .tab-item:hover:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-blue .tab-item-hover {\n  background: #eff6ff;\n  color: #2563eb;\n  opacity: 0.7;\n  text-decoration: underline;\n}\n\n.tab-navigation-color-blue .tab-item-active,\n.tab-item-color-blue.tab-item-active {\n  background: #2563eb; /* Blue-600 */\n  color: #ffffff;\n}\n\n.tab-navigation-color-blue .tab-item-active .tab-icon-circle,\n.tab-item-color-blue.tab-item-active .tab-icon-circle {\n  background: #3b82f6; /* Blue-500 */\n}\n\n.tab-navigation-color-blue .tab-icon-circle,\n.tab-item-color-blue .tab-icon-circle {\n  background: #dbeafe; /* Blue-100 */\n}\n\n.tab-navigation-color-blue .tab-item:focus-visible:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-blue .tab-item-focus {\n  outline-color: #7c3aed; /* Violet-600 */\n}\n\n.tab-navigation-color-blue .tab-item-disabled,\n.tab-item-color-blue .tab-item-disabled {\n  background: #eff6ff;\n  color: #2563eb;\n}\n\n.tab-navigation-color-blue .tab-item-disabled .tab-icon-circle,\n.tab-item-color-blue .tab-item-disabled .tab-icon-circle {\n  background: #dbeafe;\n}\n\n/* GREEN COLOR */\n.tab-navigation-color-green .tab-item,\n.tab-item-color-green {\n  background: #f0fdf4; /* Green-50 */\n  color: #16a34a; /* Green-600 */\n}\n\n.tab-navigation-color-green .tab-item:hover:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-green .tab-item-hover {\n  background: #f0fdf4;\n  color: #16a34a;\n  opacity: 0.7;\n  text-decoration: underline;\n}\n\n.tab-navigation-color-green .tab-item-active,\n.tab-item-color-green.tab-item-active {\n  background: #16a34a; /* Green-600 */\n  color: #ffffff;\n}\n\n.tab-navigation-color-green .tab-item-active .tab-icon-circle,\n.tab-item-color-green.tab-item-active .tab-icon-circle {\n  background: #22c55e; /* Green-500 */\n}\n\n.tab-navigation-color-green .tab-icon-circle,\n.tab-item-color-green .tab-icon-circle {\n  background: #dcfce7; /* Green-100 */\n}\n\n.tab-navigation-color-green .tab-item:focus-visible:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-green .tab-item-focus {\n  outline-color: #16a34a; /* Green-600 */\n}\n\n.tab-navigation-color-green .tab-item-disabled,\n.tab-item-color-green .tab-item-disabled {\n  background: #f0fdf4;\n  color: #16a34a;\n}\n\n.tab-navigation-color-green .tab-item-disabled .tab-icon-circle,\n.tab-item-color-green .tab-item-disabled .tab-icon-circle {\n  background: #dcfce7;\n}\n\n/* YELLOW COLOR */\n.tab-navigation-color-yellow .tab-item,\n.tab-item-color-yellow {\n  background: #fefce8; /* Yellow-50 */\n  color: #ca8a04; /* Yellow-600 */\n}\n\n.tab-navigation-color-yellow .tab-item:hover:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-yellow .tab-item-hover {\n  background: #fefce8;\n  color: #ca8a04;\n  opacity: 0.7;\n  text-decoration: underline;\n}\n\n.tab-navigation-color-yellow .tab-item-active,\n.tab-item-color-yellow.tab-item-active {\n  background: #ca8a04; /* Yellow-600 */\n  color: #ffffff;\n}\n\n.tab-navigation-color-yellow .tab-item-active .tab-icon-circle,\n.tab-item-color-yellow.tab-item-active .tab-icon-circle {\n  background: #eab308; /* Yellow-500 */\n}\n\n.tab-navigation-color-yellow .tab-icon-circle,\n.tab-item-color-yellow .tab-icon-circle {\n  background: #fef3c7; /* Yellow-100 */\n}\n\n.tab-navigation-color-yellow .tab-item:focus-visible:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-yellow .tab-item-focus {\n  outline-color: #ca8a04; /* Yellow-600 */\n}\n\n.tab-navigation-color-yellow .tab-item-disabled,\n.tab-item-color-yellow .tab-item-disabled {\n  background: #fefce8;\n  color: #ca8a04;\n}\n\n.tab-navigation-color-yellow .tab-item-disabled .tab-icon-circle,\n.tab-item-color-yellow .tab-item-disabled .tab-icon-circle {\n  background: #fef3c7;\n}\n\n/* ===== STATES (shared structure) ===== */\n\n/* State: Default */\n.tab-item-default {\n  opacity: 1;\n}\n\n/* State: Hover */\n.tab-item-hover,\n.tab-item:hover:not(.tab-item-active):not([disabled]) {\n  opacity: 0.7;\n  text-decoration: underline;\n}\n\n/* State: Active */\n.tab-item-active {\n  opacity: 1;\n}\n\n/* Active with focus */\n.tab-item-active:focus-visible {\n  outline: 2px solid;\n  outline-offset: 2px;\n}\n\n.tab-navigation-color-blue .tab-item-active:focus-visible {\n  outline-color: #7c3aed; /* Violet-600 */\n}\n\n.tab-navigation-color-green .tab-item-active:focus-visible {\n  outline-color: #16a34a; /* Green-600 */\n}\n\n.tab-navigation-color-yellow .tab-item-active:focus-visible {\n  outline-color: #ca8a04; /* Yellow-600 */\n}\n\n/* State: Focus - with visible outline ring */\n.tab-item-focus,\n.tab-item:focus-visible:not(.tab-item-active):not([disabled]) {\n  outline: 2px solid;\n  outline-offset: 2px;\n  opacity: 1;\n}\n\n/* State: Disabled */\n.tab-item-disabled,\n.tab-item[disabled] {\n  opacity: 0.4;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n/* Non-interactive when disabled globally */\n.tab-navigation-state-disabled .tab-item {\n  cursor: not-allowed;\n  pointer-events: none;\n  opacity: 0.4;\n}\n",
+                    "data": "/* Tab Navigation Wrapper (for scrollable mode) */\n.tab-navigation-wrapper {\n  display: flex;\n  align-items: center;\n  position: relative;\n  width: 100%;\n}\n\n.tab-navigation-wrapper.tab-navigation-scrollable .tab-navigation {\n  flex-wrap: nowrap;\n  overflow-x: auto;\n  overflow-y: hidden;\n  scroll-behavior: smooth;\n  scrollbar-width: none; /* Firefox */\n  -ms-overflow-style: none; /* IE and Edge */\n}\n\n.tab-navigation-wrapper.tab-navigation-scrollable .tab-navigation::-webkit-scrollbar {\n  display: none; /* Chrome, Safari, Opera */\n}\n\n/* Tab Navigation Container */\n.tab-navigation {\n  display: flex;\n  gap: 8px;\n  align-items: flex-start;\n  flex-wrap: wrap;\n  flex: 1;\n}\n\n/* Scroll Buttons (Chevrons) */\n.tab-scroll-btn {\n  flex-shrink: 0;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  border: 1px solid #cbd5e1;\n  background: #ffffff;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: pointer;\n  transition:\n    background-color 0.2s,\n    opacity 0.2s,\n    border-color 0.2s;\n  padding: 0;\n  margin: 0 8px;\n  outline: none;\n}\n\n.tab-scroll-btn:hover {\n  opacity: 0.8;\n}\n\n.tab-scroll-btn:active {\n  opacity: 0.6;\n}\n\n.tab-scroll-btn:focus-visible {\n  outline: 2px solid #7c3aed; /* Violet-600 */\n  outline-offset: 2px;\n  border-color: #7c3aed;\n}\n\n.tab-scroll-btn:disabled {\n  opacity: 0.4;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n/* Color variants for scroll buttons */\n.tab-scroll-btn-color-blue {\n  color: #2563eb; /* Blue-600 */\n}\n\n.tab-scroll-btn-color-green {\n  color: #16a34a; /* Green-600 */\n}\n\n.tab-scroll-btn-color-yellow {\n  color: #ca8a04; /* Yellow-600 */\n}\n\n.tab-scroll-btn-left {\n  margin-right: 8px;\n}\n\n.tab-scroll-btn-right {\n  margin-left: 8px;\n}\n\n/* Tab Item Base */\n.tab-item {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 8px;\n  border: none;\n  background: #eff6ff; /* Blue-50 */\n  color: #2563eb; /* Blue-600 */\n  font-family:\n    Inter,\n    -apple-system,\n    Roboto,\n    Helvetica,\n    sans-serif;\n  font-weight: 500;\n  font-size: 14px;\n  cursor: pointer;\n  transition:\n    background-color 0.2s,\n    opacity 0.2s,\n    border 0.2s;\n  box-sizing: border-box;\n  position: relative;\n}\n\n/* Remove default button styles */\n.tab-item::-moz-focus-inner {\n  border: 0;\n}\n\n/* Text Variant */\n.tab-item-text {\n  gap: 10px;\n}\n\n.tab-text-content {\n  white-space: nowrap;\n}\n\n/* Icon-Text Variant */\n.tab-item-icon-text {\n  flex-direction: column;\n  gap: 0;\n}\n\n.tab-icon-content {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n}\n\n.tab-icon-circle {\n  width: 32px;\n  height: 32px;\n  border-radius: 50%;\n  background: #dbeafe; /* Blue-100 */\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-shrink: 0;\n  transition: background-color 0.2s;\n}\n\n.tab-icon-svg {\n  display: block;\n}\n\n.tab-label {\n  font-size: 12px;\n  font-weight: 600;\n  line-height: normal;\n  text-align: center;\n  margin-top: 4px;\n}\n\n/* Size: SM */\n.tab-item-sm.tab-item-text {\n  padding: 8px 16px;\n  min-height: 29px;\n}\n\n.tab-item-sm.tab-item-icon-text {\n  padding: 8px 18px;\n  min-height: 80px;\n  width: 168px;\n}\n\n/* Size: MD */\n.tab-item-md.tab-item-text {\n  padding: 12px 24px;\n  min-height: 35px;\n}\n\n.tab-item-md.tab-item-icon-text {\n  padding: 13px 26px;\n  min-height: 88px;\n  width: 184px;\n}\n\n/* Size: LG */\n.tab-item-lg.tab-item-text {\n  padding: 16px 32px;\n  min-height: 43px;\n}\n\n.tab-item-lg.tab-item-icon-text {\n  padding: 17px 34px;\n  min-height: 96px;\n  width: 200px;\n}\n\n/* ===== COLOR VARIANTS ===== */\n\n/* BLUE COLOR (Default) */\n.tab-navigation-color-blue .tab-item,\n.tab-item-color-blue {\n  background: #eff6ff; /* Blue-50 */\n  color: #2563eb; /* Blue-600 */\n}\n\n.tab-navigation-color-blue .tab-item:hover:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-blue .tab-item-hover {\n  background: #eff6ff;\n  color: #2563eb;\n  opacity: 0.7;\n  text-decoration: underline;\n}\n\n.tab-navigation-color-blue .tab-item-active,\n.tab-item-color-blue.tab-item-active {\n  background: #2563eb; /* Blue-600 */\n  color: #ffffff;\n}\n\n.tab-navigation-color-blue .tab-item-active .tab-icon-circle,\n.tab-item-color-blue.tab-item-active .tab-icon-circle {\n  background: #3b82f6; /* Blue-500 */\n}\n\n.tab-navigation-color-blue .tab-icon-circle,\n.tab-item-color-blue .tab-icon-circle {\n  background: #dbeafe; /* Blue-100 */\n}\n\n.tab-navigation-color-blue .tab-item:focus-visible:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-blue .tab-item-focus {\n  outline-color: #7c3aed; /* Violet-600 */\n}\n\n.tab-navigation-color-blue .tab-item-disabled,\n.tab-item-color-blue .tab-item-disabled {\n  background: #eff6ff;\n  color: #2563eb;\n}\n\n.tab-navigation-color-blue .tab-item-disabled .tab-icon-circle,\n.tab-item-color-blue .tab-item-disabled .tab-icon-circle {\n  background: #dbeafe;\n}\n\n/* GREEN COLOR */\n.tab-navigation-color-green .tab-item,\n.tab-item-color-green {\n  background: #f0fdf4; /* Green-50 */\n  color: #16a34a; /* Green-600 */\n}\n\n.tab-navigation-color-green .tab-item:hover:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-green .tab-item-hover {\n  background: #f0fdf4;\n  color: #16a34a;\n  opacity: 0.7;\n  text-decoration: underline;\n}\n\n.tab-navigation-color-green .tab-item-active,\n.tab-item-color-green.tab-item-active {\n  background: #16a34a; /* Green-600 */\n  color: #ffffff;\n}\n\n.tab-navigation-color-green .tab-item-active .tab-icon-circle,\n.tab-item-color-green.tab-item-active .tab-icon-circle {\n  background: #22c55e; /* Green-500 */\n}\n\n.tab-navigation-color-green .tab-icon-circle,\n.tab-item-color-green .tab-icon-circle {\n  background: #dcfce7; /* Green-100 */\n}\n\n.tab-navigation-color-green .tab-item:focus-visible:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-green .tab-item-focus {\n  outline-color: #16a34a; /* Green-600 */\n}\n\n.tab-navigation-color-green .tab-item-disabled,\n.tab-item-color-green .tab-item-disabled {\n  background: #f0fdf4;\n  color: #16a34a;\n}\n\n.tab-navigation-color-green .tab-item-disabled .tab-icon-circle,\n.tab-item-color-green .tab-item-disabled .tab-icon-circle {\n  background: #dcfce7;\n}\n\n/* YELLOW COLOR */\n.tab-navigation-color-yellow .tab-item,\n.tab-item-color-yellow {\n  background: #fefce8; /* Yellow-50 */\n  color: #ca8a04; /* Yellow-600 */\n}\n\n.tab-navigation-color-yellow .tab-item:hover:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-yellow .tab-item-hover {\n  background: #fefce8;\n  color: #ca8a04;\n  opacity: 0.7;\n  text-decoration: underline;\n}\n\n.tab-navigation-color-yellow .tab-item-active,\n.tab-item-color-yellow.tab-item-active {\n  background: #ca8a04; /* Yellow-600 */\n  color: #ffffff;\n}\n\n.tab-navigation-color-yellow .tab-item-active .tab-icon-circle,\n.tab-item-color-yellow.tab-item-active .tab-icon-circle {\n  background: #eab308; /* Yellow-500 */\n}\n\n.tab-navigation-color-yellow .tab-icon-circle,\n.tab-item-color-yellow .tab-icon-circle {\n  background: #fef3c7; /* Yellow-100 */\n}\n\n.tab-navigation-color-yellow .tab-item:focus-visible:not(.tab-item-active):not([disabled]),\n.tab-navigation-color-yellow .tab-item-focus {\n  outline-color: #ca8a04; /* Yellow-600 */\n}\n\n.tab-navigation-color-yellow .tab-item-disabled,\n.tab-item-color-yellow .tab-item-disabled {\n  background: #fefce8;\n  color: #ca8a04;\n}\n\n.tab-navigation-color-yellow .tab-item-disabled .tab-icon-circle,\n.tab-item-color-yellow .tab-item-disabled .tab-icon-circle {\n  background: #fef3c7;\n}\n\n/* ===== STATES (shared structure) ===== */\n\n/* State: Default */\n.tab-item-default {\n  opacity: 1;\n}\n\n/* State: Hover */\n.tab-item-hover,\n.tab-item:hover:not(.tab-item-active):not([disabled]) {\n  opacity: 0.7;\n  text-decoration: underline;\n}\n\n/* State: Active */\n.tab-item-active {\n  opacity: 1;\n}\n\n/* Active with focus */\n.tab-item-active:focus-visible {\n  outline: 2px solid;\n  outline-offset: 2px;\n}\n\n.tab-navigation-color-blue .tab-item-active:focus-visible {\n  outline-color: #7c3aed; /* Violet-600 */\n}\n\n.tab-navigation-color-green .tab-item-active:focus-visible {\n  outline-color: #16a34a; /* Green-600 */\n}\n\n.tab-navigation-color-yellow .tab-item-active:focus-visible {\n  outline-color: #ca8a04; /* Yellow-600 */\n}\n\n/* State: Focus - with visible outline ring */\n.tab-item-focus,\n.tab-item:focus-visible:not(.tab-item-active):not([disabled]) {\n  outline: 2px solid;\n  outline-offset: 2px;\n  opacity: 1;\n}\n\n/* State: Disabled */\n.tab-item-disabled,\n.tab-item[disabled] {\n  opacity: 0.4;\n  cursor: not-allowed;\n  pointer-events: none;\n}\n\n/* Non-interactive when disabled globally */\n.tab-navigation-state-disabled .tab-item {\n  cursor: not-allowed;\n  pointer-events: none;\n  opacity: 0.4;\n}\n",
                     "styleUrl": "./tab-navigation.css"
                 }
             ],
             "stylesData": "",
             "extends": [],
+            "implements": [
+                "AfterViewInit",
+                "OnDestroy"
+            ],
             "accessors": {
                 "activeIndex": {
                     "name": "activeIndex",
@@ -6715,7 +6928,7 @@
                             }
                         ],
                         "returnType": "void",
-                        "line": 84,
+                        "line": 131,
                         "rawdescription": "\nActive tab index",
                         "description": "<p>Active tab index</p>\n",
                         "jsdoctags": [
@@ -6734,7 +6947,7 @@
                         "name": "activeIndex",
                         "type": "number",
                         "returnType": "number",
-                        "line": 87
+                        "line": 134
                     }
                 },
                 "navigationClasses": {
@@ -6743,7 +6956,7 @@
                         "name": "navigationClasses",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 95
+                        "line": 157
                     }
                 }
             }
@@ -10399,9 +10612,9 @@
                 "type": "component",
                 "linktype": "component",
                 "name": "TabNavigationComponent",
-                "coveragePercent": 58,
-                "coverageCount": "7/12",
-                "status": "good"
+                "coveragePercent": 32,
+                "coverageCount": "9/28",
+                "status": "medium"
             },
             {
                 "filePath": "src/stories/tab-navigation.component.ts",
