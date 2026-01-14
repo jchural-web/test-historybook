@@ -63,6 +63,12 @@
   border-color: #7c3aed;
 }
 
+.tab-scroll-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* Color variants for scroll buttons */
 .tab-scroll-btn-color-blue {
   color: #2563eb; /* Blue-600 */
