@@ -40,7 +40,8 @@ const meta: Meta<TabNavigationComponent> = {
     },
     alwaysShowChevrons: {
       control: 'boolean',
-      description: 'When scrollable=true, always show chevrons (enabled/disabled) instead of hiding them',
+      description:
+        'When scrollable=true, always show chevrons (enabled/disabled) instead of hiding them',
     },
   },
   args: {
