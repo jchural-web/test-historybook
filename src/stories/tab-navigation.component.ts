@@ -302,6 +302,11 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
           break;
         }
       }
+
+      // If scrolling won't move us or we're already at/near the start, snap exactly to 0
+      if (targetScroll === containerLeft || targetScroll <= 1) {
+        targetScroll = 0;
+      }
     }
 
     return targetScroll - containerLeft;
