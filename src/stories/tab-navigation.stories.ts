@@ -541,23 +541,24 @@ export const UsageExamples: Story = {
         <!-- Example 6: Scrollable Tabs with Carousel Navigation -->
         <div>
           <h4 style="margin: 0 0 16px 0; font-size: 14px; font-weight: 600; color: #202020;">Scrollable Tabs - Many Benefits (Blue)</h4>
-          <p style="margin: 0 0 12px 0; font-size: 12px; color: #64748B;">Use arrow buttons to navigate when tabs exceed container width</p>
+          <p style="margin: 0 0 12px 0; font-size: 12px; color: #64748B;">Navigation buttons always visible: enabled when scrollable, disabled when at boundaries (icon + text variant)</p>
           <bsg-tab-navigation
-            variant="text"
+            variant="icon-text"
             size="md"
             color="blue"
             [scrollable]="true"
+            [alwaysShowChevrons]="true"
             [tabs]="[
-              { label: 'Mensajes Recibidos', count: 4 },
-              { label: 'Beneficios Pendientes', count: 7 },
-              { label: 'Beneficios Pendientes', count: 7 },
-              { label: 'Beneficios Pendientes', count: 7 },
-              { label: 'Beneficios Pendientes', count: 7 },
-              { label: 'Beneficios Pendientes', count: 7 },
-              { label: 'Beneficios Pendientes', count: 7 },
-              { label: 'Beneficios Pendientes', count: 7 },
-              { label: 'Beneficios Pendientes', count: 7 },
-              { label: 'Beneficios Pendientes', count: 7 }
+              { label: 'Mensajes Recibidos', icon: true },
+              { label: 'Beneficios Pendientes', icon: true },
+              { label: 'Beneficios Pendientes', icon: true },
+              { label: 'Beneficios Pendientes', icon: true },
+              { label: 'Beneficios Pendientes', icon: true },
+              { label: 'Beneficios Pendientes', icon: true },
+              { label: 'Beneficios Pendientes', icon: true },
+              { label: 'Beneficios Pendientes', icon: true },
+              { label: 'Beneficios Pendientes', icon: true },
+              { label: 'Beneficios Pendientes', icon: true }
             ]"
             [activeIndex]="0">
           </bsg-tab-navigation>
