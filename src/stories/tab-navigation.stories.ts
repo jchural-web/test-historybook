@@ -34,12 +34,17 @@ const meta: Meta<TabNavigationComponent> = {
       control: 'object',
       description: 'Array of tab items',
     },
+    scrollable: {
+      control: 'boolean',
+      description: 'Enable horizontal scrolling with chevron navigation when tabs overflow',
+    },
   },
   args: {
     size: 'md',
     variant: 'text',
     state: 'default',
     activeIndex: 0,
+    scrollable: false,
     tabs: [
       { label: 'Solicitudes Realizadas', count: 3 },
       { label: 'Información del cliente' },
