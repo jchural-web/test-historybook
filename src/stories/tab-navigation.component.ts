@@ -266,7 +266,7 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
 
   private getSnapScrollAmount(direction: 'left' | 'right'): number {
     if (!this.tabContainer || this.tabElements.length === 0) {
-      return this.tabContainer?.nativeElement.clientWidth * 0.8 || 0;
+      return 0;
     }
 
     const container = this.tabContainer.nativeElement;
