@@ -264,95 +264,57 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  private getSnapScrollAmount(direction: 'left' | 'right'): number {
-    if (!this.tabContainer || this.tabElements.length === 0) {
+  private getFixedScrollAmount(): number {
+    if (!this.tabContainer) {
       return 0;
     }
 
     const container = this.tabContainer.nativeElement;
-    const containerLeft = container.scrollLeft;
-    const containerRight = containerLeft + container.clientWidth;
+    // Use 80% of viewport width as the fixed scroll distance
+    return container.clientWidth * 0.8;
+  }
 
-    // Find the first/last tab that needs to be scrolled into view
-    let targetScroll = containerLeft;
-
-    if (direction === 'right') {
-      // Find the first tab that's partially or fully out of view on the right
-      for (const tab of this.tabElements) {
-        const tabLeft = tab.offsetLeft;
-        const tabRight = tabLeft + tab.offsetWidth;
-
-        if (tabRight > containerRight) {
-          // This tab needs to be scrolled into view
-          // Snap so the tab is fully visible
-          targetScroll = Math.min(tabLeft, container.scrollWidth - container.clientWidth);
-          break;
-        }
-      }
-    } else {
-      // Find the last tab that's partially or fully out of view on the left
-      for (let i = this.tabElements.length - 1; i >= 0; i--) {
-        const tab = this.tabElements[i];
-        const tabLeft = tab.offsetLeft;
-
-        if (tabLeft < containerLeft) {
-          // This tab needs to be scrolled into view
-          // Snap so the tab is fully visible
-          targetScroll = Math.max(0, tabLeft);
-          break;
-        }
-      }
-
-      // If scrolling won't move us or we're already at/near the start, snap exactly to 0
-      if (targetScroll === containerLeft || targetScroll <= 1) {
-        targetScroll = 0;
-      }
+  private constrainScrollPosition(newScrollLeft: number): number {
+    if (!this.tabContainer) {
+      return 0;
     }
 
-    return targetScroll - containerLeft;
+    const container = this.tabContainer.nativeElement;
+    const maxScroll = container.scrollWidth - container.clientWidth;
+
+    // Clamp scroll position between 0 and max
+    return Math.max(0, Math.min(newScrollLeft, maxScroll));
   }
 
   scrollLeft(): void {
     if (!this.tabContainer || this.isLeftChevronDisabled) return;
 
     const container = this.tabContainer.nativeElement;
+    const scrollAmount = this.getFixedScrollAmount();
 
-    if (this.alwaysShowChevrons) {
-      // Snap scrolling mode
-      const scrollAmount = this.getSnapScrollAmount('left');
-      container.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth',
-      });
-    } else {
-      // Original smooth scroll mode
-      const scrollAmount = container.clientWidth * 0.8;
-      container.scrollBy({
-        left: -scrollAmount,
-        behavior: 'smooth',
-      });
-    }
+    // Calculate new position by moving left the same fixed amount
+    const newScrollLeft = container.scrollLeft - scrollAmount;
+    const constrainedPosition = this.constrainScrollPosition(newScrollLeft);
+
+    container.scrollBy({
+      left: constrainedPosition - container.scrollLeft,
+      behavior: 'smooth',
+    });
   }
 
   scrollRight(): void {
     if (!this.tabContainer || this.isRightChevronDisabled) return;
 
     const container = this.tabContainer.nativeElement;
+    const scrollAmount = this.getFixedScrollAmount();
 
-    if (this.alwaysShowChevrons) {
-      // Snap scrolling mode
-      const scrollAmount = this.getSnapScrollAmount('right');
-      container.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth',
-      });
-    } else {
-      // Original smooth scroll mode
-      const scrollAmount = container.clientWidth * 0.8;
-      container.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth',
-      });
-    }
+    // Calculate new position by moving right the same fixed amount
+    const newScrollLeft = container.scrollLeft + scrollAmount;
+    const constrainedPosition = this.constrainScrollPosition(newScrollLeft);
+
+    container.scrollBy({
+      left: constrainedPosition - container.scrollLeft,
+      behavior: 'smooth',
+    });
   }
 }
