@@ -29,10 +29,11 @@ export interface TabItem {
     <div class="tab-navigation-wrapper" [ngClass]="{ 'tab-navigation-scrollable': scrollable }">
       <!-- Left Chevron -->
       <button
-        *ngIf="scrollable && showLeftChevron"
+        *ngIf="scrollable && (showLeftChevron || alwaysShowChevrons)"
         type="button"
         class="tab-scroll-btn tab-scroll-btn-left"
         [ngClass]="'tab-scroll-btn-color-' + color"
+        [disabled]="isLeftChevronDisabled"
         (click)="scrollLeft()"
         [attr.aria-label]="'Anterior'"
       >
@@ -88,10 +89,11 @@ export interface TabItem {
 
       <!-- Right Chevron -->
       <button
-        *ngIf="scrollable && showRightChevron"
+        *ngIf="scrollable && (showRightChevron || alwaysShowChevrons)"
         type="button"
         class="tab-scroll-btn tab-scroll-btn-right"
         [ngClass]="'tab-scroll-btn-color-' + color"
+        [disabled]="isRightChevronDisabled"
         (click)="scrollRight()"
         [attr.aria-label]="'Siguiente'"
       >
@@ -137,6 +139,9 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
   /** Enable scrollable tabs with chevron navigation */
   @Input() scrollable: boolean = false;
 
+  /** Always show chevrons, even when not needed (enables disabled state) */
+  @Input() alwaysShowChevrons: boolean = false;
+
   /** Tab change event emitter */
   @Output() onTabChange = new EventEmitter<number>();
 
@@ -144,7 +149,10 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
 
   showLeftChevron: boolean = false;
   showRightChevron: boolean = false;
+  isLeftChevronDisabled: boolean = false;
+  isRightChevronDisabled: boolean = false;
   private resizeObserver?: ResizeObserver;
+  private tabElements: HTMLElement[] = [];
 
   get navigationClasses(): string[] {
     return [
@@ -193,6 +201,9 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (this.scrollable && this.tabContainer) {
+      // Collect tab elements for snap calculation
+      this.collectTabElements();
+
       // Initial overflow check
       setTimeout(() => this.updateChevronVisibility(), 0);
 
@@ -203,6 +214,7 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
 
       // Use ResizeObserver to detect when container or content size changes
       this.resizeObserver = new ResizeObserver(() => {
+        this.collectTabElements();
         this.updateChevronVisibility();
       });
       this.resizeObserver.observe(this.tabContainer.nativeElement);
@@ -215,6 +227,13 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  private collectTabElements(): void {
+    if (!this.tabContainer) return;
+    this.tabElements = Array.from(
+      this.tabContainer.nativeElement.querySelectorAll('.tab-item')
+    );
+  }
+
   private updateChevronVisibility(): void {
     if (!this.tabContainer) return;
 
@@ -224,38 +243,111 @@ export class TabNavigationComponent implements AfterViewInit, OnDestroy {
     if (!hasOverflow) {
       this.showLeftChevron = false;
       this.showRightChevron = false;
+      this.isLeftChevronDisabled = true;
+      this.isRightChevronDisabled = true;
       return;
     }
 
-    // Show left chevron if not at the start
-    this.showLeftChevron = container.scrollLeft > 1;
-
-    // Show right chevron if not at the end (with 1px tolerance)
+    // Determine disabled state based on scroll position
+    this.isLeftChevronDisabled = container.scrollLeft <= 1;
     const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 1;
-    this.showRightChevron = !isAtEnd;
+    this.isRightChevronDisabled = isAtEnd;
+
+    // For alwaysShowChevrons mode, always show them
+    if (this.alwaysShowChevrons) {
+      this.showLeftChevron = true;
+      this.showRightChevron = true;
+    } else {
+      // Original behavior: hide when not needed
+      this.showLeftChevron = !this.isLeftChevronDisabled;
+      this.showRightChevron = !this.isRightChevronDisabled;
+    }
+  }
+
+  private getSnapScrollAmount(direction: 'left' | 'right'): number {
+    if (!this.tabContainer || this.tabElements.length === 0) {
+      return this.tabContainer?.nativeElement.clientWidth * 0.8 || 0;
+    }
+
+    const container = this.tabContainer.nativeElement;
+    const containerLeft = container.scrollLeft;
+    const containerRight = containerLeft + container.clientWidth;
+
+    // Find the first/last tab that needs to be scrolled into view
+    let targetScroll = containerLeft;
+
+    if (direction === 'right') {
+      // Find the first tab that's partially or fully out of view on the right
+      for (const tab of this.tabElements) {
+        const tabLeft = tab.offsetLeft;
+        const tabRight = tabLeft + tab.offsetWidth;
+
+        if (tabRight > containerRight) {
+          // This tab needs to be scrolled into view
+          // Snap so the tab is fully visible
+          targetScroll = Math.min(tabLeft, container.scrollWidth - container.clientWidth);
+          break;
+        }
+      }
+    } else {
+      // Find the last tab that's partially or fully out of view on the left
+      for (let i = this.tabElements.length - 1; i >= 0; i--) {
+        const tab = this.tabElements[i];
+        const tabLeft = tab.offsetLeft;
+
+        if (tabLeft < containerLeft) {
+          // This tab needs to be scrolled into view
+          // Snap so the tab is fully visible
+          targetScroll = Math.max(0, tabLeft);
+          break;
+        }
+      }
+    }
+
+    return targetScroll - containerLeft;
   }
 
   scrollLeft(): void {
-    if (!this.tabContainer) return;
+    if (!this.tabContainer || this.isLeftChevronDisabled) return;
 
     const container = this.tabContainer.nativeElement;
-    const scrollAmount = container.clientWidth * 0.8; // Scroll 80% of container width
 
-    container.scrollBy({
-      left: -scrollAmount,
-      behavior: 'smooth',
-    });
+    if (this.alwaysShowChevrons) {
+      // Snap scrolling mode
+      const scrollAmount = this.getSnapScrollAmount('left');
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth',
+      });
+    } else {
+      // Original smooth scroll mode
+      const scrollAmount = container.clientWidth * 0.8;
+      container.scrollBy({
+        left: -scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   }
 
   scrollRight(): void {
-    if (!this.tabContainer) return;
+    if (!this.tabContainer || this.isRightChevronDisabled) return;
 
     const container = this.tabContainer.nativeElement;
-    const scrollAmount = container.clientWidth * 0.8; // Scroll 80% of container width
 
-    container.scrollBy({
-      left: scrollAmount,
-      behavior: 'smooth',
-    });
+    if (this.alwaysShowChevrons) {
+      // Snap scrolling mode
+      const scrollAmount = this.getSnapScrollAmount('right');
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth',
+      });
+    } else {
+      // Original smooth scroll mode
+      const scrollAmount = container.clientWidth * 0.8;
+      container.scrollBy({
+        left: scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   }
 }
