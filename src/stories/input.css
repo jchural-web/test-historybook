@@ -1,0 +1,245 @@
+/* Input field container (includes label and error) */
+.input-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Input label */
+.input-label {
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #202020;
+  margin-bottom: 2px;
+}
+
+/* Error message */
+.input-error-message {
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #dc2626;
+  margin-top: 4px;
+}
+
+/* Base input wrapper styles */
+.input-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  border-radius: 6px;
+  border: 1px solid;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Input field base styles */
+.input-field {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.05px;
+  color: #1e293b;
+  box-sizing: border-box;
+}
+
+.input-field::placeholder {
+  color: #64748b;
+}
+
+/* Icon styling */
+.input-icon {
+  flex-shrink: 0;
+}
+
+.input-icon-leading {
+  order: -1;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Password toggle button */
+.password-toggle-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: currentColor;
+  transition: opacity 0.2s ease;
+  margin-right: 4px;
+}
+
+.password-toggle-btn:not(:disabled):hover {
+  opacity: 0.7;
+}
+
+.password-toggle-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.eye-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Size variants */
+.input-sm {
+  height: 32px;
+  padding: 4px 12px;
+}
+
+.input-md {
+  height: 40px;
+  padding: 4px 12px;
+}
+
+.input-lg {
+  height: 48px;
+  padding: 4px 12px;
+}
+
+/* Adjust padding for leading icon */
+.input-with-icon-leading.input-sm {
+  padding-left: 8px;
+  padding-right: 12px;
+}
+
+.input-with-icon-leading.input-md {
+  padding-left: 8px;
+  padding-right: 12px;
+}
+
+.input-with-icon-leading.input-lg {
+  padding-left: 8px;
+  padding-right: 12px;
+}
+
+/* Adjust padding for password toggle (right-side icon) */
+.input-with-password-toggle.input-sm {
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+.input-with-password-toggle.input-md {
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+.input-with-password-toggle.input-lg {
+  padding-left: 12px;
+  padding-right: 8px;
+}
+
+/* State variants - Default */
+.input-state-default {
+  border-color: #cbd5e1;
+  background: transparent;
+}
+
+.input-state-default:hover,
+.input-state-default.input-state-hover {
+  opacity: 0.9;
+}
+
+.input-state-default .input-field:focus {
+  outline: none;
+}
+
+/* State variants - Hover */
+.input-state-hover {
+  border-color: #cbd5e1;
+  background: transparent;
+  opacity: 0.9;
+}
+
+/* State variants - Focus */
+.input-state-focus,
+.input-wrapper:has(.input-field:focus) {
+  border-color: #64748b;
+  background: transparent;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #7c3aed;
+}
+
+.input-state-focus .input-field,
+.input-wrapper:has(.input-field:focus) .input-field {
+  color: #1e293b;
+}
+
+/* Focus state for error (destructive) - keep red border, purple ring only */
+.input-state-error.input-state-focus,
+.input-state-error:has(.input-field:focus) {
+  border-color: #dc2626;
+  background: transparent;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #7c3aed;
+}
+
+/* State variants - Disabled */
+.input-state-disabled {
+  border-color: #cbd5e1;
+  background: transparent;
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.input-state-disabled .input-field {
+  cursor: not-allowed;
+}
+
+/* State variants - Error */
+.input-state-error {
+  border-color: #dc2626;
+  background: transparent;
+}
+
+.input-state-error .input-field {
+  color: #dc2626;
+}
+
+.input-state-error .input-field::placeholder {
+  color: #dc2626;
+}
+
+/* Remove browser default focus styles */
+.input-field:focus {
+  outline: none;
+}
+
+/* Ensure consistent box-sizing */
+* {
+  box-sizing: border-box;
+}

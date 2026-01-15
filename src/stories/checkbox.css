@@ -1,0 +1,99 @@
+/* Base checkbox styles */
+.checkbox-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Size variants */
+.checkbox-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.checkbox-md {
+  width: 20px;
+  height: 20px;
+}
+
+/* Icon styling */
+.checkbox-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  flex-shrink: 0;
+}
+
+/* State variants - Default */
+.checkbox-state-default {
+  border: 1px solid #64748B;
+  background: transparent;
+}
+
+.checkbox-state-default:hover {
+  border-color: #7C3AED;
+  opacity: 0.9;
+}
+
+/* State variants - Hover */
+.checkbox-state-hover {
+  border: 1px solid #7C3AED;
+  background: transparent;
+  opacity: 0.9;
+}
+
+/* State variants - Checked */
+.checkbox-state-checked {
+  border: 1px solid #7C3AED;
+  background: #7C3AED;
+}
+
+.checkbox-state-checked:hover {
+  background: #6B21A8;
+  border-color: #6B21A8;
+}
+
+/* State variants - Disabled */
+.checkbox-state-disabled {
+  border: 1px solid #64748B;
+  background: #64748B;
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* State variants - Indeterminate */
+.checkbox-state-indeterminate {
+  border: 1px solid #7C3AED;
+  background: #7C3AED;
+}
+
+.checkbox-state-indeterminate:hover {
+  background: #6B21A8;
+  border-color: #6B21A8;
+}
+
+/* State variants - Focus */
+.checkbox-state-focus {
+  border: 1px solid #7C3AED;
+  background: transparent;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #4C1D95;
+}
+
+/* Focus-visible for accessibility */
+.checkbox-wrapper:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px white, 0 0 0 4px #4C1D95;
+}
+
+/* Ensure icon is centered properly */
+.checkbox-wrapper svg {
+  pointer-events: none;
+}

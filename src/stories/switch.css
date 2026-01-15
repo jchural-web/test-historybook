@@ -1,0 +1,111 @@
+/* ========================================
+   Switch Root Button
+   ======================================== */
+
+.switch-root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.switch-root:focus-visible {
+  outline: 2px solid #9333ea;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+/* ========================================
+   Switch Track (pill-shaped background)
+   ======================================== */
+
+.switch-track {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 20px;
+  border-radius: 10px;
+  transition: background-color 200ms ease-in-out;
+}
+
+/* Default state (unchecked/disabled): Purple track */
+.switch-root .switch-track {
+  background: #6b21a8;
+}
+
+/* Active state (checked): White track */
+.switch-root.switch-checked .switch-track {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+/* ========================================
+   Switch Thumb (circular toggle)
+   ======================================== */
+
+.switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  transition:
+    transform 200ms ease-in-out,
+    background-color 200ms ease-in-out;
+}
+
+/* Default state (unchecked/disabled): White thumb on left */
+.switch-root .switch-thumb {
+  background: #ffffff;
+  transform: translateX(0);
+}
+
+/* Active state (checked): Purple thumb on right */
+.switch-root.switch-checked .switch-thumb {
+  background: #6b21a8;
+  transform: translateX(20px);
+}
+
+/* ========================================
+   Disabled State
+   ======================================== */
+
+.switch-root.switch-disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.switch-root.switch-disabled .switch-track {
+  background: #6b21a8;
+}
+
+.switch-root.switch-disabled .switch-thumb {
+  background: #ffffff;
+  transform: translateX(0);
+}
+
+/* ========================================
+   Hover States (only when not disabled)
+   ======================================== */
+
+.switch-root:not(.switch-disabled):hover .switch-track {
+  opacity: 0.9;
+}
+
+/* ========================================
+   Active/Pressed States
+   ======================================== */
+
+.switch-root:not(.switch-disabled):active .switch-thumb {
+  width: 18px;
+}
+
+.switch-root:not(.switch-disabled).switch-checked:active .switch-thumb {
+  transform: translateX(17px);
+}

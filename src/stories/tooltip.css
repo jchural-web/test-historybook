@@ -1,0 +1,171 @@
+/* ========================================
+   Component Host (positioning context)
+   ======================================== */
+
+:host {
+  position: relative;
+  display: inline-block;
+}
+
+/* ========================================
+   Tooltip Trigger (wrapper for content)
+   ======================================== */
+
+.tooltip-trigger {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+}
+
+.tooltip-trigger:focus {
+  outline: 2px solid #9333ea;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ========================================
+   Tooltip Overlay (floating container)
+   ======================================== */
+
+.tooltip-overlay {
+  position: absolute;
+  z-index: 1000;
+  background: #334155;
+  color: #f1f5f9;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: tooltipAppear 0.2s ease-in-out;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes tooltipAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   Tooltip Content
+   ======================================== */
+
+.tooltip-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ========================================
+   Tooltip Arrow (pointer to trigger)
+   ======================================== */
+
+.tooltip-arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+/* ========================================
+   Placement: TOP (default)
+   ======================================== */
+
+.tooltip-top {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip-top .tooltip-arrow {
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ========================================
+   Placement: BOTTOM
+   ======================================== */
+
+.tooltip-bottom {
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tooltip-bottom .tooltip-arrow {
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+/* ========================================
+   Placement: LEFT
+   ======================================== */
+
+.tooltip-left {
+  right: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip-left .tooltip-arrow {
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* ========================================
+   Placement: RIGHT
+   ======================================== */
+
+.tooltip-right {
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.tooltip-right .tooltip-arrow {
+  left: -4px;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+/* ========================================
+   Accessibility
+   ======================================== */
+
+.tooltip-overlay:focus {
+  outline: none;
+}
+
+/* ========================================
+   Responsive behavior - small screens
+   ======================================== */
+
+@media (max-width: 640px) {
+  .tooltip-overlay {
+    padding: 8px 10px;
+    font-size: 12px;
+    max-width: 200px;
+    white-space: normal;
+  }
+}

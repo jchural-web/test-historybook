@@ -1,0 +1,215 @@
+/* Pagination Container */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 29px;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+}
+
+/* Sections */
+.pagination-section-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pagination-section-middle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pagination-section-right {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-left: auto;
+}
+
+/* Labels */
+.pagination-label {
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.26px;
+}
+
+.pagination-range-label {
+  color: #4b5563;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.26px;
+  white-space: nowrap;
+}
+
+/* Page Input */
+.pagination-input {
+  width: 42px;
+  height: 29px;
+  padding: 0 8px;
+  border-radius: 6px;
+  border: 1px solid #e4e4e7;
+  background: #fff;
+  color: #4b5563;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.26px;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+  -moz-appearance: textfield;
+}
+
+.pagination-input::-webkit-outer-spin-button,
+.pagination-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.pagination-input:hover:not(:disabled) {
+  border-color: #d4d4d8;
+}
+
+.pagination-input:focus {
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 5px #dbeafe;
+}
+
+.pagination-input:disabled {
+  background: #f4f4f5;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Page Size Select */
+.pagination-select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.pagination-select {
+  width: 47px;
+  height: 29px;
+  padding: 0 24px 0 8px;
+  border-radius: 6px;
+  border: 1px solid #e4e4e7;
+  background: #fff;
+  color: #4b5563;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.26px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  transition: all 0.2s ease;
+}
+
+.pagination-select:hover:not(:disabled) {
+  border-color: #d4d4d8;
+}
+
+.pagination-select:focus {
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 5px #dbeafe;
+}
+
+.pagination-select-icon {
+  position: absolute;
+  right: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+/* Navigation Controls */
+.pagination-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.pagination-nav-btn {
+  width: 29px;
+  height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 1px solid #e4e4e7;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.pagination-nav-btn:hover:not(:disabled) {
+  background: #f9fafb;
+  border-color: #d4d4d8;
+}
+
+.pagination-nav-btn:active:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.pagination-nav-btn:focus-visible {
+  border-color: #2563eb;
+  box-shadow:
+    0 0 0 3px #ffffff,
+    0 0 0 5px #dbeafe;
+}
+
+.pagination-nav-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.pagination-nav-btn:disabled svg path {
+  fill: #d1d5db;
+}
+
+/* Last button (refresh) styling */
+.pagination-nav-btn:last-child {
+  width: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pagination-container {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 12px;
+  }
+
+  .pagination-section-right {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

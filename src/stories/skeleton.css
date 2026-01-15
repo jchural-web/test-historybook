@@ -1,0 +1,44 @@
+/* Skeleton Base - with consistent spacing to prevent overlap */
+.skeleton {
+  display: block;
+  background-color: #e2e8f0; /* neutral-200 from Figma */
+  border: none;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Type: Text - individual line with bottom spacing */
+.skeleton-text {
+  border-radius: 4px; /* sm radius */
+  width: 100%; /* Default for text lines */
+  height: 14px; /* Default text line height - slightly reduced for better stacking */
+  margin-bottom: 0; /* Remove margin, use gap in container instead */
+}
+
+/* Type: Circular - no margin by default, composable in flex layouts */
+.skeleton-circular {
+  border-radius: 50%; /* full radius */
+  width: 40px; /* Default size if not specified */
+  height: 40px; /* Must be equal to width for perfect circle */
+  aspect-ratio: 1 / 1; /* Ensure circular shape */
+  flex-shrink: 0; /* Prevent shrinking in flex containers */
+}
+
+/* Type: Rectangular - no bottom margin, use gap in container instead */
+.skeleton-rectangular {
+  border-radius: 8px; /* md radius from Figma */
+  width: 100%; /* Default full width */
+  height: 100px; /* Default height */
+  margin-bottom: 0; /* Remove margin, use gap in container instead */
+}
+
+/* Auto width/height handling */
+.skeleton[style*="width: auto"] {
+  width: auto;
+}
+
+.skeleton[style*="height: auto"] {
+  height: auto;
+}

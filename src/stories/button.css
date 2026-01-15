@@ -1,30 +1,624 @@
-.storybook-button {
-  display: inline-block;
+/* Base button styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.28px;
+  border: none;
   cursor: pointer;
-  border: 0;
-  border-radius: 3em;
-  font-weight: 700;
-  line-height: 1;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  white-space: nowrap;
 }
-.storybook-button--primary {
-  background-color: #555ab9;
+
+/* Size variants */
+.btn-sm {
+  padding: 8px 16px;
+  height: 27px;
+}
+
+.btn-md {
+  padding: 12px 24px;
+  height: 35px;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  height: 43px;
+}
+
+/* Icon-only sizes */
+.btn-shape-icon.btn-sm {
+  width: 27px;
+  height: 27px;
+  padding: 8px;
+}
+
+.btn-shape-icon.btn-md {
+  width: 35px;
+  height: 35px;
+  padding: 8px;
+}
+
+.btn-shape-icon.btn-lg {
+  width: 43px;
+  height: 43px;
+  padding: 8px;
+}
+
+/* Icon-only circular button sizes */
+.btn-shape-icon-only.btn-sm {
+  width: 27px;
+  height: 27px;
+  min-width: 27px;
+  min-height: 27px;
+  padding: 0;
+}
+
+.btn-shape-icon-only.btn-md {
+  width: 35px;
+  height: 35px;
+  min-width: 35px;
+  min-height: 35px;
+  padding: 0;
+}
+
+.btn-shape-icon-only.btn-lg {
+  width: 43px;
+  height: 43px;
+  min-width: 43px;
+  min-height: 43px;
+  padding: 0;
+}
+
+/* Shape variants */
+.btn-shape-rectangular {
+  border-radius: 2px;
+}
+
+.btn-shape-rectangular.btn-md {
+  border-radius: 3px;
+}
+
+.btn-shape-rectangular.btn-lg {
+  border-radius: 4px;
+}
+
+.btn-shape-pill {
+  border-radius: 9999px;
+}
+
+.btn-shape-icon {
+  border-radius: 4px;
+}
+
+.btn-shape-icon-text {
+  border-radius: 2px;
+}
+
+.btn-shape-icon-text.btn-md {
+  border-radius: 3px;
+}
+
+.btn-shape-icon-text.btn-lg {
+  border-radius: 4px;
+}
+
+/* Icon-only circular buttons - always round */
+.btn-shape-icon-only {
+  border-radius: 50%;
+}
+
+/* Icon-only with outline variant (default for icon-only) */
+.btn-shape-icon-only.btn-outline {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #9333ea;
+}
+
+.btn-shape-icon-only.btn-outline:hover:not(:disabled),
+.btn-shape-icon-only.btn-outline.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-outline:active:not(:disabled),
+.btn-shape-icon-only.btn-outline.btn-state-active {
+  border-color: #9333ea;
+  color: #9333ea;
+}
+
+.btn-shape-icon-only.btn-outline:focus:not(:disabled),
+.btn-shape-icon-only.btn-outline.btn-state-focus {
+  border-color: #64748b;
+  color: #6b21a8;
+  outline: none;
+  box-shadow: 0 0 0 1px #581c87;
+}
+
+/* Icon-only with default variant (filled purple) */
+.btn-shape-icon-only.btn-default {
+  background: #7c3aed;
+  color: white;
+  border: 1px solid #7c3aed;
+}
+
+/* Force white icon for default variant - all states */
+.btn-shape-icon-only.btn-default .button-icon-only svg,
+.btn-shape-icon-only.btn-default .button-icon-only svg path,
+.btn-shape-icon-only.btn-default .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
+}
+
+.btn-shape-icon-only.btn-default:hover:not(:disabled),
+.btn-shape-icon-only.btn-default.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-default:active:not(:disabled),
+.btn-shape-icon-only.btn-default.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-default:focus:not(:disabled),
+.btn-shape-icon-only.btn-default.btn-state-focus {
+  background: #4c1d95;
+  border-color: #4c1d95;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
   color: white;
 }
-.storybook-button--secondary {
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-  background-color: transparent;
-  color: #333;
+
+/* Ensure white icon in focus state for default variant */
+.btn-shape-icon-only.btn-default:focus:not(:disabled) .button-icon-only svg,
+.btn-shape-icon-only.btn-default:focus:not(:disabled) .button-icon-only svg path,
+.btn-shape-icon-only.btn-default:focus:not(:disabled) .button-icon-only svg *,
+.btn-shape-icon-only.btn-default.btn-state-focus .button-icon-only svg,
+.btn-shape-icon-only.btn-default.btn-state-focus .button-icon-only svg path,
+.btn-shape-icon-only.btn-default.btn-state-focus .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
 }
-.storybook-button--small {
-  padding: 10px 16px;
-  font-size: 12px;
+
+/* Icon-only with secondary variant (filled blue) */
+.btn-shape-icon-only.btn-secondary {
+  background: #2563eb;
+  color: white;
+  border: 1px solid #2563eb;
 }
-.storybook-button--medium {
-  padding: 11px 20px;
-  font-size: 14px;
+
+/* Force white icon for secondary variant - all states */
+.btn-shape-icon-only.btn-secondary .button-icon-only svg,
+.btn-shape-icon-only.btn-secondary .button-icon-only svg path,
+.btn-shape-icon-only.btn-secondary .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
 }
-.storybook-button--large {
-  padding: 12px 24px;
-  font-size: 16px;
+
+.btn-shape-icon-only.btn-secondary:hover:not(:disabled),
+.btn-shape-icon-only.btn-secondary.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-secondary:active:not(:disabled),
+.btn-shape-icon-only.btn-secondary.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-secondary:focus:not(:disabled),
+.btn-shape-icon-only.btn-secondary.btn-state-focus {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+  color: white;
+}
+
+/* Ensure white icon in focus state for secondary variant */
+.btn-shape-icon-only.btn-secondary:focus:not(:disabled) .button-icon-only svg,
+.btn-shape-icon-only.btn-secondary:focus:not(:disabled) .button-icon-only svg path,
+.btn-shape-icon-only.btn-secondary:focus:not(:disabled) .button-icon-only svg *,
+.btn-shape-icon-only.btn-secondary.btn-state-focus .button-icon-only svg,
+.btn-shape-icon-only.btn-secondary.btn-state-focus .button-icon-only svg path,
+.btn-shape-icon-only.btn-secondary.btn-state-focus .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
+}
+
+/* Icon-only with ghost variant (light purple) */
+.btn-shape-icon-only.btn-ghost {
+  background: #ede9fe;
+  color: #1e293b;
+  border: 1px solid #ede9fe;
+}
+
+.btn-shape-icon-only.btn-ghost:hover:not(:disabled),
+.btn-shape-icon-only.btn-ghost.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-ghost:active:not(:disabled),
+.btn-shape-icon-only.btn-ghost.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-ghost:focus:not(:disabled),
+.btn-shape-icon-only.btn-ghost.btn-state-focus {
+  background: #ddd6fe;
+  border-color: #ddd6fe;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* Icon-only with link variant */
+.btn-shape-icon-only.btn-link {
+  background: transparent;
+  color: #2563eb;
+  border: 1px solid transparent;
+}
+
+.btn-shape-icon-only.btn-link:hover:not(:disabled),
+.btn-shape-icon-only.btn-link.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-link:active:not(:disabled),
+.btn-shape-icon-only.btn-link.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-link:focus:not(:disabled),
+.btn-shape-icon-only.btn-link.btn-state-focus {
+  color: #1d4ed8;
+  border: 1px solid #1d4ed8;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* Icon-only with destructive variant (red) */
+.btn-shape-icon-only.btn-destructive {
+  background: #dc2626;
+  color: white;
+  border: 1px solid #dc2626;
+}
+
+/* Force white icon for destructive variant - all states */
+.btn-shape-icon-only.btn-destructive .button-icon-only svg,
+.btn-shape-icon-only.btn-destructive .button-icon-only svg path,
+.btn-shape-icon-only.btn-destructive .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
+}
+
+.btn-shape-icon-only.btn-destructive:hover:not(:disabled),
+.btn-shape-icon-only.btn-destructive.btn-state-hover {
+  opacity: 0.9;
+}
+
+.btn-shape-icon-only.btn-destructive:active:not(:disabled),
+.btn-shape-icon-only.btn-destructive.btn-state-active {
+  opacity: 1;
+}
+
+.btn-shape-icon-only.btn-destructive:focus:not(:disabled),
+.btn-shape-icon-only.btn-destructive.btn-state-focus {
+  background: #b91c1c;
+  border-color: #b91c1c;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+  color: white;
+}
+
+/* Ensure white icon in focus state for destructive variant */
+.btn-shape-icon-only.btn-destructive:focus:not(:disabled) .button-icon-only svg,
+.btn-shape-icon-only.btn-destructive:focus:not(:disabled) .button-icon-only svg path,
+.btn-shape-icon-only.btn-destructive:focus:not(:disabled) .button-icon-only svg *,
+.btn-shape-icon-only.btn-destructive.btn-state-focus .button-icon-only svg,
+.btn-shape-icon-only.btn-destructive.btn-state-focus .button-icon-only svg path,
+.btn-shape-icon-only.btn-destructive.btn-state-focus .button-icon-only svg * {
+  fill: white !important;
+  color: white !important;
+}
+
+/* Text underline on hover for text-based buttons (text-only and icon-text, exclude icon-only) */
+.btn-shape-rectangular:hover:not(:disabled) .button-label,
+.btn-shape-rectangular.btn-state-hover .button-label,
+.btn-shape-pill:hover:not(:disabled) .button-label,
+.btn-shape-pill.btn-state-hover .button-label,
+.btn-shape-icon-text:hover:not(:disabled) .button-label,
+.btn-shape-icon-text.btn-state-hover .button-label {
+  text-decoration: underline;
+}
+
+/* Color variants - Default/Primary */
+.btn-default {
+  background: #7c3aed;
+  color: white;
+}
+
+.btn-default:hover:not(:disabled),
+.btn-state-hover.btn-default {
+  opacity: 0.9;
+}
+
+.btn-default:active:not(:disabled),
+.btn-state-active.btn-default {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-default:active:not(:disabled) .button-label,
+.btn-state-active.btn-default .button-label {
+  text-decoration: underline;
+}
+
+.btn-default:focus:not(:disabled),
+.btn-state-focus.btn-default {
+  background: #4c1d95;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* Secondary variant */
+.btn-secondary {
+  background: #2563eb;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled),
+.btn-state-hover.btn-secondary {
+  opacity: 0.9;
+}
+
+.btn-secondary:active:not(:disabled),
+.btn-state-active.btn-secondary {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-secondary:active:not(:disabled) .button-label,
+.btn-state-active.btn-secondary .button-label {
+  text-decoration: underline;
+}
+
+.btn-secondary:focus:not(:disabled),
+.btn-state-focus.btn-secondary {
+  background: #1d4ed8;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* Outline variant */
+.btn-outline {
+  background: transparent;
+  color: #7c3aed;
+  border: 1px solid #7c3aed;
+}
+
+.btn-outline:hover:not(:disabled),
+.btn-state-hover.btn-outline {
+  opacity: 0.9;
+}
+
+.btn-outline:active:not(:disabled),
+.btn-state-active.btn-outline {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-outline:active:not(:disabled) .button-label,
+.btn-state-active.btn-outline .button-label {
+  text-decoration: underline;
+}
+
+.btn-outline:focus:not(:disabled),
+.btn-state-focus.btn-outline {
+  border-color: #4c1d95;
+  color: #4c1d95;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* Ghost variant */
+.btn-ghost {
+  background: #ede9fe;
+  color: #1e293b;
+}
+
+.btn-ghost:hover:not(:disabled),
+.btn-state-hover.btn-ghost {
+  opacity: 0.9;
+}
+
+.btn-ghost:active:not(:disabled),
+.btn-state-active.btn-ghost {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-ghost:active:not(:disabled) .button-label,
+.btn-state-active.btn-ghost .button-label {
+  text-decoration: underline;
+}
+
+.btn-ghost:focus:not(:disabled),
+.btn-state-focus.btn-ghost {
+  background: #ddd6fe;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* Link variant */
+.btn-link {
+  background: transparent;
+  color: #2563eb;
+}
+
+.btn-link:hover:not(:disabled),
+.btn-state-hover.btn-link {
+  opacity: 0.9;
+}
+
+.btn-link:active:not(:disabled),
+.btn-state-active.btn-link {
+  text-decoration: underline;
+}
+
+.btn-link:focus:not(:disabled),
+.btn-state-focus.btn-link {
+  color: #1d4ed8;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* Destructive variant */
+.btn-destructive {
+  background: #dc2626;
+  color: white;
+}
+
+.btn-destructive:hover:not(:disabled),
+.btn-state-hover.btn-destructive {
+  opacity: 0.9;
+}
+
+.btn-destructive:active:not(:disabled),
+.btn-state-active.btn-destructive {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12) inset;
+}
+
+.btn-destructive:active:not(:disabled) .button-label,
+.btn-state-active.btn-destructive .button-label {
+  text-decoration: underline;
+}
+
+.btn-destructive:focus:not(:disabled),
+.btn-state-focus.btn-destructive {
+  background: #b91c1c;
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* Disabled state */
+.btn:disabled,
+.btn-state-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon styling */
+.button-icon {
+  flex-shrink: 0;
+}
+
+.button-icon-left {
+  margin-right: -2px;
+}
+
+.button-icon-right {
+  margin-left: -2px;
+}
+
+.btn-shape-icon .button-icon {
+  margin: 0;
+}
+
+/* Label styling */
+.button-label {
+  display: inline-block;
+}
+
+/* Focus visible for accessibility */
+.btn:focus-visible {
+  box-shadow:
+    0 0 0 3px white,
+    0 0 0 4px #2e1065;
+}
+
+/* ===========================
+   Icon-only Circular Button States
+   =========================== */
+
+/* Default state - already defined above */
+.btn-shape-icon-only {
+  position: relative;
+}
+
+/* Hover state */
+.btn-shape-icon-only:hover:not(:disabled),
+.btn-shape-icon-only.btn-state-hover {
+  opacity: 0.9;
+}
+
+/* Active state */
+.btn-shape-icon-only:active:not(:disabled),
+.btn-shape-icon-only.btn-state-active {
+  opacity: 1;
+}
+
+/* Focus state - darker border, darker icon, purple ring */
+.btn-shape-icon-only:focus:not(:disabled),
+.btn-shape-icon-only.btn-state-focus {
+  border-color: #64748b;
+  color: #6b21a8;
+  outline: none;
+  box-shadow: 0 0 0 1px #581c87;
+}
+
+/* Disabled state */
+.btn-shape-icon-only:disabled,
+.btn-shape-icon-only.btn-state-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Icon-only button icon wrapper */
+.button-icon-only {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Icon sizing for icon-only buttons */
+.btn-shape-icon-only.btn-sm .button-icon-only {
+  width: 17px;
+  height: 17px;
+}
+
+.btn-shape-icon-only.btn-md .button-icon-only {
+  width: 21px;
+  height: 21px;
+}
+
+.btn-shape-icon-only.btn-lg .button-icon-only {
+  width: 26px;
+  height: 26px;
+}
+
+/* Ensure SVG icons render properly in icon-only buttons */
+.button-icon-only svg {
+  display: block;
+  width: 100%;
+  height: 100%;
 }

@@ -1,0 +1,115 @@
+/* Badge Base */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  font-family: Inter, -apple-system, Roboto, Helvetica, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.05px;
+}
+
+/* Badge Icon */
+.badge-icon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+/* Badge Dot */
+.badge-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+}
+
+/* Badge Text (Default & Large) - Original Small Style */
+.badge-text.badge-size-default.badge-layout-text,
+.badge-text.badge-size-large.badge-layout-text {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 12px;
+  line-height: 17px;
+  min-height: 15px;
+  white-space: nowrap;
+}
+
+/* Badge Text Icon Layout - Figma Design (28px height) */
+.badge-text.badge-layout-text-icon {
+  padding: 8px 20px;
+  border-radius: 9999px;
+  font-size: 14px;
+  line-height: 21px;
+  height: 28px;
+  white-space: nowrap;
+  gap: 10px;
+}
+
+/* Size: Large (same as default, just semantic difference) */
+.badge-size-large {
+  /* Same styling as default */
+}
+
+/* Variant: Default (Violet) */
+.badge-default {
+  background-color: #7c3aed; /* Violet-600 */
+  color: #ffffff;
+}
+
+.badge-default .badge-icon path {
+  fill: #ffffff;
+}
+
+/* Variant: Secondary (Blue) */
+.badge-secondary {
+  background-color: #2563eb; /* Blue-600 */
+  color: #ffffff;
+}
+
+.badge-secondary .badge-icon path {
+  fill: #ffffff;
+}
+
+/* Variant: Destructive (Red) */
+.badge-destructive {
+  background-color: #dc2626; /* Red-600 */
+  color: #ffffff;
+}
+
+.badge-destructive .badge-icon path {
+  fill: #ffffff;
+}
+
+/* Variant: Outline */
+.badge-outline.badge-dot {
+  background-color: transparent;
+  border: 1px solid #cbd5e1; /* neutral-300 */
+}
+
+.badge-outline.badge-text {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1; /* neutral-300 */
+  color: #1e293b; /* neutral-800 */
+}
+
+.badge-outline .badge-icon path {
+  fill: #1e293b; /* neutral-800 */
+}
+
+/* Variant: Success (Green) */
+.badge-success {
+  background-color: #16a34a; /* Green-600 */
+  color: #ffffff;
+}
+
+.badge-success .badge-icon path {
+  fill: #ffffff;
+}
+
+/* Non-interactive */
+.badge {
+  pointer-events: none;
+  user-select: none;
+}
